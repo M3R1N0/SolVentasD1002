@@ -1,0 +1,1725 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>104, 17</value>
+  </metadata>
+  <metadata name="timer3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>191, 17</value>
+  </metadata>
+  <metadata name="timer4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>278, 17</value>
+  </metadata>
+  <metadata name="timerConfiguacionINI.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>365, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAADodJREFUeF7t
+        WWlsXUcVjpCQQAIhkKAs2UiTOGka21nsOLbjPd4S20kcJ3HSNkkT2h9QibJUVRFItPxACApCahQaxNIK
+        2jir9+295+ctTZpCCwUhoEKqKEWNl/fu9t59TpPh+87MdfKKgkqbpk7qI32auXNnzpzznTNn7rPnzMqs
+        zMqszMqsvD/ihuozYz2bs8zjB0cmX2j6RLy/+o92ZLNyBhqUHa77A8fM61tf7FBtuxXeJM470W3KGdym
+        7GhDm3l9a4sb3brR6q+5ZEfg/MBW5Ua3K2+wSbmDjW86A9tLzLRbV+z+2peZ+i4i7w41KW94h/KGCJAQ
+        3fqymXZrihPe8kA8VKPsgS3ivDu8C2hW7kgziNiJse3KCTd+xUy/teTCQNPH4qHaMXugHum+XZz3RvYo
+        b/QulQC80d0gYBfrwRv/bGn6qFl264gT2XLIYtUfbISjSPnRPSpx5m7gHg2SgEyQYxFtPGSW3RriD+9c
+        aodrkg5THwXPG22Gw3R+r0o+tw/YKySQFB4Fb3BbIj7cuMgsv/nFCjf02hGmPqKP1Gfkk+L8fpU8u1/5
+        Z+9Fu0+TwiwASc7gll6z/OYWL7JtkxWuuexEWfh2wMndcPwe5Z/bJ4775w4AaEFE8iwygVnAIzK47ZI7
+        ur3SqLk5Rak5H7LDm//msPChwnsjcJ7RR7T9swdU6txBAftCAo7DdBYMNeK2aPiLUXVzihtteNDBF5++
+        8xF9VH2f0Ue0U4i8EPD8QTUFpEgCswDvEyBKvgvwpegONTxo1N1cMjZS/3F87o4H0U8M7zbO74PT2vmp
+        5+8z+JIQQVJ8HANmSWIE3wX8RI5sHqcuo/bmEWeg7ogt0d8qzvDsk4DUuf1qCo7S6anzcJ5g/xxICGqB
+        EMBi2KicSB1IqPu5UXtziB+pz3BCtT5/7HiMPlLah1MpnPFp5yXy94MAAP2LAI9BioURV2KSxZC/EVA8
+        nXCtj1skw6if+eKGN4edML73B3X0kyb6U1dF//cte1X0V3cLXjyGY4EM0LUA1yK+C5L4MErqbwIQgF+O
+        4dqIUT+zBT9r6/DRc5lnX6IPJ5Jn7hKnfCHgoDr9RLOqqalJQxvGpC7IMcAtwdtiBJ/L0EFdTn/15clw
+        TZ3ZZmYKrz0nXPN3O7JJIsf7XKLP9GfxQ3pPnT+onnysSVVVVaXhyPeadAawEOKoyDFAHUjw1yLqiBOp
+        VVao8hXuYbabeeJFNj1ih6vl+tJnfyccYfSZ/jz/IAA3wDM/2qEqKyvTwDESwPcp+UjCjfEcfi/wNuA1
+        OlCnrP5KFe+v+ZbZbmaJOtP0KTtUGeN59Qa3IHLbEf3maQLolNQAONh+aKeqqKhIQ8ehXZoAkoS5KRKA
+        QhgcA5fHIIKf0n3lMTW86ZNm25kjVqjm13aoCoaa4jfcBAJ24fzvgTM4AnTqeX4A3asiv9ilysvL0xD9
+        ZbMmCEjhW8DHGq5NjOIKBZlyG+BoWf0Vyurb+JTZdmbIZHd9phOqmHJxThkpD5+xSan+OgNSz7EG4BjA
+        MTp4/plmVVpamoYXju5GBpjo84MJdcMnAcgAksk64OHntM1j0FNyMdZTNXP+muyEqoadUKUY6CFSCRKA
+        4uWDgBQzAARM8RjgJriIYvjX03tUcXFxGjg2hXdCEsgS0lAD/DPIIhCQQFZ5UXxVosbYfWXK6i0dNdu/
+        v5Lor9rh9FXAsBrloVAxUjTYZwE0BEwhC0gAHbsIB1/vvUsVFRWl4d99nLNXoi9zSdwZ3CDMgBH8jhjC
+        rRJFcUWWOf0bldWzASSU7zJmvD/yws/WfDjeW/aqDYPccK1EKIlIJXFmfRjt4/ymzuAY4CpkNKfO6uNg
+        D+1RhYWFaXCGQQBrBeaQMJ/OY60cpRHUExCQGMSPI9QBZpvVVwoSCl9VsMGYc+PF6St/lOnohqoR/U1w
+        vkEiRQJ4BFIogjoLQIAcBUaZuFuVlRSqgoICAfsyTgJAlMzlGq5nJrEGDONY4XbxoiiyKLZOf7mKd29A
+        W/SYMefGihuqv83qLbEdVGUX11MC1T+JFGWkfMkAHgNNArNgCg4FoHP11RvU+vXrBQ01G0AAMkTAbOEc
+        riEByCTJgEZkAAhgncF+Lm+DnmIV6yyw3dC624xZN07g/LNObymisVEMSuL8M0WTQzwC21RqZDuAr7tR
+        fODgKEydwXGQFvc9sHtrkcrLyxPs2VZkxrXTMk/QJHp8RN+HTmZAAhnA/bzwRhTDEmV1FSi7q6DFmHVj
+        BBV4Hdh/02H6h1H9UQCT0To5AkKA3AI0WmcCiUiBCDoW4P7dxSo3N1dwX3MRIh684zyAa7CeBIgu6uUR
+        Q6Z5A8iAcBWuxDJloxjGOvPetLvz1xvz3nuxuovOk32mvwdDWJmFABwBf2iLPgZACoZLJozqbNBE0LEm
+        9fV7i1VOTo7gGwdKTLSvBtYIiXQe+nC9+iQA+ySwH/dFDQIBxSretR7I+50x770VN1y83+oulPRzQxUw
+        phpgBmyGgfUwGCQQICKFtBUiRkiGJmRqBKSg/e6XS9SaNWsEjz5Qgjl63OdcM59RTwHU5Q9B5yBIRgZw
+        Py+Cr07s7/TiGHQXqHhHrrK71x8wZr43ogYWfsTuyf+Xg7RzpfrrDKBBiWgtDCQJdZqIIVyJNFqIoANs
+        4RD6xOPfLFGrV68W/PihEpBm3tNZM1+cFjKpj0cMzmMf7scjwP1dXIc8BvHOdcrqWPs6bTTmXn+B8z+0
+        uvLBehHSv0x5KICJSCVQjQxgFmyC8wRuBBIBo8V49ofZakc49uR3SlR2drbgyW+DAJlXDxI4h98TdFjD
+        H6I+3jI4agMkANcuao9kAAhgQBB9ZMFakvC4Mff6ykRvzjyw7Nk9BcrtLcY1VAoCmAEgYaAKhoEEFCd/
+        kJkAgIwUyRgypLAFUpIlm9Xg4XKVlZUlGD6yUY8Hc6f7dNzoAcH+IBDFPkj/BPb1wuWSARKQ7nwQkKMm
+        27K91ztXLTBmXz+xO3PbrM48sF0oBHjY2MXHSIJZgGiIUSSC2YAU9UmGgWRHQBAdkeca9eJT5eqlp8vN
+        ew2ZL/MYbT5X6zHo17rpPG4eFmBkoYsaoAkoUFZnroq1rUIWrO4wZl8fcbryy5Bel+zuPOWCAK+/SAhI
+        hMpgDEgIV8CwjQCJCNoqlRqohPHMDjxHr/R9PmMO26Cvx+mkXsu+fh+MQS+zzcALlcMOZGE/ijEJQGZa
+        XSCgY42Knc68FO/OKTfmv3uJdaz9kw3lFs6Z01sgjHt9yAIxgLVAIyBDCBFSNPwAMsY5iLqMoZW+fuYa
+        mTdAEtP1JAR6rezFfek87JAaAALsrjzWAGRBlppsXfFnY/67E6tr1QNW+2ph1+lZD7ZZAzaAgCIYUQyU
+        aCLCJcgIZEUYxklbqpJok2wjbMt0P1Qi4088lKPKC1YIDj2co9/Je7Ne1l7RxdYzSEAH99aZWAQS8Jug
+        Jx+FcJ2yO0lANrJghZo4lflV48Y7k7HWgo9b7asu2J1roBwE8Aj05mPTQhgQkACEaAzAFqBxSbRJEhS6
+        MkcTVqROfT9XZWRkpKH1B7n6vRBUpNdfBY7LHpyDqCewtyeBwJXci1+TJAAZQAKsdhDQthIkLB9TIwXv
+        /L9K8c6sw1ZHNosKlOeAgHUmC/JNJhQIGTQiYVqPxPSjULLPMfS9fsxjK8QVqof2ZqolS5akgWMyP2TW
+        TK+Fg/Ks9Wrizfs+HkfagqsZdjldyIAuXoWrhIDJU8tIwhHjzv8nfmRthtWW6ZNNZoBDArCBZAFJADyw
+        7vaiZVag74GQBPqJPva1YdL2mDWYS/zkwSy1ePHiNPz0a1mYG+ilTk009Yl+Aud8ei/Zmy0ch34JDrLU
+        RhGkzXEScHq5mjy51B9vX7nMuPX2BQrC8bZMsJkFApgBa0EA0J2jXGzkSjYQdA4gMULOOuPwOuVhjsc5
+        Mh/o4doc9captaquZKlatGiRoKFsqRprNXp7crEGLWoO1xLcS+sz+qUN+gSOJ+ZL+iNbmQFWe6aKn74D
+        WbAUJCwZMG69PYmdWrkl3nbHZQssWu0kYJVyhARmwlpsSGODFplBg6fHzDjnydw1Gl2rTR8t+qgt6tzh
+        bHX2cJYYzDEH7x28d7DPtK5gP5KPLCQxDIIHMjWxaOE41xC0VY4tbI+3koAMNXHi9ssTx5c1Gvf+t/A/
+        L5Onl74Sb10OJXfC0JVQShKysRHQBTIAt5ugsXSIDgAyZ5XMtbt4dLgOQBY5nZkCOwDHAmCOfq/7dkfQ
+        535aJ+EGEBs0kXpf2GHso16rA4GD7SQgpglQY8cX/uNt/VcJzj9M1uKnl0HBCuBOKCVABAyzALbSR3Yw
+        1bRDeI8+mbdJGgyw20Fg2wrMAdi23YFxDenDwLSxdrYrsC6Yr3WIPgPuL3uKLZpcsYdjAu5J51egAC6T
+        DJg8ebuaOLZAjR9b8Ihx89oycWLxa7FTS7A4gxVUWCRo3FududJqxNswn2uwsdVKAjPQgkyDWOtSvDMI
+        +qa10PJ97Kr5ceoQXbQDGQk7SNA0abRFSARpgS18FpuXS/TpixBwfIEaa5n3mnHz2jJ5fNFU7ORiFTsJ
+        ElBA4gDbK6BSInjmBpgr87mOuF3FTixSk4D0T6J//IvyDP1o0edzAD4L9DyZz7UBqOMU9UA3g2NsY3TZ
+        xtHGEbCAXBk7iVbsWiy6EX013jLPN25eWyZPLHiJRmoHtCM0KH61QVAYO7EQ7xeq2HG0UJ6O+cA8wYS0
+        c9HOVZMtX1ATAYLnY8EY5hAcJ46b9S1s52OfBQLql5Z7EydpiyYvsFXbqG2fgC8TxxaCAOg6Ovcl4+a1
+        Jf6b+YvGWuaex+YXeW405sMQQjtEQ8dh9PhR4vOCsWc/B3xWjQtuU2PPAM9+Bm2AT/83fqvbC28dn16n
+        9YjOo9RP6P249wQhpM1jdI2NJD+wWwcDpF7EuvMXnp672Lg5K7MyK7MyK7MyKx94mTPnP2URzIS+auoD
+        AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhyADIAPUBAO7u7vLy8ufn5+Tk5Obm5uXl5fT09PX19fj4+Pv7+/n5+d3d3erq6vf39/b29v39
+        /dXV1djY2MzMzMnJycrKys7OztfX183NzdbW1svLy8HBwc/Pz6qqqq2trbKysry8vLe3t7S0tLa2tr6+
+        vrOzs7W1taurq6ysrL29vcDAwJWVlYeHh5+fn5ycnJubm5mZmZiYmJeXl5aWln9/f4aGhoODg4CAgIWF
+        hYKCgp2dnb+/v56engAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/
+        eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1l
+        dGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDEx
+        IDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRm
+        PSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+        dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9t
+        bS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VS
+        ZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFs
+        RG9jdW1lbnRJRD0ieG1wLmRpZDoyMDMxOUFGRTkyMjA2ODExOEMxNEVDNjFBQkVEODcyRiIgeG1wTU06
+        RG9jdW1lbnRJRD0ieG1wLmRpZDpGN0ZBODNBNEQ1MTYxMUUyQjFFQ0IwODJDOEVFM0ZENCIgeG1wTU06
+        SW5zdGFuY2VJRD0ieG1wLmlpZDpGN0ZBODNBM0Q1MTYxMUUyQjFFQ0IwODJDOEVFM0ZENCIgeG1wOkNy
+        ZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRG
+        cm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MjEzMTlBRkU5MjIwNjgxMThDMTRFQzYxQUJFRDg3
+        MkYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MjAzMTlBRkU5MjIwNjgxMThDMTRFQzYxQUJFRDg3
+        MkYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBl
+        bmQ9InIiPz4B//79/Pv6+fj39vX08/Lx8O/u7ezr6uno5+bl5OPi4eDf3t3c29rZ2NfW1dTT0tHQz87N
+        zMvKycjHxsXEw8LBwL++vby7urm4t7a1tLOysbCvrq2sq6qpqKempaSjoqGgn56dnJuamZiXlpWUk5KR
+        kI+OjYyLiomIh4aFhIOCgYB/fn18e3p5eHd2dXRzcnFwb25tbGtqaWhnZmVkY2JhYF9eXVxbWllYV1ZV
+        VFNSUVBPTk1MS0pJSEdGRURDQkFAPz49PDs6OTg3NjU0MzIxMC8uLSwrKikoJyYlJCMiISAfHh0cGxoZ
+        GBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIBAAAh+QQFCgABACwAAAAAyADIAAAG/8CAcEgsGo/IpHLJbDqf
+        0Kh0Sq1ar9isdsvter/gsHhMLpvP6LR6zW673/C4fE6v2+/4vH7P7/v/gIGCg4SFhoeIiYqLjI2Oj5CR
+        kpOUlZaXmJmam5ydnp+goaKjpKWmp6ipqqusra6vsLGys7S1tre4ubq7vL2+v8DBwsPExcbHyMnKy8zN
+        zs/Q0dLT1NXW19jZ2tvc3d7f4OHi4+Tl5ufo6err7O3u7/Dx8vP09fb3+Pn6+/z9/v8AuRFQYSMHgCMH
+        ONhYsQChhoUT1E1QeGNFBwlFIJBYUZGFhowgCNKIAQKdBY4zUs6Q0VAIAxYqVWYY8iBEzJQlzXW4WWNG
+        h7shIHj6HDJBZEwVEcstFDoER0+eTSsyVbr0ZtSpAapCLUfxJgegQlmA5akChTkIUmNGGFKgBc+kARR4
+        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
+</value>
+  </data>
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="richtxtConfiguracion.Text" xml:space="preserve">
+    <value>;SQL Server 2014 Configuration File
+[OPTIONS]
+
+
+
+; Especifica un flujo de trabajo de instalación, como INSTALL, UNINSTALL o UPGRADE. Es un parámetro necesario. 
+
+ACTION="Install"
+
+; No se ha definido aún ayuda detallada para el argumento de la línea de comandos ROLE. 
+
+ROLE="AllFeatures_WithDefaults"
+
+; Use el parámetro /ENU para instalar la versión en inglés de SQL Server en el sistema operativo Windows traducido. 
+
+ENU="False"
+
+; Parámetro que controla el comportamiento de la interfaz de usuario. Los valores válidos son Normal para la interfaz de usuario completa, AutoAdvance para una interfaz de usuario simplificada y EnableUIOnServerCore para omitir la parte gráfica de la instalación de Server Core. 
+
+
+; La instalación no mostrará ninguna interfaz de usuario. 
+
+QUIET="False"
+
+; El programa de instalación sólo mostrará el progreso, sin la interacción del usuario. 
+
+QUIETSIMPLE="True"
+
+; Especifique si el programa de instalación de SQL Server debe detectar e incluir actualizaciones del producto. Los valores válidos son True y False o 1 y 0. De forma predeterminada, el programa de instalación de SQL Server incluirá las actualizaciones que encuentre. 
+
+UpdateEnabled="False"
+
+; Especifique si se puede informar de los errores a Microsoft para mejorar las futuras versiones de SQL Server. Elija 1 o True para habilitar esta característica, o bien 0 o False para deshabilitarla. 
+
+ERRORREPORTING="False"
+
+; Si se proporciona este parámetro, el equipo usará Microsoft Update para comprobar las actualizaciones. 
+
+USEMICROSOFTUPDATE="False"
+
+; Especifica las características que se van a instalar, desinstalar o actualizar. La lista de las características de nivel superior incluye SQL, AS, RS, IS, MDS y Herramientas. La característica SQL instalará el motor de base de datos, la replicación, el texto completo y el servidor Data Quality Services (DQS). La característica Herramientas instalará las herramientas de administración, los componentes de Libros en pantalla, SQL Server Data Tools y el resto de los componentes compartidos. 
+
+FEATURES=SQLENGINE,REPLICATION
+
+; Especifique la ubicación en la que el programa de instalación de SQL Server obtendrá actualizaciones del producto. Los valores válidos son "MU" para buscar en Microsoft Update, una ruta de acceso de carpeta válida, una ruta de acceso relativa, como .\MisActualizaciones, o un recurso compartido UNC. De forma predeterminada, el programa de instalación de SQL Server buscará en Microsoft Update o en el servicio Windows Update mediante Windows Server Update Services. 
+
+UpdateSource="MU"
+
+; Muestra el uso de los parámetros de la línea de comandos 
+
+HELP="False"
+
+; Especifica que el registro de instalación detallado debe redireccionarse a la consola. 
+
+INDICATEPROGRESS="False"
+
+; Especifica que el programa de instalación debe realizar la instalación en WOW64. Este argumento de la línea de comandos no se admite en sistemas IA64 ni de 32 bits. 
+
+X86="False"
+
+; Especifique el directorio de instalación raíz de los componentes compartidos. Este directorio no cambia después de instalar los componentes compartidos. 
+
+INSTALLSHAREDDIR="C:\Program Files\Microsoft SQL Server"
+
+; Especifique una instancia predeterminada o con nombre. MSSQLSERVER y SQLExpress son las instancias predeterminadas de las ediciones que no son Express y de las Express, respectivamente. Se requiere este parámetro al instalar el motor de base de datos de SQL Server (SQL), Analysis Services (AS) o Reporting Services (RS). 
+
+INSTANCENAME="PRUEBAFINAL22"
+
+; Especifique si los datos de uso de las características de SQL Server se pueden recopilar y enviar a Microsoft. Elija 1 o True para habilitar esta característica, o bien 0 o False para deshabilitarla. 
+
+SQMREPORTING="False"
+
+; Especifique el identificador de instancia de las características de SQL Server que ha indicado. Las estructuras de directorios y del Registro, así como los nombres de los servicios SQL Server incorporarán el identificador de instancia de SQL Server. 
+
+INSTANCEID="PRUEBAFINAL22"
+
+; Especifique el directorio de instalación. 
+
+INSTANCEDIR="C:\Program Files (x86)\Microsoft SQL Server"
+
+; Nombre de cuenta del Agente 
+
+AGTSVCACCOUNT="NT AUTHORITY\Servicio de red"
+
+; Iniciar servicio automáticamente después de la instalación.  
+
+AGTSVCSTARTUPTYPE="Disabled"
+
+; Puerto de comunicación TCP del brick de CM 
+
+COMMFABRICPORT="0"
+
+; Cómo usará la matriz las redes privadas 
+
+COMMFABRICNETWORKLEVEL="0"
+
+; Cómo se protegerá la comunicación entre bricks 
+
+COMMFABRICENCRYPTION="0"
+
+; Puerto TCP usado por el brick de CM 
+
+MATRIXCMBRICKCOMMPORT="0"
+
+; Tipo de inicio para el servicio SQL Server. 
+
+SQLSVCSTARTUPTYPE="Automatic"
+
+; Nivel para habilitar la característica FILESTREAM en (0, 1, 2 o 3). 
+
+FILESTREAMLEVEL="0"
+
+; Establézcalo en "1" para habilitar RANU para SQL Server Express. 
+
+ENABLERANU="True"
+
+; Especifica una intercalación de Windows o SQL que se va a utilizar para el motor de base de datos. 
+
+SQLCOLLATION="Modern_Spanish_CI_AS"
+
+; Cuenta para el servicio de SQL Server: Dominio\Usuario o cuenta de sistema. 
+
+SQLSVCACCOUNT="NT Service\MSSQL$PRUEBAFINAL22"
+
+; Cuentas de Windows que se suministran como administradores del sistema de SQL Server. 
+
+
+; Autenticación de Windows predeterminada. Use "SQL" para el modo mixto de autenticación de Windows. 
+
+
+; Aprovisione el usuario actual como administrador del sistema del motor de base de datos para %SQL_PRODUCT_SHORT_NAME% Express. 
+
+ADDCURRENTUSERASSQLADMIN="False"
+
+; Especifique 0 para deshabilitar el protocolo TCP/IP, o 1 para habilitarlo. 
+
+TCPENABLED="1"
+
+; Especifique 0 para deshabilitar el protocolo Named Pipes, o 1 para habilitarlo. 
+
+NPENABLED="0"
+
+; Tipo de inicio para el servicio SQL Server Browser. 
+
+BROWSERSVCSTARTUPTYPE="Disabled"
+</value>
+  </data>
+  <data name="txtTablasSP.Text" xml:space="preserve">
+    <value>USE [master]
+GO
+ALTER DATABASE [DBVENTAS] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [DBVENTAS].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [DBVENTAS] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [DBVENTAS] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [DBVENTAS] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [DBVENTAS] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [DBVENTAS] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET RECOVERY FULL 
+GO
+ALTER DATABASE [DBVENTAS] SET  MULTI_USER 
+GO
+ALTER DATABASE [DBVENTAS] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [DBVENTAS] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [DBVENTAS] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [DBVENTAS] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [DBVENTAS] SET DELAYED_DURABILITY = DISABLED 
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'DBVENTAS', N'ON'
+GO
+ALTER DATABASE [DBVENTAS] SET QUERY_STORE = OFF
+GO
+USE [DBVENTAS]
+GO
+/****** Object:  Table [dbo].[Cat_Producto]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Cat_Producto](
+	[Id_CatProducto] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](50) NOT NULL,
+	[Descripcion] [varchar](50) NULL,
+	[Estado] [bit] NOT NULL,
+ CONSTRAINT [PK_Cat_Producto] PRIMARY KEY CLUSTERED 
+(
+	[Id_CatProducto] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Cat_Tipo_Presentacion]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Cat_Tipo_Presentacion](
+	[Id_TipoPresentacion] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](50) NOT NULL,
+	[NombreCorto] [varchar](50) NOT NULL,
+	[Estado] [bit] NOT NULL,
+ CONSTRAINT [PK_Cat_Tipo_Presentacion] PRIMARY KEY CLUSTERED 
+(
+	[Id_TipoPresentacion] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Cat_Tipo_Usuario]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Cat_Tipo_Usuario](
+	[Id_Rol] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](50) NOT NULL,
+	[Descripcion] [varchar](50) NULL,
+	[Estado] [bit] NOT NULL,
+ CONSTRAINT [PK_Cat_Tipo_Usuario] PRIMARY KEY CLUSTERED 
+(
+	[Id_Rol] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tb_Caja]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tb_Caja](
+	[Id_Caja] [int] IDENTITY(1,1) NOT NULL,
+	[Descripcion] [varchar](50) NULL,
+	[Tema] [varchar](50) NULL,
+	[Serial_PC] [varchar](50) NULL,
+	[Impresora_Tickect] [varchar](max) NULL,
+	[Impresora_A4] [varchar](max) NULL,
+	[Tipo_Caja] [varchar](50) NULL,
+	[Estado] [bit] NULL,
+ CONSTRAINT [PK_tb_Caja] PRIMARY KEY CLUSTERED 
+(
+	[Id_Caja] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tb_Cliente]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tb_Cliente](
+	[Id_Cliente] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](250) NULL,
+	[Direccion] [varchar](250) NULL,
+	[Ruc] [varchar](250) NULL,
+	[Telefono] [varchar](50) NULL,
+	[Cliente] [varchar](50) NULL,
+	[Proveedor] [varchar](50) NULL,
+	[Saldo] [numeric](18, 2) NULL,
+	[Estado] [bit] NULL,
+ CONSTRAINT [PK_tb_Cliente] PRIMARY KEY CLUSTERED 
+(
+	[Id_Cliente] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tb_Empresa]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tb_Empresa](
+	[Id_Empresa] [int] IDENTITY(1,1) NOT NULL,
+	[Empresa] [varchar](50) NULL,
+	[Logo] [image] NULL,
+	[Impuesto] [varchar](50) NULL,
+	[Porcentaje_Impuesto] [numeric](18, 2) NULL,
+	[Moneda] [varchar](50) NULL,
+	[Maneja_Impuesto] [varchar](50) NULL,
+	[Modo_Busqueda] [varchar](50) NULL,
+	[Ruta_CopiaSeguridad] [varchar](max) NULL,
+	[Correo_EnvioReporte] [varchar](50) NULL,
+	[Ultima_FechaRespaldo] [varchar](50) NULL,
+	[Ultima_FechaRespaldo2] [datetime] NULL,
+	[Frecuencia_Respaldo] [int] NULL,
+	[Tipo_Empresa] [varchar](50) NULL,
+	[Pais] [varchar](50) NULL,
+	[Redondeo_Total] [varchar](50) NULL,
+	[Estado] [varchar](50) NULL,
+ CONSTRAINT [PK_tb_Empresa] PRIMARY KEY CLUSTERED 
+(
+	[Id_Empresa] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tb_InicioSesion]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tb_InicioSesion](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[SerialPC] [varchar](max) NULL,
+	[Usuario_Id] [int] NULL,
+ CONSTRAINT [PK_tb_InicioSesion] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tb_Kardex]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tb_Kardex](
+	[Id_Kardex] [int] IDENTITY(1,1) NOT NULL,
+	[Producto_Id] [int] NULL,
+	[Usuario_Id] [int] NULL,
+	[Caja_Id] [int] NULL,
+	[Fecha] [datetime] NULL,
+	[Motivo] [varchar](200) NULL,
+	[Cantidad] [numeric](18, 2) NULL,
+	[Tipo] [varchar](50) NULL,
+	[Estado] [varchar](50) NULL,
+	[Total]  AS ([Cantidad]*[Costo_unit]),
+	[Costo_unit] [numeric](18, 2) NULL,
+	[Habia] [numeric](18, 2) NULL,
+	[Hay] [numeric](18, 2) NULL,
+ CONSTRAINT [PK_tb_Kardex] PRIMARY KEY CLUSTERED 
+(
+	[Id_Kardex] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tb_Licencia]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tb_Licencia](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[S] [varchar](max) NULL,
+	[F] [varchar](max) NULL,
+	[E] [varchar](max) NULL,
+	[FA] [varchar](max) NULL,
+ CONSTRAINT [PK_tb_Licencia] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tb_Movimiento_CierreCaja]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tb_Movimiento_CierreCaja](
+	[Id_CajaCierre] [int] IDENTITY(1,1) NOT NULL,
+	[Caja_Id] [int] NULL,
+	[Usuario_Id] [int] NULL,
+	[Fecha_Inicio] [datetime] NULL,
+	[Fecha_Fin] [datetime] NULL,
+	[Fecha_Cierre] [datetime] NULL,
+	[Ingresos] [numeric](18, 2) NULL,
+	[Egresos] [numeric](18, 2) NULL,
+	[Saldo_EnCaja] [numeric](18, 2) NULL,
+	[Total_Calculado] [numeric](18, 2) NULL,
+	[Total_Real] [numeric](18, 2) NULL,
+	[Diferencia] [numeric](18, 2) NULL,
+	[Estado] [bit] NULL,
+ CONSTRAINT [PK_tb_Movimiento_CierreCaja] PRIMARY KEY CLUSTERED 
+(
+	[Id_CajaCierre] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tb_Producto]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tb_Producto](
+	[Id_Producto] [int] IDENTITY(1,1) NOT NULL,
+	[Catalogo_Id] [int] NULL,
+	[Presentacion_Id] [int] NOT NULL,
+	[Codigo] [varchar](50) NOT NULL,
+	[Descripcion] [varchar](100) NOT NULL,
+	[Presentacion] [varchar](100) NOT NULL,
+	[Tipo_Venta] [varchar](50) NOT NULL,
+	[Precio_Menudeo] [decimal](18, 2) NOT NULL,
+	[Precio_MMayoreo] [decimal](18, 2) NULL,
+	[A_Partir_De] [numeric](18, 2) NULL,
+	[Precio_Mayoreo] [decimal](18, 2) NOT NULL,
+	[Usa_Inventario] [varchar](50) NOT NULL,
+	[Stock] [varchar](50) NOT NULL,
+	[Stock_Minimo] [numeric](18, 2) NOT NULL,
+	[Caducidad] [varchar](50) NOT NULL,
+	[Estado] [bit] NOT NULL,
+ CONSTRAINT [PK_tb_Producto] PRIMARY KEY CLUSTERED 
+(
+	[Id_Producto] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tb_Serializacion]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tb_Serializacion](
+	[Id_Serializacion] [int] IDENTITY(1,1) NOT NULL,
+	[Serie] [varchar](50) NULL,
+	[Cantidad_Numeros] [varchar](50) NULL,
+	[Numero_Fin] [varchar](50) NULL,
+	[Destino] [varchar](50) NULL,
+	[Tipo_Documento] [varchar](50) NULL,
+	[Por_Defecto] [varchar](50) NULL,
+ CONSTRAINT [PK_tb_Serializacion] PRIMARY KEY CLUSTERED 
+(
+	[Id_Serializacion] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tb_Ticket]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tb_Ticket](
+	[Id_Ticket] [int] IDENTITY(1,1) NOT NULL,
+	[Empresa_Id] [int] NULL,
+	[Identificador_Fiscal] [varchar](max) NULL,
+	[Direccion] [varchar](max) NULL,
+	[Provincia_Departamento] [varchar](max) NULL,
+	[Nombre_Moneda] [varchar](50) NULL,
+	[Agradecimiento] [varchar](max) NULL,
+	[Pagina_Web] [varchar](max) NULL,
+	[Anuncio] [varchar](max) NULL,
+	[Datos_Fiscales] [varchar](max) NULL,
+	[Por_Defecto] [varchar](max) NULL,
+ CONSTRAINT [PK_tb_Ticket] PRIMARY KEY CLUSTERED 
+(
+	[Id_Ticket] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tb_Usuario]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tb_Usuario](
+	[Id_Usuario] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](50) NOT NULL,
+	[Apellidos] [varchar](50) NOT NULL,
+	[Localidad] [varchar](100) NULL,
+	[Foto] [image] NULL,
+	[Nombre_Foto] [varchar](max) NULL,
+	[Usuario] [varchar](50) NOT NULL,
+	[Contrasenia] [varchar](50) NOT NULL,
+	[Correo] [varchar](50) NULL,
+	[Rol_Id] [int] NOT NULL,
+	[Estado] [bit] NOT NULL,
+ CONSTRAINT [PK_tb_Usuario] PRIMARY KEY CLUSTERED 
+(
+	[Id_Usuario] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[tb_Kardex]  WITH CHECK ADD  CONSTRAINT [FK_tb_Kardex_tb_Caja] FOREIGN KEY([Caja_Id])
+REFERENCES [dbo].[tb_Caja] ([Id_Caja])
+GO
+ALTER TABLE [dbo].[tb_Kardex] CHECK CONSTRAINT [FK_tb_Kardex_tb_Caja]
+GO
+ALTER TABLE [dbo].[tb_Kardex]  WITH CHECK ADD  CONSTRAINT [FK_tb_Kardex_tb_Producto] FOREIGN KEY([Producto_Id])
+REFERENCES [dbo].[tb_Producto] ([Id_Producto])
+GO
+ALTER TABLE [dbo].[tb_Kardex] CHECK CONSTRAINT [FK_tb_Kardex_tb_Producto]
+GO
+ALTER TABLE [dbo].[tb_Kardex]  WITH CHECK ADD  CONSTRAINT [FK_tb_Kardex_tb_Usuario] FOREIGN KEY([Usuario_Id])
+REFERENCES [dbo].[tb_Usuario] ([Id_Usuario])
+GO
+ALTER TABLE [dbo].[tb_Kardex] CHECK CONSTRAINT [FK_tb_Kardex_tb_Usuario]
+GO
+ALTER TABLE [dbo].[tb_Movimiento_CierreCaja]  WITH CHECK ADD  CONSTRAINT [FK_tb_Movimiento_CierreCaja_tb_Caja] FOREIGN KEY([Caja_Id])
+REFERENCES [dbo].[tb_Caja] ([Id_Caja])
+GO
+ALTER TABLE [dbo].[tb_Movimiento_CierreCaja] CHECK CONSTRAINT [FK_tb_Movimiento_CierreCaja_tb_Caja]
+GO
+ALTER TABLE [dbo].[tb_Movimiento_CierreCaja]  WITH CHECK ADD  CONSTRAINT [FK_tb_Movimiento_CierreCaja_tb_Usuario] FOREIGN KEY([Usuario_Id])
+REFERENCES [dbo].[tb_Usuario] ([Id_Usuario])
+GO
+ALTER TABLE [dbo].[tb_Movimiento_CierreCaja] CHECK CONSTRAINT [FK_tb_Movimiento_CierreCaja_tb_Usuario]
+GO
+ALTER TABLE [dbo].[tb_Producto]  WITH CHECK ADD  CONSTRAINT [FK_tb_Producto_Cat_Producto] FOREIGN KEY([Catalogo_Id])
+REFERENCES [dbo].[Cat_Producto] ([Id_CatProducto])
+GO
+ALTER TABLE [dbo].[tb_Producto] CHECK CONSTRAINT [FK_tb_Producto_Cat_Producto]
+GO
+ALTER TABLE [dbo].[tb_Producto]  WITH CHECK ADD  CONSTRAINT [FK_tb_Producto_Cat_Tipo_Presentacion] FOREIGN KEY([Presentacion_Id])
+REFERENCES [dbo].[Cat_Tipo_Presentacion] ([Id_TipoPresentacion])
+GO
+ALTER TABLE [dbo].[tb_Producto] CHECK CONSTRAINT [FK_tb_Producto_Cat_Tipo_Presentacion]
+GO
+ALTER TABLE [dbo].[tb_Usuario]  WITH CHECK ADD  CONSTRAINT [FK_tb_Usuario_Cat_Tipo_Usuario] FOREIGN KEY([Rol_Id])
+REFERENCES [dbo].[Cat_Tipo_Usuario] ([Id_Rol])
+GO
+ALTER TABLE [dbo].[tb_Usuario] CHECK CONSTRAINT [FK_tb_Usuario_Cat_Tipo_Usuario]
+GO
+/****** Object:  StoredProcedure [dbo].[Mostrar_Movimientos_De_Caja_Por_Serial_Usuario]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[Mostrar_Movimientos_De_Caja_Por_Serial_Usuario]
+@serial varchar(50),
+@idusuario int
+AS
+SELECT 
+	U.Usuario,
+	U.Nombre    
+FROM tb_Movimiento_CierreCaja MC
+inner join tb_Usuario U on  U.Id_Usuario = MC.Usuario_Id
+inner join tb_Caja C on C.Id_Caja = MC.Caja_Id 
+ where C.Serial_PC = @serial    AND MC.Estado= 1 and MC.Usuario_ID =@idusuario and U.Estado =1
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[ps_insertarSerializacion]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[ps_insertarSerializacion]
+@serie varchar(50),
+@cantidad varchar(50),
+@numerofin varchar(50),
+@destino varchar(50),
+@tipodoc varchar(50),
+@pordefecto varchar(50)
+AS
+IF EXISTS ( SELECT S.Tipo_Documento FROM tb_Serializacion S WHERE S.Tipo_Documento = @tipodoc)
+	RAISERROR ('EL COMPROBANTE Ã‚Â¡YA EXISTE!, INGRES UNO NUEVO', 16, 1)
+ELSE
+	INSERT INTO tb_Serializacion VALUES(
+	@serie,
+	@cantidad ,
+	@numerofin,
+	@destino,
+	@tipodoc ,
+	@pordefecto
+	)
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[ps_Obtener_Productos_PorVencer]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[ps_Obtener_Productos_PorVencer]
+AS
+SELECT
+	P.Id_Producto
+	,P.Codigo
+	,P.Descripcion
+	,P.Caducidad
+	,P.Stock
+	,E.Empresa
+	,datediff(day,convert(date,Caducidad,103), (SELECT CONVERT(date, GETDATE(),103))) * (-1) AS [Dias a vencer]
+FROM tb_Producto P
+CROSS JOIN tb_Empresa E
+WHERE Caducidad &lt;&gt;'NO APLICA' AND Caducidad &gt;CONVERT(varchar,GETDATE(),103)
+	and (DATEDIFF(day, CONVERT(DATE,Caducidad,103), (SELECT CONVERT(date, GETDATE(),103)))) *(-1) &lt;=30
+ORDER BY (datediff(day, CONVERT(DATE,Caducidad,103), CONVERT(DATE, GETDATE()))) * (-1) ASC
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_actualizarProducto]    Script Date: 03/10/2020 08:15:34 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROC [dbo].[sp_actualizarProducto]
+	@idproducto int,
+	@idCategoria int, 
+	@idPresentacion int,
+	@codigo varchar(50), 
+	@descripcion varchar(100),
+	@presentacion varchar(50),
+	@sevendea varchar (50),
+	@preciomenudeo decimal (18,2), 
+	@preciommayoreo decimal (18,2),
+	@apartirde numeric (18,2),
+	@preciomayoreo decimal (18,2), 
+	@usainventario varchar(50),
+	@stock varchar(50),
+	@stockminimo numeric (18,2),
+	@caducidad varchar(50),
+	@estado bit
+AS 
+BEGIN
+	UPDATE  tb_Producto SET
+            Catalogo_Id=@idCategoria,
+			Presentacion_Id =@idPresentacion,
+			Codigo =@codigo,
+			Descripcion =@descripcion ,
+			Presentacion=@presentacion ,
+			Tipo_Venta=@sevendea ,
+			Precio_Menudeo=@preciomenudeo,
+			Precio_MMayoreo=@preciommayoreo ,
+			A_Partir_De=@apartirde,
+			Precio_Mayoreo=@preciomayoreo,
+			Usa_Inventario=@usainventario ,
+			Stock=@stock ,
+			Stock_Minimo=@stockminimo ,
+			Caducidad=@caducidad ,
+			Estado=@estado 
+WHERE Id_Producto = @idproducto
+END
+
+
+
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_agregar_detalle_cierrecaja]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE proc [dbo].[sp_agregar_detalle_cierrecaja]
+	@idCaja INT,
+	@idUsuario INT,
+	@fechInicio DATETIME,
+	@fechFin DATETIME,
+	@fechCierre DATETIME,
+	@ingresos NUMERIC(18,2),
+	@egresos NUMERIC(18,2),
+	@saldo NUMERIC(18,2),
+	@totalCalculado NUMERIC(18,2),
+	@totalReal NUMERIC(18,2),
+	@diferencia NUMERIC(18,2),
+	@estado BIT 
+	
+  AS BEGIN
+
+if EXISTS (SELECT Estado FROM tb_Movimiento_CierreCaja MC 
+ where  MC.Estado= 1)
+RAISERROR ('Ya Fue Iniciado el Turno de esta Caja', 16,1)
+else
+BEGIN
+    INSERT INTO tb_Movimiento_CierreCaja values 
+	(
+	 @idCaja
+	,@idUsuario
+	,@fechInicio
+	,@fechFin
+	,@fechCierre
+	,@ingresos
+	,@egresos
+	,@saldo
+	,@totalCalculado
+	,@totalReal
+	,@diferencia
+	,@estado
+	
+	
+	)
+
+
+	 end
+	 end
+
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_AgregarDatosCatalogos]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE proc [dbo].[sp_AgregarDatosCatalogos]
+@nombre varchar(50),
+@descripcion varchar(50),
+@valor int
+as begin
+IF(@valor =  1)
+	BEGIN
+		IF EXISTS( SELECT * FROM Cat_Producto WHERE Nombre = @nombre)
+			RAISERROR ( 'LA CATEGORIA  QUE DESEA INGRESAR, Ã‚Â¡YA EXISTE!, INGRESE OTRO', 16,2 )
+		ELSE
+			insert into  Cat_Producto VALUES (@nombre, @descripcion, 1)
+	END
+ELSE
+	IF (@valor = 2)
+	BEGIN 
+	IF EXISTS( SELECT * FROM Cat_Tipo_Presentacion WHERE Nombre = @nombre)
+			RAISERROR ( 'LA CATEGORIA  QUE DESEA INGRESAR, Ã‚Â¡YA EXISTE!, INGRESE OTRO', 16,2 )
+		ELSE
+			INSERT INTO Cat_Tipo_Presentacion VALUES (@nombre, @descripcion, 1)
+	END
+END
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_buscar_movimiento_kardex]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_buscar_movimiento_kardex]
+@idproducto int
+AS BEGIN
+SELECT 
+	K.Fecha
+	,P.Descripcion
+	,K.Motivo
+	,K.Habia
+	,K.Tipo
+	,K.Cantidad
+	,K.Hay
+	,U.Nombre AS Cajero
+	,CP.Nombre AS Categoria_Producto
+	,TP.Nombre as Categoria_Presentacion
+	,E.Empresa
+  FROM [DBVENTAS].[dbo].[tb_Kardex] K
+  INNER JOIN tb_Producto P ON K.Producto_Id = P.Id_Producto
+  INNER JOIN  tb_Usuario U ON K.Usuario_Id = U.Id_Usuario
+  INNER JOIN tb_Caja C ON  K.Caja_Id = C.Id_Caja
+  INNER JOIN Cat_Producto CP ON CP.Id_CatProducto = P.Catalogo_Id
+  INNER JOIN  Cat_Tipo_Presentacion TP ON TP.Id_TipoPresentacion = P.Presentacion_Id
+  CROSS JOIN tb_Empresa  E
+  WHERE P.Id_Producto= @idproducto  AND P.Usa_Inventario = 'SI'
+  ORDER BY K.Fecha DESC
+  END
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_buscar_Productos_Kardex]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_buscar_Productos_Kardex]
+@buscar varchar(50)
+AS
+SELECT TOP (10) [Id_Producto]
+      ,[Catalogo_Id]
+      ,[Presentacion_Id]
+      ,[Codigo]
+      ,P.[Descripcion]
+      ,[Presentacion]
+      ,[Tipo_Venta]
+      ,[Precio_Menudeo]
+      ,[Precio_MMayoreo]
+      ,[A_Partir_De]
+      ,[Precio_Mayoreo]
+      ,[Usa_Inventario]
+      ,[Stock]
+      ,[Stock_Minimo]
+      ,[Caducidad]
+      ,P.[Estado]
+	  ,CP.Nombre as Tipo_Presentacion
+	  ,CTP.Nombre as Tipo_Catalogo
+  FROM [DBVENTAS].[dbo].[tb_Producto] P
+  INNER JOIN Cat_Producto CP ON P.Catalogo_Id = CP.Id_CatProducto
+  INNER JOIN Cat_Tipo_Presentacion CTP ON P.Presentacion_Id = CTP.Id_TipoPresentacion
+  WHERE (P.Descripcion + CP.Nombre + Codigo) LIKE '%'+@buscar+'%'  AND P.Usa_Inventario = 'SI'
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_editar_usuario]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_editar_usuario]
+		@idusuario int,
+		@nombre varchar(50) ,
+		@apellidos varchar(50) ,
+		@localidad varchar(100) ,
+		@foto image,
+		@nombre_foto varchar(max),
+		@usuario varchar(50),
+		@contrasenia VARCHAR(50),
+		@correo varchar(max),
+		@rol int,
+		@estado bit
+as
+if EXISTS (
+		SELECT 
+			Usuario,
+			Id_Usuario 
+		FROM tb_Usuario 
+		WHERE ( Usuario  = @usuario  AND Id_Usuario &lt;&gt; @idusuario AND Estado=1 )
+		or ( Nombre = @nombre  AND Id_Usuario &lt;&gt; @idusuario AND Estado =1 ))
+raiserror('YA EXISTE UN USUARIO CON ESE NOMBRE O CON ESE ICONO, POR FAVOR INGRESE DE NUEVO',16,1 )
+
+ELSE
+
+update tb_Usuario 
+	set Nombre = @nombre,
+		Apellidos = @apellidos,
+		Localidad = @localidad,
+		Foto = @foto,
+		Nombre_Foto = @nombre_foto,
+		Usuario = @usuario,
+		Contrasenia = @contrasenia,
+		Correo = @correo,
+		Rol_Id = @rol,
+		Estado = @estado
+WHERE Id_Usuario = @idusuario
+
+	
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_insertar_inicioSesion]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_insertar_inicioSesion]
+@idSerialPC varchar(max)
+AS
+DECLARE @idusuario as int
+set @idusuario = (SELECT U.Id_Usuario FROM tb_Usuario U)
+
+INSERT INTO tb_InicioSesion VALUES(@idSerialPC, @idusuario)
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_insertar_producto]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROC [dbo].[sp_insertar_producto]      
+			@idCategoria int, 
+			@idPresentacion int,
+			@codigo varchar(50), 
+			@descripcion varchar(100),
+			@presentacion varchar(50),
+			@sevendea varchar (50),
+			@preciomenudeo decimal (18,2), 
+			@preciommayoreo decimal (18,2),
+			@apartirde numeric (18,2),
+			@preciomayoreo decimal (18,2), 
+			@usainventario varchar(50),
+			@stock varchar(50),
+			@stockminimo numeric (18,2),
+			@caducidad varchar(50),
+			@estado bit,
+			--PARAMETROS PARA EL INGRESO A KARDEX --&gt; DONDE SE CONTROLA LOS PRODUCTOS
+			@idusuario int,
+			@idcaja int,
+			@fecha datetime,
+			@motivo varchar(200),
+			@cantidad numeric(18,2),
+			@tipo varchar(50),
+			@estadokardex varchar(50)
+		   AS 
+		   BEGIN
+if EXISTS (SELECT Descripcion,Codigo  FROM tb_Producto  where Descripcion = @Descripcion OR Codigo=@Codigo  )
+RAISERROR ('YA EXISTE UN PRODUCTO  CON ESTE NOMBRE/CODIGO, POR FAVOR INGRESE DE NUEVO/ SE GENERARA CODIGO AUTOMATICO', 16,1)
+else
+BEGIN
+	DECLARE @idproducto int
+	INSERT INTO tb_Producto VALUES  (
+            @idCategoria,
+			@idPresentacion,
+			@codigo,
+			@descripcion ,
+			@presentacion ,
+			@sevendea ,
+			@preciomenudeo,
+			@preciommayoreo ,
+			@apartirde,
+			@preciomayoreo,
+			@usainventario ,
+			@stock ,
+			@stockminimo ,
+			@caducidad ,
+			@estado )
+		 
+		 --- SE OBTIENE L ID DEL PRODUCTO ACABADO DE INGRESAR--------------------------------------
+		 SELECT @idproducto = SCOPE_IDENTITY()
+
+		 ----SE OBTIENE LOS DATOS DEL PRODUCTO INGRESADO PARA QUE SEAN INSERTADOS EN LA TABLA KARDEX
+		 DECLARE @hay  numeric(18,2)
+		 DECLARE @habia numeric(18,2)
+		 DECLARE @costounit numeric(18,2)
+
+		 SET @hay = ( SELECT Stock FROM tb_Producto P WHERE P.Id_Producto = @idproducto AND P.Usa_Inventario = 'SI')
+		 SET @costounit = ( SELECT Precio_Menudeo FROM tb_Producto P WHERE P.Id_Producto= @idproducto AND P.Usa_Inventario = 'SI')
+		 SET @habia= @hay
+
+		 ---VALIDA SI EL PRODUCTO USA INVENTARIO-----------------------------------------------------------
+		 SET @usainventario = (SELECT Usa_Inventario  FROM tb_Producto P WHERE P.Id_Producto = @idproducto AND P.Usa_Inventario= 'SI')
+
+		 ---INSERTA DATOS EN LA TB KARDEX------------------------------------------------------------------
+		 IF @usainventario = 'SI'
+			BEGIN
+				INSERT INTO tb_Kardex VALUES(
+				@idproducto,
+				@idusuario,
+				@idcaja,
+				@fecha,
+				@motivo,
+				@cantidad,
+				@tipo,
+				@estadokardex,
+				@costounit,
+				@habia,
+				@hay
+				)
+		END
+END
+END
+
+
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Insertar_TipoUsuario]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_Insertar_TipoUsuario]
+@nombre varchar(50),
+@descripcion varchar(50),
+@estado bit 
+AS
+ IF EXISTS( SELECT TU.Nombre FROM Cat_Tipo_Usuario TU WHERE TU.Nombre = @nombre )
+	RAISERROR ('EL TIPO DE USUARIO QUE DESEA INGRESAR, Ã‚Â¡YA EXISTE!, INGRESE OTRO DIFERENTE', 16, 1)
+ELSE
+	INSERT INTO Cat_Tipo_Usuario VALUES (@nombre, @descripcion, @estado)
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_insertar_usuario]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROC [dbo].[sp_insertar_usuario]
+@nombre varchar(50),
+@apellidos varchar (50),
+@localidad varchar(100),
+@foto image,
+@nombre_foto varchar(max),
+@usuario varchar(50),
+@contrasenia varchar(50),
+@correo varchar(50),
+@rol int,
+@estado bit
+as 
+if EXISTS (SELECT Usuario FROM tb_Usuario where Usuario  = @usuario and Estado= 1  )
+RAISERROR ('YA EXISTE UN REGISTRO CON ESE USUARIO, POR FAVOR INGRESE DE NUEVO', 16,1)
+else
+insert into tb_Usuario 
+values (@nombre, @apellidos, @localidad, @foto, @nombre_foto, @usuario, @contrasenia, @correo, @rol, @estado)
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_insertarCaja]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_insertarCaja]
+@descripcion varchar(50),
+@tema varchar(50),
+@serialPC varchar(50),
+@impresoraTicket varchar(max),
+@impresoA4 varchar(max),
+@tipo varchar(50),
+@estado bit
+AS 
+IF EXISTS(SELECT C.Descripcion, C.Serial_PC FROM tb_Caja C WHERE C.Serial_PC = @serialPC AND C.Descripcion = @descripcion)
+	RAISERROR( 'YA EXISTE UNA CAJA CON ESE NOMBRE Y SERIAL, INGRESE OTRO POR FAVOR', 16, 1 )
+ELSE
+	INSERT INTO tb_Caja VALUES (
+		@descripcion,
+		@tema,
+		@serialPC,
+		@impresoraTicket,
+		@impresoA4,
+		@tipo,
+		@estado
+	)
+		
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_insertarCliente]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_insertarCliente]
+@nombre varchar(250),
+@direccion varchar(250),
+@ruc varchar(250),
+@telefono varchar(50),
+@cliente varchar(50),
+@proveedor varchar(50),
+@saldo numeric(18,2),
+@estado bit
+AS
+IF EXISTS( SELECT C.Nombre, C.Direccion FROM tb_Cliente C WHERE C.Nombre = @nombre AND C.Direccion =  @direccion)
+	RAISERROR( 'YA EXISTE EL CIENTE Y/O PROVEEDOR, INGRESE UNO NUEVO ', 16, 1 )
+ELSE
+	INSERT INTO tb_Cliente VALUES(
+				@nombre ,
+				@direccion,
+				@ruc ,
+				@telefono ,
+				@cliente ,
+				@proveedor,
+				@saldo ,
+				@estado	)
+
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_insertarEmpresa]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_insertarEmpresa](
+@nombre varchar(50),
+@logo image,
+@impuesto varchar(50),
+@porcentaje numeric(18,2),
+@moneda varchar(50),
+@trabajaImpuesto varchar(50),
+@modoBusqueda varchar(50),
+@rutaBackup varchar(max),
+@correoEnvioRpt varchar(50),
+@ultimoBackup varchar(50),
+@ultimoBackup2 Datetime,
+@frecuenciaBackup int,
+@TipoEmpresa varchar(50),
+@pais varchar(50),
+@Redondeo varchar(50),
+@estado varchar(50)
+)
+AS
+IF EXISTS ( SELECT E.Empresa FROM tb_Empresa E WHERE E.Empresa = @nombre )
+	RAISERROR ( 'YA EXISTE UNA EMPRESA CON ESE NOMBRE, INGRESE OTRO DIFERENTE', 16, 1 ) 
+ELSE
+	INSERT INTO tb_Empresa
+		VALUES(
+				@nombre,
+				@logo ,
+				@impuesto ,
+				@porcentaje ,
+				@moneda ,
+				@trabajaImpuesto ,
+				@modoBusqueda ,
+				@rutaBackup ,
+				@correoEnvioRpt ,
+				@ultimoBackup ,
+				@ultimoBackup2 ,
+				@frecuenciaBackup ,
+				@TipoEmpresa ,
+				@pais,
+				@Redondeo ,
+				@estado )
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_insertarLicencia]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_insertarLicencia]
+@s varchar(MAX),
+@f varchar(MAX),
+@e varchar(MAX),
+@fa varchar(MAX)
+AS 
+INSERT INTO tb_Licencia VALUES (@s, @f, @e, @fa)
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_insertarTicket]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_insertarTicket]
+@Identificadorfiscal varchar(MAX),
+@direccion varchar(MAX),
+@provincia varchar(MAX),
+@moneda varchar(MAX),
+@agradecimiento varchar(MAX),
+@paginaweb varchar(MAX),
+@anuncio varchar(MAX),
+@datosfiscales varchar(MAX),
+@pordefecto varchar(MAX)
+AS
+DECLARE @idempresa int = (SELECT E.Id_Empresa FROM tb_Empresa E)
+INSERT INTO tb_Ticket VALUES(
+		@idempresa,
+		@Identificadorfiscal,
+		@direccion ,
+		@provincia ,
+		@moneda,
+		@agradecimiento ,
+		@paginaweb,
+		@anuncio ,
+		@datosfiscales ,
+		@pordefecto 
+		)
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_mostrar_inventarios]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_mostrar_inventarios]
+@buscar varchar(50)
+ as begin
+ SELECT 
+	P.Codigo
+	,P.Descripcion
+	,P.Precio_Menudeo
+	,P.Precio_MMayoreo
+	,P.A_Partir_De
+	,P.Precio_Mayoreo
+	,P.Stock
+	,P.Stock_Minimo
+	,CP.Nombre AS Clasificacion
+	,TP.Nombre AS Presentacion
+	,e.Empresa
+ FROM tb_Producto P
+ CROSS JOIN tb_Empresa E
+ INNER JOIN Cat_Producto CP ON CP.Id_CatProducto = P.Catalogo_Id
+ INNER JOIN Cat_Tipo_Presentacion TP ON TP.Id_TipoPresentacion = P.Presentacion_Id
+ WHERE  P.Descripcion + P.Codigo LIKE '%'+@buscar+'%' AND P.Usa_Inventario = 'SI'
+ end
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_mostrar_inventariosBajos]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_mostrar_inventariosBajos]
+AS
+SELECT 
+	P.Codigo
+	,P.Descripcion
+	,P.Precio_Menudeo
+	,CP.Nombre
+	,TP.Nombre
+	,P.Stock
+	,P.Stock_Minimo
+	,E.Empresa
+ FROM tb_Producto P
+ CROSS JOIN tb_Empresa E
+ INNER JOIN Cat_Producto CP ON  CP.Id_CatProducto = P.Catalogo_Id
+ INNER JOIN Cat_Tipo_Presentacion TP ON TP.Id_TipoPresentacion = P.Presentacion_Id
+ WHERE P.Stock &lt;= P.Stock_Minimo AND P.Usa_Inventario = 'SI'
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_mostrar_movimiento_cierrecaja_xserial]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+create PROC [dbo].[sp_mostrar_movimiento_cierrecaja_xserial]
+@serial varchar(50)
+AS
+SELECT
+	U.Usuario
+	,U.Nombre
+FROM tb_Movimiento_CierreCaja MC 
+inner join tb_Usuario U on U.Id_Usuario = MC.Usuario_Id
+inner join tb_Caja C on C.Id_Caja = MC.Caja_Id 
+ where C.Serial_PC = @serial    AND MC.Estado = 1
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_mostrar_productos_vencidos]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+--USE [DBVENTAS]
+--GO
+--/****** Object:  StoredProcedure [dbo].[sp_mostrar_productos_vencidos]    Script Date: 16/09/2020 10:45:53 p. m. ******/
+--SET ANSI_NULLS ON
+--GO
+--SET QUOTED_IDENTIFIER ON
+--GO
+CREATE PROC [dbo].[sp_mostrar_productos_vencidos]
+@buscar varchar(50)
+AS 
+/*SELECT
+	P.Id_Producto
+	,P.Codigo
+	,P.Descripcion
+	,P.Caducidad
+	,P.Stock
+	,E.Empresa
+	,datediff(day,Caducidad, CONVERT(DATE, GETDATE())) AS [Dias Vencidos]
+FROM tb_Producto P
+CROSS JOIN tb_Empresa E
+WHERE Descripcion + Codigo LIKE '%'+@buscar+'%' AND Caducidad &lt;&gt;'NO APLICA' AND Caducidad &lt;= CONVERT(DATE,GETDATE())
+ORDER BY (datediff(day, Caducidad, CONVERT(DATE, GETDATE()))) ASC
+*/
+SELECT
+	P.Id_Producto
+	,P.Codigo
+	,P.Descripcion
+	,P.Caducidad
+	,P.Stock
+	,E.Empresa
+	,datediff(day,convert(date,Caducidad,103), (SELECT CONVERT(date, GETDATE(),103))) AS [Dias Vencidos]
+FROM tb_Producto P
+CROSS JOIN tb_Empresa E
+WHERE Descripcion + Codigo LIKE '%'+@buscar+'%' AND Caducidad &lt;&gt;'NO APLICA' AND Caducidad &lt;= CONVERT(varchar,GETDATE(),103)
+ORDER BY (datediff(day, Caducidad, GETDATE())) ASC
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Mostrar_Usuario]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROC [dbo].[sp_Mostrar_Usuario]
+@usuario varchar(50),
+@pwd varchar(50)
+AS BEGIN
+
+IF @usuario ='' AND @pwd = ''
+	SELECT
+		u.*,
+		TU.Nombre as  Rol
+	FROM tb_Usuario U
+	INNER JOIN Cat_Tipo_Usuario TU ON U.Rol_Id = TU.Id_Rol
+	where U.Estado = 1
+ELSE
+	select 
+		U.*, 
+		tu.Nombre as Rol
+	from tb_Usuario U
+	INNER JOIN Cat_Tipo_Usuario TU ON U.Rol_Id = TU.Id_Rol
+	where  Contrasenia   = @pwd and Usuario = @usuario and U.Estado = 1
+
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[sp_mostrarKardex]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_mostrarKardex]
+@idproducto int
+as
+SELECT 
+	K.Fecha
+	,P.Descripcion
+	,K.Motivo
+	,K.Cantidad
+	,K.Tipo
+	,K.Hay
+	,U.Nombre AS Cajero
+	,CP.Nombre AS [Tipo Producto]
+	,k.Costo_unit
+	,E.Empresa
+	,P.Stock 
+	,CONVERT(numeric(18,2), P.Stock * K.Costo_unit) AS [Total]
+FROM  tb_Kardex K
+INNER JOIN tb_Producto P ON  K.Producto_Id = P.Id_Producto
+INNER JOIN Cat_Producto CP ON P.Catalogo_Id = CP.Id_CatProducto
+INNER JOIN Cat_Tipo_Presentacion TP ON P.Presentacion_Id = TP.Id_TipoPresentacion
+INNER JOIN tb_Usuario U ON K.Usuario_Id = U.Id_Usuario
+INNER JOIN Cat_Tipo_Usuario TU ON U.Rol_Id = TU.Id_Rol
+INNER JOIN tb_Caja C ON K.Caja_Id = C.Id_Caja
+CROSS JOIN  tb_Empresa E
+WHERE P.Id_Producto = @idproducto
+ORDER BY K.Id_Kardex DESC 
+
+
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_ReporteInventario]    Script Date: 03/10/2020 08:15:35 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+create PROC [dbo].[sp_ReporteInventario]
+as
+SELECT 
+	p.Codigo,
+	p.Descripcion +' / '+ p.Presentacion as Producto,
+	p.Stock,
+	p.Stock_Minimo,
+	p.Precio_Menudeo,
+	p.Precio_MMayoreo,
+	p.Precio_Mayoreo
+FROM tb_Producto p
+
+
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_Kardex', @level2type=N'COLUMN',@level2name=N'Total'
+GO
+USE [master]
+GO
+ALTER DATABASE [DBVENTAS] SET  READ_WRITE 
+GO
+</value>
+  </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>33</value>
+  </metadata>
+</root>
