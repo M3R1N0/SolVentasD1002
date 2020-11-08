@@ -75,7 +75,7 @@ namespace VentasD1002
                         }
                         if (countMcsxu == 0)
                         {
-                            if (UserLoginNow == "Administrador" || Usuario == "Admininistrador" || userPermision == "Administrador")
+                            if (UserLoginNow == "Administrador" || Usuario == "Admininistrador" || userPermision == "ADMINISTRADOR")
                             {
                                 MessageBox.Show("Continuaras Turno de *" + nameUserNow + " Todos los Registros seran con ese Usuario", "Caja Iniciada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 BoxPermission = "Correcto";
@@ -85,7 +85,7 @@ namespace VentasD1002
                                 BoxPermission = "Correcto";
                             }
 
-                            else if (UserLoginNow != Usuario && userPermision != "Administrador")
+                            else if (UserLoginNow != Usuario && userPermision != "ADMINISTRADOR")
                             {
                                 MessageBox.Show("Para poder continuar con el Turno de *" + nameUserNow + "* ,Inicia sesion con el Usuario " + UserLoginNow + " -ó-el Usuario *admin*", "Caja Iniciada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 BoxPermission = "Vacio";
@@ -218,7 +218,9 @@ namespace VentasD1002
             {
                 ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
                 serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
-                
+                var auxSerial = EncriptarTexto.Encriptar(serialPC);
+                userPermision = new BusUser().ObtenerUsuario(auxSerial).Rol;
+
             }
             catch (Exception ex)
             {

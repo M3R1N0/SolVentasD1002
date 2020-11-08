@@ -142,6 +142,12 @@
     <Compile Include="frmMovimientoRpt.Designer.cs">
       <DependentUpon>frmMovimientoRpt.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNotificaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotificaciones.Designer.cs">
+      <DependentUpon>frmNotificaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmProductos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMovimientoRpt.resx">
       <DependentUpon>frmMovimientoRpt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotificaciones.resx">
+      <DependentUpon>frmNotificaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProductos.resx">
       <DependentUpon>frmProductos.cs</DependentUpon>
@@ -285,6 +294,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\inactivo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_warning_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendario.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

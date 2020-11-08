@@ -98,5 +98,18 @@ namespace BusVenta
             string user1 = new DatUser().ShowPremission(user);
             return user1;
         }
+
+        public User ObtenerUsuario(string serialPC)
+        {
+            DataRow dr = new DatCatGenerico().Obtener_InicioSesion(serialPC);
+            User u = new User();
+            u.Id = Convert.ToInt32(dr["Usuario_Id"]);
+            u.Foto = (byte[])dr["Foto"];
+            
+            u.Rol = dr["Tipo_Usuario"].ToString();
+            u.Nombre = dr["Nombre"].ToString();
+            
+            return u;
+        }
     }
 }

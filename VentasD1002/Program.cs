@@ -17,7 +17,8 @@ namespace VentasD1002
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMenuPrincipal());
+            // Application.Run(new frmLogin());
+            // Application.Run(new frmMenuPrincipal());
             //Application.Run(new frmUsuarioAutorizado());
             // Application.Run(new frmProductos());
             //Application.Run(new Reportes.frmInventario());
@@ -25,6 +26,7 @@ namespace VentasD1002
             //pplication.Run(new frmAperturaCaja());
             //Application.Run(new frmInventarioKardex());
             // Application.Run(new frmInstalacionServidor());
+             Application.Run(new frmCliente());
         }
     }
 }

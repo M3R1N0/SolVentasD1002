@@ -36,11 +36,9 @@ namespace VentasD1002
             ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
 
             serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
-            idUsuario = new DatCatGenerico().Obtener_InicioSesion( EncriptarTexto.Encriptar(serialPC) );
+            //idUsuario = new DatCatGenerico().Obtener_InicioSesion( EncriptarTexto.Encriptar(serialPC) );
+            idUsuario = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC)).Id;
             idCaja = new DatBox().Obtener_CajaSerial(serialPC);
-
-            MessageBox.Show("id caja"+ idCaja);
-            MessageBox.Show("Serial PC" + serialPC);
         }
 
         public  void ListarProductos(string buscar)

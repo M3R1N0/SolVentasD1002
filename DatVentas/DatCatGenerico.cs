@@ -231,18 +231,20 @@ namespace DatVentas
             }
         }
 
-        public int Obtener_InicioSesion(string serialpc)
+        public DataRow Obtener_InicioSesion(string serialpc)
         {
             using (SqlConnection con = new SqlConnection(MasterConnection.connection))
             {
                 try
                 {
+                    DataTable dt = new DataTable();
                     con.Open();
-                    SqlCommand sc = new SqlCommand("mostrar_InicioSesion", con);
-                    sc.CommandType = CommandType.StoredProcedure;
-                    sc.Parameters.AddWithValue("@serialpc", serialpc);
-                   int id = Convert.ToInt32(sc.ExecuteScalar());
-                    return id;
+                    SqlDataAdapter da = new SqlDataAdapter("mostrar_InicioSesion", con);
+                    da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    da.SelectCommand.Parameters.AddWithValue("@serialpc", serialpc);
+                    da.Fill(dt);
+
+                    return dt.Rows[0];
                 }
                 catch (Exception ex)
                 {

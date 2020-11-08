@@ -55,10 +55,17 @@
     <Compile Include="BusProducto.cs" />
     <Compile Include="BusSerializacion.cs" />
     <Compile Include="BusUser.cs" />
+    <Compile Include="BusDetalleVenta.cs" />
+    <Compile Include="BusVentas.cs" />
     <Compile Include="DataTablePersonalizado.cs" />
     <Compile Include="EncriptarTexto.cs" />
     <Compile Include="NumerosSeparadores.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DatVentas\DatVentas.csproj">
@@ -69,6 +76,13 @@
       <Project>{1a55dd94-9b6c-415b-a132-b17835c5a755}</Project>
       <Name>EntVenta</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

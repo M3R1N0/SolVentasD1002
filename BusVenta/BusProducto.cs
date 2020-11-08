@@ -121,5 +121,16 @@ namespace BusVenta
             }
             return lsProductos;
         }
+
+        public int Productos_Vencidos()
+        {
+            int cantidad = new DatProducto().MostrarNotificacion_Vencimiento();
+
+            if (cantidad == 0)
+            {
+                throw new ApplicationException("Error al mostrar los productos vencidos");
+            }
+            return cantidad;
+        }
     }
 }

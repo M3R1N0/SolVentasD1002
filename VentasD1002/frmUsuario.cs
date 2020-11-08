@@ -66,7 +66,8 @@ namespace VentasD1002
                         u.Apellidos = txtApellidos.Text;
                         u.Direccion = txtDireccion.Text;
                         u.Usuario = txtUsuario.Text;
-                        u.Contraseña = txtContraseña.Text;
+                        string contraseña = EncriptarTexto.Encriptar(txtContraseña.Text);
+                        u.Contraseña = contraseña;
                         MemoryStream ms = new MemoryStream();
                         pbFoto.Image.Save(ms, pbFoto.Image.RawFormat);
                         u.Foto = ms.GetBuffer();
@@ -209,7 +210,8 @@ namespace VentasD1002
                 btnGuardar.Enabled = false;
                 lblNombreIcono.Text = gdvUsuarios.SelectedCells[7].Value.ToString();
                 txtUsuario.Text = gdvUsuarios.SelectedCells[8].Value.ToString();
-                txtContraseña.Text = gdvUsuarios.SelectedCells[9].Value.ToString();
+                string contraseña = EncriptarTexto.Desencriptar(gdvUsuarios.SelectedCells[9].Value.ToString());
+                txtContraseña.Text = contraseña;
                 txtCorreo.Text = gdvUsuarios.SelectedCells[10].Value.ToString();
                 cboRol.Text = gdvUsuarios.SelectedCells[13].Value.ToString();
 
@@ -226,7 +228,8 @@ namespace VentasD1002
                 u.Apellidos = txtApellidos.Text;
                 u.Direccion = txtDireccion.Text;
                 u.Usuario = txtUsuario.Text;
-                u.Contraseña = txtContraseña.Text;
+                string contraseña = EncriptarTexto.Encriptar(txtContraseña.Text);
+                u.Contraseña = contraseña;
                 MemoryStream ms = new MemoryStream();
                 pbFoto.Image.Save(ms,pbFoto.Image.RawFormat);
                 u.Foto = ms.GetBuffer();
@@ -234,7 +237,6 @@ namespace VentasD1002
                 u.Correo = txtCorreo.Text;
                 u.RolID = Convert.ToInt32 (cboRol.SelectedValue);
                 u.Id = id;
-
                 new BusUser().EditUser(u);
                 MessageBox.Show("Usuario Actualizado","Actualizacion correcta",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 panelAgregarUsuarios.Visible = false;

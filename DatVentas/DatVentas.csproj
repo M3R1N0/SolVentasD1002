@@ -55,6 +55,8 @@
     <Compile Include="DatProducto.cs" />
     <Compile Include="DatSerializacion.cs" />
     <Compile Include="DatUser.cs" />
+    <Compile Include="DatDetalleVenta.cs" />
+    <Compile Include="DatVenta.cs" />
     <Compile Include="Desencryptation.cs" />
     <Compile Include="Encryptation.cs" />
     <Compile Include="frmEncriptar.cs">

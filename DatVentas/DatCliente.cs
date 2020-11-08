@@ -48,7 +48,16 @@ namespace DatVentas
                 DataTable dt = new DataTable();
                 try
                 {
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM  tb_Cliente WHERE Nombre like '%"+nombre+"%' and ESTADO = 1", conn);
+                    string query;
+                    if (String.IsNullOrEmpty(nombre))
+                    {
+                        query = "SELECT * FROM tb_Cliente WHERE Estado = 1";
+                    }
+                    else
+                    {
+                        query = "SELECT * FROM  tb_Cliente WHERE Nombre like '%" + nombre + "%' and ESTADO = 1";
+                    }
+                    SqlDataAdapter da = new SqlDataAdapter(query, conn);
                     da.Fill(dt);
                     return dt;
                 }
@@ -60,5 +69,60 @@ namespace DatVentas
                 return dt;
             }
         }
+
+        public int BorrarCliente(int id)
+        {
+            using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+            {
+                int resultado;
+                try
+                {
+                    SqlCommand sc = new SqlCommand($"UPDATE tb_Cliente SET Estado = 0 WHERE Id_Cliente={id}", con);
+                    con.Open();
+                    resultado = sc.ExecuteNonQuery();
+                    con.Close();
+
+                    return resultado;
+                }
+                catch (Exception ex)
+                {
+                    con.Close();
+                    throw ex;
+                }
+            }
+        }
+
+        public int ActualizarCliente(Cliente c)
+        {
+            using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+            {
+                int resultado;
+                try
+                {
+                    SqlCommand sc = new SqlCommand("sp_Actualizar_Cliente", con);
+                    sc.CommandType = CommandType.StoredProcedure;
+
+                    sc.Parameters.AddWithValue("@id", c.Id);
+                    sc.Parameters.AddWithValue("@nombre", c.NombreCompleto);
+                    sc.Parameters.AddWithValue("@direccion", c.Direccion);
+                    sc.Parameters.AddWithValue("@ruc", c.Ruc);
+                    sc.Parameters.AddWithValue("@telefono", c.Telefono);
+                    sc.Parameters.AddWithValue("@cliente", c.Clientes);
+                    sc.Parameters.AddWithValue("@proveedor", c.Proveedor);
+                    sc.Parameters.AddWithValue("@saldo", c.Saldo);
+                    con.Open();
+                    resultado = sc.ExecuteNonQuery();
+                    con.Close();
+
+                    return resultado;
+                }
+                catch (Exception ex)
+                {
+                    con.Close();
+                    throw ex;
+                }
+            }
+        }
+
     }
 }

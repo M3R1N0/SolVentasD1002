@@ -284,5 +284,29 @@ namespace DatVentas
                 }
             }
         }
+
+        public int MostrarNotificacion_Vencimiento()
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                int resultado = 0;
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("sp_contarProductos_Vencidos", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    resultado = Convert.ToInt32(cmd.ExecuteScalar());
+                    conn.Close();
+
+                    return resultado;
+                    
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    throw ex;
+                }
+            }
+        }
     }
 }

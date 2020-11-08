@@ -29,10 +29,28 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlVentas = new System.Windows.Forms.Panel();
+            this.panel29 = new System.Windows.Forms.Panel();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.panel30 = new System.Windows.Forms.Panel();
+            this.panel27 = new System.Windows.Forms.Panel();
+            this.menuStrip9 = new System.Windows.Forms.MenuStrip();
+            this.btnCobrar = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlCobro = new System.Windows.Forms.Panel();
+            this.label23 = new System.Windows.Forms.Label();
+            this.lblCambio = new System.Windows.Forms.Label();
+            this.menuStrip4 = new System.Windows.Forms.MenuStrip();
+            this.btnGenerarVenta = new System.Windows.Forms.ToolStripMenuItem();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtRecibo = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.menuStrip8 = new System.Windows.Forms.MenuStrip();
+            this.btnVentaPendiente = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.cancelarVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlCambioPrecios = new System.Windows.Forms.Panel();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.lblId = new System.Windows.Forms.Label();
@@ -125,22 +143,30 @@
             this.label11 = new System.Windows.Forms.Label();
             this.btnRespaldo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.btnCerrarTurno = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.productoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblNombre = new System.Windows.Forms.Label();
             this.lblNotificacion = new System.Windows.Forms.Label();
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip5 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnCerrarTurno = new System.Windows.Forms.Button();
+            this.panel28 = new System.Windows.Forms.Panel();
+            this.pbPerfil = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.elimininarDeLaVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.cancelarVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlVentas.SuspendLayout();
+            this.panel29.SuspendLayout();
+            this.panel27.SuspendLayout();
+            this.menuStrip9.SuspendLayout();
+            this.pnlCobro.SuspendLayout();
+            this.menuStrip4.SuspendLayout();
+            this.menuStrip8.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.pnlCambioPrecios.SuspendLayout();
             this.panel26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -174,13 +200,13 @@
             this.panel15.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip2.SuspendLayout();
             this.menuStrip3.SuspendLayout();
             this.menuStrip5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel28.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -196,7 +222,10 @@
             // 
             // pnlVentas
             // 
-            this.pnlVentas.BackColor = System.Drawing.Color.White;
+            this.pnlVentas.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlVentas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlVentas.Controls.Add(this.panel29);
+            this.pnlVentas.Controls.Add(this.panel27);
             this.pnlVentas.Controls.Add(this.pnlCambioPrecios);
             this.pnlVentas.Controls.Add(this.gdvClientes);
             this.pnlVentas.Controls.Add(this.pnlCantidad);
@@ -207,12 +236,213 @@
             this.pnlVentas.Controls.Add(this.gdvVentas);
             this.pnlVentas.Controls.Add(this.panel21);
             this.pnlVentas.Controls.Add(this.txtBuscar);
-            this.pnlVentas.Controls.Add(this.menuStrip1);
             this.pnlVentas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlVentas.Location = new System.Drawing.Point(0, 59);
+            this.pnlVentas.Location = new System.Drawing.Point(0, 122);
             this.pnlVentas.Name = "pnlVentas";
-            this.pnlVentas.Size = new System.Drawing.Size(1001, 532);
+            this.pnlVentas.Size = new System.Drawing.Size(1287, 532);
             this.pnlVentas.TabIndex = 10;
+            // 
+            // panel29
+            // 
+            this.panel29.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel29.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel29.BackgroundImage")));
+            this.panel29.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel29.Controls.Add(this.lblTotal);
+            this.panel29.Controls.Add(this.panel30);
+            this.panel29.Location = new System.Drawing.Point(576, 472);
+            this.panel29.Name = "panel29";
+            this.panel29.Size = new System.Drawing.Size(395, 54);
+            this.panel29.TabIndex = 12;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.Black;
+            this.lblTotal.Location = new System.Drawing.Point(202, 6);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(83, 39);
+            this.lblTotal.TabIndex = 1;
+            this.lblTotal.Text = "0.00";
+            // 
+            // panel30
+            // 
+            this.panel30.BackColor = System.Drawing.Color.Transparent;
+            this.panel30.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel30.BackgroundImage")));
+            this.panel30.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel30.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel30.Location = new System.Drawing.Point(21, -6);
+            this.panel30.Name = "panel30";
+            this.panel30.Size = new System.Drawing.Size(175, 74);
+            this.panel30.TabIndex = 0;
+            // 
+            // panel27
+            // 
+            this.panel27.Controls.Add(this.menuStrip9);
+            this.panel27.Controls.Add(this.pnlCobro);
+            this.panel27.Controls.Add(this.menuStrip8);
+            this.panel27.Controls.Add(this.menuStrip1);
+            this.panel27.Location = new System.Drawing.Point(984, 177);
+            this.panel27.Name = "panel27";
+            this.panel27.Size = new System.Drawing.Size(292, 289);
+            this.panel27.TabIndex = 11;
+            // 
+            // menuStrip9
+            // 
+            this.menuStrip9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.menuStrip9.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip9.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnCobrar});
+            this.menuStrip9.Location = new System.Drawing.Point(8, 16);
+            this.menuStrip9.Name = "menuStrip9";
+            this.menuStrip9.Size = new System.Drawing.Size(97, 29);
+            this.menuStrip9.TabIndex = 15;
+            this.menuStrip9.Text = "menuStrip9";
+            // 
+            // btnCobrar
+            // 
+            this.btnCobrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCobrar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCobrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCobrar.Image")));
+            this.btnCobrar.Name = "btnCobrar";
+            this.btnCobrar.Size = new System.Drawing.Size(89, 25);
+            this.btnCobrar.Text = "Cobrar";
+            this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
+            // 
+            // pnlCobro
+            // 
+            this.pnlCobro.BackColor = System.Drawing.Color.OliveDrab;
+            this.pnlCobro.Controls.Add(this.label23);
+            this.pnlCobro.Controls.Add(this.lblCambio);
+            this.pnlCobro.Controls.Add(this.menuStrip4);
+            this.pnlCobro.Controls.Add(this.label22);
+            this.pnlCobro.Controls.Add(this.txtRecibo);
+            this.pnlCobro.Controls.Add(this.label21);
+            this.pnlCobro.Location = new System.Drawing.Point(8, 127);
+            this.pnlCobro.Name = "pnlCobro";
+            this.pnlCobro.Size = new System.Drawing.Size(281, 159);
+            this.pnlCobro.TabIndex = 14;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label23.Location = new System.Drawing.Point(144, 71);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(36, 39);
+            this.label23.TabIndex = 17;
+            this.label23.Text = "$";
+            // 
+            // lblCambio
+            // 
+            this.lblCambio.AutoSize = true;
+            this.lblCambio.BackColor = System.Drawing.Color.Transparent;
+            this.lblCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCambio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblCambio.Location = new System.Drawing.Point(172, 71);
+            this.lblCambio.Name = "lblCambio";
+            this.lblCambio.Size = new System.Drawing.Size(36, 39);
+            this.lblCambio.TabIndex = 16;
+            this.lblCambio.Text = "0";
+            // 
+            // menuStrip4
+            // 
+            this.menuStrip4.BackColor = System.Drawing.Color.Silver;
+            this.menuStrip4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.menuStrip4.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnGenerarVenta});
+            this.menuStrip4.Location = new System.Drawing.Point(122, 120);
+            this.menuStrip4.Name = "menuStrip4";
+            this.menuStrip4.Size = new System.Drawing.Size(154, 29);
+            this.menuStrip4.TabIndex = 11;
+            this.menuStrip4.Text = "menuStrip4";
+            // 
+            // btnGenerarVenta
+            // 
+            this.btnGenerarVenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGenerarVenta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnGenerarVenta.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerarVenta.Image")));
+            this.btnGenerarVenta.Name = "btnGenerarVenta";
+            this.btnGenerarVenta.Size = new System.Drawing.Size(146, 25);
+            this.btnGenerarVenta.Text = "Generar Venta";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label22.Location = new System.Drawing.Point(12, 76);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(136, 25);
+            this.label22.TabIndex = 15;
+            this.label22.Text = "SU CAMBIO :";
+            // 
+            // txtRecibo
+            // 
+            this.txtRecibo.BackColor = System.Drawing.Color.OliveDrab;
+            this.txtRecibo.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRecibo.Location = new System.Drawing.Point(116, 12);
+            this.txtRecibo.Name = "txtRecibo";
+            this.txtRecibo.Size = new System.Drawing.Size(116, 45);
+            this.txtRecibo.TabIndex = 14;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label21.Location = new System.Drawing.Point(16, 22);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(98, 25);
+            this.label21.TabIndex = 13;
+            this.label21.Text = "RECIBO :";
+            // 
+            // menuStrip8
+            // 
+            this.menuStrip8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.menuStrip8.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip8.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnVentaPendiente});
+            this.menuStrip8.Location = new System.Drawing.Point(8, 85);
+            this.menuStrip8.Name = "menuStrip8";
+            this.menuStrip8.Size = new System.Drawing.Size(135, 29);
+            this.menuStrip8.TabIndex = 12;
+            this.menuStrip8.Text = "menuStrip8";
+            // 
+            // btnVentaPendiente
+            // 
+            this.btnVentaPendiente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnVentaPendiente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnVentaPendiente.Image = ((System.Drawing.Image)(resources.GetObject("btnVentaPendiente.Image")));
+            this.btnVentaPendiente.Name = "btnVentaPendiente";
+            this.btnVentaPendiente.Size = new System.Drawing.Size(127, 25);
+            this.btnVentaPendiente.Text = "En Espera ...";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cancelarVentaToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(8, 50);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(160, 29);
+            this.menuStrip1.TabIndex = 10;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // cancelarVentaToolStripMenuItem
+            // 
+            this.cancelarVentaToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.cancelarVentaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.cancelarVentaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cancelarVentaToolStripMenuItem.Image")));
+            this.cancelarVentaToolStripMenuItem.Name = "cancelarVentaToolStripMenuItem";
+            this.cancelarVentaToolStripMenuItem.Size = new System.Drawing.Size(152, 25);
+            this.cancelarVentaToolStripMenuItem.Text = "Cancelar Venta";
+            this.cancelarVentaToolStripMenuItem.Click += new System.EventHandler(this.cancelarVentaToolStripMenuItem_Click);
             // 
             // pnlCambioPrecios
             // 
@@ -226,7 +456,7 @@
             this.pnlCambioPrecios.Controls.Add(this.label18);
             this.pnlCambioPrecios.Controls.Add(this.lblProducto);
             this.pnlCambioPrecios.Controls.Add(this.panel26);
-            this.pnlCambioPrecios.Location = new System.Drawing.Point(289, 287);
+            this.pnlCambioPrecios.Location = new System.Drawing.Point(289, 243);
             this.pnlCambioPrecios.Name = "pnlCambioPrecios";
             this.pnlCambioPrecios.Size = new System.Drawing.Size(437, 186);
             this.pnlCambioPrecios.TabIndex = 9;
@@ -433,14 +663,14 @@
             this.gdvBuscar.Location = new System.Drawing.Point(323, 162);
             this.gdvBuscar.Name = "gdvBuscar";
             this.gdvBuscar.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gdvBuscar.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gdvBuscar.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gdvBuscar.RowHeadersVisible = false;
             this.gdvBuscar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gdvBuscar.Size = new System.Drawing.Size(403, 119);
@@ -477,8 +707,9 @@
             // 
             this.gdvVentas.AllowUserToAddRows = false;
             this.gdvVentas.BackgroundColor = System.Drawing.Color.White;
+            this.gdvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gdvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gdvVentas.Location = new System.Drawing.Point(93, 237);
+            this.gdvVentas.Location = new System.Drawing.Point(93, 193);
             this.gdvVentas.Name = "gdvVentas";
             this.gdvVentas.RowHeadersVisible = false;
             this.gdvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -496,7 +727,7 @@
             this.panel21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel21.Location = new System.Drawing.Point(0, 0);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(1001, 65);
+            this.panel21.Size = new System.Drawing.Size(1287, 65);
             this.panel21.TabIndex = 1;
             // 
             // groupBox1
@@ -597,6 +828,7 @@
             // 
             // txtBuscar
             // 
+            this.txtBuscar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.Location = new System.Drawing.Point(338, 137);
@@ -613,9 +845,9 @@
             this.pnlVentasDevoluciones.Controls.Add(this.menuStrip6);
             this.pnlVentasDevoluciones.Controls.Add(this.menuStrip7);
             this.pnlVentasDevoluciones.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlVentasDevoluciones.Location = new System.Drawing.Point(0, 591);
+            this.pnlVentasDevoluciones.Location = new System.Drawing.Point(0, 654);
             this.pnlVentasDevoluciones.Name = "pnlVentasDevoluciones";
-            this.pnlVentasDevoluciones.Size = new System.Drawing.Size(1001, 45);
+            this.pnlVentasDevoluciones.Size = new System.Drawing.Size(1287, 45);
             this.pnlVentasDevoluciones.TabIndex = 8;
             // 
             // menuStrip6
@@ -672,10 +904,9 @@
             this.pnlIzquierda.Controls.Add(this.panel17);
             this.pnlIzquierda.Controls.Add(this.panel16);
             this.pnlIzquierda.Controls.Add(this.pnlHerramientas);
-            this.pnlIzquierda.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlIzquierda.Location = new System.Drawing.Point(1001, 59);
+            this.pnlIzquierda.Location = new System.Drawing.Point(197, 3);
             this.pnlIzquierda.Name = "pnlIzquierda";
-            this.pnlIzquierda.Size = new System.Drawing.Size(286, 577);
+            this.pnlIzquierda.Size = new System.Drawing.Size(37, 36);
             this.pnlIzquierda.TabIndex = 7;
             // 
             // panel17
@@ -1223,36 +1454,61 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.btnCerrarTurno);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1287, 59);
+            this.panel1.Size = new System.Drawing.Size(1287, 122);
             this.panel1.TabIndex = 6;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.ForestGreen;
+            this.label17.Location = new System.Drawing.Point(33, 25);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(158, 25);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "¡BIENVENIDO!";
+            // 
+            // btnCerrarTurno
+            // 
+            this.btnCerrarTurno.BackColor = System.Drawing.Color.Transparent;
+            this.btnCerrarTurno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCerrarTurno.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnCerrarTurno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarTurno.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarTurno.Image")));
+            this.btnCerrarTurno.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCerrarTurno.Location = new System.Drawing.Point(664, 31);
+            this.btnCerrarTurno.Name = "btnCerrarTurno";
+            this.btnCerrarTurno.Size = new System.Drawing.Size(143, 47);
+            this.btnCerrarTurno.TabIndex = 0;
+            this.btnCerrarTurno.Text = "Cerrar turno";
+            this.btnCerrarTurno.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCerrarTurno.UseVisualStyleBackColor = false;
+            this.btnCerrarTurno.Click += new System.EventHandler(this.btnCerrarTurno_Click);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.panel2.Controls.Add(this.menuStrip2);
+            this.panel2.Controls.Add(this.lblNombre);
             this.panel2.Controls.Add(this.lblNotificacion);
+            this.panel2.Controls.Add(this.pnlIzquierda);
             this.panel2.Controls.Add(this.menuStrip3);
             this.panel2.Controls.Add(this.menuStrip5);
             this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Controls.Add(this.panel28);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(937, 0);
+            this.panel2.Location = new System.Drawing.Point(813, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(350, 59);
+            this.panel2.Size = new System.Drawing.Size(474, 122);
             this.panel2.TabIndex = 2;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(308, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(66, 56);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
             // 
             // menuStrip2
             // 
@@ -1260,7 +1516,7 @@
             this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.productoToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(-4, 21);
+            this.menuStrip2.Location = new System.Drawing.Point(18, 39);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(116, 29);
             this.menuStrip2.TabIndex = 0;
@@ -1275,13 +1531,25 @@
             this.productoToolStripMenuItem.Text = "Producto";
             this.productoToolStripMenuItem.Click += new System.EventHandler(this.productoToolStripMenuItem_Click);
             // 
+            // lblNombre
+            // 
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblNombre.Location = new System.Drawing.Point(365, 99);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(85, 20);
+            this.lblNombre.TabIndex = 10;
+            this.lblNombre.Text = "NOMBRE";
+            this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // lblNotificacion
             // 
             this.lblNotificacion.AutoSize = true;
             this.lblNotificacion.BackColor = System.Drawing.Color.Red;
             this.lblNotificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNotificacion.ForeColor = System.Drawing.Color.White;
-            this.lblNotificacion.Location = new System.Drawing.Point(287, 18);
+            this.lblNotificacion.Location = new System.Drawing.Point(310, 38);
             this.lblNotificacion.Name = "lblNotificacion";
             this.lblNotificacion.Size = new System.Drawing.Size(21, 13);
             this.lblNotificacion.TabIndex = 6;
@@ -1293,7 +1561,7 @@
             this.menuStrip3.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem2});
-            this.menuStrip3.Location = new System.Drawing.Point(144, 21);
+            this.menuStrip3.Location = new System.Drawing.Point(167, 41);
             this.menuStrip3.Name = "menuStrip3";
             this.menuStrip3.Size = new System.Drawing.Size(50, 29);
             this.menuStrip3.TabIndex = 1;
@@ -1313,7 +1581,7 @@
             this.menuStrip5.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem4});
-            this.menuStrip5.Location = new System.Drawing.Point(200, 20);
+            this.menuStrip5.Location = new System.Drawing.Point(220, 40);
             this.menuStrip5.Name = "menuStrip5";
             this.menuStrip5.Size = new System.Drawing.Size(50, 29);
             this.menuStrip5.TabIndex = 3;
@@ -1330,22 +1598,32 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(266, 19);
+            this.pictureBox2.Location = new System.Drawing.Point(289, 39);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(35, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
-            // btnCerrarTurno
+            // panel28
             // 
-            this.btnCerrarTurno.Location = new System.Drawing.Point(681, 21);
-            this.btnCerrarTurno.Name = "btnCerrarTurno";
-            this.btnCerrarTurno.Size = new System.Drawing.Size(87, 23);
-            this.btnCerrarTurno.TabIndex = 0;
-            this.btnCerrarTurno.Text = "Cerrar turno";
-            this.btnCerrarTurno.UseVisualStyleBackColor = true;
-            this.btnCerrarTurno.Click += new System.EventHandler(this.btnCerrarTurno_Click);
+            this.panel28.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel28.BackgroundImage")));
+            this.panel28.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel28.Controls.Add(this.pbPerfil);
+            this.panel28.Location = new System.Drawing.Point(257, 12);
+            this.panel28.Name = "panel28";
+            this.panel28.Size = new System.Drawing.Size(282, 94);
+            this.panel28.TabIndex = 8;
+            // 
+            // pbPerfil
+            // 
+            this.pbPerfil.BackColor = System.Drawing.Color.Transparent;
+            this.pbPerfil.Location = new System.Drawing.Point(102, 1);
+            this.pbPerfil.Name = "pbPerfil";
+            this.pbPerfil.Size = new System.Drawing.Size(96, 77);
+            this.pbPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPerfil.TabIndex = 4;
+            this.pbPerfil.TabStop = false;
             // 
             // contextMenuStrip1
             // 
@@ -1364,36 +1642,13 @@
             this.elimininarDeLaVentaToolStripMenuItem.Text = "Eliminar de la Venta";
             this.elimininarDeLaVentaToolStripMenuItem.Click += new System.EventHandler(this.elimininarDeLaVentaToolStripMenuItem_Click);
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cancelarVentaToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(813, 203);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(280, 29);
-            this.menuStrip1.TabIndex = 10;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // cancelarVentaToolStripMenuItem
-            // 
-            this.cancelarVentaToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cancelarVentaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.cancelarVentaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cancelarVentaToolStripMenuItem.Image")));
-            this.cancelarVentaToolStripMenuItem.Name = "cancelarVentaToolStripMenuItem";
-            this.cancelarVentaToolStripMenuItem.Size = new System.Drawing.Size(152, 25);
-            this.cancelarVentaToolStripMenuItem.Text = "Cancelar Venta";
-            this.cancelarVentaToolStripMenuItem.Click += new System.EventHandler(this.cancelarVentaToolStripMenuItem_Click);
-            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1287, 636);
+            this.ClientSize = new System.Drawing.Size(1287, 699);
             this.Controls.Add(this.pnlVentas);
             this.Controls.Add(this.pnlVentasDevoluciones);
-            this.Controls.Add(this.pnlIzquierda);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.MainMenuStrip = this.menuStrip1;
@@ -1403,6 +1658,20 @@
             this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
             this.pnlVentas.ResumeLayout(false);
             this.pnlVentas.PerformLayout();
+            this.panel29.ResumeLayout(false);
+            this.panel29.PerformLayout();
+            this.panel27.ResumeLayout(false);
+            this.panel27.PerformLayout();
+            this.menuStrip9.ResumeLayout(false);
+            this.menuStrip9.PerformLayout();
+            this.pnlCobro.ResumeLayout(false);
+            this.pnlCobro.PerformLayout();
+            this.menuStrip4.ResumeLayout(false);
+            this.menuStrip4.PerformLayout();
+            this.menuStrip8.ResumeLayout(false);
+            this.menuStrip8.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.pnlCambioPrecios.ResumeLayout(false);
             this.pnlCambioPrecios.PerformLayout();
             this.panel26.ResumeLayout(false);
@@ -1442,9 +1711,9 @@
             this.panel14.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.menuStrip3.ResumeLayout(false);
@@ -1452,9 +1721,9 @@
             this.menuStrip5.ResumeLayout(false);
             this.menuStrip5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel28.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1522,16 +1791,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnRespaldo;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem productoToolStripMenuItem;
-        private System.Windows.Forms.Label lblNotificacion;
-        private System.Windows.Forms.MenuStrip menuStrip3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.MenuStrip menuStrip5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Button btnCerrarTurno;
         private System.Windows.Forms.Panel panel24;
@@ -1570,5 +1831,32 @@
         private System.Windows.Forms.ToolStripMenuItem elimininarDeLaVentaToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem cancelarVentaToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pbPerfil;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel28;
+        private System.Windows.Forms.Label lblNotificacion;
+        private System.Windows.Forms.MenuStrip menuStrip3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.MenuStrip menuStrip5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Panel panel27;
+        private System.Windows.Forms.MenuStrip menuStrip4;
+        private System.Windows.Forms.ToolStripMenuItem btnGenerarVenta;
+        private System.Windows.Forms.MenuStrip menuStrip8;
+        private System.Windows.Forms.ToolStripMenuItem btnVentaPendiente;
+        private System.Windows.Forms.MenuStrip menuStrip9;
+        private System.Windows.Forms.ToolStripMenuItem btnCobrar;
+        private System.Windows.Forms.Panel pnlCobro;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label lblCambio;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txtRecibo;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Panel panel29;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Panel panel30;
     }
 }

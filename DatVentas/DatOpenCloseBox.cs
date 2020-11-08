@@ -111,10 +111,11 @@ namespace DatVentas
         {
             using (SqlConnection connection = new SqlConnection(MasterConnection.connection))
             {
-                try { 
-                
-                    SqlCommand sc = new SqlCommand($"UPDATE tb_Movimiento_CierreCaja set Estado={0} ,Fecha_Fin={fin.ToString("dd/MM/yyyy")}, Fecha_Cierre={cierre.ToString("dd/MM/yyyy")} WHERE Caja_Id={cajaID} and Estado={1}", connection);
+                try {
                     connection.Open();
+                    SqlCommand sc = new SqlCommand("CERRAR_CAJA", connection);
+                    sc.CommandType = CommandType.StoredProcedure;
+                    sc.Parameters.AddWithValue("@idcaja",cajaID);
                     sc.ExecuteNonQuery();
                     connection.Close();
                 }

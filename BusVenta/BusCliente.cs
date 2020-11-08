@@ -24,7 +24,7 @@ namespace BusVenta
         public List<Cliente> ListarClientes(string nombre)
         {
             DataTable dt = new DatCliente().ObtenerClientes(nombre);
-            List<Cliente> lsCienltes = new List<Cliente>();
+            List<Cliente> lsCientes = new List<Cliente>();
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -40,9 +40,29 @@ namespace BusVenta
                 c.Saldo = Convert.ToDecimal(dr["Saldo"].ToString());
                 c.Estado = Convert.ToBoolean(dr["Estado"].ToString());
 
-                lsCienltes.Add(c);
+                lsCientes.Add(c);
             }
-            return lsCienltes;
+            return lsCientes;
+        }
+
+        public void eliminar_Cliente(int id)
+        {
+
+            int filasAfectadas = new DatCliente().BorrarCliente(id);
+            if (filasAfectadas != 1)
+            {
+                throw new ApplicationException("Ocurrio un error al borrar los datos");
+            }
+        }
+
+        public void Editar_Cliente(Cliente c)
+        {
+
+            int filasAfectadas = new DatCliente().ActualizarCliente(c);
+            if (filasAfectadas != 1)
+            {
+                throw new ApplicationException("Ocurrio un error al editar los datos");
+            }
         }
     }
 }
