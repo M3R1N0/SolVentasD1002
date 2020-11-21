@@ -38,6 +38,7 @@
             this.txtBuscarCliente = new System.Windows.Forms.TextBox();
             this.gdvClientes = new System.Windows.Forms.DataGridView();
             this.pnlAltaCliente = new System.Windows.Forms.Panel();
+            this.lblID = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtRuc = new System.Windows.Forms.TextBox();
@@ -62,7 +63,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblID = new System.Windows.Forms.Label();
             this.Edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
@@ -202,6 +202,15 @@
             this.pnlAltaCliente.Name = "pnlAltaCliente";
             this.pnlAltaCliente.Size = new System.Drawing.Size(733, 470);
             this.pnlAltaCliente.TabIndex = 3;
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(578, 50);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(0, 13);
+            this.lblID.TabIndex = 71;
+            this.lblID.Visible = false;
             // 
             // groupBox1
             // 
@@ -465,15 +474,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Agregar / Editar Clientes";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(578, 50);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(0, 13);
-            this.lblID.TabIndex = 71;
-            this.lblID.Visible = false;
             // 
             // Edit
             // 

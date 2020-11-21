@@ -40,9 +40,10 @@ namespace VentasD1002
 
         private void Logo_empresa_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Hide();
             frmConfiguracionEmpresa configuracionEmpresa = new frmConfiguracionEmpresa();
             configuracionEmpresa.ShowDialog();
+            this.Dispose();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -50,6 +51,14 @@ namespace VentasD1002
             this.Hide();
             frmUsuario usuario = new frmUsuario();
             usuario.ShowDialog();
+            this.Dispose();
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmFormatoComprobante frmFormato = new frmFormatoComprobante();
+            frmFormato.ShowDialog();
             this.Dispose();
         }
     }

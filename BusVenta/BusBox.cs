@@ -31,5 +31,15 @@ namespace BusVenta
                 throw new ApplicationException("Ocurrio un error al insertar");
             }
         }
+
+        public void Actualizar_ImpresoraTicket(Box b)
+        {
+            int filasAfectadas = new DatBox().Actualizar_ImpresoraTicket(b);
+
+            if (filasAfectadas != 1)
+            {
+                throw new ApplicationException("Ocurrió un error al actualizar los datos");
+            }
+        }
     }
 }

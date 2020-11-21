@@ -15,5 +15,7 @@ namespace EntVenta
         public string Destino { get; set; }
         public string Tipo_Documento { get; set; }
         public string Por_Defecto { get; set; }
+
+        public string  SerieCompleta { get; set; }
     }
 }

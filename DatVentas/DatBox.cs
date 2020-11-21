@@ -99,5 +99,47 @@ namespace DatVentas
                 }
             }
         }
+
+        public  static string Obtener_ImpresoraTicket(string serialPC)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    string aux;
+                    SqlCommand sc = new SqlCommand($"SELECT Impresora_Tickect FROM tb_Caja WHERE Serial_PC='"+serialPC+"'", conn);
+                    conn.Open();
+                   aux = Convert.ToString(  sc.ExecuteScalar());
+                    conn.Close();
+                    return aux;
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    throw ex;
+                }
+            }
+        }
+
+        public int Actualizar_ImpresoraTicket(Box b)
+        {
+            using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    SqlCommand sc = new SqlCommand($"UPDATE tb_Caja SET Impresora_Tickect='{b.ImpresoraTicket}' WHERE Id_Caja={b.Id}", con);
+                    con.Open();
+                    int filasAfectadas = sc.ExecuteNonQuery();
+                    con.Close();
+
+                    return filasAfectadas;
+                }
+                catch (Exception ex)
+                {
+                    con.Close();
+                    throw ex;
+                }
+            }
+        }
     }
 }

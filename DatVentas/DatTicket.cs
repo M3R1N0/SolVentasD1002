@@ -41,5 +41,60 @@ namespace DatVentas
                 }
             }
         }
+
+        public DataTable Mostrar_FormatoTicket()
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter("ps_Mostrar_FormatoTicket", conn);
+                    da.Fill(dt);
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public int Editar_FormatoTicket(Ticket t, Empresa E)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    int filasAfectadas;
+
+                    SqlCommand sc = new SqlCommand("sp_Editar_FormatoTicket", conn);
+                    sc.CommandType = CommandType.StoredProcedure;
+
+                    sc.Parameters.AddWithValue("@identificadorfiscal", t.Identificador_Fiscal);
+                    sc.Parameters.AddWithValue("@direccion", t.Direccion);
+                    sc.Parameters.AddWithValue("@provincia", t.Provincia);
+                    sc.Parameters.AddWithValue("@nombremoneda", t.Moneda);
+                    sc.Parameters.AddWithValue("@agradecimiento", t.Agradecimiento);
+                    sc.Parameters.AddWithValue("@pagina", t.Pagina_Web);
+                    sc.Parameters.AddWithValue("@anuncio", t.Anuncio);
+                    sc.Parameters.AddWithValue("@datosfiscales", t.Datos_Fiscales);
+                    sc.Parameters.AddWithValue("@pordefecto", t.Default);
+                    sc.Parameters.AddWithValue("@nombreempresa", E.Nombre);
+                    sc.Parameters.AddWithValue("@logo", E.Logo);
+
+                    conn.Open();
+                    filasAfectadas = sc.ExecuteNonQuery();
+                    conn.Close();
+
+                    return filasAfectadas;
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    throw ex;
+                }
+            }
+        }
     }
 }

@@ -71,6 +71,12 @@
     <Compile Include="rptMovimientoKardex.Designer.cs">
       <DependentUpon>rptMovimientoKardex.cs</DependentUpon>
     </Compile>
+    <Compile Include="rptTicket.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptTicket.Designer.cs">
+      <DependentUpon>rptTicket.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmInventario.resx">
@@ -85,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="rptMovimientoKardex.resx">
       <DependentUpon>rptMovimientoKardex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptTicket.resx">
+      <DependentUpon>rptTicket.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

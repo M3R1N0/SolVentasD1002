@@ -33,20 +33,55 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlVentas = new System.Windows.Forms.Panel();
+            this.pnlCobrar = new System.Windows.Forms.Panel();
+            this.panel31 = new System.Windows.Forms.Panel();
+            this.panel36 = new System.Windows.Forms.Panel();
+            this.lblComprobante = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.btnGuardarImprimirdirecto = new System.Windows.Forms.Button();
+            this.MenuStrip15 = new System.Windows.Forms.MenuStrip();
+            this.TGuardarSinImprimir = new System.Windows.Forms.ToolStripMenuItem();
+            this.FlowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cboImpresora = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.panel37 = new System.Windows.Forms.Panel();
+            this.lblIdSerializacion = new System.Windows.Forms.Label();
+            this.lblCorrelativo = new System.Windows.Forms.Label();
+            this.lblNumeroFin = new System.Windows.Forms.Label();
+            this.lblCantidadCero = new System.Windows.Forms.Label();
+            this.lblSerie = new System.Windows.Forms.Label();
+            this.panel38 = new System.Windows.Forms.Panel();
+            this.reportViewerImprimir = new Telerik.ReportViewer.WinForms.ReportViewer();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.menuStrip4 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel33 = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
+            this.lblPagoTotal = new System.Windows.Forms.Label();
+            this.rbtnAbonar = new System.Windows.Forms.RadioButton();
+            this.txtRecibi = new System.Windows.Forms.TextBox();
+            this.panel35 = new System.Windows.Forms.Panel();
+            this.txtCambio = new System.Windows.Forms.TextBox();
+            this.panel34 = new System.Windows.Forms.Panel();
+            this.dtpFechaPago = new System.Windows.Forms.DateTimePicker();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.panel32 = new System.Windows.Forms.Panel();
+            this.label27 = new System.Windows.Forms.Label();
+            this.pbCerrarPanelCobrar = new System.Windows.Forms.PictureBox();
             this.panel29 = new System.Windows.Forms.Panel();
             this.lblTotal = new System.Windows.Forms.Label();
             this.panel30 = new System.Windows.Forms.Panel();
             this.panel27 = new System.Windows.Forms.Panel();
             this.menuStrip9 = new System.Windows.Forms.MenuStrip();
             this.btnCobrar = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlCobro = new System.Windows.Forms.Panel();
-            this.label23 = new System.Windows.Forms.Label();
-            this.lblCambio = new System.Windows.Forms.Label();
-            this.menuStrip4 = new System.Windows.Forms.MenuStrip();
-            this.btnGenerarVenta = new System.Windows.Forms.ToolStripMenuItem();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtRecibo = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
             this.menuStrip8 = new System.Windows.Forms.MenuStrip();
             this.btnVentaPendiente = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -160,11 +195,20 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.elimininarDeLaVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlVentas.SuspendLayout();
+            this.pnlCobrar.SuspendLayout();
+            this.panel31.SuspendLayout();
+            this.panel36.SuspendLayout();
+            this.MenuStrip15.SuspendLayout();
+            this.panel37.SuspendLayout();
+            this.panel38.SuspendLayout();
+            this.menuStrip4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.panel33.SuspendLayout();
+            this.panel32.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCerrarPanelCobrar)).BeginInit();
             this.panel29.SuspendLayout();
             this.panel27.SuspendLayout();
             this.menuStrip9.SuspendLayout();
-            this.pnlCobro.SuspendLayout();
-            this.menuStrip4.SuspendLayout();
             this.menuStrip8.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.pnlCambioPrecios.SuspendLayout();
@@ -224,6 +268,7 @@
             // 
             this.pnlVentas.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlVentas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlVentas.Controls.Add(this.pnlCobrar);
             this.pnlVentas.Controls.Add(this.panel29);
             this.pnlVentas.Controls.Add(this.panel27);
             this.pnlVentas.Controls.Add(this.pnlCambioPrecios);
@@ -241,6 +286,488 @@
             this.pnlVentas.Name = "pnlVentas";
             this.pnlVentas.Size = new System.Drawing.Size(1287, 532);
             this.pnlVentas.TabIndex = 10;
+            // 
+            // pnlCobrar
+            // 
+            this.pnlCobrar.BackColor = System.Drawing.Color.White;
+            this.pnlCobrar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlCobrar.BackgroundImage")));
+            this.pnlCobrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlCobrar.Controls.Add(this.panel31);
+            this.pnlCobrar.Location = new System.Drawing.Point(187, 81);
+            this.pnlCobrar.Name = "pnlCobrar";
+            this.pnlCobrar.Size = new System.Drawing.Size(791, 423);
+            this.pnlCobrar.TabIndex = 13;
+            // 
+            // panel31
+            // 
+            this.panel31.BackColor = System.Drawing.Color.Transparent;
+            this.panel31.Controls.Add(this.panel36);
+            this.panel31.Controls.Add(this.groupBox2);
+            this.panel31.Controls.Add(this.panel32);
+            this.panel31.Location = new System.Drawing.Point(16, 11);
+            this.panel31.Name = "panel31";
+            this.panel31.Size = new System.Drawing.Size(762, 399);
+            this.panel31.TabIndex = 0;
+            // 
+            // panel36
+            // 
+            this.panel36.Controls.Add(this.lblComprobante);
+            this.panel36.Controls.Add(this.label26);
+            this.panel36.Controls.Add(this.btnGuardarImprimirdirecto);
+            this.panel36.Controls.Add(this.MenuStrip15);
+            this.panel36.Controls.Add(this.FlowLayoutPanel3);
+            this.panel36.Controls.Add(this.cboImpresora);
+            this.panel36.Controls.Add(this.label25);
+            this.panel36.Controls.Add(this.panel37);
+            this.panel36.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel36.Location = new System.Drawing.Point(399, 41);
+            this.panel36.Name = "panel36";
+            this.panel36.Size = new System.Drawing.Size(363, 358);
+            this.panel36.TabIndex = 3;
+            // 
+            // lblComprobante
+            // 
+            this.lblComprobante.BackColor = System.Drawing.Color.Peru;
+            this.lblComprobante.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblComprobante.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblComprobante.Location = new System.Drawing.Point(203, 311);
+            this.lblComprobante.Name = "lblComprobante";
+            this.lblComprobante.Size = new System.Drawing.Size(151, 41);
+            this.lblComprobante.TabIndex = 616;
+            this.lblComprobante.Text = "\"\"";
+            this.lblComprobante.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(3, 323);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(204, 17);
+            this.label26.TabIndex = 615;
+            this.label26.Text = "Comprobante por Defecto :";
+            // 
+            // btnGuardarImprimirdirecto
+            // 
+            this.btnGuardarImprimirdirecto.Location = new System.Drawing.Point(16, 57);
+            this.btnGuardarImprimirdirecto.Name = "btnGuardarImprimirdirecto";
+            this.btnGuardarImprimirdirecto.Size = new System.Drawing.Size(119, 40);
+            this.btnGuardarImprimirdirecto.TabIndex = 614;
+            this.btnGuardarImprimirdirecto.Text = "Imprimir directo";
+            this.btnGuardarImprimirdirecto.UseVisualStyleBackColor = true;
+            this.btnGuardarImprimirdirecto.Click += new System.EventHandler(this.btnGuardarImprimirdirecto_Click);
+            // 
+            // MenuStrip15
+            // 
+            this.MenuStrip15.AutoSize = false;
+            this.MenuStrip15.BackColor = System.Drawing.Color.Transparent;
+            this.MenuStrip15.Dock = System.Windows.Forms.DockStyle.None;
+            this.MenuStrip15.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TGuardarSinImprimir});
+            this.MenuStrip15.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.MenuStrip15.Location = new System.Drawing.Point(147, 57);
+            this.MenuStrip15.Name = "MenuStrip15";
+            this.MenuStrip15.ShowItemToolTips = true;
+            this.MenuStrip15.Size = new System.Drawing.Size(198, 40);
+            this.MenuStrip15.TabIndex = 613;
+            this.MenuStrip15.Text = "MenuStrip15";
+            // 
+            // TGuardarSinImprimir
+            // 
+            this.TGuardarSinImprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TGuardarSinImprimir.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.TGuardarSinImprimir.ForeColor = System.Drawing.Color.White;
+            this.TGuardarSinImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TGuardarSinImprimir.Name = "TGuardarSinImprimir";
+            this.TGuardarSinImprimir.Size = new System.Drawing.Size(192, 36);
+            this.TGuardarSinImprimir.Text = "Guardar y ver en Pantalla";
+            this.TGuardarSinImprimir.ToolTipText = "Guardar y ver en Pantalla";
+            this.TGuardarSinImprimir.Click += new System.EventHandler(this.TGuardarSinImprimir_Click);
+            // 
+            // FlowLayoutPanel3
+            // 
+            this.FlowLayoutPanel3.Location = new System.Drawing.Point(14, 159);
+            this.FlowLayoutPanel3.Name = "FlowLayoutPanel3";
+            this.FlowLayoutPanel3.Size = new System.Drawing.Size(340, 98);
+            this.FlowLayoutPanel3.TabIndex = 610;
+            // 
+            // cboImpresora
+            // 
+            this.cboImpresora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboImpresora.FormattingEnabled = true;
+            this.cboImpresora.Location = new System.Drawing.Point(102, 17);
+            this.cboImpresora.Name = "cboImpresora";
+            this.cboImpresora.Size = new System.Drawing.Size(243, 24);
+            this.cboImpresora.TabIndex = 6;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(1, 18);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(100, 20);
+            this.label25.TabIndex = 5;
+            this.label25.Text = "Impresora :";
+            // 
+            // panel37
+            // 
+            this.panel37.Controls.Add(this.lblIdSerializacion);
+            this.panel37.Controls.Add(this.lblCorrelativo);
+            this.panel37.Controls.Add(this.lblNumeroFin);
+            this.panel37.Controls.Add(this.lblCantidadCero);
+            this.panel37.Controls.Add(this.lblSerie);
+            this.panel37.Controls.Add(this.panel38);
+            this.panel37.Controls.Add(this.label28);
+            this.panel37.Controls.Add(this.label29);
+            this.panel37.Controls.Add(this.button2);
+            this.panel37.Controls.Add(this.menuStrip4);
+            this.panel37.Controls.Add(this.flowLayoutPanel1);
+            this.panel37.Controls.Add(this.comboBox2);
+            this.panel37.Controls.Add(this.label30);
+            this.panel37.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel37.Location = new System.Drawing.Point(0, 0);
+            this.panel37.Name = "panel37";
+            this.panel37.Size = new System.Drawing.Size(363, 358);
+            this.panel37.TabIndex = 617;
+            // 
+            // lblIdSerializacion
+            // 
+            this.lblIdSerializacion.AutoSize = true;
+            this.lblIdSerializacion.Location = new System.Drawing.Point(125, 314);
+            this.lblIdSerializacion.Name = "lblIdSerializacion";
+            this.lblIdSerializacion.Size = new System.Drawing.Size(0, 13);
+            this.lblIdSerializacion.TabIndex = 619;
+            // 
+            // lblCorrelativo
+            // 
+            this.lblCorrelativo.BackColor = System.Drawing.Color.Peru;
+            this.lblCorrelativo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCorrelativo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblCorrelativo.Location = new System.Drawing.Point(232, 266);
+            this.lblCorrelativo.Name = "lblCorrelativo";
+            this.lblCorrelativo.Size = new System.Drawing.Size(123, 41);
+            this.lblCorrelativo.TabIndex = 618;
+            this.lblCorrelativo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblNumeroFin
+            // 
+            this.lblNumeroFin.BackColor = System.Drawing.Color.Peru;
+            this.lblNumeroFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumeroFin.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblNumeroFin.Location = new System.Drawing.Point(157, 266);
+            this.lblNumeroFin.Name = "lblNumeroFin";
+            this.lblNumeroFin.Size = new System.Drawing.Size(68, 41);
+            this.lblNumeroFin.TabIndex = 618;
+            this.lblNumeroFin.Text = "\"\"";
+            this.lblNumeroFin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblCantidadCero
+            // 
+            this.lblCantidadCero.BackColor = System.Drawing.Color.Peru;
+            this.lblCantidadCero.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidadCero.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblCantidadCero.Location = new System.Drawing.Point(89, 266);
+            this.lblCantidadCero.Name = "lblCantidadCero";
+            this.lblCantidadCero.Size = new System.Drawing.Size(62, 41);
+            this.lblCantidadCero.TabIndex = 618;
+            this.lblCantidadCero.Text = "\"\"";
+            this.lblCantidadCero.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSerie
+            // 
+            this.lblSerie.BackColor = System.Drawing.Color.Peru;
+            this.lblSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSerie.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblSerie.Location = new System.Drawing.Point(9, 266);
+            this.lblSerie.Name = "lblSerie";
+            this.lblSerie.Size = new System.Drawing.Size(70, 41);
+            this.lblSerie.TabIndex = 618;
+            this.lblSerie.Text = "\"\"";
+            this.lblSerie.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel38
+            // 
+            this.panel38.Controls.Add(this.reportViewerImprimir);
+            this.panel38.Location = new System.Drawing.Point(21, 70);
+            this.panel38.Name = "panel38";
+            this.panel38.Size = new System.Drawing.Size(10, 11);
+            this.panel38.TabIndex = 617;
+            // 
+            // reportViewerImprimir
+            // 
+            this.reportViewerImprimir.AccessibilityKeyMap = null;
+            this.reportViewerImprimir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewerImprimir.Location = new System.Drawing.Point(0, 0);
+            this.reportViewerImprimir.Name = "reportViewerImprimir";
+            this.reportViewerImprimir.Size = new System.Drawing.Size(10, 11);
+            this.reportViewerImprimir.TabIndex = 0;
+            // 
+            // label28
+            // 
+            this.label28.BackColor = System.Drawing.Color.Peru;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label28.Location = new System.Drawing.Point(203, 311);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(151, 41);
+            this.label28.TabIndex = 616;
+            this.label28.Text = "\"\"";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(3, 323);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(204, 17);
+            this.label29.TabIndex = 615;
+            this.label29.Text = "Comprobante por Defecto :";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(16, 57);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(119, 40);
+            this.button2.TabIndex = 614;
+            this.button2.Text = "Imprimir directo";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // menuStrip4
+            // 
+            this.menuStrip4.AutoSize = false;
+            this.menuStrip4.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip4.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.menuStrip4.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.menuStrip4.Location = new System.Drawing.Point(147, 57);
+            this.menuStrip4.Name = "menuStrip4";
+            this.menuStrip4.ShowItemToolTips = true;
+            this.menuStrip4.Size = new System.Drawing.Size(198, 40);
+            this.menuStrip4.TabIndex = 613;
+            this.menuStrip4.Text = "menuStrip4";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItem1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(192, 36);
+            this.toolStripMenuItem1.Text = "Guardar y ver en Pantalla";
+            this.toolStripMenuItem1.ToolTipText = "Guardar y ver en Pantalla";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(14, 159);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(340, 98);
+            this.flowLayoutPanel1.TabIndex = 610;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(102, 17);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(243, 24);
+            this.comboBox2.TabIndex = 6;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(1, 18);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(100, 20);
+            this.label30.TabIndex = 5;
+            this.label30.Text = "Impresora :";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.panel33);
+            this.groupBox2.Controls.Add(this.rbtnAbonar);
+            this.groupBox2.Controls.Add(this.txtRecibi);
+            this.groupBox2.Controls.Add(this.panel35);
+            this.groupBox2.Controls.Add(this.txtCambio);
+            this.groupBox2.Controls.Add(this.panel34);
+            this.groupBox2.Controls.Add(this.dtpFechaPago);
+            this.groupBox2.Controls.Add(this.label24);
+            this.groupBox2.Controls.Add(this.label23);
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(20, 48);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(373, 340);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Cobro";
+            // 
+            // panel33
+            // 
+            this.panel33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel33.Controls.Add(this.label21);
+            this.panel33.Controls.Add(this.lblPagoTotal);
+            this.panel33.Location = new System.Drawing.Point(12, 105);
+            this.panel33.Name = "panel33";
+            this.panel33.Size = new System.Drawing.Size(346, 55);
+            this.panel33.TabIndex = 563;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Green;
+            this.label21.Location = new System.Drawing.Point(42, 5);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(118, 39);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Total :";
+            // 
+            // lblPagoTotal
+            // 
+            this.lblPagoTotal.AutoSize = true;
+            this.lblPagoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPagoTotal.ForeColor = System.Drawing.Color.Green;
+            this.lblPagoTotal.Location = new System.Drawing.Point(172, 5);
+            this.lblPagoTotal.Name = "lblPagoTotal";
+            this.lblPagoTotal.Size = new System.Drawing.Size(37, 39);
+            this.lblPagoTotal.TabIndex = 1;
+            this.lblPagoTotal.Text = "0";
+            // 
+            // rbtnAbonar
+            // 
+            this.rbtnAbonar.AutoSize = true;
+            this.rbtnAbonar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnAbonar.Location = new System.Drawing.Point(54, 23);
+            this.rbtnAbonar.Name = "rbtnAbonar";
+            this.rbtnAbonar.Size = new System.Drawing.Size(100, 29);
+            this.rbtnAbonar.TabIndex = 562;
+            this.rbtnAbonar.Text = "Abonar";
+            this.rbtnAbonar.UseVisualStyleBackColor = true;
+            // 
+            // txtRecibi
+            // 
+            this.txtRecibi.BackColor = System.Drawing.Color.White;
+            this.txtRecibi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtRecibi.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.txtRecibi.ForeColor = System.Drawing.Color.Black;
+            this.txtRecibi.Location = new System.Drawing.Point(178, 176);
+            this.txtRecibi.Name = "txtRecibi";
+            this.txtRecibi.Size = new System.Drawing.Size(177, 28);
+            this.txtRecibi.TabIndex = 561;
+            this.txtRecibi.Text = "0";
+            this.txtRecibi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRecibi.TextChanged += new System.EventHandler(this.txtRecibi_TextChanged);
+            this.txtRecibi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRecibi_KeyPress);
+            // 
+            // panel35
+            // 
+            this.panel35.BackColor = System.Drawing.Color.SeaGreen;
+            this.panel35.ForeColor = System.Drawing.Color.White;
+            this.panel35.Location = new System.Drawing.Point(178, 209);
+            this.panel35.Name = "panel35";
+            this.panel35.Size = new System.Drawing.Size(180, 1);
+            this.panel35.TabIndex = 560;
+            // 
+            // txtCambio
+            // 
+            this.txtCambio.BackColor = System.Drawing.Color.White;
+            this.txtCambio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.txtCambio.ForeColor = System.Drawing.Color.Black;
+            this.txtCambio.Location = new System.Drawing.Point(178, 231);
+            this.txtCambio.Name = "txtCambio";
+            this.txtCambio.ReadOnly = true;
+            this.txtCambio.Size = new System.Drawing.Size(177, 28);
+            this.txtCambio.TabIndex = 559;
+            this.txtCambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // panel34
+            // 
+            this.panel34.BackColor = System.Drawing.Color.SeaGreen;
+            this.panel34.Location = new System.Drawing.Point(178, 264);
+            this.panel34.Name = "panel34";
+            this.panel34.Size = new System.Drawing.Size(180, 1);
+            this.panel34.TabIndex = 558;
+            // 
+            // dtpFechaPago
+            // 
+            this.dtpFechaPago.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaPago.Location = new System.Drawing.Point(178, 58);
+            this.dtpFechaPago.Name = "dtpFechaPago";
+            this.dtpFechaPago.Size = new System.Drawing.Size(132, 26);
+            this.dtpFechaPago.TabIndex = 5;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(51, 61);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(115, 20);
+            this.label24.TabIndex = 4;
+            this.label24.Text = "Fecha Pago :";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.Green;
+            this.label23.Location = new System.Drawing.Point(5, 235);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(161, 39);
+            this.label23.TabIndex = 3;
+            this.label23.Text = "Cambio :";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Green;
+            this.label22.Location = new System.Drawing.Point(16, 176);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(150, 39);
+            this.label22.TabIndex = 2;
+            this.label22.Text = "Recibo :";
+            // 
+            // panel32
+            // 
+            this.panel32.BackColor = System.Drawing.Color.Orange;
+            this.panel32.Controls.Add(this.label27);
+            this.panel32.Controls.Add(this.pbCerrarPanelCobrar);
+            this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel32.Location = new System.Drawing.Point(0, 0);
+            this.panel32.Name = "panel32";
+            this.panel32.Size = new System.Drawing.Size(762, 41);
+            this.panel32.TabIndex = 0;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.Black;
+            this.label27.Location = new System.Drawing.Point(330, 5);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(93, 31);
+            this.label27.TabIndex = 564;
+            this.label27.Text = "Cobro";
+            // 
+            // pbCerrarPanelCobrar
+            // 
+            this.pbCerrarPanelCobrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbCerrarPanelCobrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbCerrarPanelCobrar.Image = ((System.Drawing.Image)(resources.GetObject("pbCerrarPanelCobrar.Image")));
+            this.pbCerrarPanelCobrar.Location = new System.Drawing.Point(714, 2);
+            this.pbCerrarPanelCobrar.Name = "pbCerrarPanelCobrar";
+            this.pbCerrarPanelCobrar.Size = new System.Drawing.Size(44, 37);
+            this.pbCerrarPanelCobrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCerrarPanelCobrar.TabIndex = 0;
+            this.pbCerrarPanelCobrar.TabStop = false;
+            this.pbCerrarPanelCobrar.Click += new System.EventHandler(this.pbCerrarPanelCobrar_Click);
             // 
             // panel29
             // 
@@ -280,12 +807,11 @@
             // panel27
             // 
             this.panel27.Controls.Add(this.menuStrip9);
-            this.panel27.Controls.Add(this.pnlCobro);
             this.panel27.Controls.Add(this.menuStrip8);
             this.panel27.Controls.Add(this.menuStrip1);
             this.panel27.Location = new System.Drawing.Point(984, 177);
             this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(292, 289);
+            this.panel27.Size = new System.Drawing.Size(292, 130);
             this.panel27.TabIndex = 11;
             // 
             // menuStrip9
@@ -309,97 +835,6 @@
             this.btnCobrar.Size = new System.Drawing.Size(89, 25);
             this.btnCobrar.Text = "Cobrar";
             this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
-            // 
-            // pnlCobro
-            // 
-            this.pnlCobro.BackColor = System.Drawing.Color.OliveDrab;
-            this.pnlCobro.Controls.Add(this.label23);
-            this.pnlCobro.Controls.Add(this.lblCambio);
-            this.pnlCobro.Controls.Add(this.menuStrip4);
-            this.pnlCobro.Controls.Add(this.label22);
-            this.pnlCobro.Controls.Add(this.txtRecibo);
-            this.pnlCobro.Controls.Add(this.label21);
-            this.pnlCobro.Location = new System.Drawing.Point(8, 127);
-            this.pnlCobro.Name = "pnlCobro";
-            this.pnlCobro.Size = new System.Drawing.Size(281, 159);
-            this.pnlCobro.TabIndex = 14;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label23.Location = new System.Drawing.Point(144, 71);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(36, 39);
-            this.label23.TabIndex = 17;
-            this.label23.Text = "$";
-            // 
-            // lblCambio
-            // 
-            this.lblCambio.AutoSize = true;
-            this.lblCambio.BackColor = System.Drawing.Color.Transparent;
-            this.lblCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCambio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblCambio.Location = new System.Drawing.Point(172, 71);
-            this.lblCambio.Name = "lblCambio";
-            this.lblCambio.Size = new System.Drawing.Size(36, 39);
-            this.lblCambio.TabIndex = 16;
-            this.lblCambio.Text = "0";
-            // 
-            // menuStrip4
-            // 
-            this.menuStrip4.BackColor = System.Drawing.Color.Silver;
-            this.menuStrip4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.menuStrip4.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnGenerarVenta});
-            this.menuStrip4.Location = new System.Drawing.Point(122, 120);
-            this.menuStrip4.Name = "menuStrip4";
-            this.menuStrip4.Size = new System.Drawing.Size(154, 29);
-            this.menuStrip4.TabIndex = 11;
-            this.menuStrip4.Text = "menuStrip4";
-            // 
-            // btnGenerarVenta
-            // 
-            this.btnGenerarVenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnGenerarVenta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnGenerarVenta.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerarVenta.Image")));
-            this.btnGenerarVenta.Name = "btnGenerarVenta";
-            this.btnGenerarVenta.Size = new System.Drawing.Size(146, 25);
-            this.btnGenerarVenta.Text = "Generar Venta";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label22.Location = new System.Drawing.Point(12, 76);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(136, 25);
-            this.label22.TabIndex = 15;
-            this.label22.Text = "SU CAMBIO :";
-            // 
-            // txtRecibo
-            // 
-            this.txtRecibo.BackColor = System.Drawing.Color.OliveDrab;
-            this.txtRecibo.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRecibo.Location = new System.Drawing.Point(116, 12);
-            this.txtRecibo.Name = "txtRecibo";
-            this.txtRecibo.Size = new System.Drawing.Size(116, 45);
-            this.txtRecibo.TabIndex = 14;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label21.Location = new System.Drawing.Point(16, 22);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(98, 25);
-            this.label21.TabIndex = 13;
-            this.label21.Text = "RECIBO :";
             // 
             // menuStrip8
             // 
@@ -1658,16 +2093,30 @@
             this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
             this.pnlVentas.ResumeLayout(false);
             this.pnlVentas.PerformLayout();
+            this.pnlCobrar.ResumeLayout(false);
+            this.panel31.ResumeLayout(false);
+            this.panel36.ResumeLayout(false);
+            this.panel36.PerformLayout();
+            this.MenuStrip15.ResumeLayout(false);
+            this.MenuStrip15.PerformLayout();
+            this.panel37.ResumeLayout(false);
+            this.panel37.PerformLayout();
+            this.panel38.ResumeLayout(false);
+            this.menuStrip4.ResumeLayout(false);
+            this.menuStrip4.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.panel33.ResumeLayout(false);
+            this.panel33.PerformLayout();
+            this.panel32.ResumeLayout(false);
+            this.panel32.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCerrarPanelCobrar)).EndInit();
             this.panel29.ResumeLayout(false);
             this.panel29.PerformLayout();
             this.panel27.ResumeLayout(false);
             this.panel27.PerformLayout();
             this.menuStrip9.ResumeLayout(false);
             this.menuStrip9.PerformLayout();
-            this.pnlCobro.ResumeLayout(false);
-            this.pnlCobro.PerformLayout();
-            this.menuStrip4.ResumeLayout(false);
-            this.menuStrip4.PerformLayout();
             this.menuStrip8.ResumeLayout(false);
             this.menuStrip8.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -1843,20 +2292,55 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel27;
-        private System.Windows.Forms.MenuStrip menuStrip4;
-        private System.Windows.Forms.ToolStripMenuItem btnGenerarVenta;
         private System.Windows.Forms.MenuStrip menuStrip8;
         private System.Windows.Forms.ToolStripMenuItem btnVentaPendiente;
         private System.Windows.Forms.MenuStrip menuStrip9;
         private System.Windows.Forms.ToolStripMenuItem btnCobrar;
-        private System.Windows.Forms.Panel pnlCobro;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label lblCambio;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox txtRecibo;
-        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Panel panel29;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Panel panel30;
+        private System.Windows.Forms.Panel pnlCobrar;
+        private System.Windows.Forms.Panel panel31;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label lblPagoTotal;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Panel panel32;
+        internal System.Windows.Forms.TextBox txtRecibi;
+        internal System.Windows.Forms.Panel panel35;
+        internal System.Windows.Forms.TextBox txtCambio;
+        internal System.Windows.Forms.Panel panel34;
+        private System.Windows.Forms.DateTimePicker dtpFechaPago;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Panel panel36;
+        private System.Windows.Forms.ComboBox cboImpresora;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Panel panel33;
+        private System.Windows.Forms.RadioButton rbtnAbonar;
+        internal System.Windows.Forms.FlowLayoutPanel FlowLayoutPanel3;
+        private System.Windows.Forms.Button btnGuardarImprimirdirecto;
+        internal System.Windows.Forms.MenuStrip MenuStrip15;
+        internal System.Windows.Forms.ToolStripMenuItem TGuardarSinImprimir;
+        private System.Windows.Forms.Label lblComprobante;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.PictureBox pbCerrarPanelCobrar;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Panel panel37;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Button button2;
+        internal System.Windows.Forms.MenuStrip menuStrip4;
+        internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        internal System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Panel panel38;
+        private Telerik.ReportViewer.WinForms.ReportViewer reportViewerImprimir;
+        private System.Windows.Forms.Label lblCantidadCero;
+        private System.Windows.Forms.Label lblSerie;
+        private System.Windows.Forms.Label lblNumeroFin;
+        private System.Windows.Forms.Label lblCorrelativo;
+        private System.Windows.Forms.Label lblIdSerializacion;
     }
 }

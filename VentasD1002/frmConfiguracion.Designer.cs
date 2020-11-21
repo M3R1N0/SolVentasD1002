@@ -401,6 +401,7 @@
             this.Button2.Size = new System.Drawing.Size(115, 51);
             this.Button2.TabIndex = 603;
             this.Button2.UseVisualStyleBackColor = true;
+            this.Button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // Label31
             // 
