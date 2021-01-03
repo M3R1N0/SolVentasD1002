@@ -52,7 +52,7 @@ namespace VentasD1002
             if (tabKardex.SelectedIndex == 4)
             {
                 rbPorVencer.Checked = false;
-                rbVencido.Checked = false;
+                rbVencido.Checked = true;
                 Mostrar_ProductosVencidos("");
             }
 
@@ -361,8 +361,12 @@ namespace VentasD1002
             }
         }
 
+
         #endregion
 
-      
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

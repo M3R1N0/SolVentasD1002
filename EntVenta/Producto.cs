@@ -24,10 +24,11 @@ namespace EntVenta
         public decimal stockMinimo { get; set; }      //15
         public string Caducidad { get; set; }         //16
         public bool Estado { get; set; }              //17
-
+        
 
         public string  Tipo_Presentacion { get; set; }
         public string  Tipo_Catalogo { get; set; }
-
+        public decimal? TotalUnidades { get; set; }
+        public string PresentacionMenudeo { get; set; }
     }
 }

@@ -70,6 +70,25 @@ namespace DatVentas
             }
         }
 
+        public DataRow ObtenerCliente_PorId(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                DataTable dt = new DataTable();
+                try
+                {
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM tb_Cliente where Id_Cliente="+id, conn);
+                    da.Fill(dt);
+                    return dt.Rows[0];
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    throw ex;
+                }
+            }
+        }
+
         public int BorrarCliente(int id)
         {
             using (SqlConnection con = new SqlConnection(MasterConnection.connection))

@@ -155,6 +155,7 @@
             // panelIniciarSesion
             // 
             this.panelIniciarSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(10)))), ((int)(((byte)(54)))));
+            this.panelIniciarSesion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelIniciarSesion.Controls.Add(this.lblLicencia);
             this.panelIniciarSesion.Controls.Add(this.pictureBox1);
             this.panelIniciarSesion.Controls.Add(this.panel6);

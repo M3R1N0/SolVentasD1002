@@ -32,9 +32,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EPPlus, Version=5.5.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.5.0\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.3.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.3.6\lib\net45\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,6 +64,12 @@
       <DependentUpon>frmInventario.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rptComprobanteAbono.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptComprobanteAbono.Designer.cs">
+      <DependentUpon>rptComprobanteAbono.cs</DependentUpon>
+    </Compile>
     <Compile Include="rptInventarios.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -83,6 +100,9 @@
       <DependentUpon>frmInventario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="rptComprobanteAbono.resx">
+      <DependentUpon>rptComprobanteAbono.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="rptInventarios.resx">
       <DependentUpon>rptInventarios.cs</DependentUpon>
     </EmbeddedResource>
@@ -109,6 +129,9 @@
       <Project>{1A55DD94-9B6C-415B-A132-B17835C5A755}</Project>
       <Name>EntVenta</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -38,21 +38,22 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip5 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btnVentas = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).BeginInit();
             this.menuStrip3.SuspendLayout();
             this.menuStrip5.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -63,10 +64,10 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.lblNotificacion);
+            this.panel2.Controls.Add(this.menuStrip1);
             this.panel2.Controls.Add(this.pbPerfil);
             this.panel2.Controls.Add(this.menuStrip3);
             this.panel2.Controls.Add(this.menuStrip5);
-            this.panel2.Controls.Add(this.menuStrip1);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(730, 0);
@@ -102,7 +103,7 @@
             this.toolStripMenuItem2});
             this.menuStrip3.Location = new System.Drawing.Point(150, 26);
             this.menuStrip3.Name = "menuStrip3";
-            this.menuStrip3.Size = new System.Drawing.Size(170, 29);
+            this.menuStrip3.Size = new System.Drawing.Size(50, 29);
             this.menuStrip3.TabIndex = 7;
             this.menuStrip3.Text = "menuStrip3";
             // 
@@ -135,27 +136,6 @@
             this.toolStripMenuItem4.Size = new System.Drawing.Size(42, 25);
             this.toolStripMenuItem4.Text = " ";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnVentas});
-            this.menuStrip1.Location = new System.Drawing.Point(10, 26);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(107, 29);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // btnVentas
-            // 
-            this.btnVentas.BackColor = System.Drawing.Color.DarkOliveGreen;
-            this.btnVentas.Image = ((System.Drawing.Image)(resources.GetObject("btnVentas.Image")));
-            this.btnVentas.Name = "btnVentas";
-            this.btnVentas.Size = new System.Drawing.Size(99, 25);
-            this.btnVentas.Text = "VENTAS";
-            this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
@@ -166,6 +146,28 @@
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Gainsboro;
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnVentas});
+            this.menuStrip1.Location = new System.Drawing.Point(10, 23);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(107, 29);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // btnVentas
+            // 
+            this.btnVentas.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnVentas.Image = ((System.Drawing.Image)(resources.GetObject("btnVentas.Image")));
+            this.btnVentas.Name = "btnVentas";
+            this.btnVentas.Size = new System.Drawing.Size(99, 25);
+            this.btnVentas.Text = "VENTAS";
+            this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
+            // 
             // timer2
             // 
             this.timer2.Interval = 200;
@@ -175,7 +177,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1147, 510);
             this.Controls.Add(this.panel1);
             this.MainMenuStrip = this.menuStrip1;
@@ -191,9 +193,9 @@
             this.menuStrip3.PerformLayout();
             this.menuStrip5.ResumeLayout(false);
             this.menuStrip5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -35,6 +35,8 @@
             this.pbCerrar = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gdvUsuarios = new System.Windows.Forms.DataGridView();
+            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelAgregarUsuarios = new System.Windows.Forms.Panel();
@@ -68,8 +70,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panelEncabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvUsuarios)).BeginInit();
@@ -121,7 +122,6 @@
             this.gdvUsuarios.AllowUserToResizeRows = false;
             this.gdvUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gdvUsuarios.BackgroundColor = System.Drawing.Color.White;
-            this.gdvUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gdvUsuarios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
             this.gdvUsuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -155,9 +155,29 @@
             this.gdvUsuarios.TabIndex = 3;
             this.gdvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvUsuarios_CellClick);
             // 
+            // Eliminar
+            // 
+            this.Eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Eliminar.FillWeight = 149.2386F;
+            this.Eliminar.HeaderText = "";
+            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
+            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            // 
+            // Editar
+            // 
+            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Editar.FillWeight = 50.76142F;
+            this.Editar.HeaderText = "";
+            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(176)))), ((int)(((byte)(59)))));
+            this.menuStrip1.BackColor = System.Drawing.Color.Silver;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.agregarToolStripMenuItem});
@@ -171,7 +191,7 @@
             // agregarToolStripMenuItem
             // 
             this.agregarToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.agregarToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.agregarToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.agregarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("agregarToolStripMenuItem.Image")));
             this.agregarToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
@@ -214,9 +234,9 @@
             this.panelAgregarUsuarios.Controls.Add(this.label4);
             this.panelAgregarUsuarios.Controls.Add(this.label3);
             this.panelAgregarUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelAgregarUsuarios.Location = new System.Drawing.Point(87, 60);
+            this.panelAgregarUsuarios.Location = new System.Drawing.Point(86, 62);
             this.panelAgregarUsuarios.Name = "panelAgregarUsuarios";
-            this.panelAgregarUsuarios.Size = new System.Drawing.Size(733, 403);
+            this.panelAgregarUsuarios.Size = new System.Drawing.Size(734, 401);
             this.panelAgregarUsuarios.TabIndex = 5;
             // 
             // panelTitulo
@@ -514,25 +534,14 @@
             this.label3.TabIndex = 19;
             this.label3.Text = "Usuario :";
             // 
-            // Eliminar
+            // panel2
             // 
-            this.Eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Eliminar.FillWeight = 149.2386F;
-            this.Eliminar.HeaderText = "";
-            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            // 
-            // Editar
-            // 
-            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Editar.FillWeight = 50.76142F;
-            this.Editar.HeaderText = "";
-            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
-            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel2.Location = new System.Drawing.Point(16, 59);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(487, 71);
+            this.panel2.TabIndex = 6;
             // 
             // frmUsuario
             // 
@@ -545,6 +554,7 @@
             this.Controls.Add(this.gdvUsuarios);
             this.Controls.Add(this.panelEncabezado);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -606,5 +616,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
         private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.Panel panel2;
     }
 }

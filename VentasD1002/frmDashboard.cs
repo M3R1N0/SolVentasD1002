@@ -183,33 +183,23 @@ namespace VentasD1002
         
         private void timer2_Tick(object sender, EventArgs e)
         {
-            pb.Maximum = 100;
-            if ( pb.Value < 100 )
-            {
-                pb.Value += 10;
-               
-                //aqui va un loading
-
-            }
-            else
-            {
-                pb.Value = 0;
+           
                 timer2.Stop();
                 if ( Apertura.Equals( "NUEVO" ) )
                 {
-                    this.Hide();
+                    
                     frmAperturaCaja aperturaCaja = new frmAperturaCaja();
+                    this.Hide();
                     aperturaCaja.ShowDialog();
                     Dispose();
                 }
                 else
                 {
-                    this.Hide();
                     frmMenuPrincipal principal = new frmMenuPrincipal();
+                    this.Hide();
                     principal.ShowDialog();
                     Dispose();
                 }
-            }
         }
 
         private void frmDashboard_Load(object sender, EventArgs e)
@@ -231,10 +221,10 @@ namespace VentasD1002
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             frmConfiguracion configuracion = new frmConfiguracion();
             configuracion.ShowDialog();
-            Dispose();
+            //Dispose();
         }
     }
 }

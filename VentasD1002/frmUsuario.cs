@@ -164,6 +164,8 @@ namespace VentasD1002
             gdvUsuarios.Columns[11].Visible = false;
             gdvUsuarios.Columns[12].Visible = false;
             gdvUsuarios.ClearSelection();
+
+           // DataTablePersonalizado.Multilinea(ref gdvUsuarios);
         }
 
         private void label1_Click(object sender, EventArgs e)

@@ -89,7 +89,7 @@ namespace BusVenta
             int filasAfectadas = new DatUser().EditUser(u);
             if (filasAfectadas != 1)
             {
-                throw new ApplicationException("Ocurrión un error al editar");
+                throw new ApplicationException("Ocurrió un error al editar");
             }
         }
 

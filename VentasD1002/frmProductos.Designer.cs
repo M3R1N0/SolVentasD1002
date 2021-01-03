@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProductos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -99,6 +99,14 @@
             this.txtApartirDe = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.pnlABProducto = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkCaja = new System.Windows.Forms.CheckBox();
+            this.chkBolsa = new System.Windows.Forms.CheckBox();
+            this.chkPaquete = new System.Windows.Forms.CheckBox();
+            this.chkPieza = new System.Windows.Forms.CheckBox();
+            this.txtTotalUnidades = new System.Windows.Forms.TextBox();
+            this.lblTipoPresentacion = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -108,6 +116,35 @@
             this.exportarAExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.lblAuxHay = new System.Windows.Forms.Label();
+            this.lblAuxHay2 = new System.Windows.Forms.Label();
+            this.lblPiezasStock = new System.Windows.Forms.Label();
+            this.checkActualizarStock = new System.Windows.Forms.CheckBox();
+            this.pnlActualizarStock = new System.Windows.Forms.Panel();
+            this.txtPiezasActualizar = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.btnActualizarStock = new System.Windows.Forms.Button();
+            this.txtStockActualizar = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.btnCancelarActualizacionStock = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtStockActualizado = new System.Windows.Forms.TextBox();
+            this.txtPiezasActualizadas = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvProductos)).BeginInit();
@@ -121,11 +158,20 @@
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCatPresentacion)).BeginInit();
             this.pnlABProducto.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.menuStrip3.SuspendLayout();
+            this.pnlActualizarStock.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -186,19 +232,19 @@
             this.gdvProductos.GridColor = System.Drawing.SystemColors.Window;
             this.gdvProductos.Location = new System.Drawing.Point(85, 7);
             this.gdvProductos.Name = "gdvProductos";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gdvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gdvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.gdvProductos.RowHeadersVisible = false;
             this.gdvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.gdvProductos.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            this.gdvProductos.RowsDefaultCellStyle = dataGridViewCellStyle14;
             this.gdvProductos.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.gdvProductos.RowTemplate.ReadOnly = true;
             this.gdvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -311,7 +357,7 @@
             this.panel6.Controls.Add(this.gdvProductos);
             this.panel6.Location = new System.Drawing.Point(0, 155);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1367, 597);
+            this.panel6.Size = new System.Drawing.Size(1367, 607);
             this.panel6.TabIndex = 376;
             // 
             // label2
@@ -388,7 +434,7 @@
             this.panel3.ForeColor = System.Drawing.Color.White;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(454, 34);
+            this.panel3.Size = new System.Drawing.Size(481, 34);
             this.panel3.TabIndex = 0;
             // 
             // button1
@@ -453,9 +499,9 @@
             this.panelCategoria.Controls.Add(this.btnAgregarCategorias);
             this.panelCategoria.Controls.Add(this.txtNombreCategoria);
             this.panelCategoria.Controls.Add(this.label8);
-            this.panelCategoria.Location = new System.Drawing.Point(282, 203);
+            this.panelCategoria.Location = new System.Drawing.Point(282, 167);
             this.panelCategoria.Name = "panelCategoria";
-            this.panelCategoria.Size = new System.Drawing.Size(454, 201);
+            this.panelCategoria.Size = new System.Drawing.Size(481, 190);
             this.panelCategoria.TabIndex = 621;
             // 
             // cboCategoria
@@ -474,9 +520,9 @@
             this.btnCancelar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(488, 609);
+            this.btnCancelar.Location = new System.Drawing.Point(488, 660);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(115, 38);
+            this.btnCancelar.Size = new System.Drawing.Size(115, 27);
             this.btnCancelar.TabIndex = 17;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -491,7 +537,7 @@
             this.AgregarProducto.ForeColor = System.Drawing.Color.Black;
             this.AgregarProducto.Image = ((System.Drawing.Image)(resources.GetObject("AgregarProducto.Image")));
             this.AgregarProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AgregarProducto.Location = new System.Drawing.Point(636, 610);
+            this.AgregarProducto.Location = new System.Drawing.Point(636, 657);
             this.AgregarProducto.Name = "AgregarProducto";
             this.AgregarProducto.Size = new System.Drawing.Size(120, 32);
             this.AgregarProducto.TabIndex = 16;
@@ -560,18 +606,18 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(292, 11);
+            this.label9.Location = new System.Drawing.Point(387, 33);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(132, 18);
+            this.label9.Size = new System.Drawing.Size(75, 18);
             this.label9.TabIndex = 15;
-            this.label9.Text = "en este momento.";
+            this.label9.Text = "Unidades";
             // 
             // No_aplica_fecha
             // 
             this.No_aplica_fecha.AutoSize = true;
             this.No_aplica_fecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.No_aplica_fecha.ForeColor = System.Drawing.Color.Black;
-            this.No_aplica_fecha.Location = new System.Drawing.Point(291, 66);
+            this.No_aplica_fecha.Location = new System.Drawing.Point(291, 119);
             this.No_aplica_fecha.Name = "No_aplica_fecha";
             this.No_aplica_fecha.Size = new System.Drawing.Size(102, 24);
             this.No_aplica_fecha.TabIndex = 15;
@@ -581,7 +627,7 @@
             // txtfechaoka
             // 
             this.txtfechaoka.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtfechaoka.Location = new System.Drawing.Point(136, 68);
+            this.txtfechaoka.Location = new System.Drawing.Point(136, 117);
             this.txtfechaoka.Name = "txtfechaoka";
             this.txtfechaoka.Size = new System.Drawing.Size(149, 26);
             this.txtfechaoka.TabIndex = 14;
@@ -589,7 +635,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 68);
+            this.label10.Location = new System.Drawing.Point(9, 117);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(117, 18);
             this.label10.TabIndex = 1;
@@ -598,44 +644,50 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(69, 38);
+            this.label11.Location = new System.Drawing.Point(18, 77);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(63, 18);
+            this.label11.Size = new System.Drawing.Size(107, 18);
             this.label11.TabIndex = 1;
-            this.label11.Text = "Minimo:";
+            this.label11.Text = "Stock minimo:";
             // 
             // txtstockminimo
             // 
             this.txtstockminimo.BackColor = System.Drawing.Color.White;
             this.txtstockminimo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtstockminimo.ForeColor = System.Drawing.Color.Black;
-            this.txtstockminimo.Location = new System.Drawing.Point(136, 36);
+            this.txtstockminimo.Location = new System.Drawing.Point(136, 73);
             this.txtstockminimo.Name = "txtstockminimo";
-            this.txtstockminimo.Size = new System.Drawing.Size(149, 26);
+            this.txtstockminimo.Size = new System.Drawing.Size(80, 26);
             this.txtstockminimo.TabIndex = 13;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(91, 11);
+            this.label12.Location = new System.Drawing.Point(3, 31);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(39, 18);
+            this.label12.Size = new System.Drawing.Size(130, 18);
             this.label12.TabIndex = 1;
-            this.label12.Text = "Hay:";
+            this.label12.Text = "Stock a ingresar :";
             // 
             // txtstock2
             // 
             this.txtstock2.BackColor = System.Drawing.Color.White;
             this.txtstock2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtstock2.ForeColor = System.Drawing.Color.Black;
-            this.txtstock2.Location = new System.Drawing.Point(137, 8);
+            this.txtstock2.Location = new System.Drawing.Point(137, 27);
             this.txtstock2.Name = "txtstock2";
-            this.txtstock2.Size = new System.Drawing.Size(149, 26);
+            this.txtstock2.Size = new System.Drawing.Size(79, 26);
             this.txtstock2.TabIndex = 12;
             // 
             // PANELINVENTARIO
             // 
             this.PANELINVENTARIO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.PANELINVENTARIO.Controls.Add(this.checkActualizarStock);
+            this.PANELINVENTARIO.Controls.Add(this.lblPiezasStock);
+            this.PANELINVENTARIO.Controls.Add(this.lblAuxHay2);
+            this.PANELINVENTARIO.Controls.Add(this.lblAuxHay);
+            this.PANELINVENTARIO.Controls.Add(this.label20);
+            this.PANELINVENTARIO.Controls.Add(this.label7);
             this.PANELINVENTARIO.Controls.Add(this.label9);
             this.PANELINVENTARIO.Controls.Add(this.No_aplica_fecha);
             this.PANELINVENTARIO.Controls.Add(this.txtfechaoka);
@@ -647,7 +699,7 @@
             this.PANELINVENTARIO.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PANELINVENTARIO.Location = new System.Drawing.Point(128, 496);
             this.PANELINVENTARIO.Name = "PANELINVENTARIO";
-            this.PANELINVENTARIO.Size = new System.Drawing.Size(628, 105);
+            this.PANELINVENTARIO.Size = new System.Drawing.Size(628, 158);
             this.PANELINVENTARIO.TabIndex = 617;
             // 
             // catProducto
@@ -833,6 +885,7 @@
             this.cboPresentacion.Name = "cboPresentacion";
             this.cboPresentacion.Size = new System.Drawing.Size(163, 26);
             this.cboPresentacion.TabIndex = 3;
+            this.cboPresentacion.SelectedIndexChanged += new System.EventHandler(this.cboPresentacion_SelectedIndexChanged);
             // 
             // pbCatPresentacion
             // 
@@ -869,12 +922,17 @@
             this.pnlABProducto.BackColor = System.Drawing.Color.White;
             this.pnlABProducto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlABProducto.BackgroundImage")));
             this.pnlABProducto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlABProducto.Controls.Add(this.pnlActualizarStock);
+            this.pnlABProducto.Controls.Add(this.panelCategoria);
+            this.pnlABProducto.Controls.Add(this.groupBox1);
+            this.pnlABProducto.Controls.Add(this.txtTotalUnidades);
+            this.pnlABProducto.Controls.Add(this.lblTipoPresentacion);
+            this.pnlABProducto.Controls.Add(this.label6);
             this.pnlABProducto.Controls.Add(this.panel4);
             this.pnlABProducto.Controls.Add(this.label2);
             this.pnlABProducto.Controls.Add(this.label3);
             this.pnlABProducto.Controls.Add(this.label4);
             this.pnlABProducto.Controls.Add(this.lblIdProducto);
-            this.pnlABProducto.Controls.Add(this.panelCategoria);
             this.pnlABProducto.Controls.Add(this.cboCategoria);
             this.pnlABProducto.Controls.Add(this.btnCancelar);
             this.pnlABProducto.Controls.Add(this.AgregarProducto);
@@ -902,10 +960,96 @@
             this.pnlABProducto.Controls.Add(this.label19);
             this.pnlABProducto.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlABProducto.ForeColor = System.Drawing.Color.Black;
-            this.pnlABProducto.Location = new System.Drawing.Point(172, 48);
+            this.pnlABProducto.Location = new System.Drawing.Point(162, 30);
             this.pnlABProducto.Name = "pnlABProducto";
-            this.pnlABProducto.Size = new System.Drawing.Size(1016, 665);
+            this.pnlABProducto.Size = new System.Drawing.Size(1016, 707);
             this.pnlABProducto.TabIndex = 2;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.chkCaja);
+            this.groupBox1.Controls.Add(this.chkBolsa);
+            this.groupBox1.Controls.Add(this.chkPaquete);
+            this.groupBox1.Controls.Add(this.chkPieza);
+            this.groupBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.Green;
+            this.groupBox1.Location = new System.Drawing.Point(463, 317);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(365, 42);
+            this.groupBox1.TabIndex = 637;
+            this.groupBox1.TabStop = false;
+            // 
+            // chkCaja
+            // 
+            this.chkCaja.AutoSize = true;
+            this.chkCaja.Location = new System.Drawing.Point(87, 13);
+            this.chkCaja.Name = "chkCaja";
+            this.chkCaja.Size = new System.Drawing.Size(62, 23);
+            this.chkCaja.TabIndex = 3;
+            this.chkCaja.Text = "Caja";
+            this.chkCaja.UseVisualStyleBackColor = true;
+            this.chkCaja.Click += new System.EventHandler(this.chkCaja_Click);
+            // 
+            // chkBolsa
+            // 
+            this.chkBolsa.AutoSize = true;
+            this.chkBolsa.Location = new System.Drawing.Point(273, 14);
+            this.chkBolsa.Name = "chkBolsa";
+            this.chkBolsa.Size = new System.Drawing.Size(72, 23);
+            this.chkBolsa.TabIndex = 2;
+            this.chkBolsa.Text = "Bolsa";
+            this.chkBolsa.UseVisualStyleBackColor = true;
+            this.chkBolsa.Click += new System.EventHandler(this.chkBolsa_Click);
+            // 
+            // chkPaquete
+            // 
+            this.chkPaquete.AutoSize = true;
+            this.chkPaquete.Location = new System.Drawing.Point(162, 14);
+            this.chkPaquete.Name = "chkPaquete";
+            this.chkPaquete.Size = new System.Drawing.Size(91, 23);
+            this.chkPaquete.TabIndex = 1;
+            this.chkPaquete.Text = "Paquete";
+            this.chkPaquete.UseVisualStyleBackColor = true;
+            this.chkPaquete.Click += new System.EventHandler(this.chkPaquete_Click);
+            // 
+            // chkPieza
+            // 
+            this.chkPieza.AutoSize = true;
+            this.chkPieza.Location = new System.Drawing.Point(8, 14);
+            this.chkPieza.Name = "chkPieza";
+            this.chkPieza.Size = new System.Drawing.Size(70, 23);
+            this.chkPieza.TabIndex = 0;
+            this.chkPieza.Text = "Pieza";
+            this.chkPieza.UseVisualStyleBackColor = true;
+            this.chkPieza.Click += new System.EventHandler(this.chkPieza_Click);
+            // 
+            // txtTotalUnidades
+            // 
+            this.txtTotalUnidades.Location = new System.Drawing.Point(710, 213);
+            this.txtTotalUnidades.Name = "txtTotalUnidades";
+            this.txtTotalUnidades.Size = new System.Drawing.Size(118, 26);
+            this.txtTotalUnidades.TabIndex = 636;
+            // 
+            // lblTipoPresentacion
+            // 
+            this.lblTipoPresentacion.AutoSize = true;
+            this.lblTipoPresentacion.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoPresentacion.ForeColor = System.Drawing.Color.Black;
+            this.lblTipoPresentacion.Location = new System.Drawing.Point(629, 215);
+            this.lblTipoPresentacion.Name = "lblTipoPresentacion";
+            this.lblTipoPresentacion.Size = new System.Drawing.Size(20, 18);
+            this.lblTipoPresentacion.TabIndex = 635;
+            this.lblTipoPresentacion.Text = "...";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(527, 216);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(106, 18);
+            this.label6.TabIndex = 634;
+            this.label6.Text = "Unidades por ";
             // 
             // panel4
             // 
@@ -999,6 +1143,328 @@
             this.toolStripMenuItem1.Text = "Nuevo Producto";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.DimGray;
+            this.label7.Location = new System.Drawing.Point(138, 56);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(422, 14);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Ingrese el stock en su presentacion por Mayoreo (Caja, paquete, bulto, six, bolsa" +
+    ", etc)";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.DimGray;
+            this.label20.Location = new System.Drawing.Point(138, 100);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(422, 14);
+            this.label20.TabIndex = 17;
+            this.label20.Text = "Ingrese el stock en su presentacion por Mayoreo (Caja, paquete, bulto, six, bolsa" +
+    ", etc)";
+            // 
+            // lblAuxHay
+            // 
+            this.lblAuxHay.AutoSize = true;
+            this.lblAuxHay.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAuxHay.Location = new System.Drawing.Point(222, 32);
+            this.lblAuxHay.Name = "lblAuxHay";
+            this.lblAuxHay.Size = new System.Drawing.Size(29, 19);
+            this.lblAuxHay.TabIndex = 18;
+            this.lblAuxHay.Text = ".....";
+            // 
+            // lblAuxHay2
+            // 
+            this.lblAuxHay2.AutoSize = true;
+            this.lblAuxHay2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAuxHay2.Location = new System.Drawing.Point(222, 81);
+            this.lblAuxHay2.Name = "lblAuxHay2";
+            this.lblAuxHay2.Size = new System.Drawing.Size(29, 19);
+            this.lblAuxHay2.TabIndex = 19;
+            this.lblAuxHay2.Text = ".....";
+            // 
+            // lblPiezasStock
+            // 
+            this.lblPiezasStock.AutoSize = true;
+            this.lblPiezasStock.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPiezasStock.Location = new System.Drawing.Point(334, 31);
+            this.lblPiezasStock.Name = "lblPiezasStock";
+            this.lblPiezasStock.Size = new System.Drawing.Size(18, 19);
+            this.lblPiezasStock.TabIndex = 20;
+            this.lblPiezasStock.Text = "0";
+            // 
+            // checkActualizarStock
+            // 
+            this.checkActualizarStock.AutoSize = true;
+            this.checkActualizarStock.BackColor = System.Drawing.Color.PaleGreen;
+            this.checkActualizarStock.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkActualizarStock.Location = new System.Drawing.Point(0, 0);
+            this.checkActualizarStock.Name = "checkActualizarStock";
+            this.checkActualizarStock.Size = new System.Drawing.Size(628, 22);
+            this.checkActualizarStock.TabIndex = 21;
+            this.checkActualizarStock.Text = "Actualizar Stock";
+            this.checkActualizarStock.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.checkActualizarStock.UseVisualStyleBackColor = false;
+            this.checkActualizarStock.CheckedChanged += new System.EventHandler(this.checkActualizarStock_CheckedChanged);
+            // 
+            // pnlActualizarStock
+            // 
+            this.pnlActualizarStock.AutoSize = true;
+            this.pnlActualizarStock.BackColor = System.Drawing.Color.White;
+            this.pnlActualizarStock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnlActualizarStock.Controls.Add(this.panel9);
+            this.pnlActualizarStock.Controls.Add(this.panel7);
+            this.pnlActualizarStock.Controls.Add(this.panel2);
+            this.pnlActualizarStock.Controls.Add(this.label21);
+            this.pnlActualizarStock.Controls.Add(this.panel5);
+            this.pnlActualizarStock.Location = new System.Drawing.Point(127, 239);
+            this.pnlActualizarStock.Name = "pnlActualizarStock";
+            this.pnlActualizarStock.Size = new System.Drawing.Size(641, 252);
+            this.pnlActualizarStock.TabIndex = 638;
+            // 
+            // txtPiezasActualizar
+            // 
+            this.txtPiezasActualizar.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPiezasActualizar.Location = new System.Drawing.Point(127, 96);
+            this.txtPiezasActualizar.Name = "txtPiezasActualizar";
+            this.txtPiezasActualizar.Size = new System.Drawing.Size(130, 38);
+            this.txtPiezasActualizar.TabIndex = 2;
+            this.txtPiezasActualizar.TextChanged += new System.EventHandler(this.txtPiezasActualizar_TextChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(44, 107);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(0, 18);
+            this.label21.TabIndex = 5;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.panel5.Controls.Add(this.label24);
+            this.panel5.Controls.Add(this.label22);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.ForeColor = System.Drawing.Color.White;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(641, 34);
+            this.panel5.TabIndex = 0;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(81, 6);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(0, 25);
+            this.label22.TabIndex = 0;
+            // 
+            // btnActualizarStock
+            // 
+            this.btnActualizarStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnActualizarStock.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnActualizarStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizarStock.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarStock.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizarStock.Image")));
+            this.btnActualizarStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnActualizarStock.Location = new System.Drawing.Point(0, 0);
+            this.btnActualizarStock.Name = "btnActualizarStock";
+            this.btnActualizarStock.Size = new System.Drawing.Size(323, 48);
+            this.btnActualizarStock.TabIndex = 3;
+            this.btnActualizarStock.Text = "Agregar";
+            this.btnActualizarStock.UseVisualStyleBackColor = true;
+            this.btnActualizarStock.Click += new System.EventHandler(this.btnActualizarStock_Click);
+            // 
+            // txtStockActualizar
+            // 
+            this.txtStockActualizar.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStockActualizar.Location = new System.Drawing.Point(127, 43);
+            this.txtStockActualizar.Name = "txtStockActualizar";
+            this.txtStockActualizar.Size = new System.Drawing.Size(130, 38);
+            this.txtStockActualizar.TabIndex = 1;
+            this.txtStockActualizar.TextChanged += new System.EventHandler(this.txtStockActualizar_TextChanged);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(92, 4);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(134, 18);
+            this.label23.TabIndex = 1;
+            this.label23.Text = "Existencia Actual :";
+            // 
+            // label24
+            // 
+            this.label24.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label24.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(0, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(641, 34);
+            this.label24.TabIndex = 1;
+            this.label24.Text = "Actualizar Stock";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnCancelarActualizacionStock
+            // 
+            this.btnCancelarActualizacionStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCancelarActualizacionStock.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnCancelarActualizacionStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarActualizacionStock.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarActualizacionStock.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelarActualizacionStock.Image")));
+            this.btnCancelarActualizacionStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelarActualizacionStock.Location = new System.Drawing.Point(0, 0);
+            this.btnCancelarActualizacionStock.Name = "btnCancelarActualizacionStock";
+            this.btnCancelarActualizacionStock.Size = new System.Drawing.Size(318, 48);
+            this.btnCancelarActualizacionStock.TabIndex = 6;
+            this.btnCancelarActualizacionStock.Text = "Cancelar";
+            this.btnCancelarActualizacionStock.UseVisualStyleBackColor = true;
+            this.btnCancelarActualizacionStock.Click += new System.EventHandler(this.btnCancelarActualizacionStock_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel2.Controls.Add(this.panel11);
+            this.panel2.Controls.Add(this.panel10);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 204);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(641, 48);
+            this.panel2.TabIndex = 7;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel7.Controls.Add(this.label29);
+            this.panel7.Controls.Add(this.label28);
+            this.panel7.Controls.Add(this.txtStockActualizado);
+            this.panel7.Controls.Add(this.txtPiezasActualizadas);
+            this.panel7.Controls.Add(this.label23);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel7.Location = new System.Drawing.Point(368, 34);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(273, 170);
+            this.panel7.TabIndex = 8;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel9.Controls.Add(this.pictureBox2);
+            this.panel9.Controls.Add(this.label27);
+            this.panel9.Controls.Add(this.label26);
+            this.panel9.Controls.Add(this.label25);
+            this.panel9.Controls.Add(this.txtStockActualizar);
+            this.panel9.Controls.Add(this.txtPiezasActualizar);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(0, 34);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(368, 170);
+            this.panel9.TabIndex = 9;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.btnActualizarStock);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel10.Location = new System.Drawing.Point(318, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(323, 48);
+            this.panel10.TabIndex = 7;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.btnCancelarActualizacionStock);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(318, 48);
+            this.panel11.TabIndex = 8;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(3, 4);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(308, 16);
+            this.label25.TabIndex = 2;
+            this.label25.Text = "Ingrese el stock por su presentacion a Mayoreo";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(28, 50);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(88, 19);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "Cantidad :";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(24, 106);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(92, 19);
+            this.label27.TabIndex = 3;
+            this.label27.Text = "Unidades :";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(15, 101);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(92, 19);
+            this.label28.TabIndex = 6;
+            this.label28.Text = "Unidades :";
+            // 
+            // txtStockActualizado
+            // 
+            this.txtStockActualizado.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStockActualizado.Location = new System.Drawing.Point(121, 40);
+            this.txtStockActualizado.Name = "txtStockActualizado";
+            this.txtStockActualizado.ReadOnly = true;
+            this.txtStockActualizado.Size = new System.Drawing.Size(130, 38);
+            this.txtStockActualizado.TabIndex = 4;
+            // 
+            // txtPiezasActualizadas
+            // 
+            this.txtPiezasActualizadas.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPiezasActualizadas.Location = new System.Drawing.Point(121, 93);
+            this.txtPiezasActualizadas.Name = "txtPiezasActualizadas";
+            this.txtPiezasActualizadas.ReadOnly = true;
+            this.txtPiezasActualizadas.Size = new System.Drawing.Size(130, 38);
+            this.txtPiezasActualizadas.TabIndex = 5;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(19, 48);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(88, 19);
+            this.label29.TabIndex = 7;
+            this.label29.Text = "Cantidad :";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(298, 52);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // frmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1038,6 +1504,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbCatPresentacion)).EndInit();
             this.pnlABProducto.ResumeLayout(false);
             this.pnlABProducto.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -1046,6 +1514,18 @@
             this.menuStrip1.PerformLayout();
             this.menuStrip3.ResumeLayout(false);
             this.menuStrip3.PerformLayout();
+            this.pnlActualizarStock.ResumeLayout(false);
+            this.pnlActualizarStock.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1130,5 +1610,42 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_mmayoreo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_mayoreo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Venta;
+        private System.Windows.Forms.TextBox txtTotalUnidades;
+        private System.Windows.Forms.Label lblTipoPresentacion;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox chkBolsa;
+        private System.Windows.Forms.CheckBox chkPaquete;
+        private System.Windows.Forms.CheckBox chkPieza;
+        private System.Windows.Forms.CheckBox chkCaja;
+        private System.Windows.Forms.Label lblAuxHay;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblAuxHay2;
+        private System.Windows.Forms.CheckBox checkActualizarStock;
+        private System.Windows.Forms.Label lblPiezasStock;
+        private System.Windows.Forms.Panel pnlActualizarStock;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txtStockActualizar;
+        private System.Windows.Forms.TextBox txtPiezasActualizar;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Button btnCancelarActualizacionStock;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button btnActualizarStock;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox txtStockActualizado;
+        private System.Windows.Forms.TextBox txtPiezasActualizadas;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

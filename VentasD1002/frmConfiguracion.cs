@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BusVenta;
+using DatVentas;
+using EntVenta;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,17 +20,25 @@ namespace VentasD1002
             InitializeComponent();
         }
 
-        private void Button6_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmProductos productos = new frmProductos();
-            productos.ShowDialog();
-            Dispose();
-        }
-
         private void frmConfiguracion_Load(object sender, EventArgs e)
         {
+            VerificarActualizacion();
+        }
 
+        private void VerificarActualizacion()
+        {
+            List<string> lst = new DatProducto().listadoActualizacion();
+
+            if (lst.Count > 0)
+                pnlProductosActualizados.Visible = true;
+            else
+                pnlProductosActualizados.Visible = false;
+        }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            frmProductos productos = new frmProductos();
+            productos.ShowDialog();
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -60,6 +71,36 @@ namespace VentasD1002
             frmFormatoComprobante frmFormato = new frmFormatoComprobante();
             frmFormato.ShowDialog();
             this.Dispose();
+        }
+
+        private void Button8_Click(object sender, EventArgs e)
+        {
+            frmCliente cliente = new frmCliente();
+            cliente.ShowDialog();
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            frmComprobante comprobante = new frmComprobante();
+            comprobante.ShowDialog();
+        }
+
+        private void Button9_Click(object sender, EventArgs e)
+        {
+            frmBitacoraCliente bitacoraCliente = new frmBitacoraCliente();
+            bitacoraCliente.ShowDialog();
+        }
+
+        private void btnDescargar_Click(object sender, EventArgs e)
+        {
+            frmDescargarActualizacion descargarActualizacion = new frmDescargarActualizacion();
+            descargarActualizacion.ShowDialog();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            frmCargarDatosExcel cargarDatosExcel = new frmCargarDatosExcel();
+            cargarDatosExcel.ShowDialog();
         }
     }
 }

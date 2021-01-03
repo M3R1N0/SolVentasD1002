@@ -23,6 +23,7 @@ namespace VentasD1002
             panelCategoria.Visible = false;
             PANELINVENTARIO.Visible = false;
             pnlABProducto.Visible = false;
+            pnlActualizarStock.Visible = false;
         }
 
         int idUsuario;
@@ -32,7 +33,7 @@ namespace VentasD1002
         private void frmProductos_Load_1(object sender, EventArgs e)
         {
             ListarProductos("");
-
+            List<string> lst = new DatProducto().listadoActualizacion();
             ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
 
             serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
@@ -46,15 +47,18 @@ namespace VentasD1002
             try
             {
                 List<Producto> lsp = new BusProducto().ListarProductos(buscar);
-                
                 gdvProductos.DataSource = lsp;
                 
                 gdvProductos.Columns[2].Visible = false;
                 gdvProductos.Columns[3].Visible = false;
                 gdvProductos.Columns[4].Visible = false;
                 gdvProductos.Columns[17].Visible = false;
-              //  BusVenta.DataTablePersonalizado.Multilinea(ref gdvProductos);
-               
+                gdvProductos.Columns[18].Visible = false;
+                gdvProductos.Columns[19].Visible = false;
+                gdvProductos.Columns[20].Visible = false;
+                gdvProductos.Columns[21].Visible = false;
+                // BusVenta.DataTablePersonalizado.Multilinea(ref gdvProductos);
+
 
             }
             catch (Exception ex)
@@ -72,9 +76,8 @@ namespace VentasD1002
             txtcodigodebarras.Text = gdvProductos.SelectedCells[5].Value.ToString();
             txtdescripcion.Text = gdvProductos.SelectedCells[6].Value.ToString();
             txtPresentacion.Text = gdvProductos.SelectedCells[7].Value.ToString();
-
-           // string tipoVenta = gdvProductos.SelectedCells[8].Value.ToString();
-            if (gdvProductos.SelectedCells[8].Value.ToString() == "Unidad" )
+            // string tipoVenta = gdvProductos.SelectedCells[8].Value.ToString();
+            if (gdvProductos.SelectedCells[8].Value.ToString() == "UNIDAD" )
             {
                 porunidad.Checked = true;
             }
@@ -91,10 +94,22 @@ namespace VentasD1002
             txtpreciomayoreo.Text = gdvProductos.SelectedCells[12].Value.ToString();
 
             string inventario = gdvProductos.SelectedCells[13].Value.ToString();
+            txtTotalUnidades.Text = gdvProductos.SelectedCells[20].Value.ToString();
+
             if (inventario == "SI")
             {
                 CheckInventarios.Checked = true;
                 PANELINVENTARIO.Visible = true;
+                decimal _totalUnidad = Convert.ToDecimal(txtTotalUnidades.Text);
+                decimal _stockMaximo = Convert.ToDecimal(gdvProductos.SelectedCells[14].Value);
+                decimal _stockMinimo = Convert.ToDecimal(gdvProductos.SelectedCells[15].Value);
+                decimal _unidades = (_stockMaximo % _totalUnidad);
+
+                lblPiezasStock.Text = _unidades.ToString();
+
+                txtstock2.Text = Math.Floor((_stockMaximo / _totalUnidad)).ToString();
+                txtstockminimo.Text = (_stockMinimo / _totalUnidad).ToString();
+                
             }
             else
             {
@@ -102,11 +117,33 @@ namespace VentasD1002
                 PANELINVENTARIO.Visible = false;
             }
 
-            txtstock2.Text = gdvProductos.SelectedCells[14].Value.ToString();
-            txtstockminimo.Text = gdvProductos.SelectedCells[15].Value.ToString();
+            
+
+           // txtstockminimo.Text = gdvProductos.SelectedCells[15].Value.ToString();
             string fecha = gdvProductos.SelectedCells[16].Value.ToString();
             bool res = (fecha == "NO APLICA") ? No_aplica_fecha.Checked = true : No_aplica_fecha.Checked = false;
-            pnlABProducto.Visible = true;
+
+            txtfechaoka.Text = (!res) ? fecha : null;
+            
+            
+            string _strPMenudeo = gdvProductos.SelectedCells[21].Value.ToString();
+
+            if (_strPMenudeo.Equals("PIEZA"))
+            {
+                chkPieza.Checked = true;
+            }else if (_strPMenudeo.Equals("CAJA"))
+            {
+                chkCaja.Checked = true;
+            }else if (_strPMenudeo.Equals("BOLSA"))
+            {
+                chkBolsa.Checked = true;
+            } else if (_strPMenudeo.Equals("PAQUETE"))
+            {
+                chkPaquete.Checked = true;
+            }
+
+
+                pnlABProducto.Visible = true;
             //int categoria = Convert.ToInt32(gdvProductos.SelectedCells[12].Value.ToString());
             //frmAB.cboCategoria.SelectedValue = categoria;
         }
@@ -118,21 +155,20 @@ namespace VentasD1002
                 DialogResult result = MessageBox.Show("¿Desea eliminar este producto?", "Eliminar producto", MessageBoxButtons.OKCancel, MessageBoxIcon.Hand);
                 if (result == DialogResult.OK)
                 {
-                    foreach (DataGridViewRow item in gdvProductos.Rows)
-                    {
-                        int oneKey = Convert.ToInt32(item.Cells["Id"].Value);
+                    //foreach (DataGridViewRow item in gdvProductos.Rows)
+                   // {
+                        int oneKey = Convert.ToInt32(gdvProductos.SelectedCells[2].Value);
                         try
                         {
                             new BusProducto().BorrarProducto(oneKey);
-                            MessageBox.Show("Prodcuto eliminado correctamente", "Operacion realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Producto eliminado correctamente", "Operacion realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             ListarProductos("");
-                            break;
                         }
                         catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    }
+                    //}
                 }
             }
 
@@ -243,6 +279,13 @@ namespace VentasD1002
             txtPresentacion.Clear();
             txtApartirDe.Clear();
             lblIdProducto.Text = "";
+            txtTotalUnidades.Clear();
+            chkPieza.Checked = false;
+            chkPaquete.Checked = false;
+            chkBolsa.Checked = false;
+            chkCaja.Checked = false;
+            lblPiezasStock.Text = "0";
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -284,16 +327,39 @@ namespace VentasD1002
                 p.precioMayoreo = Convert.ToDecimal(txtpreciomayoreo.Text);
                 p.IdTipoPresentacion = Convert.ToInt32(cboPresentacion.SelectedValue);
                 p.IdCategoria = Convert.ToInt32(cboCategoria.SelectedValue);
+                p.TotalUnidades = Convert.ToDecimal(txtTotalUnidades.Text);
                 p.Estado = true;
                 if (porunidad.Checked == true) p.seVendeA = "UNIDAD";
                 if (agranel.Checked == true) p.seVendeA = "GRANEL";
+
+                if (chkBolsa.Checked)
+                {
+                    p.PresentacionMenudeo = "BOLSA";
+                }
+                else if (chkCaja.Checked)
+                {
+                    p.PresentacionMenudeo = "CAJA";
+                }
+                else if (chkPaquete.Checked)
+                {
+                    p.PresentacionMenudeo = "PAQUETE";
+                }
+                else if (chkPieza.Checked)
+                {
+                    p.PresentacionMenudeo = "PIEZA";
+                }
+                else
+                {
+                    p.PresentacionMenudeo = "PIEZA";
+                }
 
 
                 if (PANELINVENTARIO.Visible == true)
                 {
                     p.usaInventario = "SI";
-                    p.stockMinimo = Convert.ToDecimal(txtstockminimo.Text);
-                    p.stock = txtstock2.Text;
+                    p.stockMinimo = Convert.ToDecimal(txtstockminimo.Text) * Convert.ToDecimal(txtTotalUnidades.Text);
+                    decimal _totalStock = (Convert.ToDecimal(txtstock2) * Convert.ToDecimal(txtTotalUnidades.Text)) + Convert.ToDecimal(lblPiezasStock.Text); ;
+                    p.stock = _totalStock.ToString(); ; 
 
                     if (No_aplica_fecha.Checked == true)
                     {
@@ -349,17 +415,68 @@ namespace VentasD1002
                 p.precioMayoreo = Convert.ToDecimal(txtpreciomayoreo.Text);
                 p.IdTipoPresentacion = Convert.ToInt32(cboPresentacion.SelectedValue);
                 p.IdCategoria = Convert.ToInt32(cboCategoria.SelectedValue);
+                p.TotalUnidades = Convert.ToDecimal(txtTotalUnidades.Text);
                 p.Estado = true;
-                p.Caducidad = (No_aplica_fecha.Checked == true) ? p.Caducidad = "NO APLICA" : txtfechaoka.Text;
-                if (porunidad.Checked == true) p.seVendeA = "Unidad";
-                if (agranel.Checked == true) p.seVendeA = "Granel";
-                p.usaInventario = (CheckInventarios.Checked == true) ? "SI" : "NO";
-                p.stockMinimo = Convert.ToDecimal(txtstockminimo.Text);
-                p.stock = txtstock2.Text;
+                //p.Caducidad = (No_aplica_fecha.Checked == true) ?  "NO APLICA" : txtfechaoka.Text;
+                if (porunidad.Checked == true) p.seVendeA = "UNIDAD";
+                if (agranel.Checked == true) p.seVendeA = "GRANEL";
+               // p.usaInventario = (CheckInventarios.Checked == true) ? "SI" : "NO";
+               // p.stockMinimo = Convert.ToDecimal(txtstockminimo.Text);
+                //p.stock = txtstock2.Text;
                 p.Id = Convert.ToInt32(lblIdProducto.Text);
+
+                if (PANELINVENTARIO.Visible == true)
+                {
+                    p.usaInventario = "SI";
+                    p.stockMinimo = Convert.ToDecimal(txtstockminimo.Text) * Convert.ToDecimal(txtTotalUnidades.Text);
+                    decimal _totalStock = (Convert.ToDecimal(txtstock2.Text) * Convert.ToDecimal(txtTotalUnidades.Text))+Convert.ToDecimal(lblPiezasStock.Text);
+                    p.stock = _totalStock.ToString(); ;
+
+                    if (No_aplica_fecha.Checked == true)
+                    {
+                        p.Caducidad = "NO APLICA";
+                    }
+
+                    if (No_aplica_fecha.Checked == false)
+                    {
+                        p.Caducidad = txtfechaoka.Text;
+                    }
+                }
+                if (PANELINVENTARIO.Visible == false)
+                {
+                    p.usaInventario = "NO";
+                    p.stockMinimo = 0;
+                    p.Caducidad = "NO APLICA";
+                    p.stock = "ILIMITADO";
+                }
+
+
+
+                if (chkBolsa.Checked)
+                {
+                    p.PresentacionMenudeo = "BOLSA";
+                }
+                else if (chkCaja.Checked)
+                {
+                    p.PresentacionMenudeo = "CAJA";
+                }
+                else if (chkPaquete.Checked)
+                {
+                    p.PresentacionMenudeo = "PAQUETE";
+                }
+                else if (chkPieza.Checked)
+                {
+                    p.PresentacionMenudeo = "PIEZA";
+                }
+                else
+                {
+                    p.PresentacionMenudeo = "PIEZA";
+                }
+
 
                 new BusProducto().ActualizarProducto(p);
                 MessageBox.Show("Producto actualizado correctamente", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DatProducto.Agregar_ActualizacionProducto(txtcodigodebarras.Text);
                 LimpiarCotroles();
                 pnlABProducto.Visible = false;
                 ListarProductos("");
@@ -373,16 +490,18 @@ namespace VentasD1002
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             pnlABProducto.Visible = false;
+            LimpiarCotroles();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             pnlABProducto.Visible = false;
+            LimpiarCotroles();
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -404,6 +523,108 @@ namespace VentasD1002
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-       
+
+        private void cboPresentacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblTipoPresentacion.Text = cboPresentacion.Text;
+            lblAuxHay.Text = cboPresentacion.Text.ToUpper() +'S';
+            lblAuxHay2.Text = cboPresentacion.Text.ToUpper() +'S';
+        }
+
+        private void chkPieza_Click(object sender, EventArgs e)
+        {
+            chkPaquete.Checked = false;
+            chkBolsa.Checked = false;
+            chkCaja.Checked = false;
+        }
+
+        private void chkCaja_Click(object sender, EventArgs e)
+        {
+            chkPaquete.Checked = false;
+            chkBolsa.Checked = false;
+            chkPieza.Checked = false;
+        }
+
+        private void chkPaquete_Click(object sender, EventArgs e)
+        {
+            chkCaja.Checked = false;
+            chkBolsa.Checked = false;
+            chkPieza.Checked = false;
+        }
+
+        private void chkBolsa_Click(object sender, EventArgs e)
+        {
+            chkPaquete.Checked = false;
+            chkCaja.Checked = false;
+            chkPieza.Checked = false;
+        }
+
+        private void checkActualizarStock_CheckedChanged(object sender, EventArgs e)
+        {
+            Check_ActualizarStock();
+        }
+
+        private void Check_ActualizarStock()
+        {
+            if (checkActualizarStock.Checked == true)
+            {
+                pnlActualizarStock.Visible = true;
+                txtStockActualizado.Text = txtstock2.Text;
+                txtPiezasActualizadas.Text = lblPiezasStock.Text;
+            }
+            else
+            {
+                pnlActualizarStock.Visible = false;
+            }
+        }
+
+        private void btnCancelarActualizacionStock_Click(object sender, EventArgs e)
+        {
+            pnlActualizarStock.Visible = false;
+            txtPiezasActualizar.Clear();
+            txtStockActualizar.Clear();
+            txtStockActualizado.Clear();
+            txtPiezasActualizar.Clear();
+            checkActualizarStock.Checked = false;
+        }
+
+        private void txtStockActualizar_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txtPiezasActualizar_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnActualizarStock_Click(object sender, EventArgs e)
+        {
+            txtstock2.Text = txtStockActualizado.Text;
+            lblPiezasStock.Text = txtPiezasActualizadas.Text;
+
+            pnlActualizarStock.Visible = false;
+            txtPiezasActualizar.Clear();
+            txtStockActualizar.Clear();
+            txtStockActualizado.Clear();
+            txtPiezasActualizar.Clear();
+            checkActualizarStock.Checked = false;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            decimal stock = String.IsNullOrEmpty(txtStockActualizar.Text) ? 0 : Convert.ToDecimal(txtStockActualizar.Text);
+            decimal StockActual = Convert.ToDecimal(txtStockActualizado.Text);
+
+            txtStockActualizado.Text = (StockActual + stock).ToString();
+
+            decimal unidades = String.IsNullOrEmpty(txtPiezasActualizar.Text) ? 0 :  Convert.ToDecimal(txtPiezasActualizar.Text);
+            decimal unidadActual = Convert.ToDecimal(txtPiezasActualizadas.Text);
+
+            txtPiezasActualizadas.Text = (unidadActual + unidades).ToString();
+
+            txtStockActualizar.Clear();
+            txtPiezasActualizar.Clear();
+        }
     }
 }

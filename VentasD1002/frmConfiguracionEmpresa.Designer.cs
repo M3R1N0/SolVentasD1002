@@ -68,7 +68,7 @@
             // 
             // panelRegistro
             // 
-            this.panelRegistro.BackColor = System.Drawing.Color.White;
+            this.panelRegistro.BackColor = System.Drawing.Color.Transparent;
             this.panelRegistro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelRegistro.BackgroundImage")));
             this.panelRegistro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelRegistro.Controls.Add(this.pictureBox1);
@@ -91,9 +91,9 @@
             this.panelRegistro.Controls.Add(this.pbLogo);
             this.panelRegistro.Controls.Add(this.menuStrip1);
             this.panelRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelRegistro.Location = new System.Drawing.Point(-9, 33);
+            this.panelRegistro.Location = new System.Drawing.Point(44, 58);
             this.panelRegistro.Name = "panelRegistro";
-            this.panelRegistro.Size = new System.Drawing.Size(833, 490);
+            this.panelRegistro.Size = new System.Drawing.Size(775, 482);
             this.panelRegistro.TabIndex = 1;
             this.panelRegistro.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRegistro_Paint);
             // 
@@ -128,6 +128,7 @@
             this.label6.Size = new System.Drawing.Size(401, 17);
             this.label6.TabIndex = 21;
             this.label6.Text = "Elija el directorio donde desee guardar la copia de seguridad :";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label4
             // 
@@ -241,6 +242,7 @@
             this.txtRutaBackup.Name = "txtRutaBackup";
             this.txtRutaBackup.Size = new System.Drawing.Size(486, 23);
             this.txtRutaBackup.TabIndex = 11;
+            this.txtRutaBackup.TextChanged += new System.EventHandler(this.txtRutaBackup_TextChanged);
             // 
             // chckTeclado
             // 
@@ -343,7 +345,7 @@
             // 
             // siguienteToolStripMenuItem
             // 
-            this.siguienteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.siguienteToolStripMenuItem.BackColor = System.Drawing.Color.Red;
             this.siguienteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.siguienteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("siguienteToolStripMenuItem.Image")));
             this.siguienteToolStripMenuItem.Name = "siguienteToolStripMenuItem";
@@ -368,7 +370,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(857, 35);
+            this.panel1.Size = new System.Drawing.Size(867, 35);
             this.panel1.TabIndex = 2;
             // 
             // label1
@@ -387,12 +389,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(857, 536);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(867, 552);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelRegistro);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmConfiguracionEmpresa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmConfiguracionEmpresa";
             this.Load += new System.EventHandler(this.frmConfiguracionEmpresa_Load);
             this.panelRegistro.ResumeLayout(false);

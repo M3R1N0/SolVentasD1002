@@ -107,7 +107,7 @@ namespace DatVentas
             }
         }
 
-        public void CerrarCaja(int cajaID, DateTime cierre, DateTime fin)
+        public void CerrarCaja(int cajaID, DateTime cierre, DateTime fin, decimal totalCalculado, decimal totalReal, decimal diferencia)
         {
             using (SqlConnection connection = new SqlConnection(MasterConnection.connection))
             {
@@ -116,6 +116,9 @@ namespace DatVentas
                     SqlCommand sc = new SqlCommand("CERRAR_CAJA", connection);
                     sc.CommandType = CommandType.StoredProcedure;
                     sc.Parameters.AddWithValue("@idcaja",cajaID);
+                    sc.Parameters.AddWithValue("@totalcalculado", totalCalculado);
+                    sc.Parameters.AddWithValue("@totalreal", totalReal);
+                    sc.Parameters.AddWithValue("@diferencia", diferencia);
                     sc.ExecuteNonQuery();
                     connection.Close();
                 }
@@ -127,5 +130,29 @@ namespace DatVentas
 
             }
         }
+
+        public decimal ObtenerSaldo_Encaja(int idusuario)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+                {
+
+                    SqlCommand cmd = new SqlCommand($"select max(Id_CajaCierre) from tb_Movimiento_CierreCaja where Usuario_Id ={idusuario}", conn);
+                    conn.Open();
+                    int _idCajaCierre = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    SqlCommand sc = new SqlCommand($"SELECT Saldo_EnCaja FROM tb_Movimiento_CierreCaja WHERE Id_CajaCierre= {_idCajaCierre}", conn);
+                    decimal _saldo = Convert.ToDecimal(sc.ExecuteScalar());
+                    conn.Close();
+                    return _saldo;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

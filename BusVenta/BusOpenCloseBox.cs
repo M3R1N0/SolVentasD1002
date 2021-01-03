@@ -54,9 +54,9 @@ namespace BusVenta
             new DatOpenCloseBox().InsertarEfectivoInicial(saldo, cajaId);
         }
 
-        public void CerrarCaja(int idCaja, DateTime cierre, DateTime fin)
+        public void CerrarCaja(int idCaja, DateTime cierre, DateTime fin, decimal totalCaculado, decimal totalReal, decimal diferencia)
         {
-            new DatOpenCloseBox().CerrarCaja(idCaja, cierre, fin);
+            new DatOpenCloseBox().CerrarCaja(idCaja, cierre, fin, totalCaculado, totalReal, diferencia);
         }
     }
 }

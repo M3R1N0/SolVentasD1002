@@ -230,9 +230,9 @@ namespace VentasD1002
                 Box b = new Box();
                 b.Id = IdCaja;
                 OpenCloseBox open = new OpenCloseBox();
-                open.FechaInicio = DateTime.Today;
-                open.FechaFin = DateTime.Today;
-                open.FechaCierre = DateTime.Today;
+                open.FechaInicio = DateTime.Now;
+                open.FechaFin = DateTime.Now;
+                open.FechaCierre = DateTime.Now;
                 open.Ingresos = 0;
                 open.Egresos = 0;
                 open.Saldo = 0;

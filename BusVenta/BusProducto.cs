@@ -15,10 +15,10 @@ namespace BusVenta
         {
             int resultado = new DatProducto().InsertarProducto( p, k);
 
-            if (resultado != 2)
-            {
-                throw new ApplicationException("Ocurrio un error, contacte al administrador");
-            }
+          //  if (resultado != 2)
+            //{
+              //  throw new ApplicationException("Ocurrio un error, contacte al administrador");
+            //}
         }
 
         public List<Producto> ListarProductos(string buscar)
@@ -44,10 +44,40 @@ namespace BusVenta
                 p.precioMayoreo = Convert.ToInt32(dr["Precio_Mayoreo"]);
                 p.IdTipoPresentacion = Convert.ToInt32(dr["Presentacion_Id"]);
                 p.IdCategoria = Convert.ToInt32(dr["Catalogo_Id"]);
+                p.TotalUnidades = Convert.ToDecimal(dr["TotalUnidades"] is DBNull ? 0 : dr["TotalUnidades"]);
+                p.PresentacionMenudeo = Convert.ToString(dr["PresentacionMenudeo"]);
+                p.Estado = Convert.ToBoolean(dr["Estado"]);
 
                 lsProductos.Add(p);
             }
             return lsProductos;
+        }
+
+        public Producto ObtenerProducto(string codigo)
+        {
+            DataRow dr = new DatProducto().ObtenerProducto(codigo);
+
+                Producto p = new Producto();
+                p.Id = Convert.ToInt32(dr["Id_Producto"]);
+                p.Descripcion = dr["Descripcion"].ToString();
+                p.Presentacion = dr["Presentacion"].ToString();
+                p.usaInventario = dr["Usa_Inventario"].ToString();
+                p.stock = dr["Stock"].ToString();
+                p.precioMenudeo = Convert.ToDecimal(dr["Precio_Menudeo"]);
+                p.precioMMayoreo = Convert.ToDecimal(dr["Precio_MMayoreo"]);
+                p.Caducidad = dr["Caducidad"].ToString();
+                p.codigo = dr["Codigo"].ToString();
+                p.seVendeA = dr["Tipo_Venta"].ToString();
+                p.APartirDe = Convert.ToDecimal(dr["A_Partir_De"].ToString());
+                p.stockMinimo = Convert.ToInt32(dr["Stock_Minimo"]);
+                p.precioMayoreo = Convert.ToInt32(dr["Precio_Mayoreo"]);
+                p.IdTipoPresentacion = Convert.ToInt32(dr["Presentacion_Id"]);
+                p.IdCategoria = Convert.ToInt32(dr["Catalogo_Id"]);
+                p.TotalUnidades = Convert.ToDecimal(dr["TotalUnidades"] is DBNull ? 0 : dr["TotalUnidades"]);
+                p.PresentacionMenudeo = Convert.ToString(dr["PresentacionMenudeo"]);
+                p.Estado = Convert.ToBoolean(dr["Estado"]);
+
+            return p;
         }
 
         public void BorrarProducto(int id)
@@ -95,6 +125,7 @@ namespace BusVenta
                 p.Estado = Convert.ToBoolean( dr["Estado"].ToString());
                 p.Tipo_Presentacion = dr["Tipo_Presentacion"].ToString();
                 p.Tipo_Catalogo = dr["Tipo_Catalogo"].ToString();
+                p.PresentacionMenudeo = Convert.ToString(dr["PresentacionMenudeo"]);
 
                 lsProductos.Add(p);
             }
@@ -132,5 +163,17 @@ namespace BusVenta
             }
             return cantidad;
         }
+
+        public void Actualizar_Stock(int idProducto, decimal cantidad)
+        {
+            int filasAfectadas = new DatProducto().ActualizarStock(idProducto, cantidad);
+
+            if (filasAfectadas != 1)
+            {
+                throw new ApplicationException("Ocuríón un error al actualizar el stock");
+            }
+        }
+
+        
     }
 }

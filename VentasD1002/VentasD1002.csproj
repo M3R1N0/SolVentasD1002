@@ -48,9 +48,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.4">
+      <HintPath>..\..\..\..\..\Downloads\Telegram Desktop\Bunifu_UI_v1.5.4.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=5.5.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.5.0\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.3.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.3.6\lib\net45\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,6 +84,30 @@
     <Compile Include="frmAperturaCaja.Designer.cs">
       <DependentUpon>frmAperturaCaja.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBitacoraCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBitacoraCliente.Designer.cs">
+      <DependentUpon>frmBitacoraCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCajaRemota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCajaRemota.Designer.cs">
+      <DependentUpon>frmCajaRemota.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCargarDatosExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargarDatosExcel.Designer.cs">
+      <DependentUpon>frmCargarDatosExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCierreCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCierreCaja.Designer.cs">
+      <DependentUpon>frmCierreCaja.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +119,12 @@
     </Compile>
     <Compile Include="frmComprobante.Designer.cs">
       <DependentUpon>frmComprobante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConexionRemota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConexionRemota.Designer.cs">
+      <DependentUpon>frmConexionRemota.cs</DependentUpon>
     </Compile>
     <Compile Include="frmConfiguracion.cs">
       <SubType>Form</SubType>
@@ -100,11 +144,23 @@
     <Compile Include="frmConfiguracionEmpresa.Designer.cs">
       <DependentUpon>frmConfiguracionEmpresa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCreditosCobrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreditosCobrar.Designer.cs">
+      <DependentUpon>frmCreditosCobrar.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDashboard.Designer.cs">
       <DependentUpon>frmDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDescargarActualizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDescargarActualizacion.Designer.cs">
+      <DependentUpon>frmDescargarActualizacion.cs</DependentUpon>
     </Compile>
     <Compile Include="frmExito.cs">
       <SubType>Form</SubType>
@@ -117,6 +173,12 @@
     </Compile>
     <Compile Include="frmFormatoComprobante.Designer.cs">
       <DependentUpon>frmFormatoComprobante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGastos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGastos.Designer.cs">
+      <DependentUpon>frmGastos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmInstalacionServidor.cs">
       <SubType>Form</SubType>
@@ -196,6 +258,12 @@
     <Compile Include="frmUsuarioAutorizado.Designer.cs">
       <DependentUpon>frmUsuarioAutorizado.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmVentasEnEspera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVentasEnEspera.Designer.cs">
+      <DependentUpon>frmVentasEnEspera.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmVistaPreviaTickek.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,14 +272,36 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>resources.resx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmAperturaCaja.resx">
       <DependentUpon>frmAperturaCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBitacoraCliente.resx">
+      <DependentUpon>frmBitacoraCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCargarDatosExcel.resx">
+      <DependentUpon>frmCargarDatosExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCierreCaja.resx">
+      <DependentUpon>frmCierreCaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmComprobante.resx">
       <DependentUpon>frmComprobante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConexionRemota.resx">
+      <DependentUpon>frmConexionRemota.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConfiguracion.resx">
       <DependentUpon>frmConfiguracion.cs</DependentUpon>
@@ -222,14 +312,23 @@
     <EmbeddedResource Include="frmConfiguracionEmpresa.resx">
       <DependentUpon>frmConfiguracionEmpresa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCreditosCobrar.resx">
+      <DependentUpon>frmCreditosCobrar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDescargarActualizacion.resx">
+      <DependentUpon>frmDescargarActualizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmExito.resx">
       <DependentUpon>frmExito.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFormatoComprobante.resx">
       <DependentUpon>frmFormatoComprobante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGastos.resx">
+      <DependentUpon>frmGastos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInstalacionServidor.resx">
       <DependentUpon>frmInstalacionServidor.cs</DependentUpon>
@@ -267,20 +366,23 @@
     <EmbeddedResource Include="frmUsuarioAutorizado.resx">
       <DependentUpon>frmUsuarioAutorizado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmVentasEnEspera.resx">
+      <DependentUpon>frmVentasEnEspera.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmVistaPreviaTickek.resx">
       <DependentUpon>frmVistaPreviaTickek.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <EmbeddedResource Include="Resources\resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -336,6 +438,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\calendario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\amarillo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\azul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\naranja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\negro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rojo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rosa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verde.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\success-green-check-mark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\high_priority_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\JIEL.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

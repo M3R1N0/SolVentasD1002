@@ -195,5 +195,15 @@ namespace VentasD1002
                 //}
             }
         }
+
+        private void txtRutaBackup_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

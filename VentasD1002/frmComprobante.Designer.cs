@@ -32,6 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlAltaComprobante = new System.Windows.Forms.Panel();
+            this.lblDocumento = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.checkDefecto = new System.Windows.Forms.CheckBox();
             this.txtnumerofin = new System.Windows.Forms.TextBox();
@@ -54,7 +55,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblDocumento = new System.Windows.Forms.Label();
             this.pnlAltaComprobante.SuspendLayout();
             this.panel4.SuspendLayout();
             this.pnlABComprobante.SuspendLayout();
@@ -78,7 +78,7 @@
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
@@ -103,6 +103,14 @@
             this.pnlAltaComprobante.Name = "pnlAltaComprobante";
             this.pnlAltaComprobante.Size = new System.Drawing.Size(544, 341);
             this.pnlAltaComprobante.TabIndex = 4;
+            // 
+            // lblDocumento
+            // 
+            this.lblDocumento.AutoSize = true;
+            this.lblDocumento.Location = new System.Drawing.Point(170, 72);
+            this.lblDocumento.Name = "lblDocumento";
+            this.lblDocumento.Size = new System.Drawing.Size(0, 13);
+            this.lblDocumento.TabIndex = 627;
             // 
             // lblID
             // 
@@ -350,19 +358,11 @@
             this.panel2.Size = new System.Drawing.Size(725, 244);
             this.panel2.TabIndex = 6;
             // 
-            // lblDocumento
-            // 
-            this.lblDocumento.AutoSize = true;
-            this.lblDocumento.Location = new System.Drawing.Point(170, 72);
-            this.lblDocumento.Name = "lblDocumento";
-            this.lblDocumento.Size = new System.Drawing.Size(0, 13);
-            this.lblDocumento.TabIndex = 627;
-            // 
             // frmComprobante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(782, 450);
             this.Controls.Add(this.pnlABComprobante);
             this.Controls.Add(this.panel2);
