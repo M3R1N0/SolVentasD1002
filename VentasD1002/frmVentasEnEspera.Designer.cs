@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVentasEnEspera));
             this.panel1 = new System.Windows.Forms.Panel();
             this.gdvListaDVentas = new System.Windows.Forms.DataGridView();
+            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.gdvDetalleVentaEspera = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvListaDVentas)).BeginInit();
             this.panel2.SuspendLayout();
@@ -72,6 +72,14 @@
             this.gdvListaDVentas.Size = new System.Drawing.Size(237, 307);
             this.gdvListaDVentas.TabIndex = 1;
             this.gdvListaDVentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvListaDVentas_CellClick);
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "";
+            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
+            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
             // 
             // label1
             // 
@@ -146,14 +154,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Detalle ventas en espera";
             // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "";
-            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            // 
             // frmVentasEnEspera
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,10 +161,11 @@
             this.ClientSize = new System.Drawing.Size(956, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmVentasEnEspera";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmVentasEnEspera";
+            this.Text = "Ventas En Espera";
             this.Load += new System.EventHandler(this.frmVentasEnEspera_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

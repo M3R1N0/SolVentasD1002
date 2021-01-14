@@ -139,5 +139,59 @@ namespace DatVentas
                 }
             }
         }
+
+        public DataTable ObtenerDatos_DetalleVenta(int idVenta)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter($"sp_ObtenerDatos_DetalleVenta {idVenta}", con);
+                    da.Fill(dt);
+
+                    return dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void EditarDevolucion_DetalleVenta(int idVenta)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    SqlCommand cmd = new SqlCommand($"UPDATE tb_DetalleVenta SET ProductoDevuelto = 1 where Id_DetalleVenta ={idVenta}", con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void Productos_MasVendidos(ref DataTable dtDatos)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    SqlDataAdapter da = new SqlDataAdapter("sp_ProductoMasVendidos", con);
+                    da.Fill(dtDatos);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

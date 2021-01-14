@@ -143,24 +143,21 @@ namespace DatVentas
 
         public DataTable MostrarUsuarios()
         {
-            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            DataTable dt = new DataTable();
+            try
             {
-                DataTable dt = new DataTable();
-                try
+                using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
                 {
                     SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM tb_Usuario", conn);
                     da.Fill(dt);
                     AUX_CONEXION = "CORRECTO";
-                    
                 }
-                catch (Exception)
-                {
-                    AUX_CONEXION = "INCORRECTO";
-                    conn.Close();
-                    //throw ex;
-                }
-                return dt;
             }
+            catch
+            {
+                AUX_CONEXION = "INCORRECTO";
+            }
+                return dt;
         }
     }
 }

@@ -36,9 +36,9 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.btnControl = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdDetalle)).BeginInit();
             this.panel1.SuspendLayout();
@@ -114,6 +114,15 @@
             this.panel1.Size = new System.Drawing.Size(1121, 72);
             this.panel1.TabIndex = 3;
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btnControl);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel5.Location = new System.Drawing.Point(858, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(263, 72);
+            this.panel5.TabIndex = 11;
+            // 
             // btnControl
             // 
             this.btnControl.BackColor = System.Drawing.Color.DarkOrange;
@@ -136,15 +145,6 @@
             this.btnControl.UseVisualStyleBackColor = false;
             this.btnControl.Click += new System.EventHandler(this.btnControl_Click);
             // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.btnControl);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Location = new System.Drawing.Point(858, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(263, 72);
-            this.panel5.TabIndex = 11;
-            // 
             // frmDescargarActualizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,9 +152,10 @@
             this.ClientSize = new System.Drawing.Size(1121, 516);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDescargarActualizacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmDescargarActualizacion";
+            this.Text = "Descargar archivo actualizado";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmDescargarActualizacion_Load);
             this.panel2.ResumeLayout(false);

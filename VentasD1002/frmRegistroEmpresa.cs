@@ -1,4 +1,5 @@
 ﻿using BusVenta;
+using DatVentas;
 using EntVenta;
 using System;
 using System.Collections.Generic;
@@ -180,15 +181,15 @@ namespace VentasD1002
                 txtRutaBackup.Text = folderBrowserDialog1.SelectedPath;
                 string ruta = txtRutaBackup.Text;
 
-                if ( ruta.Contains(@"C:\") )
-                {
-                    MessageBox.Show( "Seleccione una ruta diferente al Disco C:", "Ruta no válida", MessageBoxButtons.OK, MessageBoxIcon.Error );
-                    txtRutaBackup.Text = "";
-                }
-                else
-                {
+                //if ( ruta.Contains(@"C:\") )
+                //{
+                //    MessageBox.Show( "Seleccione una ruta diferente al Disco C:", "Ruta no válida", MessageBoxButtons.OK, MessageBoxIcon.Error );
+                //    txtRutaBackup.Text = "";
+                //}
+                //else
+                //{
                     txtRutaBackup.Text = folderBrowserDialog1.SelectedPath;
-                }
+                //}
             }
         }
 
@@ -213,10 +214,10 @@ namespace VentasD1002
                 new BusSerializacion().Agregar_Serializacion(s);
 
                 Serializacion s1 = new Serializacion();
-                s1.Serie = "B";
+                s1.Serie = "R";
                 s1.Cantidad_Numero = "6";
                 s1.NumeroFin = "0";
-                s1.Tipo_Documento = "BOLETA";
+                s1.Tipo_Documento = "RECIBO";
                 s1.Destino = "VENTAS";
                 s1.Por_Defecto = "NO";
 
@@ -294,7 +295,10 @@ namespace VentasD1002
 
                 #endregion
 
-
+                #region INSERTA FORMA DE PAGOS
+                DatCatGenerico.Insertar_FormaPago("Contado", "Pago en efectivo");
+                DatCatGenerico.Insertar_FormaPago("Credito", "Pagos a créditos");
+                #endregion
             }
             catch (Exception ex)
             {

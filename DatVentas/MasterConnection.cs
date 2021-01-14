@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DatVentas
 {
-    class MasterConnection
+   public class MasterConnection
     {
         public static string connection = Convert.ToString(Desencryptation.checkServer());
     }

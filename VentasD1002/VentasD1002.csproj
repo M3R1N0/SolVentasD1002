@@ -47,6 +47,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>PruebaApp.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.4">
       <HintPath>..\..\..\..\..\Downloads\Telegram Desktop\Bunifu_UI_v1.5.4.dll</HintPath>
@@ -65,6 +68,7 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -144,6 +148,12 @@
     <Compile Include="frmConfiguracionEmpresa.Designer.cs">
       <DependentUpon>frmConfiguracionEmpresa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCopiaSeguridad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCopiaSeguridad.Designer.cs">
+      <DependentUpon>frmCopiaSeguridad.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCreditosCobrar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +171,12 @@
     </Compile>
     <Compile Include="frmDescargarActualizacion.Designer.cs">
       <DependentUpon>frmDescargarActualizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDevoluciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDevoluciones.Designer.cs">
+      <DependentUpon>frmDevoluciones.cs</DependentUpon>
     </Compile>
     <Compile Include="frmExito.cs">
       <SubType>Form</SubType>
@@ -288,6 +304,9 @@
     <EmbeddedResource Include="frmBitacoraCliente.resx">
       <DependentUpon>frmBitacoraCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCajaRemota.resx">
+      <DependentUpon>frmCajaRemota.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCargarDatosExcel.resx">
       <DependentUpon>frmCargarDatosExcel.cs</DependentUpon>
     </EmbeddedResource>
@@ -312,6 +331,9 @@
     <EmbeddedResource Include="frmConfiguracionEmpresa.resx">
       <DependentUpon>frmConfiguracionEmpresa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCopiaSeguridad.resx">
+      <DependentUpon>frmCopiaSeguridad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCreditosCobrar.resx">
       <DependentUpon>frmCreditosCobrar.cs</DependentUpon>
     </EmbeddedResource>
@@ -320,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDescargarActualizacion.resx">
       <DependentUpon>frmDescargarActualizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDevoluciones.resx">
+      <DependentUpon>frmDevoluciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmExito.resx">
       <DependentUpon>frmExito.cs</DependentUpon>
@@ -418,6 +443,7 @@
     <Folder Include="Img\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="PruebaApp.manifest" />
     <None Include="Resources\Add_32.png" />
   </ItemGroup>
   <ItemGroup>
@@ -468,6 +494,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\JIEL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\screencart_106583.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

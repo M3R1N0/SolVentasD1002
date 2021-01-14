@@ -143,5 +143,28 @@ namespace DatVentas
             }
         }
 
+        public static int TotalClientes()
+        {
+            int resultado = 0;
+            try
+            {
+                
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+
+                    SqlCommand cmd = new SqlCommand("select count(Id_Cliente) from tb_Cliente where Estado = 1", con);
+                    con.Open();
+                    resultado = Convert.ToInt32(cmd.ExecuteScalar());
+                    con.Close();
+
+                    return resultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                return resultado = 0;
+                throw ex;
+            }
+        }
     }
 }

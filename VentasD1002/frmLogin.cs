@@ -42,8 +42,8 @@ namespace VentasD1002
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            DibujarLogin();
             timer1.Start();
+            DibujarLogin();
             panelIniciarSesion.Visible = false;
         }
 
@@ -159,7 +159,7 @@ namespace VentasD1002
             {
                 int contadorDCC = ListOpenCloseDetailBox();
              //   userPermision = lstLoggedUser.Select(x => x.Rol).First();
-                if (contadorDCC == 0 & userPermision != "Solo Ventas")
+                if (contadorDCC == 0 & userPermision != "VENDEDOR")
                 {
                     AddOpenCloseDetailBox();
                     Apertura = "NUEVO";
@@ -167,7 +167,7 @@ namespace VentasD1002
                 }
                 else
                 {
-                    if (userPermision != "Solo Ventas")
+                    if (userPermision != "VENDEDOR")
                     {
                         GetSerialBoxByUser();
                         try

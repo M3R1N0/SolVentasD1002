@@ -60,8 +60,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.rbtnGastos = new System.Windows.Forms.RadioButton();
             this.rtbnIngresos = new System.Windows.Forms.RadioButton();
+            this.rbtnGastos = new System.Windows.Forms.RadioButton();
             this.pnlComprobante.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAgregar)).BeginInit();
@@ -419,6 +419,18 @@
             this.panel5.Size = new System.Drawing.Size(239, 55);
             this.panel5.TabIndex = 40;
             // 
+            // rtbnIngresos
+            // 
+            this.rtbnIngresos.AutoSize = true;
+            this.rtbnIngresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbnIngresos.Location = new System.Drawing.Point(110, 19);
+            this.rtbnIngresos.Name = "rtbnIngresos";
+            this.rtbnIngresos.Size = new System.Drawing.Size(97, 24);
+            this.rtbnIngresos.TabIndex = 1;
+            this.rtbnIngresos.Text = "Ingresos";
+            this.rtbnIngresos.UseVisualStyleBackColor = true;
+            this.rtbnIngresos.CheckedChanged += new System.EventHandler(this.rtbnIngresos_CheckedChanged);
+            // 
             // rbtnGastos
             // 
             this.rbtnGastos.AutoSize = true;
@@ -431,18 +443,6 @@
             this.rbtnGastos.TabStop = true;
             this.rbtnGastos.Text = "Gastos";
             this.rbtnGastos.UseVisualStyleBackColor = true;
-            // 
-            // rtbnIngresos
-            // 
-            this.rtbnIngresos.AutoSize = true;
-            this.rtbnIngresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbnIngresos.Location = new System.Drawing.Point(110, 19);
-            this.rtbnIngresos.Name = "rtbnIngresos";
-            this.rtbnIngresos.Size = new System.Drawing.Size(97, 24);
-            this.rtbnIngresos.TabIndex = 1;
-            this.rtbnIngresos.Text = "Ingresos";
-            this.rtbnIngresos.UseVisualStyleBackColor = true;
-            this.rtbnIngresos.CheckedChanged += new System.EventHandler(this.rtbnIngresos_CheckedChanged);
             // 
             // frmGastos
             // 
@@ -465,9 +465,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmGastos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmGastos";
+            this.Text = "Gastos varios";
             this.Load += new System.EventHandler(this.frmGastos_Load);
             this.pnlComprobante.ResumeLayout(false);
             this.pnlComprobante.PerformLayout();

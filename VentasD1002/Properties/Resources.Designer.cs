@@ -183,6 +183,16 @@ namespace VentasD1002.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap screencart_106583 {
+            get {
+                object obj = ResourceManager.GetObject("screencart_106583", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap success_green_check_mark {
             get {
                 object obj = ResourceManager.GetObject("success-green-check-mark", resourceCulture);

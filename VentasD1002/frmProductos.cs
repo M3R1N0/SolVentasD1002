@@ -57,7 +57,7 @@ namespace VentasD1002
                 gdvProductos.Columns[19].Visible = false;
                 gdvProductos.Columns[20].Visible = false;
                 gdvProductos.Columns[21].Visible = false;
-                // BusVenta.DataTablePersonalizado.Multilinea(ref gdvProductos);
+                BusVenta.DataTablePersonalizado.Multilinea(ref gdvProductos);
 
 
             }
@@ -358,7 +358,7 @@ namespace VentasD1002
                 {
                     p.usaInventario = "SI";
                     p.stockMinimo = Convert.ToDecimal(txtstockminimo.Text) * Convert.ToDecimal(txtTotalUnidades.Text);
-                    decimal _totalStock = (Convert.ToDecimal(txtstock2) * Convert.ToDecimal(txtTotalUnidades.Text)) + Convert.ToDecimal(lblPiezasStock.Text); ;
+                    decimal _totalStock = (Convert.ToDecimal(txtstock2.Text) * Convert.ToDecimal(txtTotalUnidades.Text)) + Convert.ToDecimal(lblPiezasStock.Text); ;
                     p.stock = _totalStock.ToString(); ; 
 
                     if (No_aplica_fecha.Checked == true)
@@ -390,9 +390,22 @@ namespace VentasD1002
 
                 new BusProducto().AgregarProducto(p, kardex);
                 MessageBox.Show("Producto agregado correctamente", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarCotroles();
-                ListarProductos("");
-                pnlABProducto.Visible = false;
+
+                DialogResult result = MessageBox.Show("Desea agregar un nuevo producto", "Nuevo Producto", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+
+                    LimpiarCotroles();
+                    ListarProductos("");
+                }
+                else
+                {
+                    LimpiarCotroles();
+                    ListarProductos("");
+                    pnlABProducto.Visible = false;
+                }
+         
 
             }
             catch (Exception ex)
@@ -626,5 +639,6 @@ namespace VentasD1002
             txtStockActualizar.Clear();
             txtPiezasActualizar.Clear();
         }
+   
     }
 }

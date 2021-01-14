@@ -444,7 +444,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panelRegistro);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRegistroEmpresa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de la Empresa";
             this.Load += new System.EventHandler(this.frmRegistroEmpresa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();

@@ -86,10 +86,10 @@
             this.Panel11 = new System.Windows.Forms.Panel();
             this.Button9 = new System.Windows.Forms.Button();
             this.Label8 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.button12 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlProductosActualizados.SuspendLayout();
@@ -791,16 +791,6 @@
             this.Label8.Text = "Bitacora cliente";
             this.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(223, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Configuraciónes generales";
-            // 
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.Transparent;
@@ -838,6 +828,16 @@
             this.label11.Text = "Actualizar Producto";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(14, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(223, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Configuraciónes generales";
+            // 
             // frmConfiguracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -848,9 +848,10 @@
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmConfiguracion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Configuracion";
+            this.Text = "Configuración general";
             this.Load += new System.EventHandler(this.frmConfiguracion_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

@@ -43,6 +43,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlAbonar = new System.Windows.Forms.Panel();
+            this.txtSuCambio = new System.Windows.Forms.TextBox();
+            this.lblSucambio = new System.Windows.Forms.Label();
             this.bntCancelar = new System.Windows.Forms.Button();
             this.btnAbonar = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -73,8 +75,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.gdvListado = new System.Windows.Forms.DataGridView();
             this.Detalle = new System.Windows.Forms.DataGridViewImageColumn();
-            this.lblSucambio = new System.Windows.Forms.Label();
-            this.txtSuCambio = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlAbonar.SuspendLayout();
@@ -261,6 +261,30 @@
             this.pnlAbonar.Name = "pnlAbonar";
             this.pnlAbonar.Size = new System.Drawing.Size(763, 483);
             this.pnlAbonar.TabIndex = 12;
+            // 
+            // txtSuCambio
+            // 
+            this.txtSuCambio.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtSuCambio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSuCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSuCambio.Location = new System.Drawing.Point(356, 379);
+            this.txtSuCambio.Name = "txtSuCambio";
+            this.txtSuCambio.ReadOnly = true;
+            this.txtSuCambio.Size = new System.Drawing.Size(185, 61);
+            this.txtSuCambio.TabIndex = 19;
+            this.txtSuCambio.Text = "0.00";
+            this.txtSuCambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSuCambio.Visible = false;
+            // 
+            // lblSucambio
+            // 
+            this.lblSucambio.AutoSize = true;
+            this.lblSucambio.Location = new System.Drawing.Point(198, 405);
+            this.lblSucambio.Name = "lblSucambio";
+            this.lblSucambio.Size = new System.Drawing.Size(143, 29);
+            this.lblSucambio.TabIndex = 18;
+            this.lblSucambio.Text = "Su cambio:";
+            this.lblSucambio.Visible = false;
             // 
             // bntCancelar
             // 
@@ -583,30 +607,6 @@
             this.Detalle.ReadOnly = true;
             this.Detalle.ToolTipText = "Ver detalle";
             // 
-            // lblSucambio
-            // 
-            this.lblSucambio.AutoSize = true;
-            this.lblSucambio.Location = new System.Drawing.Point(198, 405);
-            this.lblSucambio.Name = "lblSucambio";
-            this.lblSucambio.Size = new System.Drawing.Size(143, 29);
-            this.lblSucambio.TabIndex = 18;
-            this.lblSucambio.Text = "Su cambio:";
-            this.lblSucambio.Visible = false;
-            // 
-            // txtSuCambio
-            // 
-            this.txtSuCambio.BackColor = System.Drawing.SystemColors.Menu;
-            this.txtSuCambio.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSuCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSuCambio.Location = new System.Drawing.Point(356, 379);
-            this.txtSuCambio.Name = "txtSuCambio";
-            this.txtSuCambio.ReadOnly = true;
-            this.txtSuCambio.Size = new System.Drawing.Size(185, 61);
-            this.txtSuCambio.TabIndex = 19;
-            this.txtSuCambio.Text = "0.00";
-            this.txtSuCambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtSuCambio.Visible = false;
-            // 
             // frmCreditosCobrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -614,9 +614,10 @@
             this.ClientSize = new System.Drawing.Size(1241, 694);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCreditosCobrar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmCreditosCobrar";
+            this.Text = "Créditos por Cobrar";
             this.Load += new System.EventHandler(this.frmCreditosCobrar_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

@@ -44,7 +44,7 @@ namespace BusVenta
             e.Busqueda = dtEmpresa["Modo_Busqueda"].ToString();
             e.RutaBackup = dtEmpresa["Ruta_CopiaSeguridad"].ToString();
             e.Pais = dtEmpresa["Pais"].ToString();
-
+            e.FrecuenciaBackup = Convert.ToInt32(dtEmpresa["Frecuencia_Respaldo"]);
             e.CorreoEnvio = dtEmpresa["Correo_EnvioReporte"].ToString();
             return e;
         }

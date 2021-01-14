@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlVentas = new System.Windows.Forms.Panel();
             this.menuStrip8 = new System.Windows.Forms.MenuStrip();
             this.enEsperaF8ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,7 +55,7 @@
             this.reportViewerImprimir = new Telerik.ReportViewer.WinForms.ReportViewer();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlRecibos = new System.Windows.Forms.FlowLayoutPanel();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
             this.lblComprobante = new System.Windows.Forms.Label();
@@ -110,7 +110,6 @@
             this.panel21 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtCliente = new System.Windows.Forms.TextBox();
-            this.panel25 = new System.Windows.Forms.Panel();
             this.cboFormaPago = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -139,6 +138,7 @@
             this.clienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.inventarioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelDeControlToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.devolucionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarTurnoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasEnEsperaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -291,7 +291,6 @@
             this.pnlVentas.Name = "pnlVentas";
             this.pnlVentas.Size = new System.Drawing.Size(1287, 557);
             this.pnlVentas.TabIndex = 10;
-            this.pnlVentas.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlVentas_Paint);
             // 
             // menuStrip8
             // 
@@ -417,7 +416,6 @@
             // 
             // panel37
             // 
-            this.panel37.Controls.Add(this.lblIdSerializacion);
             this.panel37.Controls.Add(this.lblCorrelativo);
             this.panel37.Controls.Add(this.MenuStrip15);
             this.panel37.Controls.Add(this.lblNumeroFin);
@@ -426,9 +424,10 @@
             this.panel37.Controls.Add(this.panel38);
             this.panel37.Controls.Add(this.label28);
             this.panel37.Controls.Add(this.label29);
-            this.panel37.Controls.Add(this.flowLayoutPanel1);
+            this.panel37.Controls.Add(this.pnlRecibos);
             this.panel37.Controls.Add(this.comboBox2);
             this.panel37.Controls.Add(this.label30);
+            this.panel37.Controls.Add(this.lblIdSerializacion);
             this.panel37.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel37.Location = new System.Drawing.Point(0, 0);
             this.panel37.Name = "panel37";
@@ -438,7 +437,7 @@
             // lblIdSerializacion
             // 
             this.lblIdSerializacion.AutoSize = true;
-            this.lblIdSerializacion.Location = new System.Drawing.Point(125, 314);
+            this.lblIdSerializacion.Location = new System.Drawing.Point(148, 287);
             this.lblIdSerializacion.Name = "lblIdSerializacion";
             this.lblIdSerializacion.Size = new System.Drawing.Size(0, 13);
             this.lblIdSerializacion.TabIndex = 619;
@@ -567,12 +566,12 @@
             this.label29.TabIndex = 615;
             this.label29.Text = "Comprobante por Defecto :";
             // 
-            // flowLayoutPanel1
+            // pnlRecibos
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(14, 159);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(340, 98);
-            this.flowLayoutPanel1.TabIndex = 610;
+            this.pnlRecibos.Location = new System.Drawing.Point(10, 121);
+            this.pnlRecibos.Name = "pnlRecibos";
+            this.pnlRecibos.Size = new System.Drawing.Size(340, 98);
+            this.pnlRecibos.TabIndex = 610;
             // 
             // comboBox2
             // 
@@ -1091,17 +1090,17 @@
             this.gdvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gdvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gdvClientes.ColumnHeadersVisible = false;
-            this.gdvClientes.Location = new System.Drawing.Point(852, 45);
+            this.gdvClientes.Location = new System.Drawing.Point(854, 46);
             this.gdvClientes.Name = "gdvClientes";
             this.gdvClientes.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gdvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gdvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.gdvClientes.RowHeadersVisible = false;
             this.gdvClientes.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gdvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1130,14 +1129,14 @@
             this.gdvBuscar.Location = new System.Drawing.Point(286, 155);
             this.gdvBuscar.Name = "gdvBuscar";
             this.gdvBuscar.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gdvBuscar.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gdvBuscar.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.gdvBuscar.RowHeadersVisible = false;
             this.gdvBuscar.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gdvBuscar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1194,7 +1193,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtCliente);
-            this.groupBox1.Controls.Add(this.panel25);
             this.groupBox1.Controls.Add(this.cboFormaPago);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
@@ -1215,21 +1213,13 @@
             this.txtCliente.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.txtCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCliente.Location = new System.Drawing.Point(852, 20);
+            this.txtCliente.Location = new System.Drawing.Point(855, 26);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(291, 19);
             this.txtCliente.TabIndex = 14;
             this.txtCliente.Text = "GENERAL";
             this.txtCliente.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtCliente_MouseClick);
             this.txtCliente.TextChanged += new System.EventHandler(this.txtCliente_TextChanged);
-            // 
-            // panel25
-            // 
-            this.panel25.BackColor = System.Drawing.Color.Black;
-            this.panel25.Location = new System.Drawing.Point(851, 41);
-            this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(292, 3);
-            this.panel25.TabIndex = 13;
             // 
             // cboFormaPago
             // 
@@ -1459,12 +1449,13 @@
             this.clienteToolStripMenuItem1,
             this.inventarioToolStripMenuItem1,
             this.panelDeControlToolStripMenuItem1,
+            this.devolucionesToolStripMenuItem,
             this.cerrarTurnoToolStripMenuItem1});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.menuStrip1.Location = new System.Drawing.Point(158, 11);
+            this.menuStrip1.Location = new System.Drawing.Point(135, 11);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.ShowItemToolTips = true;
-            this.menuStrip1.Size = new System.Drawing.Size(894, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(1011, 40);
             this.menuStrip1.TabIndex = 614;
             this.menuStrip1.Text = "Ventas a crédito";
             // 
@@ -1521,6 +1512,15 @@
             this.panelDeControlToolStripMenuItem1.Size = new System.Drawing.Size(147, 36);
             this.panelDeControlToolStripMenuItem1.Text = "Panel de control";
             this.panelDeControlToolStripMenuItem1.Click += new System.EventHandler(this.panelDeControlToolStripMenuItem1_Click);
+            // 
+            // devolucionesToolStripMenuItem
+            // 
+            this.devolucionesToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
+            this.devolucionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("devolucionesToolStripMenuItem.Image")));
+            this.devolucionesToolStripMenuItem.Name = "devolucionesToolStripMenuItem";
+            this.devolucionesToolStripMenuItem.Size = new System.Drawing.Size(126, 36);
+            this.devolucionesToolStripMenuItem.Text = "Devoluciones";
+            this.devolucionesToolStripMenuItem.Click += new System.EventHandler(this.devolucionesToolStripMenuItem_Click);
             // 
             // cerrarTurnoToolStripMenuItem1
             // 
@@ -1618,9 +1618,9 @@
             this.panel2.Controls.Add(this.pnlIzquierda);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(1055, 0);
+            this.panel2.Location = new System.Drawing.Point(1135, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(232, 97);
+            this.panel2.Size = new System.Drawing.Size(152, 97);
             this.panel2.TabIndex = 2;
             // 
             // panel28
@@ -1628,7 +1628,7 @@
             this.panel28.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel28.BackgroundImage")));
             this.panel28.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel28.Controls.Add(this.pbPerfil);
-            this.panel28.Location = new System.Drawing.Point(114, 11);
+            this.panel28.Location = new System.Drawing.Point(45, 11);
             this.panel28.Name = "panel28";
             this.panel28.Size = new System.Drawing.Size(100, 75);
             this.panel28.TabIndex = 8;
@@ -1636,10 +1636,11 @@
             // pbPerfil
             // 
             this.pbPerfil.BackColor = System.Drawing.Color.Transparent;
-            this.pbPerfil.Location = new System.Drawing.Point(21, 0);
+            this.pbPerfil.ErrorImage = null;
+            this.pbPerfil.Location = new System.Drawing.Point(19, 3);
             this.pbPerfil.Name = "pbPerfil";
-            this.pbPerfil.Size = new System.Drawing.Size(76, 62);
-            this.pbPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPerfil.Size = new System.Drawing.Size(78, 59);
+            this.pbPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPerfil.TabIndex = 4;
             this.pbPerfil.TabStop = false;
             // 
@@ -1661,7 +1662,7 @@
             this.pnlIzquierda.Controls.Add(this.panel17);
             this.pnlIzquierda.Controls.Add(this.panel16);
             this.pnlIzquierda.Controls.Add(this.pnlHerramientas);
-            this.pnlIzquierda.Location = new System.Drawing.Point(75, 11);
+            this.pnlIzquierda.Location = new System.Drawing.Point(6, 11);
             this.pnlIzquierda.Name = "pnlIzquierda";
             this.pnlIzquierda.Size = new System.Drawing.Size(17, 18);
             this.pnlIzquierda.TabIndex = 7;
@@ -2212,7 +2213,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(75, 38);
+            this.pictureBox2.Location = new System.Drawing.Point(6, 38);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(35, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -2268,8 +2269,11 @@
             this.Controls.Add(this.pnlVentas);
             this.Controls.Add(this.pnlVentasDevoluciones);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMenuPrincipal";
-            this.Text = "frmMenuPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Ventas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
             this.pnlVentas.ResumeLayout(false);
@@ -2365,7 +2369,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.DataGridView gdvBuscar;
-        private System.Windows.Forms.Panel panel25;
         private System.Windows.Forms.TextBox txtCliente;
         private System.Windows.Forms.DataGridView gdvClientes;
         private System.Windows.Forms.Panel pnlCambioPrecios;
@@ -2408,7 +2411,7 @@
         private System.Windows.Forms.Panel panel37;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
-        internal System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        internal System.Windows.Forms.FlowLayoutPanel pnlRecibos;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Panel panel38;
@@ -2526,5 +2529,6 @@
         private System.Windows.Forms.ToolStripMenuItem inventarioToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem panelDeControlToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem cerrarTurnoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem devolucionesToolStripMenuItem;
     }
 }

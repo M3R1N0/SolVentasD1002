@@ -39,12 +39,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCargarExcel = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.gdvDatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -171,6 +171,14 @@
             this.panel1.Size = new System.Drawing.Size(1150, 153);
             this.panel1.TabIndex = 6;
             // 
+            // panel6
+            // 
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel6.Location = new System.Drawing.Point(0, 68);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(51, 85);
+            this.panel6.TabIndex = 31;
+            // 
             // btnActualizar
             // 
             this.btnActualizar.BackColor = System.Drawing.Color.CornflowerBlue;
@@ -193,6 +201,14 @@
             this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
+            // panel5
+            // 
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel5.Location = new System.Drawing.Point(988, 68);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(162, 85);
+            this.panel5.TabIndex = 30;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label1);
@@ -206,22 +222,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // panel5
-            // 
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Location = new System.Drawing.Point(988, 68);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(162, 85);
-            this.panel5.TabIndex = 30;
-            // 
-            // panel6
-            // 
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(0, 68);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(51, 85);
-            this.panel6.TabIndex = 31;
-            // 
             // frmCargarDatosExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,9 +231,10 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCargarDatosExcel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmCargarDatosExcel";
+            this.Text = "Importar Datos actualizados";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmCargarDatosExcel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gdvDatos)).EndInit();

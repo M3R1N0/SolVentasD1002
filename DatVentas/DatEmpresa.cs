@@ -100,5 +100,27 @@ namespace DatVentas
                 }
             }
         }
+
+        public int EditarEmpresa_CompiaSeguridad(int frecuencia)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    int resultado = 0;
+                    conn.Open();
+                    SqlCommand sc = new SqlCommand($"UPDATE tb_Empresa set [Ultima_FechaRespaldo] ='{DateTime.Now.ToString()}', [Ultima_FechaRespaldo2]='{DateTime.Now}', [Frecuencia_Respaldo]={frecuencia} ", conn);
+                    resultado = sc.ExecuteNonQuery();
+                    conn.Close();
+
+                    return resultado;
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    throw ex;
+                }
+            }
+        }
     }
 }

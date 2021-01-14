@@ -118,6 +118,7 @@ namespace VentasD1002
                     Exportar_Importar_ArchivoExcel.Exportar(ref gdDetalle);
                     this.Hide();
                     DatProducto.EliminarRegistros_ActualizacionProducto();
+
                     this.Dispose();
                 }
                 else

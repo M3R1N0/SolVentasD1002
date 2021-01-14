@@ -437,9 +437,10 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCierreCaja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmCierreCaja";
+            this.Text = "Corte de caja";
             this.Load += new System.EventHandler(this.frmCierreCaja_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

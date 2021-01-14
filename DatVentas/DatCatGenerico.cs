@@ -189,6 +189,28 @@ namespace DatVentas
             }
         }
 
+        public void Insertar_InicioSesionRemoto ( string conexion ,string serialPC)
+        {
+            using (SqlConnection conn = new SqlConnection(conexion))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand sc = new SqlCommand("sp_insertar_inicioSesion", conn);
+                    sc.CommandType = CommandType.StoredProcedure;
+                    sc.Parameters.AddWithValue("@idSerialPC", serialPC);
+                    sc.ExecuteNonQuery();
+                    conn.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    throw ex;
+                }
+            }
+        }
+
         public void Editar_InicioSesion( string serialPC, int idUsuario)
         {
             using (SqlConnection con = new SqlConnection(MasterConnection.connection))
@@ -257,6 +279,7 @@ namespace DatVentas
         #endregion
 
         #region CATALOGO FORMA PAGO
+
         public static DataTable ObtenerCatalogo_FormaPago()
         {
 
@@ -274,6 +297,24 @@ namespace DatVentas
                     conn.Close();
                     throw ex;
                 }
+            }
+        }
+
+        public static void Insertar_FormaPago(string tipoPago, string Descripcion)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+                {
+                    SqlCommand cmd = new SqlCommand($"INSERT INTO Cat_FormaPago VALUES ('{tipoPago}', '{Descripcion}', '{true}')", conn);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
         #endregion
@@ -424,5 +465,31 @@ namespace DatVentas
         }
 
         #endregion
+
+
+        public bool GenerarRespaldo (string rutaCarpeta, string nombreRespaldo)
+        {
+            bool resultado = false;
+            try
+            {
+              
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    
+
+                    SqlCommand cmd = new SqlCommand("BACKUP DATABASE DBVENTAS TO DISK='"+rutaCarpeta+@"\"+nombreRespaldo+ "'", con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
+                     return resultado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return resultado = false;
+                throw ex;
+            }
+        }
     }
 }

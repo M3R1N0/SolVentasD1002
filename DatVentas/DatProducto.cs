@@ -355,6 +355,50 @@ namespace DatVentas
             }
         }
 
+        public static int TotalProducto()
+        {
+            int resultado = 0;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    SqlCommand cmd = new SqlCommand("select count(Id_Producto) from tb_Producto where Estado = 1", con);
+                    con.Open();
+                    resultado = Convert.ToInt32(cmd.ExecuteScalar());
+                    con.Close();
+
+                    return resultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                return resultado = 0;
+                throw ex;
+            }
+        }
+
+        public static int TotalProducto_StockBajos()
+        {
+            int resultado = 0;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    SqlCommand cmd = new SqlCommand("select count(Id_Producto) from tb_Producto where Estado = 1 and Convert(decimal,Stock) <= Stock_Minimo", con);
+                    con.Open();
+                    resultado = Convert.ToInt32(cmd.ExecuteScalar());
+                    con.Close();
+
+                    return resultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                return resultado = 0;
+                throw ex;
+            }
+        }
+
         #region DESCARGAR ACTUALIZACION DE PRODUCTO
 
         public static void Agregar_ActualizacionProducto(string codigo)
@@ -459,6 +503,31 @@ namespace DatVentas
                 }
             }
         }
+
+        #endregion
+
+        #region DEVOLUCIONES DE PRODUCTOS VENDIDOS
+
+        public DataTable BuscarVenta(string busqueda)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter($"sp_BuscarVenta '{busqueda}'", con);
+                    da.Fill(dt);
+
+                    return dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        
 
         #endregion
     }

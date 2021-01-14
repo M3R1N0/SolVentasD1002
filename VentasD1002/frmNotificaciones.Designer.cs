@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNotificaciones));
             this.pnlContenedor = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
@@ -47,8 +48,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(570, 456);
             this.Controls.Add(this.pnlContenedor);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmNotificaciones";
-            this.Text = "frmNotificaciones";
+            this.Text = "Notificaciones";
             this.Load += new System.EventHandler(this.frmNotificaciones_Load);
             this.ResumeLayout(false);
 

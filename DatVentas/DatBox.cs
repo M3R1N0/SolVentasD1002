@@ -59,6 +59,34 @@ namespace DatVentas
             }
         }
 
+        public void Insertar_CajaRemota( string conexion ,Box b)
+        {
+            using (SqlConnection conn = new SqlConnection(conexion))
+            {
+                try
+                {
+                    int resultado = 0;
+                    conn.Open();
+                    SqlCommand sc = new SqlCommand("sp_insertarCaja", conn);
+                    sc.CommandType = CommandType.StoredProcedure;
+                    sc.Parameters.AddWithValue("@descripcion", b.Descripcion);
+                    sc.Parameters.AddWithValue("@tema", b.Tema);
+                    sc.Parameters.AddWithValue("@serialPC", b.SerialPC);
+                    sc.Parameters.AddWithValue("@impresoraTicket", b.ImpresoraTicket);
+                    sc.Parameters.AddWithValue("@impresoA4", b.ImpresoraA4);
+                    sc.Parameters.AddWithValue("@tipo", b.Tipo);
+                    sc.Parameters.AddWithValue("@estado", b.Estado);
+                    resultado = sc.ExecuteNonQuery();
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    throw ex;
+                }
+            }
+        }
+
         public int Obtener_CajaSerial(string serialpc)
         {
             using (SqlConnection con = new SqlConnection(MasterConnection.connection))

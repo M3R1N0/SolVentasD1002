@@ -44,8 +44,8 @@ namespace VentasD1002
         private void button10_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmDashboard dashboard = new frmDashboard();
-            dashboard.ShowDialog();
+           // frmDashboard dashboard = new frmDashboard();
+            //dashboard.ShowDialog();
             Dispose();
         }
 
@@ -93,8 +93,10 @@ namespace VentasD1002
 
         private void btnDescargar_Click(object sender, EventArgs e)
         {
+            //this.Hide();
             frmDescargarActualizacion descargarActualizacion = new frmDescargarActualizacion();
             descargarActualizacion.ShowDialog();
+            //this.Dispose();
         }
 
         private void button12_Click(object sender, EventArgs e)

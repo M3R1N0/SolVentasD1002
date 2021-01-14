@@ -243,6 +243,102 @@ namespace DatVentas
                 throw ex;
             }
         }
+
+        public static int Total_VentasRealizadas()
+        {
+            int resultado = 0;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    SqlCommand cmd = new SqlCommand("select count(Id_Venta) from tb_Ventas", con);
+                    con.Open();
+                    resultado = Convert.ToInt32(cmd.ExecuteScalar());
+                    con.Close();
+
+                    return resultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                return resultado = 0;
+                throw ex;
+            }
+        }
+
+        public static int Total_VentasCredito()
+        {
+            int resultado = 0;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    SqlCommand cmd = new SqlCommand("select count(Id_Venta) from tb_Ventas where Estado_Pago ='PENDIENTE'", con);
+                    con.Open();
+                    resultado = Convert.ToInt32(cmd.ExecuteScalar());
+                    con.Close();
+
+                    return resultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                return resultado = 0;
+                throw ex;
+            }
+        }
+
+        public static void DatosGrafica(ref DataTable dtDatos)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    SqlDataAdapter da = new SqlDataAdapter("sp_GraficaVenta", con);
+                    da.Fill(dtDatos);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void Filtrar_DatosGrafica(ref DataTable dtDatos, DateTime fechaInicio, DateTime fechaFin)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    SqlDataAdapter da = new SqlDataAdapter("sp_Filtros_GraficaVenta", con);
+                    da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    da.SelectCommand.Parameters.AddWithValue("@fechainicio", fechaInicio);
+                    da.SelectCommand.Parameters.AddWithValue("@fechafin", fechaFin);
+
+                    da.Fill(dtDatos);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void Grafica_ClienteFrecuente(ref DataTable dtDatos)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    SqlDataAdapter da = new SqlDataAdapter("sp_ClientesFrecuentes", con);
+                    da.Fill(dtDatos);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 
 }

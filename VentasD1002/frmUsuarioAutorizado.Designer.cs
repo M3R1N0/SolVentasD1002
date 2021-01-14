@@ -386,8 +386,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 507);
             this.Controls.Add(this.panelRegistro);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmUsuarioAutorizado";
-            this.Text = "frmUsuarioAutorizado";
+            this.Text = "Usuario Autorizado";
             this.Load += new System.EventHandler(this.frmUsuarioAutorizado_Load);
             this.panelRegistro.ResumeLayout(false);
             this.panelRegistro.PerformLayout();

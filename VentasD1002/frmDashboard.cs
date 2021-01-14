@@ -2,6 +2,7 @@
 using DatVentas;
 using EntVenta;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,9 @@ namespace VentasD1002
         public frmDashboard()
         {
             InitializeComponent();
+            pnlFiltro.Visible = false;
+            ContarDatos();
+            DibujarGrafica();
         }
         private string Usuario;
         string loggedUser;
@@ -35,6 +39,28 @@ namespace VentasD1002
         string caja;
         List<User> lstLoggedUser;
         List<OpenCloseBox> lstOpenCloseDetail;
+        DataTable dt;
+
+        private void frmDashboard_Load(object sender, EventArgs e)
+        {
+
+            try
+            {
+                ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
+                serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
+                var auxSerial = EncriptarTexto.Encriptar(serialPC);
+                userPermision = new BusUser().ObtenerUsuario(auxSerial).Rol;
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en la consulta de la llave del admin :" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            panel1.Visible = true;
+            Productos_MasVendidos();
+            ClientesFrecuentes();
+        }
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
@@ -202,29 +228,162 @@ namespace VentasD1002
                 }
         }
 
-        private void frmDashboard_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
-                serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
-                var auxSerial = EncriptarTexto.Encriptar(serialPC);
-                userPermision = new BusUser().ObtenerUsuario(auxSerial).Rol;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error en la consulta de la llave del admin :" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            panel1.Visible = true;
-        }
-
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             //this.Hide();
             frmConfiguracion configuracion = new frmConfiguracion();
             configuracion.ShowDialog();
-            //Dispose();
+           // Dispose();
+        }
+
+        private void panel10_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel9_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ContarDatos()
+        {
+            try
+            {
+
+                lblTotalClientes.Text = DatCliente.TotalClientes().ToString();
+                lblTotalProducto.Text = DatProducto.TotalProducto().ToString();
+                lblStockBajos.Text = DatProducto.TotalProducto_StockBajos().ToString();
+                lblVentasCredito.Text = DatVenta.Total_VentasCredito().ToString();
+                lblVentaTotal.Text = DatVenta.Total_VentasRealizadas().ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar los datos : "+ex.Message, "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DibujarGrafica()
+        {
+            try
+            {
+                ArrayList arrFecha = new ArrayList();
+                ArrayList arrMonto = new ArrayList();
+
+                dt = new DataTable();
+                DatVenta.DatosGrafica(ref dt);
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    arrFecha.Add(dr["Fecha"]);
+                    arrMonto.Add(dr["Total"]);
+                }
+
+                chart1.Series[0].Points.DataBindXY(arrFecha, arrMonto);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error al obtener los datos : "+ex.Message, "Error en la gráfica", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Filtrar_Grafica()
+        {
+            try
+            {
+                ArrayList arrFecha = new ArrayList();
+                ArrayList arrMonto = new ArrayList();
+
+                dt = new DataTable();
+                DatVenta.Filtrar_DatosGrafica(ref dt, dtpInicio.Value, dtpFin.Value);
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    arrFecha.Add(dr["Fecha"]);
+                    arrMonto.Add(dr["Total"]);
+                }
+
+                chart1.Series[0].Points.DataBindXY(arrFecha, arrMonto);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error al obtener los datos : " + ex.Message, "Error en la gráfica", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dtpInicio_ValueChanged(object sender, EventArgs e)
+        {
+            Filtrar_Grafica();
+        }
+
+        private void dtpFin_ValueChanged(object sender, EventArgs e)
+        {
+            Filtrar_Grafica();
+        }
+
+        private void chkFiltro_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkFiltro.Checked == true)
+            {
+                pnlFiltro.Visible = true;
+            }
+            else
+            {
+                pnlFiltro.Visible = false;
+                DibujarGrafica();
+            }
+        }
+
+        private void Productos_MasVendidos()
+        {
+            try
+            {
+                ArrayList arrTotal = new ArrayList();
+                ArrayList arrProducto = new ArrayList();
+
+                dt = new DataTable();
+                DatDetalleVenta.Productos_MasVendidos(ref dt);
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    arrTotal.Add(dr["Total"]);
+                    arrProducto.Add(dr["Descripcion"]);
+                }
+
+                chartProductosVendidos.Series[0].Points.DataBindXY(arrProducto , arrTotal);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error al obtener los datos : " + ex.Message, "Grafica productos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ClientesFrecuentes()
+        {
+            try
+            {
+                ArrayList arrTotal = new ArrayList();
+                ArrayList arrNombres = new ArrayList();
+
+                dt = new DataTable();
+                DatVenta.Grafica_ClienteFrecuente(ref dt);
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    arrTotal.Add(dr["Total"]);
+                    arrNombres.Add(dr["Nombre"]);
+                }
+
+                chartClientesFrecuentes.Series[0].Points.DataBindXY(arrNombres, arrTotal);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error al obtener los datos : " + ex.Message, "Grafica clientes", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

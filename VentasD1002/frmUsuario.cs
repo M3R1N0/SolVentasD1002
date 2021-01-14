@@ -77,6 +77,7 @@ namespace VentasD1002
                         u.Estado = true;
                         new BusUser().AddUser(u);//txtNombre.Text, txtDireccion.Text, txtUsuario.Text, txtContraseña.Text, ms.GetBuffer(),lblNombreIcono.Text, txtCorreo.Text, cboRol.SelectedItem.ToString(), true );
                         MessageBox.Show("Operación realizada","Exito",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        panelAgregarUsuarios.Visible = false;
                         ListarUsuarios();
                         ClearFields();
                     }

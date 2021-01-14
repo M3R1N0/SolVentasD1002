@@ -38,15 +38,17 @@ namespace VentasD1002
         public frmMenuPrincipal()
         {
             InitializeComponent();
-        }
 
-        private void frmMenuPrincipal_Load(object sender, EventArgs e)
-        {
             gdvBuscar.Visible = false;
             // pnlCantidad.Visible = false;
             gdvClientes.Visible = false;
             pnlCambioPrecios.Visible = false;
             pnlCobrar.Visible = false;
+        }
+
+        private void frmMenuPrincipal_Load(object sender, EventArgs e)
+        {
+            
 
             try
             {
@@ -60,6 +62,7 @@ namespace VentasD1002
                 serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
                 idCaja = new BusBox().showBoxBySerial(serialPC).Id;
 
+             
                 lsTipoPresentacion = new BusCatGenerico().ListarTipoPresentacion();
                 listadoCaja = new BusBox().showBoxBySerial(serialPC);
 
@@ -69,7 +72,7 @@ namespace VentasD1002
                 lblComprobante.Text = comprobante;
 
                 string ticket = DatBox.Obtener_ImpresoraTicket(serialPC);
-                cboImpresora.Text = ticket;
+                comboBox2.Text = ticket;
 
 
                 Obtener_PerfilUsuario();
@@ -858,7 +861,7 @@ namespace VentasD1002
 
         private void Dibujar_BotonComprobante()
         {
-            FlowLayoutPanel3.Controls.Clear();
+            pnlRecibos.Controls.Clear();
             try
             {
                 List<Serializacion> lstSerializacion = new BusSerializacion().ListarComprobantes()
@@ -873,7 +876,7 @@ namespace VentasD1002
                     b.Font = new System.Drawing.Font("Segoe UI", 12);
                     b.FlatStyle = FlatStyle.Flat;
                     b.ForeColor = Color.WhiteSmoke;
-                    FlowLayoutPanel3.Controls.Add(b);
+                    pnlRecibos.Controls.Add(b);
                     if (b.Text == lblComprobante.Text)
                     {
                         b.Visible = false;
@@ -1079,7 +1082,7 @@ namespace VentasD1002
             {
                 Box b = new Box();
                 b.Id = idCaja;
-                b.ImpresoraTicket = cboImpresora.Text;
+                b.ImpresoraTicket = comboBox2.Text;
 
                 new BusBox().Actualizar_ImpresoraTicket(b);
             }
@@ -1094,12 +1097,12 @@ namespace VentasD1002
         {
             try
             {
-                cboImpresora.Items.Clear();
+                comboBox2.Items.Clear();
                 for (var i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
                 {
-                    cboImpresora.Items.Add(PrinterSettings.InstalledPrinters[i]);
+                    comboBox2.Items.Add(PrinterSettings.InstalledPrinters[i]);
                 }
-                cboImpresora.Items.Add("NINGUNA");
+                comboBox2.Items.Add("NINGUNA");
             }
             catch (Exception ex)
             {
@@ -1201,7 +1204,7 @@ namespace VentasD1002
                 bool aux = Convert.ToDecimal(txtRecibi.Text) >= Convert.ToDecimal(lblTotal.Text) ? true : false;
                 if (aux)
                 {
-                    if (cboImpresora.Text != "NINGUNA")
+                    if (comboBox2.Text != "NINGUNA")
                     {
                         try
                         {
@@ -1210,12 +1213,12 @@ namespace VentasD1002
                             GenerarVenta();
 
                             TICKET = new PrintDocument();
-                            TICKET.PrinterSettings.PrinterName = cboImpresora.Text;
+                            TICKET.PrinterSettings.PrinterName = comboBox2.Text;
 
                             if (TICKET.PrinterSettings.IsValid)
                             {
                                 PrinterSettings printerSettings = new PrinterSettings();
-                                printerSettings.PrinterName = cboImpresora.Text;
+                                printerSettings.PrinterName = comboBox2.Text;
 
                                 ReportProcessor reportProcessor = new ReportProcessor();
                                 reportProcessor.PrintReport(reportViewerImprimir.ReportSource, printerSettings);
@@ -1503,11 +1506,15 @@ namespace VentasD1002
             }
         }
 
+        private void devolucionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDevoluciones devoluciones = new frmDevoluciones();
+            devoluciones.ShowDialog();
+        }
+
+
         #endregion
 
-        private void pnlVentas_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+     
     }
 }

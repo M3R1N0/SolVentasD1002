@@ -18,7 +18,8 @@ namespace BusVenta
             {
                 SaveFileDialog saveFile = new SaveFileDialog();
                 saveFile.Filter = "CSV(*.csv)|*.csv";
-                saveFile.FileName = "DataBackup.csv";
+                string archivo = "ActualizacionProducto_" + DateTime.Now.ToString("ddMMyyyy");
+                saveFile.FileName = archivo+".csv";
                 bool fileError = false;
 
                 if (saveFile.ShowDialog() == DialogResult.OK)

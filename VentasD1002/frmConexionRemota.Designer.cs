@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConexionRemota));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtIP = new System.Windows.Forms.TextBox();
@@ -67,13 +68,16 @@
             // 
             // btnConectar
             // 
+            this.btnConectar.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnConectar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConectar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConectar.Location = new System.Drawing.Point(600, 126);
+            this.btnConectar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnConectar.Location = new System.Drawing.Point(599, 121);
             this.btnConectar.Name = "btnConectar";
-            this.btnConectar.Size = new System.Drawing.Size(118, 30);
+            this.btnConectar.Size = new System.Drawing.Size(118, 39);
             this.btnConectar.TabIndex = 3;
             this.btnConectar.Text = "Conectar";
-            this.btnConectar.UseVisualStyleBackColor = true;
+            this.btnConectar.UseVisualStyleBackColor = false;
             this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
             // 
             // frmConexionRemota
@@ -86,10 +90,11 @@
             this.Controls.Add(this.txtIP);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmConexionRemota";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmConexionRemota";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Text = "Conexión remota";
+            this.Load += new System.EventHandler(this.frmConexionRemota_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

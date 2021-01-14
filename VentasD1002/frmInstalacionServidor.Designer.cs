@@ -57,6 +57,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
             this.richtxtConfiguracion = new System.Windows.Forms.RichTextBox();
             this.lblMilseg = new System.Windows.Forms.Label();
             this.lblSeg = new System.Windows.Forms.Label();
@@ -69,8 +71,8 @@
             this.txtpwd = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtServidor = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtScriptUsuarioRemoto = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.panelBuscandoServidor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -82,6 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -344,6 +347,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.panel6.Controls.Add(this.groupBox1);
             this.panel6.Controls.Add(this.label8);
             this.panel6.Controls.Add(this.txtUsuario);
             this.panel6.Controls.Add(this.richtxtConfiguracion);
@@ -358,10 +362,31 @@
             this.panel6.Controls.Add(this.txtpwd);
             this.panel6.Controls.Add(this.label6);
             this.panel6.Controls.Add(this.txtServidor);
-            this.panel6.Location = new System.Drawing.Point(272, 78);
+            this.panel6.Location = new System.Drawing.Point(125, 78);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(828, 359);
+            this.panel6.Size = new System.Drawing.Size(975, 451);
             this.panel6.TabIndex = 8;
+            this.panel6.Visible = false;
+            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label8.Location = new System.Drawing.Point(33, 74);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 17);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Usuario :";
+            // 
+            // txtUsuario
+            // 
+            this.txtUsuario.Location = new System.Drawing.Point(111, 74);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(139, 20);
+            this.txtUsuario.TabIndex = 12;
+            this.txtUsuario.Text = "SoftVentas";
             // 
             // richtxtConfiguracion
             // 
@@ -436,6 +461,7 @@
             this.txtDB.Size = new System.Drawing.Size(139, 20);
             this.txtDB.TabIndex = 4;
             this.txtDB.Text = "DBVENTAS";
+            this.txtDB.TextChanged += new System.EventHandler(this.txtDB_TextChanged);
             // 
             // label7
             // 
@@ -454,6 +480,7 @@
             this.txtpwd.Name = "txtpwd";
             this.txtpwd.Size = new System.Drawing.Size(139, 20);
             this.txtpwd.TabIndex = 2;
+            this.txtpwd.Text = "123";
             // 
             // label6
             // 
@@ -473,23 +500,25 @@
             this.txtServidor.Size = new System.Drawing.Size(139, 20);
             this.txtServidor.TabIndex = 0;
             // 
-            // label8
+            // groupBox1
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label8.Location = new System.Drawing.Point(33, 74);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 17);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Usuario :";
+            this.groupBox1.Controls.Add(this.txtScriptUsuarioRemoto);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.groupBox1.Location = new System.Drawing.Point(532, 60);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(352, 254);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Para crear un usuario remoto";
             // 
-            // txtUsuario
+            // txtScriptUsuarioRemoto
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(111, 74);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(139, 20);
-            this.txtUsuario.TabIndex = 12;
+            this.txtScriptUsuarioRemoto.Location = new System.Drawing.Point(6, 19);
+            this.txtScriptUsuarioRemoto.Name = "txtScriptUsuarioRemoto";
+            this.txtScriptUsuarioRemoto.Size = new System.Drawing.Size(340, 214);
+            this.txtScriptUsuarioRemoto.TabIndex = 0;
+            this.txtScriptUsuarioRemoto.Text = resources.GetString("txtScriptUsuarioRemoto.Text");
+            this.txtScriptUsuarioRemoto.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // frmInstalacionServidor
             // 
@@ -501,7 +530,9 @@
             this.Controls.Add(this.panelBuscandoServidor);
             this.Controls.Add(this.panelInstalandoServidor);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmInstalacionServidor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "INSTALACION DEL SERVIDOR";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmInstalacionServidor_Load);
@@ -524,6 +555,7 @@
             this.panel3.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -571,5 +603,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RichTextBox txtScriptUsuarioRemoto;
     }
 }

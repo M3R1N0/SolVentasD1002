@@ -33,17 +33,23 @@ namespace VentasD1002
 
             NombreEquipo = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
             txtServidor.Text = @".\" + txtServidor.Text;
-
-            ScriptElimnarDB = ScriptElimnarDB.Replace("ABARROTERA", txtDB.Text);
-            txtTablasSP.Text = txtTablasSP.Text.Replace("ABARROTERA", txtDB.Text);
-           // Cursor = Cursors.WaitCursor;
             Verificar_ServidorInstalado();
+
+            ScriptElimnarDB = ScriptElimnarDB.Replace("DBVENTAS", txtDB.Text);
+            txtTablasSP.Text = txtTablasSP.Text.Replace("DBVENTAS", txtDB.Text);
+            txtScriptUsuarioRemoto.Text = txtScriptUsuarioRemoto.Text.Replace("ada369", txtUsuario.Text);
+            txtScriptUsuarioRemoto.Text = txtScriptUsuarioRemoto.Text.Replace("BASEADA", txtDB.Text);
+            txtScriptUsuarioRemoto.Text = txtScriptUsuarioRemoto.Text.Replace("softwarereal", txtpwd.Text);
+            // Cursor = Cursors.WaitCursor;
+
+            txtTablasSP.Text = txtTablasSP.Text + Environment.NewLine + txtScriptUsuarioRemoto.Text;
+
         }
 
         #region  SERVIDOR INSTALADO
 
         #region VARIABLES
-        private string ScriptElimnarDB = "ALTER DATABASE ABARROTERA SET SINGLE_USER WITH ROLLBACK IMMEDIATE DROP DATABASE ABARROTERA";
+        private string ScriptElimnarDB = "ALTER DATABASE DBVENTAS SET SINGLE_USER WITH ROLLBACK IMMEDIATE DROP DATABASE DBVENTAS";
         private DatVentas.AES aes = new DatVentas.AES();
         string ruta;
         public static int milisegundos;
@@ -140,7 +146,7 @@ namespace VentasD1002
             }
             catch (Exception ex)
             {
-                //  MessageBox.Show( ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //  MessageBox.Show( ex.Message, "Error", MessageBoxButtons.OK   , MessageBoxIcon.Error);
             }
         }
 
@@ -358,5 +364,19 @@ namespace VentasD1002
 
         #endregion
 
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtDB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -66,8 +66,6 @@ namespace VentasD1002
             return Regex.IsMatch(email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
         }
 
-       
-
         private void pbFoto_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -76,7 +74,7 @@ namespace VentasD1002
                 ofd.InitialDirectory = "";
                 ofd.Filter = "Imagenes|*.jpg;*.png";
                 ofd.FilterIndex = 2;
-                ofd.Title = "Carga Foto de perfil";
+                ofd.Title = "Cargar Foto de perfil";
 
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
@@ -129,7 +127,7 @@ namespace VentasD1002
                         MessageBox.Show("Operación realizada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Dispose();
 
-                        //Application.Restart();
+                        Application.Restart();
                     }
                     else
                     {
@@ -169,7 +167,7 @@ namespace VentasD1002
             try
             {
                 Cliente c = new Cliente();
-                c.NombreCompleto = "General";
+                c.NombreCompleto = "GENERAL";
                 c.Direccion = "N/A";
                 c.Ruc = "N/A";
                 c.Telefono = "N/A";

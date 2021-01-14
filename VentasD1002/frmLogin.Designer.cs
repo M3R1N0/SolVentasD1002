@@ -96,7 +96,7 @@
             // dtpFechaActivacion
             // 
             this.dtpFechaActivacion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaActivacion.Location = new System.Drawing.Point(3, 52);
+            this.dtpFechaActivacion.Location = new System.Drawing.Point(6, 237);
             this.dtpFechaActivacion.Name = "dtpFechaActivacion";
             this.dtpFechaActivacion.Size = new System.Drawing.Size(110, 20);
             this.dtpFechaActivacion.TabIndex = 612;
@@ -105,7 +105,7 @@
             // dtpVencimiento
             // 
             this.dtpVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpVencimiento.Location = new System.Drawing.Point(3, 85);
+            this.dtpVencimiento.Location = new System.Drawing.Point(6, 270);
             this.dtpVencimiento.Name = "dtpVencimiento";
             this.dtpVencimiento.Size = new System.Drawing.Size(110, 20);
             this.dtpVencimiento.TabIndex = 612;
@@ -302,9 +302,10 @@
             this.Controls.Add(this.panelUsuarios);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Inicio de sesión";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

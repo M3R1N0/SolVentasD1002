@@ -70,8 +70,9 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.pnlCPrincipal);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmConfiguracionCaja";
-            this.Text = "frmConfiguracionCaja";
+            this.Text = "Configuración de Cajas";
             this.Load += new System.EventHandler(this.frmConfiguracionCaja_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

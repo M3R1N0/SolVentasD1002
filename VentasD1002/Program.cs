@@ -26,7 +26,7 @@ namespace VentasD1002
             //pplication.Run(new frmAperturaCaja());
             //Application.Run(new frmInventarioKardex());
             // Application.Run(new frmInstalacionServidor());
-             Application.Run(new frmConfiguracion());
+             Application.Run(new frmDashboard());
         }
     }
 }

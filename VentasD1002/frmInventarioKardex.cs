@@ -364,9 +364,6 @@ namespace VentasD1002
 
         #endregion
 
-        private void toolStripMenuItem6_Click(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }
