@@ -67,8 +67,8 @@ namespace VentasD1002
                     label.Size = new Size(175, 25);
                     label.Font = new Font("Microsoft Sans Serif", 13);
                     label.FlatStyle = FlatStyle.Flat;
-                    label.BackColor = Color.FromArgb(20, 20, 20);
-                    label.ForeColor = Color.White;
+                    label.BackColor = Color.FromArgb(176, 196, 222);
+                    label.ForeColor = Color.Black;
                     label.Dock = DockStyle.Bottom;
                     label.TextAlign = ContentAlignment.MiddleCenter;
                     label.Cursor = Cursors.Hand;
@@ -76,7 +76,7 @@ namespace VentasD1002
                     panel.Size = new Size(90, 90);
                     panel.BorderStyle = BorderStyle.None;
                     panel.Dock = DockStyle.Top;
-                    panel.BackColor = Color.FromArgb(20, 20, 20);
+                    panel.BackColor = Color.FromArgb(176, 196, 222);
 
                     picture.Size = new Size(80, 80);
                     picture.Dock = DockStyle.Top;
@@ -418,7 +418,7 @@ namespace VentasD1002
                 }
                 else
                 {
-                    if (Apertura == "NUEVO" & userPermision != "Solo Ventas")
+                    if (Apertura == "NUEVO" & userPermision != "VENDEDOR")
                     {
                         new DatCatGenerico().Editar_InicioSesion(EncriptarTexto.Encriptar(serialPC), idusuario);
                         this.Hide();

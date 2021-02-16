@@ -59,6 +59,7 @@
     <Compile Include="Licencia.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="DetalleVenta.cs" />
+    <Compile Include="ParametrosReporte.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="Box.cs" />
     <Compile Include="CatalogoGenerico.cs" />

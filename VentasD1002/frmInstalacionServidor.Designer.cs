@@ -57,6 +57,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtScriptUsuarioRemoto = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.richtxtConfiguracion = new System.Windows.Forms.RichTextBox();
@@ -71,8 +73,6 @@
             this.txtpwd = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtServidor = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtScriptUsuarioRemoto = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.panelBuscandoServidor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -369,6 +369,26 @@
             this.panel6.Visible = false;
             this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtScriptUsuarioRemoto);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.groupBox1.Location = new System.Drawing.Point(532, 60);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(352, 254);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Para crear un usuario remoto";
+            // 
+            // txtScriptUsuarioRemoto
+            // 
+            this.txtScriptUsuarioRemoto.Location = new System.Drawing.Point(6, 19);
+            this.txtScriptUsuarioRemoto.Name = "txtScriptUsuarioRemoto";
+            this.txtScriptUsuarioRemoto.Size = new System.Drawing.Size(340, 214);
+            this.txtScriptUsuarioRemoto.TabIndex = 0;
+            this.txtScriptUsuarioRemoto.Text = resources.GetString("txtScriptUsuarioRemoto.Text");
+            this.txtScriptUsuarioRemoto.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -499,26 +519,7 @@
             this.txtServidor.Name = "txtServidor";
             this.txtServidor.Size = new System.Drawing.Size(139, 20);
             this.txtServidor.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtScriptUsuarioRemoto);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.groupBox1.Location = new System.Drawing.Point(532, 60);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(352, 254);
-            this.groupBox1.TabIndex = 14;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Para crear un usuario remoto";
-            // 
-            // txtScriptUsuarioRemoto
-            // 
-            this.txtScriptUsuarioRemoto.Location = new System.Drawing.Point(6, 19);
-            this.txtScriptUsuarioRemoto.Name = "txtScriptUsuarioRemoto";
-            this.txtScriptUsuarioRemoto.Size = new System.Drawing.Size(340, 214);
-            this.txtScriptUsuarioRemoto.TabIndex = 0;
-            this.txtScriptUsuarioRemoto.Text = resources.GetString("txtScriptUsuarioRemoto.Text");
-            this.txtScriptUsuarioRemoto.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.txtServidor.Text = "DESKTOP-TDDKIL8";
             // 
             // frmInstalacionServidor
             // 

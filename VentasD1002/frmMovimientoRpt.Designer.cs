@@ -59,6 +59,6 @@
 
         #endregion
 
-        private Telerik.ReportViewer.WinForms.ReportViewer reportViewerMovimiento;
+        public Telerik.ReportViewer.WinForms.ReportViewer reportViewerMovimiento;
     }
 }

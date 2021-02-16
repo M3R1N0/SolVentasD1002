@@ -36,7 +36,6 @@
             this.dtpFechaActivacion = new System.Windows.Forms.DateTimePicker();
             this.dtpVencimiento = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.panelUsuarios = new System.Windows.Forms.Panel();
             this.flowLayoutPanelUsuarios = new System.Windows.Forms.FlowLayoutPanel();
             this.panelIniciarSesion = new System.Windows.Forms.Panel();
@@ -51,6 +50,9 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelUsuarios.SuspendLayout();
@@ -58,11 +60,13 @@
             this.panelIniciarSesion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.MenuStrip15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(10)))), ((int)(((byte)(54)))));
+            this.panel1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.dtpFechaActivacion);
@@ -120,19 +124,6 @@
             this.panel2.Size = new System.Drawing.Size(571, 68);
             this.panel2.TabIndex = 1;
             // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(10)))), ((int)(((byte)(54)))));
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(172)))), ((int)(((byte)(224)))));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(571, 68);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "¡ B I E N V E N I D O ! ";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // panelUsuarios
             // 
             this.panelUsuarios.Controls.Add(this.flowLayoutPanelUsuarios);
@@ -144,7 +135,7 @@
             // 
             // flowLayoutPanelUsuarios
             // 
-            this.flowLayoutPanelUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(10)))), ((int)(((byte)(54)))));
+            this.flowLayoutPanelUsuarios.BackColor = System.Drawing.Color.LightSteelBlue;
             this.flowLayoutPanelUsuarios.Controls.Add(this.panelIniciarSesion);
             this.flowLayoutPanelUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelUsuarios.Location = new System.Drawing.Point(0, 0);
@@ -154,8 +145,9 @@
             // 
             // panelIniciarSesion
             // 
-            this.panelIniciarSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(10)))), ((int)(((byte)(54)))));
+            this.panelIniciarSesion.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panelIniciarSesion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelIniciarSesion.Controls.Add(this.button1);
             this.panelIniciarSesion.Controls.Add(this.lblLicencia);
             this.panelIniciarSesion.Controls.Add(this.pictureBox1);
             this.panelIniciarSesion.Controls.Add(this.panel6);
@@ -172,7 +164,9 @@
             // lblLicencia
             // 
             this.lblLicencia.AutoSize = true;
+            this.lblLicencia.BackColor = System.Drawing.Color.LightSteelBlue;
             this.lblLicencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLicencia.ForeColor = System.Drawing.Color.Black;
             this.lblLicencia.Location = new System.Drawing.Point(134, 269);
             this.lblLicencia.Name = "lblLicencia";
             this.lblLicencia.Size = new System.Drawing.Size(60, 17);
@@ -181,6 +175,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(118, 269);
             this.pictureBox1.Name = "pictureBox1";
@@ -191,7 +186,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(172)))), ((int)(((byte)(224)))));
+            this.panel6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel6.Location = new System.Drawing.Point(147, 109);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(210, 1);
@@ -199,11 +194,12 @@
             // 
             // btnOlvidasteContraseña
             // 
-            this.btnOlvidasteContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(10)))), ((int)(((byte)(54)))));
+            this.btnOlvidasteContraseña.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnOlvidasteContraseña.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(10)))), ((int)(((byte)(54)))));
             this.btnOlvidasteContraseña.FlatAppearance.BorderSize = 0;
             this.btnOlvidasteContraseña.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOlvidasteContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOlvidasteContraseña.ForeColor = System.Drawing.Color.Black;
             this.btnOlvidasteContraseña.Location = new System.Drawing.Point(129, 144);
             this.btnOlvidasteContraseña.Name = "btnOlvidasteContraseña";
             this.btnOlvidasteContraseña.Size = new System.Drawing.Size(229, 28);
@@ -213,11 +209,12 @@
             // 
             // btnCambiarUsuario
             // 
-            this.btnCambiarUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(10)))), ((int)(((byte)(54)))));
+            this.btnCambiarUsuario.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnCambiarUsuario.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(10)))), ((int)(((byte)(54)))));
             this.btnCambiarUsuario.FlatAppearance.BorderSize = 0;
             this.btnCambiarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCambiarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCambiarUsuario.ForeColor = System.Drawing.Color.Black;
             this.btnCambiarUsuario.Location = new System.Drawing.Point(155, 120);
             this.btnCambiarUsuario.Name = "btnCambiarUsuario";
             this.btnCambiarUsuario.Size = new System.Drawing.Size(171, 28);
@@ -229,7 +226,7 @@
             // MenuStrip15
             // 
             this.MenuStrip15.AutoSize = false;
-            this.MenuStrip15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(10)))), ((int)(((byte)(54)))));
+            this.MenuStrip15.BackColor = System.Drawing.Color.LightSteelBlue;
             this.MenuStrip15.Dock = System.Windows.Forms.DockStyle.None;
             this.MenuStrip15.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tver,
@@ -245,7 +242,7 @@
             // 
             // tver
             // 
-            this.tver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(10)))), ((int)(((byte)(54)))));
+            this.tver.BackColor = System.Drawing.Color.Transparent;
             this.tver.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.tver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(172)))), ((int)(((byte)(224)))));
             this.tver.Image = ((System.Drawing.Image)(resources.GetObject("tver.Image")));
@@ -258,7 +255,7 @@
             // 
             // tocultar
             // 
-            this.tocultar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(10)))), ((int)(((byte)(54)))));
+            this.tocultar.BackColor = System.Drawing.Color.Transparent;
             this.tocultar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.tocultar.ForeColor = System.Drawing.Color.Black;
             this.tocultar.Image = ((System.Drawing.Image)(resources.GetObject("tocultar.Image")));
@@ -272,11 +269,11 @@
             // 
             // txtContraseña
             // 
-            this.txtContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(10)))), ((int)(((byte)(54)))));
+            this.txtContraseña.BackColor = System.Drawing.Color.LightSteelBlue;
             this.txtContraseña.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContraseña.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.txtContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(172)))), ((int)(((byte)(224)))));
+            this.txtContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtContraseña.Location = new System.Drawing.Point(129, 85);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.PasswordChar = '*';
@@ -292,6 +289,44 @@
             // timer2
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Varsity Regular", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(571, 68);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "¡ B I E N V E N I D O ! ";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::VentasD1002.Properties.Resources.JIEL;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(116, 97);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(10)))), ((int)(((byte)(54)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.DimGray;
+            this.button1.Location = new System.Drawing.Point(98, 167);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(276, 28);
+            this.button1.TabIndex = 614;
+            this.button1.Text = "Favor de contactar con el adminastrador del sistema";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // frmLogin
             // 
@@ -317,6 +352,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MenuStrip15.ResumeLayout(false);
             this.MenuStrip15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -325,7 +361,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelUsuarios;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelUsuarios;
         private System.Windows.Forms.Panel panelIniciarSesion;
@@ -344,6 +379,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblLicencia;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

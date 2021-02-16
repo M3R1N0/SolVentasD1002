@@ -128,14 +128,23 @@ namespace DatVentas
             }
         }
 
-        public  static string Obtener_ImpresoraTicket(string serialPC)
+        public  static string Obtener_ImpresoraTicket(string serialPC, string tipoImpresion)
         {
             using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
             {
                 try
                 {
                     string aux;
-                    SqlCommand sc = new SqlCommand($"SELECT Impresora_Tickect FROM tb_Caja WHERE Serial_PC='"+serialPC+"'", conn);
+                    string query = "";
+                    if (tipoImpresion == "RECIBO")
+                    {
+                        query = $"SELECT Impresora_A4 FROM tb_Caja WHERE Serial_PC='{serialPC}'";
+                    }
+                    else
+                    {
+                        query = $"SELECT Impresora_Tickect FROM tb_Caja WHERE Serial_PC='{serialPC}'";
+                    }
+                    SqlCommand sc = new SqlCommand(query, conn);
                     conn.Open();
                    aux = Convert.ToString(  sc.ExecuteScalar());
                     conn.Close();
@@ -155,7 +164,19 @@ namespace DatVentas
             {
                 try
                 {
-                    SqlCommand sc = new SqlCommand($"UPDATE tb_Caja SET Impresora_Tickect='{b.ImpresoraTicket}' WHERE Id_Caja={b.Id}", con);
+                    string query ="";
+                    if (!String.IsNullOrEmpty(b.ImpresoraTicket))
+                    {
+                        query = $"UPDATE tb_Caja SET Impresora_Tickect='{b.ImpresoraTicket}' WHERE Id_Caja={b.Id}";
+                        
+                    }
+
+                    if (!string.IsNullOrEmpty(b.ImpresoraA4))
+                    {
+                        query = $"UPDATE tb_Caja SET Impresora_A4='{b.ImpresoraA4}' WHERE Id_Caja={b.Id}";
+                    }
+                      SqlCommand sc = new SqlCommand(query, con);
+
                     con.Open();
                     int filasAfectadas = sc.ExecuteNonQuery();
                     con.Close();

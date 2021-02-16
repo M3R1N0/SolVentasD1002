@@ -145,6 +145,27 @@ namespace DatVentas
             }
         }
 
+        public static string Obtener_Presentacion_Abv(string presentacion)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    string resultado;
+                    SqlCommand cmd = new SqlCommand($"SELECT NombreCorto FROM [Cat_Tipo_Presentacion]  WHERE Nombre='{presentacion}'", con);
+                    con.Open();
+                    resultado = Convert.ToString(cmd.ExecuteScalar());
+                    con.Close();
+
+                    return resultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static DataTable ListarCat_Producto()
         {
 
@@ -466,7 +487,6 @@ namespace DatVentas
 
         #endregion
 
-
         public bool GenerarRespaldo (string rutaCarpeta, string nombreRespaldo)
         {
             bool resultado = false;
@@ -491,5 +511,7 @@ namespace DatVentas
                 throw ex;
             }
         }
+
+
     }
 }

@@ -50,7 +50,7 @@ namespace DatVentas
             }
         }
 
-        public DataTable ObtenerComrpobante()
+        public DataTable ObtenerComrpobante(string textoNumero)
         {
             using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
             {
@@ -58,8 +58,39 @@ namespace DatVentas
                 {
                     DataTable dt = new DataTable();
                     SqlDataAdapter da = new SqlDataAdapter("[sp_Mostrar_TicketImpreso]", conn);
+                    da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    da.SelectCommand.Parameters.AddWithValue("@letranumero", textoNumero);
                     da.Fill(dt);
                     return dt;
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    throw ex;
+                }
+            }
+        }
+
+        public static ParametrosReporte ObtenerComrpobanteRpt()
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    ParametrosReporte obj = new ParametrosReporte();
+
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("EXEC [sp_Mostrar_TicketImpreso]", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        
+                    }
+
+                    return obj;
+
                 }
                 catch (Exception ex)
                 {
@@ -332,6 +363,30 @@ namespace DatVentas
                 {
                     SqlDataAdapter da = new SqlDataAdapter("sp_ClientesFrecuentes", con);
                     da.Fill(dtDatos);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static DataTable ObtenerTickets(DateTime inicio, DateTime fin)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    DataTable dt = new DataTable();
+
+                    SqlDataAdapter da = new SqlDataAdapter("sp_ObtenerTickets_PorFecha", con);
+                    da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    da.SelectCommand.Parameters.AddWithValue("@inicio", inicio);
+                    da.SelectCommand.Parameters.AddWithValue("@fin", fin);
+                    da.Fill(dt);
+
+                    return dt;
+
                 }
             }
             catch (Exception ex)

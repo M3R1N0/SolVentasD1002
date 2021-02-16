@@ -104,5 +104,11 @@ namespace VentasD1002
             frmCargarDatosExcel cargarDatosExcel = new frmCargarDatosExcel();
             cargarDatosExcel.ShowDialog();
         }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            frmConfiguracionImpresoras impresoras = new frmConfiguracionImpresoras();
+            impresoras.ShowDialog();
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace BusVenta
                 p.seVendeA = dr["Tipo_Venta"].ToString();
                 p.APartirDe = Convert.ToDecimal(dr["A_Partir_De"].ToString());
                 p.stockMinimo = Convert.ToInt32(dr["Stock_Minimo"]);
-                p.precioMayoreo = Convert.ToInt32(dr["Precio_Mayoreo"]);
+                p.precioMayoreo = Convert.ToDecimal(dr["Precio_Mayoreo"]);
                 p.IdTipoPresentacion = Convert.ToInt32(dr["Presentacion_Id"]);
                 p.IdCategoria = Convert.ToInt32(dr["Catalogo_Id"]);
                 p.TotalUnidades = Convert.ToDecimal(dr["TotalUnidades"] is DBNull ? 0 : dr["TotalUnidades"]);
@@ -70,7 +70,7 @@ namespace BusVenta
                 p.seVendeA = dr["Tipo_Venta"].ToString();
                 p.APartirDe = Convert.ToDecimal(dr["A_Partir_De"].ToString());
                 p.stockMinimo = Convert.ToInt32(dr["Stock_Minimo"]);
-                p.precioMayoreo = Convert.ToInt32(dr["Precio_Mayoreo"]);
+                p.precioMayoreo = Convert.ToDecimal(dr["Precio_Mayoreo"]);
                 p.IdTipoPresentacion = Convert.ToInt32(dr["Presentacion_Id"]);
                 p.IdCategoria = Convert.ToInt32(dr["Catalogo_Id"]);
                 p.TotalUnidades = Convert.ToDecimal(dr["TotalUnidades"] is DBNull ? 0 : dr["TotalUnidades"]);
@@ -117,7 +117,7 @@ namespace BusVenta
                 p.precioMenudeo = Convert.ToDecimal(dr["Precio_Menudeo"]);
                 p.precioMMayoreo = Convert.ToDecimal(dr["Precio_MMayoreo"]);
                 p.APartirDe = Convert.ToDecimal(dr["A_Partir_De"].ToString());
-                p.precioMayoreo = Convert.ToInt32(dr["Precio_Mayoreo"]);
+                p.precioMayoreo = Convert.ToDecimal(dr["Precio_Mayoreo"]);
                 p.usaInventario = dr["Usa_Inventario"].ToString();
                 p.stock = dr["Stock"].ToString();
                 p.stockMinimo = Convert.ToInt32(dr["Stock_Minimo"]);
@@ -146,7 +146,7 @@ namespace BusVenta
                 p.stockMinimo = Convert.ToInt32(dr["Stock_Minimo"]);
                 p.precioMenudeo = Convert.ToDecimal(dr["Precio_Menudeo"]);
                 p.precioMMayoreo = Convert.ToDecimal(dr["Precio_MMayoreo"]);
-                p.precioMayoreo = Convert.ToInt32(dr["Precio_Mayoreo"]);
+                p.precioMayoreo = Convert.ToDecimal(dr["Precio_Mayoreo"]);
 
                 lsProductos.Add(p);
             }

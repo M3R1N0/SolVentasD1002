@@ -131,6 +131,7 @@
             this.button10.TabIndex = 1;
             this.button10.Text = "Regresar";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Visible = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // panel1
@@ -416,6 +417,7 @@
             this.Button5.Size = new System.Drawing.Size(100, 75);
             this.Button5.TabIndex = 5;
             this.Button5.UseVisualStyleBackColor = true;
+            this.Button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // Label4
             // 

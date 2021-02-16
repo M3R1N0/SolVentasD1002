@@ -11,6 +11,8 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,10 +25,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,6 +49,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>PruebaApp.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>screencart_106583.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.4">
@@ -148,6 +151,12 @@
     <Compile Include="frmConfiguracionEmpresa.Designer.cs">
       <DependentUpon>frmConfiguracionEmpresa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmConfiguracionImpresoras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConfiguracionImpresoras.Designer.cs">
+      <DependentUpon>frmConfiguracionImpresoras.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCopiaSeguridad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +204,12 @@
     </Compile>
     <Compile Include="frmGastos.Designer.cs">
       <DependentUpon>frmGastos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHistorialVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHistorialVentas.Designer.cs">
+      <DependentUpon>frmHistorialVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="frmInstalacionServidor.cs">
       <SubType>Form</SubType>
@@ -256,6 +271,12 @@
     <Compile Include="frmRegistroEmpresa.Designer.cs">
       <DependentUpon>frmRegistroEmpresa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReimprimirTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReimprimirTicket.Designer.cs">
+      <DependentUpon>frmReimprimirTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmServidorRemoto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +300,12 @@
     </Compile>
     <Compile Include="frmVentasEnEspera.Designer.cs">
       <DependentUpon>frmVentasEnEspera.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVistaNotaRemision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVistaNotaRemision.Designer.cs">
+      <DependentUpon>frmVistaNotaRemision.cs</DependentUpon>
     </Compile>
     <Compile Include="frmVistaPreviaTickek.cs">
       <SubType>Form</SubType>
@@ -331,6 +358,9 @@
     <EmbeddedResource Include="frmConfiguracionEmpresa.resx">
       <DependentUpon>frmConfiguracionEmpresa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmConfiguracionImpresoras.resx">
+      <DependentUpon>frmConfiguracionImpresoras.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCopiaSeguridad.resx">
       <DependentUpon>frmCopiaSeguridad.cs</DependentUpon>
     </EmbeddedResource>
@@ -354,6 +384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGastos.resx">
       <DependentUpon>frmGastos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHistorialVentas.resx">
+      <DependentUpon>frmHistorialVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInstalacionServidor.resx">
       <DependentUpon>frmInstalacionServidor.cs</DependentUpon>
@@ -382,6 +415,9 @@
     <EmbeddedResource Include="frmRegistroEmpresa.resx">
       <DependentUpon>frmRegistroEmpresa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReimprimirTicket.resx">
+      <DependentUpon>frmReimprimirTicket.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmServidorRemoto.resx">
       <DependentUpon>frmServidorRemoto.cs</DependentUpon>
     </EmbeddedResource>
@@ -393,6 +429,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmVentasEnEspera.resx">
       <DependentUpon>frmVentasEnEspera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVistaNotaRemision.resx">
+      <DependentUpon>frmVistaNotaRemision.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVistaPreviaTickek.resx">
       <DependentUpon>frmVistaPreviaTickek.cs</DependentUpon>
@@ -443,7 +482,9 @@
     <Folder Include="Img\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="PruebaApp.manifest" />
+    <None Include="PruebaApp.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\Add_32.png" />
   </ItemGroup>
   <ItemGroup>
@@ -497,6 +538,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\screencart_106583.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="screencart_106583.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

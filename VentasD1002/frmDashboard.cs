@@ -385,5 +385,10 @@ namespace VentasD1002
                 MessageBox.Show("Ocurrio un error al obtener los datos : " + ex.Message, "Grafica clientes", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Iniciar_Caja_Venta();
+        }
     }
 }

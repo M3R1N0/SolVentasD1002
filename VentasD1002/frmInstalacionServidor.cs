@@ -32,7 +32,7 @@ namespace VentasD1002
             panelInstalandoServidor.Visible = false;
 
             NombreEquipo = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-            txtServidor.Text = @".\" + txtServidor.Text;
+            txtServidor.Text = txtServidor.Text;
             Verificar_ServidorInstalado();
 
             ScriptElimnarDB = ScriptElimnarDB.Replace("DBVENTAS", txtDB.Text);

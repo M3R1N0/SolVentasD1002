@@ -77,7 +77,7 @@ namespace DatVentas
                 DataTable dt = new DataTable();
                 try
                 {
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM tb_Cliente where Id_Cliente="+id, conn);
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT TOP(10) * FROM tb_Cliente where Id_Cliente="+id, conn);
                     da.Fill(dt);
                     return dt.Rows[0];
                 }

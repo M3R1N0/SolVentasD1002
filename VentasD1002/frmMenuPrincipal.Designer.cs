@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlVentas = new System.Windows.Forms.Panel();
+            this.lblNumProductos = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.menuStrip8 = new System.Windows.Forms.MenuStrip();
             this.enEsperaF8ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip6 = new System.Windows.Forms.MenuStrip();
@@ -43,7 +45,6 @@
             this.panel31 = new System.Windows.Forms.Panel();
             this.panel36 = new System.Windows.Forms.Panel();
             this.panel37 = new System.Windows.Forms.Panel();
-            this.lblIdSerializacion = new System.Windows.Forms.Label();
             this.lblCorrelativo = new System.Windows.Forms.Label();
             this.MenuStrip15 = new System.Windows.Forms.MenuStrip();
             this.cobrarSinTicketF11ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,12 +53,15 @@
             this.lblCantidadCero = new System.Windows.Forms.Label();
             this.lblSerie = new System.Windows.Forms.Label();
             this.panel38 = new System.Windows.Forms.Panel();
+            this.reportViewer1 = new Telerik.ReportViewer.WinForms.ReportViewer();
             this.reportViewerImprimir = new Telerik.ReportViewer.WinForms.ReportViewer();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.pnlRecibos = new System.Windows.Forms.FlowLayoutPanel();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
+            this.lblIdSerializacion = new System.Windows.Forms.Label();
+            this.reportViewerCopia = new Telerik.ReportViewer.WinForms.ReportViewer();
             this.lblComprobante = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.FlowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -127,6 +131,8 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
+            this.menuStrip3 = new System.Windows.Forms.MenuStrip();
+            this.reimpresionDeTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.elimininarDeLaVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -237,6 +243,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.pnlVentasDevoluciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            this.menuStrip3.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -270,6 +277,8 @@
             // 
             this.pnlVentas.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlVentas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlVentas.Controls.Add(this.lblNumProductos);
+            this.pnlVentas.Controls.Add(this.label17);
             this.pnlVentas.Controls.Add(this.menuStrip8);
             this.pnlVentas.Controls.Add(this.menuStrip6);
             this.pnlVentas.Controls.Add(this.menuStrip2);
@@ -292,6 +301,26 @@
             this.pnlVentas.Size = new System.Drawing.Size(1287, 557);
             this.pnlVentas.TabIndex = 10;
             // 
+            // lblNumProductos
+            // 
+            this.lblNumProductos.AutoSize = true;
+            this.lblNumProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumProductos.Location = new System.Drawing.Point(377, 505);
+            this.lblNumProductos.Name = "lblNumProductos";
+            this.lblNumProductos.Size = new System.Drawing.Size(37, 39);
+            this.lblNumProductos.TabIndex = 624;
+            this.lblNumProductos.Text = "0";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(88, 516);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(294, 25);
+            this.label17.TabIndex = 623;
+            this.label17.Text = "N° productos seleccionados :";
+            // 
             // menuStrip8
             // 
             this.menuStrip8.AutoSize = false;
@@ -302,7 +331,7 @@
             this.menuStrip8.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.enEsperaF8ToolStripMenuItem});
             this.menuStrip8.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.menuStrip8.Location = new System.Drawing.Point(986, 315);
+            this.menuStrip8.Location = new System.Drawing.Point(1029, 315);
             this.menuStrip8.Name = "menuStrip8";
             this.menuStrip8.ShowItemToolTips = true;
             this.menuStrip8.Size = new System.Drawing.Size(239, 45);
@@ -331,7 +360,7 @@
             this.menuStrip6.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cancelarVentaF9ToolStripMenuItem});
             this.menuStrip6.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.menuStrip6.Location = new System.Drawing.Point(986, 259);
+            this.menuStrip6.Location = new System.Drawing.Point(1029, 259);
             this.menuStrip6.Name = "menuStrip6";
             this.menuStrip6.ShowItemToolTips = true;
             this.menuStrip6.Size = new System.Drawing.Size(239, 44);
@@ -359,7 +388,7 @@
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cobrarF10});
             this.menuStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.menuStrip2.Location = new System.Drawing.Point(986, 201);
+            this.menuStrip2.Location = new System.Drawing.Point(1029, 201);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.ShowItemToolTips = true;
             this.menuStrip2.Size = new System.Drawing.Size(239, 45);
@@ -384,9 +413,9 @@
             this.pnlCobrar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlCobrar.BackgroundImage")));
             this.pnlCobrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlCobrar.Controls.Add(this.panel31);
-            this.pnlCobrar.Location = new System.Drawing.Point(175, 94);
+            this.pnlCobrar.Location = new System.Drawing.Point(120, 75);
             this.pnlCobrar.Name = "pnlCobrar";
-            this.pnlCobrar.Size = new System.Drawing.Size(793, 423);
+            this.pnlCobrar.Size = new System.Drawing.Size(785, 418);
             this.pnlCobrar.TabIndex = 13;
             // 
             // panel31
@@ -428,19 +457,12 @@
             this.panel37.Controls.Add(this.comboBox2);
             this.panel37.Controls.Add(this.label30);
             this.panel37.Controls.Add(this.lblIdSerializacion);
+            this.panel37.Controls.Add(this.reportViewerCopia);
             this.panel37.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel37.Location = new System.Drawing.Point(0, 0);
             this.panel37.Name = "panel37";
             this.panel37.Size = new System.Drawing.Size(363, 358);
             this.panel37.TabIndex = 617;
-            // 
-            // lblIdSerializacion
-            // 
-            this.lblIdSerializacion.AutoSize = true;
-            this.lblIdSerializacion.Location = new System.Drawing.Point(148, 287);
-            this.lblIdSerializacion.Name = "lblIdSerializacion";
-            this.lblIdSerializacion.Size = new System.Drawing.Size(0, 13);
-            this.lblIdSerializacion.TabIndex = 619;
             // 
             // lblCorrelativo
             // 
@@ -462,7 +484,7 @@
             this.cobrarSinTicketF11ToolStripMenuItem,
             this.cobrarYGenerarTicketToolStripMenuItem});
             this.MenuStrip15.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.MenuStrip15.Location = new System.Drawing.Point(5, 60);
+            this.MenuStrip15.Location = new System.Drawing.Point(14, 60);
             this.MenuStrip15.Name = "MenuStrip15";
             this.MenuStrip15.ShowItemToolTips = true;
             this.MenuStrip15.Size = new System.Drawing.Size(340, 40);
@@ -529,11 +551,21 @@
             // 
             // panel38
             // 
+            this.panel38.Controls.Add(this.reportViewer1);
             this.panel38.Controls.Add(this.reportViewerImprimir);
             this.panel38.Location = new System.Drawing.Point(41, 82);
             this.panel38.Name = "panel38";
             this.panel38.Size = new System.Drawing.Size(139, 11);
             this.panel38.TabIndex = 617;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.AccessibilityKeyMap = null;
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(139, 11);
+            this.reportViewer1.TabIndex = 1;
             // 
             // reportViewerImprimir
             // 
@@ -568,7 +600,7 @@
             // 
             // pnlRecibos
             // 
-            this.pnlRecibos.Location = new System.Drawing.Point(10, 121);
+            this.pnlRecibos.Location = new System.Drawing.Point(15, 159);
             this.pnlRecibos.Name = "pnlRecibos";
             this.pnlRecibos.Size = new System.Drawing.Size(340, 98);
             this.pnlRecibos.TabIndex = 610;
@@ -591,6 +623,23 @@
             this.label30.Size = new System.Drawing.Size(100, 20);
             this.label30.TabIndex = 5;
             this.label30.Text = "Impresora :";
+            // 
+            // lblIdSerializacion
+            // 
+            this.lblIdSerializacion.AutoSize = true;
+            this.lblIdSerializacion.Location = new System.Drawing.Point(148, 287);
+            this.lblIdSerializacion.Name = "lblIdSerializacion";
+            this.lblIdSerializacion.Size = new System.Drawing.Size(0, 13);
+            this.lblIdSerializacion.TabIndex = 619;
+            // 
+            // reportViewerCopia
+            // 
+            this.reportViewerCopia.AccessibilityKeyMap = null;
+            this.reportViewerCopia.Dock = System.Windows.Forms.DockStyle.Top;
+            this.reportViewerCopia.Location = new System.Drawing.Point(0, 0);
+            this.reportViewerCopia.Name = "reportViewerCopia";
+            this.reportViewerCopia.Size = new System.Drawing.Size(363, 1);
+            this.reportViewerCopia.TabIndex = 620;
             // 
             // lblComprobante
             // 
@@ -1012,7 +1061,7 @@
             this.pnlAgotado.Controls.Add(this.pictureBox1);
             this.pnlAgotado.Controls.Add(this.progressBar1);
             this.pnlAgotado.Controls.Add(this.label15);
-            this.pnlAgotado.Location = new System.Drawing.Point(289, 155);
+            this.pnlAgotado.Location = new System.Drawing.Point(252, 124);
             this.pnlAgotado.Name = "pnlAgotado";
             this.pnlAgotado.Size = new System.Drawing.Size(474, 175);
             this.pnlAgotado.TabIndex = 14;
@@ -1053,7 +1102,7 @@
             this.panel29.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel29.Controls.Add(this.lblTotal);
             this.panel29.Controls.Add(this.panel30);
-            this.panel29.Location = new System.Drawing.Point(576, 472);
+            this.panel29.Location = new System.Drawing.Point(576, 499);
             this.panel29.Name = "panel29";
             this.panel29.Size = new System.Drawing.Size(395, 54);
             this.panel29.TabIndex = 12;
@@ -1107,11 +1156,12 @@
             this.gdvClientes.Size = new System.Drawing.Size(292, 75);
             this.gdvClientes.TabIndex = 8;
             this.gdvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvClientes_CellClick);
+            this.gdvClientes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gdvClientes_KeyDown);
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(998, 67);
+            this.dateTimePicker1.Location = new System.Drawing.Point(969, 67);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(289, 26);
             this.dateTimePicker1.TabIndex = 5;
@@ -1126,7 +1176,8 @@
             this.gdvBuscar.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.gdvBuscar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gdvBuscar.ColumnHeadersVisible = false;
-            this.gdvBuscar.Location = new System.Drawing.Point(286, 155);
+            this.gdvBuscar.Location = new System.Drawing.Point(249, 124);
+            this.gdvBuscar.MultiSelect = false;
             this.gdvBuscar.Name = "gdvBuscar";
             this.gdvBuscar.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1142,12 +1193,12 @@
             this.gdvBuscar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gdvBuscar.Size = new System.Drawing.Size(596, 119);
             this.gdvBuscar.TabIndex = 1;
-            this.gdvBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gdvBuscar_KeyPress);
+            this.gdvBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gdvBuscar_KeyDown);
             // 
             // panel24
             // 
             this.panel24.BackColor = System.Drawing.Color.Black;
-            this.panel24.Location = new System.Drawing.Point(287, 152);
+            this.panel24.Location = new System.Drawing.Point(250, 121);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(595, 3);
             this.panel24.TabIndex = 4;
@@ -1155,9 +1206,9 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(235, 104);
+            this.pictureBox3.Location = new System.Drawing.Point(215, 84);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(62, 56);
+            this.pictureBox3.Size = new System.Drawing.Size(44, 47);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 6;
             this.pictureBox3.TabStop = false;
@@ -1169,15 +1220,16 @@
             this.gdvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gdvVentas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.gdvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gdvVentas.Location = new System.Drawing.Point(93, 193);
+            this.gdvVentas.Location = new System.Drawing.Point(110, 155);
             this.gdvVentas.Name = "gdvVentas";
             this.gdvVentas.RowHeadersVisible = false;
             this.gdvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvVentas.Size = new System.Drawing.Size(871, 273);
+            this.gdvVentas.Size = new System.Drawing.Size(893, 338);
             this.gdvVentas.TabIndex = 0;
             this.gdvVentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvVentas_CellDoubleClick);
             this.gdvVentas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvVentas_CellEndEdit);
             this.gdvVentas.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gdvVentas_CellMouseUp);
+            this.gdvVentas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gdvVentas_KeyDown);
             // 
             // panel21
             // 
@@ -1250,10 +1302,12 @@
             // rbMayoreo
             // 
             this.rbMayoreo.AutoSize = true;
+            this.rbMayoreo.Checked = true;
             this.rbMayoreo.Location = new System.Drawing.Point(357, 23);
             this.rbMayoreo.Name = "rbMayoreo";
             this.rbMayoreo.Size = new System.Drawing.Size(95, 24);
             this.rbMayoreo.TabIndex = 2;
+            this.rbMayoreo.TabStop = true;
             this.rbMayoreo.Text = "Mayoreo";
             this.rbMayoreo.UseVisualStyleBackColor = true;
             // 
@@ -1270,12 +1324,10 @@
             // rbMenudeo
             // 
             this.rbMenudeo.AutoSize = true;
-            this.rbMenudeo.Checked = true;
             this.rbMenudeo.Location = new System.Drawing.Point(54, 23);
             this.rbMenudeo.Name = "rbMenudeo";
             this.rbMenudeo.Size = new System.Drawing.Size(101, 24);
             this.rbMenudeo.TabIndex = 0;
-            this.rbMenudeo.TabStop = true;
             this.rbMenudeo.Text = "Menudeo";
             this.rbMenudeo.UseVisualStyleBackColor = true;
             // 
@@ -1284,18 +1336,19 @@
             this.txtBuscar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.Location = new System.Drawing.Point(301, 123);
+            this.txtBuscar.Location = new System.Drawing.Point(264, 92);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(581, 23);
             this.txtBuscar.TabIndex = 0;
             this.txtBuscar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtBuscar_MouseClick);
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            this.txtBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyDown);
             this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
             // 
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(935, 331);
+            this.pictureBox5.Location = new System.Drawing.Point(978, 331);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(290, 190);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1371,6 +1424,7 @@
             this.pnlVentasDevoluciones.Controls.Add(this.pictureBox7);
             this.pnlVentasDevoluciones.Controls.Add(this.lblNombre);
             this.pnlVentasDevoluciones.Controls.Add(this.lblHora);
+            this.pnlVentasDevoluciones.Controls.Add(this.menuStrip3);
             this.pnlVentasDevoluciones.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlVentasDevoluciones.Location = new System.Drawing.Point(0, 654);
             this.pnlVentasDevoluciones.Name = "pnlVentasDevoluciones";
@@ -1410,6 +1464,24 @@
             this.lblHora.Size = new System.Drawing.Size(99, 40);
             this.lblHora.TabIndex = 15;
             this.lblHora.Text = "Hora";
+            // 
+            // menuStrip3
+            // 
+            this.menuStrip3.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reimpresionDeTicketsToolStripMenuItem});
+            this.menuStrip3.Location = new System.Drawing.Point(175, 13);
+            this.menuStrip3.Name = "menuStrip3";
+            this.menuStrip3.Size = new System.Drawing.Size(148, 24);
+            this.menuStrip3.TabIndex = 17;
+            this.menuStrip3.Text = "menuStrip3";
+            // 
+            // reimpresionDeTicketsToolStripMenuItem
+            // 
+            this.reimpresionDeTicketsToolStripMenuItem.Name = "reimpresionDeTicketsToolStripMenuItem";
+            this.reimpresionDeTicketsToolStripMenuItem.Size = new System.Drawing.Size(140, 20);
+            this.reimpresionDeTicketsToolStripMenuItem.Text = "Reimpresion de Tickets";
+            this.reimpresionDeTicketsToolStripMenuItem.Click += new System.EventHandler(this.reimpresionDeTicketsToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
@@ -2271,6 +2343,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip3;
             this.Name = "frmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ventas";
@@ -2320,6 +2393,8 @@
             this.pnlVentasDevoluciones.ResumeLayout(false);
             this.pnlVentasDevoluciones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            this.menuStrip3.ResumeLayout(false);
+            this.menuStrip3.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -2530,5 +2605,11 @@
         private System.Windows.Forms.ToolStripMenuItem panelDeControlToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem cerrarTurnoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem devolucionesToolStripMenuItem;
+        private Telerik.ReportViewer.WinForms.ReportViewer reportViewer1;
+        private Telerik.ReportViewer.WinForms.ReportViewer reportViewerCopia;
+        private System.Windows.Forms.Label lblNumProductos;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.MenuStrip menuStrip3;
+        private System.Windows.Forms.ToolStripMenuItem reimpresionDeTicketsToolStripMenuItem;
     }
 }

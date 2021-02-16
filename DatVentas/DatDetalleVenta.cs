@@ -193,5 +193,27 @@ namespace DatVentas
                 throw ex;
             }
         }
+
+        public static DataTable ObtenerDatos_Ticket(int idventa, string textoNumero)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter("[sp_ReimprimirTicket]", conn);
+                    da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    da.SelectCommand.Parameters.AddWithValue("@idventa", idventa);
+                    da.SelectCommand.Parameters.AddWithValue("@letranumero", textoNumero);
+                    da.Fill(dt);
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    throw ex;
+                }
+            }
+        }
     }
 }

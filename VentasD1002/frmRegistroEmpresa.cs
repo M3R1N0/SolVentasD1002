@@ -299,6 +299,23 @@ namespace VentasD1002
                 DatCatGenerico.Insertar_FormaPago("Contado", "Pago en efectivo");
                 DatCatGenerico.Insertar_FormaPago("Credito", "Pagos a créditos");
                 #endregion
+
+                #region INSERTAR ROLES DE USUARIOS
+                CatalogoGenerico rol = new CatalogoGenerico();
+                rol.Nombre = "CAJERO";
+                rol.Descripcion = "VENTAS Y COBROS";
+                rol.Estado = true;
+
+                new BusCatGenerico().Agregar_TipoUsuario(rol);
+
+                CatalogoGenerico rol2 = new CatalogoGenerico();
+                rol2.Nombre = "VENDEDOR";
+                rol2.Descripcion = "SOLO VENTAS";
+                rol2.Estado = true;
+
+                new BusCatGenerico().Agregar_TipoUsuario(rol2);
+
+                #endregion
             }
             catch (Exception ex)
             {

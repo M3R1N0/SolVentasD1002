@@ -43,15 +43,14 @@
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.btnVentas = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblNotificacion = new System.Windows.Forms.Label();
-            this.pbPerfil = new System.Windows.Forms.PictureBox();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblNotificacion = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.menuStrip5 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblTotalClientes = new System.Windows.Forms.Label();
@@ -90,16 +89,15 @@
             this.panel19 = new System.Windows.Forms.Panel();
             this.chkFiltro = new System.Windows.Forms.CheckBox();
             this.panel16 = new System.Windows.Forms.Panel();
-            this.panel17 = new System.Windows.Forms.Panel();
             this.chartProductosVendidos = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.panel17 = new System.Windows.Forms.Panel();
             this.chartClientesFrecuentes = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).BeginInit();
+            this.menuStrip2.SuspendLayout();
             this.menuStrip3.SuspendLayout();
-            this.menuStrip5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.menuStrip5.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
@@ -117,8 +115,8 @@
             this.pnlFiltro.SuspendLayout();
             this.panel19.SuspendLayout();
             this.panel16.SuspendLayout();
-            this.panel17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartProductosVendidos)).BeginInit();
+            this.panel17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartClientesFrecuentes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,47 +132,63 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.menuStrip1);
-            this.panel2.Controls.Add(this.lblNotificacion);
-            this.panel2.Controls.Add(this.pbPerfil);
+            this.panel2.Controls.Add(this.menuStrip2);
             this.panel2.Controls.Add(this.menuStrip3);
-            this.panel2.Controls.Add(this.menuStrip5);
+            this.panel2.Controls.Add(this.lblNotificacion);
             this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Controls.Add(this.menuStrip5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(720, 0);
+            this.panel2.Location = new System.Drawing.Point(637, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(427, 61);
+            this.panel2.Size = new System.Drawing.Size(510, 61);
             this.panel2.TabIndex = 1;
             // 
-            // menuStrip1
+            // menuStrip2
             // 
-            this.menuStrip1.AutoSize = false;
-            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
-            this.menuStrip1.BackgroundImage = global::VentasD1002.Properties.Resources.amarillo;
-            this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnVentas});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 5);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(150, 53);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip2.AutoSize = false;
+            this.menuStrip2.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.menuStrip2.Location = new System.Drawing.Point(42, 9);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(187, 39);
+            this.menuStrip2.TabIndex = 11;
+            this.menuStrip2.Text = "Ir aVentas";
             // 
-            // btnVentas
+            // toolStripMenuItem1
             // 
-            this.btnVentas.BackColor = System.Drawing.Color.Transparent;
-            this.btnVentas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnVentas.CheckOnClick = true;
-            this.btnVentas.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.btnVentas.Image = ((System.Drawing.Image)(resources.GetObject("btnVentas.Image")));
-            this.btnVentas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnVentas.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.btnVentas.Name = "btnVentas";
-            this.btnVentas.Size = new System.Drawing.Size(125, 49);
-            this.btnVentas.Text = "VENTAS";
-            this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
+            this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(156, 35);
+            this.toolStripMenuItem1.Text = "Ir a Ventas";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // menuStrip3
+            // 
+            this.menuStrip3.AutoSize = false;
+            this.menuStrip3.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip3.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip3.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2});
+            this.menuStrip3.Location = new System.Drawing.Point(229, 9);
+            this.menuStrip3.Name = "menuStrip3";
+            this.menuStrip3.Size = new System.Drawing.Size(187, 39);
+            this.menuStrip3.TabIndex = 7;
+            this.menuStrip3.Text = "menuStrip3";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem2.Image")));
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(179, 35);
+            this.toolStripMenuItem2.Text = " Configuración";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // lblNotificacion
             // 
@@ -182,50 +196,32 @@
             this.lblNotificacion.BackColor = System.Drawing.Color.Red;
             this.lblNotificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNotificacion.ForeColor = System.Drawing.Color.White;
-            this.lblNotificacion.Location = new System.Drawing.Point(284, 12);
+            this.lblNotificacion.Location = new System.Drawing.Point(475, 12);
             this.lblNotificacion.Name = "lblNotificacion";
             this.lblNotificacion.Size = new System.Drawing.Size(21, 13);
             this.lblNotificacion.TabIndex = 10;
             this.lblNotificacion.Text = "10";
             // 
-            // pbPerfil
+            // pictureBox2
             // 
-            this.pbPerfil.Location = new System.Drawing.Point(352, 7);
-            this.pbPerfil.Name = "pbPerfil";
-            this.pbPerfil.Size = new System.Drawing.Size(56, 52);
-            this.pbPerfil.TabIndex = 0;
-            this.pbPerfil.TabStop = false;
-            // 
-            // menuStrip3
-            // 
-            this.menuStrip3.BackColor = System.Drawing.Color.Transparent;
-            this.menuStrip3.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2});
-            this.menuStrip3.Location = new System.Drawing.Point(150, 15);
-            this.menuStrip3.Name = "menuStrip3";
-            this.menuStrip3.Size = new System.Drawing.Size(50, 29);
-            this.menuStrip3.TabIndex = 7;
-            this.menuStrip3.Text = "menuStrip3";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.toolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem2.Image")));
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(42, 25);
-            this.toolStripMenuItem2.Text = " ";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(454, 13);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(35, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
             // 
             // menuStrip5
             // 
+            this.menuStrip5.AutoSize = false;
             this.menuStrip5.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip5.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem4});
-            this.menuStrip5.Location = new System.Drawing.Point(197, 14);
+            this.menuStrip5.Location = new System.Drawing.Point(410, 14);
             this.menuStrip5.Name = "menuStrip5";
-            this.menuStrip5.Size = new System.Drawing.Size(50, 29);
+            this.menuStrip5.Size = new System.Drawing.Size(57, 29);
             this.menuStrip5.TabIndex = 8;
             this.menuStrip5.Text = "menuStrip5";
             // 
@@ -237,16 +233,6 @@
             this.toolStripMenuItem4.Size = new System.Drawing.Size(42, 25);
             this.toolStripMenuItem4.Text = " ";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(263, 13);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(35, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
-            // 
             // timer2
             // 
             this.timer2.Interval = 200;
@@ -254,7 +240,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.Orange;
+            this.panel3.BackColor = System.Drawing.Color.PowderBlue;
             this.panel3.Controls.Add(this.lblTotalClientes);
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Controls.Add(this.label1);
@@ -300,7 +286,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.Orange;
+            this.panel4.BackColor = System.Drawing.Color.PowderBlue;
             this.panel4.Controls.Add(this.lblStockBajos);
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Controls.Add(this.label4);
@@ -345,7 +331,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.Orange;
+            this.panel5.BackColor = System.Drawing.Color.PowderBlue;
             this.panel5.Controls.Add(this.lblVentasCredito);
             this.panel5.Controls.Add(this.pictureBox4);
             this.panel5.Controls.Add(this.label6);
@@ -391,7 +377,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.Orange;
+            this.panel6.BackColor = System.Drawing.Color.PowderBlue;
             this.panel6.Controls.Add(this.lblTotalProducto);
             this.panel6.Controls.Add(this.pictureBox5);
             this.panel6.Controls.Add(this.label8);
@@ -436,7 +422,7 @@
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.Orange;
+            this.panel7.BackColor = System.Drawing.Color.PowderBlue;
             this.panel7.Controls.Add(this.lblVentaTotal);
             this.panel7.Controls.Add(this.pictureBox6);
             this.panel7.Controls.Add(this.label10);
@@ -671,15 +657,6 @@
             this.panel16.Size = new System.Drawing.Size(472, 217);
             this.panel16.TabIndex = 10;
             // 
-            // panel17
-            // 
-            this.panel17.Controls.Add(this.chartClientesFrecuentes);
-            this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(675, 419);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(472, 229);
-            this.panel17.TabIndex = 11;
-            // 
             // chartProductosVendidos
             // 
             this.chartProductosVendidos.BackColor = System.Drawing.Color.Transparent;
@@ -718,6 +695,15 @@
             title1.Name = "Title1";
             title1.Text = "Productos más vendidos";
             this.chartProductosVendidos.Titles.Add(title1);
+            // 
+            // panel17
+            // 
+            this.panel17.Controls.Add(this.chartClientesFrecuentes);
+            this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel17.Location = new System.Drawing.Point(675, 419);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(472, 229);
+            this.panel17.TabIndex = 11;
             // 
             // chartClientesFrecuentes
             // 
@@ -779,7 +765,6 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmDashboard";
             this.Text = "Dashboard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -787,14 +772,13 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).EndInit();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             this.menuStrip3.ResumeLayout(false);
             this.menuStrip3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.menuStrip5.ResumeLayout(false);
             this.menuStrip5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
@@ -813,8 +797,8 @@
             this.pnlFiltro.PerformLayout();
             this.panel19.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
-            this.panel17.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartProductosVendidos)).EndInit();
+            this.panel17.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartClientesFrecuentes)).EndInit();
             this.ResumeLayout(false);
 
@@ -824,9 +808,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pbPerfil;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem btnVentas;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label lblNotificacion;
         private System.Windows.Forms.MenuStrip menuStrip3;
@@ -874,5 +855,7 @@
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartProductosVendidos;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartClientesFrecuentes;
+        private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

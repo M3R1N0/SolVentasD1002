@@ -138,7 +138,7 @@ namespace DatVentas
                 using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
                 {
 
-                    SqlCommand cmd = new SqlCommand($"select max(Id_CajaCierre) from tb_Movimiento_CierreCaja where Usuario_Id ={idusuario}", conn);
+                    SqlCommand cmd = new SqlCommand($"select max(Id_CajaCierre) from tb_Movimiento_CierreCaja where Usuario_Id ={idusuario} and Estado = 1", conn);
                     conn.Open();
                     int _idCajaCierre = Convert.ToInt32(cmd.ExecuteScalar());
 

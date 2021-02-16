@@ -68,6 +68,8 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtAbonoInicial = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbEstatus2)).BeginInit();
@@ -104,6 +106,8 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.txtAbonoInicial);
+            this.panel3.Controls.Add(this.label15);
             this.panel3.Controls.Add(this.label14);
             this.panel3.Controls.Add(this.txtCliente);
             this.panel3.Controls.Add(this.pbEstatus2);
@@ -159,9 +163,9 @@
             // pbEstatus2
             // 
             this.pbEstatus2.Image = global::VentasD1002.Properties.Resources.high_priority_64;
-            this.pbEstatus2.Location = new System.Drawing.Point(149, 396);
+            this.pbEstatus2.Location = new System.Drawing.Point(152, 416);
             this.pbEstatus2.Name = "pbEstatus2";
-            this.pbEstatus2.Size = new System.Drawing.Size(96, 72);
+            this.pbEstatus2.Size = new System.Drawing.Size(70, 62);
             this.pbEstatus2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbEstatus2.TabIndex = 24;
             this.pbEstatus2.TabStop = false;
@@ -169,9 +173,9 @@
             // pbEstatusOK
             // 
             this.pbEstatusOK.Image = global::VentasD1002.Properties.Resources.success_green_check_mark;
-            this.pbEstatusOK.Location = new System.Drawing.Point(149, 396);
+            this.pbEstatusOK.Location = new System.Drawing.Point(152, 416);
             this.pbEstatusOK.Name = "pbEstatusOK";
-            this.pbEstatusOK.Size = new System.Drawing.Size(96, 72);
+            this.pbEstatusOK.Size = new System.Drawing.Size(70, 62);
             this.pbEstatusOK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbEstatusOK.TabIndex = 23;
             this.pbEstatusOK.TabStop = false;
@@ -203,7 +207,7 @@
             this.txtEstatus.BackColor = System.Drawing.SystemColors.Control;
             this.txtEstatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEstatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEstatus.Location = new System.Drawing.Point(174, 338);
+            this.txtEstatus.Location = new System.Drawing.Point(174, 374);
             this.txtEstatus.Name = "txtEstatus";
             this.txtEstatus.ReadOnly = true;
             this.txtEstatus.Size = new System.Drawing.Size(218, 19);
@@ -288,7 +292,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(20, 341);
+            this.label9.Location = new System.Drawing.Point(20, 377);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(113, 20);
             this.label9.TabIndex = 10;
@@ -517,6 +521,27 @@
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.ReadOnly = true;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(21, 340);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(104, 20);
+            this.label15.TabIndex = 27;
+            this.label15.Text = "Abono Inicial:";
+            // 
+            // txtAbonoInicial
+            // 
+            this.txtAbonoInicial.BackColor = System.Drawing.SystemColors.Control;
+            this.txtAbonoInicial.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAbonoInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAbonoInicial.Location = new System.Drawing.Point(174, 340);
+            this.txtAbonoInicial.Name = "txtAbonoInicial";
+            this.txtAbonoInicial.ReadOnly = true;
+            this.txtAbonoInicial.Size = new System.Drawing.Size(218, 19);
+            this.txtAbonoInicial.TabIndex = 28;
+            // 
             // frmBitacoraCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -586,5 +611,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtAbonoInicial;
+        private System.Windows.Forms.Label label15;
     }
 }

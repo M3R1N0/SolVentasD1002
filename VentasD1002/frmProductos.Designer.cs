@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProductos));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -132,10 +132,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chkCaja = new System.Windows.Forms.CheckBox();
-            this.chkBolsa = new System.Windows.Forms.CheckBox();
-            this.chkPaquete = new System.Windows.Forms.CheckBox();
-            this.chkPieza = new System.Windows.Forms.CheckBox();
+            this.cboPresentacionMenudeo = new System.Windows.Forms.ComboBox();
             this.txtTotalUnidades = new System.Windows.Forms.TextBox();
             this.lblTipoPresentacion = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -235,23 +232,23 @@
             this.gdvProductos.Location = new System.Drawing.Point(64, 0);
             this.gdvProductos.Name = "gdvProductos";
             this.gdvProductos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gdvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gdvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.gdvProductos.RowHeadersVisible = false;
             this.gdvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.gdvProductos.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            this.gdvProductos.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.gdvProductos.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.gdvProductos.RowTemplate.ReadOnly = true;
             this.gdvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvProductos.Size = new System.Drawing.Size(1239, 532);
+            this.gdvProductos.Size = new System.Drawing.Size(1239, 575);
             this.gdvProductos.TabIndex = 373;
             this.gdvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvProductos_CellClick_1);
             // 
@@ -272,6 +269,7 @@
             this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Eliminar.Name = "Eliminar";
             this.Eliminar.ReadOnly = true;
+            this.Eliminar.ToolTipText = "Eliminar producto";
             this.Eliminar.Width = 10;
             // 
             // Codigo
@@ -369,9 +367,9 @@
             // panel14
             // 
             this.panel14.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel14.Location = new System.Drawing.Point(64, 532);
+            this.panel14.Location = new System.Drawing.Point(64, 575);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(1239, 75);
+            this.panel14.Size = new System.Drawing.Size(1239, 32);
             this.panel14.TabIndex = 376;
             // 
             // panel13
@@ -532,7 +530,7 @@
             this.panelCategoria.Controls.Add(this.btnAgregarCategorias);
             this.panelCategoria.Controls.Add(this.txtNombreCategoria);
             this.panelCategoria.Controls.Add(this.label8);
-            this.panelCategoria.Location = new System.Drawing.Point(282, 167);
+            this.panelCategoria.Location = new System.Drawing.Point(282, 138);
             this.panelCategoria.Name = "panelCategoria";
             this.panelCategoria.Size = new System.Drawing.Size(481, 190);
             this.panelCategoria.TabIndex = 621;
@@ -1061,9 +1059,9 @@
             this.pnlABProducto.Controls.Add(this.label19);
             this.pnlABProducto.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlABProducto.ForeColor = System.Drawing.Color.Black;
-            this.pnlABProducto.Location = new System.Drawing.Point(162, 15);
+            this.pnlABProducto.Location = new System.Drawing.Point(97, 17);
             this.pnlABProducto.Name = "pnlABProducto";
-            this.pnlABProducto.Size = new System.Drawing.Size(1017, 709);
+            this.pnlABProducto.Size = new System.Drawing.Size(1018, 709);
             this.pnlABProducto.TabIndex = 2;
             // 
             // pnlActualizarStock
@@ -1076,7 +1074,7 @@
             this.pnlActualizarStock.Controls.Add(this.panel2);
             this.pnlActualizarStock.Controls.Add(this.label21);
             this.pnlActualizarStock.Controls.Add(this.panel5);
-            this.pnlActualizarStock.Location = new System.Drawing.Point(122, 237);
+            this.pnlActualizarStock.Location = new System.Drawing.Point(121, 192);
             this.pnlActualizarStock.Name = "pnlActualizarStock";
             this.pnlActualizarStock.Size = new System.Drawing.Size(641, 252);
             this.pnlActualizarStock.TabIndex = 638;
@@ -1145,7 +1143,6 @@
             this.txtStockActualizar.Name = "txtStockActualizar";
             this.txtStockActualizar.Size = new System.Drawing.Size(130, 38);
             this.txtStockActualizar.TabIndex = 1;
-            this.txtStockActualizar.TextChanged += new System.EventHandler(this.txtStockActualizar_TextChanged);
             // 
             // txtPiezasActualizar
             // 
@@ -1154,7 +1151,6 @@
             this.txtPiezasActualizar.Name = "txtPiezasActualizar";
             this.txtPiezasActualizar.Size = new System.Drawing.Size(130, 38);
             this.txtPiezasActualizar.TabIndex = 2;
-            this.txtPiezasActualizar.TextChanged += new System.EventHandler(this.txtPiezasActualizar_TextChanged);
             // 
             // panel7
             // 
@@ -1322,61 +1318,24 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.chkCaja);
-            this.groupBox1.Controls.Add(this.chkBolsa);
-            this.groupBox1.Controls.Add(this.chkPaquete);
-            this.groupBox1.Controls.Add(this.chkPieza);
-            this.groupBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.Green;
-            this.groupBox1.Location = new System.Drawing.Point(463, 317);
+            this.groupBox1.Controls.Add(this.cboPresentacionMenudeo);
+            this.groupBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.groupBox1.Location = new System.Drawing.Point(466, 314);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(365, 42);
+            this.groupBox1.Size = new System.Drawing.Size(308, 52);
             this.groupBox1.TabIndex = 637;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Seleccion la presentacion de su precio Menudeo";
             // 
-            // chkCaja
+            // cboPresentacionMenudeo
             // 
-            this.chkCaja.AutoSize = true;
-            this.chkCaja.Location = new System.Drawing.Point(87, 13);
-            this.chkCaja.Name = "chkCaja";
-            this.chkCaja.Size = new System.Drawing.Size(62, 23);
-            this.chkCaja.TabIndex = 3;
-            this.chkCaja.Text = "Caja";
-            this.chkCaja.UseVisualStyleBackColor = true;
-            this.chkCaja.Click += new System.EventHandler(this.chkCaja_Click);
-            // 
-            // chkBolsa
-            // 
-            this.chkBolsa.AutoSize = true;
-            this.chkBolsa.Location = new System.Drawing.Point(273, 14);
-            this.chkBolsa.Name = "chkBolsa";
-            this.chkBolsa.Size = new System.Drawing.Size(72, 23);
-            this.chkBolsa.TabIndex = 2;
-            this.chkBolsa.Text = "Bolsa";
-            this.chkBolsa.UseVisualStyleBackColor = true;
-            this.chkBolsa.Click += new System.EventHandler(this.chkBolsa_Click);
-            // 
-            // chkPaquete
-            // 
-            this.chkPaquete.AutoSize = true;
-            this.chkPaquete.Location = new System.Drawing.Point(162, 14);
-            this.chkPaquete.Name = "chkPaquete";
-            this.chkPaquete.Size = new System.Drawing.Size(91, 23);
-            this.chkPaquete.TabIndex = 1;
-            this.chkPaquete.Text = "Paquete";
-            this.chkPaquete.UseVisualStyleBackColor = true;
-            this.chkPaquete.Click += new System.EventHandler(this.chkPaquete_Click);
-            // 
-            // chkPieza
-            // 
-            this.chkPieza.AutoSize = true;
-            this.chkPieza.Location = new System.Drawing.Point(8, 14);
-            this.chkPieza.Name = "chkPieza";
-            this.chkPieza.Size = new System.Drawing.Size(70, 23);
-            this.chkPieza.TabIndex = 0;
-            this.chkPieza.Text = "Pieza";
-            this.chkPieza.UseVisualStyleBackColor = true;
-            this.chkPieza.Click += new System.EventHandler(this.chkPieza_Click);
+            this.cboPresentacionMenudeo.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboPresentacionMenudeo.FormattingEnabled = true;
+            this.cboPresentacionMenudeo.Location = new System.Drawing.Point(17, 18);
+            this.cboPresentacionMenudeo.Name = "cboPresentacionMenudeo";
+            this.cboPresentacionMenudeo.Size = new System.Drawing.Size(164, 26);
+            this.cboPresentacionMenudeo.TabIndex = 0;
             // 
             // txtTotalUnidades
             // 
@@ -1458,6 +1417,7 @@
             this.txtBuscar.Size = new System.Drawing.Size(400, 23);
             this.txtBuscar.TabIndex = 379;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            this.txtBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyDown);
             // 
             // menuStrip3
             // 
@@ -1548,7 +1508,6 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -1627,10 +1586,6 @@
         private System.Windows.Forms.Label lblTipoPresentacion;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox chkBolsa;
-        private System.Windows.Forms.CheckBox chkPaquete;
-        private System.Windows.Forms.CheckBox chkPieza;
-        private System.Windows.Forms.CheckBox chkCaja;
         private System.Windows.Forms.Label lblAuxHay;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label7;
@@ -1678,5 +1633,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_mmayoreo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_mayoreo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Venta;
+        private System.Windows.Forms.ComboBox cboPresentacionMenudeo;
     }
 }

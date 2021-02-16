@@ -94,6 +94,18 @@
     <Compile Include="rptTicket.Designer.cs">
       <DependentUpon>rptTicket.cs</DependentUpon>
     </Compile>
+    <Compile Include="rptTicketCopia.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptTicketCopia.Designer.cs">
+      <DependentUpon>rptTicketCopia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rtpRecibo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rtpRecibo.Designer.cs">
+      <DependentUpon>rtpRecibo.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmInventario.resx">
@@ -114,6 +126,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="rptTicket.resx">
       <DependentUpon>rptTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptTicketCopia.resx">
+      <DependentUpon>rptTicketCopia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rtpRecibo.resx">
+      <DependentUpon>rtpRecibo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

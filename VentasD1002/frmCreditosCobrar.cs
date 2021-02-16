@@ -7,16 +7,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.Reporting.Processing;
 
 namespace VentasD1002
 {
     public partial class frmCreditosCobrar : Form
     {
+        private PrintDocument TICKET;
         public frmCreditosCobrar()
         {
             InitializeComponent();
@@ -194,7 +197,7 @@ namespace VentasD1002
 
                     DatCatGenerico.Agregar_BitacoraCliente(_idVenta, idUsuario, abonado);
                     #endregion
-                    MessageBox.Show("Abono realizado correctamente", "Éxito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                  
 
                     #region TICKET
                     rptComprobanteAbono _rpt = new rptComprobanteAbono();
@@ -209,8 +212,30 @@ namespace VentasD1002
                     #endregion
 
 
+                    try
+                    {
+                        string impresora = DatBox.Obtener_ImpresoraTicket(serialPC, "TICKET");
+                        TICKET = new PrintDocument();
+                        TICKET.PrinterSettings.PrinterName = impresora;
+
+                        if (TICKET.PrinterSettings.IsValid)
+                        {
+                            PrinterSettings printerSettings = new PrinterSettings();
+                            printerSettings.PrinterName = impresora;
+
+                            ReportProcessor reportProcessor = new ReportProcessor();
+                            reportProcessor.PrintReport(reportViewer1.ReportSource, printerSettings);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al imprimir el ticket : " + ex.Message, "Error de impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+
                     LimpiarCampos();
                     ListarVentar_PorCobrar("");
+                    MessageBox.Show("Abono realizado correctamente", "Éxito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)

@@ -16,7 +16,6 @@ namespace VentasD1002
 {
     public partial class frmProductos : Form
     {
-
         public frmProductos()
         {
             InitializeComponent();
@@ -76,7 +75,6 @@ namespace VentasD1002
             txtcodigodebarras.Text = gdvProductos.SelectedCells[5].Value.ToString();
             txtdescripcion.Text = gdvProductos.SelectedCells[6].Value.ToString();
             txtPresentacion.Text = gdvProductos.SelectedCells[7].Value.ToString();
-            // string tipoVenta = gdvProductos.SelectedCells[8].Value.ToString();
             if (gdvProductos.SelectedCells[8].Value.ToString() == "UNIDAD" )
             {
                 porunidad.Checked = true;
@@ -85,8 +83,6 @@ namespace VentasD1002
             {
                 agranel.Checked = true;
             }
-           // if (tipoVenta == "Unidad") porunidad.Checked = true;
-          //  if (tipoVenta == "Granel") agranel.Checked = true;
 
             txtPMenudeo.Text = gdvProductos.SelectedCells[9].Value.ToString();
             txtPMMayoreo.Text = gdvProductos.SelectedCells[10].Value.ToString();
@@ -117,35 +113,33 @@ namespace VentasD1002
                 PANELINVENTARIO.Visible = false;
             }
 
-            
-
            // txtstockminimo.Text = gdvProductos.SelectedCells[15].Value.ToString();
             string fecha = gdvProductos.SelectedCells[16].Value.ToString();
             bool res = (fecha == "NO APLICA") ? No_aplica_fecha.Checked = true : No_aplica_fecha.Checked = false;
 
             txtfechaoka.Text = (!res) ? fecha : null;
             
-            
             string _strPMenudeo = gdvProductos.SelectedCells[21].Value.ToString();
+            cboPresentacionMenudeo.Text = _strPMenudeo;
 
-            if (_strPMenudeo.Equals("PIEZA"))
-            {
-                chkPieza.Checked = true;
-            }else if (_strPMenudeo.Equals("CAJA"))
-            {
-                chkCaja.Checked = true;
-            }else if (_strPMenudeo.Equals("BOLSA"))
-            {
-                chkBolsa.Checked = true;
-            } else if (_strPMenudeo.Equals("PAQUETE"))
-            {
-                chkPaquete.Checked = true;
-            }
+            //if (_strPMenudeo.Equals("PIEZA"))
+            //{
+            //    chkPieza.Checked = true;
+            //}
+            //else if (_strPMenudeo.Equals("CAJA"))
+            //{
+            //    chkCaja.Checked = true;
+            //}
+            //else if (_strPMenudeo.Equals("BOLSA"))
+            //{
+            //    chkBolsa.Checked = true;
+            //}
+            //else if (_strPMenudeo.Equals("PAQUETE"))
+            //{
+            //    chkPaquete.Checked = true;
+            //}
 
-
-                pnlABProducto.Visible = true;
-            //int categoria = Convert.ToInt32(gdvProductos.SelectedCells[12].Value.ToString());
-            //frmAB.cboCategoria.SelectedValue = categoria;
+            pnlABProducto.Visible = true;
         }
 
         private void gdvProductos_CellClick_1(object sender, DataGridViewCellEventArgs e)
@@ -212,6 +206,14 @@ namespace VentasD1002
                 cboPresentacion.DataSource = dtPresentacion;
                 cboPresentacion.DisplayMember = "Nombre";
                 cboPresentacion.ValueMember = "Id_TipoPresentacion";
+
+                DataTable dtPresentacionMenuedo = DatVentas.DatCatGenerico.ListarCat_TipoPresentacion();
+
+                cboPresentacionMenudeo.DataSource = dtPresentacionMenuedo;
+                cboPresentacionMenudeo.DisplayMember = "Nombre";
+                cboPresentacionMenudeo.ValueMember = "Id_TipoPresentacion";
+                cboPresentacionMenudeo.SelectedIndex = 1;
+
 
                 DataTable dtProducto = DatVentas.DatCatGenerico.ListarCat_Producto();
                 cboCategoria.DataSource = dtProducto;
@@ -280,10 +282,6 @@ namespace VentasD1002
             txtApartirDe.Clear();
             lblIdProducto.Text = "";
             txtTotalUnidades.Clear();
-            chkPieza.Checked = false;
-            chkPaquete.Checked = false;
-            chkBolsa.Checked = false;
-            chkCaja.Checked = false;
             lblPiezasStock.Text = "0";
             
         }
@@ -332,27 +330,28 @@ namespace VentasD1002
                 if (porunidad.Checked == true) p.seVendeA = "UNIDAD";
                 if (agranel.Checked == true) p.seVendeA = "GRANEL";
 
-                if (chkBolsa.Checked)
-                {
-                    p.PresentacionMenudeo = "BOLSA";
-                }
-                else if (chkCaja.Checked)
-                {
-                    p.PresentacionMenudeo = "CAJA";
-                }
-                else if (chkPaquete.Checked)
-                {
-                    p.PresentacionMenudeo = "PAQUETE";
-                }
-                else if (chkPieza.Checked)
-                {
-                    p.PresentacionMenudeo = "PIEZA";
-                }
-                else
-                {
-                    p.PresentacionMenudeo = "PIEZA";
-                }
-
+                //if (chkBolsa.Checked)
+                //{
+                //    p.PresentacionMenudeo = "BOLSA";
+                //}
+                //else if (chkCaja.Checked)
+                //{
+                //    p.PresentacionMenudeo = "CAJA";
+                //}
+                //else if (chkPaquete.Checked)
+                //{
+                //    p.PresentacionMenudeo = "PAQUETE";
+                //}
+                //else if (chkPieza.Checked)
+                //{
+                //    p.PresentacionMenudeo = "PIEZA";
+                //}
+                //else
+                //{
+                //    p.PresentacionMenudeo = "PIEZA";
+                //}
+                string _pMenuedo = cboPresentacionMenudeo.Text;
+                p.PresentacionMenudeo = _pMenuedo.Equals("--Seleccione--") ? "PIEZA" : _pMenuedo;
 
                 if (PANELINVENTARIO.Visible == true)
                 {
@@ -463,28 +462,29 @@ namespace VentasD1002
                     p.stock = "ILIMITADO";
                 }
 
+                string _pMenudeo = cboPresentacionMenudeo.Text;
+                p.PresentacionMenudeo = _pMenudeo.Equals("--Seleccione--") ? "PIEZA" : _pMenudeo;
 
-
-                if (chkBolsa.Checked)
-                {
-                    p.PresentacionMenudeo = "BOLSA";
-                }
-                else if (chkCaja.Checked)
-                {
-                    p.PresentacionMenudeo = "CAJA";
-                }
-                else if (chkPaquete.Checked)
-                {
-                    p.PresentacionMenudeo = "PAQUETE";
-                }
-                else if (chkPieza.Checked)
-                {
-                    p.PresentacionMenudeo = "PIEZA";
-                }
-                else
-                {
-                    p.PresentacionMenudeo = "PIEZA";
-                }
+                //if (chkBolsa.Checked)
+                //{
+                //    p.PresentacionMenudeo = "BOLSA";
+                //}
+                //else if (chkCaja.Checked)
+                //{
+                //    p.PresentacionMenudeo = "CAJA";
+                //}
+                //else if (chkPaquete.Checked)
+                //{
+                //    p.PresentacionMenudeo = "PAQUETE";
+                //}
+                //else if (chkPieza.Checked)
+                //{
+                //    p.PresentacionMenudeo = "PIEZA";
+                //}
+                //else
+                //{
+                //    p.PresentacionMenudeo = "PIEZA";
+                //}
 
 
                 new BusProducto().ActualizarProducto(p);
@@ -544,34 +544,6 @@ namespace VentasD1002
             lblAuxHay2.Text = cboPresentacion.Text.ToUpper() +'S';
         }
 
-        private void chkPieza_Click(object sender, EventArgs e)
-        {
-            chkPaquete.Checked = false;
-            chkBolsa.Checked = false;
-            chkCaja.Checked = false;
-        }
-
-        private void chkCaja_Click(object sender, EventArgs e)
-        {
-            chkPaquete.Checked = false;
-            chkBolsa.Checked = false;
-            chkPieza.Checked = false;
-        }
-
-        private void chkPaquete_Click(object sender, EventArgs e)
-        {
-            chkCaja.Checked = false;
-            chkBolsa.Checked = false;
-            chkPieza.Checked = false;
-        }
-
-        private void chkBolsa_Click(object sender, EventArgs e)
-        {
-            chkPaquete.Checked = false;
-            chkCaja.Checked = false;
-            chkPieza.Checked = false;
-        }
-
         private void checkActualizarStock_CheckedChanged(object sender, EventArgs e)
         {
             Check_ActualizarStock();
@@ -599,16 +571,6 @@ namespace VentasD1002
             txtStockActualizado.Clear();
             txtPiezasActualizar.Clear();
             checkActualizarStock.Checked = false;
-        }
-
-        private void txtStockActualizar_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void txtPiezasActualizar_TextChanged(object sender, EventArgs e)
-        {
-           
         }
 
         private void btnActualizarStock_Click(object sender, EventArgs e)
@@ -639,6 +601,15 @@ namespace VentasD1002
             txtStockActualizar.Clear();
             txtPiezasActualizar.Clear();
         }
-   
+
+        private void txtBuscar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                txtBuscar.Text = string.Empty;
+                txtBuscar.Focus();
+            }
+        }
+
     }
 }

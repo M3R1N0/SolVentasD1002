@@ -69,11 +69,11 @@ namespace DatVentas
                     SqlDataAdapter da = new SqlDataAdapter();
                     if (busqueda == null | busqueda == "")
                     {
-                        da = new SqlDataAdapter("SELECT * FROM tb_Producto where  Estado = 1 ORDER BY Descripcion", conn);
+                        da = new SqlDataAdapter("SELECT TOP (15) * FROM tb_Producto where  Estado = 1 ORDER BY Descripcion", conn);
                     }
                     else
                     {
-                        da = new SqlDataAdapter("select * from tb_Producto where  Codigo like '%"+busqueda+"%' or Descripcion  like '%"+busqueda+ "%' and Estado = 1 order by Descripcion", conn);
+                        da = new SqlDataAdapter("select TOP(10) * from tb_Producto where  Codigo + Descripcion like '%" + busqueda+"%' and Estado = 1 order by Descripcion", conn);
                     }
                     
                     da.Fill(dt);
@@ -94,7 +94,7 @@ namespace DatVentas
                 try
                 {
                     DataTable dt = new DataTable();
-                    SqlDataAdapter da = new SqlDataAdapter($"SELECT * FROM tb_Producto WHERE Codigo + Descripcion like'%{codigo}%' ORDER BY Descripcion", conn);
+                    SqlDataAdapter da = new SqlDataAdapter($"SELECT * FROM tb_Producto WHERE Codigo + Descripcion like'%{codigo}%' AND Estado = 1 ORDER BY Descripcion", conn);
                     da.Fill(dt);
 
                     return dt.Rows[0];

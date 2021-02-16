@@ -26,8 +26,6 @@ namespace VentasD1002
             textBox1.Focus();
         }
 
-
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             DataTable dt = new DatCatGenerico().ObtenerLista_BitacoraCliente(textBox1.Text);
@@ -44,6 +42,8 @@ namespace VentasD1002
 
                 DataTable dt = new DatCatGenerico().ObtenerDetalle_BitacoraCliente(oneKey);
 
+                decimal suma = dt.AsEnumerable().Select(c => c.Field<Decimal>("Monto Abonado")).Sum();
+
                 txtCliente.Text = dt.Rows[0].Field<String>(3);
                 txtComunidad.Text = dt.Rows[0].Field<String>(4);
                 txtFolio.Text = dt.Rows[0].Field<String>(8);
@@ -53,6 +53,10 @@ namespace VentasD1002
                 txtEstatus.Text = dt.Rows[0].Field<String>(10);
                 txtSaldo.Text = dt.Rows[0].Field<Decimal>(11).ToString();
                 txtNAbono.Text = dt.Rows.Count.ToString();
+
+                decimal montoInicial = Convert.ToDecimal(txtMonto.Text) - suma;
+                txtAbonoInicial.Text = suma == Convert.ToDecimal(txtMonto.Text) ? "0" : montoInicial.ToString();
+
 
                 if (txtEstatus.Text.Equals("PAGADO"))
                 {
