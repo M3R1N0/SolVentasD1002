@@ -30,21 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlVentas = new System.Windows.Forms.Panel();
-            this.lblNumProductos = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.menuStrip8 = new System.Windows.Forms.MenuStrip();
-            this.enEsperaF8ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip6 = new System.Windows.Forms.MenuStrip();
-            this.cancelarVentaF9ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.cobrarF10 = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlCobrar = new System.Windows.Forms.Panel();
             this.panel31 = new System.Windows.Forms.Panel();
             this.panel36 = new System.Windows.Forms.Panel();
             this.panel37 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtComentarios = new System.Windows.Forms.TextBox();
             this.lblCorrelativo = new System.Windows.Forms.Label();
             this.MenuStrip15 = new System.Windows.Forms.MenuStrip();
             this.cobrarSinTicketF11ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,6 +64,9 @@
             this.label27 = new System.Windows.Forms.Label();
             this.pbCerrarPanelCobrar = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.RbtnMod1 = new System.Windows.Forms.RadioButton();
+            this.RbtnMod2 = new System.Windows.Forms.RadioButton();
             this.panel33 = new System.Windows.Forms.Panel();
             this.label21 = new System.Windows.Forms.Label();
             this.lblPagoTotal = new System.Windows.Forms.Label();
@@ -102,26 +98,42 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label15 = new System.Windows.Forms.Label();
+            this.gdvClientes = new System.Windows.Forms.DataGridView();
+            this.gdvBuscar = new System.Windows.Forms.DataGridView();
+            this.gdvVentas = new System.Windows.Forms.DataGridView();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel29 = new System.Windows.Forms.Panel();
             this.lblTotal = new System.Windows.Forms.Label();
             this.panel30 = new System.Windows.Forms.Panel();
-            this.gdvClientes = new System.Windows.Forms.DataGridView();
+            this.lblNumProductos = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.menuStrip8 = new System.Windows.Forms.MenuStrip();
+            this.enEsperaF8ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.gdvBuscar = new System.Windows.Forms.DataGridView();
+            this.menuStrip6 = new System.Windows.Forms.MenuStrip();
+            this.cancelarVentaF9ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.cobrarF10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel24 = new System.Windows.Forms.Panel();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.gdvVentas = new System.Windows.Forms.DataGridView();
-            this.panel21 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panelSubencabezado = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.cboFormaPago = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel28 = new System.Windows.Forms.Panel();
+            this.pbPerfil = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label13 = new System.Windows.Forms.Label();
             this.rbMayoreo = new System.Windows.Forms.RadioButton();
-            this.rbMMayoreo = new System.Windows.Forms.RadioButton();
             this.rbMenudeo = new System.Windows.Forms.RadioButton();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.rbMMayoreo = new System.Windows.Forms.RadioButton();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCobrarVentas = new System.Windows.Forms.ToolStripMenuItem();
@@ -131,8 +143,6 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
-            this.menuStrip3 = new System.Windows.Forms.MenuStrip();
-            this.reimpresionDeTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.elimininarDeLaVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -140,11 +150,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.VentaEnEsperaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.créditosPorCobrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.devolucionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.inventarioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelDeControlToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.devolucionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarTurnoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasEnEsperaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -153,71 +164,11 @@
             this.inventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelDeControlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarTurnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel28 = new System.Windows.Forms.Panel();
-            this.pbPerfil = new System.Windows.Forms.PictureBox();
-            this.lblNotificacion = new System.Windows.Forms.Label();
-            this.pnlIzquierda = new System.Windows.Forms.Panel();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.pnlUsuario = new System.Windows.Forms.Panel();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.pnlNotificaciones = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.pnlHerramientas = new System.Windows.Forms.Panel();
-            this.flpHerramientas = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.lblCobro = new System.Windows.Forms.Label();
-            this.btnCobro = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.lblPago = new System.Windows.Forms.Label();
-            this.btnPago = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnAperturarCredito = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnCaja = new System.Windows.Forms.Button();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnInventario = new System.Windows.Forms.Button();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnReportes = new System.Windows.Forms.Button();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnClientes = new System.Windows.Forms.Button();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnProveedor = new System.Windows.Forms.Button();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnCreditoPagar = new System.Windows.Forms.Button();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnUsuarios = new System.Windows.Forms.Button();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.btnComprobante = new System.Windows.Forms.Button();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnAdmin = new System.Windows.Forms.Button();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.btnRespaldo = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.panel22 = new System.Windows.Forms.Panel();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrHora = new System.Windows.Forms.Timer(this.components);
+            this.panel4 = new System.Windows.Forms.Panel();
             this.pnlVentas.SuspendLayout();
-            this.menuStrip8.SuspendLayout();
-            this.menuStrip6.SuspendLayout();
-            this.menuStrip2.SuspendLayout();
             this.pnlCobrar.SuspendLayout();
             this.panel31.SuspendLayout();
             this.panel36.SuspendLayout();
@@ -227,185 +178,57 @@
             this.panel32.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCerrarPanelCobrar)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel33.SuspendLayout();
             this.pnlCambioPrecios.SuspendLayout();
             this.panel26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.pnlAgotado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel29.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvBuscar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvVentas)).BeginInit();
-            this.panel21.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel29.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.menuStrip8.SuspendLayout();
+            this.menuStrip6.SuspendLayout();
+            this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.pnlVentasDevoluciones.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            this.menuStrip3.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panelSubencabezado.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel28.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).BeginInit();
-            this.pnlIzquierda.SuspendLayout();
-            this.panel17.SuspendLayout();
-            this.panel16.SuspendLayout();
-            this.pnlHerramientas.SuspendLayout();
-            this.flpHerramientas.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.panel12.SuspendLayout();
-            this.panel13.SuspendLayout();
-            this.panel14.SuspendLayout();
-            this.panel15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel22.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.pnlVentasDevoluciones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlVentas
             // 
             this.pnlVentas.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlVentas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlVentas.Controls.Add(this.lblNumProductos);
-            this.pnlVentas.Controls.Add(this.label17);
-            this.pnlVentas.Controls.Add(this.menuStrip8);
-            this.pnlVentas.Controls.Add(this.menuStrip6);
-            this.pnlVentas.Controls.Add(this.menuStrip2);
             this.pnlVentas.Controls.Add(this.pnlCobrar);
             this.pnlVentas.Controls.Add(this.pnlCambioPrecios);
             this.pnlVentas.Controls.Add(this.pnlAgotado);
-            this.pnlVentas.Controls.Add(this.panel29);
             this.pnlVentas.Controls.Add(this.gdvClientes);
-            this.pnlVentas.Controls.Add(this.dateTimePicker1);
             this.pnlVentas.Controls.Add(this.gdvBuscar);
-            this.pnlVentas.Controls.Add(this.panel24);
-            this.pnlVentas.Controls.Add(this.pictureBox3);
             this.pnlVentas.Controls.Add(this.gdvVentas);
-            this.pnlVentas.Controls.Add(this.panel21);
-            this.pnlVentas.Controls.Add(this.txtBuscar);
-            this.pnlVentas.Controls.Add(this.pictureBox5);
+            this.pnlVentas.Controls.Add(this.panel7);
+            this.pnlVentas.Controls.Add(this.panel5);
+            this.pnlVentas.Controls.Add(this.panel1);
+            this.pnlVentas.Controls.Add(this.panel3);
+            this.pnlVentas.Controls.Add(this.panelSubencabezado);
             this.pnlVentas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlVentas.Location = new System.Drawing.Point(0, 97);
+            this.pnlVentas.Location = new System.Drawing.Point(0, 34);
             this.pnlVentas.Name = "pnlVentas";
-            this.pnlVentas.Size = new System.Drawing.Size(1287, 557);
+            this.pnlVentas.Size = new System.Drawing.Size(1287, 620);
             this.pnlVentas.TabIndex = 10;
-            // 
-            // lblNumProductos
-            // 
-            this.lblNumProductos.AutoSize = true;
-            this.lblNumProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumProductos.Location = new System.Drawing.Point(377, 505);
-            this.lblNumProductos.Name = "lblNumProductos";
-            this.lblNumProductos.Size = new System.Drawing.Size(37, 39);
-            this.lblNumProductos.TabIndex = 624;
-            this.lblNumProductos.Text = "0";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(88, 516);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(294, 25);
-            this.label17.TabIndex = 623;
-            this.label17.Text = "N° productos seleccionados :";
-            // 
-            // menuStrip8
-            // 
-            this.menuStrip8.AutoSize = false;
-            this.menuStrip8.BackColor = System.Drawing.Color.Transparent;
-            this.menuStrip8.BackgroundImage = global::VentasD1002.Resources.resources.naranja;
-            this.menuStrip8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.menuStrip8.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip8.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.enEsperaF8ToolStripMenuItem});
-            this.menuStrip8.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.menuStrip8.Location = new System.Drawing.Point(1029, 315);
-            this.menuStrip8.Name = "menuStrip8";
-            this.menuStrip8.ShowItemToolTips = true;
-            this.menuStrip8.Size = new System.Drawing.Size(239, 45);
-            this.menuStrip8.TabIndex = 622;
-            this.menuStrip8.Text = "menuStrip8";
-            // 
-            // enEsperaF8ToolStripMenuItem
-            // 
-            this.enEsperaF8ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.enEsperaF8ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("enEsperaF8ToolStripMenuItem.Image")));
-            this.enEsperaF8ToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.enEsperaF8ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.enEsperaF8ToolStripMenuItem.Name = "enEsperaF8ToolStripMenuItem";
-            this.enEsperaF8ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
-            this.enEsperaF8ToolStripMenuItem.Size = new System.Drawing.Size(191, 41);
-            this.enEsperaF8ToolStripMenuItem.Text = "En Espera... (F8)";
-            this.enEsperaF8ToolStripMenuItem.Click += new System.EventHandler(this.enEsperaF8ToolStripMenuItem_Click);
-            // 
-            // menuStrip6
-            // 
-            this.menuStrip6.AutoSize = false;
-            this.menuStrip6.BackColor = System.Drawing.Color.Transparent;
-            this.menuStrip6.BackgroundImage = global::VentasD1002.Resources.resources.Rojo;
-            this.menuStrip6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.menuStrip6.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip6.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cancelarVentaF9ToolStripMenuItem});
-            this.menuStrip6.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.menuStrip6.Location = new System.Drawing.Point(1029, 259);
-            this.menuStrip6.Name = "menuStrip6";
-            this.menuStrip6.ShowItemToolTips = true;
-            this.menuStrip6.Size = new System.Drawing.Size(239, 44);
-            this.menuStrip6.TabIndex = 621;
-            this.menuStrip6.Text = "menuStrip6";
-            // 
-            // cancelarVentaF9ToolStripMenuItem
-            // 
-            this.cancelarVentaF9ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.cancelarVentaF9ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cancelarVentaF9ToolStripMenuItem.Image")));
-            this.cancelarVentaF9ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.cancelarVentaF9ToolStripMenuItem.Name = "cancelarVentaF9ToolStripMenuItem";
-            this.cancelarVentaF9ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F9;
-            this.cancelarVentaF9ToolStripMenuItem.Size = new System.Drawing.Size(221, 40);
-            this.cancelarVentaF9ToolStripMenuItem.Text = "Cancelar Venta (F9)";
-            this.cancelarVentaF9ToolStripMenuItem.Click += new System.EventHandler(this.cancelarVentaF9ToolStripMenuItem_Click);
-            // 
-            // menuStrip2
-            // 
-            this.menuStrip2.AutoSize = false;
-            this.menuStrip2.BackColor = System.Drawing.Color.Transparent;
-            this.menuStrip2.BackgroundImage = global::VentasD1002.Resources.resources.verde;
-            this.menuStrip2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cobrarF10});
-            this.menuStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.menuStrip2.Location = new System.Drawing.Point(1029, 201);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.ShowItemToolTips = true;
-            this.menuStrip2.Size = new System.Drawing.Size(239, 45);
-            this.menuStrip2.TabIndex = 620;
-            this.menuStrip2.Text = "menuStrip2";
-            // 
-            // cobrarF10
-            // 
-            this.cobrarF10.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.cobrarF10.Image = ((System.Drawing.Image)(resources.GetObject("cobrarF10.Image")));
-            this.cobrarF10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cobrarF10.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.cobrarF10.Name = "cobrarF10";
-            this.cobrarF10.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.cobrarF10.Size = new System.Drawing.Size(166, 41);
-            this.cobrarF10.Text = "Cobrar  (F10)";
-            this.cobrarF10.Click += new System.EventHandler(this.cobrarF10ToolStripMenuItem_Click);
             // 
             // pnlCobrar
             // 
@@ -413,9 +236,9 @@
             this.pnlCobrar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlCobrar.BackgroundImage")));
             this.pnlCobrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlCobrar.Controls.Add(this.panel31);
-            this.pnlCobrar.Location = new System.Drawing.Point(120, 75);
+            this.pnlCobrar.Location = new System.Drawing.Point(143, 120);
             this.pnlCobrar.Name = "pnlCobrar";
-            this.pnlCobrar.Size = new System.Drawing.Size(785, 418);
+            this.pnlCobrar.Size = new System.Drawing.Size(790, 423);
             this.pnlCobrar.TabIndex = 13;
             // 
             // panel31
@@ -445,6 +268,8 @@
             // 
             // panel37
             // 
+            this.panel37.Controls.Add(this.label1);
+            this.panel37.Controls.Add(this.txtComentarios);
             this.panel37.Controls.Add(this.lblCorrelativo);
             this.panel37.Controls.Add(this.MenuStrip15);
             this.panel37.Controls.Add(this.lblNumeroFin);
@@ -463,6 +288,28 @@
             this.panel37.Name = "panel37";
             this.panel37.Size = new System.Drawing.Size(363, 358);
             this.panel37.TabIndex = 617;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.Location = new System.Drawing.Point(96, 168);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(170, 17);
+            this.label1.TabIndex = 622;
+            this.label1.Text = "Comentarios adicionales :";
+            // 
+            // txtComentarios
+            // 
+            this.txtComentarios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtComentarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtComentarios.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtComentarios.Location = new System.Drawing.Point(15, 188);
+            this.txtComentarios.Multiline = true;
+            this.txtComentarios.Name = "txtComentarios";
+            this.txtComentarios.Size = new System.Drawing.Size(340, 69);
+            this.txtComentarios.TabIndex = 621;
             // 
             // lblCorrelativo
             // 
@@ -484,7 +331,7 @@
             this.cobrarSinTicketF11ToolStripMenuItem,
             this.cobrarYGenerarTicketToolStripMenuItem});
             this.MenuStrip15.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.MenuStrip15.Location = new System.Drawing.Point(14, 60);
+            this.MenuStrip15.Location = new System.Drawing.Point(14, 53);
             this.MenuStrip15.Name = "MenuStrip15";
             this.MenuStrip15.ShowItemToolTips = true;
             this.MenuStrip15.Size = new System.Drawing.Size(340, 40);
@@ -600,9 +447,9 @@
             // 
             // pnlRecibos
             // 
-            this.pnlRecibos.Location = new System.Drawing.Point(15, 159);
+            this.pnlRecibos.Location = new System.Drawing.Point(15, 98);
             this.pnlRecibos.Name = "pnlRecibos";
-            this.pnlRecibos.Size = new System.Drawing.Size(340, 98);
+            this.pnlRecibos.Size = new System.Drawing.Size(340, 58);
             this.pnlRecibos.TabIndex = 610;
             // 
             // comboBox2
@@ -726,6 +573,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.panel6);
             this.groupBox2.Controls.Add(this.panel33);
             this.groupBox2.Controls.Add(this.rbtnAbonar);
             this.groupBox2.Controls.Add(this.txtRecibi);
@@ -743,6 +591,41 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cobro";
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel6.Controls.Add(this.RbtnMod1);
+            this.panel6.Controls.Add(this.RbtnMod2);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(3, 305);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(367, 32);
+            this.panel6.TabIndex = 566;
+            // 
+            // RbtnMod1
+            // 
+            this.RbtnMod1.AutoSize = true;
+            this.RbtnMod1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.RbtnMod1.Location = new System.Drawing.Point(20, 2);
+            this.RbtnMod1.Name = "RbtnMod1";
+            this.RbtnMod1.Size = new System.Drawing.Size(125, 24);
+            this.RbtnMod1.TabIndex = 564;
+            this.RbtnMod1.Text = "Ticket Estilo 1";
+            this.RbtnMod1.UseVisualStyleBackColor = true;
+            // 
+            // RbtnMod2
+            // 
+            this.RbtnMod2.AutoSize = true;
+            this.RbtnMod2.Checked = true;
+            this.RbtnMod2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.RbtnMod2.Location = new System.Drawing.Point(193, 5);
+            this.RbtnMod2.Name = "RbtnMod2";
+            this.RbtnMod2.Size = new System.Drawing.Size(125, 24);
+            this.RbtnMod2.TabIndex = 565;
+            this.RbtnMod2.TabStop = true;
+            this.RbtnMod2.Text = "Ticket Estilo 2";
+            this.RbtnMod2.UseVisualStyleBackColor = true;
             // 
             // panel33
             // 
@@ -874,7 +757,7 @@
             // 
             // pnlCambioPrecios
             // 
-            this.pnlCambioPrecios.BackColor = System.Drawing.Color.LightGray;
+            this.pnlCambioPrecios.BackColor = System.Drawing.Color.DimGray;
             this.pnlCambioPrecios.Controls.Add(this.lblUnidad);
             this.pnlCambioPrecios.Controls.Add(this.lblMayoreo);
             this.pnlCambioPrecios.Controls.Add(this.lblMMayoreo);
@@ -887,9 +770,10 @@
             this.pnlCambioPrecios.Controls.Add(this.lblId);
             this.pnlCambioPrecios.Controls.Add(this.lblProducto);
             this.pnlCambioPrecios.Controls.Add(this.panel26);
-            this.pnlCambioPrecios.Location = new System.Drawing.Point(321, 108);
+            this.pnlCambioPrecios.ForeColor = System.Drawing.Color.OldLace;
+            this.pnlCambioPrecios.Location = new System.Drawing.Point(257, 150);
             this.pnlCambioPrecios.Name = "pnlCambioPrecios";
-            this.pnlCambioPrecios.Size = new System.Drawing.Size(436, 245);
+            this.pnlCambioPrecios.Size = new System.Drawing.Size(440, 253);
             this.pnlCambioPrecios.TabIndex = 9;
             // 
             // lblUnidad
@@ -985,7 +869,7 @@
             // chckPrecioPreferencial
             // 
             this.chckPrecioPreferencial.AutoSize = true;
-            this.chckPrecioPreferencial.BackColor = System.Drawing.Color.LightGreen;
+            this.chckPrecioPreferencial.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.chckPrecioPreferencial.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
             this.chckPrecioPreferencial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chckPrecioPreferencial.Location = new System.Drawing.Point(79, 201);
@@ -1011,24 +895,24 @@
             // 
             this.lblProducto.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProducto.ForeColor = System.Drawing.Color.DarkGreen;
+            this.lblProducto.ForeColor = System.Drawing.Color.DarkOrange;
             this.lblProducto.Location = new System.Drawing.Point(0, 30);
             this.lblProducto.Name = "lblProducto";
-            this.lblProducto.Size = new System.Drawing.Size(436, 38);
+            this.lblProducto.Size = new System.Drawing.Size(440, 38);
             this.lblProducto.TabIndex = 1;
             this.lblProducto.Text = "PRODUCTO";
             this.lblProducto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel26
             // 
-            this.panel26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.panel26.BackColor = System.Drawing.SystemColors.Desktop;
             this.panel26.Controls.Add(this.pictureBox4);
             this.panel26.Controls.Add(this.label16);
             this.panel26.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel26.Location = new System.Drawing.Point(0, 0);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(436, 30);
+            this.panel26.Size = new System.Drawing.Size(440, 30);
             this.panel26.TabIndex = 0;
             // 
             // pictureBox4
@@ -1061,9 +945,9 @@
             this.pnlAgotado.Controls.Add(this.pictureBox1);
             this.pnlAgotado.Controls.Add(this.progressBar1);
             this.pnlAgotado.Controls.Add(this.label15);
-            this.pnlAgotado.Location = new System.Drawing.Point(252, 124);
+            this.pnlAgotado.Location = new System.Drawing.Point(238, 190);
             this.pnlAgotado.Name = "pnlAgotado";
-            this.pnlAgotado.Size = new System.Drawing.Size(474, 175);
+            this.pnlAgotado.Size = new System.Drawing.Size(492, 175);
             this.pnlAgotado.TabIndex = 14;
             this.pnlAgotado.Visible = false;
             // 
@@ -1095,6 +979,93 @@
             this.label15.Text = "¡PRODUCTO AGOTADO!";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // gdvClientes
+            // 
+            this.gdvClientes.AllowUserToAddRows = false;
+            this.gdvClientes.AllowUserToDeleteRows = false;
+            this.gdvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gdvClientes.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.gdvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gdvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gdvClientes.ColumnHeadersVisible = false;
+            this.gdvClientes.Location = new System.Drawing.Point(862, 65);
+            this.gdvClientes.Name = "gdvClientes";
+            this.gdvClientes.ReadOnly = true;
+            this.gdvClientes.RowHeadersVisible = false;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.ForestGreen;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Green;
+            this.gdvClientes.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.gdvClientes.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gdvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gdvClientes.Size = new System.Drawing.Size(292, 118);
+            this.gdvClientes.TabIndex = 8;
+            this.gdvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvClientes_CellClick);
+            this.gdvClientes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gdvClientes_KeyDown);
+            // 
+            // gdvBuscar
+            // 
+            this.gdvBuscar.AllowUserToAddRows = false;
+            this.gdvBuscar.AllowUserToDeleteRows = false;
+            this.gdvBuscar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gdvBuscar.BackgroundColor = System.Drawing.SystemColors.InactiveBorder;
+            this.gdvBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gdvBuscar.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.gdvBuscar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gdvBuscar.ColumnHeadersVisible = false;
+            this.gdvBuscar.Location = new System.Drawing.Point(248, 130);
+            this.gdvBuscar.MultiSelect = false;
+            this.gdvBuscar.Name = "gdvBuscar";
+            this.gdvBuscar.ReadOnly = true;
+            this.gdvBuscar.RowHeadersVisible = false;
+            this.gdvBuscar.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gdvBuscar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gdvBuscar.Size = new System.Drawing.Size(468, 249);
+            this.gdvBuscar.TabIndex = 1;
+            this.gdvBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gdvBuscar_KeyDown);
+            // 
+            // gdvVentas
+            // 
+            this.gdvVentas.AllowUserToAddRows = false;
+            this.gdvVentas.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.gdvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gdvVentas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.gdvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gdvVentas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gdvVentas.Location = new System.Drawing.Point(90, 144);
+            this.gdvVentas.MultiSelect = false;
+            this.gdvVentas.Name = "gdvVentas";
+            this.gdvVentas.RowHeadersVisible = false;
+            this.gdvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gdvVentas.Size = new System.Drawing.Size(871, 412);
+            this.gdvVentas.TabIndex = 0;
+            this.gdvVentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvVentas_CellDoubleClick);
+            this.gdvVentas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvVentas_CellEndEdit);
+            this.gdvVentas.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gdvVentas_CellMouseUp);
+            this.gdvVentas.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.gdvVentas_RowsAdded);
+            this.gdvVentas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gdvVentas_KeyDown);
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel7.Controls.Add(this.label17);
+            this.panel7.Controls.Add(this.panel29);
+            this.panel7.Controls.Add(this.lblNumProductos);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel7.Location = new System.Drawing.Point(90, 556);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(871, 64);
+            this.panel7.TabIndex = 627;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(6, 23);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(294, 25);
+            this.label17.TabIndex = 623;
+            this.label17.Text = "N° productos seleccionados :";
+            // 
             // panel29
             // 
             this.panel29.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -1102,7 +1073,7 @@
             this.panel29.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel29.Controls.Add(this.lblTotal);
             this.panel29.Controls.Add(this.panel30);
-            this.panel29.Location = new System.Drawing.Point(576, 499);
+            this.panel29.Location = new System.Drawing.Point(494, 6);
             this.panel29.Name = "panel29";
             this.panel29.Size = new System.Drawing.Size(395, 54);
             this.panel29.TabIndex = 12;
@@ -1130,142 +1101,221 @@
             this.panel30.Size = new System.Drawing.Size(175, 74);
             this.panel30.TabIndex = 0;
             // 
-            // gdvClientes
+            // lblNumProductos
             // 
-            this.gdvClientes.AllowUserToAddRows = false;
-            this.gdvClientes.AllowUserToDeleteRows = false;
-            this.gdvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gdvClientes.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.gdvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gdvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gdvClientes.ColumnHeadersVisible = false;
-            this.gdvClientes.Location = new System.Drawing.Point(854, 46);
-            this.gdvClientes.Name = "gdvClientes";
-            this.gdvClientes.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gdvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.gdvClientes.RowHeadersVisible = false;
-            this.gdvClientes.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gdvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvClientes.Size = new System.Drawing.Size(292, 75);
-            this.gdvClientes.TabIndex = 8;
-            this.gdvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvClientes_CellClick);
-            this.gdvClientes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gdvClientes_KeyDown);
+            this.lblNumProductos.AutoSize = true;
+            this.lblNumProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumProductos.Location = new System.Drawing.Point(295, 12);
+            this.lblNumProductos.Name = "lblNumProductos";
+            this.lblNumProductos.Size = new System.Drawing.Size(37, 39);
+            this.lblNumProductos.TabIndex = 624;
+            this.lblNumProductos.Text = "0";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel5.Controls.Add(this.menuStrip8);
+            this.panel5.Controls.Add(this.dateTimePicker1);
+            this.panel5.Controls.Add(this.menuStrip6);
+            this.panel5.Controls.Add(this.menuStrip2);
+            this.panel5.Controls.Add(this.pictureBox5);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel5.Location = new System.Drawing.Point(961, 144);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(326, 476);
+            this.panel5.TabIndex = 626;
+            // 
+            // menuStrip8
+            // 
+            this.menuStrip8.AutoSize = false;
+            this.menuStrip8.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip8.BackgroundImage = global::VentasD1002.Resources.resources.naranja;
+            this.menuStrip8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.menuStrip8.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip8.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.enEsperaF8ToolStripMenuItem});
+            this.menuStrip8.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.menuStrip8.Location = new System.Drawing.Point(11, 169);
+            this.menuStrip8.Name = "menuStrip8";
+            this.menuStrip8.ShowItemToolTips = true;
+            this.menuStrip8.Size = new System.Drawing.Size(239, 45);
+            this.menuStrip8.TabIndex = 627;
+            this.menuStrip8.Text = "menuStrip8";
+            // 
+            // enEsperaF8ToolStripMenuItem
+            // 
+            this.enEsperaF8ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.enEsperaF8ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("enEsperaF8ToolStripMenuItem.Image")));
+            this.enEsperaF8ToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.enEsperaF8ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.enEsperaF8ToolStripMenuItem.Name = "enEsperaF8ToolStripMenuItem";
+            this.enEsperaF8ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
+            this.enEsperaF8ToolStripMenuItem.Size = new System.Drawing.Size(191, 41);
+            this.enEsperaF8ToolStripMenuItem.Text = "En Espera... (F8)";
+            this.enEsperaF8ToolStripMenuItem.Click += new System.EventHandler(this.enEsperaF8ToolStripMenuItem_Click_1);
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(969, 67);
+            this.dateTimePicker1.Location = new System.Drawing.Point(11, 10);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(289, 26);
-            this.dateTimePicker1.TabIndex = 5;
+            this.dateTimePicker1.TabIndex = 623;
             // 
-            // gdvBuscar
+            // menuStrip6
             // 
-            this.gdvBuscar.AllowUserToAddRows = false;
-            this.gdvBuscar.AllowUserToDeleteRows = false;
-            this.gdvBuscar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gdvBuscar.BackgroundColor = System.Drawing.SystemColors.InactiveBorder;
-            this.gdvBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gdvBuscar.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.gdvBuscar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gdvBuscar.ColumnHeadersVisible = false;
-            this.gdvBuscar.Location = new System.Drawing.Point(249, 124);
-            this.gdvBuscar.MultiSelect = false;
-            this.gdvBuscar.Name = "gdvBuscar";
-            this.gdvBuscar.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gdvBuscar.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.gdvBuscar.RowHeadersVisible = false;
-            this.gdvBuscar.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gdvBuscar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvBuscar.Size = new System.Drawing.Size(596, 119);
-            this.gdvBuscar.TabIndex = 1;
-            this.gdvBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gdvBuscar_KeyDown);
+            this.menuStrip6.AutoSize = false;
+            this.menuStrip6.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip6.BackgroundImage = global::VentasD1002.Resources.resources.Rojo;
+            this.menuStrip6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.menuStrip6.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip6.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cancelarVentaF9ToolStripMenuItem});
+            this.menuStrip6.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.menuStrip6.Location = new System.Drawing.Point(11, 113);
+            this.menuStrip6.Name = "menuStrip6";
+            this.menuStrip6.ShowItemToolTips = true;
+            this.menuStrip6.Size = new System.Drawing.Size(239, 44);
+            this.menuStrip6.TabIndex = 626;
+            this.menuStrip6.Text = "menuStrip6";
+            // 
+            // cancelarVentaF9ToolStripMenuItem
+            // 
+            this.cancelarVentaF9ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.cancelarVentaF9ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cancelarVentaF9ToolStripMenuItem.Image")));
+            this.cancelarVentaF9ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.cancelarVentaF9ToolStripMenuItem.Name = "cancelarVentaF9ToolStripMenuItem";
+            this.cancelarVentaF9ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F9;
+            this.cancelarVentaF9ToolStripMenuItem.Size = new System.Drawing.Size(221, 40);
+            this.cancelarVentaF9ToolStripMenuItem.Text = "Cancelar Venta (F9)";
+            this.cancelarVentaF9ToolStripMenuItem.Click += new System.EventHandler(this.cancelarVentaF9ToolStripMenuItem_Click_1);
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.AutoSize = false;
+            this.menuStrip2.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip2.BackgroundImage = global::VentasD1002.Resources.resources.verde;
+            this.menuStrip2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cobrarF10});
+            this.menuStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.menuStrip2.Location = new System.Drawing.Point(11, 55);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.ShowItemToolTips = true;
+            this.menuStrip2.Size = new System.Drawing.Size(239, 45);
+            this.menuStrip2.TabIndex = 625;
+            this.menuStrip2.Text = "menuStrip2";
+            // 
+            // cobrarF10
+            // 
+            this.cobrarF10.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.cobrarF10.Image = ((System.Drawing.Image)(resources.GetObject("cobrarF10.Image")));
+            this.cobrarF10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cobrarF10.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.cobrarF10.Name = "cobrarF10";
+            this.cobrarF10.ShortcutKeys = System.Windows.Forms.Keys.F10;
+            this.cobrarF10.Size = new System.Drawing.Size(166, 41);
+            this.cobrarF10.Text = "Cobrar  (F10)";
+            this.cobrarF10.Click += new System.EventHandler(this.cobrarF10_Click);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(28, 187);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(222, 190);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 624;
+            this.pictureBox5.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 144);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(90, 476);
+            this.panel1.TabIndex = 625;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel24);
+            this.panel3.Controls.Add(this.txtBuscar);
+            this.panel3.Controls.Add(this.pictureBox3);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 79);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1287, 65);
+            this.panel3.TabIndex = 0;
             // 
             // panel24
             // 
             this.panel24.BackColor = System.Drawing.Color.Black;
-            this.panel24.Location = new System.Drawing.Point(250, 121);
+            this.panel24.Location = new System.Drawing.Point(242, 46);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(595, 3);
+            this.panel24.Size = new System.Drawing.Size(474, 3);
             this.panel24.TabIndex = 4;
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.Location = new System.Drawing.Point(257, 17);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(460, 23);
+            this.txtBuscar.TabIndex = 15;
+            this.txtBuscar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtBuscar_MouseClick);
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            this.txtBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyDown);
+            this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(215, 84);
+            this.pictureBox3.Location = new System.Drawing.Point(213, 9);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(44, 47);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 6;
             this.pictureBox3.TabStop = false;
             // 
-            // gdvVentas
+            // panelSubencabezado
             // 
-            this.gdvVentas.AllowUserToAddRows = false;
-            this.gdvVentas.BackgroundColor = System.Drawing.Color.White;
-            this.gdvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gdvVentas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.gdvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gdvVentas.Location = new System.Drawing.Point(110, 155);
-            this.gdvVentas.Name = "gdvVentas";
-            this.gdvVentas.RowHeadersVisible = false;
-            this.gdvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvVentas.Size = new System.Drawing.Size(893, 338);
-            this.gdvVentas.TabIndex = 0;
-            this.gdvVentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvVentas_CellDoubleClick);
-            this.gdvVentas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvVentas_CellEndEdit);
-            this.gdvVentas.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gdvVentas_CellMouseUp);
-            this.gdvVentas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gdvVentas_KeyDown);
+            this.panelSubencabezado.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelSubencabezado.Controls.Add(this.panel8);
+            this.panelSubencabezado.Controls.Add(this.txtCliente);
+            this.panelSubencabezado.Controls.Add(this.cboFormaPago);
+            this.panelSubencabezado.Controls.Add(this.panel2);
+            this.panelSubencabezado.Controls.Add(this.label14);
+            this.panelSubencabezado.Controls.Add(this.pictureBox6);
+            this.panelSubencabezado.Controls.Add(this.label13);
+            this.panelSubencabezado.Controls.Add(this.rbMayoreo);
+            this.panelSubencabezado.Controls.Add(this.rbMenudeo);
+            this.panelSubencabezado.Controls.Add(this.rbMMayoreo);
+            this.panelSubencabezado.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSubencabezado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panelSubencabezado.ForeColor = System.Drawing.Color.ForestGreen;
+            this.panelSubencabezado.Location = new System.Drawing.Point(0, 0);
+            this.panelSubencabezado.Name = "panelSubencabezado";
+            this.panelSubencabezado.Size = new System.Drawing.Size(1287, 79);
+            this.panelSubencabezado.TabIndex = 6;
             // 
-            // panel21
+            // panel8
             // 
-            this.panel21.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel21.Controls.Add(this.groupBox1);
-            this.panel21.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel21.Location = new System.Drawing.Point(0, 0);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(1287, 65);
-            this.panel21.TabIndex = 1;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtCliente);
-            this.groupBox1.Controls.Add(this.cboFormaPago);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.rbMayoreo);
-            this.groupBox1.Controls.Add(this.rbMMayoreo);
-            this.groupBox1.Controls.Add(this.rbMenudeo);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1287, 65);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Tipo de Venta";
+            this.panel8.BackColor = System.Drawing.Color.ForestGreen;
+            this.panel8.Location = new System.Drawing.Point(859, 59);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(291, 3);
+            this.panel8.TabIndex = 15;
             // 
             // txtCliente
             // 
             this.txtCliente.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.txtCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCliente.Location = new System.Drawing.Point(855, 26);
+            this.txtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCliente.ForeColor = System.Drawing.Color.ForestGreen;
+            this.txtCliente.Location = new System.Drawing.Point(859, 37);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(291, 19);
             this.txtCliente.TabIndex = 14;
@@ -1275,25 +1325,73 @@
             // 
             // cboFormaPago
             // 
+            this.cboFormaPago.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboFormaPago.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cboFormaPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboFormaPago.ForeColor = System.Drawing.Color.ForestGreen;
             this.cboFormaPago.FormattingEnabled = true;
-            this.cboFormaPago.Location = new System.Drawing.Point(592, 21);
+            this.cboFormaPago.Location = new System.Drawing.Point(598, 32);
             this.cboFormaPago.Name = "cboFormaPago";
             this.cboFormaPago.Size = new System.Drawing.Size(162, 28);
             this.cboFormaPago.TabIndex = 12;
             // 
+            // panel2
+            // 
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel2.Controls.Add(this.panel28);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(1175, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(112, 79);
+            this.panel2.TabIndex = 2;
+            // 
+            // panel28
+            // 
+            this.panel28.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel28.BackgroundImage")));
+            this.panel28.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel28.Controls.Add(this.pbPerfil);
+            this.panel28.Location = new System.Drawing.Point(6, 4);
+            this.panel28.Name = "panel28";
+            this.panel28.Size = new System.Drawing.Size(100, 75);
+            this.panel28.TabIndex = 8;
+            // 
+            // pbPerfil
+            // 
+            this.pbPerfil.BackColor = System.Drawing.Color.Transparent;
+            this.pbPerfil.ErrorImage = null;
+            this.pbPerfil.Location = new System.Drawing.Point(19, 3);
+            this.pbPerfil.Name = "pbPerfil";
+            this.pbPerfil.Size = new System.Drawing.Size(78, 59);
+            this.pbPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPerfil.TabIndex = 4;
+            this.pbPerfil.TabStop = false;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(480, 24);
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(471, 36);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(115, 20);
             this.label14.TabIndex = 11;
             this.label14.Text = "Forma pago :";
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox6.Image = global::VentasD1002.Resources.resources.JIEL;
+            this.pictureBox6.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(90, 79);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(781, 24);
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(788, 36);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 20);
             this.label13.TabIndex = 9;
@@ -1303,7 +1401,8 @@
             // 
             this.rbMayoreo.AutoSize = true;
             this.rbMayoreo.Checked = true;
-            this.rbMayoreo.Location = new System.Drawing.Point(357, 23);
+            this.rbMayoreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMayoreo.Location = new System.Drawing.Point(364, 34);
             this.rbMayoreo.Name = "rbMayoreo";
             this.rbMayoreo.Size = new System.Drawing.Size(95, 24);
             this.rbMayoreo.TabIndex = 2;
@@ -1311,49 +1410,27 @@
             this.rbMayoreo.Text = "Mayoreo";
             this.rbMayoreo.UseVisualStyleBackColor = true;
             // 
-            // rbMMayoreo
-            // 
-            this.rbMMayoreo.AutoSize = true;
-            this.rbMMayoreo.Location = new System.Drawing.Point(175, 21);
-            this.rbMMayoreo.Name = "rbMMayoreo";
-            this.rbMMayoreo.Size = new System.Drawing.Size(148, 24);
-            this.rbMMayoreo.TabIndex = 1;
-            this.rbMMayoreo.Text = "Medio Mayoreo";
-            this.rbMMayoreo.UseVisualStyleBackColor = true;
-            // 
             // rbMenudeo
             // 
             this.rbMenudeo.AutoSize = true;
-            this.rbMenudeo.Location = new System.Drawing.Point(54, 23);
+            this.rbMenudeo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMenudeo.Location = new System.Drawing.Point(91, 34);
             this.rbMenudeo.Name = "rbMenudeo";
             this.rbMenudeo.Size = new System.Drawing.Size(101, 24);
             this.rbMenudeo.TabIndex = 0;
             this.rbMenudeo.Text = "Menudeo";
             this.rbMenudeo.UseVisualStyleBackColor = true;
             // 
-            // txtBuscar
+            // rbMMayoreo
             // 
-            this.txtBuscar.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.Location = new System.Drawing.Point(264, 92);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(581, 23);
-            this.txtBuscar.TabIndex = 0;
-            this.txtBuscar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtBuscar_MouseClick);
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
-            this.txtBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyDown);
-            this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(978, 331);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(290, 190);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 19;
-            this.pictureBox5.TabStop = false;
+            this.rbMMayoreo.AutoSize = true;
+            this.rbMMayoreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMMayoreo.Location = new System.Drawing.Point(204, 34);
+            this.rbMMayoreo.Name = "rbMMayoreo";
+            this.rbMMayoreo.Size = new System.Drawing.Size(148, 24);
+            this.rbMMayoreo.TabIndex = 1;
+            this.rbMMayoreo.Text = "Medio Mayoreo";
+            this.rbMMayoreo.UseVisualStyleBackColor = true;
             // 
             // toolStripMenuItem6
             // 
@@ -1424,7 +1501,6 @@
             this.pnlVentasDevoluciones.Controls.Add(this.pictureBox7);
             this.pnlVentasDevoluciones.Controls.Add(this.lblNombre);
             this.pnlVentasDevoluciones.Controls.Add(this.lblHora);
-            this.pnlVentasDevoluciones.Controls.Add(this.menuStrip3);
             this.pnlVentasDevoluciones.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlVentasDevoluciones.Location = new System.Drawing.Point(0, 654);
             this.pnlVentasDevoluciones.Name = "pnlVentasDevoluciones";
@@ -1465,24 +1541,6 @@
             this.lblHora.TabIndex = 15;
             this.lblHora.Text = "Hora";
             // 
-            // menuStrip3
-            // 
-            this.menuStrip3.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reimpresionDeTicketsToolStripMenuItem});
-            this.menuStrip3.Location = new System.Drawing.Point(175, 13);
-            this.menuStrip3.Name = "menuStrip3";
-            this.menuStrip3.Size = new System.Drawing.Size(148, 24);
-            this.menuStrip3.TabIndex = 17;
-            this.menuStrip3.Text = "menuStrip3";
-            // 
-            // reimpresionDeTicketsToolStripMenuItem
-            // 
-            this.reimpresionDeTicketsToolStripMenuItem.Name = "reimpresionDeTicketsToolStripMenuItem";
-            this.reimpresionDeTicketsToolStripMenuItem.Size = new System.Drawing.Size(140, 20);
-            this.reimpresionDeTicketsToolStripMenuItem.Text = "Reimpresion de Tickets";
-            this.reimpresionDeTicketsToolStripMenuItem.Click += new System.EventHandler(this.reimpresionDeTicketsToolStripMenuItem_Click);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1512,22 +1570,22 @@
             // 
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.VentaEnEsperaToolStripMenuItem,
             this.créditosPorCobrarToolStripMenuItem,
+            this.rToolStripMenuItem,
+            this.devolucionesToolStripMenuItem,
             this.productoToolStripMenuItem2,
             this.clienteToolStripMenuItem1,
             this.inventarioToolStripMenuItem1,
             this.panelDeControlToolStripMenuItem1,
-            this.devolucionesToolStripMenuItem,
             this.cerrarTurnoToolStripMenuItem1});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.menuStrip1.Location = new System.Drawing.Point(135, 11);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.ShowItemToolTips = true;
-            this.menuStrip1.Size = new System.Drawing.Size(1011, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(1287, 31);
             this.menuStrip1.TabIndex = 614;
             this.menuStrip1.Text = "Ventas a crédito";
             // 
@@ -1536,7 +1594,7 @@
             this.VentaEnEsperaToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
             this.VentaEnEsperaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("VentaEnEsperaToolStripMenuItem.Image")));
             this.VentaEnEsperaToolStripMenuItem.Name = "VentaEnEsperaToolStripMenuItem";
-            this.VentaEnEsperaToolStripMenuItem.Size = new System.Drawing.Size(148, 36);
+            this.VentaEnEsperaToolStripMenuItem.Size = new System.Drawing.Size(148, 27);
             this.VentaEnEsperaToolStripMenuItem.Text = "Ventas en Espera";
             this.VentaEnEsperaToolStripMenuItem.Click += new System.EventHandler(this.VentaEnEsperaToolStripMenuItem_Click);
             // 
@@ -1545,16 +1603,34 @@
             this.créditosPorCobrarToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
             this.créditosPorCobrarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("créditosPorCobrarToolStripMenuItem.Image")));
             this.créditosPorCobrarToolStripMenuItem.Name = "créditosPorCobrarToolStripMenuItem";
-            this.créditosPorCobrarToolStripMenuItem.Size = new System.Drawing.Size(172, 36);
+            this.créditosPorCobrarToolStripMenuItem.Size = new System.Drawing.Size(172, 27);
             this.créditosPorCobrarToolStripMenuItem.Text = "Créditos por Cobrar";
             this.créditosPorCobrarToolStripMenuItem.Click += new System.EventHandler(this.créditosPorCobrarToolStripMenuItem_Click);
+            // 
+            // rToolStripMenuItem
+            // 
+            this.rToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
+            this.rToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("rToolStripMenuItem.Image")));
+            this.rToolStripMenuItem.Name = "rToolStripMenuItem";
+            this.rToolStripMenuItem.Size = new System.Drawing.Size(157, 27);
+            this.rToolStripMenuItem.Text = "Reimprimir Ticket";
+            this.rToolStripMenuItem.Click += new System.EventHandler(this.rToolStripMenuItem_Click);
+            // 
+            // devolucionesToolStripMenuItem
+            // 
+            this.devolucionesToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
+            this.devolucionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("devolucionesToolStripMenuItem.Image")));
+            this.devolucionesToolStripMenuItem.Name = "devolucionesToolStripMenuItem";
+            this.devolucionesToolStripMenuItem.Size = new System.Drawing.Size(126, 27);
+            this.devolucionesToolStripMenuItem.Text = "Devoluciones";
+            this.devolucionesToolStripMenuItem.Click += new System.EventHandler(this.devolucionesToolStripMenuItem_Click);
             // 
             // productoToolStripMenuItem2
             // 
             this.productoToolStripMenuItem2.BackColor = System.Drawing.Color.Gainsboro;
             this.productoToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("productoToolStripMenuItem2.Image")));
             this.productoToolStripMenuItem2.Name = "productoToolStripMenuItem2";
-            this.productoToolStripMenuItem2.Size = new System.Drawing.Size(99, 36);
+            this.productoToolStripMenuItem2.Size = new System.Drawing.Size(99, 27);
             this.productoToolStripMenuItem2.Text = "Producto";
             this.productoToolStripMenuItem2.Click += new System.EventHandler(this.productoToolStripMenuItem2_Click);
             // 
@@ -1563,7 +1639,7 @@
             this.clienteToolStripMenuItem1.BackColor = System.Drawing.Color.Gainsboro;
             this.clienteToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("clienteToolStripMenuItem1.Image")));
             this.clienteToolStripMenuItem1.Name = "clienteToolStripMenuItem1";
-            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(83, 36);
+            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(83, 27);
             this.clienteToolStripMenuItem1.Text = "Cliente";
             this.clienteToolStripMenuItem1.Click += new System.EventHandler(this.clienteToolStripMenuItem1_Click);
             // 
@@ -1572,7 +1648,7 @@
             this.inventarioToolStripMenuItem1.BackColor = System.Drawing.Color.Gainsboro;
             this.inventarioToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("inventarioToolStripMenuItem1.Image")));
             this.inventarioToolStripMenuItem1.Name = "inventarioToolStripMenuItem1";
-            this.inventarioToolStripMenuItem1.Size = new System.Drawing.Size(105, 36);
+            this.inventarioToolStripMenuItem1.Size = new System.Drawing.Size(105, 27);
             this.inventarioToolStripMenuItem1.Text = "Inventario";
             this.inventarioToolStripMenuItem1.Click += new System.EventHandler(this.inventarioToolStripMenuItem1_Click);
             // 
@@ -1581,25 +1657,16 @@
             this.panelDeControlToolStripMenuItem1.BackColor = System.Drawing.Color.Gainsboro;
             this.panelDeControlToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("panelDeControlToolStripMenuItem1.Image")));
             this.panelDeControlToolStripMenuItem1.Name = "panelDeControlToolStripMenuItem1";
-            this.panelDeControlToolStripMenuItem1.Size = new System.Drawing.Size(147, 36);
+            this.panelDeControlToolStripMenuItem1.Size = new System.Drawing.Size(147, 27);
             this.panelDeControlToolStripMenuItem1.Text = "Panel de control";
             this.panelDeControlToolStripMenuItem1.Click += new System.EventHandler(this.panelDeControlToolStripMenuItem1_Click);
-            // 
-            // devolucionesToolStripMenuItem
-            // 
-            this.devolucionesToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
-            this.devolucionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("devolucionesToolStripMenuItem.Image")));
-            this.devolucionesToolStripMenuItem.Name = "devolucionesToolStripMenuItem";
-            this.devolucionesToolStripMenuItem.Size = new System.Drawing.Size(126, 36);
-            this.devolucionesToolStripMenuItem.Text = "Devoluciones";
-            this.devolucionesToolStripMenuItem.Click += new System.EventHandler(this.devolucionesToolStripMenuItem_Click);
             // 
             // cerrarTurnoToolStripMenuItem1
             // 
             this.cerrarTurnoToolStripMenuItem1.BackColor = System.Drawing.Color.Gainsboro;
             this.cerrarTurnoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("cerrarTurnoToolStripMenuItem1.Image")));
             this.cerrarTurnoToolStripMenuItem1.Name = "cerrarTurnoToolStripMenuItem1";
-            this.cerrarTurnoToolStripMenuItem1.Size = new System.Drawing.Size(122, 36);
+            this.cerrarTurnoToolStripMenuItem1.Size = new System.Drawing.Size(122, 27);
             this.cerrarTurnoToolStripMenuItem1.Text = "Cerrar Turno";
             this.cerrarTurnoToolStripMenuItem1.Click += new System.EventHandler(this.cerrarTurnoToolStripMenuItem1_Click);
             // 
@@ -1669,649 +1736,6 @@
             this.cerrarTurnoToolStripMenuItem.Size = new System.Drawing.Size(122, 36);
             this.cerrarTurnoToolStripMenuItem.Text = "Cerrar Turno";
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel1.Controls.Add(this.menuStrip1);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.panel22);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1287, 97);
-            this.panel1.TabIndex = 6;
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel2.Controls.Add(this.panel28);
-            this.panel2.Controls.Add(this.lblNotificacion);
-            this.panel2.Controls.Add(this.pnlIzquierda);
-            this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(1135, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(152, 97);
-            this.panel2.TabIndex = 2;
-            // 
-            // panel28
-            // 
-            this.panel28.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel28.BackgroundImage")));
-            this.panel28.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel28.Controls.Add(this.pbPerfil);
-            this.panel28.Location = new System.Drawing.Point(45, 11);
-            this.panel28.Name = "panel28";
-            this.panel28.Size = new System.Drawing.Size(100, 75);
-            this.panel28.TabIndex = 8;
-            // 
-            // pbPerfil
-            // 
-            this.pbPerfil.BackColor = System.Drawing.Color.Transparent;
-            this.pbPerfil.ErrorImage = null;
-            this.pbPerfil.Location = new System.Drawing.Point(19, 3);
-            this.pbPerfil.Name = "pbPerfil";
-            this.pbPerfil.Size = new System.Drawing.Size(78, 59);
-            this.pbPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbPerfil.TabIndex = 4;
-            this.pbPerfil.TabStop = false;
-            // 
-            // lblNotificacion
-            // 
-            this.lblNotificacion.AutoSize = true;
-            this.lblNotificacion.BackColor = System.Drawing.Color.Red;
-            this.lblNotificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNotificacion.ForeColor = System.Drawing.Color.White;
-            this.lblNotificacion.Location = new System.Drawing.Point(96, 37);
-            this.lblNotificacion.Name = "lblNotificacion";
-            this.lblNotificacion.Size = new System.Drawing.Size(21, 13);
-            this.lblNotificacion.TabIndex = 6;
-            this.lblNotificacion.Text = "10";
-            // 
-            // pnlIzquierda
-            // 
-            this.pnlIzquierda.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlIzquierda.Controls.Add(this.panel17);
-            this.pnlIzquierda.Controls.Add(this.panel16);
-            this.pnlIzquierda.Controls.Add(this.pnlHerramientas);
-            this.pnlIzquierda.Location = new System.Drawing.Point(6, 11);
-            this.pnlIzquierda.Name = "pnlIzquierda";
-            this.pnlIzquierda.Size = new System.Drawing.Size(17, 18);
-            this.pnlIzquierda.TabIndex = 7;
-            // 
-            // panel17
-            // 
-            this.panel17.Controls.Add(this.pnlUsuario);
-            this.panel17.Controls.Add(this.panel20);
-            this.panel17.Controls.Add(this.panel19);
-            this.panel17.Controls.Add(this.panel18);
-            this.panel17.Location = new System.Drawing.Point(168, 137);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(140, 348);
-            this.panel17.TabIndex = 2;
-            // 
-            // pnlUsuario
-            // 
-            this.pnlUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlUsuario.Location = new System.Drawing.Point(40, 42);
-            this.pnlUsuario.Name = "pnlUsuario";
-            this.pnlUsuario.Size = new System.Drawing.Size(50, 306);
-            this.pnlUsuario.TabIndex = 3;
-            // 
-            // panel20
-            // 
-            this.panel20.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel20.Location = new System.Drawing.Point(40, 0);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(50, 42);
-            this.panel20.TabIndex = 2;
-            // 
-            // panel19
-            // 
-            this.panel19.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel19.Location = new System.Drawing.Point(90, 0);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(50, 348);
-            this.panel19.TabIndex = 1;
-            // 
-            // panel18
-            // 
-            this.panel18.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel18.Location = new System.Drawing.Point(0, 0);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(40, 348);
-            this.panel18.TabIndex = 0;
-            // 
-            // panel16
-            // 
-            this.panel16.Controls.Add(this.pnlNotificaciones);
-            this.panel16.Controls.Add(this.label12);
-            this.panel16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel16.Location = new System.Drawing.Point(18, 26);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(68, 279);
-            this.panel16.TabIndex = 1;
-            // 
-            // pnlNotificaciones
-            // 
-            this.pnlNotificaciones.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlNotificaciones.Location = new System.Drawing.Point(0, 42);
-            this.pnlNotificaciones.Name = "pnlNotificaciones";
-            this.pnlNotificaciones.Size = new System.Drawing.Size(68, 237);
-            this.pnlNotificaciones.TabIndex = 1;
-            // 
-            // label12
-            // 
-            this.label12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(0, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(68, 42);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Notificaciones";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pnlHerramientas
-            // 
-            this.pnlHerramientas.Controls.Add(this.flpHerramientas);
-            this.pnlHerramientas.Location = new System.Drawing.Point(266, 93);
-            this.pnlHerramientas.Name = "pnlHerramientas";
-            this.pnlHerramientas.Size = new System.Drawing.Size(129, 262);
-            this.pnlHerramientas.TabIndex = 0;
-            // 
-            // flpHerramientas
-            // 
-            this.flpHerramientas.Controls.Add(this.panel3);
-            this.flpHerramientas.Controls.Add(this.panel4);
-            this.flpHerramientas.Controls.Add(this.panel5);
-            this.flpHerramientas.Controls.Add(this.panel6);
-            this.flpHerramientas.Controls.Add(this.panel7);
-            this.flpHerramientas.Controls.Add(this.panel8);
-            this.flpHerramientas.Controls.Add(this.panel9);
-            this.flpHerramientas.Controls.Add(this.panel10);
-            this.flpHerramientas.Controls.Add(this.panel11);
-            this.flpHerramientas.Controls.Add(this.panel12);
-            this.flpHerramientas.Controls.Add(this.panel13);
-            this.flpHerramientas.Controls.Add(this.panel14);
-            this.flpHerramientas.Controls.Add(this.panel15);
-            this.flpHerramientas.Location = new System.Drawing.Point(43, 22);
-            this.flpHerramientas.Name = "flpHerramientas";
-            this.flpHerramientas.Size = new System.Drawing.Size(159, 320);
-            this.flpHerramientas.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.lblCobro);
-            this.panel3.Controls.Add(this.btnCobro);
-            this.panel3.Location = new System.Drawing.Point(3, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(103, 91);
-            this.panel3.TabIndex = 0;
-            // 
-            // lblCobro
-            // 
-            this.lblCobro.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblCobro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCobro.Location = new System.Drawing.Point(0, 71);
-            this.lblCobro.Name = "lblCobro";
-            this.lblCobro.Size = new System.Drawing.Size(103, 20);
-            this.lblCobro.TabIndex = 2;
-            this.lblCobro.Text = "Cobro";
-            this.lblCobro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnCobro
-            // 
-            this.btnCobro.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCobro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCobro.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.btnCobro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCobro.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnCobro.Image = ((System.Drawing.Image)(resources.GetObject("btnCobro.Image")));
-            this.btnCobro.Location = new System.Drawing.Point(0, 0);
-            this.btnCobro.Name = "btnCobro";
-            this.btnCobro.Size = new System.Drawing.Size(103, 91);
-            this.btnCobro.TabIndex = 1;
-            this.btnCobro.UseVisualStyleBackColor = false;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.lblPago);
-            this.panel4.Controls.Add(this.btnPago);
-            this.panel4.Location = new System.Drawing.Point(3, 100);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(103, 91);
-            this.panel4.TabIndex = 3;
-            // 
-            // lblPago
-            // 
-            this.lblPago.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPago.Location = new System.Drawing.Point(0, 71);
-            this.lblPago.Name = "lblPago";
-            this.lblPago.Size = new System.Drawing.Size(103, 20);
-            this.lblPago.TabIndex = 2;
-            this.lblPago.Text = "Pago";
-            this.lblPago.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnPago
-            // 
-            this.btnPago.BackColor = System.Drawing.SystemColors.Control;
-            this.btnPago.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPago.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.btnPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPago.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnPago.Image = ((System.Drawing.Image)(resources.GetObject("btnPago.Image")));
-            this.btnPago.Location = new System.Drawing.Point(0, 0);
-            this.btnPago.Name = "btnPago";
-            this.btnPago.Size = new System.Drawing.Size(103, 91);
-            this.btnPago.TabIndex = 1;
-            this.btnPago.UseVisualStyleBackColor = false;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.label2);
-            this.panel5.Controls.Add(this.btnAperturarCredito);
-            this.panel5.Location = new System.Drawing.Point(3, 197);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(103, 91);
-            this.panel5.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(0, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Aperturar Crédito";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnAperturarCredito
-            // 
-            this.btnAperturarCredito.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAperturarCredito.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAperturarCredito.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.btnAperturarCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAperturarCredito.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnAperturarCredito.Image = ((System.Drawing.Image)(resources.GetObject("btnAperturarCredito.Image")));
-            this.btnAperturarCredito.Location = new System.Drawing.Point(0, 0);
-            this.btnAperturarCredito.Name = "btnAperturarCredito";
-            this.btnAperturarCredito.Size = new System.Drawing.Size(103, 91);
-            this.btnAperturarCredito.TabIndex = 1;
-            this.btnAperturarCredito.UseVisualStyleBackColor = false;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.label3);
-            this.panel6.Controls.Add(this.btnCaja);
-            this.panel6.Location = new System.Drawing.Point(3, 294);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(103, 91);
-            this.panel6.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(0, 71);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Caja";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnCaja
-            // 
-            this.btnCaja.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCaja.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCaja.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.btnCaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCaja.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnCaja.Image = ((System.Drawing.Image)(resources.GetObject("btnCaja.Image")));
-            this.btnCaja.Location = new System.Drawing.Point(0, 0);
-            this.btnCaja.Name = "btnCaja";
-            this.btnCaja.Size = new System.Drawing.Size(103, 91);
-            this.btnCaja.TabIndex = 1;
-            this.btnCaja.UseVisualStyleBackColor = false;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.label4);
-            this.panel7.Controls.Add(this.btnInventario);
-            this.panel7.Location = new System.Drawing.Point(3, 391);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(103, 91);
-            this.panel7.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(0, 71);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 20);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Inventario";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnInventario
-            // 
-            this.btnInventario.BackColor = System.Drawing.SystemColors.Control;
-            this.btnInventario.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnInventario.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.btnInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInventario.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnInventario.Image = ((System.Drawing.Image)(resources.GetObject("btnInventario.Image")));
-            this.btnInventario.Location = new System.Drawing.Point(0, 0);
-            this.btnInventario.Name = "btnInventario";
-            this.btnInventario.Size = new System.Drawing.Size(103, 91);
-            this.btnInventario.TabIndex = 1;
-            this.btnInventario.UseVisualStyleBackColor = false;
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.label5);
-            this.panel8.Controls.Add(this.btnReportes);
-            this.panel8.Location = new System.Drawing.Point(3, 488);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(103, 91);
-            this.panel8.TabIndex = 5;
-            // 
-            // label5
-            // 
-            this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(0, 71);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(103, 20);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Reporte";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnReportes
-            // 
-            this.btnReportes.BackColor = System.Drawing.SystemColors.Control;
-            this.btnReportes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnReportes.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReportes.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnReportes.Image = ((System.Drawing.Image)(resources.GetObject("btnReportes.Image")));
-            this.btnReportes.Location = new System.Drawing.Point(0, 0);
-            this.btnReportes.Name = "btnReportes";
-            this.btnReportes.Size = new System.Drawing.Size(103, 91);
-            this.btnReportes.TabIndex = 1;
-            this.btnReportes.Text = "Reportes";
-            this.btnReportes.UseVisualStyleBackColor = false;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.label6);
-            this.panel9.Controls.Add(this.btnClientes);
-            this.panel9.Location = new System.Drawing.Point(3, 585);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(103, 91);
-            this.panel9.TabIndex = 6;
-            // 
-            // label6
-            // 
-            this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(0, 71);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 20);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Clientes";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // btnClientes
-            // 
-            this.btnClientes.BackColor = System.Drawing.SystemColors.Control;
-            this.btnClientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClientes.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClientes.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnClientes.Image")));
-            this.btnClientes.Location = new System.Drawing.Point(0, 0);
-            this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(103, 91);
-            this.btnClientes.TabIndex = 1;
-            this.btnClientes.UseVisualStyleBackColor = false;
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.label7);
-            this.panel10.Controls.Add(this.btnProveedor);
-            this.panel10.Location = new System.Drawing.Point(3, 682);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(103, 91);
-            this.panel10.TabIndex = 7;
-            // 
-            // label7
-            // 
-            this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(0, 71);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(103, 20);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Proveedores";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnProveedor
-            // 
-            this.btnProveedor.BackColor = System.Drawing.SystemColors.Control;
-            this.btnProveedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnProveedor.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.btnProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProveedor.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnProveedor.Image = ((System.Drawing.Image)(resources.GetObject("btnProveedor.Image")));
-            this.btnProveedor.Location = new System.Drawing.Point(0, 0);
-            this.btnProveedor.Name = "btnProveedor";
-            this.btnProveedor.Size = new System.Drawing.Size(103, 91);
-            this.btnProveedor.TabIndex = 1;
-            this.btnProveedor.UseVisualStyleBackColor = false;
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.label8);
-            this.panel11.Controls.Add(this.btnCreditoPagar);
-            this.panel11.Location = new System.Drawing.Point(3, 779);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(103, 91);
-            this.panel11.TabIndex = 8;
-            // 
-            // label8
-            // 
-            this.label8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(0, 71);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(103, 20);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Credito por pagar";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnCreditoPagar
-            // 
-            this.btnCreditoPagar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCreditoPagar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCreditoPagar.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.btnCreditoPagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreditoPagar.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnCreditoPagar.Image = ((System.Drawing.Image)(resources.GetObject("btnCreditoPagar.Image")));
-            this.btnCreditoPagar.Location = new System.Drawing.Point(0, 0);
-            this.btnCreditoPagar.Name = "btnCreditoPagar";
-            this.btnCreditoPagar.Size = new System.Drawing.Size(103, 91);
-            this.btnCreditoPagar.TabIndex = 1;
-            this.btnCreditoPagar.UseVisualStyleBackColor = false;
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.label1);
-            this.panel12.Controls.Add(this.btnUsuarios);
-            this.panel12.Location = new System.Drawing.Point(3, 876);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(103, 91);
-            this.panel12.TabIndex = 9;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 71);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Usuarios";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnUsuarios
-            // 
-            this.btnUsuarios.BackColor = System.Drawing.SystemColors.Control;
-            this.btnUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnUsuarios.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsuarios.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnUsuarios.Image = ((System.Drawing.Image)(resources.GetObject("btnUsuarios.Image")));
-            this.btnUsuarios.Location = new System.Drawing.Point(0, 0);
-            this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Size = new System.Drawing.Size(103, 91);
-            this.btnUsuarios.TabIndex = 1;
-            this.btnUsuarios.UseVisualStyleBackColor = false;
-            // 
-            // panel13
-            // 
-            this.panel13.Controls.Add(this.label9);
-            this.panel13.Controls.Add(this.btnComprobante);
-            this.panel13.Location = new System.Drawing.Point(3, 973);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(103, 91);
-            this.panel13.TabIndex = 10;
-            // 
-            // label9
-            // 
-            this.label9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(0, 71);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(103, 20);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Diseñador de comprobantes";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnComprobante
-            // 
-            this.btnComprobante.BackColor = System.Drawing.SystemColors.Control;
-            this.btnComprobante.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnComprobante.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.btnComprobante.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnComprobante.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnComprobante.Image = ((System.Drawing.Image)(resources.GetObject("btnComprobante.Image")));
-            this.btnComprobante.Location = new System.Drawing.Point(0, 0);
-            this.btnComprobante.Name = "btnComprobante";
-            this.btnComprobante.Size = new System.Drawing.Size(103, 91);
-            this.btnComprobante.TabIndex = 1;
-            this.btnComprobante.UseVisualStyleBackColor = false;
-            // 
-            // panel14
-            // 
-            this.panel14.Controls.Add(this.label10);
-            this.panel14.Controls.Add(this.btnAdmin);
-            this.panel14.Location = new System.Drawing.Point(3, 1070);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(103, 91);
-            this.panel14.TabIndex = 11;
-            // 
-            // label10
-            // 
-            this.label10.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(0, 71);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(103, 20);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Admin";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnAdmin
-            // 
-            this.btnAdmin.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAdmin.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdmin.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnAdmin.Image = ((System.Drawing.Image)(resources.GetObject("btnAdmin.Image")));
-            this.btnAdmin.Location = new System.Drawing.Point(0, 0);
-            this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(103, 91);
-            this.btnAdmin.TabIndex = 1;
-            this.btnAdmin.UseVisualStyleBackColor = false;
-            // 
-            // panel15
-            // 
-            this.panel15.Controls.Add(this.label11);
-            this.panel15.Controls.Add(this.btnRespaldo);
-            this.panel15.Location = new System.Drawing.Point(3, 1167);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(103, 91);
-            this.panel15.TabIndex = 12;
-            // 
-            // label11
-            // 
-            this.label11.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(0, 71);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(103, 20);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Respaldo";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnRespaldo
-            // 
-            this.btnRespaldo.BackColor = System.Drawing.SystemColors.Control;
-            this.btnRespaldo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRespaldo.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.btnRespaldo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRespaldo.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnRespaldo.Image = ((System.Drawing.Image)(resources.GetObject("btnRespaldo.Image")));
-            this.btnRespaldo.Location = new System.Drawing.Point(0, 0);
-            this.btnRespaldo.Name = "btnRespaldo";
-            this.btnRespaldo.Size = new System.Drawing.Size(103, 91);
-            this.btnRespaldo.TabIndex = 1;
-            this.btnRespaldo.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(6, 38);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(35, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
-            // panel22
-            // 
-            this.panel22.Controls.Add(this.pictureBox6);
-            this.panel22.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel22.Location = new System.Drawing.Point(0, 0);
-            this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(155, 97);
-            this.panel22.TabIndex = 615;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox6.Image = global::VentasD1002.Resources.resources.JIEL;
-            this.pictureBox6.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(155, 97);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 0;
-            this.pictureBox6.TabStop = false;
-            // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -2333,30 +1757,31 @@
             this.tmrHora.Enabled = true;
             this.tmrHora.Tick += new System.EventHandler(this.tmrHora_Tick);
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.menuStrip1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1287, 34);
+            this.panel4.TabIndex = 615;
+            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1287, 699);
             this.Controls.Add(this.pnlVentas);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.pnlVentasDevoluciones);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip3;
             this.Name = "frmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ventas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
             this.pnlVentas.ResumeLayout(false);
-            this.pnlVentas.PerformLayout();
-            this.menuStrip8.ResumeLayout(false);
-            this.menuStrip8.PerformLayout();
-            this.menuStrip6.ResumeLayout(false);
-            this.menuStrip6.PerformLayout();
-            this.menuStrip2.ResumeLayout(false);
-            this.menuStrip2.PerformLayout();
             this.pnlCobrar.ResumeLayout(false);
             this.panel31.ResumeLayout(false);
             this.panel36.ResumeLayout(false);
@@ -2371,6 +1796,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbCerrarPanelCobrar)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.panel33.ResumeLayout(false);
             this.panel33.PerformLayout();
             this.pnlCambioPrecios.ResumeLayout(false);
@@ -2380,50 +1807,37 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.pnlAgotado.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel29.ResumeLayout(false);
-            this.panel29.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvBuscar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvVentas)).EndInit();
-            this.panel21.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel29.ResumeLayout(false);
+            this.panel29.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.menuStrip8.ResumeLayout(false);
+            this.menuStrip8.PerformLayout();
+            this.menuStrip6.ResumeLayout(false);
+            this.menuStrip6.PerformLayout();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.panelSubencabezado.ResumeLayout(false);
+            this.panelSubencabezado.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel28.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.pnlVentasDevoluciones.ResumeLayout(false);
             this.pnlVentasDevoluciones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            this.menuStrip3.ResumeLayout(false);
-            this.menuStrip3.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel28.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).EndInit();
-            this.pnlIzquierda.ResumeLayout(false);
-            this.panel17.ResumeLayout(false);
-            this.panel16.ResumeLayout(false);
-            this.pnlHerramientas.ResumeLayout(false);
-            this.flpHerramientas.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
-            this.panel12.ResumeLayout(false);
-            this.panel13.ResumeLayout(false);
-            this.panel14.ResumeLayout(false);
-            this.panel15.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel22.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2433,19 +1847,8 @@
         private System.Windows.Forms.Panel pnlVentasDevoluciones;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Panel panel24;
-        private System.Windows.Forms.Panel panel21;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rbMayoreo;
-        private System.Windows.Forms.RadioButton rbMMayoreo;
-        private System.Windows.Forms.RadioButton rbMenudeo;
-        private System.Windows.Forms.ComboBox cboFormaPago;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.DataGridView gdvBuscar;
-        private System.Windows.Forms.TextBox txtCliente;
-        private System.Windows.Forms.DataGridView gdvClientes;
         private System.Windows.Forms.Panel pnlCambioPrecios;
         private System.Windows.Forms.Label lblProducto;
         private System.Windows.Forms.Panel panel26;
@@ -2510,12 +1913,11 @@
         internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem inventarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ventasEnEsperaToolStripMenuItem1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelSubencabezado;
         private System.Windows.Forms.ToolStripMenuItem productoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Timer tmrHora;
-        private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label lblMayoreo;
         private System.Windows.Forms.Label lblMMayoreo;
         private System.Windows.Forms.Label lblMenudeo;
@@ -2523,11 +1925,8 @@
         private System.Windows.Forms.RadioButton rbtnMMayoreo;
         private System.Windows.Forms.RadioButton rbtnMenudeo;
         private System.Windows.Forms.Label lblUnidad;
-        internal System.Windows.Forms.MenuStrip menuStrip2;
         internal System.Windows.Forms.ToolStripMenuItem btnCobrarVentas;
-        internal System.Windows.Forms.MenuStrip menuStrip6;
         internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        internal System.Windows.Forms.MenuStrip menuStrip8;
         internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem imprimirTicketToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem panelDeControlToolStripMenuItem;
@@ -2536,65 +1935,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.Panel panel28;
         private System.Windows.Forms.PictureBox pbPerfil;
-        private System.Windows.Forms.Label lblNotificacion;
-        private System.Windows.Forms.Panel pnlIzquierda;
-        private System.Windows.Forms.Panel panel17;
-        private System.Windows.Forms.Panel pnlUsuario;
-        private System.Windows.Forms.Panel panel20;
-        private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.Panel pnlNotificaciones;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Panel pnlHerramientas;
-        private System.Windows.Forms.FlowLayoutPanel flpHerramientas;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label lblCobro;
-        private System.Windows.Forms.Button btnCobro;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label lblPago;
-        private System.Windows.Forms.Button btnPago;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnAperturarCredito;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnCaja;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnInventario;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnReportes;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnClientes;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnProveedor;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button btnCreditoPagar;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnUsuarios;
-        private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btnComprobante;
-        private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button btnAdmin;
-        private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnRespaldo;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.ToolStripMenuItem cobrarF10;
-        private System.Windows.Forms.ToolStripMenuItem enEsperaF8ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cancelarVentaF9ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cobrarSinTicketF11ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cobrarYGenerarTicketToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem VentaEnEsperaToolStripMenuItem;
@@ -2609,7 +1952,33 @@
         private Telerik.ReportViewer.WinForms.ReportViewer reportViewerCopia;
         private System.Windows.Forms.Label lblNumProductos;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.MenuStrip menuStrip3;
-        private System.Windows.Forms.ToolStripMenuItem reimpresionDeTicketsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rToolStripMenuItem;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
+        internal System.Windows.Forms.MenuStrip menuStrip8;
+        private System.Windows.Forms.ToolStripMenuItem enEsperaF8ToolStripMenuItem;
+        internal System.Windows.Forms.MenuStrip menuStrip6;
+        private System.Windows.Forms.ToolStripMenuItem cancelarVentaF9ToolStripMenuItem;
+        internal System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem cobrarF10;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.DataGridView gdvClientes;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.TextBox txtCliente;
+        private System.Windows.Forms.ComboBox cboFormaPago;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.RadioButton rbMayoreo;
+        private System.Windows.Forms.RadioButton rbMenudeo;
+        private System.Windows.Forms.RadioButton rbMMayoreo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtComentarios;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.RadioButton RbtnMod1;
+        private System.Windows.Forms.RadioButton RbtnMod2;
     }
 }

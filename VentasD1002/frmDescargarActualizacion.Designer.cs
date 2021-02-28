@@ -39,6 +39,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnControl = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.btnBorrarDatos = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdDetalle)).BeginInit();
             this.panel1.SuspendLayout();
@@ -116,11 +117,12 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.btnBorrarDatos);
             this.panel5.Controls.Add(this.btnControl);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Location = new System.Drawing.Point(858, 0);
+            this.panel5.Location = new System.Drawing.Point(731, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(263, 72);
+            this.panel5.Size = new System.Drawing.Size(390, 72);
             this.panel5.TabIndex = 11;
             // 
             // btnControl
@@ -136,7 +138,7 @@
             this.btnControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnControl.Image = ((System.Drawing.Image)(resources.GetObject("btnControl.Image")));
             this.btnControl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnControl.Location = new System.Drawing.Point(69, 16);
+            this.btnControl.Location = new System.Drawing.Point(157, 28);
             this.btnControl.Name = "btnControl";
             this.btnControl.Size = new System.Drawing.Size(182, 38);
             this.btnControl.TabIndex = 10;
@@ -144,6 +146,29 @@
             this.btnControl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnControl.UseVisualStyleBackColor = false;
             this.btnControl.Click += new System.EventHandler(this.btnControl_Click);
+            // 
+            // btnBorrarDatos
+            // 
+            this.btnBorrarDatos.BackColor = System.Drawing.Color.Red;
+            this.btnBorrarDatos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBorrarDatos.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.btnBorrarDatos.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnBorrarDatos.FlatAppearance.BorderSize = 0;
+            this.btnBorrarDatos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnBorrarDatos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnBorrarDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBorrarDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBorrarDatos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnBorrarDatos.Image = ((System.Drawing.Image)(resources.GetObject("btnBorrarDatos.Image")));
+            this.btnBorrarDatos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBorrarDatos.Location = new System.Drawing.Point(3, 28);
+            this.btnBorrarDatos.Name = "btnBorrarDatos";
+            this.btnBorrarDatos.Size = new System.Drawing.Size(148, 38);
+            this.btnBorrarDatos.TabIndex = 11;
+            this.btnBorrarDatos.Text = "Borrar datos";
+            this.btnBorrarDatos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBorrarDatos.UseVisualStyleBackColor = false;
+            this.btnBorrarDatos.Click += new System.EventHandler(this.btnBorrarDatos_Click);
             // 
             // frmDescargarActualizacion
             // 
@@ -177,5 +202,6 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button btnBorrarDatos;
     }
 }

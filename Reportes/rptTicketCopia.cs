@@ -1,5 +1,6 @@
 namespace Reportes
 {
+    using EntVenta;
     using System;
     using System.ComponentModel;
     using System.Drawing;
@@ -22,6 +23,20 @@ namespace Reportes
             //
             // TODO: Add any constructor code after InitializeComponent call
             //
+        }
+
+        public rptTicketCopia(ParametrosReporte obj)
+        {
+            //
+            // Required for telerik Reporting designer support
+            //
+            InitializeComponent();
+
+            //
+            // TODO: Add any constructor code after InitializeComponent call
+            //
+
+            this.tbTicketCopia.DataSource = obj.lstDetalleVenta;
         }
     }
 }

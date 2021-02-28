@@ -35,6 +35,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
+            this.reportViewer1 = new Telerik.ReportViewer.WinForms.ReportViewer();
             this.panel24 = new System.Windows.Forms.Panel();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -121,6 +122,7 @@
             // 
             this.panel2.Controls.Add(this.dateTimePicker1);
             this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.reportViewer1);
             this.panel2.Controls.Add(this.panel24);
             this.panel2.Controls.Add(this.txtBuscar);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -149,6 +151,14 @@
             this.label2.TabIndex = 0;
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // reportViewer1
+            // 
+            this.reportViewer1.AccessibilityKeyMap = null;
+            this.reportViewer1.Location = new System.Drawing.Point(1136, 25);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(10, 10);
+            this.reportViewer1.TabIndex = 0;
+            // 
             // panel24
             // 
             this.panel24.BackColor = System.Drawing.Color.Black;
@@ -156,7 +166,6 @@
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(713, 5);
             this.panel24.TabIndex = 6;
-            this.panel24.Paint += new System.Windows.Forms.PaintEventHandler(this.panel24_Paint);
             // 
             // txtBuscar
             // 
@@ -447,7 +456,6 @@
             this.gdvResultado.Size = new System.Drawing.Size(701, 382);
             this.gdvResultado.TabIndex = 7;
             this.gdvResultado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvResultado_CellClick);
-            this.gdvResultado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvResultado_CellContentClick);
             // 
             // gdvDatos
             // 
@@ -642,5 +650,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private Telerik.ReportViewer.WinForms.ReportViewer reportViewer1;
     }
 }

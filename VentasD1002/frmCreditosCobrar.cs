@@ -27,57 +27,61 @@ namespace VentasD1002
 
         private void frmCreditosCobrar_Load(object sender, EventArgs e)
         {
-            ListarVentar_PorCobrar("");
-            pnlAbonar.Visible = false;
-            pnlVistaTicket.Visible = false;
+            Listar_TotalCredito_PorCliente();
         }
 
-        private void ListarVentar_PorCobrar(string busqueda)
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 0)
+            {
+                Listar_TotalCredito_PorCliente();
+            }
+            else if(tabControl1.SelectedIndex == 1)
+            {
+                ListarVentar_PorCobrar("");
+                pnlAbonar.Visible = false;
+                pnlVistaTicket.Visible = false;
+                pnlListadoClienteCredito.Visible = false;
+            }
+        }
+
+        private void Listar_TotalCredito_PorCliente()
         {
             try
             {
-                List<Venta> _lstVenta = new BusVentas().ListarVentas_PorCobrar(busqueda);
-                gdvListado.DataSource = _lstVenta;
+                DataTable data = DatVenta.ListarClientes_TotalALquidar();
+                gdvTotalCredito.DataSource = data;
 
-                gdvListado.Columns[1].Visible = false;
-                gdvListado.Columns[2].Visible = false;
-                gdvListado.Columns[3].Visible = false;
-                gdvListado.Columns[4].Visible = false;
-                gdvListado.Columns[8].Visible = false;
-                gdvListado.Columns[9].Visible = false;
-                gdvListado.Columns[10].Visible = false;
-                gdvListado.Columns[11].Visible = false;
-                gdvListado.Columns[12].Visible = false;
-                gdvListado.Columns[13].Visible = false;
-                gdvListado.Columns[14].Visible = false;
-                gdvListado.Columns[15].Visible = false;
-                gdvListado.Columns[16].Visible = false;
-                gdvListado.Columns[17].Visible = false;
-                gdvListado.Columns[18].Visible = false;
+                gdvTotalCredito.Columns[0].Visible = false;
+                DataTablePersonalizado.Multilinea(ref gdvTotalCredito);
 
-                DataTablePersonalizado.Multilinea(ref gdvListado);
+                pnlListadoClienteCredito.Visible = true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al mostrar la lista: " + ex.Message, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrió un error al consultar los datos : " + ex.Message, "Error de Lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void btnCobrar_Click(object sender, EventArgs e)
         {
-            ListarVentar_PorCobrar(textBox1.Text);
+            if (gdvDetalle.Rows.Count == 0)
+            {
+                MessageBox.Show("Seleccione la venta a cobrar", "Venta no existe", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+            else
+            {
+                txtSaldoActual.Text = lblTotalLiquidar.Text;
+                pnlAbonar.Visible = true;
+                txtMontoAbonar.Focus();
+            }
         }
 
-        private void textBox1_MouseClick(object sender, MouseEventArgs e)
-        {
-            textBox1.SelectAll();
-        }
-
-        private void gdvListado_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void gdvListado_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                if (e.ColumnIndex == this.gdvListado.Columns["Detalle"].Index )
+                if (e.ColumnIndex == this.gdvListado.Columns["Detalle"].Index)
                 {
                     if (pnlAbonar.Visible != true)
                     {
@@ -124,22 +128,17 @@ namespace VentasD1002
             }
         }
 
-        private void btnAbonar_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
-
-            if (gdvDetalle.Rows.Count == 0)
-            {
-                MessageBox.Show("Seleccione la venta a cobrar", "Venta no existe", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-            }
-            else
-            {
-                txtSaldoActual.Text = lblTotalLiquidar.Text;
-                pnlAbonar.Visible = true;
-                txtMontoAbonar.Focus();
-            }
+            ListarVentar_PorCobrar(textBox1.Text);
         }
 
-        private void bntCancelar_Click(object sender, EventArgs e)
+        private void textBox1_MouseClick_1(object sender, MouseEventArgs e)
+        {
+            textBox1.SelectAll();
+        }
+
+        private void bntCancelar_Click_1(object sender, EventArgs e)
         {
             pnlAbonar.Visible = false;
             txtMontoAbonar.Clear();
@@ -147,7 +146,7 @@ namespace VentasD1002
             txtSaldoActual.Clear();
         }
 
-        private void txtMontoAbonar_TextChanged(object sender, EventArgs e)
+        private void txtMontoAbonar_TextChanged_1(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtMontoAbonar.Text) || txtMontoAbonar.Equals("0"))
             {
@@ -160,10 +159,9 @@ namespace VentasD1002
                 decimal _Pendiente = _saldo - (Convert.ToDecimal(txtMontoAbonar.Text));
                 txtPendienteLiquidar.Text = _Pendiente.ToString();
             }
-            
         }
 
-        private void txtMontoAbonar_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtMontoAbonar_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             if (((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 46))
             {
@@ -172,7 +170,7 @@ namespace VentasD1002
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAbonar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -186,18 +184,20 @@ namespace VentasD1002
                     string _strEstadoPago = Convert.ToDecimal(txtMontoAbonar.Text) >= Convert.ToDecimal(txtSaldoActual.Text) ? "PAGADO" : "PENDIENTE";
                     decimal _saldo = Convert.ToDecimal(txtPendienteLiquidar.Text) <= 0 ? 0 : Convert.ToDecimal(txtPendienteLiquidar.Text);
                     int _idVenta = Convert.ToInt32(lblIdVenta.Text);
-                    decimal abonado = Convert.ToDecimal(txtPendienteLiquidar.Text) <=0 ? Convert.ToDecimal(txtSaldoActual.Text) : Convert.ToDecimal(txtMontoAbonar.Text);
-                    new BusVentas().Actualizar_VentaACredito(_idVenta, _saldo, _strEstadoPago);
+                    decimal abonado = Convert.ToDecimal(txtPendienteLiquidar.Text) <= 0 ? Convert.ToDecimal(txtSaldoActual.Text) : Convert.ToDecimal(txtMontoAbonar.Text);
+                    decimal efectivo = Convert.ToDecimal(lblTotalAbonado.Text) + Convert.ToDecimal(txtMontoAbonar.Text);
+
+                    new BusVentas().Actualizar_VentaACredito(_idVenta, _saldo, _strEstadoPago, efectivo);
 
                     #region BITACORA PAGO CLIENTE
 
                     ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
                     string serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
-                    int  idUsuario = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC)).Id;
+                    int idUsuario = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC)).Id;
 
                     DatCatGenerico.Agregar_BitacoraCliente(_idVenta, idUsuario, abonado);
                     #endregion
-                  
+
 
                     #region TICKET
                     rptComprobanteAbono _rpt = new rptComprobanteAbono();
@@ -240,7 +240,43 @@ namespace VentasD1002
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error : "+ex.Message, "Error de actulizacion de pagos a crédito", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error : " + ex.Message, "Error de actulizacion de pagos a crédito", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            pnlVistaTicket.Visible = false;
+        }
+
+        private void ListarVentar_PorCobrar(string busqueda)
+        {
+            try
+            {
+                List<Venta> _lstVenta = new BusVentas().ListarVentas_PorCobrar(busqueda);
+                gdvListado.DataSource = _lstVenta;
+
+                gdvListado.Columns[1].Visible = false;
+                gdvListado.Columns[2].Visible = false;
+                gdvListado.Columns[3].Visible = false;
+                gdvListado.Columns[4].Visible = false;
+                gdvListado.Columns[8].Visible = false;
+                gdvListado.Columns[9].Visible = false;
+                gdvListado.Columns[10].Visible = false;
+                gdvListado.Columns[11].Visible = false;
+                gdvListado.Columns[12].Visible = false;
+                gdvListado.Columns[13].Visible = false;
+                gdvListado.Columns[14].Visible = false;
+                gdvListado.Columns[15].Visible = false;
+                gdvListado.Columns[16].Visible = false;
+                gdvListado.Columns[17].Visible = false;
+                gdvListado.Columns[18].Visible = false;
+
+                DataTablePersonalizado.Multilinea(ref gdvListado);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar la lista: " + ex.Message, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -263,9 +299,5 @@ namespace VentasD1002
             lblTotalLiquidar.Text = "...";
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            pnlVistaTicket.Visible = false;
-        }
     }
 }

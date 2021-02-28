@@ -80,6 +80,60 @@ namespace BusVenta
             return p;
         }
 
+        public Producto ObtenerProducto_A_Actualizar(string codigo)
+        {
+            DataRow dr = new DatProducto().ObtenerProducto_Actualizado(codigo);
+
+            Producto p = new Producto();
+            p.Id = Convert.ToInt32(dr["Id_Producto"]);
+            p.Descripcion = dr["Descripcion"].ToString();
+            p.Presentacion = dr["Presentacion"].ToString();
+            p.usaInventario = dr["Usa_Inventario"].ToString();
+            p.stock = dr["Stock"].ToString();
+            p.precioMenudeo = Convert.ToDecimal(dr["Precio_Menudeo"]);
+            p.precioMMayoreo = Convert.ToDecimal(dr["Precio_MMayoreo"]);
+            p.Caducidad = dr["Caducidad"].ToString();
+            p.codigo = dr["Codigo"].ToString();
+            p.seVendeA = dr["Tipo_Venta"].ToString();
+            p.APartirDe = Convert.ToDecimal(dr["A_Partir_De"].ToString());
+            p.stockMinimo = Convert.ToInt32(dr["Stock_Minimo"]);
+            p.precioMayoreo = Convert.ToDecimal(dr["Precio_Mayoreo"]);
+            p.IdTipoPresentacion = Convert.ToInt32(dr["Presentacion_Id"]);
+            p.IdCategoria = Convert.ToInt32(dr["Catalogo_Id"]);
+            p.TotalUnidades = Convert.ToDecimal(dr["TotalUnidades"] is DBNull ? 0 : dr["TotalUnidades"]);
+            p.PresentacionMenudeo = Convert.ToString(dr["PresentacionMenudeo"]);
+            p.Estado = Convert.ToBoolean(dr["Estado"]);
+
+            return p;
+        }
+
+        public Producto ObtenerProducto_Descripcion(string descripcion)
+        {
+            DataRow dr = new DatProducto().ObtenerProducto(descripcion);
+
+            Producto p = new Producto();
+            p.Id = Convert.ToInt32(dr["Id_Producto"]);
+            p.Descripcion = dr["Descripcion"].ToString();
+            p.Presentacion = dr["Presentacion"].ToString();
+            p.usaInventario = dr["Usa_Inventario"].ToString();
+            p.stock = dr["Stock"].ToString();
+            p.precioMenudeo = Convert.ToDecimal(dr["Precio_Menudeo"]);
+            p.precioMMayoreo = Convert.ToDecimal(dr["Precio_MMayoreo"]);
+            p.Caducidad = dr["Caducidad"].ToString();
+            p.codigo = dr["Codigo"].ToString();
+            p.seVendeA = dr["Tipo_Venta"].ToString();
+            p.APartirDe = Convert.ToDecimal(dr["A_Partir_De"].ToString());
+            p.stockMinimo = Convert.ToInt32(dr["Stock_Minimo"]);
+            p.precioMayoreo = Convert.ToDecimal(dr["Precio_Mayoreo"]);
+            p.IdTipoPresentacion = Convert.ToInt32(dr["Presentacion_Id"]);
+            p.IdCategoria = Convert.ToInt32(dr["Catalogo_Id"]);
+            p.TotalUnidades = Convert.ToDecimal(dr["TotalUnidades"] is DBNull ? 0 : dr["TotalUnidades"]);
+            p.PresentacionMenudeo = Convert.ToString(dr["PresentacionMenudeo"]);
+            p.Estado = Convert.ToBoolean(dr["Estado"]);
+
+            return p;
+        }
+
         public void BorrarProducto(int id)
         {
             int filasAfectadas = new DatProducto().EliminarProducto(id);

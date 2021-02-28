@@ -143,9 +143,9 @@ namespace BusVenta
             return _lsVentas;
         }
 
-        public void Actualizar_VentaACredito(int idventa, decimal saldo, string estadoPago)
+        public void Actualizar_VentaACredito(int idventa, decimal saldo, string estadoPago, decimal efectivo)
         {
-            int _filasAfectadas = new DatVenta().Actualizar_CreditoPorPagar(idventa, saldo, estadoPago);
+            int _filasAfectadas = new DatVenta().Actualizar_CreditoPorPagar(idventa, saldo, estadoPago, efectivo);
 
             if (_filasAfectadas != 1)
             {

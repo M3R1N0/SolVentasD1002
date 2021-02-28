@@ -13,6 +13,7 @@ using Reportes;
 using System.Drawing.Printing;
 using Telerik.Reporting.Processing;
 using System.Management;
+using EntVenta;
 
 namespace VentasD1002
 {
@@ -30,13 +31,15 @@ namespace VentasD1002
         {
             ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
             serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
+
+            pnlBuscarPorCLiente.Visible = false;
         }
 
-        private void ObtenerDatos()
+        private void ObtenerDatos(string buscar)
         {
             try
             {
-                DataTable dt = DatVenta.ObtenerTickets(dtpInicio.Value, dtpFin.Value);
+                DataTable dt = DatVenta.ObtenerTickets(dtpInicio.Value, dtpFin.Value, buscar);
                 gdvListado.DataSource = dt;
 
                 gdvListado.Columns[1].Visible = false;
@@ -50,12 +53,12 @@ namespace VentasD1002
 
         private void dtpInicio_ValueChanged(object sender, EventArgs e)
         {
-            ObtenerDatos();
+            ObtenerDatos(string.Empty);
         }
 
         private void dtpFin_ValueChanged(object sender, EventArgs e)
         {
-            ObtenerDatos();
+            ObtenerDatos(string.Empty);
         }
 
         private void gdvListado_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -69,21 +72,29 @@ namespace VentasD1002
 
                     string textoNumero = NumeroATexto(total);
 
-                    DataTable dt = DatDetalleVenta.ObtenerDatos_Ticket(idventa, textoNumero);
+                    ParametrosReporte reporte = DatVenta.Consultar_Ticket_Parametro(idventa);
+                    reporte.LetraNumero = textoNumero;
                  
 
                     if (rbTicket.Checked == true)
                     {
                         rptTicket rptTicket = new rptTicket();
-                        rptTicket.tbTicket.DataSource = dt;
-                        rptTicket.DataSource = dt;
+                        rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
+                        rptTicket.DataSource = reporte;
+                        reportViewer1.Report = rptTicket;
+                    }
+                    else if(RbtnMod2.Checked)
+                    {
+                        ReportTicket rptTicket = new ReportTicket();
+                        rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
+                        rptTicket.DataSource = reporte;
                         reportViewer1.Report = rptTicket;
                     }
                     else
                     {
                         rtpRecibo recibo = new rtpRecibo();
-                        recibo.tblVentaProducto.DataSource = dt;
-                        recibo.DataSource = dt;
+                        recibo.tblVentaProducto.DataSource = reporte.lstDetalleVenta;
+                        recibo.DataSource = reporte;
                         reportViewer1.Report = recibo;
                     }
                     
@@ -142,6 +153,36 @@ namespace VentasD1002
                 MessageBox.Show("Error al imprimir el ticket : " + ex.Message, "Error de impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+        }
+
+        private void rbtnFiltroCliente_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.rbtnFiltroCliente.Checked == true)
+            {
+                pnlBuscarPorCLiente.Visible = true;
+            }
+            else
+            {
+                pnlBuscarPorCLiente.Visible = false;
+            }
+        }
+
+        private void txtBuscarCliente_TextChanged(object sender, EventArgs e)
+        {
+            ObtenerDatos(txtBuscarCliente.Text);
+        }
+
+        private void txtBuscarCliente_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtBuscarCliente.SelectAll();
+        }
+
+        private void txtBuscarCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Escape)
+            {
+                txtBuscarCliente.Clear();
+            }
         }
     }
 }

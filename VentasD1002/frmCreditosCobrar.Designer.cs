@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreditosCobrar));
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.lblIdVenta = new System.Windows.Forms.Label();
-            this.btnCobrar = new System.Windows.Forms.Button();
-            this.lblCliente = new System.Windows.Forms.Label();
-            this.lblCajero = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblFolio = new System.Windows.Forms.Label();
-            this.lblTicket = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pnlListadoClienteCredito = new System.Windows.Forms.Panel();
+            this.gdvTotalCredito = new System.Windows.Forms.DataGridView();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlAbonar = new System.Windows.Forms.Panel();
             this.txtSuCambio = new System.Windows.Forms.TextBox();
@@ -64,21 +64,40 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.gdvDetalle = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblIdVenta = new System.Windows.Forms.Label();
+            this.btnCobrar = new System.Windows.Forms.Button();
+            this.lblCliente = new System.Windows.Forms.Label();
+            this.lblCajero = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblFolio = new System.Windows.Forms.Label();
+            this.lblTicket = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pnlVistaTicket = new System.Windows.Forms.Panel();
             this.reportViewer1 = new Telerik.ReportViewer.WinForms.ReportViewer();
             this.panel5 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gdvListado = new System.Windows.Forms.DataGridView();
             this.Detalle = new System.Windows.Forms.DataGridViewImageColumn();
-            this.panel2.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.pnlListadoClienteCredito.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gdvTotalCredito)).BeginInit();
+            this.panel10.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlAbonar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvDetalle)).BeginInit();
+            this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.pnlVistaTicket.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -86,142 +105,140 @@
             ((System.ComponentModel.ISupportInitialize)(this.gdvListado)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel2
+            // dataGridViewImageColumn1
             // 
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.lblIdVenta);
-            this.panel2.Controls.Add(this.btnCobrar);
-            this.panel2.Controls.Add(this.lblCliente);
-            this.panel2.Controls.Add(this.lblCajero);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.lblFolio);
-            this.panel2.Controls.Add(this.lblTicket);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(781, 152);
-            this.panel2.TabIndex = 1;
+            this.dataGridViewImageColumn1.HeaderText = "Detalle";
+            this.dataGridViewImageColumn1.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn1.Image")));
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.ToolTipText = "Ver detalle";
             // 
-            // label13
+            // tabControl1
             // 
-            this.label13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(0, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(781, 55);
-            this.label13.TabIndex = 18;
-            this.label13.Text = "Detalle de la venta";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1251, 694);
+            this.tabControl1.TabIndex = 3;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
-            // lblIdVenta
+            // tabPage1
             // 
-            this.lblIdVenta.AutoSize = true;
-            this.lblIdVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdVenta.Location = new System.Drawing.Point(16, 112);
-            this.lblIdVenta.Name = "lblIdVenta";
-            this.lblIdVenta.Size = new System.Drawing.Size(16, 17);
-            this.lblIdVenta.TabIndex = 11;
-            this.lblIdVenta.Text = "0";
-            this.lblIdVenta.Visible = false;
+            this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage1.Controls.Add(this.pnlListadoClienteCredito);
+            this.tabPage1.Controls.Add(this.panel12);
+            this.tabPage1.Controls.Add(this.panel9);
+            this.tabPage1.Controls.Add(this.panel13);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1243, 665);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Lista crédito por cliente";
             // 
-            // btnCobrar
+            // pnlListadoClienteCredito
             // 
-            this.btnCobrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCobrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCobrar.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnCobrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCobrar.Image")));
-            this.btnCobrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCobrar.Location = new System.Drawing.Point(632, 101);
-            this.btnCobrar.Name = "btnCobrar";
-            this.btnCobrar.Size = new System.Drawing.Size(119, 38);
-            this.btnCobrar.TabIndex = 10;
-            this.btnCobrar.Text = "Cobrar";
-            this.btnCobrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCobrar.UseVisualStyleBackColor = true;
-            this.btnCobrar.Click += new System.EventHandler(this.btnAbonar_Click);
+            this.pnlListadoClienteCredito.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pnlListadoClienteCredito.Controls.Add(this.gdvTotalCredito);
+            this.pnlListadoClienteCredito.Controls.Add(this.panel10);
+            this.pnlListadoClienteCredito.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlListadoClienteCredito.Location = new System.Drawing.Point(128, 103);
+            this.pnlListadoClienteCredito.Name = "pnlListadoClienteCredito";
+            this.pnlListadoClienteCredito.Size = new System.Drawing.Size(987, 559);
+            this.pnlListadoClienteCredito.TabIndex = 23;
             // 
-            // lblCliente
+            // gdvTotalCredito
             // 
-            this.lblCliente.AutoSize = true;
-            this.lblCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCliente.Location = new System.Drawing.Point(337, 113);
-            this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(20, 17);
-            this.lblCliente.TabIndex = 9;
-            this.lblCliente.Text = "...";
+            this.gdvTotalCredito.AllowUserToAddRows = false;
+            this.gdvTotalCredito.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.gdvTotalCredito.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.gdvTotalCredito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gdvTotalCredito.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gdvTotalCredito.Location = new System.Drawing.Point(0, 36);
+            this.gdvTotalCredito.MultiSelect = false;
+            this.gdvTotalCredito.Name = "gdvTotalCredito";
+            this.gdvTotalCredito.ReadOnly = true;
+            this.gdvTotalCredito.RowHeadersVisible = false;
+            this.gdvTotalCredito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gdvTotalCredito.Size = new System.Drawing.Size(987, 523);
+            this.gdvTotalCredito.TabIndex = 0;
             // 
-            // lblCajero
+            // panel10
             // 
-            this.lblCajero.AutoSize = true;
-            this.lblCajero.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCajero.Location = new System.Drawing.Point(339, 79);
-            this.lblCajero.Name = "lblCajero";
-            this.lblCajero.Size = new System.Drawing.Size(20, 17);
-            this.lblCajero.TabIndex = 8;
-            this.lblCajero.Text = "...";
+            this.panel10.BackColor = System.Drawing.Color.Orange;
+            this.panel10.Controls.Add(this.label14);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(987, 36);
+            this.panel10.TabIndex = 1;
             // 
-            // label4
+            // label14
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(274, 113);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 17);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Cliente :";
+            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label14.Location = new System.Drawing.Point(0, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(987, 36);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Listado de clientes por cobrar";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label5
+            // panel12
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(274, 79);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 17);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Cajero :";
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel12.Location = new System.Drawing.Point(3, 103);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(125, 559);
+            this.panel12.TabIndex = 25;
             // 
-            // lblFolio
+            // panel9
             // 
-            this.lblFolio.AutoSize = true;
-            this.lblFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFolio.Location = new System.Drawing.Point(105, 112);
-            this.lblFolio.Name = "lblFolio";
-            this.lblFolio.Size = new System.Drawing.Size(19, 20);
-            this.lblFolio.TabIndex = 3;
-            this.lblFolio.Text = "0";
+            this.panel9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel9.BackgroundImage")));
+            this.panel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel9.Controls.Add(this.panel11);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel9.Location = new System.Drawing.Point(3, 3);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1112, 100);
+            this.panel9.TabIndex = 24;
             // 
-            // lblTicket
+            // panel11
             // 
-            this.lblTicket.AutoSize = true;
-            this.lblTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTicket.Location = new System.Drawing.Point(105, 78);
-            this.lblTicket.Name = "lblTicket";
-            this.lblTicket.Size = new System.Drawing.Size(19, 20);
-            this.lblTicket.TabIndex = 2;
-            this.lblTicket.Text = "0";
+            this.panel11.BackgroundImage = global::VentasD1002.Properties.Resources.JIEL;
+            this.panel11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(200, 100);
+            this.panel11.TabIndex = 0;
             // 
-            // label3
+            // panel13
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(33, 114);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 17);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Folio N° :";
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel13.Location = new System.Drawing.Point(1115, 3);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(125, 659);
+            this.panel13.TabIndex = 26;
             // 
-            // label2
+            // tabPage2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(25, 79);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Ticket N° :";
+            this.tabPage2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage2.Controls.Add(this.panel3);
+            this.tabPage2.Controls.Add(this.panel1);
+            this.tabPage2.Controls.Add(this.panel4);
+            this.tabPage2.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1243, 665);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Cobro crédito";
             // 
             // panel3
             // 
@@ -235,10 +252,10 @@
             this.panel3.Controls.Add(this.gdvDetalle);
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(460, 0);
+            this.panel3.Location = new System.Drawing.Point(470, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(781, 694);
-            this.panel3.TabIndex = 1;
+            this.panel3.Size = new System.Drawing.Size(770, 659);
+            this.panel3.TabIndex = 3;
             // 
             // pnlAbonar
             // 
@@ -257,9 +274,9 @@
             this.pnlAbonar.Controls.Add(this.txtSaldoActual);
             this.pnlAbonar.Controls.Add(this.label8);
             this.pnlAbonar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlAbonar.Location = new System.Drawing.Point(6, 157);
+            this.pnlAbonar.Location = new System.Drawing.Point(19, 158);
             this.pnlAbonar.Name = "pnlAbonar";
-            this.pnlAbonar.Size = new System.Drawing.Size(763, 483);
+            this.pnlAbonar.Size = new System.Drawing.Size(732, 482);
             this.pnlAbonar.TabIndex = 12;
             // 
             // txtSuCambio
@@ -300,7 +317,7 @@
             this.bntCancelar.Text = "Cancelar";
             this.bntCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bntCancelar.UseVisualStyleBackColor = true;
-            this.bntCancelar.Click += new System.EventHandler(this.bntCancelar_Click);
+            this.bntCancelar.Click += new System.EventHandler(this.bntCancelar_Click_1);
             // 
             // btnAbonar
             // 
@@ -316,7 +333,7 @@
             this.btnAbonar.Text = "Abonar";
             this.btnAbonar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAbonar.UseVisualStyleBackColor = true;
-            this.btnAbonar.Click += new System.EventHandler(this.button1_Click);
+            this.btnAbonar.Click += new System.EventHandler(this.btnAbonar_Click_1);
             // 
             // panel8
             // 
@@ -383,8 +400,8 @@
             this.txtMontoAbonar.Size = new System.Drawing.Size(185, 38);
             this.txtMontoAbonar.TabIndex = 12;
             this.txtMontoAbonar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtMontoAbonar.TextChanged += new System.EventHandler(this.txtMontoAbonar_TextChanged);
-            this.txtMontoAbonar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoAbonar_KeyPress);
+            this.txtMontoAbonar.TextChanged += new System.EventHandler(this.txtMontoAbonar_TextChanged_1);
+            this.txtMontoAbonar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoAbonar_KeyPress_1);
             // 
             // panel6
             // 
@@ -490,27 +507,173 @@
             this.gdvDetalle.Size = new System.Drawing.Size(732, 383);
             this.gdvDetalle.TabIndex = 2;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.lblIdVenta);
+            this.panel2.Controls.Add(this.btnCobrar);
+            this.panel2.Controls.Add(this.lblCliente);
+            this.panel2.Controls.Add(this.lblCajero);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.lblFolio);
+            this.panel2.Controls.Add(this.lblTicket);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(770, 152);
+            this.panel2.TabIndex = 1;
+            // 
+            // label13
+            // 
+            this.label13.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(0, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(770, 55);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "Detalle de la venta";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblIdVenta
+            // 
+            this.lblIdVenta.AutoSize = true;
+            this.lblIdVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdVenta.Location = new System.Drawing.Point(16, 112);
+            this.lblIdVenta.Name = "lblIdVenta";
+            this.lblIdVenta.Size = new System.Drawing.Size(16, 17);
+            this.lblIdVenta.TabIndex = 11;
+            this.lblIdVenta.Text = "0";
+            this.lblIdVenta.Visible = false;
+            // 
+            // btnCobrar
+            // 
+            this.btnCobrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCobrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCobrar.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnCobrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCobrar.Image")));
+            this.btnCobrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCobrar.Location = new System.Drawing.Point(615, 111);
+            this.btnCobrar.Name = "btnCobrar";
+            this.btnCobrar.Size = new System.Drawing.Size(136, 38);
+            this.btnCobrar.TabIndex = 10;
+            this.btnCobrar.Text = "Cobrar";
+            this.btnCobrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCobrar.UseVisualStyleBackColor = true;
+            this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
+            // 
+            // lblCliente
+            // 
+            this.lblCliente.AutoSize = true;
+            this.lblCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCliente.Location = new System.Drawing.Point(337, 113);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(20, 17);
+            this.lblCliente.TabIndex = 9;
+            this.lblCliente.Text = "...";
+            // 
+            // lblCajero
+            // 
+            this.lblCajero.AutoSize = true;
+            this.lblCajero.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCajero.Location = new System.Drawing.Point(339, 79);
+            this.lblCajero.Name = "lblCajero";
+            this.lblCajero.Size = new System.Drawing.Size(20, 17);
+            this.lblCajero.TabIndex = 8;
+            this.lblCajero.Text = "...";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(274, 113);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 17);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Cliente :";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(274, 79);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 17);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Cajero :";
+            // 
+            // lblFolio
+            // 
+            this.lblFolio.AutoSize = true;
+            this.lblFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFolio.Location = new System.Drawing.Point(105, 112);
+            this.lblFolio.Name = "lblFolio";
+            this.lblFolio.Size = new System.Drawing.Size(19, 20);
+            this.lblFolio.TabIndex = 3;
+            this.lblFolio.Text = "0";
+            // 
+            // lblTicket
+            // 
+            this.lblTicket.AutoSize = true;
+            this.lblTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTicket.Location = new System.Drawing.Point(105, 78);
+            this.lblTicket.Name = "lblTicket";
+            this.lblTicket.Size = new System.Drawing.Size(19, 20);
+            this.lblTicket.TabIndex = 2;
+            this.lblTicket.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(33, 114);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 17);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Folio N° :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(25, 79);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(74, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Ticket N° :";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Gold;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(465, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(5, 659);
+            this.panel1.TabIndex = 9;
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.pnlVistaTicket);
-            this.panel4.Controls.Add(this.panel1);
             this.panel4.Controls.Add(this.pictureBox1);
             this.panel4.Controls.Add(this.textBox1);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.gdvListado);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(460, 694);
-            this.panel4.TabIndex = 1;
+            this.panel4.Size = new System.Drawing.Size(462, 659);
+            this.panel4.TabIndex = 2;
             // 
             // pnlVistaTicket
             // 
             this.pnlVistaTicket.Controls.Add(this.reportViewer1);
             this.pnlVistaTicket.Controls.Add(this.panel5);
-            this.pnlVistaTicket.Location = new System.Drawing.Point(12, 23);
+            this.pnlVistaTicket.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlVistaTicket.Location = new System.Drawing.Point(0, 0);
             this.pnlVistaTicket.Name = "pnlVistaTicket";
-            this.pnlVistaTicket.Size = new System.Drawing.Size(432, 643);
+            this.pnlVistaTicket.Size = new System.Drawing.Size(462, 659);
             this.pnlVistaTicket.TabIndex = 8;
             // 
             // reportViewer1
@@ -519,7 +682,7 @@
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportViewer1.Location = new System.Drawing.Point(0, 48);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(432, 595);
+            this.reportViewer1.Size = new System.Drawing.Size(462, 611);
             this.reportViewer1.TabIndex = 1;
             // 
             // panel5
@@ -528,34 +691,28 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(432, 48);
+            this.panel5.Size = new System.Drawing.Size(462, 48);
             this.panel5.TabIndex = 0;
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.Red;
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.Window;
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(432, 48);
+            this.button1.Size = new System.Drawing.Size(462, 48);
             this.button1.TabIndex = 0;
             this.button1.Text = "Cerrar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(455, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(5, 694);
-            this.panel1.TabIndex = 7;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(40, 108);
+            this.pictureBox1.Location = new System.Drawing.Point(17, 54);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 26);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -565,20 +722,20 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(68, 108);
+            this.textBox1.Location = new System.Drawing.Point(45, 54);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(376, 26);
+            this.textBox1.Size = new System.Drawing.Size(401, 26);
             this.textBox1.TabIndex = 5;
-            this.textBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick_1);
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(37, 79);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(14, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(172, 17);
+            this.label1.Size = new System.Drawing.Size(191, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "Ingrese el ticket a cobrar :";
             // 
@@ -586,18 +743,19 @@
             // 
             this.gdvListado.AllowUserToAddRows = false;
             this.gdvListado.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.gdvListado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gdvListado.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.gdvListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gdvListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Detalle});
-            this.gdvListado.Location = new System.Drawing.Point(39, 157);
+            this.gdvListado.Location = new System.Drawing.Point(14, 102);
             this.gdvListado.Name = "gdvListado";
             this.gdvListado.RowHeadersVisible = false;
             this.gdvListado.RowTemplate.ReadOnly = true;
             this.gdvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvListado.Size = new System.Drawing.Size(405, 390);
+            this.gdvListado.Size = new System.Drawing.Size(429, 554);
             this.gdvListado.TabIndex = 3;
-            this.gdvListado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvListado_CellClick);
+            this.gdvListado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvListado_CellClick_1);
             // 
             // Detalle
             // 
@@ -611,21 +769,29 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1241, 694);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel4);
+            this.ClientSize = new System.Drawing.Size(1251, 694);
+            this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
             this.Name = "frmCreditosCobrar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Créditos por Cobrar";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmCreditosCobrar_Load);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.pnlListadoClienteCredito.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gdvTotalCredito)).EndInit();
+            this.panel10.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.pnlAbonar.ResumeLayout(false);
             this.pnlAbonar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvDetalle)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.pnlVistaTicket.ResumeLayout(false);
@@ -637,16 +803,37 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlAbonar;
+        private System.Windows.Forms.TextBox txtSuCambio;
+        private System.Windows.Forms.Label lblSucambio;
+        private System.Windows.Forms.Button bntCancelar;
+        private System.Windows.Forms.Button btnAbonar;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtPendienteLiquidar;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtMontoAbonar;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.TextBox txtSaldoActual;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblMontototal;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblTotalLiquidar;
+        private System.Windows.Forms.Label lblTotalAbonado;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView gdvDetalle;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView gdvListado;
-        private System.Windows.Forms.DataGridViewImageColumn Detalle;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblIdVenta;
+        private System.Windows.Forms.Button btnCobrar;
         private System.Windows.Forms.Label lblCliente;
         private System.Windows.Forms.Label lblCajero;
         private System.Windows.Forms.Label label4;
@@ -655,33 +842,24 @@
         private System.Windows.Forms.Label lblTicket;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblMontototal;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lblTotalLiquidar;
-        private System.Windows.Forms.Label lblTotalAbonado;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnCobrar;
-        private System.Windows.Forms.Label lblIdVenta;
-        private System.Windows.Forms.Panel pnlAbonar;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.TextBox txtSaldoActual;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.TextBox txtMontoAbonar;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtPendienteLiquidar;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnAbonar;
-        private System.Windows.Forms.Button bntCancelar;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel pnlVistaTicket;
         private Telerik.ReportViewer.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txtSuCambio;
-        private System.Windows.Forms.Label lblSucambio;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView gdvListado;
+        private System.Windows.Forms.DataGridViewImageColumn Detalle;
+        private System.Windows.Forms.Panel pnlListadoClienteCredito;
+        private System.Windows.Forms.DataGridView gdvTotalCredito;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Panel panel12;
     }
 }

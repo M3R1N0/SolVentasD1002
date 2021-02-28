@@ -30,12 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReimprimirTicket));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.rbnFiltroFechas = new System.Windows.Forms.RadioButton();
+            this.rbtnFiltroCliente = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gdvListado = new System.Windows.Forms.DataGridView();
             this.Detalle = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.rbA4 = new System.Windows.Forms.RadioButton();
+            this.RbtnMod2 = new System.Windows.Forms.RadioButton();
+            this.pnlBuscarPorCLiente = new System.Windows.Forms.Panel();
+            this.txtBuscarCliente = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dtpFin = new System.Windows.Forms.DateTimePicker();
             this.rbTicket = new System.Windows.Forms.RadioButton();
@@ -51,6 +56,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvListado)).BeginInit();
             this.panel4.SuspendLayout();
+            this.pnlBuscarPorCLiente.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -59,12 +65,39 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.rbnFiltroFechas);
+            this.panel1.Controls.Add(this.rbtnFiltroCliente);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(946, 54);
             this.panel1.TabIndex = 0;
+            // 
+            // rbnFiltroFechas
+            // 
+            this.rbnFiltroFechas.AutoSize = true;
+            this.rbnFiltroFechas.Checked = true;
+            this.rbnFiltroFechas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnFiltroFechas.Location = new System.Drawing.Point(4, 31);
+            this.rbnFiltroFechas.Name = "rbnFiltroFechas";
+            this.rbnFiltroFechas.Size = new System.Drawing.Size(161, 24);
+            this.rbnFiltroFechas.TabIndex = 14;
+            this.rbnFiltroFechas.TabStop = true;
+            this.rbnFiltroFechas.Text = "Buscar por Fechas";
+            this.rbnFiltroFechas.UseVisualStyleBackColor = true;
+            // 
+            // rbtnFiltroCliente
+            // 
+            this.rbtnFiltroCliente.AutoSize = true;
+            this.rbtnFiltroCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnFiltroCliente.Location = new System.Drawing.Point(188, 31);
+            this.rbtnFiltroCliente.Name = "rbtnFiltroCliente";
+            this.rbtnFiltroCliente.Size = new System.Drawing.Size(154, 24);
+            this.rbtnFiltroCliente.TabIndex = 13;
+            this.rbtnFiltroCliente.Text = "Buscar por cliente";
+            this.rbtnFiltroCliente.UseVisualStyleBackColor = true;
+            this.rbtnFiltroCliente.CheckedChanged += new System.EventHandler(this.rbtnFiltroCliente_CheckedChanged);
             // 
             // label1
             // 
@@ -73,9 +106,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(946, 46);
+            this.label1.Size = new System.Drawing.Size(946, 28);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Selecione el rango de fechas para la consulta de los Tickets";
+            this.label1.Text = "Consulta de Tickets";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
@@ -118,6 +151,8 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.rbA4);
+            this.panel4.Controls.Add(this.RbtnMod2);
+            this.panel4.Controls.Add(this.pnlBuscarPorCLiente);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.dtpFin);
             this.panel4.Controls.Add(this.rbTicket);
@@ -133,12 +168,45 @@
             // 
             this.rbA4.AutoSize = true;
             this.rbA4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbA4.Location = new System.Drawing.Point(469, 18);
+            this.rbA4.Location = new System.Drawing.Point(585, 16);
             this.rbA4.Name = "rbA4";
-            this.rbA4.Size = new System.Drawing.Size(152, 24);
+            this.rbA4.Size = new System.Drawing.Size(55, 24);
             this.rbA4.TabIndex = 13;
-            this.rbA4.Text = "Impresiones A4";
+            this.rbA4.Text = "A-4";
             this.rbA4.UseVisualStyleBackColor = true;
+            // 
+            // RbtnMod2
+            // 
+            this.RbtnMod2.AutoSize = true;
+            this.RbtnMod2.Checked = true;
+            this.RbtnMod2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RbtnMod2.Location = new System.Drawing.Point(484, 16);
+            this.RbtnMod2.Name = "RbtnMod2";
+            this.RbtnMod2.Size = new System.Drawing.Size(90, 24);
+            this.RbtnMod2.TabIndex = 15;
+            this.RbtnMod2.TabStop = true;
+            this.RbtnMod2.Text = "Ticket 2";
+            this.RbtnMod2.UseVisualStyleBackColor = true;
+            // 
+            // pnlBuscarPorCLiente
+            // 
+            this.pnlBuscarPorCLiente.Controls.Add(this.txtBuscarCliente);
+            this.pnlBuscarPorCLiente.Location = new System.Drawing.Point(4, 0);
+            this.pnlBuscarPorCLiente.Name = "pnlBuscarPorCLiente";
+            this.pnlBuscarPorCLiente.Size = new System.Drawing.Size(378, 54);
+            this.pnlBuscarPorCLiente.TabIndex = 14;
+            // 
+            // txtBuscarCliente
+            // 
+            this.txtBuscarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscarCliente.Location = new System.Drawing.Point(21, 14);
+            this.txtBuscarCliente.Name = "txtBuscarCliente";
+            this.txtBuscarCliente.Size = new System.Drawing.Size(341, 26);
+            this.txtBuscarCliente.TabIndex = 0;
+            this.txtBuscarCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBuscarCliente.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtBuscarCliente_MouseClick);
+            this.txtBuscarCliente.TextChanged += new System.EventHandler(this.txtBuscarCliente_TextChanged);
+            this.txtBuscarCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscarCliente_KeyDown);
             // 
             // label5
             // 
@@ -163,14 +231,12 @@
             // rbTicket
             // 
             this.rbTicket.AutoSize = true;
-            this.rbTicket.Checked = true;
             this.rbTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbTicket.Location = new System.Drawing.Point(381, 18);
+            this.rbTicket.Location = new System.Drawing.Point(388, 16);
             this.rbTicket.Name = "rbTicket";
-            this.rbTicket.Size = new System.Drawing.Size(75, 24);
+            this.rbTicket.Size = new System.Drawing.Size(90, 24);
             this.rbTicket.TabIndex = 12;
-            this.rbTicket.TabStop = true;
-            this.rbTicket.Text = "Ticket";
+            this.rbTicket.Text = "Ticket 1";
             this.rbTicket.UseVisualStyleBackColor = true;
             // 
             // dtpInicio
@@ -270,10 +336,13 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReimprimirTicket_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gdvListado)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.pnlBuscarPorCLiente.ResumeLayout(false);
+            this.pnlBuscarPorCLiente.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -302,5 +371,10 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.RadioButton rbA4;
         private System.Windows.Forms.RadioButton rbTicket;
+        private System.Windows.Forms.RadioButton rbnFiltroFechas;
+        private System.Windows.Forms.RadioButton rbtnFiltroCliente;
+        private System.Windows.Forms.Panel pnlBuscarPorCLiente;
+        private System.Windows.Forms.TextBox txtBuscarCliente;
+        private System.Windows.Forms.RadioButton RbtnMod2;
     }
 }

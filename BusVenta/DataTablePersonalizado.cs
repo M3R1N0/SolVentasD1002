@@ -38,6 +38,7 @@ namespace BusVenta
             List.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             List.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             List.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI",12);
+           
 
             List.EnableHeadersVisualStyles = false;
             DataGridViewCellStyle styCabeceras = new DataGridViewCellStyle();
@@ -45,7 +46,7 @@ namespace BusVenta
             styCabeceras.ForeColor = System.Drawing.Color.Black;
             styCabeceras.Font = new System.Drawing.Font("Segoe UI", 12, System.Drawing.FontStyle.Bold);
             List.ColumnHeadersDefaultCellStyle = styCabeceras;
-            List.ClearSelection();
+          //  List.ClearSelection();
         }
 
         public static void Leer_ArchivoExcel(ref DataGridView gridView, string FileName)

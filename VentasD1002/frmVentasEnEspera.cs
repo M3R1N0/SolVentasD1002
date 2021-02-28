@@ -119,5 +119,7 @@ namespace VentasD1002
                 MessageBox.Show("Error al mostrar el detalle de la venta : " + ex.Message, "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+     
     }
 }

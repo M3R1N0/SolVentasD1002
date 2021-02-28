@@ -127,7 +127,7 @@ namespace DatVentas
                 try
                 {
                     DataTable dt = new DataTable();
-                    SqlDataAdapter da = new SqlDataAdapter(@"select * from tb_DetalleVenta WHERE Venta_Id=" + idVenta, con);
+                    SqlDataAdapter da = new SqlDataAdapter($"select * from tb_DetalleVenta WHERE Venta_Id={idVenta} AND ProductoDevuelto = 0 ", con);
                     da.Fill(dt);
 
                     return dt;

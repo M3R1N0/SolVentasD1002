@@ -56,7 +56,7 @@ namespace VentasD1002
 
                 foreach (var item in lst)
                 {
-                    Producto p = new BusProducto().ObtenerProducto(item);
+                    Producto p = new BusProducto().ObtenerProducto_A_Actualizar(item);
 
                     table.Rows.Add(
                                 p.Id,
@@ -119,7 +119,7 @@ namespace VentasD1002
                     this.Hide();
                     DatProducto.EliminarRegistros_ActualizacionProducto();
 
-                    this.Dispose();
+                   this.Hide();
                 }
                 else
                 {
@@ -132,7 +132,23 @@ namespace VentasD1002
             }
         }
 
-       
+        private void btnBorrarDatos_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Desea borrar los datos, no podrá recuperar los datos actualizados", "Eliminar datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            try
+            {
+                if (result == DialogResult.Yes)
+                {
+                    DatProducto.EliminarRegistros_ActualizacionProducto();
+                    MessageBox.Show("Se han eliminado los datos correctamente" , "Operación Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar los datos:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

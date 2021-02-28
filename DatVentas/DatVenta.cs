@@ -71,35 +71,6 @@ namespace DatVentas
             }
         }
 
-        public static ParametrosReporte ObtenerComrpobanteRpt()
-        {
-            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
-            {
-                try
-                {
-                    ParametrosReporte obj = new ParametrosReporte();
-
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("EXEC [sp_Mostrar_TicketImpreso]", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    SqlDataReader dr = cmd.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        
-                    }
-
-                    return obj;
-
-                }
-                catch (Exception ex)
-                {
-                    conn.Close();
-                    throw ex;
-                }
-            }
-        }
-
         public DataTable Obtener_VentasEnEspera()
         {
             using (SqlConnection con = new SqlConnection(MasterConnection.connection))
@@ -233,7 +204,7 @@ namespace DatVentas
             }
         }
 
-        public int Actualizar_CreditoPorPagar(int idventa, decimal saldo, string EstadoPago)
+        public int Actualizar_CreditoPorPagar(int idventa, decimal saldo, string EstadoPago, decimal efectivo)
         {
             try
             {
@@ -241,7 +212,7 @@ namespace DatVentas
                 {
                     int _filasAfectadas;
 
-                    SqlCommand cmd = new SqlCommand($"UPDATE tb_Ventas SET Estado_Pago='{EstadoPago}', Saldo={saldo} WHERE Id_Venta={idventa}", con);
+                    SqlCommand cmd = new SqlCommand($"UPDATE tb_Ventas SET Estado_Pago='{EstadoPago}', Saldo={saldo}, Vuelto={saldo}, Efectivo={efectivo} WHERE Id_Venta={idventa}", con);
                     con.Open();
                     _filasAfectadas = cmd.ExecuteNonQuery();
                     con.Close();
@@ -371,7 +342,7 @@ namespace DatVentas
             }
         }
 
-        public static DataTable ObtenerTickets(DateTime inicio, DateTime fin)
+        public static DataTable ObtenerTickets(DateTime inicio, DateTime fin, string buscar)
         {
             try
             {
@@ -383,6 +354,7 @@ namespace DatVentas
                     da.SelectCommand.CommandType = CommandType.StoredProcedure;
                     da.SelectCommand.Parameters.AddWithValue("@inicio", inicio);
                     da.SelectCommand.Parameters.AddWithValue("@fin", fin);
+                    da.SelectCommand.Parameters.AddWithValue("@buscar", buscar);
                     da.Fill(dt);
 
                     return dt;
@@ -394,6 +366,149 @@ namespace DatVentas
                 throw ex;
             }
         }
+
+        public static Venta ObtenerVenta(int idVenta)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    Venta v = new Venta(); ;
+                    
+                    SqlCommand cmd = new SqlCommand($"SELECT * FROM tb_Ventas WHERE Id_Venta={idVenta}", con);
+                    con.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                       
+                        v.Id = Convert.ToInt32( dr["Id_Venta"]);
+                        v.MontoTotal = Convert.ToDecimal(dr["Monto_Total"]);
+                        v.Saldo = Convert.ToDecimal(dr["Saldo"]);
+                        v.Vuelto = Convert.ToDecimal(dr["Vuelto"]);
+                        v.MontoTotal = Convert.ToDecimal(dr["Monto_Total"]);
+                        v.Efectivo = Convert.ToDecimal(dr["Efectivo"]);
+                    }
+                    con.Close();
+                    return v;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void EditarDatos_Devoluciones(Venta v)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    SqlCommand cmd = new SqlCommand($"UPDATE tb_Ventas SET Monto_total={v.MontoTotal}, Saldo={v.Saldo}, Vuelto={v.Vuelto},Estado_Pago='{v.EstadoPago}' WHERE Id_Venta={v.Id}", con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static DataTable ListarClientes_TotalALquidar()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+                {
+                    DataTable dt = new DataTable();
+
+                    SqlDataAdapter da = new SqlDataAdapter("EXEC sp_ListarClientes_TotalPorLiquidar", conn);
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static  ParametrosReporte Consultar_Ticket_Parametro(int idVenta)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    ParametrosReporte obj = new ParametrosReporte();
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("[sp_ObtenerTicket]", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idVentas", idVenta);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    
+                    while (reader.Read())
+                    {
+                        obj.NombreEmpresa = reader.GetString(0);
+                        obj.LogoEmpresa =(byte[])(reader["Logo"]);
+                        obj.Agradecimiento = reader.GetString(2);
+                        obj.Anuncio = reader.GetString(3);
+                        obj.Direccion = reader.GetString(4);
+                        obj.PaginaWeb = reader.GetString(5);
+                        obj.Provincia = reader.GetString(6);
+                        obj.FechaVenta = reader.GetDateTime(7);
+                        obj.MontoTotal = reader.GetDecimal(8);
+                        obj.Cajero = reader.GetString(9);
+                        obj.Cliente = reader.GetString(10);
+                        obj.DireccionCliente = reader.GetString(11);
+                        obj.TotalProducto = reader.GetInt32(12);
+                        obj.Folio = reader.GetString(13);
+                        obj.FormaPago = reader.GetString(14);
+                        obj.Cambio = reader.GetDecimal(15);
+                        obj.Efectivo = reader.GetDecimal(16);
+                        obj.Id = reader.GetInt32(17);
+                        obj.IdDetalleVenta = reader.GetInt32(18);
+
+                    }
+                    conn.Close();
+
+
+                    conn.Open();
+                    SqlCommand cmd2 = new SqlCommand("[sp_ObtenerDetalleVenta]", conn);
+                    cmd2.CommandType = CommandType.StoredProcedure;
+                    cmd2.Parameters.AddWithValue("@idventa", obj.Id);
+                    SqlDataReader reader2 = cmd2.ExecuteReader();
+
+                    List<DetalleVenta> lst = new List<DetalleVenta>();
+                    while (reader2.Read())
+                    {
+                        DetalleVenta d = new DetalleVenta();
+                        d.Cantidad = reader2.GetDecimal(0);
+                        d.UnidadMedida = reader2.GetString(1);
+                        d.Descripcion = reader2.GetString(2);
+                        d.Precio = reader2.GetDecimal(3);
+                        d.TotalPago = reader2.GetDecimal(4);
+
+                        lst.Add(d);
+                        
+                    }
+                    conn.Close();
+                    obj.lstDetalleVenta = lst;
+
+
+                    return obj;
+
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    throw ex;
+                }
+            }
+        }
+
     }
 
 }

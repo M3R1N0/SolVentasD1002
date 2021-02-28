@@ -207,5 +207,18 @@ namespace BusVenta
             }
             return tempNum2Text;
         }
+
+        public static string NumeroATexto(string _strtotal)
+        {
+            string total = _strtotal;
+            total = decimal.Parse(total).ToString("##0.00");
+            int numero = Convert.ToInt32(Math.Floor(Convert.ToDouble(total)));
+            string strTotal = Convertir_NumeroLetra.Conversion_Total_a_Letra(numero);
+            string[] a = total.Split('.');
+            string strTotalDecimal = a[1];
+            string strTotalConvertido = strTotal + " " + strTotalDecimal + "/100 M.N";
+
+            return strTotalConvertido;
+        }
     }
 }

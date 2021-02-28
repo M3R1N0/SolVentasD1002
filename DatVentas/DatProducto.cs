@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DatVentas
 {
-   public class DatProducto
+    public class DatProducto
     {
         public int InsertarProducto(Producto p, Kardex kardex)
         {
@@ -45,7 +45,7 @@ namespace DatVentas
                     sc.Parameters.AddWithValue("@motivo", kardex.Motivo);
                     sc.Parameters.AddWithValue("@cantidad", kardex.Cantidad);
                     sc.Parameters.AddWithValue("@tipo", kardex.Tipo);
-                    sc.Parameters.AddWithValue("@estadokardex",   kardex.Estado);
+                    sc.Parameters.AddWithValue("@estadokardex", kardex.Estado);
 
                     resultado = sc.ExecuteNonQuery();
                     conn.Close();
@@ -73,9 +73,9 @@ namespace DatVentas
                     }
                     else
                     {
-                        da = new SqlDataAdapter("select TOP(10) * from tb_Producto where  Codigo + Descripcion like '%" + busqueda+"%' and Estado = 1 order by Descripcion", conn);
+                        da = new SqlDataAdapter("select TOP(10) * from tb_Producto where  Codigo + Descripcion like '%" + busqueda + "%' and Estado = 1 order by Descripcion", conn);
                     }
-                    
+
                     da.Fill(dt);
                     return dt;
                 }
@@ -106,6 +106,25 @@ namespace DatVentas
             }
         }
 
+        public DataRow ObtenerProducto_Actualizado(string codigo)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter($"SELECT * FROM tb_Producto WHERE Codigo + Descripcion like'%{codigo}%'  ORDER BY Descripcion", conn);
+                    da.Fill(dt);
+
+                    return dt.Rows[0];
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public int EliminarProducto(int id)
         {
             using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
@@ -114,7 +133,7 @@ namespace DatVentas
                 try
                 {
                     conn.Open();
-                    SqlCommand sc = new SqlCommand("UPDATE tb_Producto SET Estado = 0 WHERE Id_Producto="+id, conn);
+                    SqlCommand sc = new SqlCommand("UPDATE tb_Producto SET Estado = 0 WHERE Id_Producto=" + id, conn);
                     resultado = sc.ExecuteNonQuery();
                     conn.Close();
                     return resultado;
@@ -263,7 +282,7 @@ namespace DatVentas
             }
         }
 
-        public  DataTable Mostrar_ProductoInvetario()
+        public DataTable Mostrar_ProductoInvetario()
         {
             using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
             {
@@ -294,7 +313,7 @@ namespace DatVentas
                     conn.Open();
                     SqlCommand sc = new SqlCommand("sp_obtenerTipoPrecio", conn);
                     sc.CommandType = CommandType.StoredProcedure;
-                    sc.Parameters.AddWithValue("@id",id);
+                    sc.Parameters.AddWithValue("@id", id);
                     sc.Parameters.AddWithValue("@tipo", tipo);
                     resultado = Convert.ToDecimal(sc.ExecuteScalar());
                     conn.Close();
@@ -322,7 +341,7 @@ namespace DatVentas
                     conn.Close();
 
                     return resultado;
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -444,7 +463,7 @@ namespace DatVentas
                 using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
                 {
                     List<string> lstCodigos = new List<string>();
-                    SqlCommand cmd = new SqlCommand("SELECT Codigo FROM tb_ProductosActualizados", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT DISTINCT (Codigo) from tb_ProductosActualizados", conn);
 
                     conn.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -527,8 +546,26 @@ namespace DatVentas
             }
         }
 
-        
-
         #endregion
+
+        public static DataTable ListarProductos_CodigoAutomatico()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+                {
+                    DataTable data = new DataTable();
+
+                    SqlDataAdapter da = new SqlDataAdapter("select 	p.Codigo, p.Descripcion, p.Presentacion from tb_Producto p where p.Codigo like 'AJ%'",conn);
+                    da.Fill(data);
+
+                    return data;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

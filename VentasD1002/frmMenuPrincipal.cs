@@ -50,6 +50,8 @@ namespace VentasD1002
         {
             try
             {
+            
+
                 System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("es-MX");
                 System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalSeparator = ".";
                 System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyGroupSeparator = ",";
@@ -1082,7 +1084,16 @@ namespace VentasD1002
                     d.Costo = 0;
 
                     new BusDetalleVenta().Agregar_DetalleVenta(d);
-                    Producto p = new BusProducto().ObtenerProducto(d.Codigo);
+                    Producto p;
+                    if (string.IsNullOrEmpty(d.Codigo))
+                    {
+                       p = new BusProducto().ObtenerProducto(d.Descripcion);
+                    }
+                    else
+                    {
+                       p = new BusProducto().ObtenerProducto(d.Codigo);
+                    }
+                    
                     if (d.UsaInventario == "SI" && (Convert.ToDecimal(p.stock) - d.Cantidad) >= 0)
                     {
 
@@ -1110,18 +1121,15 @@ namespace VentasD1002
                 }
 
                 #region Ticket
-
-                rptTicket rptTicket = new rptTicket();
+                
+                ParametrosReporte reporte = DatVenta.Consultar_Ticket_Parametro(0);
 
                 string textoNumero = NumeroATexto(lblPagoTotal.Text);
-                DataTable DT = new DatVenta().ObtenerComrpobante(textoNumero);
-                //ParametrosReporte parametros = DatVenta.ObtenerComrpobanteRpt();
-                rptTicket = new rptTicket();
-                rtpRecibo rptNota = new rtpRecibo();
-                rptNota.tblVentaProducto.DataSource = DT;
-                rptNota.DataSource = DT;
-                rptTicket.tbTicket.DataSource = DT;
-                rptTicket.DataSource = DT;
+                reporte.Comentarios = string.IsNullOrEmpty(txtComentarios.Text) ? "N/A" : txtComentarios.Text;
+                reporte.LetraNumero = textoNumero;
+
+              
+              
 
                 if (indicador.Equals("VISTA PREVIA"))
                 {
@@ -1130,8 +1138,24 @@ namespace VentasD1002
                     {
                         frmVistaPreviaTickek vistaPreviaTickek = new frmVistaPreviaTickek();
 
-                        vistaPreviaTickek.reportViewer2.Report = rptTicket;
-                        vistaPreviaTickek.reportViewer2.RefreshReport();
+                        if (RbtnMod1.Checked)
+                        {
+                            rptTicket rptTicket = new rptTicket();
+                            rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
+                            rptTicket.DataSource = reporte;
+
+                            vistaPreviaTickek.reportViewer2.Report = rptTicket;
+                            vistaPreviaTickek.reportViewer2.RefreshReport();
+                        }
+                        else
+                        {
+                            ReportTicket rpt = new ReportTicket();
+                            rpt.DataSource = reporte;
+                            rpt.tbTicket.DataSource = reporte.lstDetalleVenta;
+
+                            vistaPreviaTickek.reportViewer2.Report = rpt;
+                            vistaPreviaTickek.reportViewer2.RefreshReport();
+                        }
 
                         vistaPreviaTickek.ShowDialog();
 
@@ -1152,6 +1176,9 @@ namespace VentasD1002
                     else if (lblSerie.Text == "R")
                     {
                         frmVistaNotaRemision notas = new frmVistaNotaRemision();
+                        rtpRecibo rptNota = new rtpRecibo();
+                        rptNota.tblVentaProducto.DataSource = reporte.lstDetalleVenta;
+                        rptNota.DataSource = reporte;
 
                         notas.viewerNotas.Report = rptNota;
                         notas.viewerNotas.RefreshReport();
@@ -1168,14 +1195,19 @@ namespace VentasD1002
                 {
                     if (lblSerie.Text == "T")
                     {
+                        rptTicket rptTicket = new rptTicket();
+                        rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
+                        rptTicket.DataSource = reporte;
+
                         reportViewerImprimir.Report = rptTicket;
                         reportViewerImprimir.RefreshReport();
+
                         if (cboFormaPago.Text == "Credito")
                         {
                             rptTicketCopia rptTicketCopia = new rptTicketCopia();
 
-                            rptTicketCopia.tbTicketCopia.DataSource = DT;
-                            rptTicketCopia.DataSource = DT;
+                            rptTicketCopia.tbTicketCopia.DataSource = reporte.lstDetalleVenta;
+                            rptTicketCopia.DataSource = reporte;
 
                             reportViewerCopia.Report = rptTicketCopia;
                             reportViewerCopia.RefreshReport();
@@ -1184,7 +1216,12 @@ namespace VentasD1002
                     }
                     else if (lblSerie.Text == "R")
                     {
+                        rtpRecibo rptNota = new rtpRecibo();
+
+                        rptNota.tblVentaProducto.DataSource = reporte.lstDetalleVenta;
+                        rptNota.DataSource = reporte;
                         reportViewerImprimir.Report = rptNota;
+
                         reportViewerImprimir.RefreshReport();
                     }
                     else
@@ -1299,6 +1336,7 @@ namespace VentasD1002
             lblTotal.Text = "0.00";
             VentaEspera = "";
             lblNumProductos.Text = "0";
+            txtComentarios.Clear();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -1511,44 +1549,56 @@ namespace VentasD1002
                 dt.Columns.Add("STOCK", typeof(System.Decimal));        //9
                 dt.Columns.Add("CODIGO");                               //10
                 dt.Columns.Add("USAINVENTARIO");
+                dt.Columns.Add("APARTIR");                              //12
                 // DataRow dr = dt.NewRow();
 
                 List<DetalleVentaEspera> detalleVenta = new BusVentas().ListarDetalle_VentaEnEspera(idVenta);
 
-                foreach (var item in detalleVenta)
+                if (detalleVenta.Count != 0)
                 {
-                    dt.Rows.Add(item.IdPresentacion,
-                                 item.IdProducto,
-                                 item.Cantidad,
-                                 item.UnidadMedida,
-                                 item.Descripcion,
-                                 item.Descripcion,
-                                 item.Descripcion,
-                                 item.Precio,
-                                 item.TotalPago,
-                                 item.Stock,
-                                 item.Codigo,
-                                 item.UsaInventario
-                        );
+                    foreach (var item in detalleVenta)
+                    {
+                        Producto p = new BusProducto().ObtenerProducto(item.Descripcion);
+                        dt.Rows.Add(p.IdTipoPresentacion,
+                                     p.Id,
+                                     item.Cantidad,
+                                     item.UnidadMedida,
+                                     p.Descripcion,
+                                     p.TotalUnidades,
+                                     p.Presentacion,
+                                     item.Precio,
+                                     item.TotalPago,
+                                     p.stock = p.stock == "ILIMITADO" ? "123456" : p.stock,
+                                     p.codigo,
+                                     p.usaInventario,
+                                     p.APartirDe
+                            );
+                    }
+
+                    gdvVentas.DataSource = dt;
+                    gdvVentas.Columns[0].Visible = false;
+                    gdvVentas.Columns[1].Visible = false;
+                    //gdvVentas.Columns[2].ReadOnly = true;
+                    gdvVentas.Columns[3].ReadOnly = true;
+                    gdvVentas.Columns[4].ReadOnly = true;
+                    gdvVentas.Columns[5].Visible = false;
+                    gdvVentas.Columns[6].ReadOnly = true;
+                    gdvVentas.Columns[7].ReadOnly = true;
+                    gdvVentas.Columns[9].Visible = false;
+                    gdvVentas.Columns[10].Visible = false;
+                    gdvVentas.Columns[11].Visible = false;
+                    gdvVentas.Columns[12].Visible = false;
+
+                    DataTablePersonalizado.Multilinea2(ref gdvVentas);
+
+                    txtCliente.Text = new BusCliente().ObterCliente(idCliente).NombreCompleto;
+                    gdvClientes.Visible = false; 
                 }
-
-                gdvVentas.DataSource = dt;
-                gdvVentas.Columns[0].Visible = false;
-                gdvVentas.Columns[1].Visible = false;
-                //gdvVentas.Columns[2].ReadOnly = true;
-                gdvVentas.Columns[3].ReadOnly = true;
-                gdvVentas.Columns[4].ReadOnly = true;
-                gdvVentas.Columns[5].Visible = false;
-                gdvVentas.Columns[6].ReadOnly = true;
-                gdvVentas.Columns[7].ReadOnly = true;
-                gdvVentas.Columns[9].Visible = false;
-                gdvVentas.Columns[10].Visible = false;
-                gdvVentas.Columns[11].Visible = false;
-
-                DataTablePersonalizado.Multilinea2(ref gdvVentas);
-
-                txtCliente.Text = new BusCliente().ObterCliente(idCliente).NombreCompleto;
-                gdvClientes.Visible = false;
+                else
+                {
+                    txtCliente.Text = new BusCliente().ObterCliente(1).NombreCompleto;
+                    gdvClientes.Visible = false;
+                }
 
             }
             catch (Exception ex)
@@ -1561,7 +1611,11 @@ namespace VentasD1002
             }
         }
 
-        private void enEsperaF8ToolStripMenuItem_Click(object sender, EventArgs e)
+        #endregion
+
+        #region BOTONES VENTA
+
+        private void enEsperaF8ToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -1581,17 +1635,17 @@ namespace VentasD1002
             }
         }
 
-        #endregion
-
-        #region BOTONES VENTA
-
-        private void cancelarVentaF9ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void cancelarVentaF9ToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             if (gdvVentas.Rows.Count != 0)
             {
                 DialogResult result = MessageBox.Show("Esta seguro que desea cancelar la venta", "Cancelar venta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
+                    txtCliente.Text = new BusCliente().ObterCliente(1).NombreCompleto;
+                    gdvClientes.Visible = false;
+                    idCliente = 1;
+                    idVenta = 0;
                     gdvVentas.DataSource = null;
                     lblTotal.Text = "0.00";
                     lblNumProductos.Text = "0";
@@ -1599,7 +1653,7 @@ namespace VentasD1002
             }
         }
 
-        private void cobrarF10ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void cobrarF10_Click(object sender, EventArgs e)
         {
             CobrarVenta();
         }
@@ -1737,8 +1791,6 @@ namespace VentasD1002
                 {
                     AgregarProducto_A_Venta(lstProducto);
                 }
-
-
              
             }
         }
@@ -1754,12 +1806,6 @@ namespace VentasD1002
             }
         }
 
-        private void reimpresionDeTicketsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmReimprimirTicket frmReimprimir = new frmReimprimirTicket();
-            frmReimprimir.ShowDialog();
-        }
-
         private void gdvVentas_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
@@ -1768,5 +1814,18 @@ namespace VentasD1002
                 
             }
         }
+
+        private void gdvVentas_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            this.gdvVentas.Rows[e.RowIndex].Selected = true;
+            txtBuscar.Focus();
+        }
+
+        private void rToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReimprimirTicket frmReimprimir = new frmReimprimirTicket();
+            frmReimprimir.ShowDialog();
+        }
+        
     }
 }
