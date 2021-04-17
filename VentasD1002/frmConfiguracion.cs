@@ -87,8 +87,10 @@ namespace VentasD1002
 
         private void Button9_Click(object sender, EventArgs e)
         {
+            this.Hide();
             frmBitacoraCliente bitacoraCliente = new frmBitacoraCliente();
             bitacoraCliente.ShowDialog();
+            this.Dispose();
         }
 
         private void btnDescargar_Click(object sender, EventArgs e)

@@ -41,9 +41,9 @@ namespace VentasD1002
                 lblUsuario.Text = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC)).Nombre;
                 Obtener_Totales();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show("Error al obtener los datos", "Error", MessageBoxButtons.OK);
             }
         }
 
@@ -70,8 +70,14 @@ namespace VentasD1002
             decimal totalAbonado = (totalCredito + creditoAbonado) - saldo;
             lblTotalAbonado.Text = totalAbonado.ToString();
 
-            decimal totalDinero = Convert.ToDecimal(lblVentaEfectivo.Text) + Convert.ToDecimal(lblTotalAbonado.Text) + Convert.ToDecimal(lblFondoCaja.Text);
+            var obj = DatVenta.ObtenerBonificacion_PorUsuario(idUsuario, idCaja);
+            lblBonificacion.Text = obj.Bonificacion.ToString();
+            lblTotalBonififaciones.Text = obj.TotalProducto.ToString();
+
+            decimal totalDinero = Convert.ToDecimal(lblVentaEfectivo.Text) + Convert.ToDecimal(lblTotalAbonado.Text) + Convert.ToDecimal(lblFondoCaja.Text)- Convert.ToDecimal(lblBonificacion.Text);
             lblTotalCaja.Text = totalDinero.ToString();
+
+     
         }
 
         private decimal obtenerPagoCredito()

@@ -1,8 +1,10 @@
 namespace Reportes
 {
+    using EntVenta;
     using System;
     using System.ComponentModel;
     using System.Drawing;
+    using System.IO;
     using System.Windows.Forms;
     using Telerik.Reporting;
     using Telerik.Reporting.Drawing;
@@ -22,7 +24,9 @@ namespace Reportes
             //
             // TODO: Add any constructor code after InitializeComponent call
             //
-            
+
         }
+
+
     }
 }

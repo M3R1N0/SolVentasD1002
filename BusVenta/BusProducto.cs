@@ -21,9 +21,9 @@ namespace BusVenta
             //}
         }
 
-        public List<Producto> ListarProductos(string buscar)
+        public List<Producto> ListarProductos(string buscar, int bandera)
         {
-            DataTable dt = new DatProducto().MostrarProductos(buscar);
+            DataTable dt = new DatProducto().MostrarProductos(buscar, bandera);
             List<Producto> lsProductos = new List<Producto>();
 
             foreach (DataRow dr in dt.Rows)

@@ -28,10 +28,20 @@ namespace VentasD1002
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            DataTable dt = new DatCatGenerico().ObtenerLista_BitacoraCliente(textBox1.Text);
-            gdvLista.DataSource = dt;
-            
-            DataTablePersonalizado.Multilinea(ref gdvLista);
+            if (!string.IsNullOrEmpty(textBox1.Text))
+            {
+                DataTable dt = new DatCatGenerico().ObtenerLista_BitacoraCliente(textBox1.Text);
+                gdvLista.DataSource = dt;
+
+                gdvLista.Columns[1].Visible = false;
+                gdvLista.Columns[3].Visible = false;
+                gdvLista.Columns[5].Visible = false;
+                DataTablePersonalizado.Multilinea(ref gdvLista);
+            }
+            else
+            {
+                gdvLista.DataSource = null;
+            }
         }
 
         private void gdvLista_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -54,7 +64,7 @@ namespace VentasD1002
                 txtSaldo.Text = dt.Rows[0].Field<Decimal>(11).ToString();
                 txtNAbono.Text = dt.Rows.Count.ToString();
 
-                decimal montoInicial = Convert.ToDecimal(txtMonto.Text) - suma;
+                decimal montoInicial = Convert.ToDecimal(txtMonto.Text) - (suma +Convert.ToDecimal(txtSaldo.Text));
                 txtAbonoInicial.Text = suma == Convert.ToDecimal(txtMonto.Text) ? "0" : montoInicial.ToString();
 
 

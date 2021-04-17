@@ -33,6 +33,7 @@ namespace VentasD1002
             serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
 
             pnlBuscarPorCLiente.Visible = false;
+            btnBonificacion.Visible = false;
         }
 
         private void ObtenerDatos(string buscar)
@@ -68,6 +69,7 @@ namespace VentasD1002
                 if (e.ColumnIndex == this.gdvListado.Columns["Detalle"].Index)
                 {
                     int idventa = Convert.ToInt32(gdvListado.SelectedCells[1].Value);
+                    lblIdVenta.Text = idventa.ToString();
                     string total = Convert.ToString(gdvListado.SelectedCells[7].Value);
 
                     string textoNumero = NumeroATexto(total);
@@ -76,30 +78,50 @@ namespace VentasD1002
                     reporte.LetraNumero = textoNumero;
                  
 
-                    if (rbTicket.Checked == true)
-                    {
-                        rptTicket rptTicket = new rptTicket();
-                        rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
-                        rptTicket.DataSource = reporte;
-                        reportViewer1.Report = rptTicket;
-                    }
-                    else if(RbtnMod2.Checked)
+                    //if (rbTicket.Checked == true)
+                    //{
+                    //    rptTicket rptTicket = new rptTicket();
+                    //    rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
+                    //    rptTicket.DataSource = reporte;
+                    //    reportViewer1.Report = rptTicket;
+                    //}
+
+                    if (RbtnMod2.Checked == true)
                     {
                         ReportTicket rptTicket = new ReportTicket();
+                        if (reporte.EstadoVenta == "VENTA CANCELADA")
+                        {
+                            rptTicket.pnlCancelar.Visible = true;
+                        }
+                        else
+                        {
+                            rptTicket.pnlCancelar.Visible = false;
+                        }
                         rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
                         rptTicket.DataSource = reporte;
+
                         reportViewer1.Report = rptTicket;
                     }
-                    else
+
+                    if (rbA4.Checked == true)
                     {
                         rtpRecibo recibo = new rtpRecibo();
+                        if (reporte.EstadoVenta == "VENTA CANCELADA")
+                        {
+                            recibo.pnlCancelar.Visible = true;
+                        }
+                        else
+                        {
+                            recibo.pnlCancelar.Visible = false;
+                        }
+
                         recibo.tblVentaProducto.DataSource = reporte.lstDetalleVenta;
                         recibo.DataSource = reporte;
                         reportViewer1.Report = recibo;
                     }
                     
                     reportViewer1.RefreshReport();
-
+                    btnBonificacion.Visible = true;
                 }
             }
             catch (Exception ex)
@@ -127,7 +149,7 @@ namespace VentasD1002
             {
                 string impresora="";
 
-                if (rbTicket.Checked == true)
+                if (RbtnMod2.Checked == true)
                 {
                     impresora = DatBox.Obtener_ImpresoraTicket(serialPC, "TICKET");
                 }
@@ -183,6 +205,25 @@ namespace VentasD1002
             {
                 txtBuscarCliente.Clear();
             }
+        }
+
+        private void btnBonificacion_Click(object sender, EventArgs e)
+        {
+            
+            if (string.IsNullOrEmpty(lblIdVenta.Text))
+            {
+                MessageBox.Show("Seleccione el ticket a bonificar", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                this.Hide();
+                frmBonificacion bonificacion = new frmBonificacion();
+                frmBonificacion.idVenta = Convert.ToInt32(lblIdVenta.Text);
+                bonificacion.ShowDialog();
+                this.Dispose();
+            }
+            
+            
         }
     }
 }

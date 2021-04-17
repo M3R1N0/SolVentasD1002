@@ -51,11 +51,11 @@ namespace DatVentas
                     string query;
                     if (String.IsNullOrEmpty(nombre))
                     {
-                        query = "SELECT * FROM tb_Cliente WHERE Estado = 1";
+                        query = "SELECT TOP(10) * FROM tb_Cliente WHERE Estado = 1";
                     }
                     else
                     {
-                        query = "SELECT * FROM  tb_Cliente WHERE Nombre like '%" + nombre + "%' and ESTADO = 1";
+                        query = "SELECT TOP(10) * FROM  tb_Cliente WHERE Nombre like '%" + nombre + "%' and ESTADO = 1";
                     }
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
                     da.Fill(dt);
@@ -163,6 +163,27 @@ namespace DatVentas
             catch (Exception ex)
             {
                 return resultado = 0;
+                throw ex;
+            }
+        }
+
+        public static void actualizarCreditoCliente(Cliente c)
+        {
+            int resultado = 0;
+            try
+            {
+
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand($"UPDATE tb_Cliente SET Saldo={c.Saldo} WHERE Id_Cliente={c.Id}", con);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }

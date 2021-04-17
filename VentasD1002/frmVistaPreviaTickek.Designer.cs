@@ -87,6 +87,7 @@
             this.Controls.Add(this.pnlMostrarTicket);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmVistaPreviaTickek";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vista previa tickek generado";
             this.pnlMostrarTicket.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();

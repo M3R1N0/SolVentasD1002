@@ -37,7 +37,7 @@ namespace VentasD1002
         {
             try
             {
-                List<Producto> lsp = new BusProducto().ListarProductos(buscar);
+                List<Producto> lsp = new BusProducto().ListarProductos(buscar,1);
                 gdvProductos.DataSource = lsp;
                 
                 gdvProductos.Columns[2].Visible = false;
@@ -213,6 +213,18 @@ namespace VentasD1002
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnExportarExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                 Exportar_Importar_ArchivoExcel.ExportarProducto();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : "+ex.Message);
+            }
         }
     }
 }

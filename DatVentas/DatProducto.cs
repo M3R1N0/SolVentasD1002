@@ -59,7 +59,7 @@ namespace DatVentas
             }
         }
 
-        public DataTable MostrarProductos(string busqueda)
+        public DataTable MostrarProductos(string busqueda, int bandera)
         {
             using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
             {
@@ -67,13 +67,13 @@ namespace DatVentas
                 try
                 {
                     SqlDataAdapter da = new SqlDataAdapter();
-                    if (busqueda == null | busqueda == "")
+                    if (string.IsNullOrEmpty(busqueda) && bandera == 1)
                     {
                         da = new SqlDataAdapter("SELECT TOP (15) * FROM tb_Producto where  Estado = 1 ORDER BY Descripcion", conn);
                     }
                     else
                     {
-                        da = new SqlDataAdapter("select TOP(10) * from tb_Producto where  Codigo + Descripcion like '%" + busqueda + "%' and Estado = 1 order by Descripcion", conn);
+                        da = new SqlDataAdapter($"select TOP(15) * from tb_Producto where  Codigo like '" + busqueda + "' and Estado = 1 OR   Descripcion like '%" + busqueda + "%' and Estado = 1  order by Descripcion", conn);
                     }
 
                     da.Fill(dt);
@@ -560,6 +560,42 @@ namespace DatVentas
                     da.Fill(data);
 
                     return data;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static List<Producto> ObtenerProductos()
+        {
+            List<Producto> lstProducto = new List<Producto>();
+            Producto p = null;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    SqlCommand cmd = new SqlCommand(@"select P.Descripcion, P.Presentacion, p.Precio_Menudeo, p.Precio_MMayoreo, p.A_Partir_De,
+                                                      p.Precio_Mayoreo from tb_Producto P where p.Estado = 1 order by p.Descripcion", con);
+                    con.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        p = new Producto();
+
+                        p.Descripcion = reader.GetString(0);
+                        p.Presentacion = reader.GetString(1);
+                        p.precioMenudeo = reader.GetDecimal(2);
+                        p.precioMMayoreo = reader.GetDecimal(3);
+                        p.APartirDe = reader.GetDecimal(4);
+                        p.precioMayoreo = reader.GetDecimal(5);
+
+                        lstProducto.Add(p);
+                    }
+
+                    return lstProducto;
                 }
             }
             catch (Exception ex)

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDescargarActualizacion));
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -37,9 +37,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnBorrarDatos = new System.Windows.Forms.Button();
             this.btnControl = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.btnBorrarDatos = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdDetalle)).BeginInit();
             this.panel1.SuspendLayout();
@@ -84,8 +84,8 @@
             this.gdDetalle.Name = "gdDetalle";
             this.gdDetalle.ReadOnly = true;
             this.gdDetalle.RowHeadersVisible = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.gdDetalle.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gdDetalle.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.gdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gdDetalle.Size = new System.Drawing.Size(1019, 391);
             this.gdDetalle.TabIndex = 0;
@@ -125,28 +125,6 @@
             this.panel5.Size = new System.Drawing.Size(390, 72);
             this.panel5.TabIndex = 11;
             // 
-            // btnControl
-            // 
-            this.btnControl.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnControl.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            this.btnControl.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnControl.FlatAppearance.BorderSize = 0;
-            this.btnControl.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnControl.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnControl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnControl.Image = ((System.Drawing.Image)(resources.GetObject("btnControl.Image")));
-            this.btnControl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnControl.Location = new System.Drawing.Point(157, 28);
-            this.btnControl.Name = "btnControl";
-            this.btnControl.Size = new System.Drawing.Size(182, 38);
-            this.btnControl.TabIndex = 10;
-            this.btnControl.Text = "Exportar a Excel";
-            this.btnControl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnControl.UseVisualStyleBackColor = false;
-            this.btnControl.Click += new System.EventHandler(this.btnControl_Click);
-            // 
             // btnBorrarDatos
             // 
             this.btnBorrarDatos.BackColor = System.Drawing.Color.Red;
@@ -169,6 +147,28 @@
             this.btnBorrarDatos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBorrarDatos.UseVisualStyleBackColor = false;
             this.btnBorrarDatos.Click += new System.EventHandler(this.btnBorrarDatos_Click);
+            // 
+            // btnControl
+            // 
+            this.btnControl.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnControl.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.btnControl.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnControl.FlatAppearance.BorderSize = 0;
+            this.btnControl.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnControl.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnControl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnControl.Image = ((System.Drawing.Image)(resources.GetObject("btnControl.Image")));
+            this.btnControl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnControl.Location = new System.Drawing.Point(157, 28);
+            this.btnControl.Name = "btnControl";
+            this.btnControl.Size = new System.Drawing.Size(182, 38);
+            this.btnControl.TabIndex = 10;
+            this.btnControl.Text = "Exportar a Excel";
+            this.btnControl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnControl.UseVisualStyleBackColor = false;
+            this.btnControl.Click += new System.EventHandler(this.btnControl_Click);
             // 
             // frmDescargarActualizacion
             // 

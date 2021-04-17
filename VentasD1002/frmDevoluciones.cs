@@ -21,7 +21,8 @@ namespace VentasD1002
     {
         private PrintDocument TICKET;
         string serialPC;
-
+        private decimal Precio;
+        private decimal Cantidad;
         public frmDevoluciones()
         {
             InitializeComponent();
@@ -66,6 +67,7 @@ namespace VentasD1002
 
         private void gdvResultado_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            pnlProcesar.Visible = false;
             try
             {
                 int oneKey = Convert.ToInt32(gdvResultado.SelectedCells[0].Value);
@@ -121,8 +123,12 @@ namespace VentasD1002
                 if (Convert.ToBoolean(dr.Cells[0].Value))
                 {
                     devuelto += Convert.ToDecimal(dr.Cells[10].Value);
+                  //  txtCantidadDevuelto.Text = dr.Cells[6].Value.ToString();
+                    Cantidad = Convert.ToDecimal(dr.Cells[6].Value);
+                    Precio = Convert.ToDecimal(dr.Cells[9].Value);
                     pnlProcesar.Visible = true;
-                    lblTotalDevuelto.Text = devuelto.ToString();
+                    // lblTotalDevuelto.Text = devuelto.ToString();
+                    txtCantidadDevuelto.Focus();
                 }
             }
 
@@ -158,30 +164,50 @@ namespace VentasD1002
                         int idVenta = Convert.ToInt32(dr.Cells[4].Value);
                     
                         Venta data = DatVenta.ObtenerVenta(idVenta);
-                        
+
+                        #region validar Venta
 
                         venta.Id = data.Id;
-                        venta.MontoTotal = data.MontoTotal - Convert.ToDecimal(Total);
+                        venta.MontoTotal = data.MontoTotal - Convert.ToDecimal(lblTotalDevuelto.Text);
                         if (data.Vuelto < 0 )
                         {
-                            venta.Vuelto = data.Vuelto + Convert.ToDecimal(Total);
+                            venta.Vuelto = data.Vuelto + Convert.ToDecimal(lblTotalDevuelto.Text);
                         }
                         else if(data.Vuelto >= 0 && data.Saldo == 0)
                         {
-                            venta.Vuelto = data.Vuelto + Convert.ToDecimal(Total);
+                            venta.Vuelto = data.Vuelto + Convert.ToDecimal(lblTotalDevuelto.Text);
                         }
 
                         if (data.Saldo > 0)
                         {
-                            venta.Saldo = data.Saldo - Convert.ToDecimal(Total);
+                            venta.Saldo = data.Saldo - Convert.ToDecimal(lblTotalDevuelto.Text);
                             venta.Vuelto = venta.Saldo < 0 ? venta.Saldo *(-1) : venta.Saldo;
                             venta.Saldo = venta.Saldo < 0 ? 0 : venta.Saldo;
                             
                         }
-                     
+                        venta.Accion = "VENTA REALIZADA";
                         venta.EstadoPago = venta.Saldo <= 0 ? "PAGADO" : "PENDIENTE";
 
-                        new DatDetalleVenta().EditarDevolucion_DetalleVenta(onekey);
+                        #endregion
+
+                        #region VALIDAR DETALLE VENTA
+
+                        DetalleVenta dv = DatDetalleVenta.Obtener_DetalleVenta(onekey);
+                        int esDevuelto = 0;
+                        if (Convert.ToDecimal(txtCantidadDevuelto.Text) < dv.Cantidad)
+                        {
+                            dv.Cantidad = dv.Cantidad - Convert.ToDecimal(txtCantidadDevuelto.Text);
+                            dv.TotalPago = dv.TotalPago - Convert.ToDecimal(lblTotalDevuelto.Text);
+                            esDevuelto = 0;
+                        }else if(Convert.ToDecimal(txtCantidadDevuelto.Text) == dv.Cantidad)
+                        {
+                            esDevuelto = 1;
+                        }
+
+                        #endregion
+
+                        new DatDetalleVenta().EditarDevolucion_DetalleVenta(dv, esDevuelto);
+
                         DatVenta.EditarDatos_Devoluciones(venta);
                         Producto p = new BusProducto().ObtenerProducto(codigo);
                         if (p.usaInventario == "SI")
@@ -190,17 +216,14 @@ namespace VentasD1002
                             if (p.precioMayoreo == Convert.ToDecimal(dr.Cells[6].Value) || presentancion.Equals("PQTE") || presentancion.Equals("SIX")
                                 || presentancion.Equals("CJA") || presentancion.Equals("BTO") || presentancion.Equals("RJA"))
                             {
-                                decimal cantidadVendida = Convert.ToDecimal(p.TotalUnidades * Convert.ToDecimal(dr.Cells[6].Value));
+                                decimal cantidadVendida = Convert.ToDecimal(p.TotalUnidades * Convert.ToDecimal(txtCantidadDevuelto.Text));
                                 new BusProducto().Actualizar_Stock(p.Id, (Convert.ToDecimal(p.stock) + cantidadVendida));
                             }
                             else
                             {
-                                new BusProducto().Actualizar_Stock(p.Id, (Convert.ToDecimal(p.stock) + Convert.ToDecimal(dr.Cells[6].Value)));
+                                new BusProducto().Actualizar_Stock(p.Id, (Convert.ToDecimal(p.stock) + Convert.ToDecimal(txtCantidadDevuelto.Text)));
                             }
                         }
-
-                      
-
                     }
                 }
 
@@ -213,6 +236,7 @@ namespace VentasD1002
 
                 pnlProcesar.Visible = false;
                 lblTotalDevuelto.Text = "0.00";
+                txtCantidadDevuelto.Text = "0";
                 gdvDatos.DataSource = null;
                 Limpiar_campos();
             }
@@ -232,6 +256,7 @@ namespace VentasD1002
 
             //rptTicket rptTicket = new rptTicket();
             ReportTicket rptTicket = new ReportTicket();
+            rptTicket.pnlCancelar.Visible = false;
             rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
             rptTicket.DataSource = reporte;
             reportViewer1.Report = rptTicket;
@@ -268,7 +293,148 @@ namespace VentasD1002
             lblFolio.Text = "";
             lblMontoTotal.Text = "";
             lblTotalDevuelto.Text = "";
+            Precio = 0;
+            Cantidad = 0;
             
+        }
+
+        private void txtCantidadDevuelto_TextChanged(object sender, EventArgs e)
+        {
+            
+            if (string.IsNullOrEmpty(txtCantidadDevuelto.Text) || txtCantidadDevuelto.Equals("0"))
+            {
+                txtCantidadDevuelto.Text = "0";
+                txtCantidadDevuelto.SelectAll();
+            }
+            else
+            {
+                decimal devuelto = Convert.ToDecimal(txtCantidadDevuelto.Text);
+                if ( devuelto > Cantidad)
+                {
+                    MessageBox.Show("La cantidad supera al producto total vendido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtCantidadDevuelto.Text = Cantidad.ToString();
+                    txtCantidadDevuelto.SelectAll();
+                    txtCantidadDevuelto.Focus();
+
+                }
+                else
+                {
+                    decimal totalADevolver = Precio * Convert.ToDecimal(txtCantidadDevuelto.Text);
+                    lblTotalDevuelto.Text = totalADevolver.ToString();
+                }
+            }
+           
+        }
+
+        private void txtCantidadDevuelto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 46))
+            {
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void btnDevolverTodo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Venta venta = new Venta();
+
+                DialogResult result = MessageBox.Show("Desea Cancelar toda la venta, no podrá deshacer los cambios", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow dr in gdvDatos.Rows)
+                    {
+
+                        int idDetalleVenta = Convert.ToInt32(dr.Cells[1].Value);
+
+                        var s4 = dr.Cells[4].Value;
+
+                        var Total = dr.Cells[10].Value;
+                        var MontoTotal = dr.Cells[12].Value;
+
+                        string codigo = Convert.ToString(dr.Cells[3].Value);
+                        int idVenta = Convert.ToInt32(dr.Cells[4].Value);
+                        decimal cantidad = Convert.ToInt32(dr.Cells[6].Value);
+
+                        Venta data = DatVenta.ObtenerVenta(idVenta);
+
+                        #region validar Venta
+
+                        venta.Id = data.Id;
+                        //if (data.Vuelto < 0)
+                        //{
+                        //    venta.Vuelto = data.Vuelto + Convert.ToDecimal(Total);
+                        //}
+                        //else if (data.Vuelto >= 0 && data.Saldo == 0)
+                        //{
+                        //    venta.Vuelto = data.Vuelto + Convert.ToDecimal(Total);
+                        //}
+
+                        //if (data.Saldo > 0)
+                        //{
+                        //    venta.Saldo = data.Saldo - Convert.ToDecimal(Total);
+                        //    venta.Vuelto = venta.Saldo < 0 ? venta.Saldo * (-1) : venta.Saldo;
+                        //    venta.Saldo = venta.Saldo < 0 ? 0 : venta.Saldo;
+                        //}
+                        venta.Vuelto = data.Vuelto;
+                        venta.Saldo = data.Saldo;
+                        venta.MontoTotal = data.MontoTotal;
+                        venta.Accion = "VENTA CANCELADA";
+                        venta.EstadoPago = venta.Saldo <= 0 ? "PAGADO" : "PENDIENTE";
+
+                        #endregion
+
+                        #region VALIDAR DETALLE VENTA
+
+                        DetalleVenta dv = DatDetalleVenta.Obtener_DetalleVenta(idDetalleVenta);
+                        int esDevuelto = 0;
+                        if (cantidad < dv.Cantidad)
+                        {
+                            dv.Cantidad = dv.Cantidad - Convert.ToDecimal(cantidad);
+                            dv.TotalPago = dv.TotalPago - Convert.ToDecimal(Total);
+                            esDevuelto = 0;
+                        }
+                        else if (Convert.ToDecimal(cantidad) == dv.Cantidad)
+                        {
+                            esDevuelto = 1;
+                        }
+
+                        #endregion
+
+                        DatVenta.EditarDatos_Devoluciones(venta);
+                        Producto p = new BusProducto().ObtenerProducto(codigo);
+                        if (p.usaInventario == "SI")
+                        {
+                            string presentancion = Convert.ToString(dr.Cells[7].Value);
+                            if (p.precioMayoreo == Convert.ToDecimal(dr.Cells[9].Value) || presentancion.Equals("PQTE") || presentancion.Equals("SIX")
+                                || presentancion.Equals("CJA") || presentancion.Equals("BTO") || presentancion.Equals("RJA"))
+                            {
+                                decimal cantidadVendida = Convert.ToDecimal(p.TotalUnidades * Convert.ToDecimal(cantidad));
+                                new BusProducto().Actualizar_Stock(p.Id, (Convert.ToDecimal(p.stock) + cantidadVendida));
+                            }
+                            else
+                            {
+                                new BusProducto().Actualizar_Stock(p.Id, (Convert.ToDecimal(p.stock) + Convert.ToDecimal(cantidad)));
+                            }
+                        }
+
+                        pnlProcesar.Visible = true;
+                        lblTotalDevuelto.Text = (venta.Saldo > 0) ? venta.Saldo.ToString() : venta.MontoTotal.ToString();
+
+                        gdvDatos.DataSource = null;
+                        MessageBox.Show("Proceso realizado exitosamente", "DEVOLUCION REALIZADA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

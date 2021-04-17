@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCliente));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.menuStrip8 = new System.Windows.Forms.MenuStrip();
@@ -65,9 +67,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.btnCodigoCliente = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.menuStrip8.SuspendLayout();
@@ -78,7 +80,6 @@
             this.menuStrip2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -92,6 +93,27 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1027, 30);
             this.panel1.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(57, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(152, 25);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Panel Clientes";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::VentasD1002.Properties.Resources.screencart_106583;
+            this.pictureBox2.Location = new System.Drawing.Point(5, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(28, 24);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -215,7 +237,7 @@
             this.pnlAltaCliente.Controls.Add(this.txtNombre);
             this.pnlAltaCliente.Controls.Add(this.label3);
             this.pnlAltaCliente.Controls.Add(this.panel4);
-            this.pnlAltaCliente.Location = new System.Drawing.Point(136, 126);
+            this.pnlAltaCliente.Location = new System.Drawing.Point(136, 71);
             this.pnlAltaCliente.Name = "pnlAltaCliente";
             this.pnlAltaCliente.Size = new System.Drawing.Size(733, 470);
             this.pnlAltaCliente.TabIndex = 3;
@@ -231,13 +253,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnCodigoCliente);
             this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Controls.Add(this.txtRuc);
             this.groupBox1.Controls.Add(this.Label14);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(80, 281);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(595, 99);
+            this.groupBox1.Size = new System.Drawing.Size(571, 99);
             this.groupBox1.TabIndex = 70;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de  facturación (Opcional)";
@@ -248,7 +271,7 @@
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.Location = new System.Drawing.Point(13, 86);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(559, 1);
+            this.panel3.Size = new System.Drawing.Size(443, 1);
             this.panel3.TabIndex = 339;
             // 
             // txtRuc
@@ -258,7 +281,7 @@
             this.txtRuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRuc.Location = new System.Drawing.Point(13, 62);
             this.txtRuc.Name = "txtRuc";
-            this.txtRuc.Size = new System.Drawing.Size(560, 19);
+            this.txtRuc.Size = new System.Drawing.Size(444, 19);
             this.txtRuc.TabIndex = 338;
             // 
             // Label14
@@ -268,9 +291,9 @@
             this.Label14.ForeColor = System.Drawing.Color.Black;
             this.Label14.Location = new System.Drawing.Point(9, 31);
             this.Label14.Name = "Label14";
-            this.Label14.Size = new System.Drawing.Size(146, 20);
+            this.Label14.Size = new System.Drawing.Size(141, 20);
             this.Label14.TabIndex = 337;
-            this.Label14.Text = "RUC/ RFC/ NIT/ CI:";
+            this.Label14.Text = "RFC/ N° CLIENTE:";
             // 
             // rbProveedor
             // 
@@ -282,6 +305,7 @@
             this.rbProveedor.TabIndex = 69;
             this.rbProveedor.Text = "Proveedor";
             this.rbProveedor.UseVisualStyleBackColor = true;
+            this.rbProveedor.CheckedChanged += new System.EventHandler(this.rbProveedor_CheckedChanged);
             // 
             // rbCliente
             // 
@@ -297,6 +321,7 @@
             this.rbCliente.TabStop = true;
             this.rbCliente.Text = "Cliente";
             this.rbCliente.UseVisualStyleBackColor = true;
+            this.rbCliente.CheckedChanged += new System.EventHandler(this.rbCliente_CheckedChanged);
             // 
             // menuStrip2
             // 
@@ -492,26 +517,19 @@
             this.label1.Text = "Agregar / Editar Clientes";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox2
+            // btnCodigoCliente
             // 
-            this.pictureBox2.Image = global::VentasD1002.Properties.Resources.screencart_106583;
-            this.pictureBox2.Location = new System.Drawing.Point(5, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(28, 24);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(57, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(152, 25);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Panel Clientes";
+            this.btnCodigoCliente.BackColor = System.Drawing.Color.Lavender;
+            this.btnCodigoCliente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCodigoCliente.BackgroundImage")));
+            this.btnCodigoCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCodigoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCodigoCliente.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnCodigoCliente.Location = new System.Drawing.Point(469, 49);
+            this.btnCodigoCliente.Name = "btnCodigoCliente";
+            this.btnCodigoCliente.Size = new System.Drawing.Size(96, 38);
+            this.btnCodigoCliente.TabIndex = 340;
+            this.btnCodigoCliente.UseVisualStyleBackColor = false;
+            this.btnCodigoCliente.Click += new System.EventHandler(this.btnCodigoCliente_Click);
             // 
             // frmCliente
             // 
@@ -529,6 +547,7 @@
             this.Load += new System.EventHandler(this.frmCliente_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -545,7 +564,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -590,5 +608,6 @@
         private System.Windows.Forms.DataGridViewImageColumn Delete;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnCodigoCliente;
     }
 }

@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBitacoraCliente));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtAbonoInicial = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.pbEstatus2 = new System.Windows.Forms.PictureBox();
@@ -68,9 +69,8 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtAbonoInicial = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbEstatus2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEstatusOK)).BeginInit();
@@ -80,29 +80,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.gdvDetalle)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1103, 105);
+            this.panel1.Size = new System.Drawing.Size(1103, 78);
             this.panel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.LightGray;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1103, 105);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Bitácora de clientes (Créditos por cobrar)";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel3
             // 
@@ -131,10 +118,31 @@
             this.panel3.Controls.Add(this.label3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(698, 105);
+            this.panel3.Location = new System.Drawing.Point(698, 78);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(405, 490);
+            this.panel3.Size = new System.Drawing.Size(405, 517);
             this.panel3.TabIndex = 2;
+            // 
+            // txtAbonoInicial
+            // 
+            this.txtAbonoInicial.BackColor = System.Drawing.SystemColors.Control;
+            this.txtAbonoInicial.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAbonoInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAbonoInicial.Location = new System.Drawing.Point(174, 340);
+            this.txtAbonoInicial.Name = "txtAbonoInicial";
+            this.txtAbonoInicial.ReadOnly = true;
+            this.txtAbonoInicial.Size = new System.Drawing.Size(218, 19);
+            this.txtAbonoInicial.TabIndex = 28;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(21, 340);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(104, 20);
+            this.label15.TabIndex = 27;
+            this.label15.Text = "Abono Inicial:";
             // 
             // label14
             // 
@@ -369,24 +377,25 @@
             this.gdvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gdvLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Detalle});
+            this.gdvLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gdvLista.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.gdvLista.Location = new System.Drawing.Point(37, 137);
+            this.gdvLista.Location = new System.Drawing.Point(36, 132);
             this.gdvLista.MultiSelect = false;
             this.gdvLista.Name = "gdvLista";
             this.gdvLista.ReadOnly = true;
             this.gdvLista.RowHeadersVisible = false;
             this.gdvLista.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.WhiteSmoke;
             this.gdvLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvLista.Size = new System.Drawing.Size(242, 331);
+            this.gdvLista.Size = new System.Drawing.Size(473, 385);
             this.gdvLista.TabIndex = 3;
             this.gdvLista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvLista_CellClick);
             // 
             // Detalle
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle1.NullValue")));
-            this.Detalle.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle3.NullValue")));
+            this.Detalle.DefaultCellStyle = dataGridViewCellStyle3;
             this.Detalle.HeaderText = "Detalle";
             this.Detalle.Image = ((System.Drawing.Image)(resources.GetObject("Detalle.Image")));
             this.Detalle.Name = "Detalle";
@@ -396,7 +405,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(14, 51);
+            this.label2.Location = new System.Drawing.Point(82, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(294, 20);
             this.label2.TabIndex = 2;
@@ -407,7 +416,7 @@
             this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(35, 85);
+            this.textBox1.Location = new System.Drawing.Point(103, 44);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(244, 23);
             this.textBox1.TabIndex = 0;
@@ -417,22 +426,21 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.DarkOrange;
-            this.panel4.Location = new System.Drawing.Point(35, 115);
+            this.panel4.Location = new System.Drawing.Point(103, 74);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(244, 5);
             this.panel4.TabIndex = 1;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panel6);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.gdvLista);
+            this.panel2.Controls.Add(this.panel9);
+            this.panel2.Controls.Add(this.panel8);
+            this.panel2.Controls.Add(this.panel6);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 105);
+            this.panel2.Location = new System.Drawing.Point(0, 78);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(320, 490);
+            this.panel2.Size = new System.Drawing.Size(509, 517);
             this.panel2.TabIndex = 3;
             // 
             // panel6
@@ -441,7 +449,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(320, 44);
+            this.panel6.Size = new System.Drawing.Size(509, 44);
             this.panel6.TabIndex = 4;
             // 
             // label11
@@ -452,7 +460,7 @@
             this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label11.Location = new System.Drawing.Point(0, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(320, 44);
+            this.label11.Size = new System.Drawing.Size(509, 44);
             this.label11.TabIndex = 0;
             this.label11.Text = "BÚSQUEDA";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -475,7 +483,7 @@
             this.gdvDetalle.RowHeadersVisible = false;
             this.gdvDetalle.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.WhiteSmoke;
             this.gdvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvDetalle.Size = new System.Drawing.Size(378, 446);
+            this.gdvDetalle.Size = new System.Drawing.Size(189, 473);
             this.gdvDetalle.TabIndex = 4;
             // 
             // panel5
@@ -483,9 +491,9 @@
             this.panel5.Controls.Add(this.gdvDetalle);
             this.panel5.Controls.Add(this.panel7);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(320, 105);
+            this.panel5.Location = new System.Drawing.Point(509, 78);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(378, 490);
+            this.panel5.Size = new System.Drawing.Size(189, 517);
             this.panel5.TabIndex = 4;
             // 
             // panel7
@@ -494,7 +502,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(378, 44);
+            this.panel7.Size = new System.Drawing.Size(189, 44);
             this.panel7.TabIndex = 5;
             // 
             // label13
@@ -505,42 +513,40 @@
             this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label13.Location = new System.Drawing.Point(0, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(378, 44);
+            this.label13.Size = new System.Drawing.Size(189, 44);
             this.label13.TabIndex = 0;
             this.label13.Text = "RESUMEN";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dataGridViewImageColumn1
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle2.NullValue")));
-            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle4.NullValue")));
+            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewImageColumn1.HeaderText = "Detalle";
             this.dataGridViewImageColumn1.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn1.Image")));
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.ReadOnly = true;
             // 
-            // label15
+            // panel8
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(21, 340);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(104, 20);
-            this.label15.TabIndex = 27;
-            this.label15.Text = "Abono Inicial:";
+            this.panel8.Controls.Add(this.textBox1);
+            this.panel8.Controls.Add(this.label2);
+            this.panel8.Controls.Add(this.panel4);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(0, 44);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(509, 88);
+            this.panel8.TabIndex = 5;
             // 
-            // txtAbonoInicial
+            // panel9
             // 
-            this.txtAbonoInicial.BackColor = System.Drawing.SystemColors.Control;
-            this.txtAbonoInicial.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAbonoInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAbonoInicial.Location = new System.Drawing.Point(174, 340);
-            this.txtAbonoInicial.Name = "txtAbonoInicial";
-            this.txtAbonoInicial.ReadOnly = true;
-            this.txtAbonoInicial.Size = new System.Drawing.Size(218, 19);
-            this.txtAbonoInicial.TabIndex = 28;
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel9.Location = new System.Drawing.Point(0, 132);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(36, 385);
+            this.panel9.TabIndex = 6;
             // 
             // frmBitacoraCliente
             // 
@@ -555,19 +561,20 @@
             this.Name = "frmBitacoraCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Historial de pagos a crédito";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmBitacoraCliente_Load);
-            this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbEstatus2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEstatusOK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvLista)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gdvDetalle)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -575,7 +582,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel4;
@@ -613,5 +619,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtAbonoInicial;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel9;
     }
 }

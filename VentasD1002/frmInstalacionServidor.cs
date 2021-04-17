@@ -42,6 +42,7 @@ namespace VentasD1002
             txtScriptUsuarioRemoto.Text = txtScriptUsuarioRemoto.Text.Replace("softwarereal", txtpwd.Text);
             // Cursor = Cursors.WaitCursor;
 
+            //adjuntar textobox que contiene los procedimientos almacenados
             txtTablasSP.Text = txtTablasSP.Text + Environment.NewLine + txtScriptUsuarioRemoto.Text;
 
         }

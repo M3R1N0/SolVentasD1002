@@ -34,10 +34,15 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pnlListadoClienteCredito = new System.Windows.Forms.Panel();
             this.gdvTotalCredito = new System.Windows.Forms.DataGridView();
+            this.panel14 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lblTotalCredtio = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -93,6 +98,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gdvTotalCredito)).BeginInit();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
+            this.panel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlAbonar.SuspendLayout();
@@ -144,6 +151,7 @@
             // 
             this.pnlListadoClienteCredito.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pnlListadoClienteCredito.Controls.Add(this.gdvTotalCredito);
+            this.pnlListadoClienteCredito.Controls.Add(this.panel14);
             this.pnlListadoClienteCredito.Controls.Add(this.panel10);
             this.pnlListadoClienteCredito.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlListadoClienteCredito.Location = new System.Drawing.Point(128, 103);
@@ -164,8 +172,16 @@
             this.gdvTotalCredito.ReadOnly = true;
             this.gdvTotalCredito.RowHeadersVisible = false;
             this.gdvTotalCredito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvTotalCredito.Size = new System.Drawing.Size(987, 523);
+            this.gdvTotalCredito.Size = new System.Drawing.Size(987, 502);
             this.gdvTotalCredito.TabIndex = 0;
+            // 
+            // panel14
+            // 
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel14.Location = new System.Drawing.Point(0, 538);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(987, 21);
+            this.panel14.TabIndex = 2;
             // 
             // panel10
             // 
@@ -199,14 +215,56 @@
             // 
             // panel9
             // 
-            this.panel9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel9.BackgroundImage")));
             this.panel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel9.Controls.Add(this.panel15);
             this.panel9.Controls.Add(this.panel11);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(3, 3);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1112, 100);
             this.panel9.TabIndex = 24;
+            // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.pictureBox2);
+            this.panel15.Controls.Add(this.lblTotalCredtio);
+            this.panel15.Controls.Add(this.label15);
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel15.Location = new System.Drawing.Point(399, 0);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(713, 100);
+            this.panel15.TabIndex = 5;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(168, 100);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            // 
+            // lblTotalCredtio
+            // 
+            this.lblTotalCredtio.AutoSize = true;
+            this.lblTotalCredtio.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalCredtio.Location = new System.Drawing.Point(413, 34);
+            this.lblTotalCredtio.Name = "lblTotalCredtio";
+            this.lblTotalCredtio.Size = new System.Drawing.Size(87, 39);
+            this.lblTotalCredtio.TabIndex = 3;
+            this.lblTotalCredtio.Text = "0.00";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(174, 34);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(233, 39);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "Crédito  total:";
             // 
             // panel11
             // 
@@ -326,7 +384,7 @@
             this.btnAbonar.ForeColor = System.Drawing.Color.ForestGreen;
             this.btnAbonar.Image = ((System.Drawing.Image)(resources.GetObject("btnAbonar.Image")));
             this.btnAbonar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAbonar.Location = new System.Drawing.Point(422, 318);
+            this.btnAbonar.Location = new System.Drawing.Point(422, 316);
             this.btnAbonar.Name = "btnAbonar";
             this.btnAbonar.Size = new System.Drawing.Size(135, 41);
             this.btnAbonar.TabIndex = 16;
@@ -784,6 +842,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gdvTotalCredito)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -861,5 +922,10 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Label lblTotalCredtio;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

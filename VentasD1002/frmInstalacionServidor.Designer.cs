@@ -500,7 +500,7 @@
             this.txtpwd.Name = "txtpwd";
             this.txtpwd.Size = new System.Drawing.Size(139, 20);
             this.txtpwd.TabIndex = 2;
-            this.txtpwd.Text = "123";
+            this.txtpwd.Text = "Admin123";
             // 
             // label6
             // 
@@ -519,7 +519,7 @@
             this.txtServidor.Name = "txtServidor";
             this.txtServidor.Size = new System.Drawing.Size(139, 20);
             this.txtServidor.TabIndex = 0;
-            this.txtServidor.Text = "DESKTOP-TDDKIL8";
+            this.txtServidor.Text = "ORTHEGA";
             // 
             // frmInstalacionServidor
             // 

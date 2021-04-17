@@ -33,6 +33,7 @@
             this.rbnFiltroFechas = new System.Windows.Forms.RadioButton();
             this.rbtnFiltroCliente = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblIdVenta = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gdvListado = new System.Windows.Forms.DataGridView();
             this.Detalle = new System.Windows.Forms.DataGridViewImageColumn();
@@ -43,7 +44,6 @@
             this.txtBuscarCliente = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dtpFin = new System.Windows.Forms.DateTimePicker();
-            this.rbTicket = new System.Windows.Forms.RadioButton();
             this.dtpInicio = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -51,7 +51,9 @@
             this.reportViewer1 = new Telerik.ReportViewer.WinForms.ReportViewer();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnBonificacion = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvListado)).BeginInit();
@@ -68,6 +70,7 @@
             this.panel1.Controls.Add(this.rbnFiltroFechas);
             this.panel1.Controls.Add(this.rbtnFiltroCliente);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lblIdVenta);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -110,6 +113,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Consulta de Tickets";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblIdVenta
+            // 
+            this.lblIdVenta.AutoSize = true;
+            this.lblIdVenta.Location = new System.Drawing.Point(498, 9);
+            this.lblIdVenta.Name = "lblIdVenta";
+            this.lblIdVenta.Size = new System.Drawing.Size(35, 13);
+            this.lblIdVenta.TabIndex = 15;
+            this.lblIdVenta.Text = "label2";
             // 
             // panel2
             // 
@@ -155,7 +167,6 @@
             this.panel4.Controls.Add(this.pnlBuscarPorCLiente);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.dtpFin);
-            this.panel4.Controls.Add(this.rbTicket);
             this.panel4.Controls.Add(this.dtpInicio);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -168,7 +179,7 @@
             // 
             this.rbA4.AutoSize = true;
             this.rbA4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbA4.Location = new System.Drawing.Point(585, 16);
+            this.rbA4.Location = new System.Drawing.Point(512, 16);
             this.rbA4.Name = "rbA4";
             this.rbA4.Size = new System.Drawing.Size(55, 24);
             this.rbA4.TabIndex = 13;
@@ -180,7 +191,7 @@
             this.RbtnMod2.AutoSize = true;
             this.RbtnMod2.Checked = true;
             this.RbtnMod2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RbtnMod2.Location = new System.Drawing.Point(484, 16);
+            this.RbtnMod2.Location = new System.Drawing.Point(411, 16);
             this.RbtnMod2.Name = "RbtnMod2";
             this.RbtnMod2.Size = new System.Drawing.Size(90, 24);
             this.RbtnMod2.TabIndex = 15;
@@ -227,17 +238,6 @@
             this.dtpFin.Size = new System.Drawing.Size(113, 24);
             this.dtpFin.TabIndex = 9;
             this.dtpFin.ValueChanged += new System.EventHandler(this.dtpFin_ValueChanged);
-            // 
-            // rbTicket
-            // 
-            this.rbTicket.AutoSize = true;
-            this.rbTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbTicket.Location = new System.Drawing.Point(388, 16);
-            this.rbTicket.Name = "rbTicket";
-            this.rbTicket.Size = new System.Drawing.Size(90, 24);
-            this.rbTicket.TabIndex = 12;
-            this.rbTicket.Text = "Ticket 1";
-            this.rbTicket.UseVisualStyleBackColor = true;
             // 
             // dtpInicio
             // 
@@ -298,12 +298,29 @@
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.btnBonificacion);
             this.panel7.Controls.Add(this.btnImprimir);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(154, 0);
+            this.panel7.Location = new System.Drawing.Point(6, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(141, 57);
+            this.panel7.Size = new System.Drawing.Size(289, 57);
             this.panel7.TabIndex = 0;
+            // 
+            // btnBonificacion
+            // 
+            this.btnBonificacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBonificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBonificacion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnBonificacion.Image = ((System.Drawing.Image)(resources.GetObject("btnBonificacion.Image")));
+            this.btnBonificacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBonificacion.Location = new System.Drawing.Point(3, 19);
+            this.btnBonificacion.Name = "btnBonificacion";
+            this.btnBonificacion.Size = new System.Drawing.Size(159, 32);
+            this.btnBonificacion.TabIndex = 18;
+            this.btnBonificacion.Text = "Bonificación";
+            this.btnBonificacion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBonificacion.UseVisualStyleBackColor = true;
+            this.btnBonificacion.Click += new System.EventHandler(this.btnBonificacion_Click);
             // 
             // btnImprimir
             // 
@@ -312,7 +329,7 @@
             this.btnImprimir.ForeColor = System.Drawing.Color.DodgerBlue;
             this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimir.Location = new System.Drawing.Point(9, 22);
+            this.btnImprimir.Location = new System.Drawing.Point(168, 19);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(118, 32);
             this.btnImprimir.TabIndex = 17;
@@ -320,6 +337,14 @@
             this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnImprimir.UseVisualStyleBackColor = true;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "Detalle";
+            this.dataGridViewImageColumn1.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn1.Image")));
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.ToolTipText = "Ver detalle";
             // 
             // frmReimprimirTicket
             // 
@@ -370,11 +395,13 @@
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.RadioButton rbA4;
-        private System.Windows.Forms.RadioButton rbTicket;
         private System.Windows.Forms.RadioButton rbnFiltroFechas;
         private System.Windows.Forms.RadioButton rbtnFiltroCliente;
         private System.Windows.Forms.Panel pnlBuscarPorCLiente;
         private System.Windows.Forms.TextBox txtBuscarCliente;
         private System.Windows.Forms.RadioButton RbtnMod2;
+        private System.Windows.Forms.Button btnBonificacion;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        public System.Windows.Forms.Label lblIdVenta;
     }
 }

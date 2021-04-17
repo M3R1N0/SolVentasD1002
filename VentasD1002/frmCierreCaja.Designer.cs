@@ -61,6 +61,10 @@
             this.label17 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnCerrarTurno = new System.Windows.Forms.Button();
+            this.lblBonificacion = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblTotalBonififaciones = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -135,6 +139,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel3.Controls.Add(this.lblTotalBonififaciones);
+            this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.panel7);
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Controls.Add(this.lblVentasTotales);
@@ -280,8 +286,10 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.lblBonificacion);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Controls.Add(this.lblTotalAbonado);
+            this.panel5.Controls.Add(this.label11);
             this.panel5.Controls.Add(this.lblVentaCredito);
             this.panel5.Controls.Add(this.label15);
             this.panel5.Controls.Add(this.lblVentaEfectivo);
@@ -289,9 +297,9 @@
             this.panel5.Controls.Add(this.label8);
             this.panel5.Controls.Add(this.label7);
             this.panel5.Controls.Add(this.label6);
-            this.panel5.Location = new System.Drawing.Point(57, 27);
+            this.panel5.Location = new System.Drawing.Point(57, 6);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(362, 193);
+            this.panel5.Size = new System.Drawing.Size(362, 214);
             this.panel5.TabIndex = 0;
             // 
             // label5
@@ -299,7 +307,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label5.Location = new System.Drawing.Point(52, 155);
+            this.label5.Location = new System.Drawing.Point(52, 189);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(263, 13);
             this.label5.TabIndex = 7;
@@ -309,7 +317,7 @@
             // 
             this.lblTotalAbonado.AutoSize = true;
             this.lblTotalAbonado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAbonado.Location = new System.Drawing.Point(198, 130);
+            this.lblTotalAbonado.Location = new System.Drawing.Point(198, 164);
             this.lblTotalAbonado.Name = "lblTotalAbonado";
             this.lblTotalAbonado.Size = new System.Drawing.Size(50, 25);
             this.lblTotalAbonado.TabIndex = 4;
@@ -319,7 +327,7 @@
             // 
             this.lblVentaCredito.AutoSize = true;
             this.lblVentaCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVentaCredito.Location = new System.Drawing.Point(198, 90);
+            this.lblVentaCredito.Location = new System.Drawing.Point(198, 124);
             this.lblVentaCredito.Name = "lblVentaCredito";
             this.lblVentaCredito.Size = new System.Drawing.Size(50, 25);
             this.lblVentaCredito.TabIndex = 5;
@@ -329,7 +337,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(64, 134);
+            this.label15.Location = new System.Drawing.Point(64, 168);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(119, 20);
             this.label15.TabIndex = 2;
@@ -339,7 +347,7 @@
             // 
             this.lblVentaEfectivo.AutoSize = true;
             this.lblVentaEfectivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVentaEfectivo.Location = new System.Drawing.Point(198, 50);
+            this.lblVentaEfectivo.Location = new System.Drawing.Point(198, 84);
             this.lblVentaEfectivo.Name = "lblVentaEfectivo";
             this.lblVentaEfectivo.Size = new System.Drawing.Size(50, 25);
             this.lblVentaEfectivo.TabIndex = 4;
@@ -349,7 +357,7 @@
             // 
             this.lblFondoCaja.AutoSize = true;
             this.lblFondoCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFondoCaja.Location = new System.Drawing.Point(198, 10);
+            this.lblFondoCaja.Location = new System.Drawing.Point(198, 44);
             this.lblFondoCaja.Name = "lblFondoCaja";
             this.lblFondoCaja.Size = new System.Drawing.Size(50, 25);
             this.lblFondoCaja.TabIndex = 3;
@@ -359,7 +367,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(46, 94);
+            this.label8.Location = new System.Drawing.Point(46, 128);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(137, 20);
             this.label8.TabIndex = 3;
@@ -369,7 +377,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(30, 54);
+            this.label7.Location = new System.Drawing.Point(30, 88);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(153, 20);
             this.label7.TabIndex = 2;
@@ -379,7 +387,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 14);
+            this.label6.Location = new System.Drawing.Point(12, 48);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(171, 20);
             this.label6.TabIndex = 1;
@@ -427,6 +435,47 @@
             this.btnCerrarTurno.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCerrarTurno.UseVisualStyleBackColor = false;
             this.btnCerrarTurno.Click += new System.EventHandler(this.btnCerrarTurno_Click);
+            // 
+            // lblBonificacion
+            // 
+            this.lblBonificacion.AutoSize = true;
+            this.lblBonificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBonificacion.Location = new System.Drawing.Point(198, 9);
+            this.lblBonificacion.Name = "lblBonificacion";
+            this.lblBonificacion.Size = new System.Drawing.Size(50, 25);
+            this.lblBonificacion.TabIndex = 9;
+            this.lblBonificacion.Text = "0.00";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(59, 14);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(124, 20);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "Bonificaciones  :";
+            // 
+            // lblTotalBonififaciones
+            // 
+            this.lblTotalBonififaciones.AutoSize = true;
+            this.lblTotalBonififaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalBonififaciones.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblTotalBonififaciones.Location = new System.Drawing.Point(754, 144);
+            this.lblTotalBonififaciones.Name = "lblTotalBonififaciones";
+            this.lblTotalBonififaciones.Size = new System.Drawing.Size(23, 25);
+            this.lblTotalBonififaciones.TabIndex = 10;
+            this.lblTotalBonififaciones.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(510, 149);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(235, 20);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Bonificaciones Realizadas : ";
             // 
             // frmCierreCaja
             // 
@@ -489,5 +538,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label lblTotalBonififaciones;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblBonificacion;
+        private System.Windows.Forms.Label label11;
     }
 }

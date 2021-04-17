@@ -284,8 +284,8 @@ namespace VentasD1002
             try
             {
                 Producto p = new Producto();
-                p.codigo = txtcodigodebarras.Text;
-                p.Descripcion = txtdescripcion.Text;
+                p.codigo = txtcodigodebarras.Text.Trim();
+                p.Descripcion = txtdescripcion.Text.Trim();
                 p.Presentacion = txtPresentacion.Text;
                 p.precioMenudeo = Convert.ToDecimal(txtPMenudeo.Text);
                 p.precioMMayoreo = Convert.ToDecimal(txtPMMayoreo.Text);
@@ -364,8 +364,8 @@ namespace VentasD1002
             try
             {
                 Producto p = new Producto();
-                p.codigo = txtcodigodebarras.Text;
-                p.Descripcion = txtdescripcion.Text;
+                p.codigo = txtcodigodebarras.Text.Trim();
+                p.Descripcion = txtdescripcion.Text.Trim();
                 p.Presentacion = txtPresentacion.Text;
                 p.precioMenudeo = Convert.ToDecimal(txtPMenudeo.Text);
                 p.precioMMayoreo = Convert.ToDecimal(txtPMMayoreo.Text);

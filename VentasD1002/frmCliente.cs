@@ -52,6 +52,7 @@ namespace VentasD1002
         {
             pnlAltaCliente.Visible = false;
             LimpiarCampos();
+            gdvClientes.Enabled = true;
         }
 
         private void btnVentaPendiente_Click(object sender, EventArgs e)
@@ -117,6 +118,7 @@ namespace VentasD1002
                 pnlAltaCliente.Visible = false;
                 LimpiarCampos();
                 ListarClientes_Proveedores();
+                gdvClientes.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -169,6 +171,7 @@ namespace VentasD1002
                 }
 
                 pnlAltaCliente.Visible = true;
+                gdvClientes.Enabled = false;
             }
         }
 
@@ -199,6 +202,23 @@ namespace VentasD1002
             {
                 MessageBox.Show("No existe el cliente buscado, verifique nuevamente", "Cliente no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void btnCodigoCliente_Click(object sender, EventArgs e)
+        {
+            Random random = new Random();
+            int numero = random.Next(10000, 90000);
+            txtRuc.Text = "C" + numero.ToString();
+        }
+
+        private void rbProveedor_CheckedChanged(object sender, EventArgs e)
+        {
+            btnCodigoCliente.Visible = false;
+        }
+
+        private void rbCliente_CheckedChanged(object sender, EventArgs e)
+        {
+            btnCodigoCliente.Visible = true;
         }
     }
 }

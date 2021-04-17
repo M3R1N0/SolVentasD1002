@@ -61,6 +61,16 @@ namespace VentasD1002
             {
                 MessageBox.Show("Ocurrió un error al consultar los datos : " + ex.Message, "Error de Lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                decimal totalCredito = 0;
+                foreach (DataGridViewRow item in gdvTotalCredito.Rows)
+                {
+                    totalCredito += Convert.ToDecimal(item.Cells[6].Value);
+                }
+
+                lblTotalCredtio.Text = "$ " + totalCredito.ToString();
+            }
         }
 
         private void btnCobrar_Click(object sender, EventArgs e)
@@ -181,13 +191,20 @@ namespace VentasD1002
                 }
                 else
                 {
-                    string _strEstadoPago = Convert.ToDecimal(txtMontoAbonar.Text) >= Convert.ToDecimal(txtSaldoActual.Text) ? "PAGADO" : "PENDIENTE";
-                    decimal _saldo = Convert.ToDecimal(txtPendienteLiquidar.Text) <= 0 ? 0 : Convert.ToDecimal(txtPendienteLiquidar.Text);
+                    string _strEstadoPago = (Convert.ToDecimal(txtMontoAbonar.Text) >= Convert.ToDecimal(txtSaldoActual.Text)) ? "PAGADO" : "PENDIENTE";
+                    decimal _saldo = (Convert.ToDecimal(txtPendienteLiquidar.Text) <= 0) ? 0 : Convert.ToDecimal(txtPendienteLiquidar.Text);
                     int _idVenta = Convert.ToInt32(lblIdVenta.Text);
-                    decimal abonado = Convert.ToDecimal(txtPendienteLiquidar.Text) <= 0 ? Convert.ToDecimal(txtSaldoActual.Text) : Convert.ToDecimal(txtMontoAbonar.Text);
+                    decimal abonado = (Convert.ToDecimal(txtPendienteLiquidar.Text)) <= 0 ? Convert.ToDecimal(txtSaldoActual.Text) : Convert.ToDecimal(txtMontoAbonar.Text);
                     decimal efectivo = Convert.ToDecimal(lblTotalAbonado.Text) + Convert.ToDecimal(txtMontoAbonar.Text);
 
-                    new BusVentas().Actualizar_VentaACredito(_idVenta, _saldo, _strEstadoPago, efectivo);
+                    try
+                    {
+                        new BusVentas().Actualizar_VentaACredito((Int32)_idVenta, _saldo, _strEstadoPago, efectivo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al actualizar la venta a credito : "+ex.StackTrace, "Error");
+                    }
 
                     #region BITACORA PAGO CLIENTE
 
@@ -195,22 +212,36 @@ namespace VentasD1002
                     string serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
                     int idUsuario = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC)).Id;
 
-                    DatCatGenerico.Agregar_BitacoraCliente(_idVenta, idUsuario, abonado);
+                    try
+                    {
+                        DatCatGenerico.Agregar_BitacoraCliente(_idVenta, idUsuario, abonado);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al agregar los datos a la bitacora : " + ex.StackTrace, "Error");
+                    }
                     #endregion
 
+                    try
+                    {
+                        //ParametrosReporte obj = new DatVenta().ObtenerDatos_ComrpobanteCredito(_idVenta, abonado);
+                        #region TICKET
+                        rptComprobanteAbono _rpt = new rptComprobanteAbono();
+                         DataTable dt = new DatVenta().Obtener_ComprobanteCredito(_idVenta, abonado);
+                        _rpt.tbCobro.DataSource = dt;
+                        _rpt.DataSource = dt;
 
-                    #region TICKET
-                    rptComprobanteAbono _rpt = new rptComprobanteAbono();
-                    DataTable dt = new DatVenta().Obtener_ComprobanteCredito(_idVenta, abonado);
-                    _rpt.tbCobro.DataSource = dt;
-                    _rpt.DataSource = dt;
+                        reportViewer1.Report = _rpt;
+                        reportViewer1.RefreshReport();
 
-                    reportViewer1.Report = _rpt;
-                    reportViewer1.RefreshReport();
-
-                    pnlVistaTicket.Visible = true;
-                    #endregion
-
+                        pnlVistaTicket.Visible = true;
+                        #endregion
+                        _rpt = null;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al obtener los datos del reporte : " + ex.StackTrace, "Error");
+                    }
 
                     try
                     {
@@ -231,7 +262,7 @@ namespace VentasD1002
                     {
                         MessageBox.Show("Error al imprimir el ticket : " + ex.Message, "Error de impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-
+                 
 
                     LimpiarCampos();
                     ListarVentar_PorCobrar("");
@@ -242,6 +273,7 @@ namespace VentasD1002
             {
                 MessageBox.Show("Error : " + ex.Message, "Error de actulizacion de pagos a crédito", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
         }
 
         private void button1_Click_2(object sender, EventArgs e)
@@ -297,6 +329,7 @@ namespace VentasD1002
             lblMontototal.Text = "...";
             lblTotalAbonado.Text = "...";
             lblTotalLiquidar.Text = "...";
+            TICKET = null;
         }
 
     }

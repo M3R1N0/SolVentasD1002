@@ -58,5 +58,12 @@ namespace VentasD1002
         {
             this.Close();
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Dispose();
+            frmConexionRemota frm = new frmConexionRemota();
+            frm.ShowDialog();
+        }
     }
 }

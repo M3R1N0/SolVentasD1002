@@ -477,7 +477,7 @@ BROWSERSVCSTARTUPTYPE="Disabled"
   <data name="txtTablasSP.Text" xml:space="preserve">
     <value>USE [master]
 GO
-/****** Object:  Database [DBVENTAS]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Database [DBVENTAS]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 CREATE DATABASE [DBVENTAS]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -557,7 +557,7 @@ ALTER DATABASE [DBVENTAS] SET QUERY_STORE = OFF
 GO
 USE [DBVENTAS]
 GO
-/****** Object:  Table [dbo].[Cat_Concepto]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[Cat_Concepto]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -571,7 +571,7 @@ CREATE TABLE [dbo].[Cat_Concepto](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Cat_FormaPago]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[Cat_FormaPago]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -587,7 +587,7 @@ CREATE TABLE [dbo].[Cat_FormaPago](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Cat_Producto]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[Cat_Producto]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -603,7 +603,7 @@ CREATE TABLE [dbo].[Cat_Producto](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Cat_Tipo_Presentacion]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[Cat_Tipo_Presentacion]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -619,7 +619,7 @@ CREATE TABLE [dbo].[Cat_Tipo_Presentacion](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Cat_Tipo_Usuario]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[Cat_Tipo_Usuario]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -635,7 +635,7 @@ CREATE TABLE [dbo].[Cat_Tipo_Usuario](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_BitacoraCredito]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_BitacoraCredito]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -653,7 +653,7 @@ CREATE TABLE [dbo].[tb_BitacoraCredito](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_Caja]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_Caja]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -673,7 +673,7 @@ CREATE TABLE [dbo].[tb_Caja](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_Cliente]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_Cliente]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -694,7 +694,7 @@ CREATE TABLE [dbo].[tb_Cliente](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_DetalleVenta]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_DetalleVenta]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -722,7 +722,7 @@ CREATE TABLE [dbo].[tb_DetalleVenta](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_DetalleVentaEspera]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_DetalleVentaEspera]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -745,7 +745,7 @@ CREATE TABLE [dbo].[tb_DetalleVentaEspera](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_Empresa]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_Empresa]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -774,7 +774,7 @@ CREATE TABLE [dbo].[tb_Empresa](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_Gastos]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_Gastos]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -794,7 +794,7 @@ CREATE TABLE [dbo].[tb_Gastos](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_Ingresos]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_Ingresos]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -813,7 +813,7 @@ CREATE TABLE [dbo].[tb_Ingresos](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_InicioSesion]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_InicioSesion]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -828,7 +828,7 @@ CREATE TABLE [dbo].[tb_InicioSesion](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_Kardex]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_Kardex]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -853,7 +853,7 @@ CREATE TABLE [dbo].[tb_Kardex](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_Licencia]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_Licencia]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -870,7 +870,7 @@ CREATE TABLE [dbo].[tb_Licencia](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_Movimiento_CierreCaja]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_Movimiento_CierreCaja]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -895,7 +895,7 @@ CREATE TABLE [dbo].[tb_Movimiento_CierreCaja](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_Producto]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_Producto]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -925,7 +925,7 @@ CREATE TABLE [dbo].[tb_Producto](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_ProductosActualizados]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_ProductosActualizados]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -939,7 +939,7 @@ CREATE TABLE [dbo].[tb_ProductosActualizados](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_Serializacion]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_Serializacion]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -958,7 +958,7 @@ CREATE TABLE [dbo].[tb_Serializacion](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_Ticket]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_Ticket]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -981,7 +981,7 @@ CREATE TABLE [dbo].[tb_Ticket](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_Usuario]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_Usuario]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1004,7 +1004,7 @@ CREATE TABLE [dbo].[tb_Usuario](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_VentaEnEspera]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_VentaEnEspera]    Script Date: 06/03/2021 06:04:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1023,7 +1023,7 @@ CREATE TABLE [dbo].[tb_VentaEnEspera](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tb_Ventas]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  Table [dbo].[tb_Ventas]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1179,7 +1179,7 @@ REFERENCES [dbo].[tb_Usuario] ([Id_Usuario])
 GO
 ALTER TABLE [dbo].[tb_Ventas] CHECK CONSTRAINT [FK_tb_Ventas_tb_Usuario]
 GO
-/****** Object:  StoredProcedure [dbo].[CERRAR_CAJA]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[CERRAR_CAJA]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1200,7 +1200,7 @@ SET Estado = 0
 WHERE Caja_Id = @idCaja AND Estado = 1
 
 GO
-/****** Object:  StoredProcedure [dbo].[insertar_tb_Gastos]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[insertar_tb_Gastos]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER OFF
@@ -1225,7 +1225,7 @@ Values (
 @Descripcion)
 
 GO
-/****** Object:  StoredProcedure [dbo].[insertar_tb_Ingresos]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[insertar_tb_Ingresos]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER OFF
@@ -1250,7 +1250,7 @@ Values (
 )
 
 GO
-/****** Object:  StoredProcedure [dbo].[mostrar_InicioSesion]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[mostrar_InicioSesion]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1264,7 +1264,7 @@ INNER JOIN Cat_Tipo_Usuario TU ON TU.Id_Rol = U.Rol_Id
 WHERE S.SerialPC = @serialpc
 
 GO
-/****** Object:  StoredProcedure [dbo].[Mostrar_Movimientos_De_Caja_Por_Serial_Usuario]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[Mostrar_Movimientos_De_Caja_Por_Serial_Usuario]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1287,7 +1287,7 @@ inner join tb_Caja C on C.Id_Caja = MC.Caja_Id
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[ps_insertarSerializacion]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[ps_insertarSerializacion]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1316,7 +1316,7 @@ ELSE
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[ps_Mostrar_FormatoTicket]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[ps_Mostrar_FormatoTicket]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1328,7 +1328,7 @@ INNER JOIN tb_Empresa E ON  T.Empresa_Id = E.Id_Empresa
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[ps_Obtener_Productos_PorVencer]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[ps_Obtener_Productos_PorVencer]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1353,7 +1353,7 @@ ORDER BY (datediff(day, CONVERT(DATE,Caducidad,103), CONVERT(DATE, GETDATE()))) 
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Actualizar_Cliente]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_Actualizar_Cliente]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1379,7 +1379,7 @@ UPDATE tb_Cliente  SET
 WHERE Id_Cliente = @id
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ActualizarEmpresa]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ActualizarEmpresa]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1409,7 +1409,7 @@ SET Empresa = @empresa,
 	Pais = @pais
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_actualizarProducto]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_actualizarProducto]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1467,7 +1467,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_actualizarProductoPorExcel]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_actualizarProductoPorExcel]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1518,7 +1518,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ActualizarSerializacion]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ActualizarSerializacion]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1543,7 +1543,7 @@ UPDATE tb_Serializacion
 	WHERE Id_Serializacion = @id
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_agregar_detalle_cierrecaja]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_agregar_detalle_cierrecaja]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1599,7 +1599,7 @@ BEGIN
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AgregarBitacora_CreditoCliente]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_AgregarBitacora_CreditoCliente]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1613,7 +1613,7 @@ DECLARE @idCliente int = (select Cliente_Id from tb_Ventas where Id_Venta = @idv
 INSERT  INTO tb_BitacoraCredito VALUES (@idCliente,@idventa, @idusuario, @monto, GETDATE())
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_AgregarDatosCatalogos]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_AgregarDatosCatalogos]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1645,7 +1645,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_buscar_movimiento_kardex]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_buscar_movimiento_kardex]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1682,7 +1682,7 @@ SELECT
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_buscar_Productos_Kardex]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_buscar_Productos_Kardex]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1719,7 +1719,7 @@ SELECT TOP (5) [Id_Producto]
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_BuscarVenta]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_BuscarVenta]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1727,7 +1727,7 @@ GO
 CREATE PROC [dbo].[sp_BuscarVenta]
 @buscar varchar(100)
 as
- SELECT 
+ SELECT TOP(20)
 	V.Id_Venta,
 	TRY_CONVERT(DATE,Fecha_Venta, 103) AS [Fecha Venta],
 	C.Nombre, 
@@ -1740,7 +1740,7 @@ as
  ORDER BY [Fecha Venta] DESC
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ClientesFrecuentes]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ClientesFrecuentes]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1756,7 +1756,7 @@ GROUP BY C.Nombre
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Comprobante_PagoCredito]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_Comprobante_PagoCredito]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1787,7 +1787,7 @@ cross join tb_Ticket T
 where v.Id_Venta = @idVenta
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_contarProductos_Vencidos]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_contarProductos_Vencidos]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1799,7 +1799,7 @@ from tb_Producto p
 WHERE p.Caducidad &lt;&gt; 'NO APLICA' AND (TRY_CONVERT(datetime, P.Caducidad, 103)) &lt;= CONVERT(datetime, GETDATE(),103)
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_detalle_venta]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_detalle_venta]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1844,7 +1844,7 @@ CREATE PROC [dbo].[sp_detalle_venta]
 	
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Editar_FormatoTicket]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_Editar_FormatoTicket]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1883,7 +1883,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Editar_IncioSecion]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_Editar_IncioSecion]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1896,7 +1896,7 @@ UPDATE tb_InicioSesion  SET  Usuario_Id = @idusuario
 WHERE SerialPC = @serialpc
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_editar_usuario]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_editar_usuario]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1944,7 +1944,7 @@ WHERE Id_Usuario = @idusuario
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Filtros_GraficaVenta]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_Filtros_GraficaVenta]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1964,7 +1964,7 @@ WHERE  CONVERT(DATE, V.Fecha_Venta) &gt;= @fechainicio AND CONVERT(DATE, V.Fecha
 group by  DATENAME(MONTH,Fecha_Venta),  DATENAME(YEAR,Fecha_Venta)
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_GraficaVenta]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_GraficaVenta]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1981,7 +1981,7 @@ from tb_Ventas V
 group by  DATENAME(MONTH,Fecha_Venta),  DATENAME(YEAR,Fecha_Venta)
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Insertar_detalleVentaEspera]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_Insertar_detalleVentaEspera]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2018,7 +2018,7 @@ create PROC [dbo].[sp_Insertar_detalleVentaEspera]
 	
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insertar_inicioSesion]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_insertar_inicioSesion]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2035,7 +2035,7 @@ INSERT INTO tb_InicioSesion VALUES(@idSerialPC, @idusuario)
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insertar_producto]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_insertar_producto]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2137,7 +2137,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Insertar_TipoUsuario]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_Insertar_TipoUsuario]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2156,7 +2156,7 @@ ELSE
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insertar_usuario]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_insertar_usuario]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2184,7 +2184,7 @@ values (@nombre, @apellidos, @localidad, @foto, @nombre_foto, @usuario, @contras
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insertarCaja]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_insertarCaja]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2216,7 +2216,7 @@ ELSE
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insertarCliente]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_insertarCliente]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2251,7 +2251,7 @@ ELSE
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insertarEmpresa]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_insertarEmpresa]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2301,7 +2301,7 @@ ELSE
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insertarLicencia]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_insertarLicencia]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2318,7 +2318,7 @@ INSERT INTO tb_Licencia VALUES (@s, @f, @e, @fa)
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insertarTicket]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_insertarTicket]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2352,7 +2352,7 @@ INSERT INTO tb_Ticket VALUES(
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insertarVenta]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_insertarVenta]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2409,7 +2409,7 @@ INSERT INTO tb_Ventas VALUES(
 	@tarjeta )
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insertarVentaEspera]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_insertarVentaEspera]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2436,7 +2436,7 @@ INSERT INTO tb_VentaEnEspera VALUES(
 	 )
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Listar_BitacoraCredito]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_Listar_BitacoraCredito]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2463,7 +2463,34 @@ CROSS APPLY
         ) t
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_mostrar_inventarios]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ListarClientes_TotalPorLiquidar]    Script Date: 06/03/2021 06:04:32 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_ListarClientes_TotalPorLiquidar]
+as
+SELECT 
+	C.Id_Cliente,
+	C.Nombre AS CLIENTE,
+	C.Direccion AS LOCALIDAD,
+	(SELECT COUNT(V.Estado_Pago)) AS [N° TICKETS POR LIQUIDAR],
+	(SELECT SUM(V.Monto_total))  AS [COMPRA TOTAL],
+	((SELECT SUM(V.Monto_total))- (SELECT SUM(v.Saldo)))  AS [TOTAL ABONADO],
+	(SELECT SUM(V.Saldo))  AS [PENDIENTE POR LIQUIDAR]
+	
+FROM tb_Ventas V
+INNER JOIN tb_Cliente C ON V.Cliente_Id = C.Id_Cliente
+WHERE V.Saldo &lt;&gt; 0
+GROUP BY
+	c.Id_Cliente,
+	c.Nombre,
+	c.Direccion
+	,V.Estado_Pago
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_mostrar_inventarios]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2495,7 +2522,7 @@ CREATE PROC [dbo].[sp_mostrar_inventarios]
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_mostrar_inventariosBajos]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_mostrar_inventariosBajos]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2522,7 +2549,7 @@ SELECT
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_mostrar_movimiento_cierrecaja_xserial]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_mostrar_movimiento_cierrecaja_xserial]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2545,7 +2572,7 @@ inner join tb_Caja C on C.Id_Caja = MC.Caja_Id
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_mostrar_productos_vencidos]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_mostrar_productos_vencidos]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2587,7 +2614,7 @@ WHERE Descripcion + Codigo LIKE '%'+@buscar+'%' AND Caducidad &lt;&gt;'NO APLICA
 ORDER BY [Dias Vencidos] -- (datediff(day, Caducidad, GETDATE())) ASC 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Mostrar_TicketImpreso]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_Mostrar_TicketImpreso]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2614,6 +2641,7 @@ GO
 	v.Tipo_Pago,
 	E.Moneda,
 	C.Nombre as Cliente,
+	c.Direccion,
 	@cantProductos as [Cantidad_Producto],
 	V.Comprobante, 
 	V.Comprobante,
@@ -2629,11 +2657,11 @@ GO
 	INNER JOIN tb_Cliente C ON V.Cliente_Id =  c.Id_Cliente
 	CROSS JOIN tb_Empresa E
 	CROSS JOIN tb_Ticket T
-WHERE DV.Venta_Id = @idventa AND V.Monto_total &gt; 0
+WHERE DV.Venta_Id = @idventa AND V.Monto_total &gt; 0 AND ProductoDevuelto &lt;&gt; 1
 ORDER BY DV.Precio DESC
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Mostrar_Usuario]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_Mostrar_Usuario]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2663,7 +2691,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_mostrarCajaPrincipal]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_mostrarCajaPrincipal]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2696,7 +2724,7 @@ ELSE
 	SELECT * FROM tb_Caja WHERE Tipo_Caja = 'PRINCIPAL'
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_mostrarKardex]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_mostrarKardex]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2736,7 +2764,7 @@ ORDER BY K.Id_Kardex DESC
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerDatos_DetalleVenta]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerDatos_DetalleVenta]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2764,13 +2792,13 @@ JOIN tb_Ventas V ON DV.Venta_Id = V.Id_Venta
 JOIN tb_Cliente C ON V.Cliente_Id = C.Id_Cliente
 JOIN tb_Usuario U ON V.Usuario_Id =  U.Id_Usuario
 JOIN tb_Caja CJ ON V.Caja_Id = CJ.Id_Caja
-WHERE DV.Venta_Id = @idVenta
+WHERE DV.Venta_Id = @idVenta AND DV.ProductoDevuelto &lt;&gt; 1
 
 
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerDatos_VentasTotales]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerDatos_VentasTotales]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2781,8 +2809,9 @@ CREATE PROC  [dbo].[sp_ObtenerDatos_VentasTotales]
 @idcaja int
 as
 
-declare @apertura datetime = ( select max(Fecha_Inicio) from tb_Movimiento_CierreCaja where Usuario_Id = @idusuario)
-
+--declare @apertura datetime = ( select max(Fecha_Inicio) from tb_Movimiento_CierreCaja where Usuario_Id = @idusuario)
+declare @apertura datetime = ( select Fecha_Inicio from tb_Movimiento_CierreCaja where  Usuario_Id = 1 and
+								CONVERT(date,Fecha_Inicio) = CONVERT(date, getdate()))
 SELECT 
 	V.Id_Venta,
 	v.Fecha_Venta,
@@ -2799,7 +2828,7 @@ AND  V.Usuario_Id = @idusuario AND V.Caja_Id = @idcaja
 AND MCC.Fecha_Inicio = @apertura
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_obtenerDetalle_BitacoraCredito]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_obtenerDetalle_BitacoraCredito]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2829,7 +2858,25 @@ where v.Id_Venta = @idventa
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ObtenerMonto_CreditoCobrar]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerDetalleVenta]    Script Date: 06/03/2021 06:04:32 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_ObtenerDetalleVenta]
+@idventa int
+as
+select 
+	DV.Cantidad,
+	DV.Unidad_Medida,
+	DV.Descripcion,
+	DV.Precio,
+	DV.Total_Pagar
+from tb_DetalleVenta DV
+WHERE DV.Venta_Id= @idventa and  dv.ProductoDevuelto &lt;&gt; 1
+ORDER BY dv.Total_Pagar desc
+GO
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerMonto_CreditoCobrar]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2845,7 +2892,99 @@ where bc.Usuario_Id = @idusuario and bc.FechaAbono between @fechaInicio and GETD
 end
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_obtenerTipoPrecio]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerTicket]    Script Date: 06/03/2021 06:04:32 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE proc [dbo].[sp_ObtenerTicket]
+@idVentas int
+as
+
+IF(@idVentas = 0)
+BEGIN
+set @idVentas  = (select max (Id_Venta) from tb_Ventas)
+
+END 	
+
+ DECLARE @cantProductos int = (SELECT COUNT(Id_Venta) from tb_DetalleVenta  DV
+							    INNER JOIN  tb_Ventas V ON DV.Venta_Id = V.Id_Venta
+								WHERE DV.Venta_Id = @idVentas)
+
+ SELECT 
+	E.Empresa,
+	E.Logo,
+	T.Agradecimiento,
+	T.Anuncio,
+	T.Direccion,
+	T.Pagina_Web,
+	T.Provincia_Departamento,
+	V.Fecha_Venta AS Fecha,
+	V.Monto_total,
+	U.Nombre  AS Usuario,
+	C.Nombre as Cliente,
+	c.Direccion,
+	@cantProductos as [Cantidad_Producto],
+	V.Folio,
+	V.Forma_Pago,
+	v.Vuelto,
+	v.Efectivo,
+	v.Id_Venta,
+	DV.Id_DetalleVenta
+--	@letranumero as [LetraNumero]
+ FROM tb_Ventas V
+	INNER JOIN tb_DetalleVenta DV ON DV.Venta_Id = V.Id_Venta
+	INNER JOIN tb_Usuario U ON V.Usuario_Id = U.Id_Usuario
+	INNER JOIN tb_Cliente C ON V.Cliente_Id =  c.Id_Cliente
+	CROSS JOIN tb_Empresa E
+	CROSS JOIN tb_Ticket T
+WHERE v.Id_Venta = @idVentas AND V.Monto_total &gt; 0 
+GO
+/****** Object:  StoredProcedure [dbo].[sp_ObtenerTickets_PorFecha]    Script Date: 06/03/2021 06:04:32 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_ObtenerTickets_PorFecha]
+@inicio datetime,
+@fin datetime,
+@buscar varchar(100)
+AS
+
+if(@buscar = null or @buscar = '' or @buscar = ' ')
+begin
+	select 
+		V.Id_Venta 
+		,V.Fecha_Venta
+		--,CONVERT(DATE, v.Fecha_Venta,103) as Fecha
+		,C.Nombre
+		,V.Folio
+		,V.Forma_Pago AS[Tipo Pago]
+		,V.Estado_Pago as [Estado]
+		,v.Monto_total as [Total Venta]
+	from tb_Ventas V
+	INNER JOIN tb_Cliente C ON V.Cliente_Id = C.Id_Cliente
+	where CONVERT ( DATE, Fecha_Venta, 103) BETWEEN CONVERT(date, @inicio, 103) AND CONVERT(date, @fin, 103)
+	order by v.Fecha_Venta desc
+end
+else
+begin
+	select TOP(15)
+		V.Id_Venta 
+		,V.Fecha_Venta
+		--,CONVERT(DATE, v.Fecha_Venta,103) as Fecha
+		,C.Nombre
+		,V.Folio
+		,V.Forma_Pago AS[Tipo Pago]
+		,V.Estado_Pago as [Estado]
+		,v.Monto_total as [Total Venta]
+	from tb_Ventas V
+	INNER JOIN tb_Cliente C ON V.Cliente_Id = C.Id_Cliente
+	where c.Nombre like '%'+@buscar+'%'
+	order by v.Fecha_Venta desc
+end
+GO
+/****** Object:  StoredProcedure [dbo].[sp_obtenerTipoPrecio]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2864,7 +3003,7 @@ ELSE
 		SELECT Precio_Mayoreo FROM tb_Producto WHERE Id_Producto = @id
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ProductoMasVendidos]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ProductoMasVendidos]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2879,7 +3018,54 @@ from tb_DetalleVenta dv
 GROUP BY dv.Descripcion
 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_ReporteInventario]    Script Date: 08/02/2021 08:31:26 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[sp_ReimprimirTicket]    Script Date: 06/03/2021 06:04:32 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE proc [dbo].[sp_ReimprimirTicket]
+ @idventa  int,
+ @letranumero varchar (max)
+ as
+
+ DECLARE @cantProductos int = (SELECT SUM(Cantidad) from tb_DetalleVenta  DV
+							    INNER JOIN  tb_Ventas V ON DV.Venta_Id = V.Id_Venta
+								WHERE DV.Venta_Id = @idventa)
+ SELECT 
+	DV.Descripcion AS Producto,
+	DV.Cantidad as Cant,
+	DV.Precio AS [Precio_Unit],
+	DV.Total_Pagar AS Importe,
+	DV.Unidad_Medida,
+	E.Empresa,
+	E.Logo,
+	T.*,
+	CONVERT(DATE,V.Fecha_Venta,102) AS Fecha,
+	V.Monto_total,
+	U.Nombre AS Usuario,
+	v.Tipo_Pago,
+	E.Moneda,
+	C.Nombre as Cliente,
+	@cantProductos as [Cantidad_Producto],
+	V.Comprobante, 
+	V.Comprobante,
+	V.Folio,
+	V.Estado_Pago,
+	V.Forma_Pago,
+	v.Vuelto,
+	v.Efectivo,
+	@letranumero as [LetraNumero]
+ FROM tb_DetalleVenta DV
+	INNER JOIN tb_Ventas V ON DV.Venta_Id = V.Id_Venta
+	INNER JOIN tb_Usuario U ON V.Usuario_Id = U.Id_Usuario
+	INNER JOIN tb_Cliente C ON V.Cliente_Id =  c.Id_Cliente
+	CROSS JOIN tb_Empresa E
+	CROSS JOIN tb_Ticket T
+WHERE DV.Venta_Id = @idventa AND V.Monto_total &gt; 0 and ProductoDevuelto &lt;&gt; 1
+ORDER BY DV.Precio DESC
+
+GO
+/****** Object:  StoredProcedure [dbo].[sp_ReporteInventario]    Script Date: 06/03/2021 06:04:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

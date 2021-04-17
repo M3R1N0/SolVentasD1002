@@ -131,6 +131,9 @@
   <metadata name="menuStrip8.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="menuStrip8.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="btnVentaPendiente.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAEa9JREFUeF7t
@@ -239,6 +242,12 @@
   <metadata name="Edit.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="Delete.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Edit.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="Edit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAA51JREFUWEfV
@@ -279,6 +288,9 @@
   <metadata name="menuStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>247, 17</value>
   </metadata>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 17</value>
+  </metadata>
   <data name="btnCancelar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAUNJREFUWEft
@@ -290,9 +302,6 @@
         GTMwi9J2/OuhtKbmbwiCX26LAr0fcUDqAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>132, 17</value>
-  </metadata>
   <data name="btnGuardar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAZdJREFUWEdj
@@ -303,6 +312,20 @@
         c8DsFACqVknFQL2ewCp5EZp5YEy8A9pfREKlyQJ8fY+FMMwEYqIdQGxBhAtINTzjQjcThEcdMOqAUQfg
         dwCwbyDU8WIdiE1FBzwD15Idz++B+FgdAJSANcunCXY8uwBiU9EBH4HVcweQfgPiCzW85YMqQQBsHROB
         jucvgPRdCjDYx2j4MNRKNADtmgHbd2m0wsAQjRXvfsENtXHEAwYGACAWnBpFpPqjAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnCodigoCliente.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAHSSURBVFhH7Za9S8NAGMavQnKXflAEq7VNk1pEdwvq4qAIIjoJujn4J7g4ODj5fygILoKruomi
+        DoKDi6CL4KYIgiIW68eT5hXay/Ujsd3yg2e597nnfXu5hrCQkJBGcJ4ZFiI3IYQ1bRjZ8Xi8r5dKnaSQ
+        RNNNzs17znM/kr503TzTdWsJxojrbyNoMAM9VTVspJNYLJ+mrf8Hx7yM0LLUpJkehBiwKSI4hmGOIexD
+        Cm9R5hVjeUFRgehC0LU3uHXpem6dsvzDuTWvCoVKuHAb7hFb3Zpmj2BtX/JUhEv7zNggp0h/YPptReg3
+        jnaWLDXAv6XwO0OcYs+eXzk3/1YRtkv9FBSS8LzIe4LKGeBVXsQAK9RNCTxH8p6gcsLe5MUWBjiU9wSV
+        8hHgTbdDvRS0+RHUuYRlIbKT1LGaiP9L6PUi4+KvjhNo/Dc0jEyOsaKmaVYRaweSpyI0r/s3VPlxwotU
+        dsHCucroQ6sU5UHh9Q6gaeYoCu+ysRXh1182ehWr9ngGcMBxL6BYks1NdBeN2v0UoaT2Prhyvi2oXIsQ
+        9hRCH6Um9XScSGR6aGs7ScVxGmuY9EbR9BPCO8CeI3Nn4Tw7hGdc9UmWTlEpJCSkTTD2CwTpeSJyHyic
+        AAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

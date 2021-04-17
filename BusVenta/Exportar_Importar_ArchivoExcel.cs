@@ -1,7 +1,11 @@
-﻿using System;
+﻿using DatVentas;
+using EntVenta;
+using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -107,6 +111,94 @@ namespace BusVenta
             {
                 return data;
                 throw ex;
+            }
+        }
+
+        public static void ExportarProducto()
+        {
+            try
+            {
+                SaveFileDialog saveFile = new SaveFileDialog();
+                string fileName = "Productos";
+                string saveFilter = "CSV(*.xlsx) || *.xlsx";
+                saveFile.FileName = fileName + ".xlsx";
+                bool fileError = false;
+                int row = 2;
+
+                if (saveFile.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(saveFile.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(saveFile.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("No fué posible guardar los Datos : " + ex.Message);
+                        }
+                    }
+
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            List<Producto> lst = DatProducto.ObtenerProductos();
+
+                            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                            using (ExcelPackage excel = new ExcelPackage())
+                            {
+                                var workSheet = excel.Workbook.Worksheets.Add("Productos");
+
+                                workSheet.Cells["A1"].Value = "DESCRIPCION";
+                                workSheet.Cells["B1"].Value = "PRESENTACION";
+                                workSheet.Cells["C1"].Value = "PRECIO MAYOREO";
+                                workSheet.Cells["D1"].Value = "PRECIO MEDIO MAYOREO";
+                                workSheet.Cells["E1"].Value = "A PARTIR DE";
+                                workSheet.Cells["F1"].Value = "PRECIO MAYOREO";
+
+                                workSheet.Cells["A1:F1"].Style.Font.Bold = true;
+                                workSheet.Column(1).Width = 50;
+                                workSheet.Cells["B1:F1"].AutoFitColumns();
+                                workSheet.Cells["A1:F1"].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                                workSheet.Cells["A1:F1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(24, 169, 190));
+
+                                foreach (Producto p in lst)
+                                {
+                                    workSheet.Cells["C" + row + ":F" + row].Style.Numberformat.Format = "#,##0.00";
+
+                                    workSheet.Cells["A" + row].Value = p.Descripcion;
+                                    workSheet.Cells["B" + row].Value = p.Presentacion;
+                                    workSheet.Cells["C" + row].Value = p.precioMenudeo;
+                                    workSheet.Cells["D" + row].Value = p.precioMMayoreo;
+                                    workSheet.Cells["E" + row].Value = p.APartirDe;
+                                    workSheet.Cells["F" + row].Value = p.precioMayoreo;
+
+                                    row ++;
+                                }
+
+                                FileStream fileStream = File.Create( saveFile.FileName);
+                                excel.SaveAs(fileStream);
+                                fileStream.Close();
+                            }
+
+                            MessageBox.Show("Datos exportados correctamente", "Operación Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error : " + ex.Message);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No hay datos para exportar");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error ");
             }
         }
     }

@@ -159,13 +159,13 @@ namespace DatVentas
             }
         }
 
-        public void EditarDevolucion_DetalleVenta(int idVenta)
+        public void EditarDevolucion_DetalleVenta(DetalleVenta dv, int devuelto)
         {
             try
             {
                 using (SqlConnection con = new SqlConnection(MasterConnection.connection))
                 {
-                    SqlCommand cmd = new SqlCommand($"UPDATE tb_DetalleVenta SET ProductoDevuelto = 1 where Id_DetalleVenta ={idVenta}", con);
+                    SqlCommand cmd = new SqlCommand($"UPDATE tb_DetalleVenta SET Cantidad ={dv.Cantidad}, Total_Pagar={dv.TotalPago}, ProductoDevuelto = {devuelto} where Id_DetalleVenta ={dv.Id}", con);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -215,5 +215,37 @@ namespace DatVentas
                 }
             }
         }
+
+        public static DetalleVenta Obtener_DetalleVenta(int idDetalleVenta)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    DetalleVenta v = new DetalleVenta();
+
+                    SqlCommand cmd = new SqlCommand($"SELECT * FROM tb_DetalleVenta WHERE Id_DetalleVenta={idDetalleVenta}", con);
+                    con.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+
+                        v.Id = Convert.ToInt32(dr["Id_DetalleVenta"]);
+                        v.IdVenta = Convert.ToInt32(dr["Venta_Id"]);
+                        v.Cantidad = Convert.ToDecimal(dr["Cantidad"]);
+                        v.Precio = Convert.ToDecimal(dr["Precio"]);
+                        v.TotalPago = Convert.ToDecimal(dr["Total_Pagar"]);
+                    }
+                    con.Close();
+                    return v;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

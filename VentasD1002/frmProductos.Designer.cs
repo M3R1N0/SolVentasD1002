@@ -36,13 +36,15 @@
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inventario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Presentacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio_menudeo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio_mmayoreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.APartirDe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio_mayoreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Caducidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inventario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
@@ -60,9 +62,10 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnExportarExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gdvProductos)).BeginInit();
             this.menuStrip3.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -91,13 +94,15 @@
             this.Eliminar,
             this.Codigo,
             this.Descripcion,
-            this.Inventario,
-            this.Stock,
-            this.Stock_minimo,
             this.Presentacion,
             this.Precio_menudeo,
             this.Precio_mmayoreo,
+            this.APartirDe,
             this.Precio_mayoreo,
+            this.Caducidad,
+            this.Inventario,
+            this.Stock,
+            this.Stock_minimo,
             this.Venta});
             this.gdvProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gdvProductos.GridColor = System.Drawing.SystemColors.ButtonShadow;
@@ -160,30 +165,6 @@
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.Width = 450;
             // 
-            // Inventario
-            // 
-            this.Inventario.DataPropertyName = "usaInventario";
-            this.Inventario.FillWeight = 64.12955F;
-            this.Inventario.HeaderText = "Inventario";
-            this.Inventario.Name = "Inventario";
-            this.Inventario.Width = 81;
-            // 
-            // Stock
-            // 
-            this.Stock.DataPropertyName = "stock";
-            this.Stock.FillWeight = 64.12955F;
-            this.Stock.HeaderText = "Stock";
-            this.Stock.Name = "Stock";
-            this.Stock.Width = 80;
-            // 
-            // Stock_minimo
-            // 
-            this.Stock_minimo.DataPropertyName = "stockMinimo";
-            this.Stock_minimo.FillWeight = 64.12955F;
-            this.Stock_minimo.HeaderText = "Stock Min.";
-            this.Stock_minimo.Name = "Stock_minimo";
-            this.Stock_minimo.Width = 80;
-            // 
             // Presentacion
             // 
             this.Presentacion.DataPropertyName = "Presentacion";
@@ -207,6 +188,13 @@
             this.Precio_mmayoreo.Name = "Precio_mmayoreo";
             this.Precio_mmayoreo.Width = 81;
             // 
+            // APartirDe
+            // 
+            this.APartirDe.DataPropertyName = "APartirDe";
+            this.APartirDe.HeaderText = "A Partir De";
+            this.APartirDe.Name = "APartirDe";
+            this.APartirDe.ReadOnly = true;
+            // 
             // Precio_mayoreo
             // 
             this.Precio_mayoreo.DataPropertyName = "precioMayoreo";
@@ -214,6 +202,37 @@
             this.Precio_mayoreo.HeaderText = "$ Mayoreo";
             this.Precio_mayoreo.Name = "Precio_mayoreo";
             this.Precio_mayoreo.Width = 80;
+            // 
+            // Caducidad
+            // 
+            this.Caducidad.DataPropertyName = "Caducidad";
+            this.Caducidad.HeaderText = "Caducidad";
+            this.Caducidad.Name = "Caducidad";
+            this.Caducidad.ReadOnly = true;
+            // 
+            // Inventario
+            // 
+            this.Inventario.DataPropertyName = "usaInventario";
+            this.Inventario.FillWeight = 64.12955F;
+            this.Inventario.HeaderText = "Inventario";
+            this.Inventario.Name = "Inventario";
+            this.Inventario.Width = 81;
+            // 
+            // Stock
+            // 
+            this.Stock.DataPropertyName = "stock";
+            this.Stock.FillWeight = 64.12955F;
+            this.Stock.HeaderText = "Stock";
+            this.Stock.Name = "Stock";
+            this.Stock.Width = 80;
+            // 
+            // Stock_minimo
+            // 
+            this.Stock_minimo.DataPropertyName = "stockMinimo";
+            this.Stock_minimo.FillWeight = 64.12955F;
+            this.Stock_minimo.HeaderText = "Stock Min.";
+            this.Stock_minimo.Name = "Stock_minimo";
+            this.Stock_minimo.Width = 80;
             // 
             // Venta
             // 
@@ -242,7 +261,7 @@
             this.menuStrip3.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
-            this.menuStrip3.Location = new System.Drawing.Point(0, 12);
+            this.menuStrip3.Location = new System.Drawing.Point(177, 12);
             this.menuStrip3.Name = "menuStrip3";
             this.menuStrip3.Size = new System.Drawing.Size(169, 37);
             this.menuStrip3.TabIndex = 382;
@@ -311,11 +330,12 @@
             // 
             // panel12
             // 
+            this.panel12.Controls.Add(this.btnExportarExcel);
             this.panel12.Controls.Add(this.menuStrip3);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel12.Location = new System.Drawing.Point(892, 0);
+            this.panel12.Location = new System.Drawing.Point(712, 0);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(178, 62);
+            this.panel12.Size = new System.Drawing.Size(358, 62);
             this.panel12.TabIndex = 384;
             // 
             // pictureBox5
@@ -410,6 +430,16 @@
             this.label1.Text = "Listado de productos generados el código de manera automática";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(752, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(318, 100);
+            this.panel2.TabIndex = 0;
+            // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.HeaderText = "";
@@ -430,15 +460,28 @@
             this.dataGridViewImageColumn2.ToolTipText = "Eliminar producto";
             this.dataGridViewImageColumn2.Width = 10;
             // 
-            // panel2
+            // btnExportarExcel
             // 
-            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(752, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(318, 100);
-            this.panel2.TabIndex = 0;
+            this.btnExportarExcel.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnExportarExcel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExportarExcel.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.btnExportarExcel.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnExportarExcel.FlatAppearance.BorderSize = 0;
+            this.btnExportarExcel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExportarExcel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarExcel.ForeColor = System.Drawing.Color.Snow;
+            this.btnExportarExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExportarExcel.Image")));
+            this.btnExportarExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportarExcel.Location = new System.Drawing.Point(23, 13);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(132, 36);
+            this.btnExportarExcel.TabIndex = 383;
+            this.btnExportarExcel.Text = "Exportar";
+            this.btnExportarExcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExportarExcel.UseVisualStyleBackColor = false;
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
             // 
             // frmProductos
             // 
@@ -480,18 +523,6 @@
         private System.Windows.Forms.MenuStrip menuStrip3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.DataGridViewImageColumn Editar;
-        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Inventario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stock_minimo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Presentacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio_menudeo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio_mmayoreo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio_mayoreo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Venta;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Panel panel1;
@@ -506,5 +537,20 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Presentacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio_menudeo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio_mmayoreo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn APartirDe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio_mayoreo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Caducidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inventario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stock_minimo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Venta;
+        private System.Windows.Forms.Button btnExportarExcel;
     }
 }

@@ -33,16 +33,14 @@ namespace VentasD1002
         {
             ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
             SerialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
-            IdCaja = new BusBox().showBoxBySerial(SerialPC).Id;
+            
         }
 
         private void btnConectar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtIP.Text))
+            if (!string.IsNullOrEmpty(txtIP.Text))
             {
-             
-
-
+                ConectarServidor_Manual();
             }
             else
             {
@@ -57,27 +55,29 @@ namespace VentasD1002
             {
                 SqlConnection conn = new SqlConnection(strConexion);
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT Id_Usuario from tb_Usuario", conn);
+                SqlCommand cmd = new SqlCommand("SELECT TOP (1) Id_Usuario from tb_Usuario", conn);
                 id = Convert.ToInt32(cmd.ExecuteScalar());
                 indicador = "CONECTADO";
-                conn.Close();
+                //conn.Close();
             }
             catch (Exception ex)
             {
                 indicador = "NO CONECTADO";
+                MessageBox.Show("Error al comprobar la conexion Remota: "+ex.Message);
             }
         }
 
 
         private void ConectarServidor_Manual()
         {
-            string Ip = txtIP.Text;
-            strConexion = "Data Source=" + Ip + ";Initial Catalog=DBVENTAS; Integrated Security=False; User Id=SoftVentas; Password=123";
+            string Ip = txtIP.Text.Trim();
+            strConexion = "Data Source=" + Ip + ";Initial Catalog=DBVENTAS;Integrated Security=False; User Id=SoftVentas; Password=Admin123";
 
             ComprobarConexion();
             if (indicador.Equals("CONECTADO"))
             {
                frmEncriptar.SaveToXML(aes.Encrypt(strConexion, Desencryptation.appPwdUnique, int.Parse("256")));
+                ObtenerIdCaja();
                 if (IdCaja > 0)
                 {
                     MessageBox.Show("Conexión establecida!, vuelva a abrir el sistema", "ÉXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -85,14 +85,32 @@ namespace VentasD1002
                 }
                 else
                 {
-                    frmCajaRemota.strConexion = strConexion;
-                    Dispose();
+                    this.Dispose();
+
                     frmCajaRemota cajaRemota = new frmCajaRemota();
-                    cajaRemota.Show();
+                    frmCajaRemota.strConexion = strConexion;
+                    cajaRemota.ShowDialog();
                 }
             }
         }
 
+
+        private void ObtenerIdCaja()
+        {
+            try
+            {
+                //IdCaja = new BusBox().showBoxBySerial(SerialPC).Id;
+                SqlConnection conn = new SqlConnection(strConexion);
+                conn.Open();
+                SqlCommand command = new SqlCommand($"SELECT [Id_Caja] from tb_Caja WHERE Serial_PC='{SerialPC}'", conn);
+                IdCaja = Convert.ToInt32(command.ExecuteScalar());
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener la caja : "+ex.Message, "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         public static void SaveToXML(object dbcnString)
         {

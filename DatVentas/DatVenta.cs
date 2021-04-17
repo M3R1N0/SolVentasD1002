@@ -37,6 +37,7 @@ namespace DatVentas
                     sc.Parameters.AddWithValue("@referenciatarjeta", v.ReferenciaTarjeta);
                     sc.Parameters.AddWithValue("@vuelto", v.Vuelto);
                     sc.Parameters.AddWithValue("@efectivo", v.Efectivo);
+                    sc.Parameters.AddWithValue("@comentarios", v.Comentarios);
 
                     resultado = sc.ExecuteNonQuery();
                     conn.Close();
@@ -183,13 +184,13 @@ namespace DatVentas
                     {
                         _query = @"SELECT v.*, c.Nombre  FROM tb_Ventas v 
                                    INNER JOIN tb_Cliente c on v.Cliente_Id = c.Id_Cliente
-                                   WHERE Estado_Pago ='PENDIENTE'";
+                                   WHERE Estado_Pago ='PENDIENTE' AND Accion<>'VENTA CANCELADA'";
                     }
                     else
                     {
                         _query = @"SELECT v.*, c.Nombre  FROM tb_Ventas v 
                                    INNER JOIN tb_Cliente c on v.Cliente_Id = c.Id_Cliente
-                                   WHERE Estado_Pago ='PENDIENTE' AND v.Folio + v.Comprobante + c.Nombre like '%'+'"+buscar+"'+'%'";
+                                   WHERE Estado_Pago ='PENDIENTE' AND Accion<>'VENTA CANCELADA' AND v.Folio + v.Comprobante + c.Nombre like '%'+'" + buscar+"'+'%'";
                     }
                     SqlDataAdapter da = new SqlDataAdapter(_query, con);
                     da.Fill(dt);
@@ -238,6 +239,52 @@ namespace DatVentas
                     da.Fill(dt);
 
                     return dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public ParametrosReporte ObtenerDatos_ComrpobanteCredito(int idventa, decimal abonado)
+        {
+            try
+            {
+                ParametrosReporte obj = null;
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand($"sp_Comprobante_PagoCredito", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idVenta", idventa);
+                    cmd.Parameters.AddWithValue("@abono", abonado);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        obj = new ParametrosReporte();
+                        obj.Ticket = reader.GetString(0);
+                        obj.Folio = reader.GetString(1);
+                        obj.EstadoPago = reader.GetString(2);
+                        obj.MontoTotal = reader.GetDecimal(3);
+                        obj.Saldo = reader.GetDecimal(4);
+                        obj.FechaVenta = reader.GetDateTime(5);
+                        obj.Cajero = reader.GetString(6);
+                        obj.Cliente = reader.GetString(7);
+                        obj.DireccionCliente = reader.GetString(8);
+                        obj.NombreEmpresa = reader.GetString(9);
+                        obj.LogoEmpresa = (byte[])(reader["Logo"]);
+                        obj.Agradecimiento = reader.GetString(11);
+                        obj.Anuncio = reader.GetString(12);
+                        obj.Direccion = reader.GetString(13);
+                        obj.PaginaWeb = reader.GetString(14);
+                        obj.Provincia = reader.GetString(15);
+                        obj.Abonado = reader.GetDecimal(16);
+                    }
+                    con.Close();
+
+                    return obj;
                 }
             }
             catch (Exception ex)
@@ -373,7 +420,7 @@ namespace DatVentas
             {
                 using (SqlConnection con = new SqlConnection(MasterConnection.connection))
                 {
-                    Venta v = new Venta(); ;
+                    Venta v = new Venta(); 
                     
                     SqlCommand cmd = new SqlCommand($"SELECT * FROM tb_Ventas WHERE Id_Venta={idVenta}", con);
                     con.Open();
@@ -405,7 +452,7 @@ namespace DatVentas
             {
                 using (SqlConnection con = new SqlConnection(MasterConnection.connection))
                 {
-                    SqlCommand cmd = new SqlCommand($"UPDATE tb_Ventas SET Monto_total={v.MontoTotal}, Saldo={v.Saldo}, Vuelto={v.Vuelto},Estado_Pago='{v.EstadoPago}' WHERE Id_Venta={v.Id}", con);
+                    SqlCommand cmd = new SqlCommand($"UPDATE tb_Ventas SET Monto_total={v.MontoTotal}, Saldo={v.Saldo}, Vuelto={v.Vuelto},Estado_Pago='{v.EstadoPago}', Accion='{v.Accion}' WHERE Id_Venta={v.Id}", con);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -470,7 +517,9 @@ namespace DatVentas
                         obj.Efectivo = reader.GetDecimal(16);
                         obj.Id = reader.GetInt32(17);
                         obj.IdDetalleVenta = reader.GetInt32(18);
-
+                        obj.Ruc = reader.GetString(19);
+                        obj.Comentarios = reader.GetString(20);
+                        obj.EstadoVenta = reader.GetString(21);
                     }
                     conn.Close();
 
@@ -509,6 +558,136 @@ namespace DatVentas
             }
         }
 
+        #region BONIFICACION 
+
+        public static ParametrosReporte Obtnener_DatosBonificacion(int idVenta)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    ParametrosReporte obj = new ParametrosReporte();
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("[SP_ObtenerDatos_Bonificacion]", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idventa", idVenta);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        obj.Id = reader.GetInt32(0);
+                        obj.FechaVenta = reader.GetDateTime(1);
+                        obj.Folio = reader.GetString(2);
+                        obj.MontoTotal = reader.GetDecimal(3);
+                        obj.FormaPago = reader.GetString(4);
+                        obj.EstadoPago = reader.GetString(5);
+                        obj.Saldo = reader.GetDecimal(6);
+                        obj.Cambio = reader.GetDecimal(7);
+                        obj.Efectivo = reader.GetDecimal(8);
+                        obj.IdDetalleVenta = reader.GetInt32(9);
+                        obj.DireccionCliente = reader.GetString(10);
+                        obj.Cliente = reader.GetString(11);
+                        obj.Cajero = reader.GetString(12);
+                        obj.NombreEmpresa = reader.GetString(14);
+                        obj.Agradecimiento = reader.GetString(15);
+                        obj.Anuncio = reader.GetString(16);
+                        obj.Direccion = reader.GetString(17);
+                        obj.Provincia = reader.GetString(18);
+                    }
+                    conn.Close();
+
+                    return obj;
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    throw ex;
+                }
+            }
+        }
+
+        public static void AgregarBonificacion(Venta v)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("SP_AgregarBonificacion", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idcliente", v.IdCliente);
+                    cmd.Parameters.AddWithValue("@idventa", v.Id);
+                    cmd.Parameters.AddWithValue("@idusuario", v.IdUsuario);
+                    cmd.Parameters.AddWithValue("@idcaja", v.IdCaja);
+                    cmd.Parameters.AddWithValue("@bonificacion", v.Vuelto);
+                    cmd.Parameters.AddWithValue("@detalle", v.Accion);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public static ParametrosReporte ObtenerBonificacion_PorUsuario(int idusuario, int idCaja)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    ParametrosReporte obj = null;
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("[sp_ObtenerBonificacionPorUsuario]", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idusuario", idusuario);
+                    cmd.Parameters.AddWithValue("@idcaja", idCaja);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        obj = new ParametrosReporte();
+                        obj.TotalProducto = reader.GetInt32(0);
+                        obj.Bonificacion = reader.GetDecimal(1);
+                    }
+                    conn.Close();
+
+                    return obj;
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    throw ex;
+                }
+            }
+        }
+
+        public static DataTable ListarBonificaiones(DateTime inicio, DateTime fin, string buscar)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+                {
+                    DataTable dt = new DataTable();
+
+                    SqlDataAdapter da = new SqlDataAdapter("sp_ObtenerDatosBonificaciones", conn);
+                    da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    da.SelectCommand.Parameters.AddWithValue("@inicio", inicio);
+                    da.SelectCommand.Parameters.AddWithValue("@fin", fin);
+                    da.SelectCommand.Parameters.AddWithValue("@buscar", buscar);
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        #endregion
     }
 
 }

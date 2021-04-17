@@ -40,6 +40,9 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlProcesar = new System.Windows.Forms.Panel();
+            this.txtCantidadDevuelto = new System.Windows.Forms.TextBox();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -68,6 +71,7 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.btnControl = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnDevolverTodo = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -202,12 +206,15 @@
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.Location = new System.Drawing.Point(666, 187);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(489, 395);
+            this.panel3.Size = new System.Drawing.Size(489, 497);
             this.panel3.TabIndex = 2;
             // 
             // pnlProcesar
             // 
             this.pnlProcesar.BackColor = System.Drawing.Color.White;
+            this.pnlProcesar.Controls.Add(this.txtCantidadDevuelto);
+            this.pnlProcesar.Controls.Add(this.panel11);
+            this.pnlProcesar.Controls.Add(this.label12);
             this.pnlProcesar.Controls.Add(this.button2);
             this.pnlProcesar.Controls.Add(this.button1);
             this.pnlProcesar.Controls.Add(this.pictureBox2);
@@ -218,8 +225,37 @@
             this.pnlProcesar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlProcesar.Location = new System.Drawing.Point(0, 44);
             this.pnlProcesar.Name = "pnlProcesar";
-            this.pnlProcesar.Size = new System.Drawing.Size(489, 268);
+            this.pnlProcesar.Size = new System.Drawing.Size(489, 370);
             this.pnlProcesar.TabIndex = 15;
+            // 
+            // txtCantidadDevuelto
+            // 
+            this.txtCantidadDevuelto.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCantidadDevuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidadDevuelto.Location = new System.Drawing.Point(125, 38);
+            this.txtCantidadDevuelto.Name = "txtCantidadDevuelto";
+            this.txtCantidadDevuelto.Size = new System.Drawing.Size(294, 76);
+            this.txtCantidadDevuelto.TabIndex = 16;
+            this.txtCantidadDevuelto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCantidadDevuelto.TextChanged += new System.EventHandler(this.txtCantidadDevuelto_TextChanged);
+            this.txtCantidadDevuelto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidadDevuelto_KeyPress);
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.DarkOrange;
+            this.panel11.Location = new System.Drawing.Point(125, 123);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(294, 10);
+            this.panel11.TabIndex = 15;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(129, 4);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(272, 31);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "Cantidad Devuelto :";
             // 
             // button2
             // 
@@ -235,7 +271,7 @@
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(114, 184);
+            this.button2.Location = new System.Drawing.Point(130, 310);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(148, 38);
             this.button2.TabIndex = 12;
@@ -257,7 +293,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(268, 184);
+            this.button1.Location = new System.Drawing.Point(284, 310);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(148, 38);
             this.button1.TabIndex = 11;
@@ -269,7 +305,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(6, 48);
+            this.pictureBox2.Location = new System.Drawing.Point(19, 197);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(102, 94);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -279,7 +315,7 @@
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.DarkOrange;
-            this.panel12.Location = new System.Drawing.Point(122, 137);
+            this.panel12.Location = new System.Drawing.Point(135, 286);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(294, 10);
             this.panel12.TabIndex = 2;
@@ -288,7 +324,7 @@
             // 
             this.lblTotalDevuelto.AutoSize = true;
             this.lblTotalDevuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalDevuelto.Location = new System.Drawing.Point(125, 53);
+            this.lblTotalDevuelto.Location = new System.Drawing.Point(138, 202);
             this.lblTotalDevuelto.Name = "lblTotalDevuelto";
             this.lblTotalDevuelto.Size = new System.Drawing.Size(167, 76);
             this.lblTotalDevuelto.TabIndex = 1;
@@ -298,7 +334,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(122, 14);
+            this.label11.Location = new System.Drawing.Point(135, 163);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(232, 31);
             this.label11.TabIndex = 0;
@@ -308,7 +344,7 @@
             // 
             this.panel8.BackColor = System.Drawing.SystemColors.Control;
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(0, 312);
+            this.panel8.Location = new System.Drawing.Point(0, 414);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(489, 83);
             this.panel8.TabIndex = 14;
@@ -446,14 +482,14 @@
             this.gdvResultado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gdvResultado.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.gdvResultado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gdvResultado.Location = new System.Drawing.Point(122, 157);
+            this.gdvResultado.Location = new System.Drawing.Point(119, 158);
             this.gdvResultado.MultiSelect = false;
             this.gdvResultado.Name = "gdvResultado";
             this.gdvResultado.ReadOnly = true;
             this.gdvResultado.RowHeadersVisible = false;
             this.gdvResultado.RowTemplate.ReadOnly = true;
             this.gdvResultado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvResultado.Size = new System.Drawing.Size(701, 382);
+            this.gdvResultado.Size = new System.Drawing.Size(701, 377);
             this.gdvResultado.TabIndex = 7;
             this.gdvResultado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvResultado_CellClick);
             // 
@@ -473,7 +509,7 @@
             this.gdvDatos.Name = "gdvDatos";
             this.gdvDatos.RowHeadersVisible = false;
             this.gdvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvDatos.Size = new System.Drawing.Size(547, 247);
+            this.gdvDatos.Size = new System.Drawing.Size(547, 349);
             this.gdvDatos.TabIndex = 8;
             // 
             // Cancelar
@@ -533,12 +569,36 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.btnDevolverTodo);
             this.panel5.Controls.Add(this.label10);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 499);
+            this.panel5.Location = new System.Drawing.Point(0, 601);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(666, 83);
             this.panel5.TabIndex = 10;
+            // 
+            // btnDevolverTodo
+            // 
+            this.btnDevolverTodo.BackColor = System.Drawing.Color.Orange;
+            this.btnDevolverTodo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDevolverTodo.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.btnDevolverTodo.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDevolverTodo.FlatAppearance.BorderSize = 0;
+            this.btnDevolverTodo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnDevolverTodo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnDevolverTodo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDevolverTodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDevolverTodo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnDevolverTodo.Image = ((System.Drawing.Image)(resources.GetObject("btnDevolverTodo.Image")));
+            this.btnDevolverTodo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDevolverTodo.Location = new System.Drawing.Point(24, 33);
+            this.btnDevolverTodo.Name = "btnDevolverTodo";
+            this.btnDevolverTodo.Size = new System.Drawing.Size(205, 38);
+            this.btnDevolverTodo.TabIndex = 13;
+            this.btnDevolverTodo.Text = "Devolución total";
+            this.btnDevolverTodo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDevolverTodo.UseVisualStyleBackColor = false;
+            this.btnDevolverTodo.Click += new System.EventHandler(this.btnDevolverTodo_Click);
             // 
             // label10
             // 
@@ -556,7 +616,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel6.Location = new System.Drawing.Point(0, 252);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(119, 247);
+            this.panel6.Size = new System.Drawing.Size(119, 349);
             this.panel6.TabIndex = 10;
             // 
             // panel7
@@ -564,14 +624,14 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel7.Location = new System.Drawing.Point(656, 252);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(10, 247);
+            this.panel7.Size = new System.Drawing.Size(10, 349);
             this.panel7.TabIndex = 11;
             // 
             // frmDevoluciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1155, 582);
+            this.ClientSize = new System.Drawing.Size(1155, 684);
             this.Controls.Add(this.gdvResultado);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.gdvDatos);
@@ -651,5 +711,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private Telerik.ReportViewer.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.TextBox txtCantidadDevuelto;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnDevolverTodo;
     }
 }

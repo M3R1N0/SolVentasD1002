@@ -64,11 +64,22 @@
       <DependentUpon>frmInventario.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ReportTicket.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReportTicket.Designer.cs">
       <DependentUpon>ReportTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptComprobanteBonificacion.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptComprobanteBonificacion.Designer.cs">
+      <DependentUpon>rptComprobanteBonificacion.cs</DependentUpon>
     </Compile>
     <Compile Include="rptComprobanteAbono.cs">
       <SubType>Component</SubType>
@@ -118,8 +129,15 @@
       <DependentUpon>frmInventario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportTicket.resx">
       <DependentUpon>ReportTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptComprobanteBonificacion.resx">
+      <DependentUpon>rptComprobanteBonificacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rptComprobanteAbono.resx">
       <DependentUpon>rptComprobanteAbono.cs</DependentUpon>

@@ -30,10 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlVentas = new System.Windows.Forms.Panel();
             this.pnlCobrar = new System.Windows.Forms.Panel();
             this.panel31 = new System.Windows.Forms.Panel();
+            this.PNLCREDITOCLIENTE = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.LBLNOMBRECLIENTE = new DevExpress.XtraEditors.LabelControl();
+            this.LBLCOMUNIDAD = new DevExpress.XtraEditors.LabelControl();
+            this.TXTCREDITO = new System.Windows.Forms.TextBox();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panel36 = new System.Windows.Forms.Panel();
             this.panel37 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,9 +73,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.pbCerrarPanelCobrar = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.RbtnMod1 = new System.Windows.Forms.RadioButton();
-            this.RbtnMod2 = new System.Windows.Forms.RadioButton();
             this.panel33 = new System.Windows.Forms.Panel();
             this.label21 = new System.Windows.Forms.Label();
             this.lblPagoTotal = new System.Windows.Forms.Label();
@@ -140,6 +146,7 @@
             this.TGuardarSinImprimir = new System.Windows.Forms.ToolStripMenuItem();
             this.imprimirTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlVentasDevoluciones = new System.Windows.Forms.Panel();
+            this.btnBonificaiones = new System.Windows.Forms.Button();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
@@ -168,9 +175,15 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrHora = new System.Windows.Forms.Timer(this.components);
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.LBLCREDITOAUTORIZADO = new DevExpress.XtraEditors.LabelControl();
+            this.LBLSALDOLIQUIDAR = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.pnlVentas.SuspendLayout();
             this.pnlCobrar.SuspendLayout();
             this.panel31.SuspendLayout();
+            this.PNLCREDITOCLIENTE.SuspendLayout();
             this.panel36.SuspendLayout();
             this.panel37.SuspendLayout();
             this.MenuStrip15.SuspendLayout();
@@ -178,7 +191,6 @@
             this.panel32.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCerrarPanelCobrar)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel33.SuspendLayout();
             this.pnlCambioPrecios.SuspendLayout();
             this.panel26.SuspendLayout();
@@ -207,6 +219,7 @@
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlVentas
@@ -244,6 +257,7 @@
             // panel31
             // 
             this.panel31.BackColor = System.Drawing.Color.Transparent;
+            this.panel31.Controls.Add(this.PNLCREDITOCLIENTE);
             this.panel31.Controls.Add(this.panel36);
             this.panel31.Controls.Add(this.panel32);
             this.panel31.Controls.Add(this.groupBox2);
@@ -251,6 +265,109 @@
             this.panel31.Name = "panel31";
             this.panel31.Size = new System.Drawing.Size(762, 399);
             this.panel31.TabIndex = 0;
+            // 
+            // PNLCREDITOCLIENTE
+            // 
+            this.PNLCREDITOCLIENTE.Controls.Add(this.button1);
+            this.PNLCREDITOCLIENTE.Controls.Add(this.LBLNOMBRECLIENTE);
+            this.PNLCREDITOCLIENTE.Controls.Add(this.LBLCOMUNIDAD);
+            this.PNLCREDITOCLIENTE.Controls.Add(this.TXTCREDITO);
+            this.PNLCREDITOCLIENTE.Controls.Add(this.panel10);
+            this.PNLCREDITOCLIENTE.Controls.Add(this.labelControl3);
+            this.PNLCREDITOCLIENTE.Controls.Add(this.labelControl2);
+            this.PNLCREDITOCLIENTE.Controls.Add(this.labelControl1);
+            this.PNLCREDITOCLIENTE.Location = new System.Drawing.Point(385, 41);
+            this.PNLCREDITOCLIENTE.Name = "PNLCREDITOCLIENTE";
+            this.PNLCREDITOCLIENTE.Size = new System.Drawing.Size(374, 357);
+            this.PNLCREDITOCLIENTE.TabIndex = 4;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.ForestGreen;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(97, 216);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(198, 34);
+            this.button1.TabIndex = 566;
+            this.button1.Text = "Actualizar crédito";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // LBLNOMBRECLIENTE
+            // 
+            this.LBLNOMBRECLIENTE.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.LBLNOMBRECLIENTE.Appearance.Options.UseFont = true;
+            this.LBLNOMBRECLIENTE.Location = new System.Drawing.Point(72, 15);
+            this.LBLNOMBRECLIENTE.Name = "LBLNOMBRECLIENTE";
+            this.LBLNOMBRECLIENTE.Size = new System.Drawing.Size(16, 16);
+            this.LBLNOMBRECLIENTE.TabIndex = 565;
+            this.LBLNOMBRECLIENTE.Text = "....";
+            // 
+            // LBLCOMUNIDAD
+            // 
+            this.LBLCOMUNIDAD.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.LBLCOMUNIDAD.Appearance.Options.UseFont = true;
+            this.LBLCOMUNIDAD.Location = new System.Drawing.Point(101, 50);
+            this.LBLCOMUNIDAD.Name = "LBLCOMUNIDAD";
+            this.LBLCOMUNIDAD.Size = new System.Drawing.Size(16, 16);
+            this.LBLCOMUNIDAD.TabIndex = 564;
+            this.LBLCOMUNIDAD.Text = "....";
+            // 
+            // TXTCREDITO
+            // 
+            this.TXTCREDITO.BackColor = System.Drawing.Color.White;
+            this.TXTCREDITO.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TXTCREDITO.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold);
+            this.TXTCREDITO.ForeColor = System.Drawing.Color.Black;
+            this.TXTCREDITO.Location = new System.Drawing.Point(97, 140);
+            this.TXTCREDITO.Name = "TXTCREDITO";
+            this.TXTCREDITO.Size = new System.Drawing.Size(177, 38);
+            this.TXTCREDITO.TabIndex = 563;
+            this.TXTCREDITO.Text = "0";
+            this.TXTCREDITO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TXTCREDITO.TextChanged += new System.EventHandler(this.TXTCREDITO_TextChanged);
+            this.TXTCREDITO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.SeaGreen;
+            this.panel10.ForeColor = System.Drawing.Color.White;
+            this.panel10.Location = new System.Drawing.Point(97, 186);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(180, 3);
+            this.panel10.TabIndex = 562;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Location = new System.Drawing.Point(57, 96);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(263, 19);
+            this.labelControl3.TabIndex = 2;
+            this.labelControl3.Text = "DIGITE EL CRÉDITO A ASIGNAR";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(12, 49);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(86, 16);
+            this.labelControl2.TabIndex = 1;
+            this.labelControl2.Text = "COMUNIDAD :";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(12, 14);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(58, 16);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "CLIENTE :";
             // 
             // panel36
             // 
@@ -592,47 +709,12 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cobro";
             // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel6.Controls.Add(this.RbtnMod1);
-            this.panel6.Controls.Add(this.RbtnMod2);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(3, 305);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(367, 32);
-            this.panel6.TabIndex = 566;
-            // 
-            // RbtnMod1
-            // 
-            this.RbtnMod1.AutoSize = true;
-            this.RbtnMod1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.RbtnMod1.Location = new System.Drawing.Point(20, 2);
-            this.RbtnMod1.Name = "RbtnMod1";
-            this.RbtnMod1.Size = new System.Drawing.Size(125, 24);
-            this.RbtnMod1.TabIndex = 564;
-            this.RbtnMod1.Text = "Ticket Estilo 1";
-            this.RbtnMod1.UseVisualStyleBackColor = true;
-            // 
-            // RbtnMod2
-            // 
-            this.RbtnMod2.AutoSize = true;
-            this.RbtnMod2.Checked = true;
-            this.RbtnMod2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.RbtnMod2.Location = new System.Drawing.Point(193, 5);
-            this.RbtnMod2.Name = "RbtnMod2";
-            this.RbtnMod2.Size = new System.Drawing.Size(125, 24);
-            this.RbtnMod2.TabIndex = 565;
-            this.RbtnMod2.TabStop = true;
-            this.RbtnMod2.Text = "Ticket Estilo 2";
-            this.RbtnMod2.UseVisualStyleBackColor = true;
-            // 
             // panel33
             // 
             this.panel33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel33.Controls.Add(this.label21);
             this.panel33.Controls.Add(this.lblPagoTotal);
-            this.panel33.Location = new System.Drawing.Point(12, 105);
+            this.panel33.Location = new System.Drawing.Point(12, 62);
             this.panel33.Name = "panel33";
             this.panel33.Size = new System.Drawing.Size(346, 55);
             this.panel33.TabIndex = 563;
@@ -662,10 +744,10 @@
             // rbtnAbonar
             // 
             this.rbtnAbonar.AutoSize = true;
-            this.rbtnAbonar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnAbonar.Location = new System.Drawing.Point(54, 23);
+            this.rbtnAbonar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnAbonar.Location = new System.Drawing.Point(5, 25);
             this.rbtnAbonar.Name = "rbtnAbonar";
-            this.rbtnAbonar.Size = new System.Drawing.Size(100, 29);
+            this.rbtnAbonar.Size = new System.Drawing.Size(85, 24);
             this.rbtnAbonar.TabIndex = 562;
             this.rbtnAbonar.Text = "Abonar";
             this.rbtnAbonar.UseVisualStyleBackColor = true;
@@ -676,7 +758,7 @@
             this.txtRecibi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtRecibi.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.txtRecibi.ForeColor = System.Drawing.Color.Black;
-            this.txtRecibi.Location = new System.Drawing.Point(178, 176);
+            this.txtRecibi.Location = new System.Drawing.Point(178, 133);
             this.txtRecibi.Name = "txtRecibi";
             this.txtRecibi.Size = new System.Drawing.Size(177, 28);
             this.txtRecibi.TabIndex = 561;
@@ -689,7 +771,7 @@
             // 
             this.panel35.BackColor = System.Drawing.Color.SeaGreen;
             this.panel35.ForeColor = System.Drawing.Color.White;
-            this.panel35.Location = new System.Drawing.Point(178, 209);
+            this.panel35.Location = new System.Drawing.Point(178, 166);
             this.panel35.Name = "panel35";
             this.panel35.Size = new System.Drawing.Size(180, 1);
             this.panel35.TabIndex = 560;
@@ -700,7 +782,7 @@
             this.txtCambio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.txtCambio.ForeColor = System.Drawing.Color.Black;
-            this.txtCambio.Location = new System.Drawing.Point(178, 231);
+            this.txtCambio.Location = new System.Drawing.Point(178, 188);
             this.txtCambio.Name = "txtCambio";
             this.txtCambio.ReadOnly = true;
             this.txtCambio.Size = new System.Drawing.Size(177, 28);
@@ -710,7 +792,7 @@
             // panel34
             // 
             this.panel34.BackColor = System.Drawing.Color.SeaGreen;
-            this.panel34.Location = new System.Drawing.Point(178, 264);
+            this.panel34.Location = new System.Drawing.Point(178, 221);
             this.panel34.Name = "panel34";
             this.panel34.Size = new System.Drawing.Size(180, 1);
             this.panel34.TabIndex = 558;
@@ -718,7 +800,7 @@
             // dtpFechaPago
             // 
             this.dtpFechaPago.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaPago.Location = new System.Drawing.Point(178, 58);
+            this.dtpFechaPago.Location = new System.Drawing.Point(229, 23);
             this.dtpFechaPago.Name = "dtpFechaPago";
             this.dtpFechaPago.Size = new System.Drawing.Size(132, 26);
             this.dtpFechaPago.TabIndex = 5;
@@ -727,7 +809,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(51, 61);
+            this.label24.Location = new System.Drawing.Point(110, 26);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(115, 20);
             this.label24.TabIndex = 4;
@@ -738,7 +820,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.Green;
-            this.label23.Location = new System.Drawing.Point(5, 235);
+            this.label23.Location = new System.Drawing.Point(5, 192);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(161, 39);
             this.label23.TabIndex = 3;
@@ -749,7 +831,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.Green;
-            this.label22.Location = new System.Drawing.Point(16, 176);
+            this.label22.Location = new System.Drawing.Point(16, 133);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(150, 39);
             this.label22.TabIndex = 2;
@@ -992,9 +1074,9 @@
             this.gdvClientes.Name = "gdvClientes";
             this.gdvClientes.ReadOnly = true;
             this.gdvClientes.RowHeadersVisible = false;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.ForestGreen;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Green;
-            this.gdvClientes.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.ForestGreen;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Green;
+            this.gdvClientes.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gdvClientes.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gdvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gdvClientes.Size = new System.Drawing.Size(292, 118);
@@ -1498,6 +1580,7 @@
             // pnlVentasDevoluciones
             // 
             this.pnlVentasDevoluciones.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlVentasDevoluciones.Controls.Add(this.btnBonificaiones);
             this.pnlVentasDevoluciones.Controls.Add(this.pictureBox7);
             this.pnlVentasDevoluciones.Controls.Add(this.lblNombre);
             this.pnlVentasDevoluciones.Controls.Add(this.lblHora);
@@ -1506,6 +1589,18 @@
             this.pnlVentasDevoluciones.Name = "pnlVentasDevoluciones";
             this.pnlVentasDevoluciones.Size = new System.Drawing.Size(1287, 45);
             this.pnlVentasDevoluciones.TabIndex = 8;
+            // 
+            // btnBonificaiones
+            // 
+            this.btnBonificaiones.FlatAppearance.BorderSize = 0;
+            this.btnBonificaiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBonificaiones.Location = new System.Drawing.Point(187, 0);
+            this.btnBonificaiones.Name = "btnBonificaiones";
+            this.btnBonificaiones.Size = new System.Drawing.Size(154, 45);
+            this.btnBonificaiones.TabIndex = 17;
+            this.btnBonificaiones.Text = "Bonificaciones realizadas";
+            this.btnBonificaiones.UseVisualStyleBackColor = true;
+            this.btnBonificaiones.Click += new System.EventHandler(this.btnBonificaiones_Click);
             // 
             // pictureBox7
             // 
@@ -1766,6 +1861,57 @@
             this.panel4.Size = new System.Drawing.Size(1287, 34);
             this.panel4.TabIndex = 615;
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.LBLCREDITOAUTORIZADO);
+            this.panel6.Controls.Add(this.LBLSALDOLIQUIDAR);
+            this.panel6.Controls.Add(this.labelControl6);
+            this.panel6.Controls.Add(this.labelControl7);
+            this.panel6.Location = new System.Drawing.Point(8, 234);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(347, 99);
+            this.panel6.TabIndex = 564;
+            // 
+            // LBLCREDITOAUTORIZADO
+            // 
+            this.LBLCREDITOAUTORIZADO.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.LBLCREDITOAUTORIZADO.Appearance.Options.UseFont = true;
+            this.LBLCREDITOAUTORIZADO.Location = new System.Drawing.Point(187, 14);
+            this.LBLCREDITOAUTORIZADO.Name = "LBLCREDITOAUTORIZADO";
+            this.LBLCREDITOAUTORIZADO.Size = new System.Drawing.Size(20, 19);
+            this.LBLCREDITOAUTORIZADO.TabIndex = 569;
+            this.LBLCREDITOAUTORIZADO.Text = "....";
+            // 
+            // LBLSALDOLIQUIDAR
+            // 
+            this.LBLSALDOLIQUIDAR.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.LBLSALDOLIQUIDAR.Appearance.Options.UseFont = true;
+            this.LBLSALDOLIQUIDAR.Location = new System.Drawing.Point(185, 48);
+            this.LBLSALDOLIQUIDAR.Name = "LBLSALDOLIQUIDAR";
+            this.LBLSALDOLIQUIDAR.Size = new System.Drawing.Size(20, 19);
+            this.LBLSALDOLIQUIDAR.TabIndex = 568;
+            this.LBLSALDOLIQUIDAR.Text = "....";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl6.Appearance.Options.UseFont = true;
+            this.labelControl6.Location = new System.Drawing.Point(37, 49);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(107, 16);
+            this.labelControl6.TabIndex = 567;
+            this.labelControl6.Text = "Saldo a liquidar :";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl7.Appearance.Options.UseFont = true;
+            this.labelControl7.Location = new System.Drawing.Point(14, 14);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(132, 16);
+            this.labelControl7.TabIndex = 566;
+            this.labelControl7.Text = "Crédito Autorizado :";
+            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1784,6 +1930,8 @@
             this.pnlVentas.ResumeLayout(false);
             this.pnlCobrar.ResumeLayout(false);
             this.panel31.ResumeLayout(false);
+            this.PNLCREDITOCLIENTE.ResumeLayout(false);
+            this.PNLCREDITOCLIENTE.PerformLayout();
             this.panel36.ResumeLayout(false);
             this.panel36.PerformLayout();
             this.panel37.ResumeLayout(false);
@@ -1796,8 +1944,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbCerrarPanelCobrar)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.panel33.ResumeLayout(false);
             this.panel33.PerformLayout();
             this.pnlCambioPrecios.ResumeLayout(false);
@@ -1838,6 +1984,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1890,15 +2038,8 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
         internal System.Windows.Forms.FlowLayoutPanel pnlRecibos;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Panel panel38;
-        private Telerik.ReportViewer.WinForms.ReportViewer reportViewerImprimir;
-        private System.Windows.Forms.Label lblCantidadCero;
-        private System.Windows.Forms.Label lblSerie;
-        private System.Windows.Forms.Label lblNumeroFin;
         private System.Windows.Forms.Label lblCorrelativo;
-        private System.Windows.Forms.Label lblIdSerializacion;
         private System.Windows.Forms.Panel pnlAgotado;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -1948,7 +2089,6 @@
         private System.Windows.Forms.ToolStripMenuItem panelDeControlToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem cerrarTurnoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem devolucionesToolStripMenuItem;
-        private Telerik.ReportViewer.WinForms.ReportViewer reportViewer1;
         private Telerik.ReportViewer.WinForms.ReportViewer reportViewerCopia;
         private System.Windows.Forms.Label lblNumProductos;
         private System.Windows.Forms.Label label17;
@@ -1975,10 +2115,30 @@
         private System.Windows.Forms.RadioButton rbMayoreo;
         private System.Windows.Forms.RadioButton rbMenudeo;
         private System.Windows.Forms.RadioButton rbMMayoreo;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtComentarios;
+        private System.Windows.Forms.Button btnBonificaiones;
+        private System.Windows.Forms.Panel PNLCREDITOCLIENTE;
+        internal System.Windows.Forms.TextBox TXTCREDITO;
+        internal System.Windows.Forms.Panel panel10;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblNumeroFin;
+        private System.Windows.Forms.Label lblCantidadCero;
+        private System.Windows.Forms.Label lblSerie;
+        private System.Windows.Forms.Panel panel38;
+        private Telerik.ReportViewer.WinForms.ReportViewer reportViewer1;
+        private Telerik.ReportViewer.WinForms.ReportViewer reportViewerImprimir;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label lblIdSerializacion;
+        private DevExpress.XtraEditors.LabelControl LBLNOMBRECLIENTE;
+        private DevExpress.XtraEditors.LabelControl LBLCOMUNIDAD;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.RadioButton RbtnMod1;
-        private System.Windows.Forms.RadioButton RbtnMod2;
+        private DevExpress.XtraEditors.LabelControl LBLCREDITOAUTORIZADO;
+        private DevExpress.XtraEditors.LabelControl LBLSALDOLIQUIDAR;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
     }
 }

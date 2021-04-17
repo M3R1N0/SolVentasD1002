@@ -38,7 +38,7 @@ namespace VentasD1002
         public frmMenuPrincipal()
         {
             InitializeComponent();
-
+            PNLCREDITOCLIENTE.Visible = false;
             gdvBuscar.Visible = false;
             // pnlCantidad.Visible = false;
             gdvClientes.Visible = false;
@@ -191,64 +191,71 @@ namespace VentasD1002
                 }
                 else
                 {
-                    gdvBuscar.Visible = true;
-                    DataTable dt = new DataTable();
-                    lstProducto = new BusProducto().ListarProductos(txtBuscar.Text);
-                    gdvBuscar.DataSource = lstProducto;
-                    gdvBuscar.Rows[0].Selected = true;
-                    gdvBuscar.Columns[5].Width = 450;
-                    if (rbMenudeo.Checked)
+
+                    if (!string.IsNullOrWhiteSpace(txtBuscar.Text))
                     {
-                        gdvBuscar.Columns[7].Visible = true;
-                        gdvBuscar.Columns[8].Visible = false;
-                        gdvBuscar.Columns[10].Visible = false;
+                        gdvBuscar.Visible = true;
+                        DataTable dt = new DataTable();
+                        lstProducto = new BusProducto().ListarProductos(txtBuscar.Text, 0);
+                        gdvBuscar.DataSource = lstProducto;
 
+
+                        gdvBuscar.Rows[0].Selected = true;
+                        gdvBuscar.Columns[5].Width = 450;
+                        if (rbMenudeo.Checked)
+                        {
+                            gdvBuscar.Columns[7].Visible = true;
+                            gdvBuscar.Columns[8].Visible = false;
+                            gdvBuscar.Columns[10].Visible = false;
+
+                        }
+                        else if (rbMMayoreo.Checked)
+                        {
+                            gdvBuscar.Columns[7].Visible = false;
+                            gdvBuscar.Columns[8].Visible = true;
+                            gdvBuscar.Columns[10].Visible = false;
+                        }
+                        else
+                        {
+                            gdvBuscar.Columns[7].Visible = false;
+                            gdvBuscar.Columns[8].Visible = false;
+                            gdvBuscar.Columns[10].Visible = true;
+                        }
+
+                        gdvBuscar.Columns[0].Visible = false;
+                        gdvBuscar.Columns[1].Visible = false;
+                        gdvBuscar.Columns[2].Visible = false;
+                        gdvBuscar.Columns[3].Visible = false;
+
+                        gdvBuscar.Columns[5].Visible = false;
+                        gdvBuscar.Columns[6].Visible = false;
+                        //gdvBuscar.Columns[7].Visible = false;
+                        //gdvBuscar.Columns[8].Visible = false;
+                        gdvBuscar.Columns[9].Visible = false;
+                        //gdvBuscar.Columns[10].Visible = false;
+                        gdvBuscar.Columns[11].Visible = false;
+                        gdvBuscar.Columns[12].Visible = false;
+                        gdvBuscar.Columns[13].Visible = false;
+                        gdvBuscar.Columns[14].Visible = false;
+                        gdvBuscar.Columns[15].Visible = false;
+                        gdvBuscar.Columns[16].Visible = false;
+                        gdvBuscar.Columns[17].Visible = false;
+                        gdvBuscar.Columns[18].Visible = false;
+                        gdvBuscar.Columns[19].Visible = false;
+
+                        gdvBuscar.Rows[0].Selected = true;
                     }
-                    else if (rbMMayoreo.Checked)
-                    {
-                        gdvBuscar.Columns[7].Visible = false;
-                        gdvBuscar.Columns[8].Visible = true;
-                        gdvBuscar.Columns[10].Visible = false;
-                    }
-                    else
-                    {
-                        gdvBuscar.Columns[7].Visible = false;
-                        gdvBuscar.Columns[8].Visible = false;
-                        gdvBuscar.Columns[10].Visible = true;
-                    }
-
-                    gdvBuscar.Columns[0].Visible = false;
-                    gdvBuscar.Columns[1].Visible = false;
-                    gdvBuscar.Columns[2].Visible = false;
-                    gdvBuscar.Columns[3].Visible = false;
-
-                    gdvBuscar.Columns[5].Visible = false;
-                    gdvBuscar.Columns[6].Visible = false;
-                    //gdvBuscar.Columns[7].Visible = false;
-                    //gdvBuscar.Columns[8].Visible = false;
-                    gdvBuscar.Columns[9].Visible = false;
-                    //gdvBuscar.Columns[10].Visible = false;
-                    gdvBuscar.Columns[11].Visible = false;
-                    gdvBuscar.Columns[12].Visible = false;
-                    gdvBuscar.Columns[13].Visible = false;
-                    gdvBuscar.Columns[14].Visible = false;
-                    gdvBuscar.Columns[15].Visible = false;
-                    gdvBuscar.Columns[16].Visible = false;
-                    gdvBuscar.Columns[17].Visible = false;
-                    gdvBuscar.Columns[18].Visible = false;
-                    gdvBuscar.Columns[19].Visible = false;
-
-                    gdvBuscar.Rows[0].Selected = true;
                 }
             }
             catch (Exception ex)
             {
+               // lstProducto = null;
                 //  MessageBox.Show("El producto ingresado no existe!,\n verifique que haya ingresado corectamente los datos", "BUSQUEDA FALLIDA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //     txtBuscar.SelectAll();
             }
         }
 
-        private void AgregarProducto_A_Venta(List<Producto> lstProducto)
+        private void AgregarProducto_A_Venta(Producto producto)
         {
             DataTable dt = new DataTable();
 
@@ -271,13 +278,21 @@ namespace VentasD1002
 
             try
             {
-                var _auxStockProducto = lstProducto.Select(x => x.stock).FirstOrDefault();
+                var _auxStockProducto = producto.stock;
                 var _stockProducto = _auxStockProducto.Equals("ILIMITADO") ? "123456" : _auxStockProducto;
-                var _usaInventario = lstProducto.Select(x => x.usaInventario).FirstOrDefault();
-                int tipoPresentacion = lstProducto.Select(x => x.IdTipoPresentacion).FirstOrDefault();
-                string _strPresentacion = lstProducto.Select(x => x.PresentacionMenudeo).First();
-                Decimal _ApartirDe = lstProducto.Select(x => x.APartirDe).FirstOrDefault();
-                string _presentacionMenudeo = lstProducto.Select(x => x.PresentacionMenudeo).FirstOrDefault();
+                var _usaInventario = producto.usaInventario;
+                int tipoPresentacion = producto.IdTipoPresentacion;
+                string _strPresentacion = producto.PresentacionMenudeo;
+                Decimal _ApartirDe = producto.APartirDe;
+                string _presentacionMenudeo = producto.PresentacionMenudeo;
+
+                //var _stockProducto = _auxStockProducto.Equals("ILIMITADO") ? "123456" : _auxStockProducto;
+                //var _usaInventario = lstProducto.Select(x => x.usaInventario).FirstOrDefault();
+                //int tipoPresentacion = lstProducto.Select(x => x.IdTipoPresentacion).FirstOrDefault();
+                //string _strPresentacion = lstProducto.Select(x => x.PresentacionMenudeo).First();
+                //Decimal _ApartirDe = lstProducto.Select(x => x.APartirDe).FirstOrDefault();
+                //string _presentacionMenudeo = lstProducto.Select(x => x.PresentacionMenudeo).FirstOrDefault();
+
                 decimal _totalUnidades = 0;
                 string _unidad = "";
 
@@ -286,14 +301,14 @@ namespace VentasD1002
                 if (rbMayoreo.Checked == true)
                 {
                     unidad = lsTipoPresentacion.Where(x => x.Id.Equals(tipoPresentacion)).Select(x => x.Descripcion).FirstOrDefault();
-                    precio = lstProducto.Select(x => x.precioMayoreo).FirstOrDefault();
-                    _totalUnidades = Convert.ToDecimal(lstProducto.Select(x => x.TotalUnidades).FirstOrDefault());
+                    precio = producto.precioMayoreo;
+                    _totalUnidades = Convert.ToDecimal(producto.TotalUnidades);
                 }
 
                 if (rbMMayoreo.Checked == true)
                 {
-                    //unidad = lsTipoPresentacion.Where(x => x.Id.Equals(tipoPresentacion)).Select(x => x.Descripcion).FirstOrDefault();
-                    precio = lstProducto.Select(x => x.precioMMayoreo).FirstOrDefault();
+                    //precio = lstProducto.Select(x => x.precioMMayoreo).FirstOrDefault();
+                    precio = producto.precioMMayoreo;
 
                     if (_stockProducto != "123456")
                     {
@@ -302,80 +317,20 @@ namespace VentasD1002
 
                     unidad = DatCatGenerico.Obtener_Presentacion_Abv(_presentacionMenudeo);
 
-                    /////////////////////////////////////////////////////////
-                    //if (unidad == "BTO")
-                    //{
-                    //    unidad = "KG";
-                    //}
-                    //else
-                    //{
-                    //    if (unidad == "CJA" || unidad == "BT" || unidad == "DOC" && _strPresentacion == "PAQUETE")
-                    //    {
-                    //        _unidad = "PQTE";
-                    //    }
-                    //    else if (unidad == "CJA")
-                    //    {
-                    //        unidad = "PZA";
-                    //    }
-                    //    if (unidad == "PQTE")
-                    //    {
-                    //        unidad = "PZA";
-                    //    }
-                    //    if (unidad == "RJA")
-                    //    {
-                    //        unidad = "PZA";
-                    //    }
-                    //      if (unidad == "BT" || unidad == "BSA" || unidad == "SIX" || unidad == "DOC")
-                    //      {
-                    //          unidad = "PZA";
-                    //      }
-                    // }
-                    //////////////////////////////////////////////////////
                 }
 
                 if (rbMenudeo.Checked == true)
                 {
-                    // unidad = lsTipoPresentacion.Where(x => x.Id.Equals(tipoPresentacion)).Select(x => x.Descripcion).FirstOrDefault();
-                    precio = lstProducto.Select(x => x.precioMenudeo).FirstOrDefault();
+                    //precio = lstProducto.Select(x => x.precioMenudeo).FirstOrDefault();
+                    precio = producto.precioMenudeo;
 
                     if (_stockProducto != "123456")
                     {
                         _totalUnidades = 1;
                     }
                     unidad = DatCatGenerico.Obtener_Presentacion_Abv(_presentacionMenudeo);
-
-                    //if (unidad == "BTO")
-                    //{
-                    //    unidad = "KG";
-                    //}
-                    //else
-                    //{
-                    //    if (unidad == "CJA" || unidad == "BT" && _strPresentacion == "PAQUETE")
-                    //    {
-                    //        _unidad = "PQTE";
-                    //    }
-                    //    else if (unidad == "CJA")
-                    //    {
-                    //        unidad = "PZA";
-                    //    }
-                    //    if (unidad == "PQTE")
-                    //    {
-                    //        unidad = "PZA";
-                    //    }
-                    //    if (unidad == "RJA")
-                    //    {
-                    //        unidad = "PZA";
-                    //    }
-                    //    if (unidad == "BT" || unidad == "BSA" || unidad == "SIX" || unidad == "DOC")
-                    //    {
-                    //        unidad = "PZA";
-                    //    }
-
-                    //}
-
                 }
 
-                //  unidad = string.IsNullOrEmpty(_unidad) ? unidad : _unidad;
                 #endregion
 
                 _stockProducto = String.IsNullOrEmpty(_stockProducto) ? "123456" : _stockProducto;
@@ -388,22 +343,22 @@ namespace VentasD1002
                     }
                     else
                     {
-                        int id = lstProducto.Select(x => x.Id).FirstOrDefault();
-                        string producto = lstProducto.Select(x => x.Descripcion).FirstOrDefault();
+                        int id = producto.Id;
+                        string _strProducto = producto.Descripcion;
 
-                        dr["PRESENTACION_ID"] = lstProducto.Select(x => x.IdTipoPresentacion).FirstOrDefault();
-                        dr["ID"] = id;
+                        dr["PRESENTACION_ID"] = producto.IdTipoPresentacion; //;lstProducto.Select(x => x.IdTipoPresentacion).FirstOrDefault();
+                        dr["ID"] = producto.Id;
                         dr["CANTIDAD"] = 1;
                         dr["UNIDAD"] = unidad;
-                        dr["CONCEPTO"] = producto;
-                        dr["PZA X CAJA"] = lstProducto.Select(x => x.TotalUnidades).FirstOrDefault();
-                        dr["PRESENTACIÓN"] = lstProducto.Select(x => x.Presentacion).FirstOrDefault();
+                        dr["CONCEPTO"] = _strProducto;
+                        dr["PZA X CAJA"] = producto.TotalUnidades;//lstProducto.Select(x => x.TotalUnidades).FirstOrDefault();
+                        dr["PRESENTACIÓN"] = producto.Presentacion;// lstProducto.Select(x => x.Presentacion).FirstOrDefault();
                         dr["PRECIO"] = precio;
                         dr["IMPORTE"] = precio;
                         dr["STOCK"] = _usaInventario.Equals("SI") ? (Convert.ToDecimal(_stockProducto) - _totalUnidades).ToString() : "123456";
-                        dr["CODIGO"] = lstProducto.Select(x => x.codigo).FirstOrDefault();
-                        dr["USAINVENTARIO"] = lstProducto.Select(x => x.usaInventario).FirstOrDefault();
-                        dr["APARTIR"] = lstProducto.Select(X => X.APartirDe).FirstOrDefault();
+                        dr["CODIGO"] = producto.codigo;// lstProducto.Select(x => x.codigo).FirstOrDefault();
+                        dr["USAINVENTARIO"] = producto.usaInventario ;// lstProducto.Select(x => x.usaInventario).FirstOrDefault();
+                        dr["APARTIR"] = producto.APartirDe;// lstProducto.Select(X => X.APartirDe).FirstOrDefault();
 
                         dt.Rows.Add(dr);
                         txtBuscar.Clear();
@@ -427,7 +382,7 @@ namespace VentasD1002
                     DataTable dt2 = new DataTable();
                     dt2 = gdvVentas.DataSource as DataTable;
 
-                    int codigo = lstProducto.Select(x => x.Id).FirstOrDefault();
+                    int codigo = producto.Id;// lstProducto.Select(x => x.Id).FirstOrDefault();
                     DataRow[] d = dt2.Select($"ID={codigo} and UNIDAD ='{unidad}'"); //VERIFICA SI EXISTE EL ID A INGRESAR
                     string _auxUnidad = d.Length == 0 ? "" : d[0].Field<string>("UNIDAD");
                     DataRow[] productos = dt2.Select($"ID={codigo}");
@@ -448,7 +403,7 @@ namespace VentasD1002
                         decimal PRECIO = d[0].Field<decimal>("PRECIO");
                         if (stock >= cantidad + 1 && _totalUnidades < stock)
                         {
-                            decimal _precionMM = lstProducto.Select(x => x.precioMMayoreo).FirstOrDefault();
+                            decimal _precionMM = producto.precioMMayoreo;// lstProducto.Select(x => x.precioMMayoreo).FirstOrDefault();
                             decimal _sumaCantidad = cantidad + 1;
                             if (_precionMM != 0 && _sumaCantidad >= _ApartirDe)
                             {
@@ -480,38 +435,39 @@ namespace VentasD1002
                         else
                         {
                             DataRow dr2 = dt2.NewRow();
-                            int id = lstProducto.Select(x => x.Id).FirstOrDefault();
-                            string producto = lstProducto.Select(x => x.Descripcion).FirstOrDefault();
+                            int id = producto.Id ;// lstProducto.Select(x => x.Id).FirstOrDefault();
+                            //string producto1 =  lstProducto.Select(x => x.Descripcion).FirstOrDefault();
 
-                            dr2["PRESENTACION_ID"] = lstProducto.Select(x => x.IdTipoPresentacion).FirstOrDefault();
-                            dr2["ID"] = id;
+                            dr2["PRESENTACION_ID"] = producto.IdTipoPresentacion ;// lstProducto.Select(x => x.IdTipoPresentacion).FirstOrDefault();
+                            dr2["ID"] = producto.Id;
                             dr2["CANTIDAD"] = 1;
                             dr2["UNIDAD"] = unidad;
-                            dr2["CONCEPTO"] = producto;
-                            dr2["PZA X CAJA"] = lstProducto.Select(x => x.TotalUnidades).FirstOrDefault();
-                            dr2["PRESENTACIÓN"] = lstProducto.Select(x => x.Presentacion).FirstOrDefault();
+                            dr2["CONCEPTO"] = producto.Descripcion;
+                            dr2["PZA X CAJA"] = producto.TotalUnidades;// lstProducto.Select(x => x.TotalUnidades).FirstOrDefault();
+                            dr2["PRESENTACIÓN"] = producto.Presentacion;// lstProducto.Select(x => x.Presentacion).FirstOrDefault();
                             dr2["PRECIO"] = precio;
                             dr2["IMPORTE"] = precio;
                             dr2["STOCK"] = _usaInventario.Equals("SI") ? (Convert.ToDecimal(_stockProducto) - _totalUnidades).ToString() : "123456";
-                            dr2["CODIGO"] = lstProducto.Select(x => x.codigo).FirstOrDefault();
-                            dr2["USAINVENTARIO"] = lstProducto.Select(x => x.usaInventario).FirstOrDefault();
-                            dr2["APARTIR"] = lstProducto.Select(x => x.APartirDe).FirstOrDefault();
+                            dr2["CODIGO"] = producto.codigo ;// lstProducto.Select(x => x.codigo).FirstOrDefault();
+                            dr2["USAINVENTARIO"] = producto.usaInventario ;// lstProducto.Select(x => x.usaInventario).FirstOrDefault();
+                            dr2["APARTIR"] = producto.APartirDe ;// lstProducto.Select(x => x.APartirDe).FirstOrDefault();
 
                             dt2.Rows.Add(dr2);
                             txtBuscar.Clear();
                         }
                     }
                 }
-                lstProducto = null;
                 // }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("El producto ingresado no existe!,\n verifique que haya ingresado corectamente los datos" + ex.Message, "BUSQUEDA FALLIDA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrió un error al ingresar los datos a la venta" + ex.Message, "ERROR DE ENTRADA DE DATOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
+
                 lstProducto = null;
+                producto = null;
                 SumaTotal_a_Pagar();
                 DataTablePersonalizado.Multilinea2(ref gdvVentas);
             }
@@ -521,37 +477,63 @@ namespace VentasD1002
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-              //  string promptValue = Prompt.ShowDialog();
-                string descripcion = lstProducto.Select(x => x.Descripcion).FirstOrDefault();
-               
-                lstProducto = new BusProducto().ListarProductos(descripcion);
-                decimal precio = 0;
-                string tipoPrecio="";
-                if (rbMenudeo.Checked == true)
+                //  string promptValue = Prompt.ShowDialog();
+                try
                 {
-                  precio =  lstProducto.Select(x => x.precioMenudeo).FirstOrDefault();
-                    tipoPrecio = "Menudeo";
-                }
-                else if(rbMMayoreo.Checked == true)
-                {
-                  precio =  lstProducto.Select(x => x.precioMMayoreo).FirstOrDefault();
-                    tipoPrecio = "Medio Mayoreo";
-                }
-                else if(rbMayoreo.Checked == true)
-                {
-                  precio =  lstProducto.Select(x => x.precioMayoreo).FirstOrDefault();
-                    tipoPrecio = "Mayoreo";
-                }
+                    //string descripcion = lstProducto.Where(x => x.Descripcion.Contains(txtBuscar.Text))
+                    //                                .Select(x=> x.Descripcion).FirstOrDefault();
+                    if (!string.IsNullOrWhiteSpace(txtBuscar.Text))
+                    {
+                        lstProducto = new BusProducto().ListarProductos(txtBuscar.Text, 0);
+                        if (lstProducto.Count != 0)
+                        {
+                            Producto producto = lstProducto.FirstOrDefault();
+                            lstProducto = null;
+                            decimal precio = 0;
+                            string tipoPrecio = "";
+                            if (rbMenudeo.Checked == true)
+                            {
+                                //precio = lstProducto.Select(x => x.precioMenudeo).FirstOrDefault();
+                                precio = producto.precioMenudeo;
+                                tipoPrecio = "Menudeo";
+                            }
+                            else if (rbMMayoreo.Checked == true)
+                            {
+                                //precio = lstProducto.Select(x => x.precioMMayoreo).FirstOrDefault();
+                                precio = producto.precioMMayoreo;
+                                tipoPrecio = "Medio Mayoreo";
+                            }
+                            else if (rbMayoreo.Checked == true)
+                            {
+                                //precio = lstProducto.Select(x => x.precioMayoreo).FirstOrDefault();
+                                precio = producto.precioMayoreo;
+                                tipoPrecio = "Mayoreo";
+                            }
 
-                if (precio == 0)
-                {
-                    MessageBox.Show("El producto : "+descripcion +" no cuenta con precio "+ tipoPrecio, "Precio inexistente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtBuscar.Clear();
-                    txtBuscar.Focus();
+                            if (precio == 0)
+                            {
+                                MessageBox.Show("El producto : " + producto.Descripcion + " no cuenta con precio " + tipoPrecio, "Precio inexistente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtBuscar.Clear();
+                                txtBuscar.Focus();
+                            }
+                            else
+                            {
+                                AgregarProducto_A_Venta(producto);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("El producto no Existe, Verifique que haya ingresado un producto válido", "Entrada  Inconrrecta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtBuscar.Text = string.Empty;
+                            txtBuscar.Focus();
+                        }
+
+                    }
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    AgregarProducto_A_Venta(lstProducto);
+                    MessageBox.Show("El producto que intenta ingresar no existe", "Producto no Existente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -1062,6 +1044,7 @@ namespace VentasD1002
                 venta.ReferenciaTarjeta = "N/A";
                 venta.Efectivo = Convert.ToDecimal(txtRecibi.Text);
                 venta.Vuelto = Convert.ToDecimal(txtCambio.Text);
+                venta.Comentarios = txtComentarios.Text;
 
 
                 new BusVentas().AgregarVenta(venta);
@@ -1114,11 +1097,11 @@ namespace VentasD1002
 
                 new BusSerializacion().Actualizar_numeroFin(lblNumeroFin.Text, Convert.ToInt32(lblIdSerializacion.Text));
 
-                if (!String.IsNullOrEmpty(VentaEspera))
-                {
-                    new BusDetalleVenta().Eliminar_DetalleVentaEspera(idVenta);
-                    new BusVentas().Eliminar_VentaEspera(idVenta);
-                }
+                //if (!String.IsNullOrEmpty(VentaEspera))
+                //{
+                //    new BusDetalleVenta().Eliminar_DetalleVentaEspera(idVenta);
+                //    new BusVentas().Eliminar_VentaEspera(idVenta);
+                //}
 
                 #region Ticket
                 
@@ -1128,8 +1111,8 @@ namespace VentasD1002
                 reporte.Comentarios = string.IsNullOrEmpty(txtComentarios.Text) ? "N/A" : txtComentarios.Text;
                 reporte.LetraNumero = textoNumero;
 
-              
-              
+
+
 
                 if (indicador.Equals("VISTA PREVIA"))
                 {
@@ -1137,27 +1120,26 @@ namespace VentasD1002
                     if (lblSerie.Text == "T")
                     {
                         frmVistaPreviaTickek vistaPreviaTickek = new frmVistaPreviaTickek();
-
-                        if (RbtnMod1.Checked)
-                        {
-                            rptTicket rptTicket = new rptTicket();
-                            rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
-                            rptTicket.DataSource = reporte;
-
-                            vistaPreviaTickek.reportViewer2.Report = rptTicket;
-                            vistaPreviaTickek.reportViewer2.RefreshReport();
-                        }
-                        else
-                        {
-                            ReportTicket rpt = new ReportTicket();
-                            rpt.DataSource = reporte;
-                            rpt.tbTicket.DataSource = reporte.lstDetalleVenta;
-
-                            vistaPreviaTickek.reportViewer2.Report = rpt;
-                            vistaPreviaTickek.reportViewer2.RefreshReport();
-                        }
-
+                     
+                        ReportTicket rpt = new ReportTicket();
+                        rpt.pnlCancelar.Visible = false;
+                        rpt.DataSource = reporte;
+                        rpt.tbTicket.DataSource = reporte.lstDetalleVenta;
+                        
+                        vistaPreviaTickek.reportViewer2.Report = rpt;
+                        vistaPreviaTickek.reportViewer2.RefreshReport();
                         vistaPreviaTickek.ShowDialog();
+                        //if (RbtnMod1.Checked == true)
+                        //{
+                        //    rptTicket rptTicket = new rptTicket();
+                        //    rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
+                        //    rptTicket.DataSource = reporte;
+
+                        //    vistaPreviaTickek.reportViewer2.Report = rptTicket;
+                        //    vistaPreviaTickek.reportViewer2.RefreshReport();
+                        //    vistaPreviaTickek.ShowDialog();
+                        //}
+                        
 
                         //if (cboFormaPago.Text == "Credito")
                         //{
@@ -1177,6 +1159,7 @@ namespace VentasD1002
                     {
                         frmVistaNotaRemision notas = new frmVistaNotaRemision();
                         rtpRecibo rptNota = new rtpRecibo();
+                        rptNota.pnlCancelar.Visible = false;
                         rptNota.tblVentaProducto.DataSource = reporte.lstDetalleVenta;
                         rptNota.DataSource = reporte;
 
@@ -1195,17 +1178,26 @@ namespace VentasD1002
                 {
                     if (lblSerie.Text == "T")
                     {
-                        rptTicket rptTicket = new rptTicket();
-                        rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
-                        rptTicket.DataSource = reporte;
+                        //if ( RbtnMod1.Checked == true)
+                        //{
+                        //    rptTicket rptTicket = new rptTicket();
+                        //    rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
+                        //    rptTicket.DataSource = reporte;
 
-                        reportViewerImprimir.Report = rptTicket;
+                        //    reportViewerImprimir.Report = rptTicket;
+                        //    reportViewerImprimir.RefreshReport(); 
+                        //}
+                      
+                        ReportTicket rpt = new ReportTicket();
+                        rpt.pnlCancelar.Visible = false;
+                        rpt.DataSource = reporte;
+                        rpt.tbTicket.DataSource = reporte.lstDetalleVenta;
+                        reportViewerImprimir.Report = rpt;
                         reportViewerImprimir.RefreshReport();
 
                         if (cboFormaPago.Text == "Credito")
                         {
                             rptTicketCopia rptTicketCopia = new rptTicketCopia();
-
                             rptTicketCopia.tbTicketCopia.DataSource = reporte.lstDetalleVenta;
                             rptTicketCopia.DataSource = reporte;
 
@@ -1217,7 +1209,7 @@ namespace VentasD1002
                     else if (lblSerie.Text == "R")
                     {
                         rtpRecibo rptNota = new rtpRecibo();
-
+                        rptNota.pnlCancelar.Visible = false;
                         rptNota.tblVentaProducto.DataSource = reporte.lstDetalleVenta;
                         rptNota.DataSource = reporte;
                         reportViewerImprimir.Report = rptNota;
@@ -1381,19 +1373,42 @@ namespace VentasD1002
         {
             try
             {
-                indicador = "VISTA PREVIA";
-
-                //NumeroATexto();
-                if (cboFormaPago.Text == "Credito" && txtCliente.Text == "GENERAL")
+                Cliente c = new BusCliente().ObterCliente(idCliente);
+              
+                if (cboFormaPago.Text == "Credito" && c.Saldo == 0 && idCliente != 1)
                 {
-                    MessageBox.Show("No puede realizar un venta a crédito con cliente de tipo general, Seleccione el cliente para procesar la venta", "Venta no generada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //LBLCREDITOAUTORIZADO.Text = c.Saldo.ToString();
+                    //LBLSALDOLIQUIDAR.Text = (c.Saldo == 0) ? lblTotal.Text : (Convert.ToDecimal(lblTotal.Text) - c.Saldo).ToString();
+                    DialogResult result = MessageBox.Show("El cliente : " + c.NombreCompleto + ", No cuenta con saldo para realizar la venta a crédito, ¿desea asignarle crédito?", "Cliente sin crédito", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        LBLNOMBRECLIENTE.Text = c.NombreCompleto;
+                        LBLCOMUNIDAD.Text = c.Direccion;
+
+                        PNLCREDITOCLIENTE.Visible = true;
+
+                    }
                 }
                 else
                 {
-                    GenerarVenta();
+                    indicador = "VISTA PREVIA";
+                    //NumeroATexto();
+                    if (cboFormaPago.Text == "Credito" && txtCliente.Text == "GENERAL")
+                    {
+                        MessageBox.Show("No puede realizar un venta a crédito con cliente de tipo general, Seleccione el cliente para procesar la venta", "Venta no generada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        if (Convert.ToDecimal(txtRecibi.Text) >= Convert.ToDecimal(LBLSALDOLIQUIDAR.Text))
+                        {
+                            GenerarVenta();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Favor de cubrir el monto de manera completa", "SALDO FALTANTE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -1403,49 +1418,77 @@ namespace VentasD1002
 
         private void cobrarYGenerarTicketToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            indicador = "IMPRIMIR DIRECTO";
+            Cliente c = new BusCliente().ObterCliente(idCliente);
+           
 
-            if (cboFormaPago.Text == "Credito" && txtCliente.Text == "GENERAL")
+            if (cboFormaPago.Text == "Credito" && c.Saldo == 0 && idCliente != 1)
             {
-                MessageBox.Show("No puede realizar un venta a crédito con cliente de tipo general, Seleccione el cliente para procesar la venta", "Venta no generada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //LBLCREDITOAUTORIZADO.Text = c.Saldo.ToString();
+                //LBLSALDOLIQUIDAR.Text = (c.Saldo == 0) ? lblTotal.Text : (Convert.ToDecimal(lblTotal.Text) - c.Saldo).ToString();
+
+                DialogResult result = MessageBox.Show("El cliente : " + c.NombreCompleto + ", No cuenta con saldo para realizar la venta a crédito, ¿desea asignarle crédito?", "Cliente sin crédito", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    LBLNOMBRECLIENTE.Text = c.NombreCompleto;
+                    LBLCOMUNIDAD.Text = c.Direccion;
+
+                    PNLCREDITOCLIENTE.Visible = true;
+
+                }
             }
             else
             {
+                indicador = "IMPRIMIR DIRECTO";
 
-                if (comboBox2.Text != "NINGUNA")
+                if (cboFormaPago.Text == "Credito" && txtCliente.Text == "GENERAL")
                 {
-                    try
-                    {
-                        Editar_Impresora(lblSerie.Text);
-
-                        GenerarVenta();
-
-                        TICKET = new PrintDocument();
-                        TICKET.PrinterSettings.PrinterName = comboBox2.Text;
-
-                        if (TICKET.PrinterSettings.IsValid)
-                        {
-                            PrinterSettings printerSettings = new PrinterSettings();
-                            printerSettings.PrinterName = comboBox2.Text;
-
-                            ReportProcessor reportProcessor = new ReportProcessor();
-                            reportProcessor.PrintReport(reportViewerImprimir.ReportSource, printerSettings);
-                            if (cboFormaPago.Text == "Credito")
-                            {
-                                //ReportProcessor reportProcessor = new ReportProcessor();
-                                reportProcessor.PrintReport(reportViewerCopia.ReportSource, printerSettings);
-                            }
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error al imprimir el ticket : " + ex.Message, "Error de impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    MessageBox.Show("No puede realizar un venta a crédito con cliente de tipo general, Seleccione el cliente para procesar la venta", "Venta no generada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    MessageBox.Show("Seleccione una impresora", "Impresora inexistente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (Convert.ToDecimal(txtRecibi.Text) >= Convert.ToDecimal(LBLSALDOLIQUIDAR.Text))
+                    {
+
+                        if (comboBox2.Text != "NINGUNA")
+                        {
+                            try
+                            {
+                                Editar_Impresora(lblSerie.Text);
+
+                                GenerarVenta();
+
+                                TICKET = new PrintDocument();
+                                TICKET.PrinterSettings.PrinterName = comboBox2.Text;
+
+                                if (TICKET.PrinterSettings.IsValid)
+                                {
+                                    PrinterSettings printerSettings = new PrinterSettings();
+                                    printerSettings.PrinterName = comboBox2.Text;
+
+                                    ReportProcessor reportProcessor = new ReportProcessor();
+                                    reportProcessor.PrintReport(reportViewerImprimir.ReportSource, printerSettings);
+                                    if (cboFormaPago.Text == "Credito")
+                                    {
+                                        //ReportProcessor reportProcessor = new ReportProcessor();
+                                        reportProcessor.PrintReport(reportViewerCopia.ReportSource, printerSettings);
+                                    }
+
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error al imprimir el ticket : " + ex.Message, "Error de impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Seleccione una impresora", "Impresora inexistente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Favor de cubrir el monto a liquidar de manera completa", "SALDO FALTANTE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
         }
@@ -1462,20 +1505,29 @@ namespace VentasD1002
                 else
                 {
                     // txtRecibi.Clear();
+                    idCliente = (txtCliente.Text.Equals("GENERAL")) ? 1 : idCliente;
+                   
                     Mostrar_TipoComprobante();
                     lblPagoTotal.Text = lblTotal.Text;
                     pnlCobrar.Visible = true;
                     if (cboFormaPago.Text == "Credito")
                     {
+                        Cliente c = new BusCliente().ObterCliente(idCliente);
+                        LBLCREDITOAUTORIZADO.Text = c.Saldo.ToString();
+                        LBLSALDOLIQUIDAR.Text = (c.Saldo == 0) ? lblTotal.Text : (Convert.ToDecimal(lblTotal.Text) - c.Saldo).ToString();
+                        LBLSALDOLIQUIDAR.Text = ((Convert.ToDecimal(LBLSALDOLIQUIDAR.Text) <= 0) ? "0.00" : LBLSALDOLIQUIDAR.Text);
                         rbtnAbonar.Enabled = true;
                         dtpFechaPago.Enabled = true;
                         rbtnAbonar.Checked = true;
                     }
                     else
                     {
+                        LBLCREDITOAUTORIZADO.Text = "0.00";
+                        LBLSALDOLIQUIDAR.Text = lblPagoTotal.Text;
                         rbtnAbonar.Enabled = false;
                         rbtnAbonar.Checked = false;
                         dtpFechaPago.Enabled = false;
+
                     }
                     timer2.Start();
                     Dibujar_BotonComprobante();
@@ -1599,7 +1651,13 @@ namespace VentasD1002
                     txtCliente.Text = new BusCliente().ObterCliente(1).NombreCompleto;
                     gdvClientes.Visible = false;
                 }
-
+                if (!String.IsNullOrEmpty(VentaEspera))
+                {
+                    new BusDetalleVenta().Eliminar_DetalleVentaEspera(idVenta);
+                    new BusVentas().Eliminar_VentaEspera(idVenta);
+                    VentaEspera = "";
+                    idVenta = 0;
+                }
             }
             catch (Exception ex)
             {
@@ -1745,53 +1803,69 @@ namespace VentasD1002
                 txtBuscar.Text = string.Empty;
                 txtBuscar.Focus();
             }
+         
         }
 
         private void gdvBuscar_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
+            try
             {
-                txtBuscar.Text = string.Empty;
-                txtBuscar.Focus();
-            }else if(e.KeyCode == Keys.Enter)
-            {
-                string _producto = gdvBuscar.CurrentCell.Value.ToString();
-
-                lstProducto = new BusProducto().ListarProductos(_producto);
-                //txtBuscar.Text = string.Empty;
-                //AgregarProducto_A_Venta(lstProducto);
-                //txtBuscar.Focus();
-
-                decimal precio = 0;
-                string tipoPrecio = "";
-
-                if (rbMenudeo.Checked == true)
+                if (e.KeyCode == Keys.Escape)
                 {
-                    precio = lstProducto.Select(x => x.precioMenudeo).FirstOrDefault();
-                    tipoPrecio = "Menudeo";
-                }
-                else if (rbMMayoreo.Checked == true)
-                {
-                    precio = lstProducto.Select(x => x.precioMMayoreo).FirstOrDefault();
-                    tipoPrecio = "Medio Mayoreo";
-                }
-                else if (rbMayoreo.Checked == true)
-                {
-                    precio = lstProducto.Select(x => x.precioMayoreo).FirstOrDefault();
-                    tipoPrecio = "Mayoreo";
-                }
-
-                if (precio == 0)
-                {
-                    MessageBox.Show("El producto : " + _producto + " no cuenta con precio " + tipoPrecio, "Precio inexistente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtBuscar.Clear();
+                    txtBuscar.Text = string.Empty;
                     txtBuscar.Focus();
                 }
-                else
+                else if (e.KeyCode == Keys.Enter)
                 {
-                    AgregarProducto_A_Venta(lstProducto);
+                    if (!string.IsNullOrWhiteSpace(txtBuscar.Text))
+                    {
+
+
+                        string _producto = gdvBuscar.CurrentCell.Value.ToString();
+
+                        lstProducto = new BusProducto().ListarProductos(_producto, 0);
+
+                        Producto producto = lstProducto.FirstOrDefault();
+                        //txtBuscar.Text = string.Empty;
+                        //AgregarProducto_A_Venta(lstProducto);
+                        //txtBuscar.Focus();
+
+                        decimal precio = 0;
+                        string tipoPrecio = "";
+
+                        if (rbMenudeo.Checked == true)
+                        {
+                            precio = producto.precioMenudeo;// lstProducto.Select(x => x.precioMenudeo).FirstOrDefault();
+                            tipoPrecio = "Menudeo";
+                        }
+                        else if (rbMMayoreo.Checked == true)
+                        {
+                            precio = producto.precioMMayoreo;// lstProducto.Select(x => x.precioMMayoreo).FirstOrDefault();
+                            tipoPrecio = "Medio Mayoreo";
+                        }
+                        else if (rbMayoreo.Checked == true)
+                        {
+                            precio = producto.precioMayoreo;// lstProducto.Select(x => x.precioMayoreo).FirstOrDefault();
+                            tipoPrecio = "Mayoreo";
+                        }
+
+                        if (precio == 0)
+                        {
+                            MessageBox.Show("El producto : " + _producto + " no cuenta con precio " + tipoPrecio, "Precio inexistente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtBuscar.Clear();
+                            txtBuscar.Focus();
+                        }
+                        else
+                        {
+                            AgregarProducto_A_Venta(producto);
+                        }
+                    }
+
                 }
-             
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1803,6 +1877,7 @@ namespace VentasD1002
                 idCliente = Convert.ToInt32(gdvClientes.SelectedCells[0].Value.ToString());
                 txtCliente.Text = cliente;
                 gdvClientes.Visible = false;
+             
             }
         }
 
@@ -1818,6 +1893,7 @@ namespace VentasD1002
         private void gdvVentas_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             this.gdvVentas.Rows[e.RowIndex].Selected = true;
+        
             txtBuscar.Focus();
         }
 
@@ -1826,6 +1902,51 @@ namespace VentasD1002
             frmReimprimirTicket frmReimprimir = new frmReimprimirTicket();
             frmReimprimir.ShowDialog();
         }
-        
+
+        private void btnBonificaiones_Click(object sender, EventArgs e)
+        {
+            frmVistaBonificaciones frm = new frmVistaBonificaciones();
+            frm.ShowDialog();
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 46))
+            {
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void TXTCREDITO_TextChanged(object sender, EventArgs e)
+        {
+            decimal recibi;
+            if (string.IsNullOrEmpty(TXTCREDITO.Text) || TXTCREDITO.Equals("0"))
+            {
+                TXTCREDITO.Text = "0";
+                TXTCREDITO.SelectAll();
+            }
+         
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cliente c = new Cliente();
+                c.Id = idCliente;
+                c.Saldo = Convert.ToDecimal(TXTCREDITO.Text);
+
+                DatCliente.actualizarCreditoCliente(c);
+                PNLCREDITOCLIENTE.Visible = false;
+
+                LBLCREDITOAUTORIZADO.Text = c.Saldo.ToString();
+                LBLSALDOLIQUIDAR.Text = (c.Saldo == 0) ? lblTotal.Text : (Convert.ToDecimal(lblTotal.Text) - c.Saldo).ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al actualizar el crédito " + ex.Message, "Error actualizacion de crédito", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

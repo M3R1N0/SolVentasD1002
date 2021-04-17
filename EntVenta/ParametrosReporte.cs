@@ -9,6 +9,11 @@ namespace EntVenta
     public class ParametrosReporte
     {
         public int Id { get; set; }
+        public int IdCliente { get; set; }
+        public int IdVenta { get; set; }
+        public int IdDetalleVenta { get; set; }
+        public int IdUsuario { get; set; }
+        public int IdCaja { get; set; }
         public byte[] LogoEmpresa { get; set; }
         public string NombreEmpresa { get; set; }
         public string Direccion { get; set; }
@@ -28,8 +33,15 @@ namespace EntVenta
         public decimal Cambio { get; set; }
         public string LetraNumero { get; set; }
         public string Comentarios { get; set; }
-        public int IdDetalleVenta { get; set; }
+        public string Ticket { get; set; }
+        public string EstadoPago { get; set; }
+        public decimal Saldo { get; set; }
+        public decimal Abonado { get; set; }
+        public string Ruc { get; set; }
+        public decimal Bonificacion { get; set; }
+        public string EstadoVenta { get; set; }
 
         public List<DetalleVenta> lstDetalleVenta { get; set; }
     }
+
 }
