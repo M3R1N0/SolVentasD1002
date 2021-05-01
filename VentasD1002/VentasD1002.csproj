@@ -333,6 +333,12 @@
     <Compile Include="frmUsuarioAutorizado.Designer.cs">
       <DependentUpon>frmUsuarioAutorizado.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVenta.Designer.cs">
+      <DependentUpon>frmVenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmVentasEnEspera.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -479,6 +485,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmUsuarioAutorizado.resx">
       <DependentUpon>frmUsuarioAutorizado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVenta.resx">
+      <DependentUpon>frmVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVentasEnEspera.resx">
       <DependentUpon>frmVentasEnEspera.cs</DependentUpon>

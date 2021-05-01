@@ -1122,6 +1122,8 @@ namespace VentasD1002
                         frmVistaPreviaTickek vistaPreviaTickek = new frmVistaPreviaTickek();
                      
                         ReportTicket rpt = new ReportTicket();
+                        rpt.lblCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
+                        rpt.txtCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
                         rpt.pnlCancelar.Visible = false;
                         rpt.DataSource = reporte;
                         rpt.tbTicket.DataSource = reporte.lstDetalleVenta;
@@ -1159,6 +1161,8 @@ namespace VentasD1002
                     {
                         frmVistaNotaRemision notas = new frmVistaNotaRemision();
                         rtpRecibo rptNota = new rtpRecibo();
+                        rptNota.lblCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
+                        rptNota.txtCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
                         rptNota.pnlCancelar.Visible = false;
                         rptNota.tblVentaProducto.DataSource = reporte.lstDetalleVenta;
                         rptNota.DataSource = reporte;
@@ -1190,6 +1194,9 @@ namespace VentasD1002
                       
                         ReportTicket rpt = new ReportTicket();
                         rpt.pnlCancelar.Visible = false;
+                        rpt.lblCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
+                        rpt.txtCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
+
                         rpt.DataSource = reporte;
                         rpt.tbTicket.DataSource = reporte.lstDetalleVenta;
                         reportViewerImprimir.Report = rpt;
@@ -1210,6 +1217,8 @@ namespace VentasD1002
                     {
                         rtpRecibo rptNota = new rtpRecibo();
                         rptNota.pnlCancelar.Visible = false;
+                        rptNota.lblCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
+                        rptNota.txtCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
                         rptNota.tblVentaProducto.DataSource = reporte.lstDetalleVenta;
                         rptNota.DataSource = reporte;
                         reportViewerImprimir.Report = rptNota;
@@ -1947,6 +1956,16 @@ namespace VentasD1002
             {
                 MessageBox.Show("Ocurrió un error al actualizar el crédito " + ex.Message, "Error actualizacion de crédito", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void panelSubencabezado_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel8_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

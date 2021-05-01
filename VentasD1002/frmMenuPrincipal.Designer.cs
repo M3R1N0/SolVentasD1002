@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlVentas = new System.Windows.Forms.Panel();
             this.pnlCobrar = new System.Windows.Forms.Panel();
             this.panel31 = new System.Windows.Forms.Panel();
@@ -73,6 +73,11 @@
             this.label27 = new System.Windows.Forms.Label();
             this.pbCerrarPanelCobrar = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.LBLCREDITOAUTORIZADO = new DevExpress.XtraEditors.LabelControl();
+            this.LBLSALDOLIQUIDAR = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.panel33 = new System.Windows.Forms.Panel();
             this.label21 = new System.Windows.Forms.Label();
             this.lblPagoTotal = new System.Windows.Forms.Label();
@@ -175,11 +180,6 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrHora = new System.Windows.Forms.Timer(this.components);
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.LBLCREDITOAUTORIZADO = new DevExpress.XtraEditors.LabelControl();
-            this.LBLSALDOLIQUIDAR = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.pnlVentas.SuspendLayout();
             this.pnlCobrar.SuspendLayout();
             this.panel31.SuspendLayout();
@@ -191,6 +191,7 @@
             this.panel32.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCerrarPanelCobrar)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel33.SuspendLayout();
             this.pnlCambioPrecios.SuspendLayout();
             this.panel26.SuspendLayout();
@@ -219,7 +220,6 @@
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlVentas
@@ -249,9 +249,9 @@
             this.pnlCobrar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlCobrar.BackgroundImage")));
             this.pnlCobrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlCobrar.Controls.Add(this.panel31);
-            this.pnlCobrar.Location = new System.Drawing.Point(143, 120);
+            this.pnlCobrar.Location = new System.Drawing.Point(143, 439);
             this.pnlCobrar.Name = "pnlCobrar";
-            this.pnlCobrar.Size = new System.Drawing.Size(790, 423);
+            this.pnlCobrar.Size = new System.Drawing.Size(138, 104);
             this.pnlCobrar.TabIndex = 13;
             // 
             // panel31
@@ -709,6 +709,57 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cobro";
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.LBLCREDITOAUTORIZADO);
+            this.panel6.Controls.Add(this.LBLSALDOLIQUIDAR);
+            this.panel6.Controls.Add(this.labelControl6);
+            this.panel6.Controls.Add(this.labelControl7);
+            this.panel6.Location = new System.Drawing.Point(8, 234);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(347, 99);
+            this.panel6.TabIndex = 564;
+            // 
+            // LBLCREDITOAUTORIZADO
+            // 
+            this.LBLCREDITOAUTORIZADO.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.LBLCREDITOAUTORIZADO.Appearance.Options.UseFont = true;
+            this.LBLCREDITOAUTORIZADO.Location = new System.Drawing.Point(187, 14);
+            this.LBLCREDITOAUTORIZADO.Name = "LBLCREDITOAUTORIZADO";
+            this.LBLCREDITOAUTORIZADO.Size = new System.Drawing.Size(20, 19);
+            this.LBLCREDITOAUTORIZADO.TabIndex = 569;
+            this.LBLCREDITOAUTORIZADO.Text = "....";
+            // 
+            // LBLSALDOLIQUIDAR
+            // 
+            this.LBLSALDOLIQUIDAR.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.LBLSALDOLIQUIDAR.Appearance.Options.UseFont = true;
+            this.LBLSALDOLIQUIDAR.Location = new System.Drawing.Point(185, 48);
+            this.LBLSALDOLIQUIDAR.Name = "LBLSALDOLIQUIDAR";
+            this.LBLSALDOLIQUIDAR.Size = new System.Drawing.Size(20, 19);
+            this.LBLSALDOLIQUIDAR.TabIndex = 568;
+            this.LBLSALDOLIQUIDAR.Text = "....";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl6.Appearance.Options.UseFont = true;
+            this.labelControl6.Location = new System.Drawing.Point(37, 49);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(107, 16);
+            this.labelControl6.TabIndex = 567;
+            this.labelControl6.Text = "Saldo a liquidar :";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl7.Appearance.Options.UseFont = true;
+            this.labelControl7.Location = new System.Drawing.Point(14, 14);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(132, 16);
+            this.labelControl7.TabIndex = 566;
+            this.labelControl7.Text = "Crédito Autorizado :";
+            // 
             // panel33
             // 
             this.panel33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -853,9 +904,9 @@
             this.pnlCambioPrecios.Controls.Add(this.lblProducto);
             this.pnlCambioPrecios.Controls.Add(this.panel26);
             this.pnlCambioPrecios.ForeColor = System.Drawing.Color.OldLace;
-            this.pnlCambioPrecios.Location = new System.Drawing.Point(257, 150);
+            this.pnlCambioPrecios.Location = new System.Drawing.Point(350, 416);
             this.pnlCambioPrecios.Name = "pnlCambioPrecios";
-            this.pnlCambioPrecios.Size = new System.Drawing.Size(440, 253);
+            this.pnlCambioPrecios.Size = new System.Drawing.Size(202, 69);
             this.pnlCambioPrecios.TabIndex = 9;
             // 
             // lblUnidad
@@ -980,7 +1031,7 @@
             this.lblProducto.ForeColor = System.Drawing.Color.DarkOrange;
             this.lblProducto.Location = new System.Drawing.Point(0, 30);
             this.lblProducto.Name = "lblProducto";
-            this.lblProducto.Size = new System.Drawing.Size(440, 38);
+            this.lblProducto.Size = new System.Drawing.Size(202, 38);
             this.lblProducto.TabIndex = 1;
             this.lblProducto.Text = "PRODUCTO";
             this.lblProducto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -994,7 +1045,7 @@
             this.panel26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel26.Location = new System.Drawing.Point(0, 0);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(440, 30);
+            this.panel26.Size = new System.Drawing.Size(202, 30);
             this.panel26.TabIndex = 0;
             // 
             // pictureBox4
@@ -1074,9 +1125,9 @@
             this.gdvClientes.Name = "gdvClientes";
             this.gdvClientes.ReadOnly = true;
             this.gdvClientes.RowHeadersVisible = false;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.ForestGreen;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Green;
-            this.gdvClientes.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.ForestGreen;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Green;
+            this.gdvClientes.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.gdvClientes.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gdvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gdvClientes.Size = new System.Drawing.Size(292, 118);
@@ -1382,6 +1433,7 @@
             this.panelSubencabezado.Name = "panelSubencabezado";
             this.panelSubencabezado.Size = new System.Drawing.Size(1287, 79);
             this.panelSubencabezado.TabIndex = 6;
+            this.panelSubencabezado.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSubencabezado_Paint);
             // 
             // panel8
             // 
@@ -1390,6 +1442,7 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(291, 3);
             this.panel8.TabIndex = 15;
+            this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
             // 
             // txtCliente
             // 
@@ -1664,7 +1717,7 @@
             // menuStrip1
             // 
             this.menuStrip1.AutoSize = false;
-            this.menuStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.menuStrip1.BackColor = System.Drawing.Color.DodgerBlue;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.VentaEnEsperaToolStripMenuItem,
@@ -1686,7 +1739,8 @@
             // 
             // VentaEnEsperaToolStripMenuItem
             // 
-            this.VentaEnEsperaToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
+            this.VentaEnEsperaToolStripMenuItem.BackColor = System.Drawing.Color.DodgerBlue;
+            this.VentaEnEsperaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.VentaEnEsperaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("VentaEnEsperaToolStripMenuItem.Image")));
             this.VentaEnEsperaToolStripMenuItem.Name = "VentaEnEsperaToolStripMenuItem";
             this.VentaEnEsperaToolStripMenuItem.Size = new System.Drawing.Size(148, 27);
@@ -1695,7 +1749,8 @@
             // 
             // créditosPorCobrarToolStripMenuItem
             // 
-            this.créditosPorCobrarToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
+            this.créditosPorCobrarToolStripMenuItem.BackColor = System.Drawing.Color.DodgerBlue;
+            this.créditosPorCobrarToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.créditosPorCobrarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("créditosPorCobrarToolStripMenuItem.Image")));
             this.créditosPorCobrarToolStripMenuItem.Name = "créditosPorCobrarToolStripMenuItem";
             this.créditosPorCobrarToolStripMenuItem.Size = new System.Drawing.Size(172, 27);
@@ -1704,7 +1759,8 @@
             // 
             // rToolStripMenuItem
             // 
-            this.rToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
+            this.rToolStripMenuItem.BackColor = System.Drawing.Color.DodgerBlue;
+            this.rToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.rToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("rToolStripMenuItem.Image")));
             this.rToolStripMenuItem.Name = "rToolStripMenuItem";
             this.rToolStripMenuItem.Size = new System.Drawing.Size(157, 27);
@@ -1713,7 +1769,8 @@
             // 
             // devolucionesToolStripMenuItem
             // 
-            this.devolucionesToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
+            this.devolucionesToolStripMenuItem.BackColor = System.Drawing.Color.DodgerBlue;
+            this.devolucionesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.devolucionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("devolucionesToolStripMenuItem.Image")));
             this.devolucionesToolStripMenuItem.Name = "devolucionesToolStripMenuItem";
             this.devolucionesToolStripMenuItem.Size = new System.Drawing.Size(126, 27);
@@ -1722,7 +1779,8 @@
             // 
             // productoToolStripMenuItem2
             // 
-            this.productoToolStripMenuItem2.BackColor = System.Drawing.Color.Gainsboro;
+            this.productoToolStripMenuItem2.BackColor = System.Drawing.Color.DodgerBlue;
+            this.productoToolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.productoToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("productoToolStripMenuItem2.Image")));
             this.productoToolStripMenuItem2.Name = "productoToolStripMenuItem2";
             this.productoToolStripMenuItem2.Size = new System.Drawing.Size(99, 27);
@@ -1731,7 +1789,8 @@
             // 
             // clienteToolStripMenuItem1
             // 
-            this.clienteToolStripMenuItem1.BackColor = System.Drawing.Color.Gainsboro;
+            this.clienteToolStripMenuItem1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.clienteToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.clienteToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("clienteToolStripMenuItem1.Image")));
             this.clienteToolStripMenuItem1.Name = "clienteToolStripMenuItem1";
             this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(83, 27);
@@ -1740,7 +1799,8 @@
             // 
             // inventarioToolStripMenuItem1
             // 
-            this.inventarioToolStripMenuItem1.BackColor = System.Drawing.Color.Gainsboro;
+            this.inventarioToolStripMenuItem1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.inventarioToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.inventarioToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("inventarioToolStripMenuItem1.Image")));
             this.inventarioToolStripMenuItem1.Name = "inventarioToolStripMenuItem1";
             this.inventarioToolStripMenuItem1.Size = new System.Drawing.Size(105, 27);
@@ -1749,16 +1809,18 @@
             // 
             // panelDeControlToolStripMenuItem1
             // 
-            this.panelDeControlToolStripMenuItem1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelDeControlToolStripMenuItem1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panelDeControlToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panelDeControlToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("panelDeControlToolStripMenuItem1.Image")));
             this.panelDeControlToolStripMenuItem1.Name = "panelDeControlToolStripMenuItem1";
-            this.panelDeControlToolStripMenuItem1.Size = new System.Drawing.Size(147, 27);
-            this.panelDeControlToolStripMenuItem1.Text = "Panel de control";
+            this.panelDeControlToolStripMenuItem1.Size = new System.Drawing.Size(134, 27);
+            this.panelDeControlToolStripMenuItem1.Text = "Administrador";
             this.panelDeControlToolStripMenuItem1.Click += new System.EventHandler(this.panelDeControlToolStripMenuItem1_Click);
             // 
             // cerrarTurnoToolStripMenuItem1
             // 
-            this.cerrarTurnoToolStripMenuItem1.BackColor = System.Drawing.Color.Gainsboro;
+            this.cerrarTurnoToolStripMenuItem1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.cerrarTurnoToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.cerrarTurnoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("cerrarTurnoToolStripMenuItem1.Image")));
             this.cerrarTurnoToolStripMenuItem1.Name = "cerrarTurnoToolStripMenuItem1";
             this.cerrarTurnoToolStripMenuItem1.Size = new System.Drawing.Size(122, 27);
@@ -1861,57 +1923,6 @@
             this.panel4.Size = new System.Drawing.Size(1287, 34);
             this.panel4.TabIndex = 615;
             // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.LBLCREDITOAUTORIZADO);
-            this.panel6.Controls.Add(this.LBLSALDOLIQUIDAR);
-            this.panel6.Controls.Add(this.labelControl6);
-            this.panel6.Controls.Add(this.labelControl7);
-            this.panel6.Location = new System.Drawing.Point(8, 234);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(347, 99);
-            this.panel6.TabIndex = 564;
-            // 
-            // LBLCREDITOAUTORIZADO
-            // 
-            this.LBLCREDITOAUTORIZADO.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.LBLCREDITOAUTORIZADO.Appearance.Options.UseFont = true;
-            this.LBLCREDITOAUTORIZADO.Location = new System.Drawing.Point(187, 14);
-            this.LBLCREDITOAUTORIZADO.Name = "LBLCREDITOAUTORIZADO";
-            this.LBLCREDITOAUTORIZADO.Size = new System.Drawing.Size(20, 19);
-            this.LBLCREDITOAUTORIZADO.TabIndex = 569;
-            this.LBLCREDITOAUTORIZADO.Text = "....";
-            // 
-            // LBLSALDOLIQUIDAR
-            // 
-            this.LBLSALDOLIQUIDAR.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.LBLSALDOLIQUIDAR.Appearance.Options.UseFont = true;
-            this.LBLSALDOLIQUIDAR.Location = new System.Drawing.Point(185, 48);
-            this.LBLSALDOLIQUIDAR.Name = "LBLSALDOLIQUIDAR";
-            this.LBLSALDOLIQUIDAR.Size = new System.Drawing.Size(20, 19);
-            this.LBLSALDOLIQUIDAR.TabIndex = 568;
-            this.LBLSALDOLIQUIDAR.Text = "....";
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(37, 49);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(107, 16);
-            this.labelControl6.TabIndex = 567;
-            this.labelControl6.Text = "Saldo a liquidar :";
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(14, 14);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(132, 16);
-            this.labelControl7.TabIndex = 566;
-            this.labelControl7.Text = "Crédito Autorizado :";
-            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1944,6 +1955,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbCerrarPanelCobrar)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.panel33.ResumeLayout(false);
             this.panel33.PerformLayout();
             this.pnlCambioPrecios.ResumeLayout(false);
@@ -1984,8 +1997,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2112,9 +2123,6 @@
         private System.Windows.Forms.ComboBox cboFormaPago;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.RadioButton rbMayoreo;
-        private System.Windows.Forms.RadioButton rbMenudeo;
-        private System.Windows.Forms.RadioButton rbMMayoreo;
         private System.Windows.Forms.TextBox txtComentarios;
         private System.Windows.Forms.Button btnBonificaiones;
         private System.Windows.Forms.Panel PNLCREDITOCLIENTE;
@@ -2140,5 +2148,8 @@
         private DevExpress.XtraEditors.LabelControl LBLSALDOLIQUIDAR;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LabelControl labelControl7;
+        private System.Windows.Forms.RadioButton rbMayoreo;
+        private System.Windows.Forms.RadioButton rbMenudeo;
+        private System.Windows.Forms.RadioButton rbMMayoreo;
     }
 }
