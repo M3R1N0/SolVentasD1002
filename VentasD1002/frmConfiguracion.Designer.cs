@@ -32,6 +32,17 @@
             this.button10 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.FlowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.Panel40 = new System.Windows.Forms.Panel();
+            this.Button2 = new System.Windows.Forms.Button();
+            this.Label31 = new System.Windows.Forms.Label();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.button13 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.button14 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.Panel38 = new System.Windows.Forms.Panel();
             this.pnlProductosActualizados = new System.Windows.Forms.Panel();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel13 = new System.Windows.Forms.Panel();
@@ -39,6 +50,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.Panel5 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.RestaurarBD = new System.Windows.Forms.Button();
+            this.lblRestaurarBD = new System.Windows.Forms.Label();
             this.FlowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.Panel6 = new System.Windows.Forms.Panel();
             this.Button7 = new System.Windows.Forms.Button();
@@ -57,12 +72,6 @@
             this.Button5 = new System.Windows.Forms.Button();
             this.Label4 = new System.Windows.Forms.Label();
             this.Label30 = new System.Windows.Forms.Label();
-            this.Panel38 = new System.Windows.Forms.Panel();
-            this.FlowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.Panel40 = new System.Windows.Forms.Panel();
-            this.Button2 = new System.Windows.Forms.Button();
-            this.Label31 = new System.Windows.Forms.Label();
-            this.Label35 = new System.Windows.Forms.Label();
             this.FlowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.Panel16 = new System.Windows.Forms.Panel();
             this.Logo_empresa = new System.Windows.Forms.PictureBox();
@@ -90,12 +99,22 @@
             this.button12 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.ofd = new System.Windows.Forms.OpenFileDialog();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.button15 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.FlowLayoutPanel2.SuspendLayout();
+            this.Panel40.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel17.SuspendLayout();
             this.pnlProductosActualizados.SuspendLayout();
             this.flowLayoutPanel6.SuspendLayout();
             this.panel13.SuspendLayout();
             this.Panel5.SuspendLayout();
+            this.flowLayoutPanel7.SuspendLayout();
+            this.panel15.SuspendLayout();
             this.FlowLayoutPanel5.SuspendLayout();
             this.Panel6.SuspendLayout();
             this.Panel3.SuspendLayout();
@@ -104,9 +123,6 @@
             this.panel4.SuspendLayout();
             this.FlowLayoutPanel3.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.Panel38.SuspendLayout();
-            this.FlowLayoutPanel2.SuspendLayout();
-            this.Panel40.SuspendLayout();
             this.FlowLayoutPanel1.SuspendLayout();
             this.Panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo_empresa)).BeginInit();
@@ -117,6 +133,7 @@
             this.Panel10.SuspendLayout();
             this.Panel11.SuspendLayout();
             this.panel12.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
             // button10
@@ -139,32 +156,167 @@
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(41, 101);
+            this.panel1.Location = new System.Drawing.Point(24, 101);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(886, 472);
+            this.panel1.Size = new System.Drawing.Size(926, 472);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.FlowLayoutPanel2);
+            this.panel2.Controls.Add(this.Panel38);
             this.panel2.Controls.Add(this.pnlProductosActualizados);
             this.panel2.Controls.Add(this.Panel5);
             this.panel2.Controls.Add(this.Panel3);
             this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.Panel38);
             this.panel2.Controls.Add(this.FlowLayoutPanel1);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(14, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(857, 447);
+            this.panel2.Size = new System.Drawing.Size(897, 447);
             this.panel2.TabIndex = 0;
+            // 
+            // FlowLayoutPanel2
+            // 
+            this.FlowLayoutPanel2.Controls.Add(this.Panel40);
+            this.FlowLayoutPanel2.Controls.Add(this.panel14);
+            this.FlowLayoutPanel2.Controls.Add(this.panel17);
+            this.FlowLayoutPanel2.Controls.Add(this.panel18);
+            this.FlowLayoutPanel2.ForeColor = System.Drawing.Color.DimGray;
+            this.FlowLayoutPanel2.Location = new System.Drawing.Point(24, 118);
+            this.FlowLayoutPanel2.Name = "FlowLayoutPanel2";
+            this.FlowLayoutPanel2.Size = new System.Drawing.Size(799, 85);
+            this.FlowLayoutPanel2.TabIndex = 602;
+            // 
+            // Panel40
+            // 
+            this.Panel40.BackColor = System.Drawing.Color.Transparent;
+            this.Panel40.Controls.Add(this.Button2);
+            this.Panel40.Controls.Add(this.Label31);
+            this.Panel40.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Panel40.Location = new System.Drawing.Point(3, 3);
+            this.Panel40.Name = "Panel40";
+            this.Panel40.Size = new System.Drawing.Size(100, 77);
+            this.Panel40.TabIndex = 590;
+            // 
+            // Button2
+            // 
+            this.Button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Button2.BackgroundImage")));
+            this.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Button2.FlatAppearance.BorderSize = 0;
+            this.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button2.ForeColor = System.Drawing.Color.White;
+            this.Button2.Location = new System.Drawing.Point(0, 0);
+            this.Button2.Name = "Button2";
+            this.Button2.Size = new System.Drawing.Size(100, 36);
+            this.Button2.TabIndex = 603;
+            this.Button2.UseVisualStyleBackColor = true;
+            this.Button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
+            // Label31
+            // 
+            this.Label31.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.Label31.Location = new System.Drawing.Point(0, 36);
+            this.Label31.Name = "Label31";
+            this.Label31.Size = new System.Drawing.Size(100, 41);
+            this.Label31.TabIndex = 3;
+            this.Label31.Text = "Diseño de Comprobantes";
+            this.Label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.Transparent;
+            this.panel14.Controls.Add(this.button13);
+            this.panel14.Controls.Add(this.label12);
+            this.panel14.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel14.Location = new System.Drawing.Point(109, 3);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(100, 77);
+            this.panel14.TabIndex = 604;
+            // 
+            // button13
+            // 
+            this.button13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button13.BackgroundImage")));
+            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.ForeColor = System.Drawing.Color.White;
+            this.button13.Location = new System.Drawing.Point(0, 0);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(100, 36);
+            this.button13.TabIndex = 603;
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // label12
+            // 
+            this.label12.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label12.Location = new System.Drawing.Point(0, 36);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(100, 41);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "Ventas por Cliente";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // panel17
+            // 
+            this.panel17.BackColor = System.Drawing.Color.Transparent;
+            this.panel17.Controls.Add(this.button14);
+            this.panel17.Controls.Add(this.label13);
+            this.panel17.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel17.Location = new System.Drawing.Point(215, 3);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(100, 77);
+            this.panel17.TabIndex = 605;
+            // 
+            // button14
+            // 
+            this.button14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button14.BackgroundImage")));
+            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button14.FlatAppearance.BorderSize = 0;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.ForeColor = System.Drawing.Color.White;
+            this.button14.Location = new System.Drawing.Point(0, 0);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(100, 36);
+            this.button14.TabIndex = 603;
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // label13
+            // 
+            this.label13.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label13.Location = new System.Drawing.Point(0, 36);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(100, 41);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Productos inactivos";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // Panel38
+            // 
+            this.Panel38.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Panel38.ForeColor = System.Drawing.Color.Black;
+            this.Panel38.Location = new System.Drawing.Point(24, 118);
+            this.Panel38.Name = "Panel38";
+            this.Panel38.Size = new System.Drawing.Size(802, 88);
+            this.Panel38.TabIndex = 605;
             // 
             // pnlProductosActualizados
             // 
             this.pnlProductosActualizados.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlProductosActualizados.Controls.Add(this.flowLayoutPanel6);
             this.pnlProductosActualizados.Controls.Add(this.label10);
-            this.pnlProductosActualizados.Location = new System.Drawing.Point(565, 284);
+            this.pnlProductosActualizados.Location = new System.Drawing.Point(694, 284);
             this.pnlProductosActualizados.Name = "pnlProductosActualizados";
             this.pnlProductosActualizados.Size = new System.Drawing.Size(186, 147);
             this.pnlProductosActualizados.TabIndex = 609;
@@ -230,12 +382,59 @@
             // Panel5
             // 
             this.Panel5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Panel5.Controls.Add(this.flowLayoutPanel7);
             this.Panel5.Controls.Add(this.FlowLayoutPanel5);
             this.Panel5.Controls.Add(this.Label6);
             this.Panel5.Location = new System.Drawing.Point(364, 284);
             this.Panel5.Name = "Panel5";
-            this.Panel5.Size = new System.Drawing.Size(193, 147);
+            this.Panel5.Size = new System.Drawing.Size(327, 147);
             this.Panel5.TabIndex = 608;
+            // 
+            // flowLayoutPanel7
+            // 
+            this.flowLayoutPanel7.Controls.Add(this.panel15);
+            this.flowLayoutPanel7.ForeColor = System.Drawing.Color.DimGray;
+            this.flowLayoutPanel7.Location = new System.Drawing.Point(173, 34);
+            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
+            this.flowLayoutPanel7.Size = new System.Drawing.Size(151, 113);
+            this.flowLayoutPanel7.TabIndex = 603;
+            // 
+            // panel15
+            // 
+            this.panel15.BackColor = System.Drawing.Color.Transparent;
+            this.panel15.Controls.Add(this.RestaurarBD);
+            this.panel15.Controls.Add(this.lblRestaurarBD);
+            this.panel15.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel15.Location = new System.Drawing.Point(3, 3);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(157, 94);
+            this.panel15.TabIndex = 590;
+            // 
+            // RestaurarBD
+            // 
+            this.RestaurarBD.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RestaurarBD.BackgroundImage")));
+            this.RestaurarBD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.RestaurarBD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RestaurarBD.FlatAppearance.BorderSize = 0;
+            this.RestaurarBD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RestaurarBD.ForeColor = System.Drawing.Color.White;
+            this.RestaurarBD.Location = new System.Drawing.Point(0, 0);
+            this.RestaurarBD.Name = "RestaurarBD";
+            this.RestaurarBD.Size = new System.Drawing.Size(157, 47);
+            this.RestaurarBD.TabIndex = 5;
+            this.RestaurarBD.UseVisualStyleBackColor = true;
+            this.RestaurarBD.Click += new System.EventHandler(this.RestaurarBD_Click);
+            // 
+            // lblRestaurarBD
+            // 
+            this.lblRestaurarBD.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblRestaurarBD.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.lblRestaurarBD.Location = new System.Drawing.Point(0, 47);
+            this.lblRestaurarBD.Name = "lblRestaurarBD";
+            this.lblRestaurarBD.Size = new System.Drawing.Size(157, 47);
+            this.lblRestaurarBD.TabIndex = 3;
+            this.lblRestaurarBD.Text = "Restaurar BD";
+            this.lblRestaurarBD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FlowLayoutPanel5
             // 
@@ -243,7 +442,7 @@
             this.FlowLayoutPanel5.ForeColor = System.Drawing.Color.DimGray;
             this.FlowLayoutPanel5.Location = new System.Drawing.Point(7, 34);
             this.FlowLayoutPanel5.Name = "FlowLayoutPanel5";
-            this.FlowLayoutPanel5.Size = new System.Drawing.Size(171, 106);
+            this.FlowLayoutPanel5.Size = new System.Drawing.Size(172, 113);
             this.FlowLayoutPanel5.TabIndex = 602;
             // 
             // Panel6
@@ -270,6 +469,7 @@
             this.Button7.Size = new System.Drawing.Size(157, 47);
             this.Button7.TabIndex = 5;
             this.Button7.UseVisualStyleBackColor = true;
+            this.Button7.Click += new System.EventHandler(this.Button7_Click);
             // 
             // Label5
             // 
@@ -281,6 +481,7 @@
             this.Label5.TabIndex = 3;
             this.Label5.Text = "Respaldo de Base de datos";
             this.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Label5.Click += new System.EventHandler(this.Label5_Click);
             // 
             // Label6
             // 
@@ -441,74 +642,6 @@
             this.Label30.TabIndex = 0;
             this.Label30.Text = "Dispositivos";
             // 
-            // Panel38
-            // 
-            this.Panel38.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Panel38.Controls.Add(this.FlowLayoutPanel2);
-            this.Panel38.Controls.Add(this.Label35);
-            this.Panel38.ForeColor = System.Drawing.Color.Black;
-            this.Panel38.Location = new System.Drawing.Point(24, 112);
-            this.Panel38.Name = "Panel38";
-            this.Panel38.Size = new System.Drawing.Size(543, 166);
-            this.Panel38.TabIndex = 605;
-            // 
-            // FlowLayoutPanel2
-            // 
-            this.FlowLayoutPanel2.Controls.Add(this.Panel40);
-            this.FlowLayoutPanel2.ForeColor = System.Drawing.Color.DimGray;
-            this.FlowLayoutPanel2.Location = new System.Drawing.Point(7, 34);
-            this.FlowLayoutPanel2.Name = "FlowLayoutPanel2";
-            this.FlowLayoutPanel2.Size = new System.Drawing.Size(526, 129);
-            this.FlowLayoutPanel2.TabIndex = 602;
-            // 
-            // Panel40
-            // 
-            this.Panel40.BackColor = System.Drawing.Color.Transparent;
-            this.Panel40.Controls.Add(this.Button2);
-            this.Panel40.Controls.Add(this.Label31);
-            this.Panel40.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Panel40.Location = new System.Drawing.Point(3, 3);
-            this.Panel40.Name = "Panel40";
-            this.Panel40.Size = new System.Drawing.Size(115, 92);
-            this.Panel40.TabIndex = 590;
-            // 
-            // Button2
-            // 
-            this.Button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Button2.BackgroundImage")));
-            this.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Button2.FlatAppearance.BorderSize = 0;
-            this.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button2.ForeColor = System.Drawing.Color.White;
-            this.Button2.Location = new System.Drawing.Point(0, 0);
-            this.Button2.Name = "Button2";
-            this.Button2.Size = new System.Drawing.Size(115, 51);
-            this.Button2.TabIndex = 603;
-            this.Button2.UseVisualStyleBackColor = true;
-            this.Button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // Label31
-            // 
-            this.Label31.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.Label31.Location = new System.Drawing.Point(0, 51);
-            this.Label31.Name = "Label31";
-            this.Label31.Size = new System.Drawing.Size(115, 41);
-            this.Label31.TabIndex = 3;
-            this.Label31.Text = "Diseño de Comprobantes";
-            this.Label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Label35
-            // 
-            this.Label35.AutoSize = true;
-            this.Label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.Label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Label35.Location = new System.Drawing.Point(3, 11);
-            this.Label35.Name = "Label35";
-            this.Label35.Size = new System.Drawing.Size(135, 20);
-            this.Label35.TabIndex = 0;
-            this.Label35.Text = "Personalizacion";
-            // 
             // FlowLayoutPanel1
             // 
             this.FlowLayoutPanel1.Controls.Add(this.Panel16);
@@ -520,7 +653,7 @@
             this.FlowLayoutPanel1.Controls.Add(this.Panel11);
             this.FlowLayoutPanel1.Controls.Add(this.panel12);
             this.FlowLayoutPanel1.ForeColor = System.Drawing.Color.DimGray;
-            this.FlowLayoutPanel1.Location = new System.Drawing.Point(22, 28);
+            this.FlowLayoutPanel1.Location = new System.Drawing.Point(24, 27);
             this.FlowLayoutPanel1.Name = "FlowLayoutPanel1";
             this.FlowLayoutPanel1.Size = new System.Drawing.Size(804, 78);
             this.FlowLayoutPanel1.TabIndex = 604;
@@ -840,6 +973,48 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Configuraciónes generales";
             // 
+            // ofd
+            // 
+            this.ofd.FileName = "openFileDialog1";
+            // 
+            // panel18
+            // 
+            this.panel18.BackColor = System.Drawing.Color.Transparent;
+            this.panel18.Controls.Add(this.button15);
+            this.panel18.Controls.Add(this.label14);
+            this.panel18.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel18.Location = new System.Drawing.Point(321, 3);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(100, 77);
+            this.panel18.TabIndex = 606;
+            // 
+            // button15
+            // 
+            this.button15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button15.BackgroundImage")));
+            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button15.FlatAppearance.BorderSize = 0;
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button15.ForeColor = System.Drawing.Color.White;
+            this.button15.Location = new System.Drawing.Point(0, 0);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(100, 36);
+            this.button15.TabIndex = 603;
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // label14
+            // 
+            this.label14.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label14.Location = new System.Drawing.Point(0, 36);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(100, 41);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "Ventas por día";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label14.Click += new System.EventHandler(this.label14_Click);
+            // 
             // frmConfiguracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -858,12 +1033,18 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.FlowLayoutPanel2.ResumeLayout(false);
+            this.Panel40.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            this.panel17.ResumeLayout(false);
             this.pnlProductosActualizados.ResumeLayout(false);
             this.pnlProductosActualizados.PerformLayout();
             this.flowLayoutPanel6.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             this.Panel5.ResumeLayout(false);
             this.Panel5.PerformLayout();
+            this.flowLayoutPanel7.ResumeLayout(false);
+            this.panel15.ResumeLayout(false);
             this.FlowLayoutPanel5.ResumeLayout(false);
             this.Panel6.ResumeLayout(false);
             this.Panel3.ResumeLayout(false);
@@ -874,10 +1055,6 @@
             this.panel4.PerformLayout();
             this.FlowLayoutPanel3.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
-            this.Panel38.ResumeLayout(false);
-            this.Panel38.PerformLayout();
-            this.FlowLayoutPanel2.ResumeLayout(false);
-            this.Panel40.ResumeLayout(false);
             this.FlowLayoutPanel1.ResumeLayout(false);
             this.Panel16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Logo_empresa)).EndInit();
@@ -889,6 +1066,7 @@
             this.Panel10.ResumeLayout(false);
             this.Panel11.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -942,10 +1120,6 @@
         internal System.Windows.Forms.Label Label30;
         internal System.Windows.Forms.Panel Panel38;
         internal System.Windows.Forms.FlowLayoutPanel FlowLayoutPanel2;
-        internal System.Windows.Forms.Panel Panel40;
-        internal System.Windows.Forms.Button Button2;
-        internal System.Windows.Forms.Label Label31;
-        internal System.Windows.Forms.Label Label35;
         private System.Windows.Forms.Button button10;
         internal System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         internal System.Windows.Forms.Panel panel13;
@@ -956,5 +1130,22 @@
         internal System.Windows.Forms.Button button12;
         internal System.Windows.Forms.Label label11;
         public System.Windows.Forms.Panel pnlProductosActualizados;
+        internal System.Windows.Forms.Panel panel14;
+        internal System.Windows.Forms.Button button13;
+        internal System.Windows.Forms.Label label12;
+        internal System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
+        internal System.Windows.Forms.Panel panel15;
+        internal System.Windows.Forms.Button RestaurarBD;
+        internal System.Windows.Forms.Label lblRestaurarBD;
+        private System.Windows.Forms.OpenFileDialog ofd;
+        internal System.Windows.Forms.Panel Panel40;
+        internal System.Windows.Forms.Button Button2;
+        internal System.Windows.Forms.Label Label31;
+        internal System.Windows.Forms.Panel panel17;
+        internal System.Windows.Forms.Button button14;
+        internal System.Windows.Forms.Label label13;
+        internal System.Windows.Forms.Panel panel18;
+        internal System.Windows.Forms.Button button15;
+        internal System.Windows.Forms.Label label14;
     }
 }

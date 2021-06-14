@@ -171,6 +171,61 @@ namespace DatVentas
             }
         }
 
+        public static List<Venta> ObtenerVenta_TotalPorCaja(DateTime fechaInicio)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+                {
+
+                    List<CatalogoGenerico> lst = DatOpenCloseBox.ObtenerCajas_PorFecha(fechaInicio);
+
+                    DateTime fechaFin = fechaInicio.AddDays(1);
+                    List<Venta> lstCaja = new List<Venta>();
+                   
+                    foreach (CatalogoGenerico item in lst)
+                    {
+                        DataTable dt = new DataTable();
+                        conn.Open();
+                        SqlCommand cmd = new SqlCommand("SP_OBTENERVENTAS_PORCAJA", conn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@idcaja", item.Id);
+                        cmd.Parameters.AddWithValue("@inicio", fechaInicio);
+                        cmd.Parameters.AddWithValue("@fin", fechaFin);
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            Venta obj = new Venta();
+
+                            obj.FechaVenta = reader.GetDateTime(0);
+                            obj.MontoTotal = reader.GetDecimal(1);
+                            obj.FormaPago = reader.GetString(2);
+                            obj.EstadoPago = reader.GetString(3);
+                            obj.Accion = reader.GetString(4);
+                            obj.Comentarios = reader.GetString(5); // ------> DESCRIPCION
+                            obj.Saldo = reader.GetDecimal(6); // -----------> BONIFICACION
+                            obj.Vuelto = reader.GetDecimal(7); // ----------> CAJA INICIAL
+                            obj.IdCaja = reader.GetInt32(8); // ------------> ID CAJA
+
+                            lstCaja.Add(obj);
+                        }
+                        conn.Close();
+                    }
+
+                   
+
+                    return lstCaja;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public DataTable ObtenerVentas_PorCobrar(string buscar)
         {
             using (SqlConnection con = new SqlConnection(MasterConnection.connection))
@@ -489,6 +544,7 @@ namespace DatVentas
             {
                 try
                 {
+                    decimal bonificacion = 0;
                     ParametrosReporte obj = new ParametrosReporte();
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("[sp_ObtenerTicket]", conn);
@@ -547,6 +603,11 @@ namespace DatVentas
                     obj.lstDetalleVenta = lst;
 
 
+                    conn.Open();
+                    SqlCommand cmd3 = new SqlCommand($"SELECT ISNULL (SUM(B.Bonificacion), 0) FROM tb_Bonificacion B where Venta_Id ={idVenta}", conn);
+                    bonificacion = Convert.ToDecimal(cmd3.ExecuteScalar());
+
+                    obj.Bonificacion = bonificacion;
                     return obj;
 
                 }
@@ -688,6 +749,46 @@ namespace DatVentas
         }
 
         #endregion
+
+        public static DataTable ListarReporteVentas_PorCliente(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                DataTable dt = new DataTable();
+                try
+                {
+
+                    SqlDataAdapter da = new SqlDataAdapter("SP_ObtenerReporteVenta_cliente", conn);
+                    da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    da.SelectCommand.Parameters.AddWithValue("@idcliente", id);
+                    da.Fill(dt);
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+            }
+        }
+
+        public static void Editar_FormaPago(int idventa, decimal montoTotal)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand($"UPDATE tb_Ventas SET Forma_Pago = 'Credito', Estado_Pago = 'PENDIENTE',Efectivo = 0, Saldo ={montoTotal}, Vuelto = {montoTotal} WHERE Id_Venta ={idventa}",con);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 
 }

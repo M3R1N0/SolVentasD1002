@@ -60,10 +60,16 @@
     <Reference Include="DevExpress.Charts.v20.2.Core, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.Desktop.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v20.2.UI, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataVisualization.v20.2.Core, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Dialogs.v20.2.Core, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Images.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v20.2.Core, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v20.2.Core, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v20.2.Core, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v20.2.Core, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Spreadsheet.v20.2.Core, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v20.2.UI, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -74,7 +80,13 @@
     <Reference Include="DevExpress.XtraEditors.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v20.2.Core, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v20.2.Core.Desktop, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraSpreadsheet.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EPPlus, Version=5.5.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.5.5.0\lib\net45\EPPlus.dll</HintPath>
@@ -189,6 +201,12 @@
     <Compile Include="frmConfiguracionImpresoras.Designer.cs">
       <DependentUpon>frmConfiguracionImpresoras.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCopiaAutomatica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCopiaAutomatica.Designer.cs">
+      <DependentUpon>frmCopiaAutomatica.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCopiaSeguridad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +254,12 @@
     </Compile>
     <Compile Include="frmGastos.Designer.cs">
       <DependentUpon>frmGastos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHistorialCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHistorialCliente.Designer.cs">
+      <DependentUpon>frmHistorialCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="frmHistorialVentas.cs">
       <SubType>Form</SubType>
@@ -303,6 +327,12 @@
     <Compile Include="frmProductos.Designer.cs">
       <DependentUpon>frmProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmProductosInactivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProductosInactivos.Designer.cs">
+      <DependentUpon>frmProductosInactivos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRegistroEmpresa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -314,6 +344,12 @@
     </Compile>
     <Compile Include="frmReimprimirTicket.Designer.cs">
       <DependentUpon>frmReimprimirTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRestaurarBD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRestaurarBD.Designer.cs">
+      <DependentUpon>frmRestaurarBD.cs</DependentUpon>
     </Compile>
     <Compile Include="frmServidorRemoto.cs">
       <SubType>Form</SubType>
@@ -338,6 +374,12 @@
     </Compile>
     <Compile Include="frmVenta.Designer.cs">
       <DependentUpon>frmVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVentasDiarias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVentasDiarias.Designer.cs">
+      <DependentUpon>frmVentasDiarias.cs</DependentUpon>
     </Compile>
     <Compile Include="frmVentasEnEspera.cs">
       <SubType>Form</SubType>
@@ -417,6 +459,9 @@
     <EmbeddedResource Include="frmConfiguracionImpresoras.resx">
       <DependentUpon>frmConfiguracionImpresoras.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCopiaAutomatica.resx">
+      <DependentUpon>frmCopiaAutomatica.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCopiaSeguridad.resx">
       <DependentUpon>frmCopiaSeguridad.cs</DependentUpon>
     </EmbeddedResource>
@@ -440,6 +485,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGastos.resx">
       <DependentUpon>frmGastos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHistorialCliente.resx">
+      <DependentUpon>frmHistorialCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHistorialVentas.resx">
       <DependentUpon>frmHistorialVentas.cs</DependentUpon>
@@ -471,11 +519,17 @@
     <EmbeddedResource Include="frmProductos.resx">
       <DependentUpon>frmProductos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmProductosInactivos.resx">
+      <DependentUpon>frmProductosInactivos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmRegistroEmpresa.resx">
       <DependentUpon>frmRegistroEmpresa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReimprimirTicket.resx">
       <DependentUpon>frmReimprimirTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRestaurarBD.resx">
+      <DependentUpon>frmRestaurarBD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmServidorRemoto.resx">
       <DependentUpon>frmServidorRemoto.cs</DependentUpon>
@@ -488,6 +542,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmVenta.resx">
       <DependentUpon>frmVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVentasDiarias.resx">
+      <DependentUpon>frmVentasDiarias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVentasEnEspera.resx">
       <DependentUpon>frmVentasEnEspera.cs</DependentUpon>

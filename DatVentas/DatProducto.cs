@@ -46,6 +46,7 @@ namespace DatVentas
                     sc.Parameters.AddWithValue("@cantidad", kardex.Cantidad);
                     sc.Parameters.AddWithValue("@tipo", kardex.Tipo);
                     sc.Parameters.AddWithValue("@estadokardex", kardex.Estado);
+                    sc.Parameters.AddWithValue("@peso", p.Peso);
 
                     resultado = sc.ExecuteNonQuery();
                     conn.Close();
@@ -87,6 +88,53 @@ namespace DatVentas
             }
         }
 
+        public DataTable MostrarProductos_Inactivos(string busqueda)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                DataTable dt = new DataTable();
+                try
+                {
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    if (string.IsNullOrEmpty(busqueda))
+                    {
+                        da = new SqlDataAdapter("SELECT TOP (15) * FROM tb_Producto where  Estado = 0 ORDER BY Descripcion", conn);
+                    }
+                    else
+                    {
+                        da = new SqlDataAdapter($"select TOP(15) * from tb_Producto where  Codigo like '" + busqueda + "' and Estado = 0 OR   Descripcion like '%" + busqueda + "%' and Estado = 0 ", conn);
+                    }
+
+                    da.Fill(dt);
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    throw ex;
+                }
+            }
+        }
+
+        public DataRow ObtenerProductoID(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter($"SELECT * FROM tb_Producto WHERE Id_Producto ={id}", conn);
+                    da.Fill(dt);
+
+                    return dt.Rows[0];
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public DataRow ObtenerProducto(string codigo)
         {
             using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
@@ -94,7 +142,7 @@ namespace DatVentas
                 try
                 {
                     DataTable dt = new DataTable();
-                    SqlDataAdapter da = new SqlDataAdapter($"SELECT * FROM tb_Producto WHERE Codigo + Descripcion like'%{codigo}%' AND Estado = 1 ORDER BY Descripcion", conn);
+                    SqlDataAdapter da = new SqlDataAdapter($"SELECT * FROM tb_Producto WHERE Codigo + Descripcion like'%{codigo}%' AND Estado = 1", conn);
                     da.Fill(dt);
 
                     return dt.Rows[0];
@@ -174,6 +222,7 @@ namespace DatVentas
                     sc.Parameters.AddWithValue("@presentacionmenudeo", p.PresentacionMenudeo);
                     sc.Parameters.AddWithValue("@estado", p.Estado);
                     sc.Parameters.AddWithValue("@idproducto", p.Id);
+                    sc.Parameters.AddWithValue("@peso", p.Peso);
 
                     resultado = sc.ExecuteNonQuery();
                     conn.Close();
@@ -494,8 +543,8 @@ namespace DatVentas
                     conn.Open();
                     SqlCommand sc = new SqlCommand("[sp_actualizarProductoPorExcel]", conn);
                     sc.CommandType = CommandType.StoredProcedure;
-                    sc.Parameters.AddWithValue("@idCategoria", p.IdCategoria);
-                    sc.Parameters.AddWithValue("@idPresentacion", p.IdTipoPresentacion);
+                  //  sc.Parameters.AddWithValue("@idCategoria", p.IdCategoria);
+                   // sc.Parameters.AddWithValue("@idPresentacion", p.IdTipoPresentacion);
                     sc.Parameters.AddWithValue("@codigo", p.codigo);
                     sc.Parameters.AddWithValue("@descripcion", p.Descripcion);
                     sc.Parameters.AddWithValue("@presentacion", p.Presentacion);
@@ -520,6 +569,50 @@ namespace DatVentas
                     conn.Close();
                     throw ex;
                 }
+            }
+        }
+
+        public static bool ExisteProductoPorID(string codigo)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+                {
+                    SqlCommand cmd = new SqlCommand($"Select Codigo from  tb_Producto WHERE Codigo='{codigo}'", conn);
+                    conn.Open();
+                    string result  =Convert.ToString (cmd.ExecuteScalar());
+                    conn.Close();
+
+                    return (result != string.Empty) ? true : false;
+                }
+
+
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static bool ExisteProductoPorDescripcion(string descripcion)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+                {
+                    SqlCommand cmd = new SqlCommand($"Select Descripcion from  tb_Producto WHERE Descripcion='{descripcion}'", conn);
+                    conn.Open();
+                    string result = Convert.ToString(cmd.ExecuteScalar());
+                    conn.Close();
+
+                    return (result != string.Empty) ? true : false;
+                }
+
+
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
 
@@ -596,6 +689,24 @@ namespace DatVentas
                     }
 
                     return lstProducto;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void ActivarProducto(int id)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    SqlCommand cmd = new SqlCommand($"UPDATE tb_Producto SET Estado = 1 WHERE Id_Producto ={id}", con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
                 }
             }
             catch (Exception ex)

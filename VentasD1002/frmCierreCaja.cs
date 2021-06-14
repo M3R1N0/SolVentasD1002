@@ -104,12 +104,30 @@ namespace VentasD1002
                 DateTime fin = DateTime.Now;
                 decimal diferencia = Convert.ToDecimal(lblTotal.Text) - Convert.ToDecimal(lblTotalCaja.Text);
                 new BusOpenCloseBox().CerrarCaja(idCaja, cierre, fin, Convert.ToDecimal(lblTotal.Text), Convert.ToDecimal(lblTotalCaja.Text), diferencia);
-                Application.Exit();
+                this.Dispose();
+
+                frmCopiaAutomatica copiaAutomatica = new frmCopiaAutomatica();
+                copiaAutomatica.ShowDialog();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ocurrió un error: " + ex.Message, "Error de cierre de caja", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            frmMenuPrincipal menuPrincipal = new frmMenuPrincipal();
+            menuPrincipal.ShowDialog();
+        }
+
+        private void frmCierreCaja_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Dispose();
+
+            frmCopiaAutomatica copiaAutomatica = new frmCopiaAutomatica();
+            copiaAutomatica.ShowDialog();
         }
     }
 }

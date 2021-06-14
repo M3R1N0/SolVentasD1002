@@ -14,6 +14,7 @@ using System.Drawing.Printing;
 using Telerik.Reporting.Processing;
 using System.Management;
 using EntVenta;
+using BusVenta.Helpers;
 
 namespace VentasD1002
 {
@@ -25,6 +26,8 @@ namespace VentasD1002
         public frmReimprimirTicket()
         {
             InitializeComponent();
+            btnEditarPago.Enabled = false;
+            pnlEditarPago.Visible = false;
         }
 
         private void frmReimprimirTicket_Load(object sender, EventArgs e)
@@ -33,7 +36,7 @@ namespace VentasD1002
             serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
 
             pnlBuscarPorCLiente.Visible = false;
-            btnBonificacion.Visible = false;
+            btnBonificacion.Enabled = false;
         }
 
         private void ObtenerDatos(string buscar)
@@ -68,15 +71,18 @@ namespace VentasD1002
             {
                 if (e.ColumnIndex == this.gdvListado.Columns["Detalle"].Index)
                 {
+                    //reportViewer1.Report = null;
                     int idventa = Convert.ToInt32(gdvListado.SelectedCells[1].Value);
                     lblIdVenta.Text = idventa.ToString();
                     string total = Convert.ToString(gdvListado.SelectedCells[7].Value);
+
+                    lblMontoTotal.Text =total;
 
                     string textoNumero = NumeroATexto(total);
 
                     ParametrosReporte reporte = DatVenta.Consultar_Ticket_Parametro(idventa);
                     reporte.LetraNumero = textoNumero;
-                 
+
 
                     //if (rbTicket.Checked == true)
                     //{
@@ -89,14 +95,12 @@ namespace VentasD1002
                     if (RbtnMod2.Checked == true)
                     {
                         ReportTicket rptTicket = new ReportTicket();
-                        if (reporte.EstadoVenta == "VENTA CANCELADA")
-                        {
-                            rptTicket.pnlCancelar.Visible = true;
-                        }
-                        else
-                        {
-                            rptTicket.pnlCancelar.Visible = false;
-                        }
+                        rptTicket.pnlCancelar.Visible = (reporte.EstadoVenta == "VENTA CANCELADA") ? true : false;
+                        rptTicket.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : "Saldo por liquidar :";
+                       // rptTicket.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
+                        rptTicket.lblBonificacion.Visible = (reporte.Bonificacion != 0) ? true : false;
+                        rptTicket.textBox24.Visible = (reporte.Bonificacion != 0) ? true : false;
+
                         rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
                         rptTicket.DataSource = reporte;
 
@@ -106,14 +110,11 @@ namespace VentasD1002
                     if (rbA4.Checked == true)
                     {
                         rtpRecibo recibo = new rtpRecibo();
-                        if (reporte.EstadoVenta == "VENTA CANCELADA")
-                        {
-                            recibo.pnlCancelar.Visible = true;
-                        }
-                        else
-                        {
-                            recibo.pnlCancelar.Visible = false;
-                        }
+                        recibo.pnlCancelar.Visible = (reporte.EstadoVenta == "VENTA CANCELADA") ? true : false;
+                        recibo.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : recibo.lblCambio.Value = "Saldo por liquidar :";
+                       // recibo.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
+                        recibo.lblBonificacion.Visible = (reporte.Bonificacion != 0) ? true : false;
+                        recibo.txtBonificacion.Visible = (reporte.Bonificacion != 0) ? true : false;
 
                         recibo.tblVentaProducto.DataSource = reporte.lstDetalleVenta;
                         recibo.DataSource = reporte;
@@ -121,7 +122,8 @@ namespace VentasD1002
                     }
                     
                     reportViewer1.RefreshReport();
-                    btnBonificacion.Visible = true;
+                    btnBonificacion.Enabled = true;
+                    btnEditarPago.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -222,8 +224,70 @@ namespace VentasD1002
                 bonificacion.ShowDialog();
                 this.Dispose();
             }
-            
-            
+        }
+
+        private void btnEditarPago_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(lblIdVenta.Text))
+            {
+                MessageBox.Show("Seleccione el ticket a modificar", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                pnlEditarPago.Visible = true;
+            }
+         
+        }
+
+        private void cancelarVentaF9ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnlEditarPago.Visible = false;
+        }
+
+        private void cobrarF10_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idventa = Convert.ToInt32(lblIdVenta.Text);
+                decimal montoTotal = Convert.ToDecimal(lblMontoTotal.Text);
+
+                DatVenta.Editar_FormaPago(idventa, montoTotal);
+
+                MessageBox.Show("Proceso realizado correctamente", "Operación realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                AgregarBitacora();
+                lblMontoTotal.Text = "";
+                lblIdVenta.Text = "";
+                pnlEditarPago.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al realizar el cambio (Contado - Crédito) : "+ex.Message, "Error de actualización", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblMontoTotal.Text = "";
+                lblIdVenta.Text = "";
+            }
+        }
+
+        private void AgregarBitacora()
+        {
+            try
+            {
+                string serialPC = Sistema.ObenterSerialPC();
+
+                int idCaja = new BusBox().showBoxBySerial(serialPC).Id;
+                int idusuario = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC)).Id;
+
+                Bitacora b = new Bitacora();
+                b.Fecha = DateTime.Now;
+                b.IdUsuario = idusuario;
+                b.IdCaja = idCaja;
+                b.Accion = $"CAMBIO DE FORMA DE PAGO CONTADO-CREDITO [{lblIdVenta.Text}]";
+
+                DatCatGenerico.AgregarBitácora(b);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar la bitacora", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+            }
         }
     }
 }

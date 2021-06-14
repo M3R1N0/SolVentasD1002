@@ -1,4 +1,5 @@
-﻿using DatVentas;
+﻿using BusVenta.Helpers;
+using DatVentas;
 using EntVenta;
 using System;
 using System.Collections.Generic;
@@ -110,6 +111,32 @@ namespace BusVenta
             u.Nombre = dr["Nombre"].ToString();
             
             return u;
+        }
+
+        //=============================================================================================================
+
+        public static bool ValidarPerfil_Usuario()
+        {
+            try
+            {
+                string serialPC = Sistema.ObenterSerialPC();
+                User user = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC));
+
+                if (String.Equals(user.Rol,"ADMINISTRADOR", StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
         }
     }
 }

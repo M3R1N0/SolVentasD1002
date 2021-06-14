@@ -22,13 +22,14 @@ namespace VentasD1002
             InitializeComponent();
         }
 
-        private string strSoftware = "ventasD1002";
+        private string strSoftware = "SISVENTAS";
         private string strBaseDatos = "softVentas";
         private Thread hilo;
         private bool termino = false;
 
         private void frmCopiaSeguridad_Load(object sender, EventArgs e)
         {
+            loading.Visible = false;
             cargarDatos();
         }
 
@@ -40,6 +41,7 @@ namespace VentasD1002
 
                 txtRutaBackup.Text = e.RutaBackup;
                 cboFrecuencia.Text = e.FrecuenciaBackup.ToString();
+                lblUltimaCopia.Text =""+ e.UltimaFechaBackup;
 
             }
             catch (Exception ex)
@@ -54,7 +56,7 @@ namespace VentasD1002
             {
                 // hilo = new Thread(new ThreadStart(guardarCopia));
                 guardarCopia();
-                pbLoading.Visible = true;
+               loading.Visible = true;
               //  hilo.Start();
                 timer1.Start();
             }
@@ -108,8 +110,9 @@ namespace VentasD1002
             if (termino ==  true)
             {
                 timer1.Stop();
-                pbLoading.Visible = false;
+                loading.Visible = false;
                 lblCopiaGuardada.Text = "Copia guardada en: " + txtRutaBackup.Text + @"\" + "softVentas.bak";
+               
 
                 EditarRespaldos();
             }
@@ -122,6 +125,7 @@ namespace VentasD1002
             if (resultado != 0)
             {
                 MessageBox.Show("Proceso realizado con éxito", "EXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Dispose();
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using BusVenta;
+using BusVenta.Helpers;
 using DatVentas;
 using EntVenta;
 using System;
@@ -48,6 +49,7 @@ namespace VentasD1002
                 gdvProductos.Columns[19].Visible = false;
                 gdvProductos.Columns[20].Visible = false;
                 gdvProductos.Columns[21].Visible = false;
+                gdvProductos.Columns[22].Visible = false;
                 BusVenta.DataTablePersonalizado.Multilinea(ref gdvProductos);
 
 
@@ -88,6 +90,9 @@ namespace VentasD1002
             frmAB.txtPMMayoreo.Text = gdvProductos.SelectedCells[10].Value.ToString();
             frmAB.txtApartirDe.Text = gdvProductos.SelectedCells[11].Value.ToString();
             frmAB.txtpreciomayoreo.Text = gdvProductos.SelectedCells[12].Value.ToString();
+            var s = gdvProductos.SelectedCells[22].Value.ToString(); 
+
+            frmAB.txtPesoMayoreo.Text = gdvProductos.SelectedCells[22].Value.ToString();
 
             string inventario = gdvProductos.SelectedCells[13].Value.ToString();
             frmAB.txtTotalUnidades.Text = gdvProductos.SelectedCells[20].Value.ToString();
@@ -135,6 +140,7 @@ namespace VentasD1002
                         {
                             new BusProducto().BorrarProducto(oneKey);
                             MessageBox.Show("Producto eliminado correctamente", "Operacion realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            AgregarBitacora(oneKey);
                             ListarProductos("");
                         }
                         catch (Exception ex)
@@ -147,7 +153,11 @@ namespace VentasD1002
 
             if (e.ColumnIndex == this.gdvProductos.Columns["Editar"].Index)
             {
+
                 EditarProducto();
+             //  int id = Convert.ToInt32(gdvProductos.SelectedCells[2].Value);
+               // frmABProducto frmAB = new frmABProducto(id);
+                //frmAB.ShowDialog();
             }
         }
 
@@ -226,5 +236,29 @@ namespace VentasD1002
                 MessageBox.Show("Error : "+ex.Message);
             }
         }
+
+        private void AgregarBitacora(int ID)
+        {
+            try
+            {
+                string serialPC = Sistema.ObenterSerialPC();
+
+                int _idCaja = new BusBox().showBoxBySerial(serialPC).Id;
+                int _idusuario = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC)).Id;
+
+                Bitacora b = new Bitacora();
+                b.Fecha = DateTime.Now;
+                b.IdUsuario = _idusuario;
+                b.IdCaja = _idCaja;
+                b.Accion = $"ELIMINACION DEL PRODUCTO [{ID}]";
+
+                DatCatGenerico.AgregarBitácora(b);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar la bitacora", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

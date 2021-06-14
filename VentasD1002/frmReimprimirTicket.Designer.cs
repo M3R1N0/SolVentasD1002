@@ -54,6 +54,17 @@
             this.btnBonificacion = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnEditarPago = new System.Windows.Forms.Button();
+            this.pnlEditarPago = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.menuStrip6 = new System.Windows.Forms.MenuStrip();
+            this.cancelarVentaF9ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.cobrarF10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblMontoTotal = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvListado)).BeginInit();
@@ -63,6 +74,10 @@
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.pnlEditarPago.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.menuStrip6.SuspendLayout();
+            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -74,7 +89,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(946, 54);
+            this.panel1.Size = new System.Drawing.Size(1132, 54);
             this.panel1.TabIndex = 0;
             // 
             // rbnFiltroFechas
@@ -109,7 +124,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(946, 28);
+            this.label1.Size = new System.Drawing.Size(1132, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "Consulta de Tickets";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -125,6 +140,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pnlEditarPago);
             this.panel2.Controls.Add(this.gdvListado);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
@@ -179,7 +195,7 @@
             // 
             this.rbA4.AutoSize = true;
             this.rbA4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbA4.Location = new System.Drawing.Point(512, 16);
+            this.rbA4.Location = new System.Drawing.Point(501, 14);
             this.rbA4.Name = "rbA4";
             this.rbA4.Size = new System.Drawing.Size(55, 24);
             this.rbA4.TabIndex = 13;
@@ -191,7 +207,7 @@
             this.RbtnMod2.AutoSize = true;
             this.RbtnMod2.Checked = true;
             this.RbtnMod2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RbtnMod2.Location = new System.Drawing.Point(411, 16);
+            this.RbtnMod2.Location = new System.Drawing.Point(405, 14);
             this.RbtnMod2.Name = "RbtnMod2";
             this.RbtnMod2.Size = new System.Drawing.Size(90, 24);
             this.RbtnMod2.TabIndex = 15;
@@ -266,7 +282,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(651, 54);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(295, 481);
+            this.panel3.Size = new System.Drawing.Size(481, 481);
             this.panel3.TabIndex = 2;
             // 
             // panel6
@@ -275,7 +291,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 57);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(295, 424);
+            this.panel6.Size = new System.Drawing.Size(481, 424);
             this.panel6.TabIndex = 1;
             // 
             // reportViewer1
@@ -284,7 +300,7 @@
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(295, 424);
+            this.reportViewer1.Size = new System.Drawing.Size(481, 424);
             this.reportViewer1.TabIndex = 0;
             // 
             // panel5
@@ -293,27 +309,27 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(295, 57);
+            this.panel5.Size = new System.Drawing.Size(481, 57);
             this.panel5.TabIndex = 0;
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.btnEditarPago);
             this.panel7.Controls.Add(this.btnBonificacion);
             this.panel7.Controls.Add(this.btnImprimir);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(6, 0);
+            this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(289, 57);
+            this.panel7.Size = new System.Drawing.Size(481, 57);
             this.panel7.TabIndex = 0;
             // 
             // btnBonificacion
             // 
-            this.btnBonificacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBonificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBonificacion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnBonificacion.Image = ((System.Drawing.Image)(resources.GetObject("btnBonificacion.Image")));
             this.btnBonificacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBonificacion.Location = new System.Drawing.Point(3, 19);
+            this.btnBonificacion.Location = new System.Drawing.Point(184, 14);
             this.btnBonificacion.Name = "btnBonificacion";
             this.btnBonificacion.Size = new System.Drawing.Size(159, 32);
             this.btnBonificacion.TabIndex = 18;
@@ -324,12 +340,11 @@
             // 
             // btnImprimir
             // 
-            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.ForeColor = System.Drawing.Color.DodgerBlue;
             this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimir.Location = new System.Drawing.Point(168, 19);
+            this.btnImprimir.Location = new System.Drawing.Point(353, 14);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(118, 32);
             this.btnImprimir.TabIndex = 17;
@@ -346,11 +361,150 @@
             this.dataGridViewImageColumn1.ReadOnly = true;
             this.dataGridViewImageColumn1.ToolTipText = "Ver detalle";
             // 
+            // btnEditarPago
+            // 
+            this.btnEditarPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarPago.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnEditarPago.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarPago.Image")));
+            this.btnEditarPago.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditarPago.Location = new System.Drawing.Point(31, 14);
+            this.btnEditarPago.Name = "btnEditarPago";
+            this.btnEditarPago.Size = new System.Drawing.Size(143, 32);
+            this.btnEditarPago.TabIndex = 19;
+            this.btnEditarPago.Text = "Editar pago";
+            this.btnEditarPago.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditarPago.UseVisualStyleBackColor = true;
+            this.btnEditarPago.Click += new System.EventHandler(this.btnEditarPago_Click);
+            // 
+            // pnlEditarPago
+            // 
+            this.pnlEditarPago.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pnlEditarPago.Controls.Add(this.lblMontoTotal);
+            this.pnlEditarPago.Controls.Add(this.menuStrip6);
+            this.pnlEditarPago.Controls.Add(this.menuStrip2);
+            this.pnlEditarPago.Controls.Add(this.label4);
+            this.pnlEditarPago.Controls.Add(this.label3);
+            this.pnlEditarPago.Controls.Add(this.panel8);
+            this.pnlEditarPago.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlEditarPago.Location = new System.Drawing.Point(0, 57);
+            this.pnlEditarPago.Name = "pnlEditarPago";
+            this.pnlEditarPago.Size = new System.Drawing.Size(651, 424);
+            this.pnlEditarPago.TabIndex = 11;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.Gold;
+            this.panel8.Controls.Add(this.label2);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(651, 40);
+            this.panel8.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(651, 40);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Editar Ticket";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 119);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(609, 20);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Está a punto de realizar el cambio de la forma de pago (contado a crédito).";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label4.Location = new System.Drawing.Point(163, 155);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(276, 33);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "¿Desea continuar?";
+            // 
+            // menuStrip6
+            // 
+            this.menuStrip6.AutoSize = false;
+            this.menuStrip6.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip6.BackgroundImage = global::VentasD1002.Resources.resources.Rojo;
+            this.menuStrip6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.menuStrip6.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip6.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cancelarVentaF9ToolStripMenuItem});
+            this.menuStrip6.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.menuStrip6.Location = new System.Drawing.Point(125, 215);
+            this.menuStrip6.Name = "menuStrip6";
+            this.menuStrip6.ShowItemToolTips = true;
+            this.menuStrip6.Size = new System.Drawing.Size(152, 44);
+            this.menuStrip6.TabIndex = 628;
+            this.menuStrip6.Text = "menuStrip6";
+            // 
+            // cancelarVentaF9ToolStripMenuItem
+            // 
+            this.cancelarVentaF9ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.cancelarVentaF9ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cancelarVentaF9ToolStripMenuItem.Image")));
+            this.cancelarVentaF9ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.cancelarVentaF9ToolStripMenuItem.Name = "cancelarVentaF9ToolStripMenuItem";
+            this.cancelarVentaF9ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F9;
+            this.cancelarVentaF9ToolStripMenuItem.Size = new System.Drawing.Size(129, 40);
+            this.cancelarVentaF9ToolStripMenuItem.Text = "Cancelar";
+            this.cancelarVentaF9ToolStripMenuItem.Click += new System.EventHandler(this.cancelarVentaF9ToolStripMenuItem_Click);
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.AutoSize = false;
+            this.menuStrip2.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip2.BackgroundImage = global::VentasD1002.Resources.resources.verde;
+            this.menuStrip2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cobrarF10});
+            this.menuStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.menuStrip2.Location = new System.Drawing.Point(326, 215);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.ShowItemToolTips = true;
+            this.menuStrip2.Size = new System.Drawing.Size(156, 45);
+            this.menuStrip2.TabIndex = 627;
+            this.menuStrip2.Text = "menuStrip2";
+            // 
+            // cobrarF10
+            // 
+            this.cobrarF10.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.cobrarF10.Image = ((System.Drawing.Image)(resources.GetObject("cobrarF10.Image")));
+            this.cobrarF10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cobrarF10.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.cobrarF10.Name = "cobrarF10";
+            this.cobrarF10.ShortcutKeys = System.Windows.Forms.Keys.F10;
+            this.cobrarF10.Size = new System.Drawing.Size(140, 41);
+            this.cobrarF10.Text = "Continuar";
+            this.cobrarF10.Click += new System.EventHandler(this.cobrarF10_Click);
+            // 
+            // lblMontoTotal
+            // 
+            this.lblMontoTotal.AutoSize = true;
+            this.lblMontoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMontoTotal.Location = new System.Drawing.Point(280, 283);
+            this.lblMontoTotal.Name = "lblMontoTotal";
+            this.lblMontoTotal.Size = new System.Drawing.Size(44, 20);
+            this.lblMontoTotal.TabIndex = 629;
+            this.lblMontoTotal.Text = "0.00";
+            // 
             // frmReimprimirTicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 535);
+            this.ClientSize = new System.Drawing.Size(1132, 535);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -372,6 +526,13 @@
             this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.pnlEditarPago.ResumeLayout(false);
+            this.pnlEditarPago.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.menuStrip6.ResumeLayout(false);
+            this.menuStrip6.PerformLayout();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -403,5 +564,16 @@
         private System.Windows.Forms.Button btnBonificacion;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         public System.Windows.Forms.Label lblIdVenta;
+        private System.Windows.Forms.Button btnEditarPago;
+        private System.Windows.Forms.Panel pnlEditarPago;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        internal System.Windows.Forms.MenuStrip menuStrip6;
+        private System.Windows.Forms.ToolStripMenuItem cancelarVentaF9ToolStripMenuItem;
+        internal System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem cobrarF10;
+        private System.Windows.Forms.Label lblMontoTotal;
     }
 }

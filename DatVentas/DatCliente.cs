@@ -124,7 +124,7 @@ namespace DatVentas
                     sc.Parameters.AddWithValue("@id", c.Id);
                     sc.Parameters.AddWithValue("@nombre", c.NombreCompleto);
                     sc.Parameters.AddWithValue("@direccion", c.Direccion);
-                    sc.Parameters.AddWithValue("@ruc", c.Ruc);
+                    //sc.Parameters.AddWithValue("@ruc", c.Ruc);
                     sc.Parameters.AddWithValue("@telefono", c.Telefono);
                     sc.Parameters.AddWithValue("@cliente", c.Clientes);
                     sc.Parameters.AddWithValue("@proveedor", c.Proveedor);
@@ -185,6 +185,95 @@ namespace DatVentas
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        //======================================================================================
+        public static Cliente ObtenerCliente_General()
+        {
+            try
+            {
+                Cliente cliente = null;
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT C.Id_Cliente, C.Nombre, C.Saldo FROM tb_Cliente C WHERE C.Nombre = 'GENERAL'", con);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        cliente = new Cliente();
+
+                        cliente.Id = reader.GetInt32(0);
+                        cliente.NombreCompleto = reader.GetString(1);
+                        cliente.Saldo = reader.GetDecimal(2);
+                    }
+
+                    con.Close();
+                    return cliente;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static List<Cliente> ListarVentas_PorCliente(string nombre)
+        {
+            List<Cliente> lstCliente = new List<Cliente>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SP_ObtenerVentas_PorCliente", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@nombre",nombre);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Cliente cliente = new Cliente();
+                        cliente.Ruc = reader.GetString(0);
+                        cliente.NombreCompleto = reader.GetString(1);
+                        cliente.Direccion = reader.GetString(2);
+                        cliente.Id = reader.GetInt32(3);
+                        cliente.Saldo = reader.GetDecimal(4);
+
+                        lstCliente.Add(cliente);
+                    }
+
+                    conn.Close();
+                    return lstCliente;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static DataTable ListarVentasPorCliente(string nombre)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                DataTable dt = new DataTable();
+                try
+                {
+                  
+                    SqlDataAdapter da = new SqlDataAdapter("SP_ObtenerVentas_PorCliente", conn);
+                    da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    da.SelectCommand.Parameters.AddWithValue("@nombre", nombre);
+                    da.Fill(dt);
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                     throw ex;
+                }
+              
             }
         }
     }

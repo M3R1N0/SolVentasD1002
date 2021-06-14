@@ -45,9 +45,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.btnEditar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gdvDatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,22 +94,20 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(99, 83);
+            this.label6.Location = new System.Drawing.Point(64, 83);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(314, 20);
             this.label6.TabIndex = 26;
             this.label6.Text = "Seleccione el archivo de respaldo a cargar :";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // txtRutaBackup
             // 
             this.txtRutaBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRutaBackup.Location = new System.Drawing.Point(91, 111);
+            this.txtRutaBackup.Location = new System.Drawing.Point(56, 111);
             this.txtRutaBackup.Name = "txtRutaBackup";
             this.txtRutaBackup.ReadOnly = true;
             this.txtRutaBackup.Size = new System.Drawing.Size(486, 23);
             this.txtRutaBackup.TabIndex = 25;
-            this.txtRutaBackup.TextChanged += new System.EventHandler(this.txtRutaBackup_TextChanged);
             // 
             // label1
             // 
@@ -148,7 +148,7 @@
             this.btnCargarExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCargarExcel.Location = new System.Drawing.Point(595, 102);
             this.btnCargarExcel.Name = "btnCargarExcel";
-            this.btnCargarExcel.Size = new System.Drawing.Size(173, 38);
+            this.btnCargarExcel.Size = new System.Drawing.Size(164, 38);
             this.btnCargarExcel.TabIndex = 10;
             this.btnCargarExcel.Text = "Cargar Archivo";
             this.btnCargarExcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -194,7 +194,7 @@
             this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnActualizar.Location = new System.Drawing.Point(774, 102);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(194, 38);
+            this.btnActualizar.Size = new System.Drawing.Size(186, 38);
             this.btnActualizar.TabIndex = 29;
             this.btnActualizar.Text = "Actualizar Datos";
             this.btnActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -203,6 +203,7 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.btnEditar);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel5.Location = new System.Drawing.Point(988, 68);
             this.panel5.Name = "panel5";
@@ -221,6 +222,28 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.btnEditar.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnEditar.FlatAppearance.BorderSize = 0;
+            this.btnEditar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
+            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditar.Location = new System.Drawing.Point(37, 34);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(101, 38);
+            this.btnEditar.TabIndex = 30;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // frmCargarDatosExcel
             // 
@@ -241,6 +264,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -263,5 +287,6 @@
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btnEditar;
     }
 }

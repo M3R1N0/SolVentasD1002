@@ -54,11 +54,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bitacora.cs" />
     <Compile Include="DetalleVentaEspera.cs" />
     <Compile Include="IngresosGastos.cs" />
     <Compile Include="Licencia.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="DetalleVenta.cs" />
+    <Compile Include="ObjetoGenerico.cs" />
     <Compile Include="ParametrosReporte.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="Box.cs" />

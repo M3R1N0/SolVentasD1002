@@ -154,5 +154,43 @@ namespace DatVentas
             }
         }
 
+        public static List<CatalogoGenerico> ObtenerCajas_PorFecha(DateTime fecha)
+        {
+            try
+            {
+                List<CatalogoGenerico> lst = new List<CatalogoGenerico>();
+                CatalogoGenerico catalogo;
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    DateTime fechaFin = fecha.AddDays(1);
+
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("SP_ObtenerInfo_CierreCaja", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@fechaInicio", fecha);
+                    cmd.Parameters.AddWithValue("@fechaCierre", fechaFin);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        catalogo = new CatalogoGenerico();
+                        catalogo.Id = reader.GetInt32(0);
+                        catalogo.Descripcion = reader.GetString(1);
+
+                        lst.Add(catalogo);
+                    }
+                    con.Close();
+
+                    return lst;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
     }
 }

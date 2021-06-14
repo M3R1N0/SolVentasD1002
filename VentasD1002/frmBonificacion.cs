@@ -116,6 +116,7 @@ namespace VentasD1002
                     rptTicket.DataSource = obj;
                     reportViewer1.Report = rptTicket;
                     reportViewer1.RefreshReport();
+                    AgregarBitacora(v.Id);
                     imprimitTicket();
                 }
                 else
@@ -180,5 +181,25 @@ namespace VentasD1002
         {
 
         }
+
+        private void AgregarBitacora(int idventa)
+        {
+            try
+            {
+               
+                Bitacora b = new Bitacora();
+                b.Fecha = DateTime.Now;
+                b.IdUsuario = idUsuario;
+                b.IdCaja = idCaja;
+                b.Accion = $"BONIFICACION DE LA VENTA [{idventa}]";
+
+                DatCatGenerico.AgregarBitácora(b);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar la bitacora", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

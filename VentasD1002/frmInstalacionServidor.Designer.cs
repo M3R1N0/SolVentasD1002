@@ -519,7 +519,7 @@
             this.txtServidor.Name = "txtServidor";
             this.txtServidor.Size = new System.Drawing.Size(139, 20);
             this.txtServidor.TabIndex = 0;
-            this.txtServidor.Text = "ORTHEGA";
+            this.txtServidor.Text = "DESKTOP-QKGJGMM\\SQLEXPRESS";
             // 
             // frmInstalacionServidor
             // 

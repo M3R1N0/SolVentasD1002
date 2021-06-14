@@ -17,7 +17,7 @@ namespace VentasD1002
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmVenta());
+            Application.Run(new frmLogin());
         }
     }
 }

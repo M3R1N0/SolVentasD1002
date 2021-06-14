@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Management;
 using DatVentas;
 using System.Data;
+using BusVenta.Helpers;
 
 namespace VentasD1002
 {
@@ -45,7 +46,10 @@ namespace VentasD1002
             timer1.Start();
             DibujarLogin();
             panelIniciarSesion.Visible = false;
+
+            lblIP.Text = Sistema.ObtenerIP();
         }
+
 
         private void DibujarLogin()
         {
@@ -383,7 +387,7 @@ namespace VentasD1002
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               // MessageBox.Show(ex.Message);
             }
         }
 

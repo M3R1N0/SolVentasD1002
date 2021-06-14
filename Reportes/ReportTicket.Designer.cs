@@ -62,6 +62,8 @@ namespace Reportes
             this.textBox11 = new Telerik.Reporting.TextBox();
             this.textBox17 = new Telerik.Reporting.TextBox();
             this.DataTicket = new Telerik.Reporting.ObjectDataSource();
+            this.textBox24 = new Telerik.Reporting.TextBox();
+            this.lblBonificacion = new Telerik.Reporting.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // pageHeaderSection1
@@ -131,7 +133,7 @@ namespace Reportes
             // 
             // reportHeaderSection1
             // 
-            this.reportHeaderSection1.Height = Telerik.Reporting.Drawing.Unit.Cm(6.9D);
+            this.reportHeaderSection1.Height = Telerik.Reporting.Drawing.Unit.Cm(7.4D);
             this.reportHeaderSection1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
             this.pnlCancelar,
             this.tbTicket,
@@ -143,9 +145,7 @@ namespace Reportes
             this.textBox23,
             this.textBox19,
             this.textBox22,
-            this.textBox15,
             this.lblCambio,
-            this.textBox27,
             this.txtCambio,
             this.textBox29,
             this.textBox20,
@@ -160,7 +160,11 @@ namespace Reportes
             this.textBox30,
             this.textBox21,
             this.textBox11,
-            this.textBox17});
+            this.textBox17,
+            this.lblBonificacion,
+            this.textBox24,
+            this.textBox15,
+            this.textBox27});
             this.reportHeaderSection1.Name = "reportHeaderSection1";
             this.reportHeaderSection1.Style.BorderWidth.Bottom = Telerik.Reporting.Drawing.Unit.Point(0.5D);
             // 
@@ -344,7 +348,7 @@ namespace Reportes
             // 
             // textBox23
             // 
-            this.textBox23.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0D), Telerik.Reporting.Drawing.Unit.Cm(5.808D));
+            this.textBox23.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0D), Telerik.Reporting.Drawing.Unit.Cm(6.4D));
             this.textBox23.Name = "textBox23";
             this.textBox23.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.774D), Telerik.Reporting.Drawing.Unit.Cm(0.3D));
             this.textBox23.Style.Font.Bold = false;
@@ -394,9 +398,9 @@ namespace Reportes
             // 
             // lblCambio
             // 
-            this.lblCambio.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(4.3D), Telerik.Reporting.Drawing.Unit.Cm(4.308D));
+            this.lblCambio.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(2.6D), Telerik.Reporting.Drawing.Unit.Cm(4.308D));
             this.lblCambio.Name = "lblCambio";
-            this.lblCambio.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.4D), Telerik.Reporting.Drawing.Unit.Cm(0.3D));
+            this.lblCambio.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.1D), Telerik.Reporting.Drawing.Unit.Cm(0.3D));
             this.lblCambio.Style.Font.Bold = false;
             this.lblCambio.Style.Font.Name = "Segoe UI";
             this.lblCambio.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(9D);
@@ -434,7 +438,7 @@ namespace Reportes
             // 
             // textBox29
             // 
-            this.textBox29.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0D), Telerik.Reporting.Drawing.Unit.Cm(6.108D));
+            this.textBox29.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0D), Telerik.Reporting.Drawing.Unit.Cm(6.7D));
             this.textBox29.Name = "textBox29";
             this.textBox29.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.774D), Telerik.Reporting.Drawing.Unit.Cm(0.3D));
             this.textBox29.Style.Font.Bold = false;
@@ -446,7 +450,7 @@ namespace Reportes
             // 
             // textBox20
             // 
-            this.textBox20.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0D), Telerik.Reporting.Drawing.Unit.Cm(4.75D));
+            this.textBox20.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0D), Telerik.Reporting.Drawing.Unit.Cm(5.342D));
             this.textBox20.Name = "textBox20";
             this.textBox20.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.774D), Telerik.Reporting.Drawing.Unit.Cm(0.3D));
             this.textBox20.Style.Font.Bold = false;
@@ -459,7 +463,7 @@ namespace Reportes
             // 
             // textBox33
             // 
-            this.textBox33.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0D), Telerik.Reporting.Drawing.Unit.Cm(5.508D));
+            this.textBox33.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0D), Telerik.Reporting.Drawing.Unit.Cm(6.1D));
             this.textBox33.Name = "textBox33";
             this.textBox33.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.748D), Telerik.Reporting.Drawing.Unit.Cm(0.3D));
             this.textBox33.Style.Font.Bold = false;
@@ -477,7 +481,7 @@ namespace Reportes
             formattingRule1.Style.Font.Italic = true;
             this.textBox13.ConditionalFormatting.AddRange(new Telerik.Reporting.Drawing.FormattingRule[] {
             formattingRule1});
-            this.textBox13.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0D), Telerik.Reporting.Drawing.Unit.Cm(5.108D));
+            this.textBox13.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0D), Telerik.Reporting.Drawing.Unit.Cm(5.7D));
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.774D), Telerik.Reporting.Drawing.Unit.Cm(0.3D));
             this.textBox13.Style.Font.Bold = false;
@@ -553,7 +557,7 @@ namespace Reportes
             // 
             // textBox25
             // 
-            this.textBox25.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0D), Telerik.Reporting.Drawing.Unit.Cm(6.408D));
+            this.textBox25.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0D), Telerik.Reporting.Drawing.Unit.Cm(7D));
             this.textBox25.Name = "textBox25";
             this.textBox25.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.737D), Telerik.Reporting.Drawing.Unit.Cm(0.3D));
             this.textBox25.Style.Font.Bold = false;
@@ -618,6 +622,32 @@ namespace Reportes
             // 
             this.DataTicket.DataSource = typeof(EntVenta.ParametrosReporte);
             this.DataTicket.Name = "DataTicket";
+            // 
+            // textBox24
+            // 
+            this.textBox24.Format = "{0:C2}";
+            this.textBox24.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(5.7D), Telerik.Reporting.Drawing.Unit.Cm(4.6D));
+            this.textBox24.Name = "textBox24";
+            this.textBox24.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(1.835D), Telerik.Reporting.Drawing.Unit.Cm(0.3D));
+            this.textBox24.Style.Font.Bold = true;
+            this.textBox24.Style.Font.Name = "Segoe UI";
+            this.textBox24.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(9D);
+            this.textBox24.Style.LineStyle = Telerik.Reporting.Drawing.LineStyle.Solid;
+            this.textBox24.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
+            this.textBox24.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
+            this.textBox24.Value = "=Fields.Bonificacion";
+            // 
+            // lblBonificacion
+            // 
+            this.lblBonificacion.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(2.6D), Telerik.Reporting.Drawing.Unit.Cm(4.6D));
+            this.lblBonificacion.Name = "lblBonificacion";
+            this.lblBonificacion.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.1D), Telerik.Reporting.Drawing.Unit.Cm(0.3D));
+            this.lblBonificacion.Style.Font.Bold = false;
+            this.lblBonificacion.Style.Font.Name = "Segoe UI";
+            this.lblBonificacion.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(9D);
+            this.lblBonificacion.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.lblBonificacion.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
+            this.lblBonificacion.Value = "Bonificación :";
             // 
             // ReportTicket
             // 
@@ -688,5 +718,7 @@ namespace Reportes
         public Telerik.Reporting.Panel pnlCancelar;
         public Telerik.Reporting.TextBox lblCambio;
         public Telerik.Reporting.TextBox txtCambio;
+        public Telerik.Reporting.TextBox lblBonificacion;
+        public Telerik.Reporting.TextBox textBox24;
     }
 }

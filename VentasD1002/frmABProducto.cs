@@ -16,19 +16,136 @@ namespace VentasD1002
 {
     public partial class frmABProducto : Form
     {
+        public static string TipoPresentacion;
+        public static string Categoria;
+        public static string PresentacionMenudeo;
+        public static bool EsNuevo;
+        private bool EsCargaBatch = false;
+        private int idUsuario;
+        private int idCaja;
+        private string serialPC;
+
         public frmABProducto()
         {
             InitializeComponent();
         }
 
-        public static string TipoPresentacion;
-        public static string Categoria;
-        public static string PresentacionMenudeo;
-        public static bool EsNuevo;
+        public frmABProducto(int idproducto)
+        {
+            if (idproducto != 0)
+            {
+                ObtenerProducto(idproducto);
+            }
+        }
 
-        private int idUsuario;
-        private int idCaja;
-        private string serialPC;
+        public frmABProducto(Producto producto)
+        {
+            InitializeComponent();
+            Producto p = producto;
+            ValidarProducto(p);
+        }
+
+        private void ValidarProducto(Producto p)
+        {
+            try
+            {
+                EsCargaBatch = true;
+                txtcodigodebarras.ReadOnly = true;
+                txtcodigodebarras.Text = p.codigo;
+                TipoPresentacion = Convert.ToString(1);
+                PresentacionMenudeo = p.PresentacionMenudeo;
+                Categoria = Convert.ToString(2);
+
+                EsNuevo = true;
+                if (DatProducto.ExisteProductoPorDescripcion(p.Descripcion))
+                {
+                    Producto producto = new BusProducto().ObtenerProducto(p.Descripcion);
+                    p = producto;
+                    lblIdProducto.Text = p.Id.ToString();
+                    EsNuevo = false;
+                    TipoPresentacion = p.IdTipoPresentacion.ToString();
+                    PresentacionMenudeo = p.PresentacionMenudeo;
+                    Categoria = p.IdCategoria.ToString();
+                }
+               
+                LlenarCategorias();
+                //TipoPresentacion = p.IdTipoPresentacion
+                //Categoria = gdvProductos.SelectedCells[3].Value.ToString();
+                //string _strPMenudeo = gdvProductos.SelectedCells[21].Value.ToString();
+                //frmABProducto.PresentacionMenudeo = _strPMenudeo;
+                //frmABProducto.EsNuevo = false;
+
+                // lblIdProducto.Text = gdvProductos.SelectedCells[2].Value.ToString();
+                //frmAB.cboCategoria.SelectedValue = gdvProductos.SelectedCells[3].Value.ToString();
+                //frmAB.cboPresentacion.SelectedValue = gdvProductos.SelectedCells[4].Value.ToString();
+
+                txtdescripcion.Text = p.Descripcion;
+                txtPresentacion.Text = p.Presentacion;
+                if (p.seVendeA == "UNIDAD")
+                {
+                    porunidad.Checked = true;
+                }
+                else
+                {
+                   agranel.Checked = true;
+                }
+
+                txtPMenudeo.Text = p.precioMenudeo.ToString();
+                txtPMMayoreo.Text = p.precioMMayoreo.ToString();
+                txtApartirDe.Text = p.APartirDe.ToString();
+                txtpreciomayoreo.Text = p.precioMayoreo.ToString();
+
+                txtPesoMayoreo.Text =p.Peso.ToString();
+
+               // string inventario = gdvProductos.SelectedCells[13].Value.ToString();
+                txtTotalUnidades.Text = p.TotalUnidades.ToString();
+
+                if (p.usaInventario == "SI")
+                {
+                    CheckInventarios.Checked = true;
+                    PANELINVENTARIO.Visible = true;
+                    decimal _totalUnidad = Convert.ToDecimal(txtTotalUnidades.Text);
+                    decimal _stockMaximo = Convert.ToDecimal(p.stock);
+                    decimal _stockMinimo = Convert.ToDecimal(p.stockMinimo);
+                    decimal _unidades = (_stockMaximo % _totalUnidad);
+
+                    lblPiezasStock.Text = _unidades.ToString();
+                    txtstock2.Text = Math.Floor((_stockMaximo / _totalUnidad)).ToString();
+                    txtstockminimo.Text = (_stockMinimo / _totalUnidad).ToString();
+
+                }
+                else
+                {
+                    CheckInventarios.Checked = false;
+                    PANELINVENTARIO.Visible = false;
+                }
+
+                // txtstockminimo.Text = gdvProductos.SelectedCells[15].Value.ToString();
+                string fecha = p.Caducidad;
+                bool res = (fecha == "NO APLICA") ? No_aplica_fecha.Checked = true : No_aplica_fecha.Checked = false;
+
+                txtfechaoka.Text = (!res) ? fecha : null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error al obtener los datos : " + ex.Message, "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ObtenerProducto(int idproducto)
+        {
+            try
+            {
+                Producto producto = BusProducto.ObtenerProducto_PorID(idproducto);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error al obtener los datos : "+ex.Message, "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        
         
         private void frmABProducto_Load(object sender, EventArgs e)
         {
@@ -263,7 +380,7 @@ namespace VentasD1002
         {
             if (lblIdProducto.Text == "")
             {
-                if (txtcodigodebarras.Text == string.Empty | txtdescripcion.Text == "" | txtPMenudeo.Text == "" | txtPMMayoreo.Text == "" || cboPresentacion.SelectedValue.Equals("") ||
+                if (txtcodigodebarras.Text == string.Empty || txtdescripcion.Text == "" || txtPMenudeo.Text == "" || txtPMMayoreo.Text == "" || cboPresentacion.SelectedValue.Equals("") ||
                      txtApartirDe.Text.Equals(""))
                 {
                     MessageBox.Show("Favor de llenar todos los campos ", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -295,6 +412,7 @@ namespace VentasD1002
                 p.IdCategoria = Convert.ToInt32(cboCategoria.SelectedValue);
                 p.TotalUnidades = Convert.ToDecimal(txtTotalUnidades.Text);
                 p.Estado = true;
+                p.Peso =  (string.IsNullOrEmpty(txtPesoMayoreo.Text)) ? 0 : Convert.ToDecimal(txtPesoMayoreo.Text);
                 if (porunidad.Checked == true) p.seVendeA = "UNIDAD";
                 if (agranel.Checked == true) p.seVendeA = "GRANEL";
 
@@ -334,23 +452,30 @@ namespace VentasD1002
                 kardex.Estado = "CONFIRMADO";
                 kardex.Id_Caja = idCaja;
                 // p.kardex = kardex;
+              
 
                 new BusProducto().AgregarProducto(p, kardex);
                 MessageBox.Show("Producto agregado correctamente", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                DialogResult result = MessageBox.Show("Desea agregar un nuevo producto", "Nuevo Producto", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
+                DatProducto.Agregar_ActualizacionProducto(txtcodigodebarras.Text);
+                if (!EsCargaBatch)
                 {
+                    DialogResult result = MessageBox.Show("Desea agregar un nuevo producto", "Nuevo Producto", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    LimpiarCotroles();
+                    if (result == DialogResult.Yes)
+                    {
+
+                        LimpiarCotroles();
+                    }
+                    else
+                    {
+                        LimpiarCotroles();
+                        this.Dispose();
+                    }
                 }
-                else
-                {
+                else{
                     LimpiarCotroles();
                     this.Dispose();
                 }
-
 
             }
             catch (Exception ex)
@@ -375,6 +500,7 @@ namespace VentasD1002
                 p.IdCategoria = Convert.ToInt32(cboCategoria.SelectedValue);
                 p.TotalUnidades = Convert.ToDecimal(txtTotalUnidades.Text);
                 p.Estado = true;
+                p.Peso = (string.IsNullOrEmpty(txtPesoMayoreo.Text)) ? 0 : Convert.ToDecimal(txtPesoMayoreo.Text);
                 //p.Caducidad = (No_aplica_fecha.Checked == true) ?  "NO APLICA" : txtfechaoka.Text;
                 if (porunidad.Checked == true) p.seVendeA = "UNIDAD";
                 if (agranel.Checked == true) p.seVendeA = "GRANEL";

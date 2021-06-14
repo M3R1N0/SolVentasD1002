@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BusVenta.Helpers;
 
 namespace BusVenta
 {
@@ -152,5 +153,103 @@ namespace BusVenta
                 throw new ApplicationException("Ocurrió un error al actualizar el crédito por pagar");
             }
         }
+
+        //===================================================================================================================
+        public static Respuesta ValidarTipoPrecio(string tipoVenta, Producto producto)
+        {
+
+            decimal precio = 0;
+            string tipoPrecio = "";
+            if (tipoVenta.Equals("MENUDEO"))
+            {
+                precio = producto.precioMenudeo;
+                tipoPrecio = "Menudeo";
+            }
+            else if (tipoVenta.Equals("MEDIO MAYOREO"))
+            {
+                precio = producto.precioMMayoreo;
+                tipoPrecio = "Medio Mayoreo";
+            }
+            else if (tipoVenta.Equals("MAYOREO"))
+            {
+                precio = producto.precioMayoreo;
+                tipoPrecio = "Mayoreo";
+            }
+
+            if (precio == 0)
+            {
+                string mensaje = "El producto: " + producto.Descripcion + " no cuenta con precio " + tipoPrecio;
+                return new Respuesta(0, "Precio no Disponible", mensaje);
+            }
+            else
+            {
+                return new Respuesta(1);
+            }
+        }
+
+        public static void ValidarProducto(ref Producto producto, ref decimal precio, ref decimal _totalUnidades, ref string unidad, string tipoVenta)
+        {
+
+            try
+            {
+                producto.stock = (producto.stock.Equals("ILIMITADO") || string.IsNullOrEmpty(producto.stock)) ? "123456" : producto.stock;
+
+                if (tipoVenta.Equals("MAYOREO"))
+                {
+                    //unidad = lsTipoPresentacion.Where(x => x.Id.Equals(tipoPresentacion)).Select(x => x.Descripcion).FirstOrDefault();
+                    unidad = DatCatGenerico.ObtenerPresentacion(producto.IdTipoPresentacion).Descripcion;
+                    precio = producto.precioMayoreo;
+                    _totalUnidades = Convert.ToDecimal(producto.TotalUnidades);
+                }
+
+                if (tipoVenta.Equals("MEDIO MAYOREO"))
+                {
+                    //precio = lstProducto.Select(x => x.precioMMayoreo).FirstOrDefault();
+                    precio = producto.precioMMayoreo;
+
+                    if (producto.stock != "123456")
+                    {
+                        _totalUnidades = 1;
+                    }
+
+                    unidad = DatCatGenerico.Obtener_Presentacion_Abv(producto.PresentacionMenudeo);
+
+                }
+
+                if (tipoVenta.Equals("MENUDEO"))
+                {
+                    //precio = lstProducto.Select(x => x.precioMenudeo).FirstOrDefault();
+                    precio = producto.precioMenudeo;
+
+                    if (producto.stock != "123456")
+                    {
+                        _totalUnidades = 1;
+                    }
+                    unidad = DatCatGenerico.Obtener_Presentacion_Abv(producto.PresentacionMenudeo);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Error al validar el producto : " + ex.Message);
+            }
+        }
+
+        public static List<Venta> ObtenerDetalleCierre(DateTime fechaInicio)
+        {
+            List<Venta> lstVenta = new List<Venta>();
+
+            List<CatalogoGenerico> lst = DatOpenCloseBox.ObtenerCajas_PorFecha(fechaInicio);
+
+            foreach (CatalogoGenerico item in lst)
+            {
+
+            }
+
+
+            return lstVenta;
+        }
+
     }
+
 }

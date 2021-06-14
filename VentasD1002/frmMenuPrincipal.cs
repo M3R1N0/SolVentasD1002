@@ -242,7 +242,7 @@ namespace VentasD1002
                         gdvBuscar.Columns[17].Visible = false;
                         gdvBuscar.Columns[18].Visible = false;
                         gdvBuscar.Columns[19].Visible = false;
-
+                        gdvBuscar.Columns[20].Visible = false;
                         gdvBuscar.Rows[0].Selected = true;
                     }
                 }
@@ -272,6 +272,7 @@ namespace VentasD1002
             dt.Columns.Add("CODIGO");                               //10
             dt.Columns.Add("USAINVENTARIO");                        //11
             dt.Columns.Add("APARTIR");                              //12
+            dt.Columns.Add("PESO", typeof(System.Decimal));                                 //13
             DataRow dr = dt.NewRow();
             string unidad = "";
             decimal precio = 0;
@@ -285,13 +286,8 @@ namespace VentasD1002
                 string _strPresentacion = producto.PresentacionMenudeo;
                 Decimal _ApartirDe = producto.APartirDe;
                 string _presentacionMenudeo = producto.PresentacionMenudeo;
+                decimal peso = 0;
 
-                //var _stockProducto = _auxStockProducto.Equals("ILIMITADO") ? "123456" : _auxStockProducto;
-                //var _usaInventario = lstProducto.Select(x => x.usaInventario).FirstOrDefault();
-                //int tipoPresentacion = lstProducto.Select(x => x.IdTipoPresentacion).FirstOrDefault();
-                //string _strPresentacion = lstProducto.Select(x => x.PresentacionMenudeo).First();
-                //Decimal _ApartirDe = lstProducto.Select(x => x.APartirDe).FirstOrDefault();
-                //string _presentacionMenudeo = lstProducto.Select(x => x.PresentacionMenudeo).FirstOrDefault();
 
                 decimal _totalUnidades = 0;
                 string _unidad = "";
@@ -315,6 +311,7 @@ namespace VentasD1002
                         _totalUnidades = 1;
                     }
 
+                    producto.Peso = producto.Peso / (decimal)producto.TotalUnidades;
                     unidad = DatCatGenerico.Obtener_Presentacion_Abv(_presentacionMenudeo);
 
                 }
@@ -328,11 +325,13 @@ namespace VentasD1002
                     {
                         _totalUnidades = 1;
                     }
+                    producto.Peso = producto.Peso / (decimal)producto.TotalUnidades;
                     unidad = DatCatGenerico.Obtener_Presentacion_Abv(_presentacionMenudeo);
                 }
 
                 #endregion
 
+              
                 _stockProducto = String.IsNullOrEmpty(_stockProducto) ? "123456" : _stockProducto;
                 if (gdvVentas.Rows.Count == 0)
                 {
@@ -345,20 +344,22 @@ namespace VentasD1002
                     {
                         int id = producto.Id;
                         string _strProducto = producto.Descripcion;
+                       
 
-                        dr["PRESENTACION_ID"] = producto.IdTipoPresentacion; //;lstProducto.Select(x => x.IdTipoPresentacion).FirstOrDefault();
+                        dr["PRESENTACION_ID"] = producto.IdTipoPresentacion; 
                         dr["ID"] = producto.Id;
                         dr["CANTIDAD"] = 1;
                         dr["UNIDAD"] = unidad;
                         dr["CONCEPTO"] = _strProducto;
-                        dr["PZA X CAJA"] = producto.TotalUnidades;//lstProducto.Select(x => x.TotalUnidades).FirstOrDefault();
-                        dr["PRESENTACIÓN"] = producto.Presentacion;// lstProducto.Select(x => x.Presentacion).FirstOrDefault();
+                        dr["PZA X CAJA"] = producto.TotalUnidades; 
+                        dr["PRESENTACIÓN"] = producto.Presentacion;
                         dr["PRECIO"] = precio;
                         dr["IMPORTE"] = precio;
                         dr["STOCK"] = _usaInventario.Equals("SI") ? (Convert.ToDecimal(_stockProducto) - _totalUnidades).ToString() : "123456";
-                        dr["CODIGO"] = producto.codigo;// lstProducto.Select(x => x.codigo).FirstOrDefault();
-                        dr["USAINVENTARIO"] = producto.usaInventario ;// lstProducto.Select(x => x.usaInventario).FirstOrDefault();
-                        dr["APARTIR"] = producto.APartirDe;// lstProducto.Select(X => X.APartirDe).FirstOrDefault();
+                        dr["CODIGO"] = producto.codigo;               
+                        dr["USAINVENTARIO"] = producto.usaInventario ;
+                        dr["APARTIR"] = producto.APartirDe;           
+                        dr["PESO"] = producto.Peso ;                           
 
                         dt.Rows.Add(dr);
                         txtBuscar.Clear();
@@ -375,6 +376,7 @@ namespace VentasD1002
                         gdvVentas.Columns[10].Visible = false;
                         gdvVentas.Columns[11].Visible = false;
                         gdvVentas.Columns[12].Visible = false;
+                        gdvVentas.Columns[13].Visible = false;
                     }
                 }
                 else
@@ -382,16 +384,20 @@ namespace VentasD1002
                     DataTable dt2 = new DataTable();
                     dt2 = gdvVentas.DataSource as DataTable;
 
-                    int codigo = producto.Id;// lstProducto.Select(x => x.Id).FirstOrDefault();
+                    int codigo = producto.Id;
                     DataRow[] d = dt2.Select($"ID={codigo} and UNIDAD ='{unidad}'"); //VERIFICA SI EXISTE EL ID A INGRESAR
                     string _auxUnidad = d.Length == 0 ? "" : d[0].Field<string>("UNIDAD");
                     DataRow[] productos = dt2.Select($"ID={codigo}");
 
                     decimal sumaStock = 0;
+                    decimal _auxPeso= 0;
                     if (productos.Length == 1)
                     {
                         sumaStock = (from DataRow dtr in productos
                                      select dtr.Field<Decimal>("STOCK")).Sum();
+
+                        _auxPeso = (from DataRow dtr in productos
+                                    select dtr.Field<Decimal>("PESO")).FirstOrDefault();
                     }
 
                     if (d.Length == 1 && unidad.Equals(_auxUnidad))
@@ -401,9 +407,11 @@ namespace VentasD1002
                         decimal cantidad = d[0].Field<decimal>("CANTIDAD");
                         decimal SUBTOTAL = d[0].Field<decimal>("IMPORTE");
                         decimal PRECIO = d[0].Field<decimal>("PRECIO");
+                        decimal _PESO = d[0].Field<decimal>("PESO");
+
                         if (stock >= cantidad + 1 && _totalUnidades < stock)
                         {
-                            decimal _precionMM = producto.precioMMayoreo;// lstProducto.Select(x => x.precioMMayoreo).FirstOrDefault();
+                            decimal _precionMM = producto.precioMMayoreo;
                             decimal _sumaCantidad = cantidad + 1;
                             if (_precionMM != 0 && _sumaCantidad >= _ApartirDe)
                             {
@@ -414,6 +422,7 @@ namespace VentasD1002
                             d[0].SetField("CANTIDAD", _sumaCantidad);
                             d[0].SetField("IMPORTE", PRECIO * _sumaCantidad);
                             d[0].SetField("STOCK", (stock - _totalUnidades));
+                            d[0].SetField("PESO", (_PESO + _auxPeso));
                             txtBuscar.Clear();
 
                         }
@@ -435,23 +444,22 @@ namespace VentasD1002
                         else
                         {
                             DataRow dr2 = dt2.NewRow();
-                            int id = producto.Id ;// lstProducto.Select(x => x.Id).FirstOrDefault();
-                            //string producto1 =  lstProducto.Select(x => x.Descripcion).FirstOrDefault();
+                            int id = producto.Id ;
 
-                            dr2["PRESENTACION_ID"] = producto.IdTipoPresentacion ;// lstProducto.Select(x => x.IdTipoPresentacion).FirstOrDefault();
+                            dr2["PRESENTACION_ID"] = producto.IdTipoPresentacion ;
                             dr2["ID"] = producto.Id;
                             dr2["CANTIDAD"] = 1;
                             dr2["UNIDAD"] = unidad;
                             dr2["CONCEPTO"] = producto.Descripcion;
-                            dr2["PZA X CAJA"] = producto.TotalUnidades;// lstProducto.Select(x => x.TotalUnidades).FirstOrDefault();
-                            dr2["PRESENTACIÓN"] = producto.Presentacion;// lstProducto.Select(x => x.Presentacion).FirstOrDefault();
+                            dr2["PZA X CAJA"] = producto.TotalUnidades; 
+                            dr2["PRESENTACIÓN"] = producto.Presentacion;
                             dr2["PRECIO"] = precio;
                             dr2["IMPORTE"] = precio;
                             dr2["STOCK"] = _usaInventario.Equals("SI") ? (Convert.ToDecimal(_stockProducto) - _totalUnidades).ToString() : "123456";
-                            dr2["CODIGO"] = producto.codigo ;// lstProducto.Select(x => x.codigo).FirstOrDefault();
-                            dr2["USAINVENTARIO"] = producto.usaInventario ;// lstProducto.Select(x => x.usaInventario).FirstOrDefault();
-                            dr2["APARTIR"] = producto.APartirDe ;// lstProducto.Select(x => x.APartirDe).FirstOrDefault();
-
+                            dr2["CODIGO"] = producto.codigo ;
+                            dr2["USAINVENTARIO"] = producto.usaInventario ;
+                            dr2["APARTIR"] = producto.APartirDe ;
+                            dr2["PESO"] = producto.Peso;
                             dt2.Rows.Add(dr2);
                             txtBuscar.Clear();
                         }
@@ -465,7 +473,6 @@ namespace VentasD1002
             }
             finally
             {
-
                 lstProducto = null;
                 producto = null;
                 SumaTotal_a_Pagar();
@@ -571,9 +578,7 @@ namespace VentasD1002
                     _strPresentacion = p.PresentacionMenudeo;
                     p.stock = p.stock.Equals("ILIMITADO") ? "123456" : p.stock;
 
-                    if (_precioActual == p.precioMayoreo)//|| _strUnidadMedida == "CJA" || _strUnidadMedida == "BTO"
-                                                         //||  _strUnidadMedida == "RJA" || _strUnidadMedida == "SIX" || _strUnidadMedida == "BT" 
-                                                         //|| _strUnidadMedida == "DOC" || _strUnidadMedida == "BSA" || _strUnidadMedida == "PQTE" || _strUnidadMedida == "SBR")
+                    if (_precioActual == p.precioMayoreo)
                     {
                         _auxCantidad = Convert.ToDecimal(cantidad * p.TotalUnidades);
                     }
@@ -590,6 +595,7 @@ namespace VentasD1002
                             gdvVentas.Rows[e.RowIndex].Cells[8].Value = _auxStock * precio;
                             //decimal.Parse(gdvVentas.Rows[e.RowIndex].Cells[9].Value.ToString());
                             gdvVentas.Rows[e.RowIndex].Cells[9].Value = (Decimal.Parse(p.stock) - (_auxStock * p.TotalUnidades));
+                            gdvVentas.Rows[e.RowIndex].Cells[12].Value = _auxStock * p.Peso;
                         }
                         else
                         {
@@ -597,6 +603,7 @@ namespace VentasD1002
                             precio = decimal.Parse(gdvVentas.Rows[e.RowIndex].Cells[7].Value.ToString());
                             gdvVentas.Rows[e.RowIndex].Cells[8].Value = stock * precio;
                             gdvVentas.Rows[e.RowIndex].Cells[9].Value = (Decimal.Parse(p.stock) - cantidad);
+                            gdvVentas.Rows[e.RowIndex].Cells[12].Value = cantidad * p.Peso;
                         }
 
 
@@ -604,34 +611,29 @@ namespace VentasD1002
                     else
                     {
                         if (_precioActual == p.precioMayoreo)
-                        //|| _strUnidadMedida == "CJA" || _strUnidadMedida == "BTO"
-                        //|| _strUnidadMedida == "RJA" || _strUnidadMedida == "SIX" || _strUnidadMedida == "BT" 
-                        //|| _strUnidadMedida == "DOC" || _strUnidadMedida == "BSA" || _strUnidadMedida == "PQTE" || _strUnidadMedida == "SBR")
                         {
                             gdvVentas.Rows[e.RowIndex].Cells[7].Value = _precioActual;
                             gdvVentas.Rows[e.RowIndex].Cells[8].Value = cantidad * _precioActual;
-                            // gdvVentas.Rows[e.RowIndex].Cells[2].Value = ((stock - _auxCantidad)/p.TotalUnidades).ToString();
+                            gdvVentas.Rows[e.RowIndex].Cells[12].Value = cantidad * p.Peso;
                         }
                         else if (_precioMM != 0 && cantidad >= _ApartiDe && _precioActual == p.precioMMayoreo)//ACTUALIZA EL PRECIO MEDIO MAYOREO
                         {
                             gdvVentas.Rows[e.RowIndex].Cells[7].Value = _precioMM;
                             gdvVentas.Rows[e.RowIndex].Cells[8].Value = cantidad * _precioMM;
-                            //gdvVentas.Rows[e.RowIndex].Cells[2].Value = p.stock;
-                            //gdvVentas.Rows[e.RowIndex].Cells[2].Value = (stock- cantidad).ToString();
+                            gdvVentas.Rows[e.RowIndex].Cells[12].Value = (p.Peso / (decimal) p.TotalUnidades) * cantidad;
+
                         }
                         else if (_precioActual == p.precioMenudeo)
                         {
                             gdvVentas.Rows[e.RowIndex].Cells[7].Value = p.precioMenudeo;
                             precio = decimal.Parse(gdvVentas.Rows[e.RowIndex].Cells[7].Value.ToString());
                             gdvVentas.Rows[e.RowIndex].Cells[8].Value = cantidad * precio;
-                            //gdvVentas.Rows[e.RowIndex].Cells[2].Value = (stock -cantidad).ToString();
+                            gdvVentas.Rows[e.RowIndex].Cells[12].Value = (p.Peso / (decimal)p.TotalUnidades) * cantidad;
                         }
                         else
                         {
-                            //gdvVentas.Rows[e.RowIndex].Cells[7].Value = p.precioMenudeo;
                             precio = decimal.Parse(gdvVentas.Rows[e.RowIndex].Cells[7].Value.ToString());
                             gdvVentas.Rows[e.RowIndex].Cells[8].Value = cantidad * precio;
-                            //gdvVentas.Rows[e.RowIndex].Cells[2].Value = (stock -cantidad).ToString();
                         }
                     }
                 }
@@ -766,56 +768,16 @@ namespace VentasD1002
                     }
                     else if (tipoPrecio == "MEDIO MAYOREO")
                     {
+                        p.Peso = (p.Peso / (decimal)p.TotalUnidades) * valor;
                         unidad = DatCatGenerico.Obtener_Presentacion_Abv(p.PresentacionMenudeo);
-                        //unidad = lsTipoPresentacion.Where(x => x.Id.Equals(presentacion)).Select(x => x.Descripcion).FirstOrDefault();
-                        //if (unidad == "BTO")
-                        //{
-                        //    unidad = "KG";
-                        //}
-                        //if (unidad == "CJA" || unidad.Equals("PQTE") || unidad.Equals("BSA") || unidad.Equals("RJA")
-                        //    || unidad.Equals("DOC") || unidad.Equals("SIX") || unidad.Equals("BT") || unidad.Equals("SBR"))
-                        //{
-                        //    unidad = "PZA";
-                        //}
-
-                        //if (p.PresentacionMenudeo != "PIEZA")
-                        //{
-                        //    unidad = DatCatGenerico.Obtener_Presentacion_Abv(p.PresentacionMenudeo);
-                        //}
-
-                        //if (p.PresentacionMenudeo.Equals("PAQUETE"))
-                        //{
-                        //    unidad = "PQTE";
-                        //}
+                     
                     }
                     else if (tipoPrecio == "MENUDEO")
                     {
+                        p.Peso = (p.Peso / (decimal)p.TotalUnidades) * valor;
                         // unidad = lsTipoPresentacion.Where(x => x.Id.Equals(presentacion)).Select(x => x.Descripcion).FirstOrDefault();
                         unidad = DatCatGenerico.Obtener_Presentacion_Abv(p.PresentacionMenudeo);
-                        //if (unidad == "BTO")
-                        //{
-                        //    unidad = "KG";
-                        //}
-                        ////if (unidad == "CJA" || unidad.Equals("PQTE") || unidad.Equals("BSA") || unidad.Equals("RJA") || unidad.Equals("DOC") 
-                        ////    || unidad.Equals("SIX") || unidad.Equals("BT") || unidad.Equals("SBR"))
-                        ////{
-                        ////    unidad = "PZA";
-                        ////}
-
-                        //if (unidad !="KG")
-                        //{
-                        //    unidad = DatCatGenerico.Obtener_Presentacion_Abv(p.PresentacionMenudeo);
-                        //}
-
-                        //if (p.PresentacionMenudeo != "PIEZA")
-                        //{
-                        //    unidad = DatCatGenerico.Obtener_Presentacion_Abv(p.PresentacionMenudeo);
-                        //}
-
-                        //if (p.PresentacionMenudeo.Equals("PAQUETE"))
-                        //{
-                        //    unidad = "PQTE";
-                        //}
+                      
                     }
 
                     // Decimal _precioModificado = tipoPrecio.Equals();
@@ -823,7 +785,7 @@ namespace VentasD1002
                     d[0].SetField("PRECIO", Convert.ToDecimal(precio));
                     d[0].SetField("CANTIDAD", valor);
                     d[0].SetField("IMPORTE", Convert.ToDecimal(precio) * valor);
-
+                    d[0].SetField("PESO",p.Peso);
                     if (tipoPrecio != "PREFERENCIAL")
                         d[0].SetField("UNIDAD", unidad);
 
@@ -849,16 +811,26 @@ namespace VentasD1002
 
         private void SumaTotal_a_Pagar()
         {
+
             decimal sumatoria = 0;
+            decimal sumaPeso = 0;
             int filas =0;
             foreach (DataGridViewRow dr in gdvVentas.Rows)
             {
                 sumatoria += Convert.ToDecimal(dr.Cells["IMPORTE"].Value);
             }
+
+            foreach (DataGridViewRow dr in gdvVentas.Rows)
+            {
+                sumaPeso += Convert.ToDecimal(dr.Cells["PESO"].Value);
+            }
+
             lblTotal.Text = sumatoria.ToString("#,#.#0");
             lblNumProductos.Text = gdvVentas.Rows.Count.ToString();
 
-           
+            lblPeso.Text = sumaPeso.ToString("#,###.#0");
+
+
         }
         
         private void RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
@@ -866,11 +838,18 @@ namespace VentasD1002
             lblNumProductos.Text = gdvVentas.Rows.Count.ToString();
 
             decimal sumatoria = 0;
+            decimal sumaPeso = 0;
             foreach (DataGridViewRow dr in gdvVentas.Rows)
             {
                 sumatoria += Convert.ToDecimal(dr.Cells["IMPORTE"].Value);
             }
+
+            foreach (DataGridViewRow dr in gdvVentas.Rows)
+            {
+                sumaPeso += Convert.ToDecimal(dr.Cells["PESO"].Value);
+            }
             lblTotal.Text = sumatoria.ToString("#,#.#0");
+            lblPeso.Text = sumaPeso.ToString();
         }
 
         private void chckPrecioPreferencial_CheckedChanged(object sender, EventArgs e)
@@ -1111,9 +1090,6 @@ namespace VentasD1002
                 reporte.Comentarios = string.IsNullOrEmpty(txtComentarios.Text) ? "N/A" : txtComentarios.Text;
                 reporte.LetraNumero = textoNumero;
 
-
-
-
                 if (indicador.Equals("VISTA PREVIA"))
                 {
 
@@ -1122,12 +1098,18 @@ namespace VentasD1002
                         frmVistaPreviaTickek vistaPreviaTickek = new frmVistaPreviaTickek();
                      
                         ReportTicket rpt = new ReportTicket();
-                        rpt.lblCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
-                        rpt.txtCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
+                        //rpt.lblCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
+                        //rpt.txtCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
+                        
+                        rpt.pnlCancelar.Visible = (reporte.EstadoVenta == "VENTA CANCELADA") ? true : false;
+                        rpt.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : "Saldo a liquidar :";
+                        //rpt.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
+                        rpt.lblBonificacion.Visible =  false;
+                        rpt.textBox24.Visible =  false;
                         rpt.pnlCancelar.Visible = false;
                         rpt.DataSource = reporte;
+
                         rpt.tbTicket.DataSource = reporte.lstDetalleVenta;
-                        
                         vistaPreviaTickek.reportViewer2.Report = rpt;
                         vistaPreviaTickek.reportViewer2.RefreshReport();
                         vistaPreviaTickek.ShowDialog();
@@ -1161,8 +1143,14 @@ namespace VentasD1002
                     {
                         frmVistaNotaRemision notas = new frmVistaNotaRemision();
                         rtpRecibo rptNota = new rtpRecibo();
-                        rptNota.lblCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
-                        rptNota.txtCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
+                        rptNota.pnlCancelar.Visible = (reporte.EstadoVenta == "VENTA CANCELADA") ? true : false;
+                        rptNota.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : "Saldo a Liquidar :";
+                       // rptNota.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
+                        rptNota.lblBonificacion.Visible = false;
+                        rptNota.txtBonificacion.Visible = false;
+
+                        //rptNota.lblCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
+                        //rptNota.txtCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
                         rptNota.pnlCancelar.Visible = false;
                         rptNota.tblVentaProducto.DataSource = reporte.lstDetalleVenta;
                         rptNota.DataSource = reporte;
@@ -1194,8 +1182,10 @@ namespace VentasD1002
                       
                         ReportTicket rpt = new ReportTicket();
                         rpt.pnlCancelar.Visible = false;
-                        rpt.lblCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
-                        rpt.txtCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
+                        rpt.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : "Saldo a liquidar :";
+                        //rpt.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
+                        rpt.lblBonificacion.Visible = false;
+                        rpt.textBox24.Visible = false;
 
                         rpt.DataSource = reporte;
                         rpt.tbTicket.DataSource = reporte.lstDetalleVenta;
@@ -1217,8 +1207,11 @@ namespace VentasD1002
                     {
                         rtpRecibo rptNota = new rtpRecibo();
                         rptNota.pnlCancelar.Visible = false;
-                        rptNota.lblCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
-                        rptNota.txtCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
+                        rptNota.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : "Saldo a liquidar :";
+                     //   rptNota.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
+                        rptNota.lblBonificacion.Visible = false;
+                        rptNota.txtBonificacion.Visible = false;
+
                         rptNota.tblVentaProducto.DataSource = reporte.lstDetalleVenta;
                         rptNota.DataSource = reporte;
                         reportViewerImprimir.Report = rptNota;
@@ -1611,6 +1604,7 @@ namespace VentasD1002
                 dt.Columns.Add("CODIGO");                               //10
                 dt.Columns.Add("USAINVENTARIO");
                 dt.Columns.Add("APARTIR");                              //12
+                dt.Columns.Add("PESO", typeof(System.Decimal));
                 // DataRow dr = dt.NewRow();
 
                 List<DetalleVentaEspera> detalleVenta = new BusVentas().ListarDetalle_VentaEnEspera(idVenta);
@@ -1632,7 +1626,8 @@ namespace VentasD1002
                                      p.stock = p.stock == "ILIMITADO" ? "123456" : p.stock,
                                      p.codigo,
                                      p.usaInventario,
-                                     p.APartirDe
+                                     p.APartirDe,
+                                     p.Peso
                             );
                     }
 
@@ -1649,7 +1644,7 @@ namespace VentasD1002
                     gdvVentas.Columns[10].Visible = false;
                     gdvVentas.Columns[11].Visible = false;
                     gdvVentas.Columns[12].Visible = false;
-
+                    gdvVentas.Columns[13].Visible = false;
                     DataTablePersonalizado.Multilinea2(ref gdvVentas);
 
                     txtCliente.Text = new BusCliente().ObterCliente(idCliente).NombreCompleto;
@@ -1788,12 +1783,13 @@ namespace VentasD1002
         {
             try
             {
+                Hide();
                 frmCierreCaja cierreCaja = new frmCierreCaja();
                 cierreCaja.ShowDialog();
+                Dispose();
             }
-            catch (Exception ex)
+            catch 
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

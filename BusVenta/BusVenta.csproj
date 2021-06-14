@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.XtraEditors.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EPPlus, Version=5.5.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.5.5.0\lib\net45\EPPlus.dll</HintPath>
     </Reference>
@@ -74,6 +75,8 @@
     <Compile Include="EncriptarTexto.cs" />
     <Compile Include="Exportar_Importar_ArchivoExcel.cs" />
     <Compile Include="Formato_FolioVenta.cs" />
+    <Compile Include="Helpers\EnumOperationResult.cs" />
+    <Compile Include="Helpers\OperationResponse.cs" />
     <Compile Include="Helpers\Respuesta.cs" />
     <Compile Include="Helpers\Sistema.cs" />
     <Compile Include="NumerosSeparadores.cs" />

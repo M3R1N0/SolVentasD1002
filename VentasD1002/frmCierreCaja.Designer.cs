@@ -36,6 +36,8 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblTotalBonififaciones = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblVentasTotales = new System.Windows.Forms.Label();
@@ -49,8 +51,10 @@
             this.label18 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lblBonificacion = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblTotalAbonado = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.lblVentaCredito = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.lblVentaEfectivo = new System.Windows.Forms.Label();
@@ -60,11 +64,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.btnCerrarTurno = new System.Windows.Forms.Button();
-            this.lblBonificacion = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.lblTotalBonififaciones = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -160,6 +161,27 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(906, 300);
             this.panel3.TabIndex = 1;
+            // 
+            // lblTotalBonififaciones
+            // 
+            this.lblTotalBonififaciones.AutoSize = true;
+            this.lblTotalBonififaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalBonififaciones.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblTotalBonififaciones.Location = new System.Drawing.Point(754, 144);
+            this.lblTotalBonififaciones.Name = "lblTotalBonififaciones";
+            this.lblTotalBonififaciones.Size = new System.Drawing.Size(23, 25);
+            this.lblTotalBonififaciones.TabIndex = 10;
+            this.lblTotalBonififaciones.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(510, 149);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(235, 20);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Bonificaciones Realizadas : ";
             // 
             // panel7
             // 
@@ -302,6 +324,16 @@
             this.panel5.Size = new System.Drawing.Size(362, 214);
             this.panel5.TabIndex = 0;
             // 
+            // lblBonificacion
+            // 
+            this.lblBonificacion.AutoSize = true;
+            this.lblBonificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBonificacion.Location = new System.Drawing.Point(198, 9);
+            this.lblBonificacion.Name = "lblBonificacion";
+            this.lblBonificacion.Size = new System.Drawing.Size(50, 25);
+            this.lblBonificacion.TabIndex = 9;
+            this.lblBonificacion.Text = "0.00";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -322,6 +354,16 @@
             this.lblTotalAbonado.Size = new System.Drawing.Size(50, 25);
             this.lblTotalAbonado.TabIndex = 4;
             this.lblTotalAbonado.Text = "0.00";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(59, 14);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(124, 20);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "Bonificaciones  :";
             // 
             // lblVentaCredito
             // 
@@ -406,6 +448,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel4.Controls.Add(this.btnCancelar);
             this.panel4.Controls.Add(this.btnCerrarTurno);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 396);
@@ -413,9 +456,32 @@
             this.panel4.Size = new System.Drawing.Size(906, 63);
             this.panel4.TabIndex = 2;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelar.Location = new System.Drawing.Point(642, 12);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(135, 39);
+            this.btnCancelar.TabIndex = 2;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // btnCerrarTurno
             // 
-            this.btnCerrarTurno.BackColor = System.Drawing.Color.Transparent;
+            this.btnCerrarTurno.BackColor = System.Drawing.Color.Red;
             this.btnCerrarTurno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCerrarTurno.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.btnCerrarTurno.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
@@ -424,58 +490,17 @@
             this.btnCerrarTurno.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCerrarTurno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrarTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarTurno.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnCerrarTurno.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCerrarTurno.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarTurno.Image")));
             this.btnCerrarTurno.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrarTurno.Location = new System.Drawing.Point(781, 9);
+            this.btnCerrarTurno.Location = new System.Drawing.Point(791, 12);
             this.btnCerrarTurno.Name = "btnCerrarTurno";
-            this.btnCerrarTurno.Size = new System.Drawing.Size(103, 45);
+            this.btnCerrarTurno.Size = new System.Drawing.Size(103, 39);
             this.btnCerrarTurno.TabIndex = 1;
             this.btnCerrarTurno.Text = "Cerrar ";
             this.btnCerrarTurno.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCerrarTurno.UseVisualStyleBackColor = false;
             this.btnCerrarTurno.Click += new System.EventHandler(this.btnCerrarTurno_Click);
-            // 
-            // lblBonificacion
-            // 
-            this.lblBonificacion.AutoSize = true;
-            this.lblBonificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBonificacion.Location = new System.Drawing.Point(198, 9);
-            this.lblBonificacion.Name = "lblBonificacion";
-            this.lblBonificacion.Size = new System.Drawing.Size(50, 25);
-            this.lblBonificacion.TabIndex = 9;
-            this.lblBonificacion.Text = "0.00";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(59, 14);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(124, 20);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "Bonificaciones  :";
-            // 
-            // lblTotalBonififaciones
-            // 
-            this.lblTotalBonififaciones.AutoSize = true;
-            this.lblTotalBonififaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalBonififaciones.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTotalBonififaciones.Location = new System.Drawing.Point(754, 144);
-            this.lblTotalBonififaciones.Name = "lblTotalBonififaciones";
-            this.lblTotalBonififaciones.Size = new System.Drawing.Size(23, 25);
-            this.lblTotalBonififaciones.TabIndex = 10;
-            this.lblTotalBonififaciones.Text = "0";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(510, 149);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(235, 20);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Bonificaciones Realizadas : ";
             // 
             // frmCierreCaja
             // 
@@ -487,9 +512,12 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmCierreCaja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Corte de caja";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCierreCaja_FormClosing);
             this.Load += new System.EventHandler(this.frmCierreCaja_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -542,5 +570,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblBonificacion;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

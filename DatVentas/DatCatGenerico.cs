@@ -166,6 +166,39 @@ namespace DatVentas
             }
         }
 
+        public static CatalogoGenerico ObtenerPresentacion(int idPresentacion)
+        {
+            try
+            {
+                CatalogoGenerico presentacion = null;
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    SqlCommand cmd = new SqlCommand($"SELECT * FROM [Cat_Tipo_Presentacion]  WHERE Id_TipoPresentacion={idPresentacion}", con);
+                    con.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        presentacion = new CatalogoGenerico();
+
+                        presentacion.Id = reader.GetInt32(0);
+                        presentacion.Nombre = reader.GetString(1);
+                        presentacion.Descripcion = reader.GetString(2);
+                        presentacion.Estado = reader.GetBoolean(3);
+
+                    }
+
+                    con.Close();
+
+                    return presentacion;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static DataTable ListarCat_Producto()
         {
 
@@ -512,6 +545,28 @@ namespace DatVentas
             }
         }
 
+        public static void  AgregarBitácora(Bitacora b)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("sp_agregarBitacora",con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@fecha", b.Fecha);
+                    cmd.Parameters.AddWithValue("@idusuario", b.IdUsuario);
+                    cmd.Parameters.AddWithValue("@idcaja", b.IdCaja);
+                    cmd.Parameters.AddWithValue("@accion", b.Accion);
+                    cmd.ExecuteNonQuery();
 
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

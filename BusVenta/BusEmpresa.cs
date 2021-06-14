@@ -46,6 +46,7 @@ namespace BusVenta
             e.Pais = dtEmpresa["Pais"].ToString();
             e.FrecuenciaBackup = Convert.ToInt32(dtEmpresa["Frecuencia_Respaldo"]);
             e.CorreoEnvio = dtEmpresa["Correo_EnvioReporte"].ToString();
+            e.UltimaFechaBackup = Convert.ToDateTime(dtEmpresa["Ultima_FechaRespaldo2"]);
             return e;
         }
     }

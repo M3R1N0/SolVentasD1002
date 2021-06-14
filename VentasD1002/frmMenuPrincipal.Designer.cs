@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlVentas = new System.Windows.Forms.Panel();
             this.pnlCobrar = new System.Windows.Forms.Panel();
             this.panel31 = new System.Windows.Forms.Panel();
@@ -113,6 +113,8 @@
             this.gdvBuscar = new System.Windows.Forms.DataGridView();
             this.gdvVentas = new System.Windows.Forms.DataGridView();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblPeso = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.panel29 = new System.Windows.Forms.Panel();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -249,9 +251,9 @@
             this.pnlCobrar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlCobrar.BackgroundImage")));
             this.pnlCobrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlCobrar.Controls.Add(this.panel31);
-            this.pnlCobrar.Location = new System.Drawing.Point(143, 439);
+            this.pnlCobrar.Location = new System.Drawing.Point(94, 142);
             this.pnlCobrar.Name = "pnlCobrar";
-            this.pnlCobrar.Size = new System.Drawing.Size(138, 104);
+            this.pnlCobrar.Size = new System.Drawing.Size(790, 414);
             this.pnlCobrar.TabIndex = 13;
             // 
             // panel31
@@ -904,9 +906,9 @@
             this.pnlCambioPrecios.Controls.Add(this.lblProducto);
             this.pnlCambioPrecios.Controls.Add(this.panel26);
             this.pnlCambioPrecios.ForeColor = System.Drawing.Color.OldLace;
-            this.pnlCambioPrecios.Location = new System.Drawing.Point(350, 416);
+            this.pnlCambioPrecios.Location = new System.Drawing.Point(289, 202);
             this.pnlCambioPrecios.Name = "pnlCambioPrecios";
-            this.pnlCambioPrecios.Size = new System.Drawing.Size(202, 69);
+            this.pnlCambioPrecios.Size = new System.Drawing.Size(438, 250);
             this.pnlCambioPrecios.TabIndex = 9;
             // 
             // lblUnidad
@@ -1031,7 +1033,7 @@
             this.lblProducto.ForeColor = System.Drawing.Color.DarkOrange;
             this.lblProducto.Location = new System.Drawing.Point(0, 30);
             this.lblProducto.Name = "lblProducto";
-            this.lblProducto.Size = new System.Drawing.Size(202, 38);
+            this.lblProducto.Size = new System.Drawing.Size(438, 38);
             this.lblProducto.TabIndex = 1;
             this.lblProducto.Text = "PRODUCTO";
             this.lblProducto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1045,7 +1047,7 @@
             this.panel26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel26.Location = new System.Drawing.Point(0, 0);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(202, 30);
+            this.panel26.Size = new System.Drawing.Size(438, 30);
             this.panel26.TabIndex = 0;
             // 
             // pictureBox4
@@ -1125,9 +1127,9 @@
             this.gdvClientes.Name = "gdvClientes";
             this.gdvClientes.ReadOnly = true;
             this.gdvClientes.RowHeadersVisible = false;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.ForestGreen;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Green;
-            this.gdvClientes.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.ForestGreen;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Green;
+            this.gdvClientes.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gdvClientes.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gdvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gdvClientes.Size = new System.Drawing.Size(292, 118);
@@ -1180,6 +1182,8 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel7.Controls.Add(this.label2);
+            this.panel7.Controls.Add(this.lblPeso);
             this.panel7.Controls.Add(this.label17);
             this.panel7.Controls.Add(this.panel29);
             this.panel7.Controls.Add(this.lblNumProductos);
@@ -1189,15 +1193,37 @@
             this.panel7.Size = new System.Drawing.Size(871, 64);
             this.panel7.TabIndex = 627;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(259, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 23);
+            this.label2.TabIndex = 625;
+            this.label2.Text = "Peso Total :";
+            this.label2.Visible = false;
+            // 
+            // lblPeso
+            // 
+            this.lblPeso.AutoSize = true;
+            this.lblPeso.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPeso.Location = new System.Drawing.Point(369, 20);
+            this.lblPeso.Name = "lblPeso";
+            this.lblPeso.Size = new System.Drawing.Size(20, 23);
+            this.lblPeso.TabIndex = 626;
+            this.lblPeso.Text = "0";
+            this.lblPeso.Visible = false;
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(6, 23);
+            this.label17.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(6, 20);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(294, 25);
+            this.label17.Size = new System.Drawing.Size(156, 23);
             this.label17.TabIndex = 623;
-            this.label17.Text = "N° productos seleccionados :";
+            this.label17.Text = "Cantidad vendido :";
             // 
             // panel29
             // 
@@ -1237,10 +1263,10 @@
             // lblNumProductos
             // 
             this.lblNumProductos.AutoSize = true;
-            this.lblNumProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumProductos.Location = new System.Drawing.Point(295, 12);
+            this.lblNumProductos.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumProductos.Location = new System.Drawing.Point(166, 20);
             this.lblNumProductos.Name = "lblNumProductos";
-            this.lblNumProductos.Size = new System.Drawing.Size(37, 39);
+            this.lblNumProductos.Size = new System.Drawing.Size(20, 23);
             this.lblNumProductos.TabIndex = 624;
             this.lblNumProductos.Text = "0";
             // 
@@ -2151,5 +2177,7 @@
         private System.Windows.Forms.RadioButton rbMayoreo;
         private System.Windows.Forms.RadioButton rbMenudeo;
         private System.Windows.Forms.RadioButton rbMMayoreo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblPeso;
     }
 }

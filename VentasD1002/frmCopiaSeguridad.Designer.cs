@@ -42,15 +42,14 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.lblCopiaGuardada = new System.Windows.Forms.Label();
-            this.pbLoading = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblUltimaCopia = new System.Windows.Forms.Label();
+            this.loading = new DevExpress.XtraWaitForm.ProgressPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.menuStrip3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -145,23 +144,22 @@
             this.menuStrip3.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
-            this.menuStrip3.Location = new System.Drawing.Point(257, 220);
+            this.menuStrip3.Location = new System.Drawing.Point(302, 287);
             this.menuStrip3.Name = "menuStrip3";
-            this.menuStrip3.Size = new System.Drawing.Size(309, 46);
+            this.menuStrip3.Size = new System.Drawing.Size(264, 46);
             this.menuStrip3.TabIndex = 383;
             this.menuStrip3.Text = "menuStrip3";
             // 
             // toolStripMenuItem1
             // 
-            this.toolStripMenuItem1.BackgroundImage = global::VentasD1002.Properties.Resources.amarillo;
+            this.toolStripMenuItem1.BackColor = System.Drawing.Color.SandyBrown;
             this.toolStripMenuItem1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.toolStripMenuItem1.ForeColor = System.Drawing.Color.Black;
-            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
             this.toolStripMenuItem1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(287, 42);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(255, 42);
             this.toolStripMenuItem1.Text = "Generar copia seguridad";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
@@ -179,47 +177,76 @@
             // lblCopiaGuardada
             // 
             this.lblCopiaGuardada.AutoSize = true;
+            this.lblCopiaGuardada.BackColor = System.Drawing.Color.SeaGreen;
             this.lblCopiaGuardada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCopiaGuardada.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblCopiaGuardada.Location = new System.Drawing.Point(34, 237);
+            this.lblCopiaGuardada.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblCopiaGuardada.Location = new System.Drawing.Point(32, 265);
             this.lblCopiaGuardada.Name = "lblCopiaGuardada";
             this.lblCopiaGuardada.Size = new System.Drawing.Size(17, 20);
             this.lblCopiaGuardada.TabIndex = 385;
             this.lblCopiaGuardada.Text = "..";
             // 
-            // pbLoading
-            // 
-            this.pbLoading.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbLoading.Image")));
-            this.pbLoading.Location = new System.Drawing.Point(0, 0);
-            this.pbLoading.Name = "pbLoading";
-            this.pbLoading.Size = new System.Drawing.Size(575, 143);
-            this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbLoading.TabIndex = 386;
-            this.pbLoading.TabStop = false;
-            this.pbLoading.Visible = false;
-            this.pbLoading.Click += new System.EventHandler(this.pbLoading_Click);
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // panel2
+            // label4
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.panel2.Controls.Add(this.pbLoading);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 307);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(575, 143);
-            this.panel2.TabIndex = 387;
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(27, 232);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(199, 20);
+            this.label4.TabIndex = 386;
+            this.label4.Text = "Ultima Copia realizada :";
+            // 
+            // lblUltimaCopia
+            // 
+            this.lblUltimaCopia.AutoSize = true;
+            this.lblUltimaCopia.BackColor = System.Drawing.Color.Transparent;
+            this.lblUltimaCopia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUltimaCopia.Location = new System.Drawing.Point(233, 232);
+            this.lblUltimaCopia.Name = "lblUltimaCopia";
+            this.lblUltimaCopia.Size = new System.Drawing.Size(29, 20);
+            this.lblUltimaCopia.TabIndex = 387;
+            this.lblUltimaCopia.Text = "....";
+            // 
+            // loading
+            // 
+            this.loading.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.loading.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.loading.Appearance.Options.UseBackColor = true;
+            this.loading.AppearanceCaption.Options.UseTextOptions = true;
+            this.loading.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.loading.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.loading.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            this.loading.AppearanceDescription.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loading.AppearanceDescription.Options.UseFont = true;
+            this.loading.AppearanceDescription.Options.UseTextOptions = true;
+            this.loading.AppearanceDescription.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.loading.AppearanceDescription.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.loading.AppearanceDescription.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.loading.Caption = "Por favor espere...";
+            this.loading.Description = "Procesando la copia de seguridad";
+            this.loading.Location = new System.Drawing.Point(12, 96);
+            this.loading.Name = "loading";
+            this.loading.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.loading.Size = new System.Drawing.Size(551, 237);
+            this.loading.TabIndex = 388;
+            this.loading.Text = "probando";
+            this.loading.WaitAnimationType = DevExpress.Utils.Animation.WaitingAnimatorType.Line;
             // 
             // frmCopiaSeguridad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 450);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(575, 352);
+            this.Controls.Add(this.loading);
+            this.Controls.Add(this.lblUltimaCopia);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lblCopiaGuardada);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.menuStrip3);
@@ -230,7 +257,10 @@
             this.Controls.Add(this.txtRutaBackup);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmCopiaSeguridad";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Copias de Seguridad";
             this.Load += new System.EventHandler(this.frmCopiaSeguridad_Load);
             this.panel1.ResumeLayout(false);
@@ -238,8 +268,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.menuStrip3.ResumeLayout(false);
             this.menuStrip3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).EndInit();
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,8 +287,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblCopiaGuardada;
-        private System.Windows.Forms.PictureBox pbLoading;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblUltimaCopia;
+        private DevExpress.XtraWaitForm.ProgressPanel loading;
     }
 }

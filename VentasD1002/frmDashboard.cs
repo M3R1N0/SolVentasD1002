@@ -103,7 +103,7 @@ namespace VentasD1002
                         {
                             if (UserLoginNow == "Administrador" || Usuario == "Admininistrador" || userPermision == "ADMINISTRADOR")
                             {
-                                MessageBox.Show("Continuaras Turno de *" + nameUserNow + " Todos los Registros seran con ese Usuario", "Caja Iniciada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                               // MessageBox.Show("Continuaras Turno de *" + nameUserNow + " Todos los Registros seran con ese Usuario", "Caja Iniciada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 BoxPermission = "Correcto";
                             }
                             if (loggedName == "Admin" && Usuario == "Admin")
@@ -113,7 +113,7 @@ namespace VentasD1002
 
                             else if (UserLoginNow != Usuario && userPermision != "ADMINISTRADOR")
                             {
-                                MessageBox.Show("Para poder continuar con el Turno de *" + nameUserNow + "* ,Inicia sesion con el Usuario " + UserLoginNow + " -ó-el Usuario *admin*", "Caja Iniciada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                              //  MessageBox.Show("Para poder continuar con el Turno de *" + nameUserNow + "* ,Inicia sesion con el Usuario " + UserLoginNow + " -ó-el Usuario *admin*", "Caja Iniciada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 BoxPermission = "Vacio";
                             }
                             else if (UserLoginNow == Usuario)
@@ -206,26 +206,31 @@ namespace VentasD1002
         }
 
         ProgressBar pb = new ProgressBar();
-        
+
         private void timer2_Tick(object sender, EventArgs e)
         {
-           
-                timer2.Stop();
-                if ( Apertura.Equals( "NUEVO" ) )
-                {
-                    
-                    frmAperturaCaja aperturaCaja = new frmAperturaCaja();
-                    this.Hide();
-                    aperturaCaja.ShowDialog();
-                    Dispose();
-                }
-                else
-                {
-                    frmMenuPrincipal principal = new frmMenuPrincipal();
-                    this.Hide();
-                    principal.ShowDialog();
-                    Dispose();
-                }
+
+            timer2.Stop();
+            if (Apertura.Equals("NUEVO"))
+            {
+
+                //frmAperturaCaja aperturaCaja = new frmAperturaCaja();
+                //this.Hide();
+                //aperturaCaja.ShowDialog();
+                //Dispose();
+
+                frmMenuPrincipal principal = new frmMenuPrincipal();
+                this.Hide();
+                principal.ShowDialog();
+                Dispose();
+            }
+            else
+            {
+                frmMenuPrincipal principal = new frmMenuPrincipal();
+                this.Hide();
+                principal.ShowDialog();
+                Dispose();
+            }
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)

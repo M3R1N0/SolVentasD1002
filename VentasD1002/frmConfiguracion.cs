@@ -112,5 +112,67 @@ namespace VentasD1002
             frmConfiguracionImpresoras impresoras = new frmConfiguracionImpresoras();
             impresoras.ShowDialog();
         }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            frmHistorialCliente historialCliente = new frmHistorialCliente();
+            historialCliente.ShowDialog();
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+            frmHistorialCliente historialCliente = new frmHistorialCliente();
+            historialCliente.ShowDialog();
+        }
+
+        private void Button7_Click(object sender, EventArgs e)
+        {
+            frmCopiaSeguridad copiaSeguridad = new frmCopiaSeguridad();
+            copiaSeguridad.ShowDialog();
+        }
+
+        private void Label5_Click(object sender, EventArgs e)
+        {
+            frmCopiaSeguridad copiaSeguridad = new frmCopiaSeguridad();
+            copiaSeguridad.ShowDialog();
+        }
+
+        private void RestaurarBD_Click(object sender, EventArgs e)
+        {
+            frmRestaurarBD restaurarBD = new frmRestaurarBD();
+            restaurarBD.ShowDialog();
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmProductosInactivos inactivos = new frmProductosInactivos();
+            inactivos.ShowDialog();
+            this.Dispose();
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmProductosInactivos inactivos = new frmProductosInactivos();
+            inactivos.ShowDialog();
+            this.Dispose();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmVentasDiarias ventasDiarias = new frmVentasDiarias();
+            ventasDiarias.ShowDialog();
+            this.Dispose();
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmVentasDiarias ventasDiarias = new frmVentasDiarias();
+            ventasDiarias.ShowDialog();
+            this.Dispose();
+        }
     }
 }

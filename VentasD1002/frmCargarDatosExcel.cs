@@ -31,7 +31,7 @@ namespace VentasD1002
 
         private void frmCargarDatosExcel_Load(object sender, EventArgs e)
         {
-
+            btnEditar.Enabled = false;
         }
 
         private void btnCargarExcel_Click(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace VentasD1002
                 {
                     if (ext.Equals(".csv"))
                     {
-                        DataTable dt = Exportar_Importar_ArchivoExcel.Importar(txtRutaBackup.Text);
+                        DataTable dt = Exportar_Importar_ArchivoExcel.CargarCSV(txtRutaBackup.Text);
                         //DataTablePersonalizado.Leer_ArchivoExcel(ref gdvDatos, txtRutaBackup.Text);
 
                         gdvDatos.DataSource = dt;
@@ -58,6 +58,7 @@ namespace VentasD1002
                         gdvDatos.Columns[15].Visible = false;
                         gdvDatos.Columns[16].Visible = false;
                         gdvDatos.Columns[17].Visible = false;
+                       // gdvDatos.Columns[18].Visible = false;
 
                     }
                     else
@@ -80,8 +81,19 @@ namespace VentasD1002
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
+            ActualizarProducto();
+          
+        }
+
+        private void ActualizarProducto()
+        {
+
             if (gdvDatos.Rows.Count != 0)
             {
+                List<string> lstproductosNoActualizados = new List<string>();
+                int contadorActualizados = 0;
+                int TotalProductosCargados = gdvDatos.Rows.Count;
+
                 try
                 {
                     foreach (DataGridViewRow dr in gdvDatos.Rows)
@@ -106,30 +118,83 @@ namespace VentasD1002
                         p.TotalUnidades = Convert.ToDecimal(dr.Cells[16].Value);
                         p.PresentacionMenudeo = dr.Cells[17].Value.ToString();
 
-                        new DatProducto().ActualizarProducto_Excel(p);
-                        
+                        if (DatProducto.ExisteProductoPorID(p.codigo))
+                        {
+                            new DatProducto().ActualizarProducto_Excel(p);
+                            gdvDatos.Rows.RemoveAt(dr.Index);
+                            
+                            contadorActualizados++;
+                        }
+                        else
+                        {
+                            lstproductosNoActualizados.Add(p.Descripcion);
+                        }
+
                     }
-                    MessageBox.Show("Productos actualizados correctamente", "Operacion Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Dispose();
-                    txtRutaBackup.Clear();
-                    gdvDatos.DataSource = null;
-                   
+
+                    ValidarProcesoActualizacion(lstproductosNoActualizados, contadorActualizados, TotalProductosCargados);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ocurrió un error al actualizar los datos : "+ex.Message, "Erro de Actualizacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ocurrió un error al actualizar los datos : " + ex.Message, "Erro de Actualizacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+           
         }
 
-        private void txtRutaBackup_TextChanged(object sender, EventArgs e)
+        private void ValidarProcesoActualizacion(List<string> lstproductosNoActualizados, int contadorActualizados, int totalProductosCargados)
         {
 
+            if (contadorActualizados == totalProductosCargados)
+            {
+                MessageBox.Show($"Se han actualizado todos los productos de manera exitosa", "Operacion realizada con Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Dispose();
+                txtRutaBackup.Clear();
+                gdvDatos.DataSource = null;
+            }
+            else
+            {
+                MessageBox.Show($"Se actualizaron {contadorActualizados} de {totalProductosCargados} productos cargados \n Los siguientes productos no se han dado de alta en el sistema  o han cambiado de Codigo", "Operacion Realizada con detalles", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                btnEditar.Enabled = true;
+            }
+
+            gdvDatos.Refresh();
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                foreach (DataGridViewRow dr in gdvDatos.Rows)
+                {
+                    Producto p = new Producto();
+                    p.Id = Convert.ToInt32(dr.Cells[0].Value);
+                    p.IdTipoPresentacion = Convert.ToInt32(dr.Cells[1].Value);
+                    p.IdCategoria = Convert.ToInt32(dr.Cells[2].Value);
+                    p.codigo = dr.Cells[3].Value.ToString();
+                    p.Descripcion = dr.Cells[4].Value.ToString();
+                    p.Presentacion = dr.Cells[5].Value.ToString();
+                    p.seVendeA = dr.Cells[6].Value.ToString();
+                    p.precioMenudeo = Convert.ToDecimal(dr.Cells[7].Value);
+                    p.precioMMayoreo = Convert.ToDecimal(dr.Cells[8].Value);
+                    p.APartirDe = Convert.ToDecimal(dr.Cells[9].Value);
+                    p.precioMayoreo = Convert.ToDecimal(dr.Cells[10].Value);
+                    p.usaInventario = dr.Cells[11].Value.ToString();
+                    p.stock = dr.Cells[12].Value.ToString();
+                    p.stockMinimo = Convert.ToDecimal(dr.Cells[13].Value);
+                    p.Caducidad = dr.Cells[14].Value.ToString();
+                    p.Estado = Convert.ToBoolean(dr.Cells[15].Value.ToString());
+                    p.TotalUnidades = Convert.ToDecimal(dr.Cells[16].Value);
+                    p.PresentacionMenudeo = dr.Cells[17].Value.ToString();
 
+                    frmABProducto producto = new frmABProducto(p);
+                    producto.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al editar los datos : "+ex.Message, "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

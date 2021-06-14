@@ -130,5 +130,59 @@ namespace DatVentas
                 }
             }
         }
+
+        //=======================================================================
+        public static DataTable ObtenerComprobantes_Ventas()
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM tb_Serializacion WHERE  Destino='VENTAS' ", conn);
+                    da.Fill(dt);
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    throw ex;
+                }
+            }
+        }
+
+        public  static Serializacion ObtenerComprobante(string tipoDoc)
+        {
+            try
+            {
+                Serializacion serializacion = null;
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand($"SELECT * FROM tb_Serializacion WHERE Tipo_Documento='{tipoDoc }'", con);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        serializacion = new Serializacion();
+
+                        serializacion.Id = reader.GetInt32(0);
+                        serializacion.Serie = reader.GetString(1);
+                        serializacion.Cantidad_Numero = reader.GetString(2);
+                        serializacion.NumeroFin = reader.GetString(3);
+                        serializacion.Destino = reader.GetString(4);
+                        serializacion.Tipo_Documento = reader.GetString(5);
+                        serializacion.Por_Defecto = reader.GetString(6);
+
+                    }
+                }
+
+                return serializacion;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

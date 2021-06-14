@@ -30,5 +30,6 @@ namespace EntVenta
         public string  Tipo_Catalogo { get; set; }
         public decimal? TotalUnidades { get; set; }
         public string PresentacionMenudeo { get; set; }
+        public decimal Peso { get; set; }
     }
 }

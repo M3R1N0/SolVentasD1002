@@ -58,5 +58,7 @@ namespace BusVenta
         {
             new DatOpenCloseBox().CerrarCaja(idCaja, cierre, fin, totalCaculado, totalReal, diferencia);
         }
+
+         
     }
 }

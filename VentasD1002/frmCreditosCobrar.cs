@@ -1,4 +1,5 @@
 ﻿using BusVenta;
+using BusVenta.Helpers;
 using DatVentas;
 using EntVenta;
 using Reportes;
@@ -267,6 +268,7 @@ namespace VentasD1002
                     LimpiarCampos();
                     ListarVentar_PorCobrar("");
                     MessageBox.Show("Abono realizado correctamente", "Éxito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AgregarBitacora(_idVenta);
                 }
             }
             catch (Exception ex)
@@ -330,6 +332,29 @@ namespace VentasD1002
             lblTotalAbonado.Text = "...";
             lblTotalLiquidar.Text = "...";
             TICKET = null;
+        }
+
+        private void AgregarBitacora(int idventa)
+        {
+            try
+            {
+                string serialPC = Sistema.ObenterSerialPC();
+
+                int idCaja = new BusBox().showBoxBySerial(serialPC).Id;
+                int idusuario = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC)).Id;
+
+                Bitacora b = new Bitacora();
+                b.Fecha = DateTime.Now;
+                b.IdUsuario = idusuario;
+                b.IdCaja = idCaja;
+                b.Accion = $"ABONO DE VENTA A CREDITO [{idventa}]";
+
+                DatCatGenerico.AgregarBitácora(b);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar la bitacora", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

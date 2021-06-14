@@ -17,5 +17,6 @@ namespace EntVenta
         public string Proveedor { get; set; }
         public decimal Saldo { get; set; }
         public bool Estado { get; set; }
+
     }
 }

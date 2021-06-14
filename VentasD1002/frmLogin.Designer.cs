@@ -31,14 +31,17 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpFechaActivacion = new System.Windows.Forms.DateTimePicker();
             this.dtpVencimiento = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelUsuarios = new System.Windows.Forms.Panel();
             this.flowLayoutPanelUsuarios = new System.Windows.Forms.FlowLayoutPanel();
             this.panelIniciarSesion = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblLicencia = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -50,17 +53,18 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblIP = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             this.panelUsuarios.SuspendLayout();
             this.flowLayoutPanelUsuarios.SuspendLayout();
             this.panelIniciarSesion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.MenuStrip15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -74,8 +78,18 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(116, 365);
+            this.panel1.Size = new System.Drawing.Size(116, 383);
             this.panel1.TabIndex = 0;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::VentasD1002.Properties.Resources.JIEL;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(116, 97);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
             // 
             // label3
             // 
@@ -124,13 +138,27 @@
             this.panel2.Size = new System.Drawing.Size(571, 68);
             this.panel2.TabIndex = 1;
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Varsity Regular", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(571, 68);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "¡ B I E N V E N I D O ! ";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panelUsuarios
             // 
+            this.panelUsuarios.Controls.Add(this.panel3);
             this.panelUsuarios.Controls.Add(this.flowLayoutPanelUsuarios);
             this.panelUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelUsuarios.Location = new System.Drawing.Point(116, 68);
             this.panelUsuarios.Name = "panelUsuarios";
-            this.panelUsuarios.Size = new System.Drawing.Size(571, 297);
+            this.panelUsuarios.Size = new System.Drawing.Size(571, 315);
             this.panelUsuarios.TabIndex = 2;
             // 
             // flowLayoutPanelUsuarios
@@ -140,7 +168,7 @@
             this.flowLayoutPanelUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelUsuarios.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelUsuarios.Name = "flowLayoutPanelUsuarios";
-            this.flowLayoutPanelUsuarios.Size = new System.Drawing.Size(571, 297);
+            this.flowLayoutPanelUsuarios.Size = new System.Drawing.Size(571, 315);
             this.flowLayoutPanelUsuarios.TabIndex = 0;
             // 
             // panelIniciarSesion
@@ -158,8 +186,23 @@
             this.panelIniciarSesion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(172)))), ((int)(((byte)(224)))));
             this.panelIniciarSesion.Location = new System.Drawing.Point(3, 3);
             this.panelIniciarSesion.Name = "panelIniciarSesion";
-            this.panelIniciarSesion.Size = new System.Drawing.Size(568, 294);
+            this.panelIniciarSesion.Size = new System.Drawing.Size(565, 269);
             this.panelIniciarSesion.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(10)))), ((int)(((byte)(54)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.DimGray;
+            this.button1.Location = new System.Drawing.Point(98, 167);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(276, 28);
+            this.button1.TabIndex = 614;
+            this.button1.Text = "Favor de contactar con el adminastrador del sistema";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // lblLicencia
             // 
@@ -290,50 +333,41 @@
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // label1
+            // panel3
             // 
-            this.label1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Varsity Regular", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(571, 68);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "¡ B I E N V E N I D O ! ";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel3.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel3.Controls.Add(this.lblIP);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 272);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(571, 43);
+            this.panel3.TabIndex = 1;
             // 
-            // pictureBox2
+            // label4
             // 
-            this.pictureBox2.Image = global::VentasD1002.Properties.Resources.JIEL;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(116, 97);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.label4.Image = ((System.Drawing.Image)(resources.GetObject("label4.Image")));
+            this.label4.Location = new System.Drawing.Point(6, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(37, 31);
+            this.label4.TabIndex = 0;
             // 
-            // button1
+            // lblIP
             // 
-            this.button1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(10)))), ((int)(((byte)(54)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.DimGray;
-            this.button1.Location = new System.Drawing.Point(98, 167);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(276, 28);
-            this.button1.TabIndex = 614;
-            this.button1.Text = "Favor de contactar con el adminastrador del sistema";
-            this.button1.UseVisualStyleBackColor = false;
+            this.lblIP.AutoSize = true;
+            this.lblIP.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIP.Location = new System.Drawing.Point(49, 12);
+            this.lblIP.Name = "lblIP";
+            this.lblIP.Size = new System.Drawing.Size(32, 22);
+            this.lblIP.TabIndex = 1;
+            this.lblIP.Text = "..";
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(687, 365);
+            this.ClientSize = new System.Drawing.Size(687, 383);
             this.Controls.Add(this.panelUsuarios);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -344,6 +378,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panelUsuarios.ResumeLayout(false);
             this.flowLayoutPanelUsuarios.ResumeLayout(false);
@@ -352,7 +387,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MenuStrip15.ResumeLayout(false);
             this.MenuStrip15.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -382,6 +418,9 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label lblIP;
+        private System.Windows.Forms.Label label4;
     }
 }
 

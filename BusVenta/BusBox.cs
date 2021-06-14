@@ -41,5 +41,16 @@ namespace BusVenta
                 throw new ApplicationException("Ocurrió un error al actualizar los datos");
             }
         }
+
+        //==================================================================================
+        public static Box ObtenerCaja_PorSerial(string serial)
+        {
+            DataRow dr = new DatBox().selectBoxBySerial(serial);
+            Box b = new Box();
+            b.Id = Convert.ToInt32(dr["Id_Caja"].ToString());
+            b.Descripcion = dr["Descripcion"].ToString();
+
+            return b;
+        }
     }
 }

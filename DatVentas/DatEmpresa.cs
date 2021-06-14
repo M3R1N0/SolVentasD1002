@@ -105,19 +105,25 @@ namespace DatVentas
         {
             using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
             {
+                int resultado = 0;
                 try
                 {
-                    int resultado = 0;
+                   
                     conn.Open();
-                    SqlCommand sc = new SqlCommand($"UPDATE tb_Empresa set [Ultima_FechaRespaldo] ='{DateTime.Now.ToString()}', [Ultima_FechaRespaldo2]='{DateTime.Now}', [Frecuencia_Respaldo]={frecuencia} ", conn);
-                    resultado = sc.ExecuteNonQuery();
+                    string strFechaRespaldo = DateTime.Now.ToString();
+                    SqlCommand sc = new SqlCommand("sp_Actualizar_FechaBackup", conn);
+                    sc.CommandType = CommandType.StoredProcedure;
+
+                    sc.Parameters.AddWithValue("@strFecha", strFechaRespaldo);
+                    sc.Parameters.AddWithValue("@frecuencia", frecuencia);
+                    sc.ExecuteNonQuery();
                     conn.Close();
 
-                    return resultado;
+                    return resultado = 1 ;
                 }
                 catch (Exception ex)
                 {
-                    conn.Close();
+                    return resultado = 0;
                     throw ex;
                 }
             }

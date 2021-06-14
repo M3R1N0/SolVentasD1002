@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,6 +24,16 @@ namespace BusVenta.Helpers
             {
                 throw ex;
             }
+        }
+
+        public static string ObtenerIP()
+        {
+            string strIP;
+
+            strIP = Dns.GetHostEntry(Environment.MachineName).AddressList.FirstOrDefault(
+                    (i) => i.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).ToString();
+
+            return strIP;
         }
     }
 }

@@ -83,5 +83,25 @@ namespace BusVenta
                 throw new ApplicationException("Ocurrio un error al editar los datos");
             }
         }
+
+        //=========================================================================
+        public static Cliente ObtenerCliente(int id)
+        {
+            DataRow dr = new DatCliente().ObtenerCliente_PorId(id);
+
+            Cliente c = new Cliente();
+
+            c.Id = Convert.ToInt32(dr["Id_Cliente"]);
+            c.NombreCompleto = dr["Nombre"].ToString();
+            c.Direccion = dr["Direccion"].ToString();
+            c.Ruc = dr["Ruc"].ToString();
+            c.Telefono = dr["Telefono"].ToString();
+            c.Clientes = dr["Cliente"].ToString();
+            c.Proveedor = dr["Proveedor"].ToString();
+            c.Saldo = Convert.ToDecimal(dr["Saldo"].ToString());
+            c.Estado = Convert.ToBoolean(dr["Estado"].ToString());
+
+            return c;
+        }
     }
 }

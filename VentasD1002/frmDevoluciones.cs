@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using Reportes;
 using Telerik.Reporting.Processing;
 using System.Management;
+using BusVenta.Helpers;
 
 namespace VentasD1002
 {
@@ -224,6 +225,7 @@ namespace VentasD1002
                                 new BusProducto().Actualizar_Stock(p.Id, (Convert.ToDecimal(p.stock) + Convert.ToDecimal(txtCantidadDevuelto.Text)));
                             }
                         }
+                        AgregarBitacora(idVenta, "UNICO");
                     }
                 }
 
@@ -243,6 +245,29 @@ namespace VentasD1002
             catch (Exception ex)
             {
                 MessageBox.Show("Ocurrió un error al actualizar los datos : "+ex.Message, "Error de actualización", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AgregarBitacora(int idventa, string tipo)
+        {
+            try
+            {
+                string SerialPC = Sistema.ObenterSerialPC();
+                string strTipo = (tipo.Equals("TOTAL")) ? $"DEVOLUCIÓN TOTAL DE LA VENTA [{idventa}]" : $"DEVOLUCIÓN DE PRODUCTO [{idventa}]";
+                int idCaja = new BusBox().showBoxBySerial(serialPC).Id;
+                int idusuario = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC)).Id;
+
+                Bitacora b = new Bitacora();
+                b.Fecha = DateTime.Now;
+                b.IdUsuario = idusuario;
+                b.IdCaja = idCaja;
+                b.Accion = strTipo;
+
+                DatCatGenerico.AgregarBitácora(b);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar la bitacora", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -364,21 +389,7 @@ namespace VentasD1002
                         #region validar Venta
 
                         venta.Id = data.Id;
-                        //if (data.Vuelto < 0)
-                        //{
-                        //    venta.Vuelto = data.Vuelto + Convert.ToDecimal(Total);
-                        //}
-                        //else if (data.Vuelto >= 0 && data.Saldo == 0)
-                        //{
-                        //    venta.Vuelto = data.Vuelto + Convert.ToDecimal(Total);
-                        //}
-
-                        //if (data.Saldo > 0)
-                        //{
-                        //    venta.Saldo = data.Saldo - Convert.ToDecimal(Total);
-                        //    venta.Vuelto = venta.Saldo < 0 ? venta.Saldo * (-1) : venta.Saldo;
-                        //    venta.Saldo = venta.Saldo < 0 ? 0 : venta.Saldo;
-                        //}
+                       
                         venta.Vuelto = data.Vuelto;
                         venta.Saldo = data.Saldo;
                         venta.MontoTotal = data.MontoTotal;
@@ -426,7 +437,7 @@ namespace VentasD1002
 
                         gdvDatos.DataSource = null;
                         MessageBox.Show("Proceso realizado exitosamente", "DEVOLUCION REALIZADA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
+                        AgregarBitacora(idVenta, "TOTAL");
                     }
                 }
             }
