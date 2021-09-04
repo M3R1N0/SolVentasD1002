@@ -56,7 +56,7 @@ namespace VentasD1002
 
                 foreach (var item in lst)
                 {
-                    Producto p = new BusProducto().ObtenerProducto_A_Actualizar(item);
+                    Producto p = new BusProducto().ObtenerProducto_A_Actualizar2(item);
 
                     table.Rows.Add(
                                 p.Id,
@@ -115,7 +115,8 @@ namespace VentasD1002
 
                 if (gdDetalle.Rows.Count != 0)
                 {
-                    Exportar_Importar_ArchivoExcel.Exportar(ref gdDetalle);
+                   Exportar_Importar_ArchivoExcel.ExportarExcel_Actualizacion();
+                   //Exportar_Importar_ArchivoExcel.Exportar(ref gdDetalle);
                     this.Hide();
                     DatProducto.EliminarRegistros_ActualizacionProducto();
 

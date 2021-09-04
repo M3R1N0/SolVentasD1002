@@ -50,8 +50,6 @@ namespace VentasD1002
         {
             try
             {
-            
-
                 System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("es-MX");
                 System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalSeparator = ".";
                 System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyGroupSeparator = ",";
@@ -137,7 +135,7 @@ namespace VentasD1002
                 gdvClientes.Visible = true;
 
                 gdvClientes.Columns[0].Visible = false;
-                gdvClientes.Columns[2].Visible = false;
+               // gdvClientes.Columns[2].Visible = false;
                 gdvClientes.Columns[3].Visible = false;
                 gdvClientes.Columns[4].Visible = false;
                 gdvClientes.Columns[5].Visible = false;
@@ -145,10 +143,12 @@ namespace VentasD1002
                 gdvClientes.Columns[7].Visible = false;
                 gdvClientes.Columns[8].Visible = false;
 
+                DataTablePersonalizado.Multilinea(ref gdvClientes);
+                gdvClientes.Rows[0].Selected = true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al mostrar los datos del cliente" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Error al mostrar los datos del cliente" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -162,7 +162,7 @@ namespace VentasD1002
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -411,13 +411,13 @@ namespace VentasD1002
 
                         if (stock >= cantidad + 1 && _totalUnidades < stock)
                         {
-                            decimal _precionMM = producto.precioMMayoreo;
+                            //decimal _precionMM = ;
                             decimal _sumaCantidad = cantidad + 1;
-                            if (_precionMM != 0 && _sumaCantidad >= _ApartirDe)
-                            {
-                                PRECIO = _precionMM;
-                                d[0].SetField("PRECIO", PRECIO);
-                            }
+                            //if (_precionMM != 0 && _sumaCantidad >= _ApartirDe)
+                            //{
+                            //    PRECIO = _precionMM;
+                            //    d[0].SetField("PRECIO", PRECIO);
+                            //}
 
                             d[0].SetField("CANTIDAD", _sumaCantidad);
                             d[0].SetField("IMPORTE", PRECIO * _sumaCantidad);
@@ -1824,16 +1824,10 @@ namespace VentasD1002
                 {
                     if (!string.IsNullOrWhiteSpace(txtBuscar.Text))
                     {
-
-
-                        string _producto = gdvBuscar.CurrentCell.Value.ToString();
-
+                        string _producto = gdvBuscar.SelectedCells[4].Value.ToString();
+                        //string _producto = gdvBuscar.CurrentCell.Value.ToString();
                         lstProducto = new BusProducto().ListarProductos(_producto, 0);
-
                         Producto producto = lstProducto.FirstOrDefault();
-                        //txtBuscar.Text = string.Empty;
-                        //AgregarProducto_A_Venta(lstProducto);
-                        //txtBuscar.Focus();
 
                         decimal precio = 0;
                         string tipoPrecio = "";
@@ -1878,8 +1872,9 @@ namespace VentasD1002
         {
             if (e.KeyCode == Keys.Enter)
             {
-                var cliente = gdvClientes.CurrentCell.Value.ToString();
+                //var cliente = gdvClientes.CurrentCell.Value.ToString();
                 idCliente = Convert.ToInt32(gdvClientes.SelectedCells[0].Value.ToString());
+                string cliente = gdvClientes.SelectedCells[1].Value.ToString();
                 txtCliente.Text = cliente;
                 gdvClientes.Visible = false;
              
@@ -1962,6 +1957,17 @@ namespace VentasD1002
         private void panel8_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void txtCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char) Keys.Enter)
+            {
+                idCliente = Convert.ToInt32(gdvClientes.SelectedCells[0].Value.ToString());
+                string cliente = gdvClientes.SelectedCells[1].Value.ToString();
+                txtCliente.Text = cliente;
+                gdvClientes.Visible = false;
+            }
         }
     }
 }

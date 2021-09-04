@@ -392,7 +392,7 @@ namespace VentasD1002
                        
                         venta.Vuelto = data.Vuelto;
                         venta.Saldo = data.Saldo;
-                        venta.MontoTotal = data.MontoTotal;
+                        venta.MontoTotal = 0;
                         venta.Accion = "VENTA CANCELADA";
                         venta.EstadoPago = venta.Saldo <= 0 ? "PAGADO" : "PENDIENTE";
 
@@ -431,13 +431,13 @@ namespace VentasD1002
                                 new BusProducto().Actualizar_Stock(p.Id, (Convert.ToDecimal(p.stock) + Convert.ToDecimal(cantidad)));
                             }
                         }
-
+                        AgregarBitacora(idVenta, "TOTAL");
                         pnlProcesar.Visible = true;
                         lblTotalDevuelto.Text = (venta.Saldo > 0) ? venta.Saldo.ToString() : venta.MontoTotal.ToString();
 
                         gdvDatos.DataSource = null;
                         MessageBox.Show("Proceso realizado exitosamente", "DEVOLUCION REALIZADA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        AgregarBitacora(idVenta, "TOTAL");
+                      
                     }
                 }
             }

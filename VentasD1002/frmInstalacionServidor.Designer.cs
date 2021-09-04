@@ -108,6 +108,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "INSTALACIÓN DEL SERVIDOR";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // timer2
             // 
             this.timer2.Interval = 10;
@@ -137,7 +141,7 @@
             this.panelBuscandoServidor.Controls.Add(this.lblBuscandoServidor);
             this.panelBuscandoServidor.Location = new System.Drawing.Point(407, 78);
             this.panelBuscandoServidor.Name = "panelBuscandoServidor";
-            this.panelBuscandoServidor.Size = new System.Drawing.Size(505, 487);
+            this.panelBuscandoServidor.Size = new System.Drawing.Size(464, 487);
             this.panelBuscandoServidor.TabIndex = 7;
             // 
             // panel2
@@ -364,7 +368,7 @@
             this.panel6.Controls.Add(this.txtServidor);
             this.panel6.Location = new System.Drawing.Point(125, 78);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(975, 451);
+            this.panel6.Size = new System.Drawing.Size(883, 487);
             this.panel6.TabIndex = 8;
             this.panel6.Visible = false;
             this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);

@@ -39,6 +39,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelUsuarios = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lblIP = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.flowLayoutPanelUsuarios = new System.Windows.Forms.FlowLayoutPanel();
             this.panelIniciarSesion = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -53,18 +56,15 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblIP = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             this.panelUsuarios.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.flowLayoutPanelUsuarios.SuspendLayout();
             this.panelIniciarSesion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.MenuStrip15.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -160,6 +160,35 @@
             this.panelUsuarios.Name = "panelUsuarios";
             this.panelUsuarios.Size = new System.Drawing.Size(571, 315);
             this.panelUsuarios.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel3.Controls.Add(this.lblIP);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 272);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(571, 43);
+            this.panel3.TabIndex = 1;
+            // 
+            // lblIP
+            // 
+            this.lblIP.AutoSize = true;
+            this.lblIP.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIP.Location = new System.Drawing.Point(49, 12);
+            this.lblIP.Name = "lblIP";
+            this.lblIP.Size = new System.Drawing.Size(32, 22);
+            this.lblIP.TabIndex = 1;
+            this.lblIP.Text = "..";
+            // 
+            // label4
+            // 
+            this.label4.Image = ((System.Drawing.Image)(resources.GetObject("label4.Image")));
+            this.label4.Location = new System.Drawing.Point(6, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(37, 31);
+            this.label4.TabIndex = 0;
             // 
             // flowLayoutPanelUsuarios
             // 
@@ -333,35 +362,6 @@
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panel3.Controls.Add(this.lblIP);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 272);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(571, 43);
-            this.panel3.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.Image = ((System.Drawing.Image)(resources.GetObject("label4.Image")));
-            this.label4.Location = new System.Drawing.Point(6, 6);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 31);
-            this.label4.TabIndex = 0;
-            // 
-            // lblIP
-            // 
-            this.lblIP.AutoSize = true;
-            this.lblIP.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIP.Location = new System.Drawing.Point(49, 12);
-            this.lblIP.Name = "lblIP";
-            this.lblIP.Size = new System.Drawing.Size(32, 22);
-            this.lblIP.TabIndex = 1;
-            this.lblIP.Text = "..";
-            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,14 +381,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panelUsuarios.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.flowLayoutPanelUsuarios.ResumeLayout(false);
             this.panelIniciarSesion.ResumeLayout(false);
             this.panelIniciarSesion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MenuStrip15.ResumeLayout(false);
             this.MenuStrip15.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }

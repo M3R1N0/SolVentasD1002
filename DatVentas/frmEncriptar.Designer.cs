@@ -167,6 +167,7 @@
             this.Controls.Add(this.datalistado_movimientos_validar);
             this.Name = "frmEncriptar";
             this.Text = "frmEncriptar";
+            this.Load += new System.EventHandler(this.frmEncriptar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Logo_empresa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado_movimientos_validar)).EndInit();
             this.ResumeLayout(false);

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlVentas = new System.Windows.Forms.Panel();
             this.pnlCobrar = new System.Windows.Forms.Panel();
             this.panel31 = new System.Windows.Forms.Panel();
@@ -1118,21 +1118,22 @@
             // 
             this.gdvClientes.AllowUserToAddRows = false;
             this.gdvClientes.AllowUserToDeleteRows = false;
-            this.gdvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gdvClientes.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.gdvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gdvClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.gdvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gdvClientes.ColumnHeadersVisible = false;
             this.gdvClientes.Location = new System.Drawing.Point(862, 65);
+            this.gdvClientes.MultiSelect = false;
             this.gdvClientes.Name = "gdvClientes";
             this.gdvClientes.ReadOnly = true;
             this.gdvClientes.RowHeadersVisible = false;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.ForestGreen;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Green;
-            this.gdvClientes.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.ForestGreen;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Green;
+            this.gdvClientes.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.gdvClientes.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gdvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvClientes.Size = new System.Drawing.Size(292, 118);
+            this.gdvClientes.Size = new System.Drawing.Size(332, 236);
             this.gdvClientes.TabIndex = 8;
             this.gdvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvClientes_CellClick);
             this.gdvClientes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gdvClientes_KeyDown);
@@ -1466,7 +1467,7 @@
             this.panel8.BackColor = System.Drawing.Color.ForestGreen;
             this.panel8.Location = new System.Drawing.Point(859, 59);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(291, 3);
+            this.panel8.Size = new System.Drawing.Size(331, 3);
             this.panel8.TabIndex = 15;
             this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
             // 
@@ -1478,11 +1479,12 @@
             this.txtCliente.ForeColor = System.Drawing.Color.ForestGreen;
             this.txtCliente.Location = new System.Drawing.Point(859, 37);
             this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(291, 19);
+            this.txtCliente.Size = new System.Drawing.Size(331, 19);
             this.txtCliente.TabIndex = 14;
             this.txtCliente.Text = "GENERAL";
             this.txtCliente.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtCliente_MouseClick);
             this.txtCliente.TextChanged += new System.EventHandler(this.txtCliente_TextChanged);
+            this.txtCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCliente_KeyPress);
             // 
             // cboFormaPago
             // 

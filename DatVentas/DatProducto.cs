@@ -173,6 +173,25 @@ namespace DatVentas
             }
         }
 
+        public DataRow ObtenerProducto_Actualizado2(string codigo)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter($"SELECT * FROM tb_Producto WHERE Codigo ='{codigo}'", conn);
+                    da.Fill(dt);
+
+                    return dt.Rows[0];
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public int EliminarProducto(int id)
         {
             using (SqlConnection conn = new SqlConnection(MasterConnection.connection))

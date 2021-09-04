@@ -57,8 +57,8 @@ namespace VentasD1002
                 {
                     progressPanel1.Visible = true;
                     int idcliente = Convert.ToInt32(gdvClientes.SelectedCells[1].Value);
-
-                    Respuesta resp = Exportar_Importar_ArchivoExcel.ExportarHistorial_VentasCliente(idcliente);
+                    string cliente = gdvClientes.SelectedCells[3].Value.ToString();
+                    Respuesta resp = Exportar_Importar_ArchivoExcel.ExportarHistorial_VentasCliente(idcliente, cliente);
 
                     if (resp.Exito == 1)
                     {

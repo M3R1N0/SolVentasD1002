@@ -2,6 +2,7 @@
 using DatVentas;
 using DevExpress.XtraWaitForm;
 using EntVenta;
+using LinqToExcel;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System;
@@ -103,7 +104,7 @@ namespace BusVenta
                     for (int i = 1; i < lines.Length; i++)
                     {
                         string[] dataWords = lines[i].Split(',');
-                        DataRow row = data.NewRow();
+                        System.Data.DataRow row = data.NewRow();
                         int columnIndex = 0;
 
                         foreach (var headerword in headerLabels)
@@ -135,7 +136,7 @@ namespace BusVenta
                 OleDbConnection conn = new OleDbConnection
                             ("Provider=Microsoft.Jet.OleDb.4.0; Data Source = " +
                             Path.GetDirectoryName(pathFile) +
-                            "; Extended Properties = \"Text;HDR=YES;FMT=Delimited\"");
+                          "; Extended Properties = 'text;HDR=Yes;FMT=Delimited(,)'; ");
 
                 conn.Open();
 
@@ -248,15 +249,15 @@ namespace BusVenta
             }
         }
 
-        public static  Respuesta ExportarHistorial_VentasCliente(int idCliente)
+        public static  Respuesta ExportarHistorial_VentasCliente(int idCliente, string cliente)
         {
             Respuesta respuesta = new Respuesta(0,"","");
             try
             {
                 
                 SaveFileDialog saveFile = new SaveFileDialog();
-                string fileName = "Historial de Ventas";
-                string saveFilter = "CSV(*.xlsx) || *.xlsx";
+                string fileName = "Historial Ventas_"+cliente.ToLowerInvariant();
+                string saveFilter = "Libro de Excel (*.xlsx)";
                 saveFile.FileName = fileName + ".xlsx";
                 bool fileError = false;
                 int row = 8;
@@ -342,7 +343,7 @@ namespace BusVenta
                                 workSheet.Column(1).Width = 20;
                                 workSheet.Column(5).Width = 25;
 
-                                foreach (DataRow dr in dt.Rows)
+                                foreach (System.Data.DataRow dr in dt.Rows)
                                 {
                                     workSheet.Cells["A" + row].Value = (dr["Fecha_Venta"]);
                                     workSheet.Cells["A" + row].Style.Numberformat.Format = "dd/MM/yyy HH:mm";
@@ -382,5 +383,162 @@ namespace BusVenta
 
             return respuesta;
         }
+
+        public static void ExportarExcel_Actualizacion()
+        {
+            try
+            {
+               
+                SaveFileDialog saveFile = new SaveFileDialog();
+                string fileName = "ActualizacionProducto_" + DateTime.Now.ToString("ddMMyyyy");
+                string saveFilter = "(*.xlsx) || *.xlsx";
+                saveFile.FileName = fileName + ".xlsx";
+                bool fileError = false;
+                int row = 2;
+
+                if (saveFile.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(saveFile.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(saveFile.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("No fué posible guardar los Datos : " + ex.Message);
+                        }
+                    }
+
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            List<string> lst = new DatProducto().listadoActualizacion();
+                            List<Producto> lstProducto = new List<Producto>();
+
+                            foreach (var obj in lst)
+                            {
+                                Producto p = new BusProducto().ObtenerProducto_A_Actualizar2(obj);
+                                lstProducto.Add(p);
+                            }
+
+                            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                            using (ExcelPackage excel = new ExcelPackage())
+                            {
+                                var workSheet = excel.Workbook.Worksheets.Add("Productos");
+
+                                workSheet.Cells["A1"].Value = "Id";
+                                workSheet.Cells["B1"].Value = "IdCategoria";
+                                workSheet.Cells["C1"].Value = "IdTipoPresentacion";
+                                workSheet.Cells["D1"].Value = "codigo";
+                                workSheet.Cells["E1"].Value = "Descripcion";
+                                workSheet.Cells["F1"].Value = "Presentacion";
+                                workSheet.Cells["G1"].Value = "seVendeA";
+                                workSheet.Cells["H1"].Value = "precioMenudeo";
+                                workSheet.Cells["I1"].Value = "precioMMayoreo";
+                                workSheet.Cells["J1"].Value = "APartirDe";
+                                workSheet.Cells["K1"].Value = "precioMayoreo";
+                                workSheet.Cells["L1"].Value = "usaInventario";
+                                workSheet.Cells["M1"].Value = "stock";
+                                workSheet.Cells["N1"].Value = "stockMinimo";
+                                workSheet.Cells["O1"].Value = "Caducidad";
+                                workSheet.Cells["P1"].Value = "Estado";
+                                workSheet.Cells["Q1"].Value = "TotalUnidades";
+                                workSheet.Cells["R1"].Value = "PresentacionMenudeo";
+
+                                workSheet.Cells["A1:R1"].Style.Font.Bold = true;
+                               // workSheet.Column(5).Width = 50;
+                                workSheet.Cells["A1:R1"].AutoFitColumns();
+                                workSheet.Cells["A1:R1"].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                                workSheet.Cells["A1:R1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(24, 169, 190));
+
+                                foreach (Producto p in lstProducto)
+                                {
+                                    workSheet.Cells["A" + row].Value = p.Id ;
+                                    workSheet.Cells["B" + row].Value = p.IdCategoria ;
+                                    workSheet.Cells["C" + row].Value = p.IdTipoPresentacion ;
+                                    workSheet.Cells["D" + row].Value = p.codigo;
+                                    workSheet.Cells["E" + row].Value = p.Descripcion;
+                                    workSheet.Cells["F" + row].Value = p.Presentacion;
+                                    workSheet.Cells["G" + row].Value = p.seVendeA;
+                                    workSheet.Cells["H" + row].Value = p.precioMenudeo;
+                                    workSheet.Cells["I" + row].Value = p.precioMMayoreo;
+                                    workSheet.Cells["J" + row].Value = p.APartirDe;
+                                    workSheet.Cells["K" + row].Value = p.precioMayoreo;
+                                    workSheet.Cells["L" + row].Value = p.usaInventario;
+                                    workSheet.Cells["M" + row].Value = p.stock;
+                                    workSheet.Cells["N" + row].Value = p.stockMinimo;
+                                    workSheet.Cells["O" + row].Value = p.Caducidad;
+                                    workSheet.Cells["P" + row].Value = p.Estado;
+                                    workSheet.Cells["Q" + row].Value = p.TotalUnidades;
+                                    workSheet.Cells["R" + row].Value = p.PresentacionMenudeo;
+
+                                    row++;
+                                }
+
+                                FileStream fileStream = File.Create(saveFile.FileName);
+                                excel.SaveAs(fileStream);
+                                fileStream.Close();
+                            }
+
+                            MessageBox.Show("Datos exportados correctamente", "Operación Realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error : " + ex.Message);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No hay datos para exportar");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error ");
+            }
+        }
+
+        public static List<Producto> ReadExcel(string pathFile)
+        {
+            try
+            {
+                var _excel = new ExcelQueryFactory(pathFile);
+
+                List<Producto> _data = (from r in _excel.Worksheet("Productos")
+                              
+                let item = new Producto
+                {
+                    Id = r["Id"].Cast<int>(),
+                    IdCategoria = r["IdCategoria"].Cast<int>(),
+                    IdTipoPresentacion = r["IdTipoPresentacion"].Cast<int>(),
+                    codigo = r["codigo"].Cast<string>(),
+                    Descripcion = r["Descripcion"].Cast<string>(),
+                    Presentacion = r["Presentacion"].Cast<string>(),
+                    seVendeA = r["seVendeA"].Cast<string>(),
+                    precioMenudeo = r["precioMenudeo"].Cast<decimal>(),
+                    precioMMayoreo = r["precioMMayoreo"].Cast<decimal>(),
+                    APartirDe = r["APartirDe"].Cast<decimal>(),
+                    precioMayoreo = r["precioMayoreo"].Cast<decimal>(),
+                    usaInventario = r["usaInventario"].Cast<string>(),
+                    stock = r["stock"].Cast<string>(),
+                    stockMinimo = r["stockMinimo"].Cast<decimal>(),
+                    Caducidad = r["Caducidad"].Cast<string>(),
+                    Estado = r["Estado"].Cast<bool>(),
+                    TotalUnidades = r["TotalUnidades"].Cast<decimal>(),
+                    PresentacionMenudeo = r["PresentacionMenudeo"].Cast<string>(),
+                } select item).ToList();
+
+                return _data;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

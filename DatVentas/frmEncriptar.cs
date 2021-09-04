@@ -78,5 +78,10 @@ namespace DatVentas
                 MessageBox.Show("Error de Conexion"+ex.Message);
             }
         }
+
+        private void frmEncriptar_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

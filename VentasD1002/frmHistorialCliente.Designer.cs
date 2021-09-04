@@ -146,9 +146,9 @@
             this.progressPanel1.AppearanceDescription.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.progressPanel1.AppearanceDescription.Options.UseFont = true;
             this.progressPanel1.Description = "procesando la información ...";
-            this.progressPanel1.Location = new System.Drawing.Point(235, 240);
+            this.progressPanel1.Location = new System.Drawing.Point(167, 157);
             this.progressPanel1.Name = "progressPanel1";
-            this.progressPanel1.Size = new System.Drawing.Size(371, 124);
+            this.progressPanel1.Size = new System.Drawing.Size(587, 246);
             this.progressPanel1.TabIndex = 5;
             this.progressPanel1.Text = "progressPanel1";
             // 

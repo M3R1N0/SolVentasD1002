@@ -13,9 +13,6 @@ namespace BusVenta.Helpers
         public object Data { get; set; }
         public object Detail { get; set; }
 
-        private string _type = "operation";
-        public string Type { get { return _type; } }
-
         public OperationResponse(Object data)
         {
             IsSuccess = EnumOperationResult.Success;
