@@ -11,6 +11,7 @@ namespace DatVentas
 {
     public class DatVenta
     {
+        //================================================================================================================
         public int InsertarVenta(Venta v)
         {
             using (SqlConnection conn = new SqlConnection(MasterConnection.connection))

@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using Reportes;
 using System.Drawing.Printing;
 using Telerik.Reporting.Processing;
+using BusVenta.Helpers;
 
 namespace VentasD1002
 {
@@ -56,8 +57,7 @@ namespace VentasD1002
                 System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator = ".";
                 System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.NumberGroupSeparator = ",";
 
-                ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
-                serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
+                serialPC = Sistema.ObenterSerialPC();
                 idCaja = new BusBox().showBoxBySerial(serialPC).Id;
 
 
@@ -182,7 +182,6 @@ namespace VentasD1002
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-
             try
             {
                 if (String.IsNullOrEmpty(txtBuscar.Text))
@@ -257,6 +256,42 @@ namespace VentasD1002
 
         private void AgregarProducto_A_Venta(Producto producto)
         {
+            Venta venta = new Venta();
+            venta.IdCaja = idCaja;
+            venta.IdCliente = txtCliente.Text.Equals("GENERAL") ? 1 : idCliente;
+            string serial = EncriptarTexto.Encriptar(serialPC);
+            venta.IdUsuario = new BusUser().ObtenerUsuario(serial).Id;
+            venta.FechaVenta = DateTime.Now;
+            venta.Folio = lblSerie.Text + "-" + lblCorrelativo.Text;
+            venta.MontoTotal = Convert.ToDecimal(lblTotal.Text);
+            venta.FormaPago = cboFormaPago.Text;
+            venta.EstadoPago = cboFormaPago.Text.Equals("Contado") ? "PAGADO" : "PENDIENTE";
+            venta.Comprobante = lblComprobante.Text;
+            venta.FechaLiquidacion = cboFormaPago.Text.Equals("Credito") ? DateTime.Now.AddDays(15).ToString() : "N/A";
+            venta.Accion = "VENTA REALIZADA";
+            venta.Saldo = 0;
+            venta.TipoPago = 0;
+            venta.ReferenciaTarjeta = "N/A";
+            venta.Efectivo = 0;
+            venta.Vuelto = 0;
+            venta.Comentarios = string.IsNullOrEmpty(txtComentarios.Text) ? "" : txtComentarios.Text;
+
+            //DetalleVenta d = new DetalleVenta();
+            //d.IdProducto = Convert.ToInt32(dr.Cells["ID"].Value);
+            //d.Cantidad = Convert.ToDecimal(dr.Cells["CANTIDAD"].Value);
+            //d.Precio = Convert.ToDecimal(dr.Cells["PRECIO"].Value);
+            //d.TotalPago = Convert.ToDecimal(dr.Cells["IMPORTE"].Value);
+            //d.UnidadMedida = dr.Cells["UNIDAD"].Value.ToString();
+            //d.Estado = "VENTA REALIZADA";
+            //d.CantidaMostrada = 0;
+            //d.Descripcion = Convert.ToString(dr.Cells["CONCEPTO"].Value);
+            //d.Stock = dr.Cells["STOCK"].Value.ToString().Equals("123456") ? "ILIMITADO" : Convert.ToString(dr.Cells["STOCK"].Value);
+            //d.Codigo = Convert.ToString(dr.Cells["CODIGO"].Value);
+            //d.UsaInventario = Convert.ToString(dr.Cells["USAINVENTARIO"].Value);
+            //d.Se_Vende_A = "0";
+            //d.Costo = 0;
+
+            #region venta
             DataTable dt = new DataTable();
 
             dt.Columns.Add("PRESENTACION_ID", typeof(System.Int32));//0
@@ -478,6 +513,8 @@ namespace VentasD1002
                 SumaTotal_a_Pagar();
                 DataTablePersonalizado.Multilinea2(ref gdvVentas);
             }
+
+            #endregion
         }
 
         private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
@@ -1947,16 +1984,6 @@ namespace VentasD1002
             {
                 MessageBox.Show("Ocurrió un error al actualizar el crédito " + ex.Message, "Error actualizacion de crédito", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void panelSubencabezado_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel8_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void txtCliente_KeyPress(object sender, KeyPressEventArgs e)

@@ -104,6 +104,7 @@ namespace VentasD1002
                 DateTime fin = DateTime.Now;
                 decimal diferencia = Convert.ToDecimal(lblTotal.Text) - Convert.ToDecimal(lblTotalCaja.Text);
                 new BusOpenCloseBox().CerrarCaja(idCaja, cierre, fin, Convert.ToDecimal(lblTotal.Text), Convert.ToDecimal(lblTotalCaja.Text), diferencia);
+                new DatCatGenerico().Editar_InicioSesion( EncriptarTexto.Encriptar( serialPC), 0);
                 this.Dispose();
 
                 frmCopiaAutomatica copiaAutomatica = new frmCopiaAutomatica();

@@ -250,6 +250,11 @@ namespace BusVenta
             return lstVenta;
         }
 
+        //public static OperationResponse AgregarVentaInicial(Venta v)
+        //{
+
+        //}
+
     }
 
 }

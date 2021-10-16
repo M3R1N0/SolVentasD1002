@@ -1460,7 +1460,6 @@
             this.panelSubencabezado.Name = "panelSubencabezado";
             this.panelSubencabezado.Size = new System.Drawing.Size(1287, 79);
             this.panelSubencabezado.TabIndex = 6;
-            this.panelSubencabezado.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSubencabezado_Paint);
             // 
             // panel8
             // 
@@ -1469,7 +1468,6 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(331, 3);
             this.panel8.TabIndex = 15;
-            this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
             // 
             // txtCliente
             // 

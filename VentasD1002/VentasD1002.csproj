@@ -272,6 +272,12 @@
     <Compile Include="frmHistorialVentas.Designer.cs">
       <DependentUpon>frmHistorialVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmInicioSesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInicioSesion.Designer.cs">
+      <DependentUpon>frmInicioSesion.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmInstalacionServidor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -496,6 +502,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmHistorialVentas.resx">
       <DependentUpon>frmHistorialVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInicioSesion.resx">
+      <DependentUpon>frmInicioSesion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInstalacionServidor.resx">
       <DependentUpon>frmInstalacionServidor.cs</DependentUpon>
