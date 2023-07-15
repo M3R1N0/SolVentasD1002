@@ -31,8 +31,7 @@ namespace VentasD1002
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var serial = "50026B778488E74D";
-            var sekc = Seguridad.Encriptar(serial);
+            
             timer1.Start();
             DibujarLogin();
             panelIniciarSesion.Visible = false;
