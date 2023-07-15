@@ -73,6 +73,9 @@
             this.txtpwd = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtServidor = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtAuxInstancia = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelBuscandoServidor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -139,9 +142,9 @@
             this.panelBuscandoServidor.Controls.Add(this.pictureBox4);
             this.panelBuscandoServidor.Controls.Add(this.btnInstalarServidor);
             this.panelBuscandoServidor.Controls.Add(this.lblBuscandoServidor);
-            this.panelBuscandoServidor.Location = new System.Drawing.Point(407, 78);
+            this.panelBuscandoServidor.Location = new System.Drawing.Point(414, 123);
             this.panelBuscandoServidor.Name = "panelBuscandoServidor";
-            this.panelBuscandoServidor.Size = new System.Drawing.Size(464, 487);
+            this.panelBuscandoServidor.Size = new System.Drawing.Size(506, 481);
             this.panelBuscandoServidor.TabIndex = 7;
             // 
             // panel2
@@ -198,7 +201,7 @@
             this.panelInstalandoServidor.Controls.Add(this.textBox1);
             this.panelInstalandoServidor.Controls.Add(this.pictureBox1);
             this.panelInstalandoServidor.Controls.Add(this.panel3);
-            this.panelInstalandoServidor.Location = new System.Drawing.Point(443, 90);
+            this.panelInstalandoServidor.Location = new System.Drawing.Point(443, 134);
             this.panelInstalandoServidor.Name = "panelInstalandoServidor";
             this.panelInstalandoServidor.Size = new System.Drawing.Size(428, 461);
             this.panelInstalandoServidor.TabIndex = 6;
@@ -366,9 +369,9 @@
             this.panel6.Controls.Add(this.txtpwd);
             this.panel6.Controls.Add(this.label6);
             this.panel6.Controls.Add(this.txtServidor);
-            this.panel6.Location = new System.Drawing.Point(125, 78);
+            this.panel6.Location = new System.Drawing.Point(98, 102);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(883, 487);
+            this.panel6.Size = new System.Drawing.Size(232, 226);
             this.panel6.TabIndex = 8;
             this.panel6.Visible = false;
             this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
@@ -523,7 +526,37 @@
             this.txtServidor.Name = "txtServidor";
             this.txtServidor.Size = new System.Drawing.Size(139, 20);
             this.txtServidor.TabIndex = 0;
-            this.txtServidor.Text = "DESKTOP-QKGJGMM\\SQLEXPRESS";
+            this.txtServidor.Text = "DESKTOP-TDDKIL8";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.Control;
+            this.label9.Location = new System.Drawing.Point(409, 74);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(114, 25);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "Servidor :";
+            // 
+            // txtAuxInstancia
+            // 
+            this.txtAuxInstancia.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAuxInstancia.Location = new System.Drawing.Point(526, 70);
+            this.txtAuxInstancia.Name = "txtAuxInstancia";
+            this.txtAuxInstancia.Size = new System.Drawing.Size(293, 29);
+            this.txtAuxInstancia.TabIndex = 8;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(825, 67);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 42);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Continuar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmInstalacionServidor
             // 
@@ -531,14 +564,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1217, 618);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtAuxInstancia);
             this.Controls.Add(this.panel6);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.panelBuscandoServidor);
             this.Controls.Add(this.panelInstalandoServidor);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmInstalacionServidor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "INSTALACION DEL SERVIDOR";
+            this.Text = "Admin123";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmInstalacionServidor_Load);
             this.panel1.ResumeLayout(false);
@@ -562,6 +598,7 @@
             this.panel6.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -610,5 +647,8 @@
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RichTextBox txtScriptUsuarioRemoto;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtAuxInstancia;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -1,4 +1,5 @@
-﻿using DatVentas;
+﻿using BusVenta.Helpers;
+using DatVentas;
 using EntVenta;
 using System;
 using System.Collections.Generic;
@@ -21,31 +22,38 @@ namespace BusVenta
             }
         }
 
-        public List<Cliente> ListarClientes(string nombre)
+        public static OperationResponse ListarClientes(string nombre)
         {
-            DataTable dt = new DatCliente().ObtenerClientes(nombre);
-            List<Cliente> lsCientes = new List<Cliente>();
-
-            foreach (DataRow dr in dt.Rows)
+            try
             {
-                Cliente c = new Cliente();
+                DataTable dt = new DatCliente().ObtenerClientes(nombre);
+                List<Cliente> lsCientes = new List<Cliente>();
 
-                c.Id = Convert.ToInt32(dr["Id_Cliente"]);
-                c.NombreCompleto = dr["Nombre"].ToString();
-                c.Direccion = dr["Direccion"].ToString();
-                c.Ruc = dr["Ruc"].ToString();
-                c.Telefono = dr["Telefono"].ToString();
-                c.Clientes = dr["Cliente"].ToString();
-                c.Proveedor = dr["Proveedor"].ToString();
-                c.Saldo = Convert.ToDecimal(dr["Saldo"].ToString());
-                c.Estado = Convert.ToBoolean(dr["Estado"].ToString());
+                foreach (DataRow dr in dt.Rows)
+                {
+                    Cliente c = new Cliente();
 
-                lsCientes.Add(c);
+                    c.Id = Convert.ToInt32(dr["Id_Cliente"]);
+                    c.NombreCompleto = dr["Nombre"].ToString() + " - " + dr["Direccion"].ToString(); 
+                    c.Direccion = dr["Direccion"].ToString();
+                    c.Ruc = dr["Ruc"].ToString();
+                    c.Telefono = dr["Telefono"].ToString();
+                    c.Clientes = dr["Cliente"].ToString();
+                    c.Proveedor = dr["Proveedor"].ToString();
+                    c.Saldo = Convert.ToDecimal(dr["Saldo"].ToString());
+                    c.Estado = Convert.ToBoolean(dr["Estado"].ToString());
+
+                    lsCientes.Add(c);
+                }
+                return OperationResponse.Success("Éxito", lsCientes);
             }
-            return lsCientes;
+            catch (Exception ex)
+            {
+                return OperationResponse.Failure(ex.Message);
+            }
         }
 
-        public Cliente ObterCliente( int id)
+        public static Cliente ObterCliente( int id)
         {
             DataRow dr = new DatCliente().ObtenerCliente_PorId(id);
            
@@ -94,7 +102,7 @@ namespace BusVenta
             c.Id = Convert.ToInt32(dr["Id_Cliente"]);
             c.NombreCompleto = dr["Nombre"].ToString();
             c.Direccion = dr["Direccion"].ToString();
-            c.Ruc = dr["Ruc"].ToString();
+            c.Clave = dr["Ruc"].ToString();
             c.Telefono = dr["Telefono"].ToString();
             c.Clientes = dr["Cliente"].ToString();
             c.Proveedor = dr["Proveedor"].ToString();

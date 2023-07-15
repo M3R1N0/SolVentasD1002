@@ -407,31 +407,41 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.AutoSize = false;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.siguienteToolStripMenuItem,
             this.siguienteToolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(483, 411);
+            this.menuStrip1.Location = new System.Drawing.Point(463, 384);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(248, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(278, 47);
             this.menuStrip1.TabIndex = 23;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // siguienteToolStripMenuItem
             // 
-            this.siguienteToolStripMenuItem.BackColor = System.Drawing.Color.Red;
+            this.siguienteToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
+            this.siguienteToolStripMenuItem.BackgroundImage = global::VentasD1002.Properties.Resources.naranja;
+            this.siguienteToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.siguienteToolStripMenuItem.ForeColor = System.Drawing.Color.AntiqueWhite;
             this.siguienteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("siguienteToolStripMenuItem.Image")));
+            this.siguienteToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.siguienteToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.siguienteToolStripMenuItem.Name = "siguienteToolStripMenuItem";
-            this.siguienteToolStripMenuItem.Size = new System.Drawing.Size(116, 29);
+            this.siguienteToolStripMenuItem.Size = new System.Drawing.Size(132, 43);
             this.siguienteToolStripMenuItem.Text = "Cancelar";
             // 
             // siguienteToolStripMenuItem1
             // 
-            this.siguienteToolStripMenuItem1.BackColor = System.Drawing.Color.DarkGreen;
+            this.siguienteToolStripMenuItem1.BackColor = System.Drawing.Color.Transparent;
+            this.siguienteToolStripMenuItem1.BackgroundImage = global::VentasD1002.Properties.Resources.verde;
+            this.siguienteToolStripMenuItem1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.siguienteToolStripMenuItem1.ForeColor = System.Drawing.Color.Honeydew;
             this.siguienteToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("siguienteToolStripMenuItem1.Image")));
+            this.siguienteToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.siguienteToolStripMenuItem1.Name = "siguienteToolStripMenuItem1";
-            this.siguienteToolStripMenuItem1.Size = new System.Drawing.Size(124, 29);
+            this.siguienteToolStripMenuItem1.Size = new System.Drawing.Size(140, 43);
             this.siguienteToolStripMenuItem1.Text = "Siguiente";
             this.siguienteToolStripMenuItem1.Click += new System.EventHandler(this.siguienteToolStripMenuItem1_Click);
             // 

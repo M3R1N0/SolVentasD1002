@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DatVentas
 {
@@ -23,10 +24,8 @@ namespace DatVentas
                     sc.CommandType = CommandType.StoredProcedure;
                     sc.Parameters.AddWithValue("@nombre", c.NombreCompleto);
                     sc.Parameters.AddWithValue("@direccion", c.Direccion);
-                    sc.Parameters.AddWithValue("@ruc", c.Ruc);
+                    sc.Parameters.AddWithValue("@ruc", c.Clave);
                     sc.Parameters.AddWithValue("@telefono", c.Telefono);
-                    sc.Parameters.AddWithValue("@cliente", c.Clientes);
-                    sc.Parameters.AddWithValue("@proveedor", c.Proveedor);
                     sc.Parameters.AddWithValue("@saldo", c.Saldo);
                     sc.Parameters.AddWithValue("@estado", c.Estado);
                     resultado = sc.ExecuteNonQuery();
@@ -72,21 +71,22 @@ namespace DatVentas
 
         public DataRow ObtenerCliente_PorId(int id)
         {
-            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            DataTable dt = new DataTable();
+            try
             {
-                DataTable dt = new DataTable();
-                try
+                using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
                 {
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT TOP(10) * FROM tb_Cliente where Id_Cliente="+id, conn);
-                    da.Fill(dt);
-                    return dt.Rows[0];
-                }
-                catch (Exception ex)
-                {
-                    conn.Close();
-                    throw ex;
+                    using (var da = new SqlDataAdapter("SELECT  * FROM tb_Cliente where Id_Cliente=@idCliente", conn))
+                    {
+                        da.SelectCommand.Parameters.AddWithValue("@idCliente", id);
+                        da.Fill(dt);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+            }
+            return dt.Rows[0];
         }
 
         public int BorrarCliente(int id)
@@ -126,8 +126,6 @@ namespace DatVentas
                     sc.Parameters.AddWithValue("@direccion", c.Direccion);
                     //sc.Parameters.AddWithValue("@ruc", c.Ruc);
                     sc.Parameters.AddWithValue("@telefono", c.Telefono);
-                    sc.Parameters.AddWithValue("@cliente", c.Clientes);
-                    sc.Parameters.AddWithValue("@proveedor", c.Proveedor);
                     sc.Parameters.AddWithValue("@saldo", c.Saldo);
                     con.Open();
                     resultado = sc.ExecuteNonQuery();
@@ -148,7 +146,7 @@ namespace DatVentas
             int resultado = 0;
             try
             {
-                
+
                 using (SqlConnection con = new SqlConnection(MasterConnection.connection))
                 {
 
@@ -188,8 +186,31 @@ namespace DatVentas
             }
         }
 
+        public static void ListarClientes(ref DataGridView grid, string busqueda)
+        {
+            try
+            {
+                using (var con = new SqlConnection(MasterConnection.connection))
+                {
+                    using (var da = new SqlDataAdapter("ListarCliente", con))
+                    {
+                        da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                        da.SelectCommand.Parameters.AddWithValue("@busqueda", busqueda);
+                        var dt = new DataTable();
+                        da.Fill(dt);
+                        grid.DataSource = dt;
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         //======================================================================================
-        public static Cliente ObtenerCliente_General()
+        public static Cliente ObtenerCliente_Predeterminado()
         {
             try
             {
@@ -197,7 +218,7 @@ namespace DatVentas
                 using (SqlConnection con = new SqlConnection(MasterConnection.connection))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT C.Id_Cliente, C.Nombre, C.Saldo FROM tb_Cliente C WHERE C.Nombre = 'GENERAL'", con);
+                    SqlCommand cmd = new SqlCommand($"SELECT C.Id_Cliente, C.Nombre, C.Saldo FROM tb_Cliente C WHERE C.Nombre LIKE '%{"GENERAL"}%'", con);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
@@ -229,7 +250,7 @@ namespace DatVentas
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("SP_ObtenerVentas_PorCliente", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@nombre",nombre);
+                    cmd.Parameters.AddWithValue("@nombre", nombre);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
@@ -262,7 +283,7 @@ namespace DatVentas
                 DataTable dt = new DataTable();
                 try
                 {
-                  
+
                     SqlDataAdapter da = new SqlDataAdapter("SP_ObtenerVentas_PorCliente", conn);
                     da.SelectCommand.CommandType = CommandType.StoredProcedure;
                     da.SelectCommand.Parameters.AddWithValue("@nombre", nombre);
@@ -271,9 +292,149 @@ namespace DatVentas
                 }
                 catch (Exception ex)
                 {
-                     throw ex;
+                    throw ex;
                 }
-              
+
+            }
+        }
+
+        public static decimal ObtenerSaldoDisponible(int idCliente)
+        {
+            decimal resultado = 0;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    using (var cmd = new SqlCommand("sp_ObtenerDisponible", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@idCliente", idCliente);
+
+                        resultado = Convert.ToDecimal(cmd.ExecuteScalar());
+                    }
+                    con.Close();
+
+                    return resultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                return resultado = 0;
+                throw ex;
+            }
+        }
+
+        //======================================================================================
+        public static Cliente ObtenerProveedor(int id)
+        {
+            try
+            {
+                Cliente proveedor = new Cliente();
+                using (var con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    using (var cmd = new SqlCommand("SELECT * FROM Proveedor WHERE Id=@id", con))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        var reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            proveedor.Id = reader.GetInt32(0);
+                            proveedor.NombreCompleto = reader.GetString(1);
+                            proveedor.Clave = reader.GetString(2);
+                            proveedor.RazonSocial = reader.GetString(3);
+                            proveedor.Ruc = reader.GetString(4);
+                            proveedor.Correo = reader.GetString(5);
+                            proveedor.Direccion = reader.GetString(6);
+                            proveedor.Telefono = reader.GetString(7);
+
+                        }
+                    }
+                    con.Close();
+                }
+                return proveedor;
+            }
+            catch (Exception)
+            {
+                return new Cliente();
+            }
+        }
+
+        public static void GuardarProveedor (Cliente c)
+        {
+            try
+            {
+                Cliente proveedor = new Cliente();
+                using (var con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    using (var cmd = new SqlCommand("GuardarProveedor", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@id", c.Id);
+                        cmd.Parameters.AddWithValue("@nombre", c.NombreCompleto);
+                        cmd.Parameters.AddWithValue("@clave", c.Clave);
+                        cmd.Parameters.AddWithValue("@razonSocial", c.RazonSocial);
+                        cmd.Parameters.AddWithValue("@rfc", c.Ruc);
+                        cmd.Parameters.AddWithValue("@correo", c.Correo);
+                        cmd.Parameters.AddWithValue("@direccion", c.Direccion);
+                        cmd.Parameters.AddWithValue("@telefono", c.Telefono);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                    con.Close();
+                }
+                
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
+
+        public static void ListarProveedores(ref DataGridView grid, string busqueda = "")
+        {
+            try
+            {
+                var query = (busqueda == "")
+                         ? "SELECT * FROM Proveedor WHERE Activo=1"
+                         : $"SELECT * FROM Proveedor WHERE   Nombre + Clave like '%{busqueda}%' AND Activo=1";
+                using (var con = new SqlConnection(MasterConnection.connection))
+                {
+                    using (var da = new SqlDataAdapter(query, con))
+                    {
+                        var dt = new DataTable();
+                        da.Fill(dt);
+                        grid.DataSource = dt;
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        public static void EliminarProveedor(int id)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    using (var  cmd =new SqlCommand("UPDATE Proveedor SET Activo = 0 WHERE Id=@id", con))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.ExecuteNonQuery();
+                    }
+                    con.Close();
+                }
+            }
+            catch (Exception )
+            {             
             }
         }
     }

@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DatVentas
 {
@@ -34,6 +35,8 @@ namespace DatVentas
                     sc.Parameters.AddWithValue("@sevendea", dv.Se_Vende_A);
                     sc.Parameters.AddWithValue("@usainventario", dv.UsaInventario);
                     sc.Parameters.AddWithValue("@costo", dv.Costo);
+                    sc.Parameters.AddWithValue("@idventa", dv.IdVenta);
+                    sc.Parameters.AddWithValue("@tipoVenta", dv.Venta);
 
                     resultado = sc.ExecuteNonQuery();
                     conn.Close();
@@ -99,23 +102,44 @@ namespace DatVentas
             }
         }
 
-        public int Eliminar_DetalleVentaEspera(int id)
+        public  bool Eliminar_DetalleVenta(int id)
         {
             using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
             {
                 try
                 {
-                    int resultado = 0;
                     conn.Open();
-                    SqlCommand sc = new SqlCommand("DELETE FROM tb_DetalleVentaEspera WHERE VentaId=" + id, conn);
-                    resultado = sc.ExecuteNonQuery();
+                    using (var cmd = new SqlCommand("DELETE FROM tb_DetalleVenta WHERE Venta_Id =@id", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.ExecuteNonQuery();
+                    }
                     conn.Close();
-                    return resultado;
+                    return true;
                 }
                 catch (Exception ex)
                 {
+                    return false;
+                }
+            }
+        }
+
+        public static void Eliminar_DetalleVenta_PorId(int idDetalle)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    conn.Open();
+                    using (var cmd = new SqlCommand("DELETE FROM tb_DetalleVenta WHERE Id_DetalleVenta =@id", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", idDetalle);
+                        cmd.ExecuteNonQuery();
+                    }
                     conn.Close();
-                    throw ex;
+                }
+                catch (Exception ex)
+                {
                 }
             }
         }
@@ -246,6 +270,126 @@ namespace DatVentas
                 throw ex;
             }
         }
+        //---------------------------------------------------------------------
+        public static List<DetalleVentaII> Listar_DetalleVenta(int idVenta)
+        {
+            try
+            {
+                var lstDetalle = new List<DetalleVentaII>();
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    using (var cmd = new SqlCommand("sp_Listar_DetalleVenta", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@idVenta", idVenta);
+                        var reader = cmd.ExecuteReader();
 
+                        while (reader.Read())
+                        {
+                            DetalleVentaII dv = new DetalleVentaII();
+                            dv.Id = reader.GetInt32(0);
+                            dv.IdVenta = reader.GetInt32(1);
+                            dv.IdProducto = reader.GetInt32(2);
+                            dv.Cantidad = reader.GetDecimal(3);
+                            dv.UnidadMedida = reader.GetString(4);
+                            dv.Descripcion = reader.GetString(5);
+                            dv.PrecioUnitario = reader.GetDecimal(6);
+                            dv.Precio = reader.GetDecimal(7);
+                            dv.Importe = reader.GetDecimal(8);
+                            dv.TipoVenta = reader.GetInt32(9);
+                            dv.EsDevuelto = reader.GetBoolean(10);
+                            dv.UsaInventario = reader.GetBoolean(11);
+                            dv.Codigo = reader.GetString(12);
+
+                            lstDetalle.Add(dv);
+                        }
+                    }
+                    con.Close();
+                }
+                return lstDetalle;
+            }
+            catch (Exception ex)
+            {
+                return new List<DetalleVentaII>();
+            }
+        }
+
+        public static void ActualizarPrecio_DetalleVenta(DetalleVentaII dv, TIPO_VENTA tipoVenta)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+
+                    using (var cmd = new SqlCommand("ActualizarPrecioCantidad_DetalleVenta", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@id", dv.Id);
+                        cmd.Parameters.AddWithValue("@cantidad", dv.Cantidad);
+                        cmd.Parameters.AddWithValue("@precio", dv.Precio);
+                        cmd.Parameters.AddWithValue("@totalpagar", dv.Importe);
+                        cmd.Parameters.AddWithValue("@productoid", dv.IdProducto);
+                        cmd.Parameters.AddWithValue("@tipoVenta", tipoVenta.ToString());
+                        cmd.Parameters.AddWithValue("@UnidadMedida", dv.UnidadMedida);
+                        cmd.ExecuteNonQuery();
+                    }
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        public static void ActualizarPrecio(DetalleVentaII dv, TIPO_VENTA tipoVenta)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+
+                    using (var cmd = new SqlCommand("UPDATE tb_DetalleVenta SET Precio = @Precio , Total_Pagar=@importe, TipoVenta=@tipoVenta WHERE Id_DetalleVenta=@id", con))
+                    {
+                        cmd.Parameters.AddWithValue("@id", dv.Id);
+                        cmd.Parameters.AddWithValue("@Precio", dv.Precio);
+                        cmd.Parameters.AddWithValue("@importe", dv.Importe);
+                        cmd.Parameters.AddWithValue("@tipoVenta", tipoVenta.ToString());
+                        cmd.ExecuteNonQuery();
+                    }
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        public static decimal ObtenerCantidadDV(int id)
+        {
+            try
+            {
+                decimal cantidad = 0;
+                using (var con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    using (var cmd = new SqlCommand("SELECT Cantidad FROM tb_DetalleVenta WHERE Id_DetalleVenta=@id",con))
+                    {
+                        cmd.Parameters.AddWithValue("@id",id);
+
+                       cantidad = Convert.ToDecimal(cmd.ExecuteScalar());
+                    }
+                    con.Close();
+                }
+                return cantidad;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+
+        }
     }
 }

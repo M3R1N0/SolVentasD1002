@@ -1,4 +1,5 @@
-﻿using DatVentas;
+﻿using BusVenta.Helpers;
+using DatVentas;
 using EntVenta;
 using System;
 using System.Collections.Generic;
@@ -38,14 +39,34 @@ namespace BusVenta
             return lsCat;
         }
 
-        public void AgregarCategoriasGenericas(CatalogoGenerico c , int valor)
+        public static OperationResponse AgregarCategoriasGenericas(CatalogoGenerico c , EnumTipoCatalogo TIPO_CATALOGO)
         {
+            int valor = 0;
+            switch (TIPO_CATALOGO)
+            {
+                case EnumTipoCatalogo.CATEGORIA:
+                    valor = (Int32)EnumTipoCatalogo.CATEGORIA;
+                    break;
+                case EnumTipoCatalogo.PRESENTACION:
+                    valor = (Int32)EnumTipoCatalogo.PRESENTACION;
+                    break;
+                case EnumTipoCatalogo.PROVEEDOR:
+                    valor = (Int32)EnumTipoCatalogo.PROVEEDOR;
+                    break;
+                default:
+                    valor = (Int32)EnumTipoCatalogo.MARCA;
+                    break;
+            }
+
             int resultado = new DatCatGenerico().InsertarDatosCatalago(c, valor);
             if (resultado != 1)
             {
-                throw new ApplicationException("Ocurrió un error al dar de alta la categoria, contacte al administrador");
+               return OperationResponse.Failure("Ocurrió un detalle al dar de alta la categoria, contacte al administrador");
             }
-
+            else
+            {
+                return OperationResponse.Success("Datos guardados correctamente");
+            }
         }
 
         public void Agregar_TipoUsuario(CatalogoGenerico c)
@@ -57,39 +78,6 @@ namespace BusVenta
             }
         }
 
-        public List<CatalogoGenerico> ListarTipoPresentacion()
-        {
-            DataTable dt = DatCatGenerico.ListarCat_TipoPresentacion();
-            List<CatalogoGenerico> catalogoGenericos = new List<CatalogoGenerico>();
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                CatalogoGenerico c = new CatalogoGenerico();
-                c.Id = Convert.ToInt32(dr["Id_TipoPresentacion"]);
-                c.Nombre = dr["Nombre"].ToString();
-                c.Descripcion = dr["NombreCorto"].ToString();
-
-                catalogoGenericos.Add(c);
-            }
-
-            return catalogoGenericos;
-        }
-
-     /**   public List<CatalogoGenerico> ListarCat_TipoUsuario()
-        {
-            DataTable dt = new DatCatGenerico().ListarCat_TipoUsuario();
-            List<CatalogoGenerico> lsTipoUsuario = new List<CatalogoGenerico>();
-
-            foreach (DataRow dataRow in dt.Rows)
-            {
-                CatalogoGenerico c = new CatalogoGenerico();
-
-                c.Id = Convert.ToInt32(dataRow["Id_Rol"]);
-                c.Nombre = dataRow["Nombre"].ToString();
-                c.Descripcion = dataRow["Descripcion"].ToString();
-                lsTipoUsuario.Add(c);
-            }
-            return lsTipoUsuario;
-        }*/
+ 
     }
 }

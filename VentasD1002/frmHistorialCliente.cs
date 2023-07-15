@@ -36,7 +36,7 @@ namespace VentasD1002
                 gdvClientes.DataSource = lstCliente;
                 gdvClientes.Columns[1].Visible = false;
 
-                DataTablePersonalizado.Multilinea(ref gdvClientes);
+                Comun.StyleDatatable(ref gdvClientes);
             }
             catch (Exception ex)
             {

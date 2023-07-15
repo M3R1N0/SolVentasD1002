@@ -15,6 +15,9 @@ using Telerik.Reporting.Processing;
 using System.Management;
 using EntVenta;
 using BusVenta.Helpers;
+using System.Reflection;
+using System.IO;
+using VentasD1002.Helpers;
 
 namespace VentasD1002
 {
@@ -26,18 +29,75 @@ namespace VentasD1002
         public frmReimprimirTicket()
         {
             InitializeComponent();
-            btnEditarPago.Enabled = false;
-            pnlEditarPago.Visible = false;
+            MostrarMenu();
+            ObtenerTipoDocumento();
         }
 
         private void frmReimprimirTicket_Load(object sender, EventArgs e)
         {
-            ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
-            serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
-
-            pnlBuscarPorCLiente.Visible = false;
-            btnBonificacion.Enabled = false;
+            ObtenerDatos(string.Empty);
         }
+
+        #region Permisos "MENU"
+
+        private void MostrarMenu()
+        {
+            try
+            {
+                var idUsuario = BusUser.ObtenerUsuario_Loggeado().Id;
+                string formularios = "frmCambioFormaPago,frmBonificacion";
+                var menus = PermisoDAL.ObtenerFormsInternos(idUsuario, formularios);
+
+                if (menus.Count > 0)
+                {
+                    var miMenu = new MenuStrip();
+
+                    foreach (var menu in menus)
+                    {
+                        ToolStripMenuItem menuPadre = new ToolStripMenuItem(menu.Nombre, null, Click_Menu, menu.NombreForm);
+                        MemoryStream ms = new MemoryStream(menu.Icono);
+                        menuPadre.Image = Image.FromStream(ms);
+                        menuPadre.TextImageRelation = TextImageRelation.ImageBeforeText;
+                        menuPadre.ImageScaling = ToolStripItemImageScaling.None;
+
+                        miMenu.Items.Add(menuPadre);
+                    }
+
+                    this.MainMenuStrip = miMenu;
+                    Controls.Add(miMenu); 
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+
+        private void Click_Menu(object sender, EventArgs evt)
+        {
+            ToolStripMenuItem itemSeleccionado = (ToolStripMenuItem)sender;
+            Assembly asm = Assembly.GetEntryAssembly();
+            Type element = asm.GetType(asm.GetName().Name + "." + itemSeleccionado.Name);
+
+            if (element != null)
+            {
+                switch (itemSeleccionado.Name)
+                {
+                    case "frmCambioFormaPago":
+                        EditarForma_DePago();
+                        break;
+                    case "frmBonificacion":
+                        RealizarBonificacion();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("El formulario no existe", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        #endregion
 
         private void ObtenerDatos(string buscar)
         {
@@ -71,64 +131,30 @@ namespace VentasD1002
             {
                 if (e.ColumnIndex == this.gdvListado.Columns["Detalle"].Index)
                 {
-                    //reportViewer1.Report = null;
                     int idventa = Convert.ToInt32(gdvListado.SelectedCells[1].Value);
                     lblIdVenta.Text = idventa.ToString();
-                    string total = Convert.ToString(gdvListado.SelectedCells[7].Value);
-
-                    lblMontoTotal.Text =total;
-
-                    string textoNumero = NumeroATexto(total);
-
-                    ParametrosReporte reporte = DatVenta.Consultar_Ticket_Parametro(idventa);
-                    reporte.LetraNumero = textoNumero;
-
-
-                    //if (rbTicket.Checked == true)
-                    //{
-                    //    rptTicket rptTicket = new rptTicket();
-                    //    rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
-                    //    rptTicket.DataSource = reporte;
-                    //    reportViewer1.Report = rptTicket;
-                    //}
-
-                    if (RbtnMod2.Checked == true)
-                    {
-                        ReportTicket rptTicket = new ReportTicket();
-                        rptTicket.pnlCancelar.Visible = (reporte.EstadoVenta == "VENTA CANCELADA") ? true : false;
-                        rptTicket.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : "Saldo por liquidar :";
-                       // rptTicket.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
-                        rptTicket.lblBonificacion.Visible = (reporte.Bonificacion != 0) ? true : false;
-                        rptTicket.textBox24.Visible = (reporte.Bonificacion != 0) ? true : false;
-
-                        rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
-                        rptTicket.DataSource = reporte;
-
-                        reportViewer1.Report = rptTicket;
-                    }
-
-                    if (rbA4.Checked == true)
-                    {
-                        rtpRecibo recibo = new rtpRecibo();
-                        recibo.pnlCancelar.Visible = (reporte.EstadoVenta == "VENTA CANCELADA") ? true : false;
-                        recibo.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : recibo.lblCambio.Value = "Saldo por liquidar :";
-                       // recibo.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
-                        recibo.lblBonificacion.Visible = (reporte.Bonificacion != 0) ? true : false;
-                        recibo.txtBonificacion.Visible = (reporte.Bonificacion != 0) ? true : false;
-
-                        recibo.tblVentaProducto.DataSource = reporte.lstDetalleVenta;
-                        recibo.DataSource = reporte;
-                        reportViewer1.Report = recibo;
-                    }
-                    
-                    reportViewer1.RefreshReport();
-                    btnBonificacion.Enabled = true;
-                    btnEditarPago.Enabled = true;
+                    DibujarReporte();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error de al intentar obtener el ticket "+ ex.Message, "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DibujarReporte()
+        {
+            try
+            {
+                int idVenta = Convert.ToInt32(lblIdVenta.Text);
+                TIPO_DOCUMENTO TIPO = Comun.ObtenerTipoDocumento(cboTipoNota.Text.ToUpper());
+
+                var respuesta = ImprimirDocumento.DibujarReporte(ref reportViewer1, DESTINO_DOCUMENTO.VENTAS, TIPO, idVenta);
+                reportViewer1.RefreshReport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un detalle al asignar los datos al reporte\nDetalles: "+ex.Message,"Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -149,46 +175,27 @@ namespace VentasD1002
         {
             try
             {
-                string impresora="";
+                TIPO_DOCUMENTO TIPO = Comun.ObtenerTipoDocumento(cboTipoNota.Text);
+                int idVenta = Convert.ToInt32(lblIdVenta.Text);
 
-                if (RbtnMod2.Checked == true)
-                {
-                    impresora = DatBox.Obtener_ImpresoraTicket(serialPC, "TICKET");
-                }
-                else if (rbA4.Checked == true)
-                {
-                    impresora = DatBox.Obtener_ImpresoraTicket(serialPC, "RECIBO");
-                }
-                
-                reporte = new PrintDocument();
-                reporte.PrinterSettings.PrinterName = impresora;
+                var respuesta = ImprimirDocumento.Imprimir(ref reportViewer1, TIPO);
 
-                if (reporte.PrinterSettings.IsValid)
+                if (respuesta.IsSuccess == EnumOperationResult.Failure)
                 {
-                    PrinterSettings printerSettings = new PrinterSettings();
-                    printerSettings.PrinterName = impresora;
-
-                    ReportProcessor reportProcessor = new ReportProcessor();
-                    reportProcessor.PrintReport(reportViewer1.ReportSource, printerSettings);
+                    MessageBox.Show(respuesta.Message, "Error de impresión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                else if(respuesta.IsSuccess == EnumOperationResult.Warning)
+                {
+                    MessageBox.Show(respuesta.Message, "Error de impresión", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else { }
+               
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al imprimir el ticket : " + ex.Message, "Error de impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-        }
-
-        private void rbtnFiltroCliente_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.rbtnFiltroCliente.Checked == true)
-            {
-                pnlBuscarPorCLiente.Visible = true;
-            }
-            else
-            {
-                pnlBuscarPorCLiente.Visible = false;
-            }
         }
 
         private void txtBuscarCliente_TextChanged(object sender, EventArgs e)
@@ -209,85 +216,61 @@ namespace VentasD1002
             }
         }
 
-        private void btnBonificacion_Click(object sender, EventArgs e)
+        private void RealizarBonificacion()
         {
             
-            if (string.IsNullOrEmpty(lblIdVenta.Text))
+            if (string.IsNullOrEmpty(lblIdVenta.Text) || lblIdVenta.Text  == "0")
             {
                 MessageBox.Show("Seleccione el ticket a bonificar", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                this.Hide();
                 frmBonificacion bonificacion = new frmBonificacion();
                 frmBonificacion.idVenta = Convert.ToInt32(lblIdVenta.Text);
                 bonificacion.ShowDialog();
-                this.Dispose();
             }
         }
 
-        private void btnEditarPago_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(lblIdVenta.Text))
-            {
-                MessageBox.Show("Seleccione el ticket a modificar", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                pnlEditarPago.Visible = true;
-            }
-         
-        }
-
-        private void cancelarVentaF9ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            pnlEditarPago.Visible = false;
-        }
-
-        private void cobrarF10_Click(object sender, EventArgs e)
+        private void EditarForma_DePago()
         {
             try
             {
-                int idventa = Convert.ToInt32(lblIdVenta.Text);
-                decimal montoTotal = Convert.ToDecimal(lblMontoTotal.Text);
-
-                DatVenta.Editar_FormaPago(idventa, montoTotal);
-
-                MessageBox.Show("Proceso realizado correctamente", "Operación realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                AgregarBitacora();
-                lblMontoTotal.Text = "";
-                lblIdVenta.Text = "";
-                pnlEditarPago.Visible = false;
+                if (string.IsNullOrEmpty(lblIdVenta.Text) || lblIdVenta.Text == "0")
+                {
+                    MessageBox.Show("Seleccione el ticket a modificar", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    int idventa = Convert.ToInt32(lblIdVenta.Text);
+                    frmCambioFormaPago frmCambio = new frmCambioFormaPago(idventa);
+                    frmCambio.ShowDialog();
+                }
+               
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al realizar el cambio (Contado - Crédito) : "+ex.Message, "Error de actualización", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                lblMontoTotal.Text = "";
                 lblIdVenta.Text = "";
             }
         }
 
-        private void AgregarBitacora()
+        private void ObtenerTipoDocumento()
         {
             try
             {
-                string serialPC = Sistema.ObenterSerialPC();
-
-                int idCaja = new BusBox().showBoxBySerial(serialPC).Id;
-                int idusuario = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC)).Id;
-
-                Bitacora b = new Bitacora();
-                b.Fecha = DateTime.Now;
-                b.IdUsuario = idusuario;
-                b.IdCaja = idCaja;
-                b.Accion = $"CAMBIO DE FORMA DE PAGO CONTADO-CREDITO [{lblIdVenta.Text}]";
-
-                DatCatGenerico.AgregarBitácora(b);
+                var lst = DatSerializacion.ObtenerTipoDocumento(DESTINO_DOCUMENTO.VENTAS.ToString());
+                cboTipoNota.DataSource = lst;
+                cboTipoNota.DisplayMember = "Tipo_Documento";
+                cboTipoNota.ValueMember = "Id";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Error al agregar la bitacora", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
             }
+        }
+
+        private void cboTipoNota_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            DibujarReporte();
         }
     }
 }

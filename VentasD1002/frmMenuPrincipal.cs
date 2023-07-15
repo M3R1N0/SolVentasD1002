@@ -58,11 +58,11 @@ namespace VentasD1002
                 System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.NumberGroupSeparator = ",";
 
                 serialPC = Sistema.ObenterSerialPC();
-                idCaja = new BusBox().showBoxBySerial(serialPC).Id;
+                idCaja =  BusBox.showBoxBySerial().Id;
 
 
-                lsTipoPresentacion = new BusCatGenerico().ListarTipoPresentacion();
-                listadoCaja = new BusBox().showBoxBySerial(serialPC);
+                //DatCatGenerico.ObtenerCatalogo_Presentacion(ref );
+                listadoCaja = BusBox.showBoxBySerial();
 
                 var comprobante = new BusSerializacion().ListarComprobantes()
                                                        .Where(x => x.Por_Defecto.Equals("SI"))
@@ -91,7 +91,7 @@ namespace VentasD1002
         {
             try
             {
-                User u = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC));
+                User u = BusUser.ObtenerUsuario_Loggeado();
                 byte[] b = u.Foto;
                 MemoryStream ms = new MemoryStream(b);
                 pbPerfil.Image = Image.FromStream(ms);
@@ -130,8 +130,8 @@ namespace VentasD1002
         {
             try
             {
-                List<Cliente> ls = new BusCliente().ListarClientes(txtCliente.Text);
-                gdvClientes.DataSource = ls;
+                var response = BusCliente.ListarClientes(txtCliente.Text);
+                gdvClientes.DataSource = response.Data;
                 gdvClientes.Visible = true;
 
                 gdvClientes.Columns[0].Visible = false;
@@ -260,7 +260,7 @@ namespace VentasD1002
             venta.IdCaja = idCaja;
             venta.IdCliente = txtCliente.Text.Equals("GENERAL") ? 1 : idCliente;
             string serial = EncriptarTexto.Encriptar(serialPC);
-            venta.IdUsuario = new BusUser().ObtenerUsuario(serial).Id;
+            venta.IdUsuario = BusUser.ObtenerUsuario_Loggeado().Id;
             venta.FechaVenta = DateTime.Now;
             venta.Folio = lblSerie.Text + "-" + lblCorrelativo.Text;
             venta.MontoTotal = Convert.ToDecimal(lblTotal.Text);
@@ -1046,7 +1046,7 @@ namespace VentasD1002
                 venta.IdCaja = idCaja;
                 venta.IdCliente = txtCliente.Text.Equals("GENERAL") ? 1 : idCliente;
                 string serial = EncriptarTexto.Encriptar(serialPC);
-                venta.IdUsuario = new BusUser().ObtenerUsuario(serial).Id;
+                venta.IdUsuario = BusUser.ObtenerUsuario_Loggeado().Id;
                 venta.FechaVenta = DateTime.Now;
                 venta.Folio = lblSerie.Text + "-" + lblCorrelativo.Text;
                 venta.MontoTotal = Convert.ToDecimal(lblTotal.Text);
@@ -1063,7 +1063,7 @@ namespace VentasD1002
                 venta.Comentarios = txtComentarios.Text;
 
 
-                new BusVentas().AgregarVenta(venta);
+                 BusVentas.AgregarVenta(venta);
 
                 foreach (DataGridViewRow dr in gdvVentas.Rows)
                 {
@@ -1082,7 +1082,7 @@ namespace VentasD1002
                     d.Se_Vende_A = "0";
                     d.Costo = 0;
 
-                    new BusDetalleVenta().Agregar_DetalleVenta(d);
+                    BusDetalleVenta.Agregar_DetalleVenta(d);
                     Producto p;
                     if (string.IsNullOrEmpty(d.Codigo))
                     {
@@ -1138,49 +1138,25 @@ namespace VentasD1002
                         //rpt.lblCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
                         //rpt.txtCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
                         
-                        rpt.pnlCancelar.Visible = (reporte.EstadoVenta == "VENTA CANCELADA") ? true : false;
+                        //rpt.pnlCancelar.Visible = (reporte.EstadoVenta == "VENTA CANCELADA") ? true : false;
                         rpt.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : "Saldo a liquidar :";
                         //rpt.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
                         rpt.lblBonificacion.Visible =  false;
-                        rpt.textBox24.Visible =  false;
-                        rpt.pnlCancelar.Visible = false;
+                        rpt.txtBonificacion.Visible =  false;
+                        //rpt.pnlCancelar.Visible = false;
                         rpt.DataSource = reporte;
 
                         rpt.tbTicket.DataSource = reporte.lstDetalleVenta;
                         vistaPreviaTickek.reportViewer2.Report = rpt;
                         vistaPreviaTickek.reportViewer2.RefreshReport();
                         vistaPreviaTickek.ShowDialog();
-                        //if (RbtnMod1.Checked == true)
-                        //{
-                        //    rptTicket rptTicket = new rptTicket();
-                        //    rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
-                        //    rptTicket.DataSource = reporte;
-
-                        //    vistaPreviaTickek.reportViewer2.Report = rptTicket;
-                        //    vistaPreviaTickek.reportViewer2.RefreshReport();
-                        //    vistaPreviaTickek.ShowDialog();
-                        //}
-                        
-
-                        //if (cboFormaPago.Text == "Credito")
-                        //{
-                        //    rptTicketCopia rptTicketCopia = new rptTicketCopia();
-                        //    rptTicketCopia.tbTicketCopia.DataSource = DT;
-                        //    rptTicketCopia.DataSource = DT;
-
-                        //    frmVistaNotaRemision notas = new frmVistaNotaRemision();
-
-                        //    notas.viewerNotas.Report = rptTicketCopia;
-                        //    notas.viewerNotas.RefreshReport();
-
-                        //    notas.ShowDialog();
-                        //}
+                     
                     }
                     else if (lblSerie.Text == "R")
                     {
                         frmVistaNotaRemision notas = new frmVistaNotaRemision();
                         rtpRecibo rptNota = new rtpRecibo();
-                        rptNota.pnlCancelar.Visible = (reporte.EstadoVenta == "VENTA CANCELADA") ? true : false;
+                        //rptNota.pnlCancelar.Visible = (reporte.EstadoVenta == "VENTA CANCELADA") ? true : false;
                         rptNota.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : "Saldo a Liquidar :";
                        // rptNota.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
                         rptNota.lblBonificacion.Visible = false;
@@ -1188,7 +1164,7 @@ namespace VentasD1002
 
                         //rptNota.lblCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
                         //rptNota.txtCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
-                        rptNota.pnlCancelar.Visible = false;
+                        //rptNota.pnlCancelar.Visible = false;
                         rptNota.tblVentaProducto.DataSource = reporte.lstDetalleVenta;
                         rptNota.DataSource = reporte;
 
@@ -1218,11 +1194,11 @@ namespace VentasD1002
                         //}
                       
                         ReportTicket rpt = new ReportTicket();
-                        rpt.pnlCancelar.Visible = false;
+                        //rpt.pnlCancelar.Visible = false;
                         rpt.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : "Saldo a liquidar :";
                         //rpt.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
                         rpt.lblBonificacion.Visible = false;
-                        rpt.textBox24.Visible = false;
+                        rpt.txtBonificacion.Visible = false;
 
                         rpt.DataSource = reporte;
                         rpt.tbTicket.DataSource = reporte.lstDetalleVenta;
@@ -1243,7 +1219,7 @@ namespace VentasD1002
                     else if (lblSerie.Text == "R")
                     {
                         rtpRecibo rptNota = new rtpRecibo();
-                        rptNota.pnlCancelar.Visible = false;
+                        //rptNota.pnlCancelar.Visible = false;
                         rptNota.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : "Saldo a liquidar :";
                      //   rptNota.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
                         rptNota.lblBonificacion.Visible = false;
@@ -1412,7 +1388,7 @@ namespace VentasD1002
         {
             try
             {
-                Cliente c = new BusCliente().ObterCliente(idCliente);
+                Cliente c = BusCliente.ObterCliente(idCliente);
               
                 if (cboFormaPago.Text == "Credito" && c.Saldo == 0 && idCliente != 1)
                 {
@@ -1457,7 +1433,7 @@ namespace VentasD1002
 
         private void cobrarYGenerarTicketToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Cliente c = new BusCliente().ObterCliente(idCliente);
+            Cliente c = BusCliente.ObterCliente(idCliente);
            
 
             if (cboFormaPago.Text == "Credito" && c.Saldo == 0 && idCliente != 1)
@@ -1551,7 +1527,7 @@ namespace VentasD1002
                     pnlCobrar.Visible = true;
                     if (cboFormaPago.Text == "Credito")
                     {
-                        Cliente c = new BusCliente().ObterCliente(idCliente);
+                        Cliente c = BusCliente.ObterCliente(idCliente);
                         LBLCREDITOAUTORIZADO.Text = c.Saldo.ToString();
                         LBLSALDOLIQUIDAR.Text = (c.Saldo == 0) ? lblTotal.Text : (Convert.ToDecimal(lblTotal.Text) - c.Saldo).ToString();
                         LBLSALDOLIQUIDAR.Text = ((Convert.ToDecimal(LBLSALDOLIQUIDAR.Text) <= 0) ? "0.00" : LBLSALDOLIQUIDAR.Text);
@@ -1589,13 +1565,13 @@ namespace VentasD1002
                 VentaEspera venta = new VentaEspera();
                 venta.IdCaja = idCaja;
                 string serial = EncriptarTexto.Encriptar(serialPC);
-                venta.IdUsuario = new BusUser().ObtenerUsuario(serial).Id;
+                venta.IdUsuario = BusUser.ObtenerUsuario_Loggeado().Id;
                 venta.FechaVenta = DateTime.Now;
                 venta.Referencia = txtCliente.Text;
                 venta.IdCliente = txtCliente.Text.Equals("GENERAL") ? 1 : idCliente;
                 venta.MontoTotal = Convert.ToDecimal(lblTotal.Text);
 
-                new BusVentas().AgregarVentaEspera(venta);
+                //new BusVentas().AgregarVentaEspera(venta);
 
                 foreach (DataGridViewRow dr in gdvVentas.Rows)
                 {
@@ -1644,9 +1620,9 @@ namespace VentasD1002
                 dt.Columns.Add("PESO", typeof(System.Decimal));
                 // DataRow dr = dt.NewRow();
 
-                List<DetalleVentaEspera> detalleVenta = new BusVentas().ListarDetalle_VentaEnEspera(idVenta);
+                //List<DetalleVentaEspera> detalleVenta = new BusVentas().ListarDetalle_VentaEnEspera(idVenta);
 
-                if (detalleVenta.Count != 0)
+               /* if (detalleVenta.Count != 0)
                 {
                     foreach (var item in detalleVenta)
                     {
@@ -1694,11 +1670,11 @@ namespace VentasD1002
                 }
                 if (!String.IsNullOrEmpty(VentaEspera))
                 {
-                    new BusDetalleVenta().Eliminar_DetalleVentaEspera(idVenta);
-                    new BusVentas().Eliminar_VentaEspera(idVenta);
+                    //new BusDetalleVenta().Eliminar_DetalleVenta(idVenta);
+                    //new BusVentas().Eliminar_Venta(idVenta);
                     VentaEspera = "";
                     idVenta = 0;
-                }
+                }*/
             }
             catch (Exception ex)
             {
@@ -1741,7 +1717,7 @@ namespace VentasD1002
                 DialogResult result = MessageBox.Show("Esta seguro que desea cancelar la venta", "Cancelar venta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    txtCliente.Text = new BusCliente().ObterCliente(1).NombreCompleto;
+                    txtCliente.Text = BusCliente.ObterCliente(1).NombreCompleto;
                     gdvClientes.Visible = false;
                     idCliente = 1;
                     idVenta = 0;
@@ -1763,7 +1739,7 @@ namespace VentasD1002
 
         private void VentaEnEsperaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<VentaEspera> lstVentas = new BusVentas().Listar_VentasEnEspera();
+            /*List<VentaEspera> lstVentas = new BusVentas().Listar_VentasEnEspera();
 
             if (lstVentas.Count != 0)
             {
@@ -1774,7 +1750,7 @@ namespace VentasD1002
             else
             {
                 MessageBox.Show("Actualmente no existen ventas en Espera", "Ventas en Espera", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            }*/
         }
 
         private void créditosPorCobrarToolStripMenuItem_Click(object sender, EventArgs e)

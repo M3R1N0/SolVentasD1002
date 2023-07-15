@@ -1,4 +1,6 @@
 ﻿using BusVenta;
+using BusVenta.Helpers;
+using DatVentas;
 using EntVenta;
 using System;
 using System.Collections.Generic;
@@ -15,7 +17,7 @@ namespace VentasD1002
 {
     public partial class frmAperturaCaja : Form
     {
-        string serialPC;
+        //string serialPC;
         int idCaja;
         Box listadoCaja;
         public frmAperturaCaja()
@@ -34,10 +36,13 @@ namespace VentasD1002
                 }
                 else
                 {
-                    new BusOpenCloseBox().EditarEfectivoInicial(Convert.ToDecimal(txtEfectivoInicial.Text), idCaja);
+                    var montoInicial = Convert.ToDecimal(txtEfectivoInicial.Text);
+                    var respuesta =  GuardarMovimientoCaja(montoInicial);
+
                     this.Hide();
-                    frmMenuPrincipal principal = new frmMenuPrincipal();
+                    frmPrincipal principal = new frmPrincipal();
                     principal.ShowDialog();
+                    this.Dispose();
                 }
             }
             catch (Exception ex)
@@ -46,35 +51,43 @@ namespace VentasD1002
             }
         }
 
+        private static OperationResponse GuardarMovimientoCaja(decimal montoInicial)
+        {
+            string serialPC = Sistema.ObenterSerialPC();
+            var caja = CajaDAL.ObtenerCaja(serialPC);
+
+            OpenCloseBox open = new OpenCloseBox();
+            open.FechaInicio = DateTime.Now;
+            open.FechaFin = DateTime.Now;
+            open.FechaCierre = DateTime.Now;
+            open.Ingresos = 0;
+            open.Egresos = 0;
+            open.Saldo = montoInicial;
+            open.IdUsuario = BusUser.ObtenerUsuario_Loggeado().Id;
+            open.TotalCalculado = 0;
+            open.TotalReal = 0;
+            open.Estado = true;
+            open.Diferencia = 0;
+            open.IdCaja = caja.Id;
+
+           return BusOpenCloseBox.AddOpenCloseBoxDetail(open);
+        }
+
         private void frmAperturaCaja_Load(object sender, EventArgs e)
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("es-MX");
-            System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalSeparator = ".";
-            System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyGroupSeparator = ",";
-            System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator = ".";
-            System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.NumberGroupSeparator = ",";
-            ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
-            serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
-
-            listadoCaja = new BusBox().showBoxBySerial(serialPC);
-            try
-            {
-                idCaja = listadoCaja.Id;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             try
             {
-                new BusOpenCloseBox().EditarEfectivoInicial(0, idCaja);
+                GuardarMovimientoCaja(0);
+
                 this.Hide();
-                frmMenuPrincipal principal = new frmMenuPrincipal();
+                frmPrincipal principal = new frmPrincipal();
                 principal.ShowDialog();
+                this.Dispose();
 
             }
             catch (Exception ex)

@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DatVentas
 {
@@ -105,27 +106,40 @@ namespace DatVentas
             }
         }
 
-        public static DataTable ListarCat_TipoUsuario()
+        public static List<CatalogoGenerico> ListarCat_TipoUsuario()
         {
-
-            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            var lst = new List<CatalogoGenerico>();
+            try
             {
-                try
+                using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
                 {
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Cat_Tipo_Usuario WHERE Estado = 1", conn);
-                    da.Fill(dt);
-                    return dt;
-                }
-                catch (Exception ex)
-                {
+                    conn.Open();
+                    using (var cmd = new SqlCommand("SELECT * FROM Cat_Tipo_Usuario WHERE Estado = 1", conn))
+                    {
+                        var reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            CatalogoGenerico c = new CatalogoGenerico();
+                            c.Id = reader.GetInt32(0);
+                            c.Nombre = reader.GetString(1);
+                            c.Descripcion = reader.GetString(2);
+                            c.Estado = reader.GetBoolean(3);
+
+                            lst.Add(c);
+                        }
+                    }
                     conn.Close();
-                    throw ex;
                 }
+                return lst;
+            }
+            catch (Exception)
+            {
+                return new List<CatalogoGenerico>();
             }
         }
 
-        public static DataTable ListarCat_TipoPresentacion()
+        public static void ObtenerCatalogo_Presentacion( ref ComboBox comboBox, int id)
         {
 
             using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
@@ -133,14 +147,20 @@ namespace DatVentas
                 try
                 {
                     DataTable dt = new DataTable();
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Cat_Tipo_Presentacion WHERE Estado = 1", conn);
-                    da.Fill(dt);
-                    return dt;
+                    using (var adapter = new SqlDataAdapter("SELECT * FROM Cat_Tipo_Presentacion WHERE Estado = @estado", conn))
+                    {
+                        adapter.SelectCommand.Parameters.AddWithValue("@estado", 1);
+                        adapter.Fill(dt);
+
+                        comboBox.DataSource = dt;
+                        comboBox.DisplayMember = "Nombre";
+                        comboBox.ValueMember = "Id_TipoPresentacion";
+                        comboBox.SelectedValue = id;
+                    }
                 }
                 catch (Exception ex)
                 {
                     conn.Close();
-                    throw ex;
                 }
             }
         }
@@ -199,7 +219,7 @@ namespace DatVentas
             }
         }
 
-        public static DataTable ListarCat_Producto()
+        public static void ObtenerCatalogo_TipoProducto(ref ComboBox comboBox, int id)
         {
 
             using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
@@ -207,14 +227,71 @@ namespace DatVentas
                 try
                 {
                     DataTable dt = new DataTable();
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Cat_Producto WHERE Estado = 1", conn);
-                    da.Fill(dt);
-                    return dt;
+                    using (var adapter = new SqlDataAdapter("SELECT * FROM Cat_Producto WHERE Estado = @estado", conn))
+                    {
+                        adapter.SelectCommand.Parameters.AddWithValue("@estado", 1);
+                        adapter.Fill(dt);
+
+                        comboBox.DataSource = dt;
+                        comboBox.DisplayMember = "Nombre";
+                        comboBox.ValueMember = "Id_CatProducto";
+                        comboBox.SelectedValue = id;
+
+                    }
                 }
                 catch (Exception ex)
                 {
                     conn.Close();
-                    throw ex;
+                }
+            }
+        }
+
+        public static void ObtenerCatalogo_Proveedor(ref ComboBox comboBox,int id)
+        {
+
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    DataTable dt = new DataTable();
+                    using (var adapter = new SqlDataAdapter("SELECT * FROM Proveedor WHERE Activo = 1", conn))
+                    {
+                        //adapter.SelectCommand.Parameters.AddWithValue("@estado", 1);
+                        adapter.Fill(dt);
+
+                        comboBox.DataSource = dt;
+                        comboBox.DisplayMember = "Clave";
+                        comboBox.ValueMember = "Id";
+                        comboBox.SelectedValue = id;
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
+
+        public static void ObtenerCatalogo_Marcas(ref ComboBox comboBox, int id)
+        {
+
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    DataTable dt = new DataTable();
+                    using (var adapter = new SqlDataAdapter("SELECT * FROM Cat_Marca WHERE Activo = 1", conn))
+                    {
+                        //adapter.SelectCommand.Parameters.AddWithValue("@estado", 1);
+                        adapter.Fill(dt);
+
+                        comboBox.DataSource = dt;
+                        comboBox.DisplayMember = "Nombre";
+                        comboBox.ValueMember = "Id";
+                        comboBox.SelectedValue = id;
+                    }
+                }
+                catch (Exception ex)
+                {
                 }
             }
         }
@@ -566,6 +643,133 @@ namespace DatVentas
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        public static List<CatalogoGenerico> ListarCatalogo_TipoVenta()
+        {
+            var lst = new List<CatalogoGenerico>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+                {
+                    try
+                    {
+                        conn.Open();
+                        SqlCommand sc = new SqlCommand("SELECT Id,Detalle FROM TipoVenta", conn);
+                        var reader = sc.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            CatalogoGenerico c = new CatalogoGenerico();
+                            c.Id = reader.GetInt32(0);
+                            c.Nombre = reader.GetString(1);
+
+                            lst.Add(c);
+                        }
+                        conn.Close();
+
+                        return lst;
+                    }
+                    catch (Exception ex)
+                    {
+                        conn.Close();
+                        throw ex;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public static int ObtenerIdentificador_Catalogo(string nombre, TIPO_CATALOGO TIPO)
+        {
+            try
+            {
+                string query = "";
+                switch (TIPO)
+                {
+                    case TIPO_CATALOGO.CATEGORIA:
+                        query = "SELECT Id_CatProducto FROM Cat_Producto WHERE UPPER(Nombre) = @nombre";
+                        break;
+                    case TIPO_CATALOGO.MARCA:
+                        query = "SELECT Id FROM Cat_Marca WHERE UPPER(Nombre) = @nombre";
+                        break;
+                    case TIPO_CATALOGO.PROVEEDOR:
+                        query = "SELECT Id FROM Proveedor WHERE UPPER(Nombre) = @nombre";
+                        break;
+                    case TIPO_CATALOGO.PRESENTACION:
+                        query = "SELECT Id_TipoPresentacion FROM Cat_Tipo_Presentacion WHERE UPPER(Nombre) = @nombre";
+                        break;
+                    default:
+                        break;
+                }
+                using (var con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    using (var cmd = new SqlCommand(query,con))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre", nombre);
+                        return Convert.ToInt32(cmd.ExecuteScalar());
+                    }
+                    con.Close();
+                }
+            }
+            catch (Exception )
+            {
+                return 1;
+            }
+        }
+
+        public static void Guardar_Sucursal(CatalogoGenerico c)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    conn.Open();
+                    using (var cmd = new SqlCommand("INSERT INTO Cat_Sucursal VALUES(@nombre,@direccion,@activo)", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre", c.Nombre);
+                        cmd.Parameters.AddWithValue("@direccion", c.Descripcion);
+                        cmd.Parameters.AddWithValue("@activo", c.Estado);
+                        cmd.ExecuteNonQuery();
+                    }
+                    conn.Close();
+
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
+
+        public static void ObtenerSucursales(ref ComboBox combo)
+        {
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    conn.Open();
+                    DataTable dt = new DataTable();
+                    using (var adapter = new SqlDataAdapter("SELECT * FROM Cat_Sucursal WHERE Activo = @activo", conn))
+                    {
+                        adapter.SelectCommand.Parameters.AddWithValue("@activo", true);
+                        adapter.Fill(dt);
+
+                        combo.DataSource = dt;
+                        combo.DisplayMember = "Nombre";
+                        combo.ValueMember = "Id";
+                    }
+                    conn.Close();
+
+                }
+                catch (Exception ex)
+                {
+                }
             }
         }
     }

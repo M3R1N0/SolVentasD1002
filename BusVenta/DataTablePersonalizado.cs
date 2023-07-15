@@ -30,8 +30,8 @@ namespace BusVenta
             List.ColumnHeadersDefaultCellStyle = styCabeceras;
             List.ClearSelection();
 
-            List.RowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
-            List.AlternatingRowsDefaultCellStyle.BackColor = Color.Gainsboro;
+            List.RowsDefaultCellStyle.BackColor = Color.White;
+            List.AlternatingRowsDefaultCellStyle.BackColor = Color.LavenderBlush;
         }
 
         public static void Multilinea2(ref DataGridView List)

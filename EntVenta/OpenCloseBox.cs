@@ -21,5 +21,7 @@ namespace EntVenta
         public bool Estado { get; set; }
         public decimal Diferencia { get; set; }
         public Box CadaId { get; set; }
+        public int IdCaja { get; set; }
+        public int IdUsuario { get; set; }
     }
 }

@@ -121,6 +121,9 @@
   <data name="naranja" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\naranja.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="screencart_106583" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\screencart_106583.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="calendario" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\calendario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -151,8 +154,14 @@
   <data name="rosa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rosa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Pendiente" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pendiente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Add_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Add_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pagado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pagado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="verde" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\verde.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,7 +172,10 @@
   <data name="JIEL" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\JIEL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="screencart_106583" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\screencart_106583.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="hide_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hide_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mostrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mostrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

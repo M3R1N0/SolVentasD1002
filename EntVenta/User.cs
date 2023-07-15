@@ -18,7 +18,7 @@ namespace EntVenta
         public string Usuario { get; set; }         //8
         public string Contraseña { get; set; }      //9
         public string Correo { get; set; }          //10
-        public int RolID { get; set; }              //11
+        public int IdRol { get; set; }              //11
         public bool Estado { get; set; }            //12
                                                     
         public string Rol { get; set; }             //13

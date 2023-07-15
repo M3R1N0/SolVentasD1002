@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlVentas = new System.Windows.Forms.Panel();
             this.pnlCobrar = new System.Windows.Forms.Panel();
             this.panel31 = new System.Windows.Forms.Panel();
@@ -147,9 +147,6 @@
             this.rbMayoreo = new System.Windows.Forms.RadioButton();
             this.rbMenudeo = new System.Windows.Forms.RadioButton();
             this.rbMMayoreo = new System.Windows.Forms.RadioButton();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnCobrarVentas = new System.Windows.Forms.ToolStripMenuItem();
             this.TGuardarSinImprimir = new System.Windows.Forms.ToolStripMenuItem();
             this.imprimirTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlVentasDevoluciones = new System.Windows.Forms.Panel();
@@ -171,6 +168,11 @@
             this.inventarioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelDeControlToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarTurnoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tmrHora = new System.Windows.Forms.Timer(this.components);
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCobrarVentas = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasEnEsperaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.productoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -180,8 +182,6 @@
             this.cerrarTurnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tmrHora = new System.Windows.Forms.Timer(this.components);
-            this.panel4 = new System.Windows.Forms.Panel();
             this.pnlVentas.SuspendLayout();
             this.pnlCobrar.SuspendLayout();
             this.panel31.SuspendLayout();
@@ -251,9 +251,9 @@
             this.pnlCobrar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlCobrar.BackgroundImage")));
             this.pnlCobrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlCobrar.Controls.Add(this.panel31);
-            this.pnlCobrar.Location = new System.Drawing.Point(94, 142);
+            this.pnlCobrar.Location = new System.Drawing.Point(96, 188);
             this.pnlCobrar.Name = "pnlCobrar";
-            this.pnlCobrar.Size = new System.Drawing.Size(790, 414);
+            this.pnlCobrar.Size = new System.Drawing.Size(861, 425);
             this.pnlCobrar.TabIndex = 13;
             // 
             // panel31
@@ -278,9 +278,9 @@
             this.PNLCREDITOCLIENTE.Controls.Add(this.labelControl3);
             this.PNLCREDITOCLIENTE.Controls.Add(this.labelControl2);
             this.PNLCREDITOCLIENTE.Controls.Add(this.labelControl1);
-            this.PNLCREDITOCLIENTE.Location = new System.Drawing.Point(385, 41);
+            this.PNLCREDITOCLIENTE.Location = new System.Drawing.Point(506, 322);
             this.PNLCREDITOCLIENTE.Name = "PNLCREDITOCLIENTE";
-            this.PNLCREDITOCLIENTE.Size = new System.Drawing.Size(374, 357);
+            this.PNLCREDITOCLIENTE.Size = new System.Drawing.Size(144, 76);
             this.PNLCREDITOCLIENTE.TabIndex = 4;
             // 
             // button1
@@ -717,9 +717,9 @@
             this.panel6.Controls.Add(this.LBLSALDOLIQUIDAR);
             this.panel6.Controls.Add(this.labelControl6);
             this.panel6.Controls.Add(this.labelControl7);
-            this.panel6.Location = new System.Drawing.Point(8, 234);
+            this.panel6.Location = new System.Drawing.Point(8, 243);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(347, 99);
+            this.panel6.Size = new System.Drawing.Size(347, 90);
             this.panel6.TabIndex = 564;
             // 
             // LBLCREDITOAUTORIZADO
@@ -906,9 +906,9 @@
             this.pnlCambioPrecios.Controls.Add(this.lblProducto);
             this.pnlCambioPrecios.Controls.Add(this.panel26);
             this.pnlCambioPrecios.ForeColor = System.Drawing.Color.OldLace;
-            this.pnlCambioPrecios.Location = new System.Drawing.Point(289, 202);
+            this.pnlCambioPrecios.Location = new System.Drawing.Point(339, 371);
             this.pnlCambioPrecios.Name = "pnlCambioPrecios";
-            this.pnlCambioPrecios.Size = new System.Drawing.Size(438, 250);
+            this.pnlCambioPrecios.Size = new System.Drawing.Size(388, 81);
             this.pnlCambioPrecios.TabIndex = 9;
             // 
             // lblUnidad
@@ -1033,7 +1033,7 @@
             this.lblProducto.ForeColor = System.Drawing.Color.DarkOrange;
             this.lblProducto.Location = new System.Drawing.Point(0, 30);
             this.lblProducto.Name = "lblProducto";
-            this.lblProducto.Size = new System.Drawing.Size(438, 38);
+            this.lblProducto.Size = new System.Drawing.Size(388, 38);
             this.lblProducto.TabIndex = 1;
             this.lblProducto.Text = "PRODUCTO";
             this.lblProducto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1047,7 +1047,7 @@
             this.panel26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel26.Location = new System.Drawing.Point(0, 0);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(438, 30);
+            this.panel26.Size = new System.Drawing.Size(388, 30);
             this.panel26.TabIndex = 0;
             // 
             // pictureBox4
@@ -1107,7 +1107,7 @@
             // 
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(95, 54);
+            this.label15.Location = new System.Drawing.Point(92, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(359, 74);
             this.label15.TabIndex = 1;
@@ -1128,12 +1128,12 @@
             this.gdvClientes.Name = "gdvClientes";
             this.gdvClientes.ReadOnly = true;
             this.gdvClientes.RowHeadersVisible = false;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.ForestGreen;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Green;
-            this.gdvClientes.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.ForestGreen;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Green;
+            this.gdvClientes.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gdvClientes.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gdvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvClientes.Size = new System.Drawing.Size(332, 236);
+            this.gdvClientes.Size = new System.Drawing.Size(332, 54);
             this.gdvClientes.TabIndex = 8;
             this.gdvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvClientes_CellClick);
             this.gdvClientes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gdvClientes_KeyDown);
@@ -1593,48 +1593,6 @@
             this.rbMMayoreo.Text = "Medio Mayoreo";
             this.rbMMayoreo.UseVisualStyleBackColor = true;
             // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripMenuItem6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.toolStripMenuItem6.ForeColor = System.Drawing.Color.Black;
-            this.toolStripMenuItem6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem6.Image")));
-            this.toolStripMenuItem6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem6.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.ShortcutKeys = System.Windows.Forms.Keys.F8;
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(172, 41);
-            this.toolStripMenuItem6.Text = "En Espera... (F8)";
-            this.toolStripMenuItem6.ToolTipText = "Venta en espera";
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripMenuItem5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.toolStripMenuItem5.ForeColor = System.Drawing.Color.Black;
-            this.toolStripMenuItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem5.Image")));
-            this.toolStripMenuItem5.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem5.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.ShortcutKeys = System.Windows.Forms.Keys.F9;
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(201, 40);
-            this.toolStripMenuItem5.Text = "Cancelar Venta (F9)";
-            this.toolStripMenuItem5.ToolTipText = "Eliminar venta";
-            // 
-            // btnCobrarVentas
-            // 
-            this.btnCobrarVentas.BackColor = System.Drawing.Color.Transparent;
-            this.btnCobrarVentas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnCobrarVentas.ForeColor = System.Drawing.Color.Black;
-            this.btnCobrarVentas.Image = ((System.Drawing.Image)(resources.GetObject("btnCobrarVentas.Image")));
-            this.btnCobrarVentas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnCobrarVentas.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.btnCobrarVentas.Name = "btnCobrarVentas";
-            this.btnCobrarVentas.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.btnCobrarVentas.Size = new System.Drawing.Size(147, 41);
-            this.btnCobrarVentas.Text = "Cobrar (F10)";
-            this.btnCobrarVentas.ToolTipText = "Generar cobro de la venta";
-            // 
             // TGuardarSinImprimir
             // 
             this.TGuardarSinImprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1853,6 +1811,62 @@
             this.cerrarTurnoToolStripMenuItem1.Text = "Cerrar Turno";
             this.cerrarTurnoToolStripMenuItem1.Click += new System.EventHandler(this.cerrarTurnoToolStripMenuItem1_Click);
             // 
+            // tmrHora
+            // 
+            this.tmrHora.Enabled = true;
+            this.tmrHora.Tick += new System.EventHandler(this.tmrHora_Tick);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.menuStrip1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1287, 34);
+            this.panel4.TabIndex = 615;
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripMenuItem6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItem6.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem6.Image")));
+            this.toolStripMenuItem6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem6.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.ShortcutKeys = System.Windows.Forms.Keys.F8;
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(172, 41);
+            this.toolStripMenuItem6.Text = "En Espera... (F8)";
+            this.toolStripMenuItem6.ToolTipText = "Venta en espera";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripMenuItem5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItem5.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem5.Image")));
+            this.toolStripMenuItem5.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem5.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.ShortcutKeys = System.Windows.Forms.Keys.F9;
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(201, 40);
+            this.toolStripMenuItem5.Text = "Cancelar Venta (F9)";
+            this.toolStripMenuItem5.ToolTipText = "Eliminar venta";
+            // 
+            // btnCobrarVentas
+            // 
+            this.btnCobrarVentas.BackColor = System.Drawing.Color.Transparent;
+            this.btnCobrarVentas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCobrarVentas.ForeColor = System.Drawing.Color.Black;
+            this.btnCobrarVentas.Image = ((System.Drawing.Image)(resources.GetObject("btnCobrarVentas.Image")));
+            this.btnCobrarVentas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnCobrarVentas.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.btnCobrarVentas.Name = "btnCobrarVentas";
+            this.btnCobrarVentas.ShortcutKeys = System.Windows.Forms.Keys.F10;
+            this.btnCobrarVentas.Size = new System.Drawing.Size(147, 41);
+            this.btnCobrarVentas.Text = "Cobrar (F10)";
+            this.btnCobrarVentas.ToolTipText = "Generar cobro de la venta";
+            // 
             // ventasEnEsperaToolStripMenuItem1
             // 
             this.ventasEnEsperaToolStripMenuItem1.BackColor = System.Drawing.Color.LightGray;
@@ -1934,20 +1948,6 @@
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(42, 25);
             this.toolStripMenuItem2.Text = " ";
-            // 
-            // tmrHora
-            // 
-            this.tmrHora.Enabled = true;
-            this.tmrHora.Tick += new System.EventHandler(this.tmrHora_Tick);
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.menuStrip1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1287, 34);
-            this.panel4.TabIndex = 615;
             // 
             // frmMenuPrincipal
             // 

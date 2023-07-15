@@ -1,4 +1,5 @@
-﻿using DatVentas;
+﻿using BusVenta.Helpers;
+using DatVentas;
 using EntVenta;
 using System;
 using System.Collections.Generic;
@@ -11,14 +12,16 @@ namespace BusVenta
 {
     public class BusDetalleVenta
     {
-        public void Agregar_DetalleVenta(DetalleVenta detalleVenta)
+        public static bool Agregar_DetalleVenta(DetalleVenta detalleVenta)
         {
             int filasAfectadas = new DatDetalleVenta().Insertar_DetalleVenta(detalleVenta);
 
             if (filasAfectadas == 0)
             {
+                return false;
                 throw new ApplicationException("Ocurrió un error al Insertar la venta");
             }
+            return true;
         }
 
         public void Agregar_DetalleVentaEspera(DetalleVentaEspera detalleVentaEspera)
@@ -31,13 +34,17 @@ namespace BusVenta
             }
         }
 
-        public void Eliminar_DetalleVentaEspera(int id)
+        public static OperationResponse Eliminar_DetalleVenta(int id)
         {
-            int filasAfectadas = new DatDetalleVenta().Eliminar_DetalleVentaEspera(id);
+            var detalleEliminado = new DatDetalleVenta().Eliminar_DetalleVenta(id);
 
-            if (filasAfectadas == 0)
+            if (!detalleEliminado)
             {
-                throw new ApplicationException("Ocurrió un error al Insertar la venta");
+                return OperationResponse.Failure("Ocurrió un detalle al eliminar los datos del detalle la venta");
+            }
+            else
+            {
+                return OperationResponse.Success("Operación exitosa");
             }
         }
 

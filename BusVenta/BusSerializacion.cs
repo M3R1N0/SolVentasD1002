@@ -40,7 +40,7 @@ namespace BusVenta
 
         public void Actualizar_numeroFin(string numeroFin, int id)
         {
-            int filasAfectadas = new DatSerializacion().Editar_NumeroFin( numeroFin, id);
+            int filasAfectadas =  DatSerializacion.ActualizarFolio( numeroFin, id);
             if (filasAfectadas != 1)
             {
                 throw new ApplicationException("Ocurrio un error al intentar actualizar los datos");

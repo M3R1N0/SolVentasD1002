@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -127,6 +129,38 @@ namespace DatVentas
                     throw ex;
                 }
             }
+        }
+
+        public static Image ObtenerLogoEmpresa()
+        {
+            Image logo = null;
+            try
+            {
+                using (var con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    using (var cmd = new SqlCommand("SELECT TOP(1) Logo FROM tb_Empresa",con))
+                    {
+                        var reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            var  bytes = reader.GetSqlBytes(0).Buffer;
+
+                            using (MemoryStream ms = new MemoryStream(bytes))
+                            {
+                                logo = Image.FromStream(ms);
+                            }
+
+                        }
+                    }
+                    con.Close();
+                }
+               
+            }
+            catch (Exception)
+            {
+            }
+            return logo;
         }
     }
 }

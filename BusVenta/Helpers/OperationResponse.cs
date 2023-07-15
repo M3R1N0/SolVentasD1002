@@ -21,20 +21,20 @@ namespace BusVenta.Helpers
 
         public OperationResponse(EnumOperationResult isSuccess, string message)
         {
-            IsSuccess = IsSuccess;
+            IsSuccess = isSuccess;
             Message = message;
         }
 
         public OperationResponse(EnumOperationResult isSuccess, string message, Object data)
         {
-            IsSuccess = IsSuccess;
+            IsSuccess = isSuccess;
             Message = message;
             Data = data;
         }
 
         public OperationResponse(EnumOperationResult isSuccess, string message, Object data, object detail )
         {
-            IsSuccess = IsSuccess;
+            IsSuccess = isSuccess;
             Message = message;
             Data = data;
             Detail = detail;

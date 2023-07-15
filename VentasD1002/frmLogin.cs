@@ -23,33 +23,22 @@ namespace VentasD1002
             InitializeComponent();
         }
 
-        #region variables
         private string Usuario;
-        
-        string loggedUser;
-        string loggedName;
         string serialPC;
         public static int IdCaja;
         public static int idusuario;
-        string Apertura;
-        string UserLoginNow;
-        string nameUserNow;
-        string userPermision;
-        string BoxPermission;
-        int countMcsxu;
-        List<User> lstLoggedUser;
-        List<OpenCloseBox> lstOpenCloseDetail;
-        #endregion
+        private User _user;
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            var serial = "50026B778488E74D";
+            var sekc = Seguridad.Encriptar(serial);
             timer1.Start();
             DibujarLogin();
             panelIniciarSesion.Visible = false;
-
             lblIP.Text = Sistema.ObtenerIP();
+            pbLogoEmpresa.Image = DatEmpresa.ObtenerLogoEmpresa();
         }
-
 
         private void DibujarLogin()
         {
@@ -64,11 +53,11 @@ namespace VentasD1002
                 {
                     Label label = new Label();
                     Panel panel = new Panel();
-                    PictureBox picture = new PictureBox();
+                    RJCodeAdvance.RJControls.RJCircularPictureBox picture = new RJCodeAdvance.RJControls.RJCircularPictureBox();
 
                     label.Text = item.Usuario;
                     label.Name = item.Id.ToString();
-                    label.Size = new Size(175, 25);
+                    label.Size = new Size(90,23);
                     label.Font = new Font("Microsoft Sans Serif", 13);
                     label.FlatStyle = FlatStyle.Flat;
                     label.BackColor = Color.FromArgb(176, 196, 222);
@@ -77,12 +66,12 @@ namespace VentasD1002
                     label.TextAlign = ContentAlignment.MiddleCenter;
                     label.Cursor = Cursors.Hand;
 
-                    panel.Size = new Size(90, 90);
+                    panel.Size = new Size(90, 115);
                     panel.BorderStyle = BorderStyle.None;
                     panel.Dock = DockStyle.Top;
                     panel.BackColor = Color.FromArgb(176, 196, 222);
 
-                    picture.Size = new Size(80, 80);
+                    picture.Size = new Size(90, 90);
                     picture.Dock = DockStyle.Top;
                     picture.BackgroundImage = null;
                     byte[] b = item.Foto;
@@ -91,6 +80,8 @@ namespace VentasD1002
                     picture.SizeMode = PictureBoxSizeMode.Zoom;
                     picture.Tag = item.Usuario;
                     picture.Cursor = Cursors.Hand;
+                    picture.BorderColor = Color.FromArgb(30, 14, 31);
+                    picture.BorderColor2 = Color.FromArgb(30, 14, 31);
 
                     panel.Controls.Add(label);
                     panel.Controls.Add(picture);
@@ -111,15 +102,14 @@ namespace VentasD1002
         {
             Usuario = ((PictureBox)sender).Tag.ToString();
             panelIniciarSesion.Visible = true;
-            ShowPermission();
+            lblUsuario.Text = Usuario;
         }
 
         private void myLabelEvent(object sender, EventArgs e)
         {
             Usuario = ((Label)sender).Text;
             panelIniciarSesion.Visible = true;
-            //flowLayoutPanelUsuarios.Visible = false;
-            ShowPermission();
+            lblUsuario.Text = Usuario;
         }
 
         private void btnCambiarUsuario_Click(object sender, EventArgs e)
@@ -144,164 +134,82 @@ namespace VentasD1002
 
         private void txtContraseña_TextChanged(object sender, EventArgs e)
         {
-            AccederSistema();
+            if (ValidatePWD())
+            {
+                AccederSistema(); 
+            }
+        }
+
+        private bool ValidatePWD()
+        {
+            try
+            {
+                var pwd = EncriptarTexto.Encriptar(txtContraseña.Text);
+                var user = DatUser.Validate_UserCredentials(lblUsuario.Text, pwd);
+
+                if (user.Id == 0)
+                {
+                    return false;
+                }
+                _user = user;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         private void AccederSistema()
         {
-            int LoggedCount = LoadUser();
             try
             {
-                loggedName = lstLoggedUser.Select(u => u.Nombre).FirstOrDefault();
-                loggedUser = lstLoggedUser.Select(u => u.Usuario).FirstOrDefault();
-                idusuario = lstLoggedUser.Select(u => u.Id).FirstOrDefault();
-            }
-            catch
-            { }
+                string serialPC = EncriptarTexto.Encriptar( Sistema.ObenterSerialPC());
 
-            if (LoggedCount > 0)
-            {
-                int contadorDCC = ListOpenCloseDetailBox();
-             //   userPermision = lstLoggedUser.Select(x => x.Rol).First();
-                if (contadorDCC == 0 & userPermision != "VENDEDOR")
+                var session = CajaDAL.ValidarSesion(serialPC);
+
+                if (_user.Id == session.Id)
                 {
-                    AddOpenCloseDetailBox();
-                    Apertura = "NUEVO";
-                    timer2.Start();
+                    this.Hide();
+                    frmPrincipal frmPrincipal = new frmPrincipal();
+                    frmPrincipal.ShowDialog();
+                    this.Dispose();
                 }
                 else
                 {
-                    if (userPermision != "VENDEDOR")
+                    if (session.Nombre.ToUpper().Equals("N/A") && session.Id == 0)
                     {
-                        GetSerialBoxByUser();
-                        try
-                        {
-                            ListOpenCloseDetailBox();
-                            UserLoginNow = lstOpenCloseDetail.Select(x => x.UsuarioId.Usuario).FirstOrDefault();
-                            nameUserNow = lstOpenCloseDetail.Select(x => x.UsuarioId.Nombre).FirstOrDefault();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                        if (countMcsxu == 0)
-                        {
-                            if (UserLoginNow == "Administrador" || Usuario == "Admininistrador"  || userPermision ==  "ADMINISTRADOR")
-                            {
-                                MessageBox.Show("Continuaras Turno de *" + nameUserNow + " Todos los Registros seran con ese Usuario", "Caja Iniciada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                BoxPermission = "Correcto";
-                            }
-                            if (loggedName == "Admin" && Usuario == "Admin")
-                            {
-                                BoxPermission = "Correcto";
-                            }
-
-                            else if (UserLoginNow != Usuario && userPermision !="ADMINISTRADOR")
-                            {
-                                MessageBox.Show("Para poder continuar con el Turno de *" + nameUserNow + "* ,Inicia sesion con el Usuario " + UserLoginNow + " -ó-el Usuario *admin*", "Caja Iniciada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                BoxPermission = "Vacio";
-                            }
-                            else if (UserLoginNow == Usuario)
-                            {
-                                BoxPermission = "Correcto";
-                            }
-                        }
-                        else
-                        {
-                            BoxPermission = "Correcto";
-                        }
-                        if (BoxPermission == "Correcto")
-                        {
-                            Apertura = "Aperturado";
-                            timer2.Start();
-                        }
+                        new DatCatGenerico().Editar_InicioSesion(serialPC, _user.Id);
+                        this.Hide();
+                        frmSplashScreen frmSplash = new frmSplashScreen();
+                        frmSplash.ShowDialog();
+                        this.Dispose();
                     }
                     else
                     {
-                        timer2.Start();
+                        DialogResult result = MessageBox.Show($"Existe una sesión activa con el usuario {session.Usuario},\n¿Desea continuar?\nde lo contrario inicie sesión con el usuario loggeado", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            new DatCatGenerico().Editar_InicioSesion(serialPC, _user.Id);
+                            this.Hide();
+                            frmSplashScreen frmSplash = new frmSplashScreen();
+                            frmSplash.ShowDialog();
+                            this.Dispose();
+                        }
+                        else
+                        {
+                            panelIniciarSesion.Visible = false;
+                            txtContraseña.Clear();
+                        }
                     }
                 }
+                
             }
-        }
-
-        private void AddOpenCloseDetailBox()
-        {
-            try
+            catch(Exception ex)
             {
-                int usuarioID = lstLoggedUser.Select(x => x.Id).First();
-                User u = new User();
-                u.Id = usuarioID;
-                Box b = new Box();
-                b.Id = IdCaja;
-                OpenCloseBox open = new OpenCloseBox();
-                open.FechaInicio = DateTime.Now;
-                open.FechaFin = DateTime.Now;
-                open.FechaCierre = DateTime.Now;
-                open.Ingresos = 0;
-                open.Egresos = 0;
-                open.Saldo = 0;
-                open.UsuarioId =  u;
-                open.TotalCalculado = 0;
-                open.TotalReal = 0;
-                open.Estado = true;
-                open.Diferencia = 0;
-                open.CadaId =b;
-
-                new BusOpenCloseBox().AddOpenCloseBoxDetail(open);
+                MessageBox.Show(ex.Message, "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private int ListOpenCloseDetailBox()
-        {
-            int auxcount=0;
-            try
-            {
-                lstOpenCloseDetail = new BusOpenCloseBox().showMovBoxBySerial(serialPC);
-                auxcount = lstOpenCloseDetail.Count;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return auxcount;
-        }
-
-        private int LoadUser()
-        {
-            int auxCount=0;
-            try
-            {
-                User u = new User();
-                u.Contraseña = EncriptarTexto.Encriptar(txtContraseña.Text);
-                u.Usuario = Usuario;
-
-                lstLoggedUser = new BusUser().getUsersList(u);
-                auxCount = lstLoggedUser.Count;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al mostrar el usuario"+ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
-            return auxCount;
-        }
-
-        private int GetSerialBoxByUser()
-        {
-            try
-            {
-                int idUsuario = lstLoggedUser.Select(x => x.Id).First();  
-                countMcsxu = new BusOpenCloseBox().getMovOpenCloseBox(serialPC,idUsuario);
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return countMcsxu;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -337,7 +245,7 @@ namespace VentasD1002
                 //foreach (ManagementObject getSerial in mos.Get())
                 //{
                     serialPC =  mos.Properties["SerialNumber"].Value.ToString().Trim();
-                    IdCaja = new BusBox().showBoxBySerial(serialPC).Id;
+                    IdCaja = BusBox.showBoxBySerial().Id;
                // }
             }
             catch (Exception ex)
@@ -391,57 +299,7 @@ namespace VentasD1002
             }
         }
 
-        private void ShowPermission()
-        {
-            userPermision = new BusUser().ShowPermision(Usuario);
-        }
-
         ProgressBar pb = new ProgressBar();
 
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-           
-            pb.Maximum = 100;
-            if (pb.Value < 100)
-            {
-                pb.Value = pb.Value + 10;
-            }
-            else
-            {
-                pb.Value = 0;
-                timer2.Stop();
-
-                var tipoUsuario = lstLoggedUser.Select(x => x.Rol).First();
-                if ( tipoUsuario.Equals("ADMINISTRADOR"))
-                {
-                    new DatCatGenerico().Editar_InicioSesion( EncriptarTexto.Encriptar(serialPC), idusuario);
-                    this.Hide();
-                    frmDashboard dashboard = new frmDashboard();
-                    dashboard.ShowDialog();
-                    Dispose();
-                }
-                else
-                {
-                    if (Apertura == "NUEVO" & userPermision != "VENDEDOR")
-                    {
-                        new DatCatGenerico().Editar_InicioSesion(EncriptarTexto.Encriptar(serialPC), idusuario);
-                        this.Hide();
-                        frmAperturaCaja frm = new frmAperturaCaja();
-                        frm.ShowDialog();
-                        UserLoginNow = null;
-                        nameUserNow = null;
-                    }
-                    else
-                    {
-                        this.Hide();
-                        new DatCatGenerico().Editar_InicioSesion(EncriptarTexto.Encriptar(serialPC), idusuario);
-                        frmMenuPrincipal principal = new frmMenuPrincipal();
-                        principal.ShowDialog();
-                        UserLoginNow = null;
-                        nameUserNow = null;
-                    } 
-                }
-            }
-        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BusVenta;
+using BusVenta.Helpers;
 using DatVentas;
 using EntVenta;
 using System;
@@ -20,106 +21,101 @@ namespace VentasD1002
             InitializeComponent();
         }
 
-        private int _IdVenta;
-        private int _idCliente;
-
         private void frmVentasEnEspera_Load(object sender, EventArgs e)
         {
-            Obtener_ListaVentas();
+            ListarVentas();
         }
 
-        private void Obtener_ListaVentas()
+        private void ListarVentas()
+        {
+            var serialPC = Sistema.ObenterSerialPC();
+            DatVenta.Obtener_VentasEnEspera(ref gridVentas, serialPC);
+            gridVentas.Columns[2].Visible = false;
+            gridVentas.Columns[3].Visible = false;
+            gridVentas.Columns[4].Visible = false;
+            Comun.StyleDatatable(ref gridVentas);
+        }
+
+        private void gridVentas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                List<VentaEspera> dt = new BusVentas().Listar_VentasEnEspera();
-
-                gdvListaDVentas.DataSource = dt;
-
-                gdvListaDVentas.Columns[1].Visible = false;
-                gdvListaDVentas.Columns[2].Visible = false;
-                gdvListaDVentas.Columns[3].Visible = false;
-                gdvListaDVentas.Columns[4].Visible = false;
-
-                DataTablePersonalizado.Multilinea(ref gdvListaDVentas);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrió un error al mostrar el detalle : "+ex.Message, "Error de listado ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void gdvListaDVentas_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-
-                if (e.ColumnIndex == this.gdvListaDVentas.Columns["Eliminar"].Index)
+                if (e.ColumnIndex == this.gridVentas.Columns["Eliminar"].Index)
                 {
-                    DialogResult result = MessageBox.Show("¿Desea eliminar la venta?", "Eliminar Venta", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    DialogResult result = MessageBox.Show("¿Seguro desea eliminar la venta seleccionada?", "Eliminar Venta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    if (result == DialogResult.OK)
+                    if (result == DialogResult.Yes)
                     {
-                        int idVenta = Convert.ToInt32(gdvListaDVentas.SelectedCells[1].Value);
-                        new BusDetalleVenta().Eliminar_DetalleVentaEspera(idVenta);
-                        new BusVentas().Eliminar_VentaEspera(idVenta);
+                        int idVenta = Convert.ToInt32(gridVentas.SelectedCells[2].Value);
+                        ObtenerDetaleVenta(idVenta);
 
-                        MessageBox.Show("Venta Eliminado de manera correcta", "Venta eliminada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Obtener_ListaVentas();
-                        gdvDetalleVentaEspera.DataSource = null;
+                        BusVentas.Eliminar_Venta(idVenta);
+                        MessageBox.Show("¡Operación realizada con éxito!", "Venta eliminada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        ListarVentas();
                     }
                 }
-                else
+
+                if (e.ColumnIndex == this.gridVentas.Columns["Restaurar"].Index)
                 {
-                    _IdVenta = Convert.ToInt32(gdvListaDVentas.SelectedCells[1].Value);
-                    _idCliente = Convert.ToInt32(gdvListaDVentas.SelectedCells[2].Value);
-                    ObtenerDetalleVenta(_IdVenta);
+
+                    int idVenta = Convert.ToInt32(gridVentas.SelectedCells[2].Value);
+                    int idCliente = Convert.ToInt32(gridVentas.SelectedCells[3].Value);
+                    string FormaPago = Convert.ToString(gridVentas.SelectedCells[4].Value);
+
+                    frmVenta.IDCLIENTE = idCliente;
+                    frmVenta.FORMA_PAGO = FormaPago;
+                    frmVenta.IDVENTA = idVenta;
+                    this.Dispose();
+                    this.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("¡Error al obtener los datos! " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ObtenerDetaleVenta(int idVenta)
+        {
+            try
+            {
+                var lstDetalle = DatDetalleVenta.Listar_DetalleVenta(idVenta);
+
+                if (lstDetalle.Count <= 0)
+                {
+                    MessageBox.Show("NO HAY DATOS QUE PROCESAR", "ATENCIÓN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
+                foreach (DetalleVentaII item in lstDetalle)
+                {
+                    if (item.UsaInventario)
+                    {
+                        ProductoVM p = new ProductoVM();
+                        p.Id = item.IdProducto;
+                        p.Cantidad = item.Cantidad;
+                        p.Articulo = item.Descripcion;
+
+                        if (item.TipoVenta == (Int32) TIPO_VENTA.P)
+                        {
+                            p.TipoVenta = ProductoDAL.ObtenerTipoVenta_Preferencial(item.IdProducto, item.UnidadMedida).ToString();
+                        }
+                        else
+                        {
+                            p.TipoVenta = (item.TipoVenta == (Int32) TIPO_VENTA.M) ? TIPO_VENTA.M.ToString() : TIPO_VENTA.U.ToString();
+                        }
+                        p.UsaInventario = item.UsaInventario;
+                        ProductoDAL.Aumentar_DisminuirStock(p, "AUMENTAR"); 
+
+                    }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Error al seleccionar la fila : "+ ex.Message, "Error de seleccion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
-
-        private void ObtenerDetalleVenta(int idVenta)
-        {
-            try
-            {
-                DataTable detalleVenta = new DatDetalleVenta().ObtenerDetalle_VentaEnEspera(idVenta);
-                gdvDetalleVentaEspera.DataSource = detalleVenta;
-
-                gdvDetalleVentaEspera.Columns[0].Visible = false;
-                gdvDetalleVentaEspera.Columns[1].Visible = false;
-                gdvDetalleVentaEspera.Columns[2].Visible = false;
-                gdvDetalleVentaEspera.Columns[3].Visible = false;
-                gdvDetalleVentaEspera.Columns[9].Visible = false;
-                gdvDetalleVentaEspera.Columns[10].Visible = false;
-
-                DataTablePersonalizado.Multilinea(ref gdvDetalleVentaEspera);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al mostrar el detalle de la venta : " + ex.Message, "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                frmMenuPrincipal.idVenta = _IdVenta;
-                frmMenuPrincipal.idCliente = _idCliente;
-                frmMenuPrincipal.VentaEspera = "VENTA EN ESPERA";
-                Dispose();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al mostrar el detalle de la venta : " + ex.Message, "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-     
     }
 }

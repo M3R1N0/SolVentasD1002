@@ -16,6 +16,7 @@ namespace EntVenta
         public string TipoComprobante { get; set; }
         public string Descripcion { get; set; }
         public decimal Importe { get; set; }
-
+        public int IdUsuario { get; set; }
+        public string Usuario { get; set; }
     }
 }

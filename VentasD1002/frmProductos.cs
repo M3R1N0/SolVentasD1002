@@ -3,14 +3,10 @@ using BusVenta.Helpers;
 using DatVentas;
 using EntVenta;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Management;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace VentasD1002
@@ -23,35 +19,78 @@ namespace VentasD1002
          
         }
 
-        int idUsuario;
-        int idCaja;
-        string serialPC;
         public static string producto;
 
         private void frmProductos_Load_1(object sender, EventArgs e)
         {
+            MostrarMenu();
             ListarProductos("");
-           
         }
 
-        public  void ListarProductos(string buscar)
+        #region Permisos "MENU"
+
+        private void MostrarMenu()
         {
             try
             {
-                List<Producto> lsp = new BusProducto().ListarProductos(buscar,1);
-                gdvProductos.DataSource = lsp;
-                
-                gdvProductos.Columns[2].Visible = false;
-                gdvProductos.Columns[3].Visible = false;
-                gdvProductos.Columns[4].Visible = false;
-                gdvProductos.Columns[17].Visible = false;
-                gdvProductos.Columns[18].Visible = false;
-                gdvProductos.Columns[19].Visible = false;
-                gdvProductos.Columns[20].Visible = false;
-                gdvProductos.Columns[21].Visible = false;
-                gdvProductos.Columns[22].Visible = false;
-                BusVenta.DataTablePersonalizado.Multilinea(ref gdvProductos);
+                var idUsuario = BusUser.ObtenerUsuario_Loggeado().Id;
+                string modulos = "frmABProducto,frmExcel";
+                var menus = PermisoDAL.ObtenerFormsInternos(idUsuario, modulos);
+                var miMenu = new MenuStrip();
 
+                foreach (var menu in menus)
+                {
+                    ToolStripMenuItem menuPadre = new ToolStripMenuItem(menu.Nombre, null, Click_Menu, menu.NombreForm);
+                    MemoryStream ms = new MemoryStream(menu.Icono);
+                    menuPadre.Image = Image.FromStream(ms);
+                    menuPadre.TextImageRelation = TextImageRelation.ImageBeforeText;
+                    menuPadre.ImageScaling = ToolStripItemImageScaling.None;
+
+                    miMenu.Items.Add(menuPadre);
+                }
+
+                this.MainMenuStrip = miMenu;
+                Controls.Add(miMenu);
+            }
+            catch (Exception ex)
+            { }
+        }
+
+        private void Click_Menu(object sender, EventArgs evt)
+        {
+            try
+            {
+                ToolStripMenuItem itemSeleccionado = (ToolStripMenuItem)sender;
+                Assembly asm = Assembly.GetEntryAssembly();
+                Type element = asm.GetType(asm.GetName().Name + "." + itemSeleccionado.Name);
+
+                if (itemSeleccionado.Name == "frmABProducto")
+                {
+                    frmABProducto frmAB = new frmABProducto();
+                    frmAB.FormClosing += frm_FormClosing;
+                    frmAB.ShowDialog();
+                }
+                else
+                {
+                    Exportar_Importar_ArchivoExcel.ExportarProducto();
+                }
+            }
+            catch (Exception)
+            {
+            }
+            
+        }
+
+        #endregion
+
+        public void ListarProductos(string buscar)
+        {
+            try
+            {
+                ProductoDAL.ListarProductos(ref gdvProductos, string.Empty);
+                gdvProductos.Columns[2].Visible = false;
+                // BusVenta.DataTablePersonalizado.Multilinea(ref gdvProductos);
+                Comun.StyleDatatable(ref gdvProductos);
 
             }
             catch (Exception ex)
@@ -60,86 +99,21 @@ namespace VentasD1002
             }
         }
 
-        private void EditarProducto()
-        {
-            frmABProducto frmAB = new frmABProducto();
-            frmABProducto.TipoPresentacion = gdvProductos.SelectedCells[4].Value.ToString();
-            frmABProducto.Categoria = gdvProductos.SelectedCells[3].Value.ToString();
-            string _strPMenudeo = gdvProductos.SelectedCells[21].Value.ToString();
-            frmABProducto.PresentacionMenudeo = _strPMenudeo;
-            frmABProducto.EsNuevo = false;
-            frmAB.txtcodigodebarras.ReadOnly = true;
-            frmAB.lblIdProducto.Text = gdvProductos.SelectedCells[2].Value.ToString();
-           // lblIdProducto.Text = gdvProductos.SelectedCells[2].Value.ToString();
-            //frmAB.cboCategoria.SelectedValue = gdvProductos.SelectedCells[3].Value.ToString();
-            //frmAB.cboPresentacion.SelectedValue = gdvProductos.SelectedCells[4].Value.ToString();
-           
-            frmAB.txtcodigodebarras.Text = gdvProductos.SelectedCells[5].Value.ToString();
-            frmAB.txtdescripcion.Text = gdvProductos.SelectedCells[6].Value.ToString();
-            frmAB.txtPresentacion.Text = gdvProductos.SelectedCells[7].Value.ToString();
-            if (gdvProductos.SelectedCells[8].Value.ToString() == "UNIDAD" )
-            {
-                frmAB.porunidad.Checked = true;
-            }
-            else
-            {
-                frmAB.agranel.Checked = true;
-            }
-
-            frmAB.txtPMenudeo.Text = gdvProductos.SelectedCells[9].Value.ToString();
-            frmAB.txtPMMayoreo.Text = gdvProductos.SelectedCells[10].Value.ToString();
-            frmAB.txtApartirDe.Text = gdvProductos.SelectedCells[11].Value.ToString();
-            frmAB.txtpreciomayoreo.Text = gdvProductos.SelectedCells[12].Value.ToString();
-            var s = gdvProductos.SelectedCells[22].Value.ToString(); 
-
-            frmAB.txtPesoMayoreo.Text = gdvProductos.SelectedCells[22].Value.ToString();
-
-            string inventario = gdvProductos.SelectedCells[13].Value.ToString();
-            frmAB.txtTotalUnidades.Text = gdvProductos.SelectedCells[20].Value.ToString();
-
-            if (inventario == "SI")
-            {
-                frmAB.CheckInventarios.Checked = true;
-                frmAB.PANELINVENTARIO.Visible = true;
-                decimal _totalUnidad = Convert.ToDecimal(frmAB.txtTotalUnidades.Text);
-                decimal _stockMaximo = Convert.ToDecimal(gdvProductos.SelectedCells[14].Value);
-                decimal _stockMinimo = Convert.ToDecimal(gdvProductos.SelectedCells[15].Value);
-                decimal _unidades = (_stockMaximo % _totalUnidad);
-
-                frmAB.lblPiezasStock.Text = _unidades.ToString();
-                frmAB.txtstock2.Text = Math.Floor((_stockMaximo / _totalUnidad)).ToString();
-                frmAB.txtstockminimo.Text = (_stockMinimo / _totalUnidad).ToString();
-                
-            }
-            else
-            {
-                frmAB.CheckInventarios.Checked = false;
-                frmAB.PANELINVENTARIO.Visible = false;
-            }
-
-           // txtstockminimo.Text = gdvProductos.SelectedCells[15].Value.ToString();
-            string fecha = gdvProductos.SelectedCells[16].Value.ToString();
-            bool res = (fecha == "NO APLICA") ? frmAB.No_aplica_fecha.Checked = true : frmAB.No_aplica_fecha.Checked = false;
-
-            frmAB.txtfechaoka.Text = (!res) ? fecha : null;
-            frmAB.FormClosing += frm_FormClosing;
-            frmAB.ShowDialog();
-        }
-
         private void gdvProductos_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == this.gdvProductos.Columns["Eliminar"].Index)
+            try
             {
-                DialogResult result = MessageBox.Show("¿Desea eliminar este producto?", "Eliminar producto", MessageBoxButtons.OKCancel, MessageBoxIcon.Hand);
-                if (result == DialogResult.OK)
+                if (e.ColumnIndex == this.gdvProductos.Columns["Eliminar"].Index)
                 {
-                    //foreach (DataGridViewRow item in gdvProductos.Rows)
-                   // {
+                    DialogResult result = MessageBox.Show("¿Desea eliminar este producto?", "Eliminar producto", MessageBoxButtons.OKCancel, MessageBoxIcon.Hand);
+                    if (result == DialogResult.OK)
+                    {
                         int oneKey = Convert.ToInt32(gdvProductos.SelectedCells[2].Value);
                         try
                         {
-                            new BusProducto().BorrarProducto(oneKey);
-                            MessageBox.Show("Producto eliminado correctamente", "Operacion realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ProductoDAL.ActivarDesactivar_Producto(oneKey, false);
+
+                            MessageBox.Show("Operación realizada con éxito", "Operacion realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             AgregarBitacora(oneKey);
                             ListarProductos("");
                         }
@@ -147,47 +121,31 @@ namespace VentasD1002
                         {
                             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    //}
+                    }
+                }
+
+                if (e.ColumnIndex == this.gdvProductos.Columns["Editar"].Index)
+                {
+                    int id = Convert.ToInt32(gdvProductos.SelectedCells[2].Value);
+                    frmABProducto frmAB = new frmABProducto(id);
+                    frmAB.ShowDialog();
                 }
             }
-
-            if (e.ColumnIndex == this.gdvProductos.Columns["Editar"].Index)
+            catch (Exception ex)
             {
-
-                EditarProducto();
-             //  int id = Convert.ToInt32(gdvProductos.SelectedCells[2].Value);
-               // frmABProducto frmAB = new frmABProducto(id);
-                //frmAB.ShowDialog();
+                MessageBox.Show("Ocurrió un detalle al obtener los datos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
-
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            frmABProducto frmAB = new frmABProducto();
-            frmAB.txtcodigodebarras.ReadOnly = false;
-            frmAB.LimpiarCotroles();
-            frmABProducto.EsNuevo = true;
-            frmAB.FormClosing += frm_FormClosing;
-            frmAB.ShowDialog();
-            //panelCategoria.Visible = false;
-            //pnlABProducto.Visible = true;
-            //LlenarCategorias();
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                ListarProductos(txtBuscar.Text);
+                ProductoDAL.ListarProductos(ref gdvProductos,txtBuscar.Text);
             }
             catch (Exception ex )
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -200,41 +158,10 @@ namespace VentasD1002
             }
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tabControl1.SelectedIndex == 0)
-            {
-                
-            }
-            else if(tabControl1.SelectedIndex == 1)
-            {
-                DataTable dt = DatProducto.ListarProductos_CodigoAutomatico();
-                dataGridView1.DataSource = dt;
-                DataTablePersonalizado.Multilinea(ref dataGridView1);
-            }
-        }
-
         private void frm_FormClosing(object sender, FormClosingEventArgs e)
         {
             txtBuscar.Focus();
             ListarProductos(producto);
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnExportarExcel_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                 Exportar_Importar_ArchivoExcel.ExportarProducto();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error : "+ex.Message);
-            }
         }
 
         private void AgregarBitacora(int ID)
@@ -243,8 +170,8 @@ namespace VentasD1002
             {
                 string serialPC = Sistema.ObenterSerialPC();
 
-                int _idCaja = new BusBox().showBoxBySerial(serialPC).Id;
-                int _idusuario = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC)).Id;
+                int _idCaja = BusBox.showBoxBySerial().Id;
+                int _idusuario = BusUser.ObtenerUsuario_Loggeado().Id;
 
                 Bitacora b = new Bitacora();
                 b.Fecha = DateTime.Now;

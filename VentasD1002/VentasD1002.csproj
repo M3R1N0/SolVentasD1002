@@ -61,6 +61,10 @@
     <Reference Include="Bunifu_UI_v1.5.4">
       <HintPath>..\..\..\..\..\Downloads\Telegram Desktop\Bunifu_UI_v1.5.4.dll</HintPath>
     </Reference>
+    <Reference Include="DataGridViewGrouper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DataGridViewGrouper.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Charts.v20.2.Core, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.Desktop.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -95,11 +99,24 @@
     <Reference Include="EPPlus, Version=5.5.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.5.5.0\lib\net45\EPPlus.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.3.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.3.6\lib\net45\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RJCodeAdvance.RJControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RJCodeAdvance.RJControls.1.0.0\lib\net45\RJCodeAdvance.RJControls.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
@@ -109,6 +126,7 @@
     <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -118,10 +136,76 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.Reporting, Version=13.0.19.116, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.ReportViewer.WinForms, Version=13.0.19.116, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="Telerik.Reporting, Version=17.1.23.606, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+    <Reference Include="Telerik.ReportViewer.WinForms, Version=17.1.23.606, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAbonarCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbonarCredito.Designer.cs">
+      <DependentUpon>frmAbonarCredito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmABUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmABUsuario.Designer.cs">
+      <DependentUpon>frmABUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAltaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAltaCliente.Designer.cs">
+      <DependentUpon>frmAltaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCambioFormaPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCambioFormaPago.Designer.cs">
+      <DependentUpon>frmCambioFormaPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCatSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCatSucursal.Designer.cs">
+      <DependentUpon>frmCatSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGananciasxPeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGananciasxPeriodo.Designer.cs">
+      <DependentUpon>frmGananciasxPeriodo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNuevoMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNuevoMenu.Designer.cs">
+      <DependentUpon>frmNuevoMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSplashScreen.Designer.cs">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubMenus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubMenus.Designer.cs">
+      <DependentUpon>frmSubMenus.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmABProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +242,12 @@
     <Compile Include="frmCargarDatosExcel.Designer.cs">
       <DependentUpon>frmCargarDatosExcel.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCatalogo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCatalogo.Designer.cs">
+      <DependentUpon>frmCatalogo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCierreCaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +260,12 @@
     <Compile Include="frmCliente.Designer.cs">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCobrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCobrar.Designer.cs">
+      <DependentUpon>frmCobrar.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmComprobante.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +277,12 @@
     </Compile>
     <Compile Include="frmConexionRemota.Designer.cs">
       <DependentUpon>frmConexionRemota.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmListaIngresosEgresos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaIngresosEgresos.Designer.cs">
+      <DependentUpon>frmListaIngresosEgresos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmConfiguracion.cs">
       <SubType>Form</SubType>
@@ -241,6 +343,18 @@
     </Compile>
     <Compile Include="frmDevoluciones.Designer.cs">
       <DependentUpon>frmDevoluciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditarPrecioVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditarPrecioVenta.Designer.cs">
+      <DependentUpon>frmEditarPrecioVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEntradaProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEntradaProducto.Designer.cs">
+      <DependentUpon>frmEntradaProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="frmExito.cs">
       <SubType>Form</SubType>
@@ -332,6 +446,12 @@
     <Compile Include="frmNotificaciones.Designer.cs">
       <DependentUpon>frmNotificaciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPermisos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPermisos.Designer.cs">
+      <DependentUpon>frmPermisos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmProductos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -386,11 +506,11 @@
     <Compile Include="frmVenta.Designer.cs">
       <DependentUpon>frmVenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmVentasDiarias.cs">
+    <Compile Include="frmTraspasoMercancia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmVentasDiarias.Designer.cs">
-      <DependentUpon>frmVentasDiarias.cs</DependentUpon>
+    <Compile Include="frmTraspasoMercancia.Designer.cs">
+      <DependentUpon>frmTraspasoMercancia.cs</DependentUpon>
     </Compile>
     <Compile Include="frmVentasEnEspera.cs">
       <SubType>Form</SubType>
@@ -416,6 +536,7 @@
     <Compile Include="frmVistaPreviaTickek.Designer.cs">
       <DependentUpon>frmVistaPreviaTickek.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ImprimirDocumento.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -428,6 +549,36 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmAbonarCredito.resx">
+      <DependentUpon>frmAbonarCredito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmABUsuario.resx">
+      <DependentUpon>frmABUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAltaCliente.resx">
+      <DependentUpon>frmAltaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCambioFormaPago.resx">
+      <DependentUpon>frmCambioFormaPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCatSucursal.resx">
+      <DependentUpon>frmCatSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGananciasxPeriodo.resx">
+      <DependentUpon>frmGananciasxPeriodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNuevoMenu.resx">
+      <DependentUpon>frmNuevoMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSplashScreen.resx">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubMenus.resx">
+      <DependentUpon>frmSubMenus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmABProducto.resx">
       <DependentUpon>frmABProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -446,17 +597,26 @@
     <EmbeddedResource Include="frmCargarDatosExcel.resx">
       <DependentUpon>frmCargarDatosExcel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCatalogo.resx">
+      <DependentUpon>frmCatalogo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCierreCaja.resx">
       <DependentUpon>frmCierreCaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCobrar.resx">
+      <DependentUpon>frmCobrar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmComprobante.resx">
       <DependentUpon>frmComprobante.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConexionRemota.resx">
       <DependentUpon>frmConexionRemota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaIngresosEgresos.resx">
+      <DependentUpon>frmListaIngresosEgresos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConfiguracion.resx">
       <DependentUpon>frmConfiguracion.cs</DependentUpon>
@@ -487,6 +647,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDevoluciones.resx">
       <DependentUpon>frmDevoluciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarPrecioVenta.resx">
+      <DependentUpon>frmEditarPrecioVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEntradaProducto.resx">
+      <DependentUpon>frmEntradaProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmExito.resx">
       <DependentUpon>frmExito.cs</DependentUpon>
@@ -530,6 +696,9 @@
     <EmbeddedResource Include="frmNotificaciones.resx">
       <DependentUpon>frmNotificaciones.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPermisos.resx">
+      <DependentUpon>frmPermisos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmProductos.resx">
       <DependentUpon>frmProductos.cs</DependentUpon>
     </EmbeddedResource>
@@ -557,8 +726,8 @@
     <EmbeddedResource Include="frmVenta.resx">
       <DependentUpon>frmVenta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmVentasDiarias.resx">
-      <DependentUpon>frmVentasDiarias.cs</DependentUpon>
+    <EmbeddedResource Include="frmTraspasoMercancia.resx">
+      <DependentUpon>frmTraspasoMercancia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVentasEnEspera.resx">
       <DependentUpon>frmVentasEnEspera.cs</DependentUpon>
@@ -678,6 +847,10 @@
     <None Include="Resources\screencart_106583.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Pendiente.png" />
+    <None Include="Resources\pagado.png" />
+    <None Include="Resources\hide_64.png" />
+    <None Include="Resources\mostrar.png" />
     <Content Include="screencart_106583.ico" />
   </ItemGroup>
   <ItemGroup>

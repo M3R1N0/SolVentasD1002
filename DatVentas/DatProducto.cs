@@ -88,34 +88,6 @@ namespace DatVentas
             }
         }
 
-        public DataTable MostrarProductos_Inactivos(string busqueda)
-        {
-            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
-            {
-                DataTable dt = new DataTable();
-                try
-                {
-                    SqlDataAdapter da = new SqlDataAdapter();
-                    if (string.IsNullOrEmpty(busqueda))
-                    {
-                        da = new SqlDataAdapter("SELECT TOP (15) * FROM tb_Producto where  Estado = 0 ORDER BY Descripcion", conn);
-                    }
-                    else
-                    {
-                        da = new SqlDataAdapter($"select TOP(15) * from tb_Producto where  Codigo like '" + busqueda + "' and Estado = 0 OR   Descripcion like '%" + busqueda + "%' and Estado = 0 ", conn);
-                    }
-
-                    da.Fill(dt);
-                    return dt;
-                }
-                catch (Exception ex)
-                {
-                    conn.Close();
-                    throw ex;
-                }
-            }
-        }
-
         public DataRow ObtenerProductoID(int id)
         {
             using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
@@ -187,27 +159,6 @@ namespace DatVentas
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
-                }
-            }
-        }
-
-        public int EliminarProducto(int id)
-        {
-            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
-            {
-                int resultado = 0;
-                try
-                {
-                    conn.Open();
-                    SqlCommand sc = new SqlCommand("UPDATE tb_Producto SET Estado = 0 WHERE Id_Producto=" + id, conn);
-                    resultado = sc.ExecuteNonQuery();
-                    conn.Close();
-                    return resultado;
-                }
-                catch (Exception ex)
-                {
-                    conn.Close();
                     throw ex;
                 }
             }
@@ -637,48 +588,9 @@ namespace DatVentas
 
         #endregion
 
-        #region DEVOLUCIONES DE PRODUCTOS VENDIDOS
+        
 
-        public DataTable BuscarVenta(string busqueda)
-        {
-            try
-            {
-                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
-                {
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter da = new SqlDataAdapter($"sp_BuscarVenta '{busqueda}'", con);
-                    da.Fill(dt);
-
-                    return dt;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        #endregion
-
-        public static DataTable ListarProductos_CodigoAutomatico()
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
-                {
-                    DataTable data = new DataTable();
-
-                    SqlDataAdapter da = new SqlDataAdapter("select 	p.Codigo, p.Descripcion, p.Presentacion from tb_Producto p where p.Codigo like 'AJ%'",conn);
-                    da.Fill(data);
-
-                    return data;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+  
 
         public static List<Producto> ObtenerProductos()
         {

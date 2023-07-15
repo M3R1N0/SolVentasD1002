@@ -1,4 +1,5 @@
 ﻿using BusVenta;
+using BusVenta.Helpers;
 using DatVentas;
 using EntVenta;
 using System;
@@ -12,6 +13,8 @@ using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LiveCharts.Wpf;
+using LiveCharts;
 
 namespace VentasD1002
 {
@@ -20,25 +23,10 @@ namespace VentasD1002
         public frmDashboard()
         {
             InitializeComponent();
-            pnlFiltro.Visible = false;
-            ContarDatos();
-            DibujarGrafica();
         }
-        private string Usuario;
-        string loggedUser;
-        string loggedName;
-        string Apertura;
-        string UserLoginNow;
-        string nameUserNow;
+
         string userPermision;
-        string BoxPermission;
-        int countMcsxu;
-        int idAdmin;
         string serialPC;
-        int IdCaja;
-        string caja;
-        List<User> lstLoggedUser;
-        List<OpenCloseBox> lstOpenCloseDetail;
         DataTable dt;
 
         private void frmDashboard_Load(object sender, EventArgs e)
@@ -46,210 +34,63 @@ namespace VentasD1002
 
             try
             {
-                ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
-                serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
+                serialPC = Sistema.ObenterSerialPC();
                 var auxSerial = EncriptarTexto.Encriptar(serialPC);
-                userPermision = new BusUser().ObtenerUsuario(auxSerial).Rol;
+                userPermision = BusUser.ObtenerUsuario_Loggeado().Rol;
 
+                List<CatalogoGenerico> lst = new List<CatalogoGenerico>();
+                lst.Add(new CatalogoGenerico() { Nombre = "DIARIO", Id = 1 });
+                lst.Add(new CatalogoGenerico() { Nombre = "SEMANAL", Id = 2 });
+                lst.Add(new CatalogoGenerico() { Nombre = "MENSUAL", Id = 3 });
+                lst.Add(new CatalogoGenerico() { Nombre = "ANUAL", Id = 4 });
 
+                cboPeriodo.DataSource = lst;
+                cboPeriodo.ValueMember = "Id";
+                cboPeriodo.DisplayMember = "Nombre";
+                cboPeriodo.SelectedValue = 1;
+
+                dpInicio.MaxDate = dpFin.Value;
+                dpFin.MinDate = dpInicio.Value;
+
+                //Productos_MasVendidos();
+                //ClientesFrecuentes();
+                ContarDatos();
+
+                //ObtenerDatos_Ventas();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error en la consulta de la llave del admin :" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            panel1.Visible = true;
-            Productos_MasVendidos();
-            ClientesFrecuentes();
+            
         }
 
-        private void btnVentas_Click(object sender, EventArgs e)
-        {
-            Iniciar_Caja_Venta();
-        }
-
-        private void Iniciar_Caja_Venta()
+        private void ObtenerDatos_Ventas()
         {
             try
             {
-                
-                IdCaja = new BusBox().showBoxBySerial(serialPC).Id;
-                idAdmin = new DatCatGenerico().Obtener_IdAdmin();
-                caja = new BusBox().showBoxBySerial(serialPC).SerialPC;
+                var datos = DashBoardDAL.Listar_PorPeriodo(dpInicio.Value, dpFin.Value, cboPeriodo.Text);
 
-                int contadorDCC = ListOpenCloseDetailBox();
-                //   userPermision = lstLoggedUser.Select(x => x.Rol).First();
-                if (contadorDCC == 0 & userPermision != "Solo Ventas")
+                if (datos.Count > 0)
                 {
-                    AddOpenCloseDetailBox();
-                    Apertura = "NUEVO";
-                    timer2.Start();
+
+                    var arrTotal = datos.Select(x => x.Total).ToArray();
+                    var arrPeriodo = datos.Select(x => x.Fecha).ToArray();
+
+                    graficaVentas.DataSource = datos;
+                    graficaVentas.Series[0].XValueMember = "Fecha";
+                    graficaVentas.Series[0].YValueMembers = "Total";
+                    graficaVentas.DataBind();
+
                 }
-                else
-                {
-                    if (userPermision != "Solo Ventas")
-                    {
-                        GetSerialBoxByUser();
-                        try
-                        {
-                            ListOpenCloseDetailBox();
-                            UserLoginNow = lstOpenCloseDetail.Select(x => x.UsuarioId.Usuario).FirstOrDefault();
-                            nameUserNow = lstOpenCloseDetail.Select(x => x.UsuarioId.Nombre).FirstOrDefault();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                        if (countMcsxu == 0)
-                        {
-                            if (UserLoginNow == "Administrador" || Usuario == "Admininistrador" || userPermision == "ADMINISTRADOR")
-                            {
-                               // MessageBox.Show("Continuaras Turno de *" + nameUserNow + " Todos los Registros seran con ese Usuario", "Caja Iniciada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                BoxPermission = "Correcto";
-                            }
-                            if (loggedName == "Admin" && Usuario == "Admin")
-                            {
-                                BoxPermission = "Correcto";
-                            }
-
-                            else if (UserLoginNow != Usuario && userPermision != "ADMINISTRADOR")
-                            {
-                              //  MessageBox.Show("Para poder continuar con el Turno de *" + nameUserNow + "* ,Inicia sesion con el Usuario " + UserLoginNow + " -ó-el Usuario *admin*", "Caja Iniciada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                BoxPermission = "Vacio";
-                            }
-                            else if (UserLoginNow == Usuario)
-                            {
-                                BoxPermission = "Correcto";
-                            }
-                        }
-                        else
-                        {
-                            BoxPermission = "Correcto";
-                        }
-                        if (BoxPermission == "Correcto")
-                        {
-                            Apertura = "Aperturado";
-                            timer2.Start();
-                        }
-                    }
-                    else
-                    {
-                        timer2.Start();
-                    }
-                }
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error : "+ ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private int ListOpenCloseDetailBox()
-        {
-            int auxcount = 0;
-            try
-            {
-                lstOpenCloseDetail = new BusOpenCloseBox().showMovBoxBySerial(serialPC);
-                auxcount = lstOpenCloseDetail.Count;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return auxcount;
-        }
-
-        private void AddOpenCloseDetailBox()
-        {
-            try
-            {
-               // int usuarioID = lstLoggedUser.Select(x => x.Id).First();
-                User u = new User();
-                u.Id = idAdmin;
-                Box b = new Box();
-                b.Id = IdCaja;
-                OpenCloseBox open = new OpenCloseBox();
-                open.FechaInicio = DateTime.Today;
-                open.FechaFin = DateTime.Today;
-                open.FechaCierre = DateTime.Today;
-                open.Ingresos = 0;
-                open.Egresos = 0;
-                open.Saldo = 0;
-                open.UsuarioId = u;
-                open.TotalCalculado = 0;
-                open.TotalReal = 0;
-                open.Estado = true;
-                open.Diferencia = 0;
-                open.CadaId = b;
-
-                new BusOpenCloseBox().AddOpenCloseBoxDetail(open);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private int GetSerialBoxByUser()
-        {
-            try
-            {
-                //int idUsuario = lstLoggedUser.Select(x => x.Id).First();
-                countMcsxu = new BusOpenCloseBox().getMovOpenCloseBox(serialPC, idAdmin);
 
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return countMcsxu;
         }
 
         ProgressBar pb = new ProgressBar();
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-
-            timer2.Stop();
-            if (Apertura.Equals("NUEVO"))
-            {
-
-                //frmAperturaCaja aperturaCaja = new frmAperturaCaja();
-                //this.Hide();
-                //aperturaCaja.ShowDialog();
-                //Dispose();
-
-                frmMenuPrincipal principal = new frmMenuPrincipal();
-                this.Hide();
-                principal.ShowDialog();
-                Dispose();
-            }
-            else
-            {
-                frmMenuPrincipal principal = new frmMenuPrincipal();
-                this.Hide();
-                principal.ShowDialog();
-                Dispose();
-            }
-        }
-
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            //this.Hide();
-            frmConfiguracion configuracion = new frmConfiguracion();
-            configuracion.ShowDialog();
-           // Dispose();
-        }
-
-        private void panel10_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel9_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void ContarDatos()
         {
@@ -268,96 +109,45 @@ namespace VentasD1002
             }
         }
 
-        private void DibujarGrafica()
-        {
-            try
-            {
-                ArrayList arrFecha = new ArrayList();
-                ArrayList arrMonto = new ArrayList();
-
-                dt = new DataTable();
-                DatVenta.DatosGrafica(ref dt);
-
-                foreach (DataRow dr in dt.Rows)
-                {
-                    arrFecha.Add(dr["Fecha"]);
-                    arrMonto.Add(dr["Total"]);
-                }
-
-                chart1.Series[0].Points.DataBindXY(arrFecha, arrMonto);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrio un error al obtener los datos : "+ex.Message, "Error en la gráfica", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void Filtrar_Grafica()
-        {
-            try
-            {
-                ArrayList arrFecha = new ArrayList();
-                ArrayList arrMonto = new ArrayList();
-
-                dt = new DataTable();
-                DatVenta.Filtrar_DatosGrafica(ref dt, dtpInicio.Value, dtpFin.Value);
-
-                foreach (DataRow dr in dt.Rows)
-                {
-                    arrFecha.Add(dr["Fecha"]);
-                    arrMonto.Add(dr["Total"]);
-                }
-
-                chart1.Series[0].Points.DataBindXY(arrFecha, arrMonto);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrio un error al obtener los datos : " + ex.Message, "Error en la gráfica", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void dtpInicio_ValueChanged(object sender, EventArgs e)
         {
-            Filtrar_Grafica();
+            dpInicio.MaxDate = dpFin.Value;
+            dpFin.MinDate = dpInicio.Value;
+            ObtenerDatos_Ventas();
         }
 
         private void dtpFin_ValueChanged(object sender, EventArgs e)
         {
-            Filtrar_Grafica();
-        }
-
-        private void chkFiltro_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkFiltro.Checked == true)
-            {
-                pnlFiltro.Visible = true;
-            }
-            else
-            {
-                pnlFiltro.Visible = false;
-                DibujarGrafica();
-            }
+            dpInicio.MaxDate = dpFin.Value;
+            dpFin.MinDate = dpInicio.Value;
+            ObtenerDatos_Ventas();
         }
 
         private void Productos_MasVendidos()
         {
             try
             {
-                ArrayList arrTotal = new ArrayList();
-                ArrayList arrProducto = new ArrayList();
+                int rango = (string.IsNullOrEmpty(txtRango.Text)) ? 10 : Convert.ToInt32(txtRango.Text);
+                var dash = DashBoardDAL.Top10_Productos(dpInicio.Value, dpFin.Value, rango);
 
-                dt = new DataTable();
-                DatDetalleVenta.Productos_MasVendidos(ref dt);
-
-                foreach (DataRow dr in dt.Rows)
+                if (dash.Count > 0)
                 {
-                    arrTotal.Add(dr["Total"]);
-                    arrProducto.Add(dr["Descripcion"]);
-                }
 
-                chartProductosVendidos.Series[0].Points.DataBindXY(arrProducto , arrTotal);
+                    LiveCharts.SeriesCollection piechartData = new LiveCharts.SeriesCollection();
+                    foreach (var item in dash)
+                    {
+                        piechartData.Add(new PieSeries
+                        {
+                            Title = Convert.ToString(item.Fecha),
+                            Values = new LiveCharts.ChartValues<decimal> { item.Total },
+                            DataLabels = true,
+                        });
+                    }
+
+                    chartProductosVendidos.Series.Clear();
+                    chartProductosVendidos.Series = piechartData;
+                    chartProductosVendidos.LegendLocation = LiveCharts.LegendLocation.Left;
+                }
 
             }
             catch (Exception ex)
@@ -370,19 +160,45 @@ namespace VentasD1002
         {
             try
             {
-                ArrayList arrTotal = new ArrayList();
-                ArrayList arrNombres = new ArrayList();
+                int rango = (string.IsNullOrEmpty(txtRango.Text)) ? 10 : Convert.ToInt32(txtRango.Text);
+                var dash = DashBoardDAL.Grafica_CLientesFrecuents(dpInicio.Value, dpFin.Value, rango);
 
-                dt = new DataTable();
-                DatVenta.Grafica_ClienteFrecuente(ref dt);
+                Func<ChartPoint, string> labelPoint = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
 
-                foreach (DataRow dr in dt.Rows)
+                SeriesCollection piechartData = new SeriesCollection();
+
+
+
+                /*  foreach (var item in data.netSalesPeriod)
+                  {
+                      piechartData.Add(new PieSeries
+                      {
+                          Title = Convert.ToDateTime(item.Period).ToShortDateString(),
+                          Values = new ChartValues<double> { item.NetSale },
+                          DataLabels = true,
+                          LabelPoint = labelPoint,
+                      });
+                  }
+
+                  pieChart1.Series.Clear();
+                  pieChart1.Series = piechartData;
+                  pieChart1.LegendLocation = LegendLocation.Left;*/
+
+                //CARTESIAN CHARTS
+                chartClientesFrecuentes.Series.Clear();
+                foreach (DashBoard item in dash)
                 {
-                    arrTotal.Add(dr["Total"]);
-                    arrNombres.Add(dr["Nombre"]);
+                    chartClientesFrecuentes.Series.Add(new ColumnSeries
+                    {
+                        Title = item.Nombre,
+                        Values = new ChartValues<Int32> { item.TotalClientes },
+                        DataLabels = true,
+                        //LabelPoint = point => data.netSalesPeriod.Where(i => Convert.ToDouble(i.NetSale) == point.Y).Select(i => i.NetSale.ToString()).First(),
+                    });
+                    chartClientesFrecuentes.LegendLocation = LegendLocation.Right;
                 }
 
-                chartClientesFrecuentes.Series[0].Points.DataBindXY(arrNombres, arrTotal);
+
 
             }
             catch (Exception ex)
@@ -391,9 +207,53 @@ namespace VentasD1002
             }
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void cboPeriodo_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            Iniciar_Caja_Venta();
+            ObtenerDatos_Ventas();
+        }
+
+        private void rbtnVentas_CheckedChanged(object sender, EventArgs e)
+        {
+            txtRango.Visible = false;
+            chartClientesFrecuentes.Visible = false;
+            chartProductosVendidos.Visible = false;
+            graficaVentas.Visible = true;
+            ObtenerDatos_Ventas();
+        }
+
+        private void rbtnClientesFrecuentes_CheckedChanged(object sender, EventArgs e)
+        {
+            chartProductosVendidos.Visible = false;
+            graficaVentas.Visible = false;
+            chartClientesFrecuentes.Visible = true;
+            chartClientesFrecuentes.Dock = DockStyle.Fill;
+            chartClientesFrecuentes.BringToFront();
+            ClientesFrecuentes();
+            txtRango.Visible = true;
+        }
+
+        private void rbtnProductosTop10_CheckedChanged(object sender, EventArgs e)
+        {
+            chartClientesFrecuentes.Visible = false;
+            graficaVentas.Visible = false;
+            chartProductosVendidos.Visible = true;
+            chartProductosVendidos.Dock = DockStyle.Fill;
+            chartProductosVendidos.BringToFront();
+            Productos_MasVendidos();
+            txtRango.Visible = true;
+        }
+
+        private void txtRango_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Comun.TextBoxNumerico(sender, e);
+        }
+
+        private void txtRango_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Productos_MasVendidos();
+            }
         }
     }
 }

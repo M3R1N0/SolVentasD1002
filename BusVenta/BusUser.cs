@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BusVenta
 {
-   public class BusUser
+   public  class BusUser
     {
         public List<User> getUsersList(User u)
         {
@@ -31,7 +31,7 @@ namespace BusVenta
                 user.Usuario = dr["Usuario"].ToString();
                 user.Contraseña = dr["Contrasenia"].ToString();
                 user.Correo = dr["Correo"].ToString();
-                user.RolID = Convert.ToInt32(dr["Rol_Id"]);
+                user.IdRol = Convert.ToInt32(dr["Rol_Id"]);
                 user.Estado = Convert.ToBoolean(dr["Estado"].ToString());
                 user.Rol = dr["Rol"].ToString();
 
@@ -58,7 +58,7 @@ namespace BusVenta
                 user.Usuario = dr["Usuario"].ToString();
                 user.Contraseña = dr["Contrasenia"].ToString();
                 user.Correo = dr["Correo"].ToString();
-                user.RolID = Convert.ToInt32(dr["Rol_Id"]);
+                user.IdRol = Convert.ToInt32(dr["Rol_Id"]);
                 user.Estado = Convert.ToBoolean(dr["Estado"].ToString());
 
                 lstUser.Add(user);
@@ -100,8 +100,11 @@ namespace BusVenta
             return user1;
         }
 
-        public User ObtenerUsuario(string serialPC)
+        public static User ObtenerUsuario_Loggeado()
         {
+            var serialPC = Sistema.ObenterSerialPC();
+            serialPC = Seguridad.Encriptar(serialPC);
+
             DataRow dr = new DatCatGenerico().Obtener_InicioSesion(serialPC);
             User u = new User();
             u.Id = Convert.ToInt32(dr["Usuario_Id"]);
@@ -120,7 +123,7 @@ namespace BusVenta
             try
             {
                 string serialPC = Sistema.ObenterSerialPC();
-                User user = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC));
+                User user = BusUser.ObtenerUsuario_Loggeado();
 
                 if (String.Equals(user.Rol,"ADMINISTRADOR", StringComparison.OrdinalIgnoreCase))
                 {

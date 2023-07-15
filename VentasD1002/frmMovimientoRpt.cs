@@ -23,11 +23,11 @@ namespace VentasD1002
         {
             try
             {
-                DataTable dt = new DatVentas.DatKardex().BuscarProducto_Kardex(frmInventarioKardex.IDPRODUCTO, "MOVIMIENTO_KARDEX");
-                movKardex = new rptMovimientoKardex();
-                movKardex.DataSource = dt;
-                reportViewerMovimiento.Report = movKardex;
-                reportViewerMovimiento.RefreshReport();
+                //DataTable dt = new DatVentas.DatKardex().BuscarProducto_Kardex(frmInventarioKardex.IDPRODUCTO, "MOVIMIENTO_KARDEX");
+                //movKardex = new rptMovimientoKardex();
+                //movKardex.DataSource = dt;
+                //reportViewerMovimiento.Report = movKardex;
+                //reportViewerMovimiento.RefreshReport();
 
             }
             catch (Exception ex)

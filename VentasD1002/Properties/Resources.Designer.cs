@@ -113,6 +113,16 @@ namespace VentasD1002.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hide_64 {
+            get {
+                object obj = ResourceManager.GetObject("hide_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap high_priority_64 {
             get {
                 object obj = ResourceManager.GetObject("high_priority_64", resourceCulture);
@@ -143,6 +153,16 @@ namespace VentasD1002.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mostrar {
+            get {
+                object obj = ResourceManager.GetObject("mostrar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap naranja {
             get {
                 object obj = ResourceManager.GetObject("naranja", resourceCulture);
@@ -156,6 +176,26 @@ namespace VentasD1002.Properties {
         internal static System.Drawing.Bitmap negro {
             get {
                 object obj = ResourceManager.GetObject("negro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pagado {
+            get {
+                object obj = ResourceManager.GetObject("pagado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pendiente {
+            get {
+                object obj = ResourceManager.GetObject("Pendiente", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

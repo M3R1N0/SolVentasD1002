@@ -254,7 +254,7 @@ namespace VentasD1002
                 open.Diferencia = 0;
                 open.CadaId = b;
 
-                new BusOpenCloseBox().AddOpenCloseBoxDetail(open);
+                BusOpenCloseBox.AddOpenCloseBoxDetail(open);
             }
             catch (Exception ex)
             {
@@ -341,7 +341,7 @@ namespace VentasD1002
             {
                 ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
                 serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
-                IdCaja = new BusBox().showBoxBySerial(serialPC).Id;
+                IdCaja =  BusBox.showBoxBySerial().Id;
             }
             catch (Exception ex)
             {

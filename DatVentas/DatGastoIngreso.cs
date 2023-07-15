@@ -33,8 +33,9 @@ namespace DatVentas
                     sc.Parameters.AddWithValue("@Nro_Documento", ig.NoComprobante);
                     sc.Parameters.AddWithValue("@Tipo_Comprobante", ig.TipoComprobante);
                     sc.Parameters.AddWithValue("@Importe", ig.Importe);
-                    sc.Parameters.AddWithValue("@Descripcion", ig.Descripcion);       
-                    
+                    sc.Parameters.AddWithValue("@Descripcion", ig.Descripcion);
+                    sc.Parameters.AddWithValue("@idUsuario", ig.IdUsuario);
+
 
                     resultado = sc.ExecuteNonQuery();
                     conn.Close();

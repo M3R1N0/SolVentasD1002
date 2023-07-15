@@ -49,12 +49,12 @@ namespace DatVentas
                     sc.Parameters.AddWithValue("@ingresos", o.Ingresos);
                     sc.Parameters.AddWithValue("@egresos", o.Egresos);
                     sc.Parameters.AddWithValue("@saldo", o.Saldo);
-                    sc.Parameters.AddWithValue("@idUsuario", o.UsuarioId.Id);
+                    sc.Parameters.AddWithValue("@idUsuario", o.IdUsuario);
                     sc.Parameters.AddWithValue("@totalCalculado", o.TotalCalculado);
                     sc.Parameters.AddWithValue("@totalReal", o.TotalReal);
                     sc.Parameters.AddWithValue("@estado", o.Estado);
                     sc.Parameters.AddWithValue("@diferencia", o.Diferencia);
-                    sc.Parameters.AddWithValue("@idCaja", o.CadaId.Id);
+                    sc.Parameters.AddWithValue("@idCaja", o.IdCaja);
 
                     resultado = sc.ExecuteNonQuery();
                     conn.Close();
@@ -107,7 +107,7 @@ namespace DatVentas
             }
         }
 
-        public void CerrarCaja(int cajaID, DateTime cierre, DateTime fin, decimal totalCalculado, decimal totalReal, decimal diferencia)
+        public void CerrarCaja(int cajaID, decimal totalCalculado, decimal totalReal, decimal diferencia, int idUsuario)
         {
             using (SqlConnection connection = new SqlConnection(MasterConnection.connection))
             {
@@ -119,14 +119,14 @@ namespace DatVentas
                     sc.Parameters.AddWithValue("@totalcalculado", totalCalculado);
                     sc.Parameters.AddWithValue("@totalreal", totalReal);
                     sc.Parameters.AddWithValue("@diferencia", diferencia);
+                    sc.Parameters.AddWithValue("@idUsuario", idUsuario);
                     sc.ExecuteNonQuery();
                     connection.Close();
                 }
                 catch (Exception ex)
                 {
                     connection.Close();
-                    throw ex;
-                }
+                    throw ex;                }
 
             }
         }

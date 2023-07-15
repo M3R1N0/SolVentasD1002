@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusVenta
 {
-    public class Convertir_NumeroLetra
+    public static class Convertir_NumeroLetra
     {
         public static string Conversion_Total_a_Letra(double value)
         {

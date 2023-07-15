@@ -1,4 +1,5 @@
-﻿using DatVentas;
+﻿using BusVenta.Helpers;
+using DatVentas;
 using EntVenta;
 using System;
 using System.Collections.Generic;
@@ -17,13 +18,16 @@ namespace BusVenta
             return resultado;
         }
 
-        public void AddOpenCloseBoxDetail(OpenCloseBox o)
+        public static OperationResponse AddOpenCloseBoxDetail(OpenCloseBox o)
         {
             int filasAfectadas = new DatOpenCloseBox().insertOpenBoxDetail(o);
+
             if (filasAfectadas != 1)
             {
-                throw new ApplicationException("Ocurrio un error al insertar los datos");
+               return OperationResponse.Failure("Ocurrio un error al insertar los datos");
             }
+
+            return OperationResponse.Success("Operación realizada");
         }
 
         public List<OpenCloseBox> showMovBoxBySerial(string serial)
@@ -54,9 +58,9 @@ namespace BusVenta
             new DatOpenCloseBox().InsertarEfectivoInicial(saldo, cajaId);
         }
 
-        public void CerrarCaja(int idCaja, DateTime cierre, DateTime fin, decimal totalCaculado, decimal totalReal, decimal diferencia)
+        public void CerrarCaja(int idCaja, decimal totalCaculado, decimal totalReal, decimal diferencia, int idUsuario)
         {
-            new DatOpenCloseBox().CerrarCaja(idCaja, cierre, fin, totalCaculado, totalReal, diferencia);
+            new DatOpenCloseBox().CerrarCaja(idCaja, totalCaculado, totalReal, diferencia, idUsuario);
         }
 
          

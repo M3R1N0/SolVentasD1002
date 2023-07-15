@@ -1,4 +1,5 @@
 ﻿using BusVenta;
+using BusVenta.Helpers;
 using DatVentas;
 using System;
 using System.Collections.Generic;
@@ -21,9 +22,8 @@ namespace VentasD1002
 
         private void frmBitacoraCliente_Load(object sender, EventArgs e)
         {
-            pbEstatus2.Visible = false;
-            pbEstatusOK.Visible = false;
             textBox1.Focus();
+            pbEstatus.Image = null;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace VentasD1002
                 gdvLista.Columns[1].Visible = false;
                 gdvLista.Columns[3].Visible = false;
                 gdvLista.Columns[5].Visible = false;
-                DataTablePersonalizado.Multilinea(ref gdvLista);
+                Comun.StyleDatatable(ref gdvLista);
             }
             else
             {
@@ -56,9 +56,9 @@ namespace VentasD1002
 
                 txtCliente.Text = dt.Rows[0].Field<String>(3);
                 txtComunidad.Text = dt.Rows[0].Field<String>(4);
-                txtFolio.Text = dt.Rows[0].Field<String>(8);
+                txtFolio.Texts = dt.Rows[0].Field<String>(8);
                 txtComprobante.Text = dt.Rows[0].Field<String>(7);
-                txtFecha.Text = dt.Rows[0].Field<DateTime>(6).ToString();
+                txtFecha.Texts = dt.Rows[0].Field<DateTime>(6).ToString();
                 txtMonto.Text = dt.Rows[0].Field<Decimal>(9).ToString();
                 txtEstatus.Text = dt.Rows[0].Field<String>(10);
                 txtSaldo.Text = dt.Rows[0].Field<Decimal>(11).ToString();
@@ -67,17 +67,9 @@ namespace VentasD1002
                 decimal montoInicial = Convert.ToDecimal(txtMonto.Text) - (suma +Convert.ToDecimal(txtSaldo.Text));
                 txtAbonoInicial.Text = suma == Convert.ToDecimal(txtMonto.Text) ? "0" : montoInicial.ToString();
 
-
-                if (txtEstatus.Text.Equals("PAGADO"))
-                {
-                    pbEstatus2.Visible = false;
-                    pbEstatusOK.Visible = true;
-                }
-                else
-                {
-                    pbEstatusOK.Visible = false;
-                    pbEstatus2.Visible = true;
-                }
+                pbEstatus.Image = (txtEstatus.Text.Equals("PAGADO"))
+                                ? Properties.Resources.pagado
+                                : Properties.Resources.Pendiente;
 
                 gdvDetalle.DataSource = dt;
                 gdvDetalle.Columns[3].Visible = false;
@@ -90,7 +82,11 @@ namespace VentasD1002
                 gdvDetalle.Columns[10].Visible = false;
                 gdvDetalle.Columns[11].Visible = false;
 
-                DataTablePersonalizado.Multilinea(ref gdvDetalle);
+                txtTotalAbonado.Text = gdvDetalle.Rows.Cast<DataGridViewRow>()
+                                          .Sum(g => Convert.ToDecimal(g.Cells["Monto Abonado"].Value))
+                                          .ToString();
+
+                Comun.StyleDatatable(ref gdvDetalle);
             }
         }
     }

@@ -36,11 +36,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbA4 = new System.Windows.Forms.RadioButton();
             this.rbTicket = new System.Windows.Forms.RadioButton();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.btnGuardar = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnGuardar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBox2
@@ -78,9 +76,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(575, 39);
+            this.label1.Size = new System.Drawing.Size(553, 39);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Configure su impresora para la impresión de tickets y hojas A4";
+            this.label1.Text = "Seleccione las imrpesoras";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox1
@@ -101,19 +99,19 @@
             // 
             this.rbA4.AutoSize = true;
             this.rbA4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbA4.Location = new System.Drawing.Point(313, 107);
+            this.rbA4.Location = new System.Drawing.Point(240, 116);
             this.rbA4.Name = "rbA4";
-            this.rbA4.Size = new System.Drawing.Size(152, 24);
+            this.rbA4.Size = new System.Drawing.Size(225, 24);
             this.rbA4.TabIndex = 11;
             this.rbA4.TabStop = true;
-            this.rbA4.Text = "Impresiones A4";
+            this.rbA4.Text = "Impresiones Hoja blanca";
             this.rbA4.UseVisualStyleBackColor = true;
             // 
             // rbTicket
             // 
             this.rbTicket.AutoSize = true;
             this.rbTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbTicket.Location = new System.Drawing.Point(188, 107);
+            this.rbTicket.Location = new System.Drawing.Point(120, 116);
             this.rbTicket.Name = "rbTicket";
             this.rbTicket.Size = new System.Drawing.Size(75, 24);
             this.rbTicket.TabIndex = 10;
@@ -121,39 +119,39 @@
             this.rbTicket.Text = "Ticket";
             this.rbTicket.UseVisualStyleBackColor = true;
             // 
-            // menuStrip2
-            // 
-            this.menuStrip2.BackColor = System.Drawing.Color.Transparent;
-            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnGuardar});
-            this.menuStrip2.Location = new System.Drawing.Point(381, 209);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(140, 40);
-            this.menuStrip2.TabIndex = 14;
-            this.menuStrip2.Text = "menuStrip2";
-            // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.Transparent;
-            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.btnGuardar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnGuardar.BackgroundImage = global::VentasD1002.Properties.Resources.verde;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.btnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
-            this.btnGuardar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(407, 212);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(132, 36);
+            this.btnGuardar.Size = new System.Drawing.Size(116, 42);
+            this.btnGuardar.TabIndex = 90;
             this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click_1);
             // 
             // frmConfiguracionImpresoras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 269);
-            this.Controls.Add(this.menuStrip2);
+            this.ClientSize = new System.Drawing.Size(553, 269);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmConfiguracionImpresoras";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuración  de Impresoras";
@@ -161,10 +159,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.menuStrip2.ResumeLayout(false);
-            this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -177,7 +172,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbA4;
         private System.Windows.Forms.RadioButton rbTicket;
-        private System.Windows.Forms.MenuStrip menuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem btnGuardar;
+        private System.Windows.Forms.Button btnGuardar;
     }
 }

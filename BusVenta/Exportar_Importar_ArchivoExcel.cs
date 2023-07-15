@@ -170,7 +170,7 @@ namespace BusVenta
                 string saveFilter = "CSV(*.xlsx) || *.xlsx";
                 saveFile.FileName = fileName + ".xlsx";
                 bool fileError = false;
-                int row = 2;
+                int row = 3;
 
                 if (saveFile.ShowDialog() == DialogResult.OK)
                 {
@@ -191,36 +191,53 @@ namespace BusVenta
                     {
                         try
                         {
-                            List<Producto> lst = DatProducto.ObtenerProductos();
+                            var lst = ProductoDAL.FiltrarProductos(string.Empty);
 
                             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                             using (ExcelPackage excel = new ExcelPackage())
                             {
                                 var workSheet = excel.Workbook.Worksheets.Add("Productos");
 
-                                workSheet.Cells["A1"].Value = "DESCRIPCION";
-                                workSheet.Cells["B1"].Value = "PRESENTACION";
-                                workSheet.Cells["C1"].Value = "PRECIO MAYOREO";
-                                workSheet.Cells["D1"].Value = "PRECIO MEDIO MAYOREO";
-                                workSheet.Cells["E1"].Value = "A PARTIR DE";
-                                workSheet.Cells["F1"].Value = "PRECIO MAYOREO";
 
-                                workSheet.Cells["A1:F1"].Style.Font.Bold = true;
-                                workSheet.Column(1).Width = 50;
-                                workSheet.Cells["B1:F1"].AutoFitColumns();
-                                workSheet.Cells["A1:F1"].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                                workSheet.Cells["A1:F1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(24, 169, 190));
+                                workSheet.Cells["C1:F1"].Merge = true;
+                                workSheet.Cells["G1:J1"].Merge = true;
+                                workSheet.Cells["C1"].Value = "DATOS PRODUCTOS MAYOREO";
+                                workSheet.Cells["G1"].Value = "DATOS PRODUCTOS MENUDEO";
 
-                                foreach (Producto p in lst)
+                                workSheet.Cells["A2"].Value = "CODIGO";
+                                workSheet.Cells["B2"].Value = "DESCRIPCION";
+                                workSheet.Cells["C2"].Value = "PRESENTACION";
+                                workSheet.Cells["D2"].Value = "PRECIO";
+                                workSheet.Cells["E2"].Value = "PRECIO MAYOREO";
+                                workSheet.Cells["F2"].Value = "A PARTIR DE";
+
+                                workSheet.Cells["G2"].Value = "PRESENTACION U.";
+                                workSheet.Cells["H2"].Value = "PRECIO U.";
+                                workSheet.Cells["I2"].Value = "PRECIO MAYOREO U.";
+                                workSheet.Cells["J2"].Value = "A PARTIR DE U.";
+
+                                workSheet.Cells["A2:J2"].Style.Font.Bold = true;
+                                workSheet.Column(2).Width = 50;
+                                workSheet.Cells["C2:J2"].AutoFitColumns();
+                                workSheet.Cells["A2:J2"].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                                workSheet.Cells["A2:J2"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(24, 169, 190));
+
+                                foreach (ProductoVM p in lst)
                                 {
                                     workSheet.Cells["C" + row + ":F" + row].Style.Numberformat.Format = "#,##0.00";
+                                    workSheet.Cells["H" + row + ":J" + row].Style.Numberformat.Format = "#,##0.00";
 
-                                    workSheet.Cells["A" + row].Value = p.Descripcion;
-                                    workSheet.Cells["B" + row].Value = p.Presentacion;
-                                    workSheet.Cells["C" + row].Value = p.precioMenudeo;
-                                    workSheet.Cells["D" + row].Value = p.precioMMayoreo;
-                                    workSheet.Cells["E" + row].Value = p.APartirDe;
-                                    workSheet.Cells["F" + row].Value = p.precioMayoreo;
+                                    workSheet.Cells["A" + row].Value = p.codigo;
+                                    workSheet.Cells["B" + row].Value = p.Articulo;
+                                    workSheet.Cells["C" + row].Value = DatCatGenerico.ObtenerPresentacion(p.idPresentacion).Nombre;
+                                    workSheet.Cells["D" + row].Value = p.Precio;
+                                    workSheet.Cells["E" + row].Value = p.PrecioMayoreo;
+                                    workSheet.Cells["F" + row].Value = p.A_Partir_De;
+
+                                    workSheet.Cells["G" + row].Value = DatCatGenerico.ObtenerPresentacion(p.IdPresentacionU).Nombre;
+                                    workSheet.Cells["H" + row].Value = p.PrecioU;
+                                    workSheet.Cells["I" + row].Value = p.PrecioMayoreoU;
+                                    workSheet.Cells["J" + row].Value = p.A_Partir_DeU;
 
                                     row ++;
                                 }
@@ -283,7 +300,6 @@ namespace BusVenta
                         try
                         {
                             DataTable dt = DatVenta.ListarReporteVentas_PorCliente(idCliente);
-
                             var dtDatos = from dr in dt.AsEnumerable()
                                           select new
                                           {
@@ -297,16 +313,27 @@ namespace BusVenta
                             {
                                 var workSheet = excel.Workbook.Worksheets.Add("Historial clientes");
 
-                                workSheet.Cells["A1"].Value = "ABARROTES \" J I E L \"";
+                                try
+                                {
+                                    var logo = DatEmpresa.ObtenerLogoEmpresa();
+                                    var excelImg = workSheet.Drawings.AddPicture("My Logo", logo);
+                                    excelImg.SetSize(25);
+                                    excelImg.SetPosition(0, 0, 0, 0);
+                                }
+                                catch (Exception)
+                                {
+                                }
+
+                                workSheet.Cells["A1"].Value = new BusEmpresa().ObtenerEmpresa().Nombre;
                                 workSheet.Cells["A1:F1"].Style.Font.Color.SetColor(Color.FromArgb(12, 45, 236));
                                 workSheet.Cells["A1:F1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
                                 workSheet.Cells["A1:F1"].Style.Font.Bold = true;
                                 workSheet.Cells["A1:F1"].Style.Font.Size = 20;
                                 workSheet.Cells["A1:F1"].Merge = true;
                                 
-                                workSheet.Cells["A3"].Value = "CLAVE : ";
-                                workSheet.Cells["A4"].Value = "CLIENTE : ";
-                                workSheet.Cells["A5"].Value = "COMUNIDAD : ";
+                                workSheet.Cells["B3"].Value = "CLAVE : ";
+                                workSheet.Cells["B4"].Value = "CLIENTE : ";
+                                workSheet.Cells["B5"].Value = "COMUNIDAD : ";
                                 workSheet.Cells["E4"].Value = "N° VENTAS REALIZADAS : ";
                                 workSheet.Cells["E5"].Value = "TOTAL COMPRADO : ";
 
@@ -314,9 +341,9 @@ namespace BusVenta
                                 workSheet.Cells["F5"].Value = dt.AsEnumerable().Select(X => X.Field<decimal>("Monto_Total")).Sum();
                                 workSheet.Cells["F5"].Style.Numberformat.Format = "$#,###.00";
 
-                                workSheet.Cells["B3"].Value = dtDatos.Select(x => x.Clave).FirstOrDefault(); 
-                                workSheet.Cells["B4"].Value = dtDatos.Select(x => x.Nombre).FirstOrDefault();
-                                workSheet.Cells["B5"].Value = dtDatos.Select(x => x.Comunidad).FirstOrDefault();
+                                workSheet.Cells["C3"].Value = dtDatos.Select(x => x.Clave).FirstOrDefault(); 
+                                workSheet.Cells["C4"].Value = dtDatos.Select(x => x.Nombre).FirstOrDefault();
+                                workSheet.Cells["C5"].Value = dtDatos.Select(x => x.Comunidad).FirstOrDefault();
 
                                 workSheet.Cells["A3:A5"].Style.Font.Bold = true;
                                 workSheet.Cells["A3:A5"].Style.Font.Size = 12;
@@ -329,7 +356,7 @@ namespace BusVenta
                                 workSheet.Cells["F3:F5"].Style.Font.Size = 12;
 
                                 workSheet.Cells["A7"].Value = "FECHA VENTA";
-                                workSheet.Cells["B7"].Value = "FOLIO";
+                                workSheet.Cells["B7"].Value = "FOLIO VENTA";
                                 workSheet.Cells["C7"].Value = "FORMA DE PAGO";
                                 workSheet.Cells["D7"].Value = "ESTADO DE PAGO";
                                 workSheet.Cells["E7"].Value = "ACCION";
@@ -353,7 +380,7 @@ namespace BusVenta
                                     workSheet.Cells["D" + row].Value = (dr["Estado_Pago"]);
                                     workSheet.Cells["E" + row].Value = (dr["Accion"]);
                                     workSheet.Cells["F" + row].Value = (dr["Monto_Total"]);
-                                    workSheet.Cells["F" + row].Style.Numberformat.Format = "$#,###.00";
+                                    workSheet.Cells["F" + row].Style.Numberformat.Format = "$#,##0.00";
                                     row++;
                                 }
 
@@ -384,7 +411,7 @@ namespace BusVenta
             return respuesta;
         }
 
-        public static void ExportarExcel_Actualizacion()
+        public static void ExportarExcel_Actualizacion(DateTime fechaInicio, DateTime fechaFin)
         {
             try
             {
@@ -415,65 +442,62 @@ namespace BusVenta
                     {
                         try
                         {
-                            List<string> lst = new DatProducto().listadoActualizacion();
-                            List<Producto> lstProducto = new List<Producto>();
-
-                            foreach (var obj in lst)
-                            {
-                                Producto p = new BusProducto().ObtenerProducto_A_Actualizar2(obj);
-                                lstProducto.Add(p);
-                            }
+                           var lstProducto = ProductoDAL.Consultar_ProductosActualizados(fechaInicio, fechaFin);
 
                             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                             using (ExcelPackage excel = new ExcelPackage())
                             {
                                 var workSheet = excel.Workbook.Worksheets.Add("Productos");
 
-                                workSheet.Cells["A1"].Value = "Id";
-                                workSheet.Cells["B1"].Value = "IdCategoria";
-                                workSheet.Cells["C1"].Value = "IdTipoPresentacion";
-                                workSheet.Cells["D1"].Value = "codigo";
-                                workSheet.Cells["E1"].Value = "Descripcion";
-                                workSheet.Cells["F1"].Value = "Presentacion";
-                                workSheet.Cells["G1"].Value = "seVendeA";
-                                workSheet.Cells["H1"].Value = "precioMenudeo";
-                                workSheet.Cells["I1"].Value = "precioMMayoreo";
-                                workSheet.Cells["J1"].Value = "APartirDe";
-                                workSheet.Cells["K1"].Value = "precioMayoreo";
-                                workSheet.Cells["L1"].Value = "usaInventario";
-                                workSheet.Cells["M1"].Value = "stock";
-                                workSheet.Cells["N1"].Value = "stockMinimo";
-                                workSheet.Cells["O1"].Value = "Caducidad";
-                                workSheet.Cells["P1"].Value = "Estado";
-                                workSheet.Cells["Q1"].Value = "TotalUnidades";
-                                workSheet.Cells["R1"].Value = "PresentacionMenudeo";
+                                workSheet.Cells["A1"].Value = "CLAVE";
+                                workSheet.Cells["B1"].Value = "PROVEEDOR";
+                                workSheet.Cells["C1"].Value = "MARCA";
+                                workSheet.Cells["D1"].Value = "CATEGORIA";
+                                workSheet.Cells["E1"].Value = "PRESENTACION";
+                                workSheet.Cells["F1"].Value = "CODIGO";
+                                workSheet.Cells["G1"].Value = "ARTICULO";
+                                workSheet.Cells["H1"].Value = "DETALLE";
+                                workSheet.Cells["I1"].Value = "PRECIO COMPRA";
+                                workSheet.Cells["J1"].Value = "PRECIO VENTA";
+                                workSheet.Cells["K1"].Value = "VENTA MAYOREO";
+                                workSheet.Cells["L1"].Value = "A PARTIR DE";
+                                workSheet.Cells["M1"].Value = "TIPO VENTA";
+                                workSheet.Cells["N1"].Value = "USA INVENTARIO";
+                                workSheet.Cells["O1"].Value = "STOCK MINIMO";
+                                workSheet.Cells["P1"].Value = "CADUCIDAD";
+                                workSheet.Cells["Q1"].Value = "UNIDADES POR PRESENTACION";
+                                workSheet.Cells["R1"].Value = "TIPO";
+                                workSheet.Cells["S1"].Value = "CLAVE PRODUCTO";
+                                workSheet.Cells["T1"].Value = "PESO";
 
-                                workSheet.Cells["A1:R1"].Style.Font.Bold = true;
+                                workSheet.Cells["A1:T1"].Style.Font.Bold = true;
                                // workSheet.Column(5).Width = 50;
-                                workSheet.Cells["A1:R1"].AutoFitColumns();
-                                workSheet.Cells["A1:R1"].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                                workSheet.Cells["A1:R1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(24, 169, 190));
+                                workSheet.Cells["A1:T1"].AutoFitColumns();
+                                workSheet.Cells["A1:T1"].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                                workSheet.Cells["A1:T1"].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(24, 169, 190));
 
-                                foreach (Producto p in lstProducto)
+                                foreach (var item in lstProducto)
                                 {
-                                    workSheet.Cells["A" + row].Value = p.Id ;
-                                    workSheet.Cells["B" + row].Value = p.IdCategoria ;
-                                    workSheet.Cells["C" + row].Value = p.IdTipoPresentacion ;
-                                    workSheet.Cells["D" + row].Value = p.codigo;
-                                    workSheet.Cells["E" + row].Value = p.Descripcion;
-                                    workSheet.Cells["F" + row].Value = p.Presentacion;
-                                    workSheet.Cells["G" + row].Value = p.seVendeA;
-                                    workSheet.Cells["H" + row].Value = p.precioMenudeo;
-                                    workSheet.Cells["I" + row].Value = p.precioMMayoreo;
-                                    workSheet.Cells["J" + row].Value = p.APartirDe;
-                                    workSheet.Cells["K" + row].Value = p.precioMayoreo;
-                                    workSheet.Cells["L" + row].Value = p.usaInventario;
-                                    workSheet.Cells["M" + row].Value = p.stock;
-                                    workSheet.Cells["N" + row].Value = p.stockMinimo;
-                                    workSheet.Cells["O" + row].Value = p.Caducidad;
-                                    workSheet.Cells["P" + row].Value = p.Estado;
-                                    workSheet.Cells["Q" + row].Value = p.TotalUnidades;
-                                    workSheet.Cells["R" + row].Value = p.PresentacionMenudeo;
+                                    workSheet.Cells["A" + row].Value = item.Id ;
+                                    workSheet.Cells["B" + row].Value = item.Proveedor;
+                                    workSheet.Cells["C" + row].Value = item.Marca ;
+                                    workSheet.Cells["D" + row].Value = item.Categoria;
+                                    workSheet.Cells["E" + row].Value = item.Presentacion;
+                                    workSheet.Cells["F" + row].Value = item.codigo;
+                                    workSheet.Cells["G" + row].Value = item.Articulo;
+                                    workSheet.Cells["H" + row].Value = item.Detalle;
+                                    workSheet.Cells["I" + row].Value = string.Format("{0:N2}", item.PrecioCompra);
+                                    workSheet.Cells["J" + row].Value = string.Format("{0:N2}", item.Precio);
+                                    workSheet.Cells["K" + row].Value = string.Format("{0:N2}", item.PrecioMayoreo);
+                                    workSheet.Cells["L" + row].Value = string.Format("{0:N2}", item.A_Partir_De);
+                                    workSheet.Cells["M" + row].Value = item.TipoVenta;
+                                    workSheet.Cells["N" + row].Value = item.UsaInventario;
+                                    workSheet.Cells["O" + row].Value = string.Format("{0:N2}", item.StockMinimo);
+                                    workSheet.Cells["P" + row].Value = item.Caducidad.ToShortDateString();
+                                    workSheet.Cells["Q" + row].Value = string.Format("{0:N2}", item.UnidadesPorPresentacion);
+                                    workSheet.Cells["R" + row].Value = item.Venta;
+                                    workSheet.Cells["S" + row].Value = item.Clave;
+                                    workSheet.Cells["T" + row].Value = string.Format("{0:N2}", item.Peso);
 
                                     row++;
                                 }
@@ -502,41 +526,96 @@ namespace BusVenta
             }
         }
 
-        public static List<Producto> ReadExcel(string pathFile)
+        public static OperationResponse ReadExcel(string pathFile)
         {
             try
             {
-                var _excel = new ExcelQueryFactory(pathFile);
+                var lista = new List<ProductoVM>();
+                int iRow=2;
+                string strRange = "";
+                string [] arrColumns =  { "A", "B", "C", "D", "E", "F","G","H","I","J","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
+                                         ,"AA","AB","AC","AD","AE","AF","AG","AH","AI","AJ","AL","AM","AN","AO","AP","AQ","AR","AS","AT","AU","AV","AW","AX","AY","AZ"
+                                         ,"BA","BB","BC","BD","BE","BF","BG","BH","BI","BJ","BL","BM","BN","BO","BP","BQ","BR","BS","BT","BU","BV","BW","BX","BY","BZ"
+                                         ,"CA","CB","CC","CD","CE","CF","CG","CH","CI","CJ","CL","CM","CN","CO","CP","CQ","CR","CS","CT","CU","CV","CW","CX","CY","CZ" } ;
 
-                List<Producto> _data = (from r in _excel.Worksheet("Productos")
-                              
-                let item = new Producto
+                #region Lectura anterior
+                /*var _excel = new ExcelQueryFactory(pathFile);
+
+                        List<Producto> _data = (from r in _excel.Worksheet("Productos")
+
+                        let item = new Producto
+                        {
+                            Id = r["Id"].Cast<int>(),
+                            IdCategoria = r["IdCategoria"].Cast<int>(),
+                            IdTipoPresentacion = r["IdTipoPresentacion"].Cast<int>(),
+                            codigo = r["codigo"].Cast<string>(),
+                            Descripcion = r["Descripcion"].Cast<string>(),
+                            Presentacion = r["Presentacion"].Cast<string>(),
+                            seVendeA = r["seVendeA"].Cast<string>(),
+                            precioMenudeo = r["precioMenudeo"].Cast<decimal>(),
+                            precioMMayoreo = r["precioMMayoreo"].Cast<decimal>(),
+                            APartirDe = r["APartirDe"].Cast<decimal>(),
+                            precioMayoreo = r["precioMayoreo"].Cast<decimal>(),
+                            usaInventario = r["usaInventario"].Cast<string>(),
+                            stock = r["stock"].Cast<string>(),
+                            stockMinimo = r["stockMinimo"].Cast<decimal>(),
+                            Caducidad = r["Caducidad"].Cast<string>(),
+                            Estado = r["Estado"].Cast<bool>(),
+                            TotalUnidades = r["TotalUnidades"].Cast<decimal>(),
+                            PresentacionMenudeo = r["PresentacionMenudeo"].Cast<string>(),
+                        } select item).ToList();
+
+                        return _data;*/
+                #endregion
+
+                FileInfo file = new FileInfo(pathFile);
+
+                ExcelPackage.LicenseContext = LicenseContext.Commercial;
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+                using (ExcelPackage excel = new ExcelPackage(file))
                 {
-                    Id = r["Id"].Cast<int>(),
-                    IdCategoria = r["IdCategoria"].Cast<int>(),
-                    IdTipoPresentacion = r["IdTipoPresentacion"].Cast<int>(),
-                    codigo = r["codigo"].Cast<string>(),
-                    Descripcion = r["Descripcion"].Cast<string>(),
-                    Presentacion = r["Presentacion"].Cast<string>(),
-                    seVendeA = r["seVendeA"].Cast<string>(),
-                    precioMenudeo = r["precioMenudeo"].Cast<decimal>(),
-                    precioMMayoreo = r["precioMMayoreo"].Cast<decimal>(),
-                    APartirDe = r["APartirDe"].Cast<decimal>(),
-                    precioMayoreo = r["precioMayoreo"].Cast<decimal>(),
-                    usaInventario = r["usaInventario"].Cast<string>(),
-                    stock = r["stock"].Cast<string>(),
-                    stockMinimo = r["stockMinimo"].Cast<decimal>(),
-                    Caducidad = r["Caducidad"].Cast<string>(),
-                    Estado = r["Estado"].Cast<bool>(),
-                    TotalUnidades = r["TotalUnidades"].Cast<decimal>(),
-                    PresentacionMenudeo = r["PresentacionMenudeo"].Cast<string>(),
-                } select item).ToList();
+                    ExcelWorksheet worksheet;
+                    worksheet = excel.Workbook.Worksheets[0];
+                    strRange = "A" + iRow.ToString();
 
-                return _data;
+                    var columnCount = worksheet.Dimension.End.Column;
+                    var rowCount = worksheet.Dimension.End.Row;
+
+                    for (int row = 2; row <= rowCount; row++)
+                    {
+                        ProductoVM item = new ProductoVM();
+                        item.Id =Convert.ToInt32( worksheet.Cells[$"A{row}"].Value);
+                        item.Proveedor = worksheet.Cells[$"B{row}"].Value?.ToString().Trim();
+                        item.Marca = worksheet.Cells[$"C{row}"].Value?.ToString().Trim();
+                        item.Categoria = worksheet.Cells[$"D{row}"].Value?.ToString().Trim();
+                        item.Presentacion = worksheet.Cells[$"E{row}"].Value?.ToString().Trim();
+                        item.codigo = worksheet.Cells[$"F{row}"].Value?.ToString().Trim();
+                        item.Articulo = worksheet.Cells[$"G{row}"].Value?.ToString().Trim();
+                        item.Detalle = worksheet.Cells[$"H{row}"].Value?.ToString().Trim();
+                        item.PrecioCompra = Convert.ToDecimal(worksheet.Cells[$"I{row}"].Value);
+                        item.Precio = Convert.ToDecimal(worksheet.Cells[$"J{row}"].Value);
+                        item.PrecioMayoreo = Convert.ToDecimal(worksheet.Cells[$"K{row}"].Value);
+                        item.A_Partir_De = Convert.ToDecimal(worksheet.Cells[$"L{row}"].Value);
+                        item.TipoVenta = worksheet.Cells[$"M{row}"].Value?.ToString().Trim();
+                        item.UsaInventario =Convert.ToBoolean( worksheet.Cells[$"N{row}"].Value);
+                        item.StockMinimo = Convert.ToDecimal(worksheet.Cells[$"O{row}"].Value);
+                        item.Caducidad = Convert.ToDateTime(worksheet.Cells[$"P{row}"].Value);
+                        item.UnidadesPorPresentacion = Convert.ToDecimal(worksheet.Cells[$"Q{row}"].Value);
+                        item.Venta = worksheet.Cells[$"R{row}"].Value?.ToString().Trim();
+                        item.Clave = worksheet.Cells[$"S{row}"].Value?.ToString().Trim();
+                        item.Peso = Convert.ToDecimal( worksheet.Cells[$"T{row}"].Value);
+
+                        lista.Add(item);
+                    }
+
+                }
+
+                return OperationResponse.Success("Proceso completado", lista);
             }
             catch (Exception ex)
             {
-                throw ex;
+                return OperationResponse.Failure(ex.Message);
             }
         }
 

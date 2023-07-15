@@ -24,6 +24,7 @@ namespace VentasD1002
 
         private void frmFormatoComprobante_Load(object sender, EventArgs e)
         {
+
             Mostrar_FormatoTicket();
             ObtenerDatos();
         }

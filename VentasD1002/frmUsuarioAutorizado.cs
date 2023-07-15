@@ -1,4 +1,5 @@
 ﻿using BusVenta;
+using BusVenta.Helpers;
 using EntVenta;
 using System;
 using System.Collections.Generic;
@@ -41,10 +42,10 @@ namespace VentasD1002
         {
             try
             {
-                DataTable dtCatalogoRol = DatVentas.DatCatGenerico.ListarCat_TipoUsuario();
+                var dtCatalogoRol = DatVentas.DatCatGenerico.ListarCat_TipoUsuario();
                 cboRol.DataSource = dtCatalogoRol;
                 cboRol.DisplayMember = "Nombre";
-                cboRol.ValueMember = "Id_Rol";
+                cboRol.ValueMember = "Id";
             }
             catch (Exception ex)
             {
@@ -116,7 +117,7 @@ namespace VentasD1002
                         u.Foto = ms.GetBuffer();
                         u.NombreFoto = lblNombreIcono.Text;
                         u.Correo = txtCorreo.Text;
-                        u.RolID = Convert.ToInt32(cboRol.SelectedValue);
+                        u.IdRol = Convert.ToInt32(cboRol.SelectedValue);
                         u.Estado = true;
                         new BusUser().AddUser(u);
                         AgregarLicencia_Prueba();
@@ -192,23 +193,23 @@ namespace VentasD1002
                 CatalogoGenerico c = new CatalogoGenerico();
                 c.Nombre = "--Seleccione--";
                 c.Descripcion = "N/A";
-                new BusCatGenerico().AgregarCategoriasGenericas(c, 1);
+                BusCatGenerico.AgregarCategoriasGenericas(c, EnumTipoCatalogo.CATEGORIA);
 
                 CatalogoGenerico c1 = new CatalogoGenerico();
                 c1.Nombre = "GENERAL";
                 c1.Descripcion = "N/A";
-                new BusCatGenerico().AgregarCategoriasGenericas(c1, 1);
+                BusCatGenerico.AgregarCategoriasGenericas(c1, EnumTipoCatalogo.CATEGORIA);
 
                 //INSECION DE TIPO PRESENTACIÓN
                 CatalogoGenerico c3 = new CatalogoGenerico();
                 c3.Nombre = "--Seleccione--";
                 c3.Descripcion = "N/A";
-                new BusCatGenerico().AgregarCategoriasGenericas(c3, 2);
+                BusCatGenerico.AgregarCategoriasGenericas(c3, EnumTipoCatalogo.PRESENTACION);
 
                 CatalogoGenerico c4 = new CatalogoGenerico();
                 c4.Nombre = "PIEZA";
                 c4.Descripcion = "PZA";
-                new BusCatGenerico().AgregarCategoriasGenericas(c4, 2);
+                BusCatGenerico.AgregarCategoriasGenericas(c4, EnumTipoCatalogo.PRESENTACION);
             }
             catch (Exception ex)
             {

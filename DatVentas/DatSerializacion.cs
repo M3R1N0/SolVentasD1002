@@ -90,17 +90,21 @@ namespace DatVentas
             }
         }
 
-        public int Editar_NumeroFin(string numeroFin, int id)
+        public static int ActualizarFolio(string numeroFin, int id)
         {
             try
             {
                 using (SqlConnection con = new SqlConnection(MasterConnection.connection))
                 {
                     int filasAfectadas = 0;
-
-                    SqlCommand sc = new SqlCommand($"UPDATE tb_Serializacion SET Numero_Fin='{numeroFin}' WHERE Id_Serializacion={id}", con);
                     con.Open();
-                    filasAfectadas = sc.ExecuteNonQuery();
+                    using (var cmd = new SqlCommand("UPDATE tb_Serializacion SET Numero_Fin=@numeroFin WHERE Id_Serializacion=@id", con))
+                    {
+                        cmd.Parameters.AddWithValue("@numeroFin", numeroFin );
+                        cmd.Parameters.AddWithValue("@id", id);
+                    
+                        filasAfectadas = cmd.ExecuteNonQuery();
+                    }
                     con.Close();
 
                     return filasAfectadas;
@@ -108,7 +112,7 @@ namespace DatVentas
             }
             catch (Exception ex)
             {
-                throw ex;
+                return 0;
             }
         }
 
@@ -184,5 +188,45 @@ namespace DatVentas
                 throw ex;
             }
         }
+
+        public static List<Serializacion> ObtenerTipoDocumento(string destinoDocumento)
+        {
+            List<Serializacion> lst = new List<Serializacion>();
+            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            {
+                try
+                {
+                    conn.Open();
+                    using (var cmd = new SqlCommand("SELECT * FROM tb_Serializacion WHERE Destino=@destino ORDER BY Por_Defecto DESC", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@destino", destinoDocumento);
+                        var reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            Serializacion obj = new Serializacion();
+                            obj.Id = reader.GetInt32(0);
+                            obj.Serie = reader.GetString(1);
+                            obj.Cantidad_Numero = reader.GetString(2);
+                            obj.NumeroFin = reader.GetString(3);
+                            obj.Destino = reader.GetString(4);
+                            obj.Tipo_Documento = reader.GetString(5);
+                            obj.Por_Defecto = reader.GetString(6);
+
+                            lst.Add(obj);
+                        }
+                    }
+                    conn.Close();
+
+                    return lst;
+                }
+                catch (Exception ex)
+                {
+                    return new List<Serializacion>();
+                }
+            }
+        }
+
+        
     }
 }

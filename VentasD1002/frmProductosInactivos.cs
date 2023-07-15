@@ -1,4 +1,5 @@
 ﻿using BusVenta;
+using BusVenta.Helpers;
 using DatVentas;
 using EntVenta;
 using System;
@@ -30,26 +31,9 @@ namespace VentasD1002
             try
             {
                 string buscar = (string.IsNullOrEmpty(txtBuscar.Text)) ? "" : txtBuscar.Text;
-                List<Producto> lstProducto = new BusProducto().ListarProductos_Inactivos(buscar);
+                ProductoDAL.ListarProductos_Inactivos(ref gdvDatos, buscar);
 
-                gdvDatos.DataSource = lstProducto;
-
-                gdvDatos.Columns[1].Visible = false;
-                gdvDatos.Columns[2].Visible = false;
-                gdvDatos.Columns[3].Visible = false;
-                gdvDatos.Columns[4].Visible = false;
-                gdvDatos.Columns[13].Visible = false;
-                gdvDatos.Columns[14].Visible = false;
-                gdvDatos.Columns[15].Visible = false;
-                gdvDatos.Columns[16].Visible = false;
-                gdvDatos.Columns[17].Visible = false;
-                gdvDatos.Columns[18].Visible = false;
-                gdvDatos.Columns[19].Visible = false;
-                gdvDatos.Columns[20].Visible = false;
-                gdvDatos.Columns[21].Visible = false;
-         
-
-                DataTablePersonalizado.Multilinea(ref gdvDatos);
+                Comun.StyleDatatable(ref gdvDatos);
             }
             catch (Exception ex)
             {
@@ -70,7 +54,7 @@ namespace VentasD1002
                 if (Convert.ToBoolean(dr.Cells[0].Value))
                 {
                     int idProducto = Convert.ToInt32(dr.Cells[1].Value);
-                    DatProducto.ActivarProducto(idProducto);
+                    ProductoDAL.ActivarDesactivar_Producto(idProducto, true);
                     contador++;
                 }
             }

@@ -32,14 +32,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtEfectivoInicial = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnIniciar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -74,6 +74,16 @@
             this.panel1.Size = new System.Drawing.Size(420, 34);
             this.panel1.TabIndex = 5;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::VentasD1002.Properties.Resources.screencart_106583;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(29, 28);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
             // label3
             // 
             this.label3.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -97,19 +107,11 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::VentasD1002.Properties.Resources.screencart_106583;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(29, 28);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
             // btnIniciar
             // 
-            this.btnIniciar.BackColor = System.Drawing.Color.Green;
+            this.btnIniciar.BackColor = System.Drawing.Color.Transparent;
+            this.btnIniciar.BackgroundImage = global::VentasD1002.Properties.Resources.azul;
+            this.btnIniciar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIniciar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -117,7 +119,7 @@
             this.btnIniciar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnIniciar.Location = new System.Drawing.Point(256, 144);
             this.btnIniciar.Name = "btnIniciar";
-            this.btnIniciar.Size = new System.Drawing.Size(97, 39);
+            this.btnIniciar.Size = new System.Drawing.Size(107, 39);
             this.btnIniciar.TabIndex = 4;
             this.btnIniciar.Text = "Iniciar";
             this.btnIniciar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -126,7 +128,9 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.Red;
+            this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelar.BackgroundImage = global::VentasD1002.Properties.Resources.rosa;
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -134,7 +138,7 @@
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelar.Location = new System.Drawing.Point(129, 144);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(123, 39);
+            this.btnCancelar.Size = new System.Drawing.Size(121, 39);
             this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -162,8 +166,8 @@
             this.Load += new System.EventHandler(this.frmAperturaCaja_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

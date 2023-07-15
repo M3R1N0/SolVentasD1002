@@ -1,4 +1,5 @@
 ﻿using BusVenta;
+using BusVenta.Helpers;
 using DatVentas;
 using EntVenta;
 using OfficeOpenXml;
@@ -19,182 +20,217 @@ namespace VentasD1002
 {
     public partial class frmCargarDatosExcel : Form
     {
-        private List<Producto> lstProducts;
+        private List<ProductoVM> _lstProducts;
 
         public frmCargarDatosExcel()
         {
             InitializeComponent();
         }
 
+        private void frmCargarDatosExcel_Load(object sender, EventArgs e)
+        {
+            btnEditar.Enabled = false;
+            cboTipoProceso.SelectedIndex = 1;
+        }
+
+        private void cboTipoProceso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cboTipoProceso.Text.ToUpper())
+            {
+                case "CARGA":
+                    pnlDescargaActualizacion.Visible = false;
+                    pnlDescargaActualizacion.Dock = DockStyle.None;
+                    pnlCargaActualizacion.Visible = true;
+                    pnlCargaActualizacion.Dock = DockStyle.Top;
+                    pnlCargaActualizacion.BringToFront();
+                    break;
+                case "DESCARGA":
+                    pnlCargaActualizacion.Visible = false;
+                    pnlCargaActualizacion.Dock = DockStyle.None;
+                    pnlDescargaActualizacion.Visible = true;
+                    pnlDescargaActualizacion.Dock = DockStyle.Top;
+                    pnlDescargaActualizacion.BringToFront();
+                    break;
+                default:
+                    pnlDescargaActualizacion.Visible = false;
+                    pnlDescargaActualizacion.Dock = DockStyle.None;
+                    pnlCargaActualizacion.Visible = false;
+                    pnlCargaActualizacion.Dock = DockStyle.None;
+                    break;
+            }
+        }
+
+        #region Cargar y actualizar
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 txtRutaBackup.Text = openFileDialog1.FileName.ToString();
-            }
-        }
-
-        private void frmCargarDatosExcel_Load(object sender, EventArgs e)
-        {
-            btnEditar.Enabled = false;
-        }
-
-        private void btnCargarExcel_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string ext = Path.GetExtension(txtRutaBackup.Text);
-                if (!string.IsNullOrEmpty(txtRutaBackup.Text))
+                try
                 {
-                    if (ext.Equals(".xlsx"))
+                    string ext = Path.GetExtension(txtRutaBackup.Text);
+                    if (!string.IsNullOrEmpty(txtRutaBackup.Text))
                     {
-                        lstProducts = Exportar_Importar_ArchivoExcel.ReadExcel(txtRutaBackup.Text);
+                        if (ext.Equals(".xlsx"))
+                        {
+                            var respuesta = Exportar_Importar_ArchivoExcel.ReadExcel(txtRutaBackup.Text);
 
-                        //var lst = Exportar_Importar_ArchivoExcel.Importar(txtRutaBackup.Text);
+                            if (respuesta.IsSuccess == EnumOperationResult.Failure)
+                            {
+                                MessageBox.Show(respuesta.Message, "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                _lstProducts = (List<ProductoVM>)respuesta.Data;
+                                gdvDatos.DataSource = _lstProducts.Where(x=> x.Venta=="M").ToList();
 
-                        gdvDatos.DataSource = lstProducts;
-                        DataTablePersonalizado.Multilinea(ref gdvDatos);
+                                foreach (DataGridViewColumn col in gdvDatos.Columns)
+                                {
+                                    col.Visible = false;
+                                    if (col.Index == 3 || col.Index == 4 || col.Index == 5 || col.Index == 6 || col.Index == 7 ||
+                                        col.Index == 8 || col.Index == 9 || col.Index == 10 || col.Index == 11 || col.Index == 12 || col.Index == 14 ||
+                                        col.Index == 15 || col.Index == 16 || col.Index == 17 || col.Index == 29)// || col.Index  == 32 || col.Index  == 34 ||
+                                                                                                                 // col.Index == 35 || col.Index == 36)
+                                    {
+                                        col.Visible = true;
+                                    }
+                                }
 
-                        gdvDatos.Columns[0].Visible = false;
-                        gdvDatos.Columns[1].Visible = false;
-                        gdvDatos.Columns[2].Visible = false;
-                        gdvDatos.Columns[15].Visible = false;
-                        gdvDatos.Columns[16].Visible = false;
-                        gdvDatos.Columns[17].Visible = false;
-                        //gdvDatos.Columns[18].Visible = false;
-                        gdvDatos.Columns[20].Visible = false;
+                                DataTablePersonalizado.Multilinea(ref gdvDatos);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Seleccione el archivo con extension .xlsx para continuar", "Archivo no admitido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
                     }
                     else
                     {
-                        MessageBox.Show("Seleccione el archivo con extension .xlsx para continuar", "Archivo no admitido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Seleccione el archivo de respaldo a cargar", "Ruta no valida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtRutaBackup.Focus();
                     }
-
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Seleccione el archivo de respaldo a cargar", "Ruta no valida", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtRutaBackup.Focus();
+                    MessageBox.Show("Ocurrió un error al cargar el archivo : " + ex.Message, "Error de Lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrió un error al cargar el archivo : "+ex.Message, "Error de Lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             ActualizarProducto();
-          
         }
 
         private void ActualizarProducto()
         {
-
             if (gdvDatos.Rows.Count != 0)
             {
-                List<string> lstproductosNoActualizados = new List<string>();
-                List<Producto> lstNoActualizados = new List<Producto>();
+                List<ProductoVM> lstNoActualizados = new List<ProductoVM>();
 
                 int contadorActualizados = 0;
-                int TotalProductosCargados = gdvDatos.Rows.Count;
+                int TotalProductosCargados = _lstProducts.Where(x => x.Venta == "M").ToList().Count();// gdvDatos.Rows.Count;
 
                 try
                 {
-                    foreach (Producto obj in lstProducts)
+                    foreach (ProductoVM item in _lstProducts.Where(x => x.Venta == "M").ToList())
                     {
-                        Producto p = new Producto();
-                        #region datarow
-                        //p.Id = Convert.ToInt32(dr.Cells[0].Value);
-                        //p.IdTipoPresentacion = Convert.ToInt32(dr.Cells[1].Value);
-                        //p.IdCategoria = Convert.ToInt32(dr.Cells[2].Value);
-                        //p.codigo = dr.Cells[3].Value.ToString();
-                        //p.Descripcion = dr.Cells[4].Value.ToString();
-                        //p.Presentacion = dr.Cells[5].Value.ToString();
-                        //p.seVendeA = dr.Cells[6].Value.ToString();
-                        //p.precioMenudeo = Convert.ToDecimal(dr.Cells[7].Value);
-                        //p.precioMMayoreo = Convert.ToDecimal(dr.Cells[8].Value);
-                        //p.APartirDe = Convert.ToDecimal(dr.Cells[9].Value);
-                        //p.precioMayoreo = Convert.ToDecimal(dr.Cells[10].Value);
-                        //p.usaInventario = dr.Cells[11].Value.ToString();
-                        //p.stock = dr.Cells[12].Value.ToString();
-                        //p.stockMinimo = Convert.ToDecimal(dr.Cells[13].Value);
-                        //p.Caducidad = dr.Cells[14].Value.ToString();
-                        //p.Estado = Convert.ToBoolean(dr.Cells[15].Value.ToString());
-                        //p.TotalUnidades = Convert.ToDecimal(dr.Cells[16].Value);
-                        //p.PresentacionMenudeo = dr.Cells[17].Value.ToString();
-                        #endregion
+                        ProductoVM p = new ProductoVM();
 
-                        p.Id = obj.Id;
-                        p.IdCategoria = obj.IdCategoria;
-                        p.IdTipoPresentacion = obj.IdTipoPresentacion;
-                        p.codigo = obj.codigo;
-                        p.Descripcion = obj.Descripcion;
-                        p.Presentacion = obj.Presentacion;
-                        p.seVendeA = obj.seVendeA;
-                        p.precioMenudeo = obj.precioMenudeo;
-                        p.precioMMayoreo = obj.precioMMayoreo;
-                        p.APartirDe = obj.APartirDe;
-                        p.precioMayoreo = obj.precioMayoreo;
-                        p.usaInventario = obj.usaInventario;
-                        p.stock = obj.stock;
-                        p.stockMinimo = obj.stockMinimo;
-                        p.Caducidad = obj.Caducidad;
-                        p.Estado = obj.Estado;
-                        p.TotalUnidades = obj.TotalUnidades;
-                        p.PresentacionMenudeo = obj.PresentacionMenudeo;
+                        var producto = ProductoDAL.FiltrarProductos(item.codigo).FirstOrDefault();
 
-                        if (DatProducto.ExisteProductoPorID(p.codigo))
-                         {
-                            new DatProducto().ActualizarProducto_Excel(p);
-                          //  gdvDatos.Rows.RemoveAt(dr.Index);
-                            
+                        if (producto != null)
+                        {
+                            producto.idPresentacion = DatCatGenerico.ObtenerIdentificador_Catalogo(item.Presentacion.ToUpper(), TIPO_CATALOGO.PRESENTACION);
+                            producto.IdCategoria = DatCatGenerico.ObtenerIdentificador_Catalogo(item.Categoria.ToUpper(), TIPO_CATALOGO.CATEGORIA);
+                            producto.IdMarca = DatCatGenerico.ObtenerIdentificador_Catalogo(item.Marca.ToUpper(), TIPO_CATALOGO.MARCA);
+                            producto.IdProveedor = DatCatGenerico.ObtenerIdentificador_Catalogo(item.Proveedor.ToUpper(), TIPO_CATALOGO.PROVEEDOR);
+                            producto.codigo = item.codigo;
+                            producto.Articulo = item.Articulo;
+                            producto.Detalle = item.Detalle;
+                            producto.PrecioCompra = item.PrecioCompra;
+                            producto.Precio = item.Precio;
+                            producto.PrecioMayoreo = item.PrecioMayoreo;
+                            producto.A_Partir_De = item.A_Partir_De;
+                            producto.TipoVenta = item.TipoVenta;
+                            producto.UsaInventario = item.UsaInventario;
+                            producto.StockMinimo = item.StockMinimo;
+                            producto.Caducidad = item.Caducidad;
+                            producto.UnidadesPorPresentacion = item.UnidadesPorPresentacion;
+                            producto.Venta = item.Venta;
+                            producto.Clave = item.Clave;
+                            producto.Peso = item.Peso;
+                            producto.Activo = false;
+
+                            var menudeo = _lstProducts.Where(x => x.Id == item.Id && x.Venta == "U").FirstOrDefault();
+
+                            if (menudeo != null)
+                            {
+                                producto.IdPresentacionU = DatCatGenerico.ObtenerIdentificador_Catalogo(menudeo.Presentacion.ToUpper(), TIPO_CATALOGO.PRESENTACION);
+                                producto.CodigoU = menudeo.codigo;
+                                producto.PrecioCompraU = menudeo.PrecioCompra;
+                                producto.PrecioU = menudeo.Precio;
+                                producto.PrecioMayoreoU = menudeo.PrecioMayoreo;
+                                producto.A_Partir_DeU = menudeo.A_Partir_De;
+                                producto.Activo = true;
+                            }
+
+                            ProductoDAL.GuardarProducto(producto);
                             contadorActualizados++;
+
                         }
                         else
                         {
-                            lstNoActualizados.Add(p);
-                            lstproductosNoActualizados.Add(p.Descripcion);
+                            lstNoActualizados.Add(item);
+                            var menudeo = _lstProducts.Where(x => x.Id == item.Id && x.Venta == "U").FirstOrDefault();
+                            if (menudeo !=null)
+                            {
+                                lstNoActualizados.Add(menudeo);
+                            }
                         }
-
                     }
 
-                    ValidarProcesoActualizacion(lstNoActualizados ,lstproductosNoActualizados, contadorActualizados, TotalProductosCargados);
+                    ValidarProcesoActualizacion(lstNoActualizados , contadorActualizados, TotalProductosCargados);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Ocurrió un error al actualizar los datos : " + ex.Message, "Erro de Actualizacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-           
         }
 
-        private void ValidarProcesoActualizacion( List<Producto> lstproducto, List<string> lstproductosNoActualizados, int contadorActualizados, int totalProductosCargados)
+        private void ValidarProcesoActualizacion(List<ProductoVM> lstproducto, int contadorActualizados, int totalProductosCargados)
         {
             gdvDatos.DataSource = null;
             if (contadorActualizados == totalProductosCargados)
             {
                 MessageBox.Show($"Se han actualizado todos los productos de manera exitosa", "Operacion realizada con Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtRutaBackup.Clear();
-                this.Dispose();
+                this.Close();
             }
             else
             {
                 MessageBox.Show($"Se actualizaron {contadorActualizados} de {totalProductosCargados} productos cargados \n Los siguientes productos no se han dado de alta en el sistema  o han cambiado de Codigo", "Operacion Realizada con detalles", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                lstProducts = lstproducto;
+                _lstProducts = lstproducto;
                 gdvDatos.DataSource = lstproducto;
                 btnEditar.Enabled = true;
 
+                foreach (DataGridViewColumn col in gdvDatos.Columns)
+                {
+                    col.Visible = false;
+                    if (col.Index == 3 || col.Index == 4 || col.Index == 5 || col.Index == 6 || col.Index == 7 ||
+                        col.Index == 8 || col.Index == 9 || col.Index == 10 || col.Index == 11 || col.Index == 12 || col.Index == 14 ||
+                        col.Index == 15 || col.Index == 16 || col.Index == 17 || col.Index == 29)// || col.Index  == 32 || col.Index  == 34 ||
+                                                                                                 // col.Index == 35 || col.Index == 36)
+                    {
+                        col.Visible = true;
+                    }
+                }
 
-                gdvDatos.Columns[0].Visible = false;
-                gdvDatos.Columns[1].Visible = false;
-                gdvDatos.Columns[2].Visible = false;
-                gdvDatos.Columns[15].Visible = false;
-                gdvDatos.Columns[16].Visible = false;
-                gdvDatos.Columns[17].Visible = false;
-                //gdvDatos.Columns[18].Visible = false;
-                gdvDatos.Columns[20].Visible = false;
+                DataTablePersonalizado.Multilinea(ref gdvDatos);
 
             }
             gdvDatos.Refresh();
@@ -204,50 +240,47 @@ namespace VentasD1002
         {
             try
             {
-                foreach (Producto obj in lstProducts)
+                foreach (var item in _lstProducts)
                 {
-                    Producto p = new Producto();
-                    #region datarow
-                    //p.Id = Convert.ToInt32(dr.Cells[0].Value);
-                    //p.IdTipoPresentacion = Convert.ToInt32(dr.Cells[1].Value);
-                    //p.IdCategoria = Convert.ToInt32(dr.Cells[2].Value);
-                    //p.codigo = dr.Cells[3].Value.ToString();
-                    //p.Descripcion = dr.Cells[4].Value.ToString();
-                    //p.Presentacion = dr.Cells[5].Value.ToString();
-                    //p.seVendeA = dr.Cells[6].Value.ToString();
-                    //p.precioMenudeo = Convert.ToDecimal(dr.Cells[7].Value);
-                    //p.precioMMayoreo = Convert.ToDecimal(dr.Cells[8].Value);
-                    //p.APartirDe = Convert.ToDecimal(dr.Cells[9].Value);
-                    //p.precioMayoreo = Convert.ToDecimal(dr.Cells[10].Value);
-                    //p.usaInventario = dr.Cells[11].Value.ToString();
-                    //p.stock = dr.Cells[12].Value.ToString();
-                    //p.stockMinimo = Convert.ToDecimal(dr.Cells[13].Value);
-                    //p.Caducidad = dr.Cells[14].Value.ToString();
-                    //p.Estado = Convert.ToBoolean(dr.Cells[15].Value.ToString());
-                    //p.TotalUnidades = Convert.ToDecimal(dr.Cells[16].Value);
-                    //p.PresentacionMenudeo = dr.Cells[17].Value.ToString();
-                    #endregion
+                    var producto = new ProductoVM();
 
-                    p.IdCategoria = obj.IdCategoria;
-                    p.IdTipoPresentacion = obj.IdTipoPresentacion;
-                    p.codigo = obj.codigo;
-                    p.Descripcion = obj.Descripcion;
-                    p.Presentacion = obj.Presentacion;
-                    p.seVendeA = obj.seVendeA;
-                    p.precioMenudeo = obj.precioMenudeo;
-                    p.precioMMayoreo = obj.precioMMayoreo;
-                    p.APartirDe = obj.APartirDe;
-                    p.precioMayoreo = obj.precioMayoreo;
-                    p.usaInventario = obj.usaInventario;
-                    p.stock = obj.stock;
-                    p.stockMinimo = obj.stockMinimo;
-                    p.Caducidad = obj.Caducidad;
-                    p.Estado = obj.Estado;
-                    p.TotalUnidades = obj.TotalUnidades;
-                    p.PresentacionMenudeo = obj.PresentacionMenudeo;
+                    producto.idPresentacion = DatCatGenerico.ObtenerIdentificador_Catalogo(item.Presentacion.ToUpper(), TIPO_CATALOGO.PRESENTACION);
+                    producto.IdCategoria = DatCatGenerico.ObtenerIdentificador_Catalogo(item.Categoria.ToUpper(), TIPO_CATALOGO.CATEGORIA);
+                    producto.IdMarca = DatCatGenerico.ObtenerIdentificador_Catalogo(item.Marca.ToUpper(), TIPO_CATALOGO.MARCA);
+                    producto.IdProveedor = DatCatGenerico.ObtenerIdentificador_Catalogo(item.Proveedor.ToUpper(), TIPO_CATALOGO.PROVEEDOR);
+                    producto.codigo = item.codigo;
+                    producto.Articulo = item.Articulo;
+                    producto.Detalle = item.Detalle;
+                    producto.PrecioCompra = item.PrecioCompra;
+                    producto.Precio = item.Precio;
+                    producto.PrecioMayoreo = item.PrecioMayoreo;
+                    producto.A_Partir_De = item.A_Partir_De;
+                    producto.TipoVenta = item.TipoVenta;
+                    producto.UsaInventario = item.UsaInventario;
+                    producto.StockMinimo = item.StockMinimo;
+                    producto.Caducidad = item.Caducidad;
+                    producto.UnidadesPorPresentacion = item.UnidadesPorPresentacion;
+                    producto.Venta = item.Venta;
+                    producto.Clave = item.Clave;
+                    producto.Peso = item.Peso;
+                    producto.Activo = false;
 
-                    frmABProducto producto = new frmABProducto(p);
-                    producto.ShowDialog();
+                    var menudeo = _lstProducts.Where(x => x.Id == item.Id && x.Venta == "U").FirstOrDefault();
+
+                    if (menudeo != null)
+                    {
+                        producto.IdPresentacionU = DatCatGenerico.ObtenerIdentificador_Catalogo(menudeo.Presentacion.ToUpper(), TIPO_CATALOGO.PRESENTACION);
+                        producto.CodigoU = menudeo.codigo;
+                        producto.PrecioCompraU = menudeo.PrecioCompra;
+                        producto.PrecioU = menudeo.Precio;
+                        producto.PrecioMayoreoU = menudeo.PrecioMayoreo;
+                        producto.A_Partir_DeU = menudeo.A_Partir_De;
+                        producto.Activo = true;
+                    }
+
+
+                    frmABProducto frm = new frmABProducto(producto);
+                    frm.ShowDialog();
                 }
             }
             catch (Exception ex)
@@ -255,6 +288,59 @@ namespace VentasD1002
                 MessageBox.Show("Error al editar los datos : "+ex.Message, "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        #endregion
+
+        #region Descargar Actualizacion
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var lst = ProductoDAL.Consultar_ProductosActualizados(dpInicio.Value, dpFin.Value);
+                if (lst.Count > 0)
+                {
+                    gdvDatos.DataSource = lst;
+
+                    foreach (DataGridViewColumn col in gdvDatos.Columns)
+                    {
+                        col.Visible = false;
+                        if (col.Index == 3 || col.Index == 4 || col.Index == 5 || col.Index == 6 || col.Index == 7 ||
+                            col.Index == 8 || col.Index == 9 || col.Index == 10 || col.Index == 11 || col.Index == 12 || col.Index == 14 ||
+                            col.Index == 15 || col.Index == 16 || col.Index == 17 || col.Index == 29)// || col.Index  == 32 || col.Index  == 34 ||
+                                                                                                     // col.Index == 35 || col.Index == 36)
+                        {
+                            col.Visible = true;
+                        }
+                    }
+
+                    DataTablePersonalizado.Multilinea(ref gdvDatos);
+                    Comun.StyleDatatable(ref gdvDatos);
+                }
+                else
+                {
+                    MessageBox.Show("No hay productos actualizados del rango de fecha seleccionado","AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (gdvDatos.Rows.Count != 0)
+            {
+                Exportar_Importar_ArchivoExcel.ExportarExcel_Actualizacion(dpInicio.Value, dpFin.Value);
+            }
+            else
+            {
+                MessageBox.Show("No hay datos para descargar, seleccione un rango de fecha distinto", "Sin datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        #endregion
+
 
     }
 }

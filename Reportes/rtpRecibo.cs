@@ -1,5 +1,6 @@
 namespace Reportes
 {
+    using EntVenta;
     using System;
     using System.ComponentModel;
     using System.Drawing;
@@ -14,14 +15,26 @@ namespace Reportes
     {
         public rtpRecibo()
         {
-            //
-            // Required for telerik Reporting designer support
-            //
             InitializeComponent();
+        }
 
-            //
-            // TODO: Add any constructor code after InitializeComponent call
-            //
+        public rtpRecibo(ParametrosReporte datos)
+        {
+            try
+            {
+                InitializeComponent();
+                //rptNota.pnlCancelar.Visible = false;
+                lblCambio.Value = (datos.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : "Saldo a liquidar :";
+                //   rptNota.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
+                lblBonificacion.Visible = false;
+                txtBonificacion.Visible = false;
+
+                tblVentaProducto.DataSource = datos.lstDetalleVenta;
+                DataSource = datos;
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

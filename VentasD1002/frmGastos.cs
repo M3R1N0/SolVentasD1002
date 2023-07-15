@@ -1,6 +1,8 @@
 ﻿using BusVenta;
+using BusVenta.Helpers;
 using DatVentas;
 using EntVenta;
+using Reportes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +13,8 @@ using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.ReportViewer.WinForms;
+using VentasD1002.Helpers;
 
 namespace VentasD1002
 {
@@ -28,12 +32,9 @@ namespace VentasD1002
         private void frmGastos_Load(object sender, EventArgs e)
         {
             pnlConcepto.Visible = false;
-            pnlComprobante.Visible = false;
             gdvConcepto.Visible = false;
 
-            ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
-           string  serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
-            _idCaja = new BusBox().showBoxBySerial(serialPC).Id;
+            _idCaja =  BusBox.showBoxBySerial().Id;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -55,19 +56,38 @@ namespace VentasD1002
                 {
                    
                     IngresosGastos ig = new IngresosGastos();
-                    ig.idCaja = _idCaja;
+                    ig.IdUsuario = BusUser.ObtenerUsuario_Loggeado().Id;
+                    ig.idCaja = BusBox.showBoxBySerial().Id; 
                     ig.idConcepto = _idConcepto;
                     ig.Importe = Convert.ToDecimal(txtMonto.Text);
-                    ig.Fecha = dtpFecha.Value;
+                    ig.Fecha = DateTime.Today; 
                     ig.Descripcion = txtDetalle.Text;
-                    ig.TipoComprobante = chkComprobante.Checked ? cboTipoComprobante.Text : "N/A";
-                    ig.NoComprobante = chkComprobante.Checked ? "01" : "N/A";
+                    ig.TipoComprobante = "N/A";
+                    ig.NoComprobante = "N/A";
 
                     new DatGastoIngreso().InsertarIngresoGastos(ig);
                     
                     MessageBox.Show("Se ha ingresado los datos de forma correcta", "ÉXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimpiarCampos();
 
+                    if (chkImprimir.Value)
+                    {
+                        Empresa empresa = new BusEmpresa().ObtenerEmpresa();
+                        ReportViewer reportViewer = new ReportViewer();
+                        ig.Usuario = BusUser.ObtenerUsuario_Loggeado().Nombre;
+                        var report = new rptComprobanteIngresoEgreso(empresa, ig);
+
+                        reportViewer.Report = report;
+                        reportViewer.RefreshReport();
+
+                        var respuesta = ImprimirDocumento.Imprimir(ref reportViewer, TIPO_DOCUMENTO.TICKET);
+
+                        if (respuesta.IsSuccess == EnumOperationResult.Warning)
+                        {
+                            MessageBox.Show(respuesta.Message, "Error de impresión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    LimpiarCampos();
+                    this.Close();
                 }
             }
             catch (Exception ex)
@@ -80,15 +100,15 @@ namespace VentasD1002
         {
             txtBuscar.Clear();
             txtMonto.Clear();
-            txtNComprobante.Clear();
             txtDetalle.Clear();
-            chkComprobante.Checked = false;
             _idConcepto = 0;
+            chkImprimir.Value = false;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+            this.Close();
         }
 
         private void pbAgregar_Click(object sender, EventArgs e)
@@ -111,7 +131,7 @@ namespace VentasD1002
                     gdvConcepto.DataSource = dt;
                     gdvConcepto.Columns[1].Visible = false;
 
-                    DataTablePersonalizado.Multilinea(ref gdvConcepto);
+                    Comun.FormatDatatable(ref gdvConcepto);
                 }
             }
             catch (Exception ex)
@@ -178,22 +198,7 @@ namespace VentasD1002
             gdvConcepto.Visible = false;
         }
 
-        private void chkComprobante_CheckedChanged(object sender, EventArgs e)
-        {
-            ValidarCheck();
-        }
 
-        private void ValidarCheck()
-        {
-            if (chkComprobante.Checked)
-            {
-                pnlComprobante.Visible = true;
-            }
-            else
-            {
-                pnlComprobante.Visible = false;
-            }
-        }
 
         private void rtbnIngresos_CheckedChanged(object sender, EventArgs e)
         {
@@ -214,6 +219,11 @@ namespace VentasD1002
                 lbltitulo.Text = "GASTOS";
                 LimpiarCampos();
             }
+        }
+
+        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Comun.TextBoxNumerico(sender, e);
         }
     }
 }

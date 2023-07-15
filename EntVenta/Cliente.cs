@@ -18,5 +18,9 @@ namespace EntVenta
         public decimal Saldo { get; set; }
         public bool Estado { get; set; }
 
+        //-----------------------------------
+        public string RazonSocial { get; set; }
+        public string Correo { get; set; }
+        public string Clave { get; set; }
     }
 }

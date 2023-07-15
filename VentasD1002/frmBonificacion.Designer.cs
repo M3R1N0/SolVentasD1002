@@ -360,10 +360,10 @@
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cobrarF10});
             this.menuStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.menuStrip2.Location = new System.Drawing.Point(41, 237);
+            this.menuStrip2.Location = new System.Drawing.Point(105, 228);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.ShowItemToolTips = true;
-            this.menuStrip2.Size = new System.Drawing.Size(262, 48);
+            this.menuStrip2.Size = new System.Drawing.Size(153, 52);
             this.menuStrip2.TabIndex = 626;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -375,8 +375,8 @@
             this.cobrarF10.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.cobrarF10.Name = "cobrarF10";
             this.cobrarF10.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.cobrarF10.Size = new System.Drawing.Size(240, 44);
-            this.cobrarF10.Text = "Procesar Bonificación";
+            this.cobrarF10.Size = new System.Drawing.Size(129, 48);
+            this.cobrarF10.Text = "Procesar";
             this.cobrarF10.Click += new System.EventHandler(this.cobrarF10_Click);
             // 
             // panel9
@@ -493,7 +493,10 @@
             this.Controls.Add(this.txtFechaVenta);
             this.Controls.Add(this.txtCliente);
             this.Controls.Add(this.label3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmBonificacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bonificacion";

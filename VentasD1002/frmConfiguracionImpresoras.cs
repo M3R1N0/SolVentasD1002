@@ -1,4 +1,5 @@
 ﻿using BusVenta;
+using BusVenta.Helpers;
 using EntVenta;
 using System;
 using System.Collections.Generic;
@@ -21,9 +22,6 @@ namespace VentasD1002
             InitializeComponent();
         }
 
-
-        string serialPC;
-        int idCaja;
         private void Obtenter_ImpresorasInstaladas()
         {
             try
@@ -43,18 +41,15 @@ namespace VentasD1002
 
         private void frmConfiguracionImpresoras_Load(object sender, EventArgs e)
         {
-            ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
-            serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
-            idCaja = new BusBox().showBoxBySerial(serialPC).Id;
-
             Obtenter_ImpresorasInstaladas();
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+
+        private void btnGuardar_Click_1(object sender, EventArgs e)
         {
             try
             {
-                if (!comboBox2.Text.Equals("--SELECCIONE--") )
+                if (!comboBox2.Text.Equals("--SELECCIONE--"))
                 {
                     if (rbTicket.Checked == false && rbA4.Checked == false)
                     {
@@ -63,7 +58,7 @@ namespace VentasD1002
                     else
                     {
                         Box b = new Box();
-                        b.Id = idCaja;
+                        b.Id =  BusBox.showBoxBySerial().Id;
 
                         if (rbTicket.Checked == true)
                         {
@@ -86,7 +81,7 @@ namespace VentasD1002
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error al configurar la impresora : "+ex.Message, "Error de configuración", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrió un error al configurar la impresora : " + ex.Message, "Error de configuración", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

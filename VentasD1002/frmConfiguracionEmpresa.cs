@@ -31,78 +31,6 @@ namespace VentasD1002
             return Regex.IsMatch(email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
         }
 
-        private void panelRegistro_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void siguienteToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if ( ValidateMail(txtCorreo.Text) == false )
-            {
-                MessageBox.Show("El correo debe tener el siguiente formato :\n ejemplo_123@dominio.com","Validacion correo electrónico", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtCorreo.Focus();
-                txtCorreo.SelectAll();
-            }
-
-            try
-            {
-                if (txtNombreEmpresa.Text == "" || txtCorreo.Text == "" || txtRutaBackup.Text == "" || pbLogo.Image == null )
-                {
-                    MessageBox.Show("Favor de llenar todos los campos ", "Campos obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MemoryStream ms = new MemoryStream();
-                    pbLogo.Image.Save(ms, pbLogo.Image.RawFormat);
-                    Empresa empresa = new Empresa();
-
-                    empresa.Nombre = txtNombreEmpresa.Text;
-                    empresa.Moneda = cboMoneda.Text;
-                    empresa.Logo = ms.GetBuffer();
-                    empresa.Pais = cboPaises.Text;
-                    empresa.RutaBackup = txtRutaBackup.Text;
-                    empresa.CorreoEnvio = txtCorreo.Text;
-
-                    if (radioButtonSi.Checked)
-                    {
-                        empresa.Usa_Impuestos = "SI";
-                        empresa.Impuesto = cboImpuesto1.Text;
-                        empresa.Porcentaje = Convert.ToDecimal(cboPorcentaje.Text);
-                    }
-
-                    if (radioButtonNo.Checked)
-                    {
-                        empresa.Usa_Impuestos = "NO";
-                        empresa.Impuesto = "N/A";
-                        empresa.Porcentaje = 0;
-                    }
-
-                    
-                    if (chckLectora.Checked)
-                    {
-                        empresa.Busqueda = "SCANNER";
-                    }
-                    if (chckTeclado.Checked)
-                    {
-                        empresa.Busqueda = "TECLADO";
-                    }
-
-                    new BusEmpresa().Actualizar_Empresa(empresa);
-                    MessageBox.Show("Proceso Realizado", "Registro Exitoso");
-                    this.Hide();
-                    frmConfiguracion configuracion = new frmConfiguracion();
-                    configuracion.ShowDialog();
-                    this.Dispose();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrio un error al actualizar los datos : "+ex.Message, "Actualizacion de datoa", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void Obtener_Empresa()
         {
             try
@@ -143,14 +71,6 @@ namespace VentasD1002
             {
                 MessageBox.Show("Ocurrio un erro al mostrar los datos :\n "+ex.Message, "Configuracion empresa", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void siguienteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmConfiguracion configuracion = new frmConfiguracion();
-            configuracion.ShowDialog();
-            this.Dispose();
         }
 
         private void pbLogo_Click(object sender, EventArgs e)
@@ -196,14 +116,78 @@ namespace VentasD1002
             }
         }
 
-        private void txtRutaBackup_TextChanged(object sender, EventArgs e)
-        {
+    
 
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (ValidateMail(txtCorreo.Text) == false)
+            {
+                MessageBox.Show("El correo debe tener el siguiente formato :\n ejemplo_123@dominio.com", "Validacion correo electrónico", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtCorreo.Focus();
+                txtCorreo.SelectAll();
+            }
+
+            try
+            {
+                if (txtNombreEmpresa.Text == "" || txtCorreo.Text == "" || txtRutaBackup.Text == "" || pbLogo.Image == null)
+                {
+                    MessageBox.Show("Favor de llenar todos los campos ", "Campos obligatorios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MemoryStream ms = new MemoryStream();
+                    pbLogo.Image.Save(ms, pbLogo.Image.RawFormat);
+                    Empresa empresa = new Empresa();
+
+                    empresa.Nombre = txtNombreEmpresa.Text;
+                    empresa.Moneda = cboMoneda.Text;
+                    empresa.Logo = ms.GetBuffer();
+                    empresa.Pais = cboPaises.Text;
+                    empresa.RutaBackup = txtRutaBackup.Text;
+                    empresa.CorreoEnvio = txtCorreo.Text;
+
+                    if (radioButtonSi.Checked)
+                    {
+                        empresa.Usa_Impuestos = "SI";
+                        empresa.Impuesto = cboImpuesto1.Text;
+                        empresa.Porcentaje = Convert.ToDecimal(cboPorcentaje.Text);
+                    }
+
+                    if (radioButtonNo.Checked)
+                    {
+                        empresa.Usa_Impuestos = "NO";
+                        empresa.Impuesto = "N/A";
+                        empresa.Porcentaje = 0;
+                    }
+
+
+                    if (chckLectora.Checked)
+                    {
+                        empresa.Busqueda = "SCANNER";
+                    }
+                    if (chckTeclado.Checked)
+                    {
+                        empresa.Busqueda = "TECLADO";
+                    }
+
+                    new BusEmpresa().Actualizar_Empresa(empresa);
+                    MessageBox.Show("Proceso Realizado", "Registro Exitoso");
+                    this.Hide();
+                    frmConfiguracion configuracion = new frmConfiguracion();
+                    configuracion.ShowDialog();
+                    this.Dispose();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error al actualizar los datos : " + ex.Message, "Actualizacion de datoa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }

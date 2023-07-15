@@ -56,12 +56,17 @@
   <ItemGroup>
     <Compile Include="Bitacora.cs" />
     <Compile Include="DetalleVentaEspera.cs" />
+    <Compile Include="EntradaProductoVM.cs" />
+    <Compile Include="Enum.cs" />
+    <Compile Include="ExcelHelpers.cs" />
     <Compile Include="IngresosGastos.cs" />
     <Compile Include="Licencia.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="DetalleVenta.cs" />
     <Compile Include="ObjetoGenerico.cs" />
     <Compile Include="ParametrosReporte.cs" />
+    <Compile Include="PermisoVM.cs" />
+    <Compile Include="ProductoVM.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="Box.cs" />
     <Compile Include="CatalogoGenerico.cs" />
@@ -71,9 +76,11 @@
     <Compile Include="Producto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializacion.cs" />
+    <Compile Include="TIPO_VENTA.cs" />
     <Compile Include="User.cs" />
     <Compile Include="VentaEspera.cs" />
     <Compile Include="Venta.cs" />
+    <Compile Include="VentasPorPeriodo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -28,22 +28,7 @@ namespace VentasD1002
         private void frmInstalacionServidor_Load(object sender, EventArgs e)
         {
             
-            panelBuscandoServidor.Visible = true;
-            panelInstalandoServidor.Visible = false;
-
-            NombreEquipo = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-            txtServidor.Text = txtServidor.Text;
-            Verificar_ServidorInstalado();
-
-            ScriptElimnarDB = ScriptElimnarDB.Replace("DBVENTAS", txtDB.Text);
-            txtTablasSP.Text = txtTablasSP.Text.Replace("DBVENTAS", txtDB.Text);
-            txtScriptUsuarioRemoto.Text = txtScriptUsuarioRemoto.Text.Replace("ada369", txtUsuario.Text);
-            txtScriptUsuarioRemoto.Text = txtScriptUsuarioRemoto.Text.Replace("BASEADA", txtDB.Text);
-            txtScriptUsuarioRemoto.Text = txtScriptUsuarioRemoto.Text.Replace("softwarereal", txtpwd.Text);
-            // Cursor = Cursors.WaitCursor;
-
-            //adjuntar textobox que contiene los procedimientos almacenados
-            txtTablasSP.Text = txtTablasSP.Text + Environment.NewLine + txtScriptUsuarioRemoto.Text;
+           
 
         }
 
@@ -383,6 +368,35 @@ namespace VentasD1002
         private void timer1_Tick(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtAuxInstancia.Text))
+            {
+                txtServidor.Text = txtAuxInstancia.Text.Trim();
+
+                panelBuscandoServidor.Visible = true;
+                panelInstalandoServidor.Visible = false;
+
+                NombreEquipo = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+                txtServidor.Text = txtServidor.Text;
+                Verificar_ServidorInstalado();
+
+                ScriptElimnarDB = ScriptElimnarDB.Replace("DBVENTAS", txtDB.Text);
+                txtTablasSP.Text = txtTablasSP.Text.Replace("DBVENTAS", txtDB.Text);
+                txtScriptUsuarioRemoto.Text = txtScriptUsuarioRemoto.Text.Replace("ada369", txtUsuario.Text);
+                txtScriptUsuarioRemoto.Text = txtScriptUsuarioRemoto.Text.Replace("BASEADA", txtDB.Text);
+                txtScriptUsuarioRemoto.Text = txtScriptUsuarioRemoto.Text.Replace("softwarereal", txtpwd.Text);
+                // Cursor = Cursors.WaitCursor;
+
+                //adjuntar textobox que contiene los procedimientos almacenados
+                txtTablasSP.Text = txtTablasSP.Text + Environment.NewLine + txtScriptUsuarioRemoto.Text;
+            }
+            else
+            {
+                MessageBox.Show("Ingrese el nombre del servidor", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

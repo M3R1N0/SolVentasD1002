@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DatVentas
 {
@@ -37,17 +38,24 @@ namespace DatVentas
                     sc.Parameters.AddWithValue("@tipopago", v.TipoPago);
                     sc.Parameters.AddWithValue("@referenciatarjeta", v.ReferenciaTarjeta);
                     sc.Parameters.AddWithValue("@vuelto", v.Vuelto);
-                    sc.Parameters.AddWithValue("@efectivo", v.Efectivo);
+                    sc.Parameters.AddWithValue("@efectivo", v.Recibo);
                     sc.Parameters.AddWithValue("@comentarios", v.Comentarios);
+                    sc.Parameters.AddWithValue("@idventa", v.Id);
 
-                    resultado = sc.ExecuteNonQuery();
+                    if (v.Id == 0)
+                    {
+                        resultado =  Convert.ToInt32(sc.ExecuteScalar());
+                    }
+                    else
+                    {
+                        sc.ExecuteNonQuery();
+                    }
                     conn.Close();
                     return resultado;
                 }
                 catch (Exception ex)
                 {
-                    conn.Close();
-                    throw ex;
+                    throw new ApplicationException("Ocurrió detalle al guardar los datos de la venta\n Detalle: "+ex.Message);
                 }
             }
         }
@@ -73,77 +81,46 @@ namespace DatVentas
             }
         }
 
-        public DataTable Obtener_VentasEnEspera()
+        public static void Obtener_VentasEnEspera(ref DataGridView grid, string serialPc)
         {
-            using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+            try
             {
-                try
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
                 {
-                    DataTable dt = new DataTable();
-
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT *  FROM tb_VentaEnEspera", con);
-                    da.Fill(dt);
-
-                    return dt;
+                    var dt = new DataTable();
+                    using (var da = new SqlDataAdapter("ObtenerVenta_EnEspera",con))
+                    {
+                        da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                        da.SelectCommand.Parameters.AddWithValue("@SerialPC",serialPc);
+                        da.Fill(dt);
+                        grid.DataSource = dt;
+                    }
                 }
-                catch (Exception ex)
-                {
-                    con.Close();
-                    throw ex;
-                }
+            }
+            catch (Exception)
+            {
             }
         }
 
-        public int InsertarVentaEspera(VentaEspera ve)
+        public bool EliminarVenta(int id)
         {
-            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            try
             {
-                try
+                using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
                 {
-                    int resultado = 0;
                     conn.Open();
-                    SqlCommand sc = new SqlCommand("[sp_insertarVentaEspera]", conn);
-                    sc.CommandType = CommandType.StoredProcedure;
-                    sc.Parameters.AddWithValue("@idcliente", ve.IdCliente);
-                    sc.Parameters.AddWithValue("@idusuario", ve.IdUsuario);
-                    sc.Parameters.AddWithValue("@idcaja", ve.IdCaja);
-                    sc.Parameters.AddWithValue("@fechaventa", ve.FechaVenta);
-                    sc.Parameters.AddWithValue("@referencia", ve.Referencia);
-                    sc.Parameters.AddWithValue("@montototal", ve.MontoTotal);
-
-
-                    resultado = sc.ExecuteNonQuery();
+                    using (var cmd = new SqlCommand("DELETE FROM tb_Ventas WHERE Id_Venta=@id", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.ExecuteNonQuery();
+                    }
                     conn.Close();
-                    return resultado;
-                }
-                catch (Exception ex)
-                {
-                    conn.Close();
-                    throw ex;
+                    return true;
                 }
             }
-        }
-
-        public int EliminarVentaEspera(int id)
-        {
-            using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
+            catch (Exception ex)
             {
-                try
-                {
-                    int resultado = 0;
-                    conn.Open();
-                    SqlCommand sc = new SqlCommand("DELETE FROM tb_VentaEnEspera WHERE Id=" + id, conn);
-
-
-                    resultado = sc.ExecuteNonQuery();
-                    conn.Close();
-                    return resultado;
-                }
-                catch (Exception ex)
-                {
-                    conn.Close();
-                    throw ex;
-                }
+                return false;
             }
         }
 
@@ -153,8 +130,6 @@ namespace DatVentas
             {
                 using (SqlConnection conn = new SqlConnection(MasterConnection.connection))
                 {
-                   
-                    
                     DataTable dt = new DataTable();
                     SqlDataAdapter da = new SqlDataAdapter("sp_ObtenerDatos_VentasTotales", conn);
                     da.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -227,37 +202,25 @@ namespace DatVentas
             }
         }
 
-        public DataTable ObtenerVentas_PorCobrar(string buscar)
+        public static void ObtenerVentas_PorCobrar(ref DataGridView grid,string buscar)
         {
-            using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+            try
             {
-                try
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
                 {
                     DataTable dt = new DataTable();
-                    string _query = "";
-
-                    if (string.IsNullOrEmpty(buscar))
+                    using (var da = new SqlDataAdapter("Filtrar_NotasPorCobrar", con))
                     {
-                        _query = @"SELECT v.*, c.Nombre  FROM tb_Ventas v 
-                                   INNER JOIN tb_Cliente c on v.Cliente_Id = c.Id_Cliente
-                                   WHERE Estado_Pago ='PENDIENTE' AND Accion<>'VENTA CANCELADA'";
-                    }
-                    else
-                    {
-                        _query = @"SELECT v.*, c.Nombre  FROM tb_Ventas v 
-                                   INNER JOIN tb_Cliente c on v.Cliente_Id = c.Id_Cliente
-                                   WHERE Estado_Pago ='PENDIENTE' AND Accion<>'VENTA CANCELADA' AND v.Folio + v.Comprobante + c.Nombre like '%'+'" + buscar+"'+'%'";
-                    }
-                    SqlDataAdapter da = new SqlDataAdapter(_query, con);
-                    da.Fill(dt);
+                        da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                        da.SelectCommand.Parameters.AddWithValue("@busqueda", buscar);
 
-                    return dt;
+                        da.Fill(dt);
+                        grid.DataSource = dt;
+                    }
                 }
-                catch (Exception ex)
-                {
-                    con.Close();
-                    throw ex;
-                }
+            }
+            catch (Exception )
+            {
             }
         }
 
@@ -476,23 +439,27 @@ namespace DatVentas
             {
                 using (SqlConnection con = new SqlConnection(MasterConnection.connection))
                 {
-                    Venta v = new Venta(); 
-                    
-                    SqlCommand cmd = new SqlCommand($"SELECT * FROM tb_Ventas WHERE Id_Venta={idVenta}", con);
-                    con.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
+                    Venta v = new Venta();
 
-                    while (dr.Read())
+                    con.Open();
+                    using (var cmd = new SqlCommand($"SELECT * FROM tb_Ventas WHERE Id_Venta=@idVenta", con))
                     {
-                       
-                        v.Id = Convert.ToInt32( dr["Id_Venta"]);
-                        v.MontoTotal = Convert.ToDecimal(dr["Monto_Total"]);
-                        v.Saldo = Convert.ToDecimal(dr["Saldo"]);
-                        v.Vuelto = Convert.ToDecimal(dr["Vuelto"]);
-                        v.MontoTotal = Convert.ToDecimal(dr["Monto_Total"]);
-                        v.Efectivo = Convert.ToDecimal(dr["Efectivo"]);
+                        cmd.Parameters.AddWithValue("@idVenta", idVenta);
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+
+                            v.Id = reader.GetInt32(0);
+                            v.MontoTotal = reader.GetDecimal(1);
+                            v.Saldo = reader.GetDecimal(2);
+                            v.Vuelto = reader.GetDecimal(3);
+                            v.MontoTotal = reader.GetDecimal(4);
+                            v.Efectivo = reader.GetDecimal(5);
+                        }
                     }
                     con.Close();
+                   
                     return v;
                 }
             }
@@ -790,6 +757,99 @@ namespace DatVentas
                 throw ex;
             }
         }
+
+        public static void Actualizar_EstadoVenta(int idVenta, string estado)
+        {
+            try
+            {
+                using (var con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    using (var cmd = new SqlCommand("UPDATE tb_Ventas SET Accion = @estado WHERE Id_Venta=@id",con))
+                    {
+                        cmd.Parameters.AddWithValue("@estado",estado.ToUpper());
+                        cmd.Parameters.AddWithValue("@id",idVenta);
+                        cmd.ExecuteNonQuery();
+                    }
+                    con.Close();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        public static void FiltrarGanancia_PorPeriodo(ref DataGridView grid, DateTime fechaInicio, DateTime fechaFin)
+        {
+            try
+            {
+                using (var con = new SqlConnection(MasterConnection.connection))
+                {
+                    using (var da = new SqlDataAdapter("listarGanancia_PorPeriodos", con))
+                    {
+                        da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                        da.SelectCommand.Parameters.AddWithValue("@fechaInicio", fechaInicio);
+                        da.SelectCommand.Parameters.AddWithValue("@fechaFin", fechaFin);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        grid.DataSource = dt;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        #region DEVOLUCIONES DE PRODUCTOS VENDIDOS
+
+        public static void BuscarVenta(ref DataGridView grid,string busqueda)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    DataTable dt = new DataTable();
+                    using (var da = new SqlDataAdapter("sp_BuscarVenta", con))
+                    {
+                        da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                        da.SelectCommand.Parameters.AddWithValue("@buscar", busqueda);
+                        da.Fill(dt);
+
+                        grid.DataSource = dt;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        public static void ActualizarTotalVenta(int idVenta, decimal total)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    using (var command = new SqlCommand("sp_ActualizarTotalVenta", con))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@idVenta", idVenta);
+                        command.Parameters.AddWithValue("@monto", total);
+
+                        command.ExecuteNonQuery();
+                    }
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        #endregion
     }
 
 }

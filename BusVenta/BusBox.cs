@@ -1,4 +1,5 @@
-﻿using DatVentas;
+﻿using BusVenta.Helpers;
+using DatVentas;
 using EntVenta;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,9 @@ namespace BusVenta
     public class BusBox
     {
 
-        public Box showBoxBySerial(string serial)
+        public static Box showBoxBySerial()
         {
+            var serial = Sistema.ObenterSerialPC();
             DataRow dr = new DatBox().selectBoxBySerial(serial);
             Box b = new Box();
             b.Id = Convert.ToInt32(dr["Id_Caja"].ToString());

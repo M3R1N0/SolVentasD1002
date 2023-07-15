@@ -8,6 +8,7 @@ namespace Reportes
     using System.Windows.Forms;
     using Telerik.Reporting;
     using Telerik.Reporting.Drawing;
+    using EntVenta;
 
     /// <summary>
     /// Summary description for rptTicket.
@@ -26,9 +27,17 @@ namespace Reportes
             //
         }
          
-        public rptTicket(DataTable dtDatos )
+        public rptTicket(ParametrosReporte vm)
         {
             InitializeComponent();
+            try
+            {
+
+                
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConfiguracionEmpresa));
             this.panelRegistro = new System.Windows.Forms.Panel();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.btnCancelar = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip6 = new System.Windows.Forms.MenuStrip();
+            this.btnGuardar = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -52,18 +56,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombreEmpresa = new System.Windows.Forms.TextBox();
             this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.siguienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.siguienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.panelRegistro.SuspendLayout();
+            this.menuStrip2.SuspendLayout();
+            this.menuStrip6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
-            this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelRegistro
@@ -71,6 +70,8 @@
             this.panelRegistro.BackColor = System.Drawing.Color.Transparent;
             this.panelRegistro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelRegistro.BackgroundImage")));
             this.panelRegistro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelRegistro.Controls.Add(this.menuStrip2);
+            this.panelRegistro.Controls.Add(this.menuStrip6);
             this.panelRegistro.Controls.Add(this.pictureBox1);
             this.panelRegistro.Controls.Add(this.label7);
             this.panelRegistro.Controls.Add(this.label6);
@@ -89,13 +90,73 @@
             this.panelRegistro.Controls.Add(this.label2);
             this.panelRegistro.Controls.Add(this.txtNombreEmpresa);
             this.panelRegistro.Controls.Add(this.pbLogo);
-            this.panelRegistro.Controls.Add(this.menuStrip1);
             this.panelRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelRegistro.Location = new System.Drawing.Point(44, 58);
+            this.panelRegistro.Location = new System.Drawing.Point(44, 22);
             this.panelRegistro.Name = "panelRegistro";
             this.panelRegistro.Size = new System.Drawing.Size(775, 482);
             this.panelRegistro.TabIndex = 1;
-            this.panelRegistro.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRegistro_Paint);
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.menuStrip2.AutoSize = false;
+            this.menuStrip2.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnCancelar});
+            this.menuStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.menuStrip2.Location = new System.Drawing.Point(470, 392);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.ShowItemToolTips = true;
+            this.menuStrip2.Size = new System.Drawing.Size(132, 49);
+            this.menuStrip2.TabIndex = 633;
+            this.menuStrip2.Text = "menuStrip2";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackgroundImage = global::VentasD1002.Properties.Resources.Rojo;
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCancelar.ForeColor = System.Drawing.Color.Snow;
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.ShortcutKeys = System.Windows.Forms.Keys.F9;
+            this.btnCancelar.Size = new System.Drawing.Size(122, 45);
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // menuStrip6
+            // 
+            this.menuStrip6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.menuStrip6.AutoSize = false;
+            this.menuStrip6.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.menuStrip6.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip6.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnGuardar});
+            this.menuStrip6.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.menuStrip6.Location = new System.Drawing.Point(602, 392);
+            this.menuStrip6.Name = "menuStrip6";
+            this.menuStrip6.ShowItemToolTips = true;
+            this.menuStrip6.Size = new System.Drawing.Size(126, 49);
+            this.menuStrip6.TabIndex = 632;
+            this.menuStrip6.Text = "menuStrip6";
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackgroundImage = global::VentasD1002.Properties.Resources.verde;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold);
+            this.btnGuardar.ForeColor = System.Drawing.Color.MintCream;
+            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
+            this.btnGuardar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.ShortcutKeys = System.Windows.Forms.Keys.F9;
+            this.btnGuardar.Size = new System.Drawing.Size(119, 45);
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // pictureBox1
             // 
@@ -128,7 +189,6 @@
             this.label6.Size = new System.Drawing.Size(401, 17);
             this.label6.TabIndex = 21;
             this.label6.Text = "Elija el directorio donde desee guardar la copia de seguridad :";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label4
             // 
@@ -242,7 +302,6 @@
             this.txtRutaBackup.Name = "txtRutaBackup";
             this.txtRutaBackup.Size = new System.Drawing.Size(486, 23);
             this.txtRutaBackup.TabIndex = 11;
-            this.txtRutaBackup.TextChanged += new System.EventHandler(this.txtRutaBackup_TextChanged);
             // 
             // chckTeclado
             // 
@@ -330,84 +389,30 @@
             this.pbLogo.TabStop = false;
             this.pbLogo.Click += new System.EventHandler(this.pbLogo_Click);
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.siguienteToolStripMenuItem,
-            this.siguienteToolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(483, 411);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(256, 33);
-            this.menuStrip1.TabIndex = 23;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // siguienteToolStripMenuItem
-            // 
-            this.siguienteToolStripMenuItem.BackColor = System.Drawing.Color.Red;
-            this.siguienteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.siguienteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("siguienteToolStripMenuItem.Image")));
-            this.siguienteToolStripMenuItem.Name = "siguienteToolStripMenuItem";
-            this.siguienteToolStripMenuItem.Size = new System.Drawing.Size(116, 29);
-            this.siguienteToolStripMenuItem.Text = "Cancelar";
-            this.siguienteToolStripMenuItem.Click += new System.EventHandler(this.siguienteToolStripMenuItem_Click);
-            // 
-            // siguienteToolStripMenuItem1
-            // 
-            this.siguienteToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.siguienteToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
-            this.siguienteToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("siguienteToolStripMenuItem1.Image")));
-            this.siguienteToolStripMenuItem1.Name = "siguienteToolStripMenuItem1";
-            this.siguienteToolStripMenuItem1.Size = new System.Drawing.Size(132, 29);
-            this.siguienteToolStripMenuItem1.Text = "GUARDAR";
-            this.siguienteToolStripMenuItem1.Click += new System.EventHandler(this.siguienteToolStripMenuItem1_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(867, 35);
-            this.panel1.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label1.Location = new System.Drawing.Point(244, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(371, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "CONFIGURACIÓN DE LA EMPRESA";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // frmConfiguracionEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(867, 552);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelRegistro);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmConfiguracionEmpresa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmConfiguracionEmpresa";
+            this.Text = "Configuracion tienda";
             this.Load += new System.EventHandler(this.frmConfiguracionEmpresa_Load);
             this.panelRegistro.ResumeLayout(false);
             this.panelRegistro.PerformLayout();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
+            this.menuStrip6.ResumeLayout(false);
+            this.menuStrip6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -437,11 +442,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNombreEmpresa;
         private System.Windows.Forms.PictureBox pbLogo;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem siguienteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem siguienteToolStripMenuItem1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        internal System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem btnCancelar;
+        internal System.Windows.Forms.MenuStrip menuStrip6;
+        private System.Windows.Forms.ToolStripMenuItem btnGuardar;
     }
 }

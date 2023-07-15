@@ -28,7 +28,8 @@ namespace EntVenta
         public decimal Vuelto { get; set; }
         public decimal Efectivo { get; set; }
         public string Comentarios { get; set; }
-
+        public decimal Recibo { get; set; }
+        public string  EstadoVenta { get; set; }
 
     }
 }

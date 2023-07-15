@@ -1,4 +1,5 @@
-﻿using DatVentas;
+﻿using BusVenta.Helpers;
+using DatVentas;
 using EntVenta;
 using System;
 using System.Collections.Generic;
@@ -162,16 +163,6 @@ namespace BusVenta
             return p;
         }
 
-        public void BorrarProducto(int id)
-        {
-            int filasAfectadas = new DatProducto().EliminarProducto(id);
-
-            if (filasAfectadas != 1)
-            {
-                throw new ApplicationException("Ocurrió un error, contacte al Administrador");
-            }
-        }
-
         public void ActualizarProducto( Producto p)
         {
             int filasAfectadas = new DatProducto().ActualizarProducto(p);
@@ -284,36 +275,51 @@ namespace BusVenta
             return p;
         }
 
-        public List<Producto> ListarProductos_Inactivos(string buscar)
+        //=======================================================================================================
+     
+        public string CalcularPorcentajeGanancia( decimal precioCompra, decimal precioVenta)
         {
-            DataTable dt = new DatProducto().MostrarProductos_Inactivos(buscar);
-            List<Producto> lsProductos = new List<Producto>();
-
-            foreach (DataRow dr in dt.Rows)
+            decimal _porcentaje = 0;
+            try
             {
-                Producto p = new Producto();
-                p.Id = Convert.ToInt32(dr["Id_Producto"]);
-                p.Descripcion = dr["Descripcion"].ToString();
-                p.Presentacion = dr["Presentacion"].ToString();
-                p.usaInventario = dr["Usa_Inventario"].ToString();
-                p.stock = dr["Stock"].ToString();
-                p.precioMenudeo = Convert.ToDecimal(dr["Precio_Menudeo"]);
-                p.precioMMayoreo = Convert.ToDecimal(dr["Precio_MMayoreo"]);
-                p.Caducidad = dr["Caducidad"].ToString();
-                p.codigo = dr["Codigo"].ToString();
-                p.seVendeA = dr["Tipo_Venta"].ToString();
-                p.APartirDe = Convert.ToDecimal(dr["A_Partir_De"].ToString());
-                p.stockMinimo = Convert.ToInt32(dr["Stock_Minimo"]);
-                p.precioMayoreo = Convert.ToDecimal(dr["Precio_Mayoreo"]);
-                p.IdTipoPresentacion = Convert.ToInt32(dr["Presentacion_Id"]);
-                p.IdCategoria = Convert.ToInt32(dr["Catalogo_Id"]);
-                p.TotalUnidades = Convert.ToDecimal(dr["TotalUnidades"] is DBNull ? 0 : dr["TotalUnidades"]);
-                p.PresentacionMenudeo = Convert.ToString(dr["PresentacionMenudeo"]);
-                p.Estado = Convert.ToBoolean(dr["Estado"]);
-                p.Peso = Convert.ToDecimal(dr["Peso"] is DBNull ? 0 : dr["Peso"]);
-                lsProductos.Add(p);
+                _porcentaje =  (((precioVenta / precioCompra) * 100) - 100);
+
+                return _porcentaje.ToString("#.##");
             }
-            return lsProductos;
+            catch (Exception)
+            {
+                return _porcentaje.ToString("#.##");
+            }
+        }
+
+        public string CalcularPrecioCompra(decimal ganancia, decimal precioVenta)
+        {
+            decimal _porcentaje = 0;
+            try
+            {
+                _porcentaje = ((100 + ganancia) * precioVenta) / 100; ;
+
+                return _porcentaje.ToString("#.##");
+            }
+            catch (Exception)
+            {
+                return _porcentaje.ToString("#.##");
+            }
+        }
+
+        public string CalcularPrecioVenta(decimal precioCompra, decimal ganancia)
+        {
+            decimal _porcentaje = 0;
+            try
+            {
+                _porcentaje = (1+(ganancia/100)) * precioCompra;
+
+                return _porcentaje.ToString("#.##");
+            }
+            catch (Exception)
+            {
+                return _porcentaje.ToString("#.##");
+            }
         }
 
     }

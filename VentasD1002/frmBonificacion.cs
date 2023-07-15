@@ -1,4 +1,5 @@
 ﻿using BusVenta;
+using BusVenta.Helpers;
 using DatVentas;
 using EntVenta;
 using Reportes;
@@ -33,12 +34,9 @@ namespace VentasD1002
 
         private void frmBonificacion_Load(object sender, EventArgs e)
         {
-            ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
-
-            serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
-            //idUsuario = new DatCatGenerico().Obtener_InicioSesion( EncriptarTexto.Encriptar(serialPC) );
-            idUsuario = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC)).Id;
-            strUsuario = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC)).Nombre;
+            serialPC = Sistema.ObenterSerialPC();
+            idUsuario =  BusUser.ObtenerUsuario_Loggeado().Id;
+            strUsuario = BusUser.ObtenerUsuario_Loggeado().Nombre;
             idCaja = new DatBox().Obtener_CajaSerial(serialPC);
 
             ObtenerDatos();
@@ -116,8 +114,8 @@ namespace VentasD1002
                     rptTicket.DataSource = obj;
                     reportViewer1.Report = rptTicket;
                     reportViewer1.RefreshReport();
-                    AgregarBitacora(v.Id);
                     imprimitTicket();
+                    AgregarBitacora(v.Id);
                 }
                 else
                 {
@@ -142,8 +140,6 @@ namespace VentasD1002
         {
             try
             {
-
-
                 string impresora = "";
                 PrintDocument reporte = null;
                 impresora = DatBox.Obtener_ImpresoraTicket(serialPC, "TICKET");

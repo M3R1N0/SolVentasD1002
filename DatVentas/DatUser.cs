@@ -52,7 +52,7 @@ namespace DatVentas
                     sc.Parameters.AddWithValue("@usuario",u.Usuario);
                     sc.Parameters.AddWithValue("@contrasenia",u.Contraseña);
                     sc.Parameters.AddWithValue("@correo",u.Correo);
-                    sc.Parameters.AddWithValue("@rol",u.RolID);
+                    sc.Parameters.AddWithValue("@rol",u.IdRol);
                     sc.Parameters.AddWithValue("@estado", true);
                     resultado = sc.ExecuteNonQuery();
                     conn.Close();
@@ -106,7 +106,7 @@ namespace DatVentas
                     sc.Parameters.AddWithValue("@usuario", u.Usuario);
                     sc.Parameters.AddWithValue("@contrasenia", u.Contraseña);
                     sc.Parameters.AddWithValue("@correo", u.Correo);
-                    sc.Parameters.AddWithValue("@rol", u.RolID);
+                    sc.Parameters.AddWithValue("@rol", u.IdRol);
                     sc.Parameters.AddWithValue("@estado", true);
                     resultado = sc.ExecuteNonQuery();
                     conn.Close();
@@ -158,6 +158,130 @@ namespace DatVentas
                 AUX_CONEXION = "INCORRECTO";
             }
                 return dt;
+        }
+
+        public static User Validate_UserCredentials(string username, string password)
+        {
+            User user = new User();
+            try
+            {
+                using (var con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    using (var cmd = new SqlCommand("ValidateUser",con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@Usuario",username);
+                        cmd.Parameters.AddWithValue("@contraseña", password);
+
+                        var reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            user.Id = reader.GetInt32(0);
+                            user.IdRol = reader.GetInt32(1);
+                            user.Nombre = reader.GetString(2);
+                            user.Apellidos = reader.GetString(3);
+                            user.Direccion = reader.GetString(4);
+                            user.Correo = reader.GetString(5);
+                            user.Usuario = reader.GetString(6);
+                            user.Contraseña = reader.GetString(7);
+                        }
+                    }
+                    con.Close();
+                }
+                return user;
+            }
+            catch (Exception)
+            {
+                return new User();
+            }
+        }
+
+        public static bool ReestablecerContraseña(int idUsuario, string pwd)
+        {
+            try
+            {
+                using (var con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    using (var cmd = new SqlCommand("UPDATE tb_Usuario SET Contrasenia = @pwd WHERE Id_Usuario = @id", con))
+                    {
+                        cmd.Parameters.AddWithValue("@pwd", pwd);
+                        cmd.Parameters.AddWithValue("@id", idUsuario);
+                        cmd.ExecuteNonQuery();
+                    }
+                    con.Close();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static bool ActualizarPerfilUsuario(User u)
+        {
+            try
+            {
+                using (var con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    using (var cmd = new SqlCommand("UPDATE tb_Usuario SET Rol_Id = @idRol WHERE Id_Usuario = @idUsuario", con))
+                    {
+                        cmd.Parameters.AddWithValue("@idRol", u.IdRol);
+                        cmd.Parameters.AddWithValue("@idUsuario", u.Id);
+                        cmd.ExecuteNonQuery();
+                    }
+                    con.Close();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static  User ObtenerUsuario(int id)
+        {
+            try
+            {
+                User user = null;
+                using (var con = new SqlConnection(MasterConnection.connection))
+                {
+                    con.Open();
+                    using (var cmd = new SqlCommand("SELECT * FROM tb_Usuario WHERE Id_Usuario= @id",con))
+                    {
+                        cmd.Parameters.AddWithValue("@id",id);
+                        var reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            user = new User();
+                            user.Id = reader.GetInt32(0);
+                            user.Nombre = reader.GetString(1);
+                            user.Apellidos = reader.GetString(2);
+                            user.Direccion = reader.GetString(3);
+                            user.Foto = reader.GetSqlBytes(4).Buffer;
+                            user.NombreFoto = reader.GetString(5);
+                            user.Usuario = reader.GetString(6);
+                            user.Contraseña = reader.GetString(7);
+                            user.Correo = reader.GetString(8);
+                            user.IdRol = reader.GetInt32(9);
+                        }
+
+                    }
+                    con.Close();
+
+                    return user;
+                }
+            }
+            catch (Exception)
+            {
+                return new User();
+            }
         }
     }
 }

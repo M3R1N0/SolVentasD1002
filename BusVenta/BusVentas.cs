@@ -12,82 +12,32 @@ namespace BusVenta
 {
     public class BusVentas
     {
-        public void AgregarVenta(Venta venta)
+        public static int AgregarVenta(Venta venta)
         {
-            int filasAfectadas = new DatVenta().InsertarVenta(venta);
-
-            if (filasAfectadas != 1)
-            {
-                throw new ApplicationException("Ocurrió un error al Insertar la venta");
-            }
+            return new DatVenta().InsertarVenta(venta);
+           
         }
 
-        public void AgregarVentaEspera(VentaEspera ventaEspera)
+        public static OperationResponse Eliminar_Venta(int id)
         {
-            int filasAfectadas = new DatVenta().InsertarVentaEspera(ventaEspera);
+             var respuesta = BusDetalleVenta.Eliminar_DetalleVenta(id);
 
-            if (filasAfectadas != 1)
+            if (respuesta.IsSuccess == EnumOperationResult.Failure)
             {
-                throw new ApplicationException("Ocurrió un error al Insertar la venta");
+                return OperationResponse.Failure(respuesta.Message);
             }
-        }
-
-        public List<VentaEspera> Listar_VentasEnEspera()
-        {
-            DataTable dt = new DatVenta().Obtener_VentasEnEspera();
-            List<VentaEspera> lstVentas = new List<VentaEspera>();
-
-            foreach (DataRow dr in dt.Rows)
+            else
             {
-                VentaEspera v = new VentaEspera();
-                v.Id = Convert.ToInt32(dr["Id"]);
-                v.IdCliente = Convert.ToInt32(dr["ClienteId"]);
-                v.IdUsuario = Convert.ToInt32(dr["UsuarioId"]);
-                v.IdCaja = Convert.ToInt32(dr["CajaId"]);
-                v.FechaVenta = Convert.ToDateTime(dr["Fecha"]);
-                v.Referencia = dr["Referencia"].ToString();
-                v.MontoTotal = Convert.ToDecimal (dr["MontoTotal"]);
+                var ventaEliminada = new DatVenta().EliminarVenta(id);
 
-                lstVentas.Add(v);
-            }
-
-            return lstVentas;
-        }
-
-        public  List<DetalleVentaEspera> ListarDetalle_VentaEnEspera(int idVenta)
-        {
-            DataTable dt = new DatDetalleVenta().ObtenerDetalle_VentaEnEspera(idVenta);
-            List<DetalleVentaEspera> lstDetalle = new List<DetalleVentaEspera>();
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                DetalleVentaEspera detalle = new DetalleVentaEspera();
-                detalle.IdPresentacion = Convert.ToInt32(dr["TipoPresentacionId"]);
-                detalle.Id = Convert.ToInt32(dr["IdVenta_DetalleEspera"]);
-                detalle.IdVenta = Convert.ToInt32(dr["VentaId"]);
-                detalle.IdProducto = Convert.ToInt32(dr["ProductoId"]);
-                detalle.Stock = dr["Stock"].ToString();
-                detalle.UsaInventario = dr["UsaInventario"].ToString();
-                detalle.Cantidad = Convert.ToDecimal(dr["Cantidad"]);
-                detalle.UnidadMedida = dr["UnidadMedida"].ToString();
-                detalle.Descripcion = Convert.ToString(dr["Producto"]);
-                detalle.Precio = Convert.ToDecimal(dr["Precio"]);
-                detalle.TotalPago = Convert.ToDecimal(dr["Importe"]);
-
-                lstDetalle.Add(detalle);
-
-            }
-
-            return lstDetalle;
-        }
-
-        public void Eliminar_VentaEspera(int id)
-        {
-            int filasAfectadas = new DatVenta().EliminarVentaEspera(id);
-
-            if (filasAfectadas != 1)
-            {
-                throw new ApplicationException("Ocurrió un error al Insertar la venta");
+                if (!ventaEliminada)
+                {
+                    return OperationResponse.Failure("Ocurrió un detalle al eliminar la venta, favor de revisar");
+                }
+                else
+                {
+                    return OperationResponse.Success("Operación exitosa");
+                }
             }
         }
 
@@ -111,37 +61,6 @@ namespace BusVenta
             }
 
             return lstVentas;
-        }
-
-        public List<Venta> ListarVentas_PorCobrar(string buscar)
-        {
-            DataTable dt = new DatVenta().ObtenerVentas_PorCobrar(buscar);
-            List<Venta> _lsVentas = new List<Venta>();
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                Venta v = new Venta();
-                v.Id = Convert.ToInt32(dr["Id_Venta"]);
-                v.IdCliente = Convert.ToInt32(dr["Cliente_Id"]);
-                v.IdUsuario = Convert.ToInt32(dr["Usuario_Id"]);
-                v.IdCaja = Convert.ToInt32(dr["Caja_Id"]);
-                v.FechaVenta = Convert.ToDateTime(dr["Fecha_Venta"]);
-                v.Folio = dr["Folio"].ToString();
-                v.MontoTotal = Convert.ToDecimal(dr["Monto_total"]);
-                v.FormaPago = dr["Forma_Pago"].ToString();
-                v.Comprobante = dr["Comprobante"].ToString();
-                v.FechaLiquidacion = dr["Fecha_Liquidacion"].ToString();
-                v.Accion = dr["Accion"].ToString();
-                v.Saldo = Convert.ToDecimal(dr["Saldo"]);
-                v.TipoPago = Convert.ToDecimal(dr["Tipo_Pago"]);
-                v.ReferenciaTarjeta = dr["Referencia_Tarjeta"].ToString();
-                v.EstadoPago = dr["Estado_Pago"].ToString();
-                v.Cliente = dr["Nombre"].ToString();
-
-                _lsVentas.Add(v);
-            }
-
-            return _lsVentas;
         }
 
         public void Actualizar_VentaACredito(int idventa, decimal saldo, string estadoPago, decimal efectivo)

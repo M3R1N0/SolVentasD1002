@@ -15,6 +15,7 @@ using Reportes;
 using Telerik.Reporting.Processing;
 using System.Management;
 using BusVenta.Helpers;
+using VentasD1002.Helpers;
 
 namespace VentasD1002
 {
@@ -24,6 +25,7 @@ namespace VentasD1002
         string serialPC;
         private decimal Precio;
         private decimal Cantidad;
+        int idVenta;
         public frmDevoluciones()
         {
             InitializeComponent();
@@ -35,8 +37,6 @@ namespace VentasD1002
             txtBuscar.SelectAll();
             txtBuscar.Focus();
             gdvResultado.Visible = false;
-            ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
-            serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
@@ -46,9 +46,9 @@ namespace VentasD1002
                 if (!String.IsNullOrEmpty(txtBuscar.Text) && txtBuscar.Text != "Ingrese el nombre del cliente o el num de comprobante ")
                 {
                     gdvResultado.Visible = true;
-                    gdvResultado.DataSource = new DatProducto().BuscarVenta(txtBuscar.Text);
+                    DatVenta.BuscarVenta( ref gdvResultado,txtBuscar.Text);
                     gdvResultado.Columns[0].Visible = false;
-                    DataTablePersonalizado.Multilinea(ref gdvResultado);
+                    Comun.StyleDatatable(ref gdvResultado);
                 }
                 else
                 {
@@ -72,42 +72,52 @@ namespace VentasD1002
             try
             {
                 int oneKey = Convert.ToInt32(gdvResultado.SelectedCells[0].Value);
-                lblCliente.Text = gdvResultado.SelectedCells[2].Value.ToString();
-                lblFolio.Text = gdvResultado.SelectedCells[3].Value.ToString();
-                lblComprobante.Text = gdvResultado.SelectedCells[4].Value.ToString();
-                lblFechaVenta.Text = Convert.ToDateTime(gdvResultado.SelectedCells[1].Value).ToString("dd 'de' MMMM 'de' yyyy");
+                txtCliente.Texts = gdvResultado.SelectedCells[2].Value.ToString();
+                txtFolio.Texts = gdvResultado.SelectedCells[3].Value.ToString();
+                txtFechaVenta.Texts = Convert.ToDateTime(gdvResultado.SelectedCells[1].Value).ToString("dd 'de' MMMM 'de' yyyy");
 
                 gdvResultado.Visible = false;
                 txtBuscar.ResetText();
 
-                DataTable dt = new DatDetalleVenta().ObtenerDatos_DetalleVenta(oneKey);
-                gdvDatos.DataSource = dt;
-
-                DataTablePersonalizado.Multilinea(ref gdvDatos);
-                gdvDatos.Columns[1].Visible = false;
-                gdvDatos.Columns[2].Visible = false;
-                gdvDatos.Columns[3].Visible = false;
-                gdvDatos.Columns[4].Visible = false;
-                gdvDatos.Columns[5].Visible = false;
-                gdvDatos.Columns[11].Visible = false;
-                gdvDatos.Columns[12].Visible = false;
-                gdvDatos.Columns[13].Visible = false;
-                gdvDatos.Columns[14].Visible = false;
-
-                var dtDatos = from dr in dt.AsEnumerable()
-                              select new
-                              {
-                                  MontoTotal = dr.Field<decimal>("Monto_Total"),
-                                  Cajero = dr.Field<string>("Nombre"),
-                              };
-
-                lblCajero.Text = dtDatos.Select(x => x.Cajero).FirstOrDefault();
-                lblMontoTotal.Text = dtDatos.Select(x => x.MontoTotal).FirstOrDefault().ToString(); 
-
+                ObtenerDetalleVenta(oneKey);
+                idVenta = oneKey;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ObtenerDetalleVenta(int oneKey)
+        {
+            try
+            {
+                var lstDetalle = DatDetalleVenta.Listar_DetalleVenta(oneKey);
+
+                grid.DataSource = lstDetalle;
+                foreach (DataGridViewColumn col in grid.Columns)
+                {
+                    col.ReadOnly = true;
+                    col.Visible = false;
+
+                    if (col.Index == 0 || col.Index == 1 || col.Index == 5 ||
+                        col.Index == 6 || col.Index == 7 || //col.Index == 8 || 
+                        col.Index == 9 || col.Index == 10)
+                    {
+                        col.Visible = true;
+                    }
+                }
+                Comun.StyleDatatable(ref grid);
+
+                var VentaTotal = (from DataGridViewRow row in grid.Rows
+                                  where row.Cells[10].FormattedValue.ToString() != string.Empty
+                                  select Convert.ToDecimal(row.Cells[10].FormattedValue)).Sum();
+
+                //txtCajero.Texts = dtDatos.Select(x => x.Cajero).FirstOrDefault();
+                lblTotal.Text = string.Format("{0:N2}", VentaTotal);
+            }
+            catch (Exception)
+            {
             }
         }
 
@@ -116,136 +126,10 @@ namespace VentasD1002
             txtBuscar.SelectAll();
         }
 
-        private void btnControl_Click(object sender, EventArgs e)
-        {
-            decimal devuelto = 0;
-            foreach (DataGridViewRow dr in gdvDatos.Rows)
-            {
-                if (Convert.ToBoolean(dr.Cells[0].Value))
-                {
-                    devuelto += Convert.ToDecimal(dr.Cells[10].Value);
-                  //  txtCantidadDevuelto.Text = dr.Cells[6].Value.ToString();
-                    Cantidad = Convert.ToDecimal(dr.Cells[6].Value);
-                    Precio = Convert.ToDecimal(dr.Cells[9].Value);
-                    pnlProcesar.Visible = true;
-                    // lblTotalDevuelto.Text = devuelto.ToString();
-                    txtCantidadDevuelto.Focus();
-                }
-            }
-
-            if (devuelto == 0)
-            {
-                MessageBox.Show("Seleccione el producto para continuar con la devolución", "No hay datos seleccionados", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             pnlProcesar.Visible = false;
             lblTotalDevuelto.Text = "0.00";
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Venta venta = new Venta();
-                foreach (DataGridViewRow dr in gdvDatos.Rows)
-                {
-                    if (Convert.ToBoolean(dr.Cells[0].Value))
-                    {
-                        int onekey = Convert.ToInt32(dr.Cells[1].Value);
-                       
-                        var s4 = dr.Cells[4].Value;
-                      
-                        var Total = dr.Cells[10].Value;
-                        var MontoTotal = dr.Cells[12].Value;
-                     
-                        string codigo = Convert.ToString(dr.Cells[3].Value);
-                        int idVenta = Convert.ToInt32(dr.Cells[4].Value);
-                    
-                        Venta data = DatVenta.ObtenerVenta(idVenta);
-
-                        #region validar Venta
-
-                        venta.Id = data.Id;
-                        venta.MontoTotal = data.MontoTotal - Convert.ToDecimal(lblTotalDevuelto.Text);
-                        if (data.Vuelto < 0 )
-                        {
-                            venta.Vuelto = data.Vuelto + Convert.ToDecimal(lblTotalDevuelto.Text);
-                        }
-                        else if(data.Vuelto >= 0 && data.Saldo == 0)
-                        {
-                            venta.Vuelto = data.Vuelto + Convert.ToDecimal(lblTotalDevuelto.Text);
-                        }
-
-                        if (data.Saldo > 0)
-                        {
-                            venta.Saldo = data.Saldo - Convert.ToDecimal(lblTotalDevuelto.Text);
-                            venta.Vuelto = venta.Saldo < 0 ? venta.Saldo *(-1) : venta.Saldo;
-                            venta.Saldo = venta.Saldo < 0 ? 0 : venta.Saldo;
-                            
-                        }
-                        venta.Accion = "VENTA REALIZADA";
-                        venta.EstadoPago = venta.Saldo <= 0 ? "PAGADO" : "PENDIENTE";
-
-                        #endregion
-
-                        #region VALIDAR DETALLE VENTA
-
-                        DetalleVenta dv = DatDetalleVenta.Obtener_DetalleVenta(onekey);
-                        int esDevuelto = 0;
-                        if (Convert.ToDecimal(txtCantidadDevuelto.Text) < dv.Cantidad)
-                        {
-                            dv.Cantidad = dv.Cantidad - Convert.ToDecimal(txtCantidadDevuelto.Text);
-                            dv.TotalPago = dv.TotalPago - Convert.ToDecimal(lblTotalDevuelto.Text);
-                            esDevuelto = 0;
-                        }else if(Convert.ToDecimal(txtCantidadDevuelto.Text) == dv.Cantidad)
-                        {
-                            esDevuelto = 1;
-                        }
-
-                        #endregion
-
-                        new DatDetalleVenta().EditarDevolucion_DetalleVenta(dv, esDevuelto);
-
-                        DatVenta.EditarDatos_Devoluciones(venta);
-                        Producto p = new BusProducto().ObtenerProducto(codigo);
-                        if (p.usaInventario == "SI")
-                        {
-                            string presentancion = Convert.ToString(dr.Cells[7].Value);
-                            if (p.precioMayoreo == Convert.ToDecimal(dr.Cells[6].Value) || presentancion.Equals("PQTE") || presentancion.Equals("SIX")
-                                || presentancion.Equals("CJA") || presentancion.Equals("BTO") || presentancion.Equals("RJA"))
-                            {
-                                decimal cantidadVendida = Convert.ToDecimal(p.TotalUnidades * Convert.ToDecimal(txtCantidadDevuelto.Text));
-                                new BusProducto().Actualizar_Stock(p.Id, (Convert.ToDecimal(p.stock) + cantidadVendida));
-                            }
-                            else
-                            {
-                                new BusProducto().Actualizar_Stock(p.Id, (Convert.ToDecimal(p.stock) + Convert.ToDecimal(txtCantidadDevuelto.Text)));
-                            }
-                        }
-                        AgregarBitacora(idVenta, "UNICO");
-                    }
-                }
-
-                DialogResult result = MessageBox.Show("Desea Reimprimir el ticket", "Operación realizada", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    ImprimirTicket(venta);
-                }
-
-                pnlProcesar.Visible = false;
-                lblTotalDevuelto.Text = "0.00";
-                txtCantidadDevuelto.Text = "0";
-                gdvDatos.DataSource = null;
-                Limpiar_campos();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrió un error al actualizar los datos : "+ex.Message, "Error de actualización", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void AgregarBitacora(int idventa, string tipo)
@@ -254,8 +138,8 @@ namespace VentasD1002
             {
                 string SerialPC = Sistema.ObenterSerialPC();
                 string strTipo = (tipo.Equals("TOTAL")) ? $"DEVOLUCIÓN TOTAL DE LA VENTA [{idventa}]" : $"DEVOLUCIÓN DE PRODUCTO [{idventa}]";
-                int idCaja = new BusBox().showBoxBySerial(serialPC).Id;
-                int idusuario = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC)).Id;
+                int idCaja = BusBox.showBoxBySerial().Id;
+                int idusuario = BusUser.ObtenerUsuario_Loggeado().Id;
 
                 Bitacora b = new Bitacora();
                 b.Fecha = DateTime.Now;
@@ -271,55 +155,27 @@ namespace VentasD1002
             }
         }
 
-        private void ImprimirTicket(Venta venta)
+        private void ImprimirTicket(int idVenta)
         {
-            #region TICKET
-            string textoNumero = Convertir_NumeroLetra.NumeroATexto(venta.MontoTotal.ToString());
-            // DataTable dt = DatDetalleVenta.ObtenerDatos_Ticket(venta.Id, textoNumero);
-            ParametrosReporte reporte = DatVenta.Consultar_Ticket_Parametro(venta.Id);
-            reporte.LetraNumero = textoNumero;
-
-            //rptTicket rptTicket = new rptTicket();
-            ReportTicket rptTicket = new ReportTicket();
-            rptTicket.pnlCancelar.Visible = false;
-            rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
-            rptTicket.DataSource = reporte;
-            reportViewer1.Report = rptTicket;
-            reportViewer1.RefreshReport();
-            #endregion
-
             try
             {
-                string impresora = DatBox.Obtener_ImpresoraTicket(serialPC, "TICKET");
-                TICKET = new PrintDocument();
-                TICKET.PrinterSettings.PrinterName = impresora;
-
-                if (TICKET.PrinterSettings.IsValid)
-                {
-                    PrinterSettings printerSettings = new PrinterSettings();
-                    printerSettings.PrinterName = impresora;
-
-                    ReportProcessor reportProcessor = new ReportProcessor();
-                    reportProcessor.PrintReport(reportViewer1.ReportSource, printerSettings);
-                }
+                reportViewer1.Visible = true;
+                var respuesta = ImprimirDocumento.DibujarReporte(ref reportViewer1, DESTINO_DOCUMENTO.VENTAS, TIPO_DOCUMENTO.TICKET, idVenta);
+                reportViewer1.RefreshReport();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al imprimir el ticket : " + ex.Message, "Error de impresión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Ocurrió un detalle al asignar los datos al reporte\nDetalles: " + ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void Limpiar_campos()
         {
-            lblCajero.Text = "";
-            lblCliente.Text = "";
-            lblComprobante.Text = "";
-            lblFechaVenta.Text = "";
-            lblFolio.Text = "";
-            lblMontoTotal.Text = "";
-            lblTotalDevuelto.Text = "";
+            this.Controls.Clear();
             Precio = 0;
             Cantidad = 0;
+            idVenta = 0;
+            gdvDatos.DataSource = null;
             
         }
 
@@ -364,87 +220,142 @@ namespace VentasD1002
         {
             try
             {
-                Venta venta = new Venta();
+                DialogResult result = MessageBox.Show("¿Seguro desea cancelar la venta?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                DialogResult result = MessageBox.Show("Desea Cancelar toda la venta, no podrá deshacer los cambios", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
+                if (result == DialogResult.Yes && idVenta != 0)
                 {
-                    foreach (DataGridViewRow dr in gdvDatos.Rows)
+                    ObtenerDetaleVenta(idVenta);
+
+                    BusVentas.Eliminar_Venta(idVenta);
+                    MessageBox.Show("¡Operación realizada con éxito!", "Venta eliminada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void ObtenerDetaleVenta(int idVenta)
+        {
+            try
+            {
+                var lstDetalle = DatDetalleVenta.Listar_DetalleVenta(idVenta);
+
+                if (lstDetalle.Count <= 0)
+                {
+                    MessageBox.Show("NO HAY DATOS QUE PROCESAR", "ATENCIÓN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
+                foreach (DetalleVentaII item in lstDetalle)
+                {
+                    if (item.UsaInventario)
                     {
+                        ProductoVM p = new ProductoVM();
+                        p.Id = item.IdProducto;
+                        p.Cantidad = item.Cantidad;
+                        p.Articulo = item.Descripcion;
 
-                        int idDetalleVenta = Convert.ToInt32(dr.Cells[1].Value);
-
-                        var s4 = dr.Cells[4].Value;
-
-                        var Total = dr.Cells[10].Value;
-                        var MontoTotal = dr.Cells[12].Value;
-
-                        string codigo = Convert.ToString(dr.Cells[3].Value);
-                        int idVenta = Convert.ToInt32(dr.Cells[4].Value);
-                        decimal cantidad = Convert.ToInt32(dr.Cells[6].Value);
-
-                        Venta data = DatVenta.ObtenerVenta(idVenta);
-
-                        #region validar Venta
-
-                        venta.Id = data.Id;
-                       
-                        venta.Vuelto = data.Vuelto;
-                        venta.Saldo = data.Saldo;
-                        venta.MontoTotal = 0;
-                        venta.Accion = "VENTA CANCELADA";
-                        venta.EstadoPago = venta.Saldo <= 0 ? "PAGADO" : "PENDIENTE";
-
-                        #endregion
-
-                        #region VALIDAR DETALLE VENTA
-
-                        DetalleVenta dv = DatDetalleVenta.Obtener_DetalleVenta(idDetalleVenta);
-                        int esDevuelto = 0;
-                        if (cantidad < dv.Cantidad)
+                        if (item.TipoVenta == (Int32)TIPO_VENTA.P)
                         {
-                            dv.Cantidad = dv.Cantidad - Convert.ToDecimal(cantidad);
-                            dv.TotalPago = dv.TotalPago - Convert.ToDecimal(Total);
-                            esDevuelto = 0;
+                            p.TipoVenta = ProductoDAL.ObtenerTipoVenta_Preferencial(item.IdProducto, item.UnidadMedida).ToString();
                         }
-                        else if (Convert.ToDecimal(cantidad) == dv.Cantidad)
+                        else
                         {
-                            esDevuelto = 1;
+                            p.TipoVenta = (item.TipoVenta == (Int32)TIPO_VENTA.M) ? TIPO_VENTA.M.ToString() : TIPO_VENTA.U.ToString();
                         }
+                        p.UsaInventario = item.UsaInventario;
+                        ProductoDAL.Aumentar_DisminuirStock(p, "AUMENTAR");
 
-                        #endregion
-
-                        DatVenta.EditarDatos_Devoluciones(venta);
-                        Producto p = new BusProducto().ObtenerProducto(codigo);
-                        if (p.usaInventario == "SI")
-                        {
-                            string presentancion = Convert.ToString(dr.Cells[7].Value);
-                            if (p.precioMayoreo == Convert.ToDecimal(dr.Cells[9].Value) || presentancion.Equals("PQTE") || presentancion.Equals("SIX")
-                                || presentancion.Equals("CJA") || presentancion.Equals("BTO") || presentancion.Equals("RJA"))
-                            {
-                                decimal cantidadVendida = Convert.ToDecimal(p.TotalUnidades * Convert.ToDecimal(cantidad));
-                                new BusProducto().Actualizar_Stock(p.Id, (Convert.ToDecimal(p.stock) + cantidadVendida));
-                            }
-                            else
-                            {
-                                new BusProducto().Actualizar_Stock(p.Id, (Convert.ToDecimal(p.stock) + Convert.ToDecimal(cantidad)));
-                            }
-                        }
-                        AgregarBitacora(idVenta, "TOTAL");
-                        pnlProcesar.Visible = true;
-                        lblTotalDevuelto.Text = (venta.Saldo > 0) ? venta.Saldo.ToString() : venta.MontoTotal.ToString();
-
-                        gdvDatos.DataSource = null;
-                        MessageBox.Show("Proceso realizado exitosamente", "DEVOLUCION REALIZADA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                      
                     }
                 }
             }
             catch (Exception)
             {
 
-                throw;
+            }
+        }
+
+        private void grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int IdDetalle = Convert.ToInt32(grid.SelectedCells[2].Value.ToString());
+                int idProducto = Convert.ToInt32(grid.SelectedCells[4].Value.ToString());
+                string tipoV = grid.SelectedCells[11].Value.ToString();
+
+                DetalleVentaII detalle = ((DataGridView)sender).CurrentRow.DataBoundItem as DetalleVentaII;
+
+                TIPO_VENTA tipoVenta = (detalle.TipoVenta == 1) ? TIPO_VENTA.M : TIPO_VENTA.U;
+                var p = ProductoDAL.ObtenerProducto_x_Codigo(detalle.Codigo, tipoVenta.ToString());
+
+                if (e.ColumnIndex == this.grid.Columns["Eliminar"].Index)
+                {
+                    p.Cantidad = detalle.Cantidad;
+                    DatDetalleVenta.Eliminar_DetalleVenta_PorId(detalle.Id);
+
+                    //bitacora.Detalle = $"Devolución del producto {detalle.IdProducto}, cantidad : {detalle.Cantidad};{detalle.UnidadMedida};{detalle.TipoVenta}, de la venta {detalle.IdVenta}";
+
+                    ProductoDAL.Aumentar_DisminuirStock(p, "AUMENTAR");
+                    DatVenta.ActualizarTotalVenta(detalle.IdVenta, detalle.Importe);
+                }
+
+                if (e.ColumnIndex == this.grid.Columns["Quitar"].Index)
+                {
+                    p.Cantidad = 1;
+                    if (detalle.Cantidad == 1)
+                    {
+                         DatDetalleVenta.Eliminar_DetalleVenta_PorId(detalle.Id);
+                        //bitacora.ValorActual = "0";
+                        //bitacora.Detalle = $"Devolución del producto {detalle.IdProducto}, cantidad : {detalle.Cantidad};{detalle.UnidadMedida};{detalle.TipoVenta}, de la venta {detalle.IdVenta}";
+                    }
+                    else
+                    {
+                        detalle.Cantidad = -1;
+                        detalle.Importe = detalle.Precio;
+                        //bitacora.ValorActual = (detalle.Cantidad - 1).ToString();
+                        //bitacora.Detalle = $"Devolución del producto {detalle.IdProducto}, cantidad : {1}; {detalle.UnidadMedida};{detalle.TipoVenta};{detalle.Id}, de la venta {detalle.IdVenta}";
+                        DetalleVenta d = new DetalleVenta();
+                        d.Id = detalle.Id;
+                        d.IdProducto = detalle.IdProducto; ;
+                        d.IdVenta = detalle.IdVenta;
+                        d.Cantidad = detalle.Cantidad;
+                        d.Precio = detalle.Precio;
+                        d.TotalPago =detalle.Importe;
+                        d.UnidadMedida = detalle.UnidadMedida;
+                        d.Estado = "VENTA REALIZADA";
+                        d.CantidaMostrada = 0;
+                        d.Descripcion = "";// p.Articulo;
+                        d.Stock = p.Stock.ToString();
+                        d.Codigo = detalle.Codigo;
+                        d.UsaInventario = detalle.UsaInventario ? "SI" : "NO";
+                        d.Se_Vende_A = "";
+                        d.Costo = 0;
+                        d.Venta = tipoVenta.ToString();
+
+                        if (!BusDetalleVenta.Agregar_DetalleVenta(d))
+                        {
+                            MessageBox.Show("Ocurrrió un error al actualizar el registro", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+
+                    ProductoDAL.Aumentar_DisminuirStock(p, "AUMENTAR");
+
+                    DatVenta.ActualizarTotalVenta(detalle.IdVenta, detalle.Importe);
+                }
+
+                ObtenerDetalleVenta(detalle.IdVenta);
+
+                var result = MessageBox.Show("¿Desea imprimir el ticket?","Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    ImprimirTicket(detalle.IdVenta);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado: "+ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

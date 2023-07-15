@@ -32,16 +32,8 @@
             this.lbltitulo = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtMonto = new System.Windows.Forms.TextBox();
             this.txtDetalle = new System.Windows.Forms.TextBox();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
-            this.chkComprobante = new System.Windows.Forms.CheckBox();
-            this.pnlComprobante = new System.Windows.Forms.Panel();
-            this.txtNComprobante = new System.Windows.Forms.TextBox();
-            this.cboTipoComprobante = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -57,12 +49,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtNvoConcepto = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.rtbnIngresos = new System.Windows.Forms.RadioButton();
             this.rbtnGastos = new System.Windows.Forms.RadioButton();
-            this.pnlComprobante.SuspendLayout();
+            this.chkImprimir = new Bunifu.Framework.UI.BunifuiOSSwitch();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAgregar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -74,11 +66,12 @@
             // 
             // lbltitulo
             // 
+            this.lbltitulo.BackColor = System.Drawing.SystemColors.Control;
             this.lbltitulo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbltitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltitulo.Location = new System.Drawing.Point(239, 0);
             this.lbltitulo.Name = "lbltitulo";
-            this.lbltitulo.Size = new System.Drawing.Size(396, 55);
+            this.lbltitulo.Size = new System.Drawing.Size(288, 55);
             this.lbltitulo.TabIndex = 0;
             this.lbltitulo.Text = "Gastos";
             this.lbltitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -86,131 +79,54 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(121, 197);
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(57, 199);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 20);
+            this.label2.Size = new System.Drawing.Size(71, 21);
             this.label2.TabIndex = 1;
             this.label2.Text = "Monto :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(116, 258);
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(56, 260);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 20);
+            this.label3.Size = new System.Drawing.Size(72, 21);
             this.label3.TabIndex = 2;
             this.label3.Text = "Detalle :";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(121, 228);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Fecha :";
             // 
             // txtMonto
             // 
             this.txtMonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMonto.Location = new System.Drawing.Point(203, 194);
+            this.txtMonto.Location = new System.Drawing.Point(145, 196);
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(268, 26);
             this.txtMonto.TabIndex = 4;
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
             // txtDetalle
             // 
             this.txtDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDetalle.Location = new System.Drawing.Point(203, 258);
+            this.txtDetalle.Location = new System.Drawing.Point(145, 241);
             this.txtDetalle.Multiline = true;
             this.txtDetalle.Name = "txtDetalle";
             this.txtDetalle.Size = new System.Drawing.Size(268, 59);
             this.txtDetalle.TabIndex = 5;
             // 
-            // dtpFecha
-            // 
-            this.dtpFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(203, 226);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(120, 26);
-            this.dtpFecha.TabIndex = 6;
-            // 
-            // chkComprobante
-            // 
-            this.chkComprobante.AutoSize = true;
-            this.chkComprobante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkComprobante.Location = new System.Drawing.Point(120, 331);
-            this.chkComprobante.Name = "chkComprobante";
-            this.chkComprobante.Size = new System.Drawing.Size(125, 24);
-            this.chkComprobante.TabIndex = 7;
-            this.chkComprobante.Text = "Comprobante";
-            this.chkComprobante.UseVisualStyleBackColor = true;
-            this.chkComprobante.CheckedChanged += new System.EventHandler(this.chkComprobante_CheckedChanged);
-            // 
-            // pnlComprobante
-            // 
-            this.pnlComprobante.Controls.Add(this.txtNComprobante);
-            this.pnlComprobante.Controls.Add(this.cboTipoComprobante);
-            this.pnlComprobante.Controls.Add(this.label5);
-            this.pnlComprobante.Controls.Add(this.label6);
-            this.pnlComprobante.Location = new System.Drawing.Point(120, 360);
-            this.pnlComprobante.Name = "pnlComprobante";
-            this.pnlComprobante.Size = new System.Drawing.Size(351, 70);
-            this.pnlComprobante.TabIndex = 8;
-            // 
-            // txtNComprobante
-            // 
-            this.txtNComprobante.Location = new System.Drawing.Point(157, 40);
-            this.txtNComprobante.Name = "txtNComprobante";
-            this.txtNComprobante.Size = new System.Drawing.Size(177, 20);
-            this.txtNComprobante.TabIndex = 7;
-            // 
-            // cboTipoComprobante
-            // 
-            this.cboTipoComprobante.FormattingEnabled = true;
-            this.cboTipoComprobante.Items.AddRange(new object[] {
-            "RECIBO",
-            "TICKET"});
-            this.cboTipoComprobante.Location = new System.Drawing.Point(157, 13);
-            this.cboTipoComprobante.Name = "cboTipoComprobante";
-            this.cboTipoComprobante.Size = new System.Drawing.Size(177, 21);
-            this.cboTipoComprobante.TabIndex = 6;
-            this.cboTipoComprobante.Text = "--Seleccione una opción--";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(8, 44);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(134, 20);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "N° Comprobante :";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 11);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(145, 20);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Tipo comprobante :";
-            // 
             // btnGuardar
             // 
+            this.btnGuardar.BackgroundImage = global::VentasD1002.Properties.Resources.azul;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.LightCyan;
             this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(357, 449);
+            this.btnGuardar.Location = new System.Drawing.Point(313, 378);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(114, 32);
+            this.btnGuardar.Size = new System.Drawing.Size(116, 41);
             this.btnGuardar.TabIndex = 34;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -219,14 +135,17 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackgroundImage = global::VentasD1002.Properties.Resources.Rojo;
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.Snow;
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(221, 449);
+            this.btnCancelar.Location = new System.Drawing.Point(191, 378);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(116, 32);
+            this.btnCancelar.Size = new System.Drawing.Size(116, 41);
             this.btnCancelar.TabIndex = 35;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -240,9 +159,9 @@
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.txtBuscar);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(61, 88);
+            this.groupBox1.Location = new System.Drawing.Point(12, 76);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(488, 85);
+            this.groupBox1.Size = new System.Drawing.Size(488, 112);
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Seleccione el concepto o agregue uno nuevo";
@@ -251,7 +170,7 @@
             // 
             this.pbAgregar.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.pbAgregar.Image = ((System.Drawing.Image)(resources.GetObject("pbAgregar.Image")));
-            this.pbAgregar.Location = new System.Drawing.Point(409, 30);
+            this.pbAgregar.Location = new System.Drawing.Point(426, 47);
             this.pbAgregar.Name = "pbAgregar";
             this.pbAgregar.Size = new System.Drawing.Size(39, 35);
             this.pbAgregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -261,27 +180,28 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(144)))), ((int)(((byte)(15)))));
-            this.panel1.Location = new System.Drawing.Point(7, 58);
+            this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel1.Location = new System.Drawing.Point(76, 75);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(383, 3);
+            this.panel1.Size = new System.Drawing.Size(344, 3);
             this.panel1.TabIndex = 1;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(7, 23);
+            this.pictureBox1.Location = new System.Drawing.Point(37, 47);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(42, 48);
+            this.pictureBox1.Size = new System.Drawing.Size(42, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
             // txtBuscar
             // 
+            this.txtBuscar.BackColor = System.Drawing.SystemColors.MenuBar;
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.Location = new System.Drawing.Point(55, 34);
+            this.txtBuscar.Location = new System.Drawing.Point(85, 55);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(335, 19);
             this.txtBuscar.TabIndex = 0;
@@ -298,14 +218,14 @@
             this.gdvConcepto.ColumnHeadersVisible = false;
             this.gdvConcepto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Editar});
-            this.gdvConcepto.Location = new System.Drawing.Point(110, 149);
+            this.gdvConcepto.Location = new System.Drawing.Point(85, 157);
             this.gdvConcepto.MultiSelect = false;
             this.gdvConcepto.Name = "gdvConcepto";
             this.gdvConcepto.ReadOnly = true;
             this.gdvConcepto.RowHeadersVisible = false;
             this.gdvConcepto.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.gdvConcepto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvConcepto.Size = new System.Drawing.Size(338, 176);
+            this.gdvConcepto.Size = new System.Drawing.Size(347, 193);
             this.gdvConcepto.TabIndex = 37;
             this.gdvConcepto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvConcepto_CellClick);
             // 
@@ -324,22 +244,26 @@
             this.pnlConcepto.Controls.Add(this.panel2);
             this.pnlConcepto.Controls.Add(this.txtNvoConcepto);
             this.pnlConcepto.Controls.Add(this.label7);
+            this.pnlConcepto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlConcepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlConcepto.Location = new System.Drawing.Point(56, 88);
+            this.pnlConcepto.Location = new System.Drawing.Point(0, 55);
             this.pnlConcepto.Name = "pnlConcepto";
-            this.pnlConcepto.Size = new System.Drawing.Size(493, 393);
+            this.pnlConcepto.Size = new System.Drawing.Size(527, 390);
             this.pnlConcepto.TabIndex = 4;
             // 
             // btnCancelarConcepto
             // 
+            this.btnCancelarConcepto.BackgroundImage = global::VentasD1002.Properties.Resources.naranja;
+            this.btnCancelarConcepto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancelarConcepto.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnCancelarConcepto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelarConcepto.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarConcepto.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarConcepto.ForeColor = System.Drawing.Color.Bisque;
             this.btnCancelarConcepto.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelarConcepto.Image")));
             this.btnCancelarConcepto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelarConcepto.Location = new System.Drawing.Point(221, 152);
+            this.btnCancelarConcepto.Location = new System.Drawing.Point(226, 206);
             this.btnCancelarConcepto.Name = "btnCancelarConcepto";
-            this.btnCancelarConcepto.Size = new System.Drawing.Size(116, 32);
+            this.btnCancelarConcepto.Size = new System.Drawing.Size(116, 48);
             this.btnCancelarConcepto.TabIndex = 37;
             this.btnCancelarConcepto.Text = "Cancelar";
             this.btnCancelarConcepto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -348,14 +272,17 @@
             // 
             // btnAgregar
             // 
+            this.btnAgregar.BackgroundImage = global::VentasD1002.Properties.Resources.verde;
+            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.Color.Ivory;
             this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
             this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregar.Location = new System.Drawing.Point(355, 152);
+            this.btnAgregar.Location = new System.Drawing.Point(348, 206);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(114, 32);
+            this.btnAgregar.Size = new System.Drawing.Size(116, 48);
             this.btnAgregar.TabIndex = 36;
             this.btnAgregar.Text = "Guardar";
             this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -365,16 +292,17 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Orange;
-            this.panel2.Location = new System.Drawing.Point(12, 120);
+            this.panel2.Location = new System.Drawing.Point(17, 174);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(457, 3);
             this.panel2.TabIndex = 2;
             // 
             // txtNvoConcepto
             // 
+            this.txtNvoConcepto.BackColor = System.Drawing.SystemColors.MenuBar;
             this.txtNvoConcepto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNvoConcepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNvoConcepto.Location = new System.Drawing.Point(12, 93);
+            this.txtNvoConcepto.Location = new System.Drawing.Point(17, 147);
             this.txtNvoConcepto.Name = "txtNvoConcepto";
             this.txtNvoConcepto.Size = new System.Drawing.Size(457, 19);
             this.txtNvoConcepto.TabIndex = 1;
@@ -384,19 +312,11 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(118, 64);
+            this.label7.Location = new System.Drawing.Point(123, 118);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(236, 20);
             this.label7.TabIndex = 0;
             this.label7.Text = "Ingrese el  nuevo concepto :";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Orange;
-            this.panel3.Location = new System.Drawing.Point(120, 354);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(353, 5);
-            this.panel3.TabIndex = 38;
             // 
             // panel4
             // 
@@ -405,12 +325,12 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(635, 55);
+            this.panel4.Size = new System.Drawing.Size(527, 55);
             this.panel4.TabIndex = 39;
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.Bisque;
+            this.panel5.BackColor = System.Drawing.SystemColors.Control;
             this.panel5.Controls.Add(this.rtbnIngresos);
             this.panel5.Controls.Add(this.rbtnGastos);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
@@ -444,34 +364,59 @@
             this.rbtnGastos.Text = "Gastos";
             this.rbtnGastos.UseVisualStyleBackColor = true;
             // 
+            // chkImprimir
+            // 
+            this.chkImprimir.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.chkImprimir.BackColor = System.Drawing.Color.Transparent;
+            this.chkImprimir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("chkImprimir.BackgroundImage")));
+            this.chkImprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.chkImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkImprimir.Font = new System.Drawing.Font("Century Gothic", 6.5F);
+            this.chkImprimir.Location = new System.Drawing.Point(85, 323);
+            this.chkImprimir.Margin = new System.Windows.Forms.Padding(4);
+            this.chkImprimir.Name = "chkImprimir";
+            this.chkImprimir.OffColor = System.Drawing.Color.Gray;
+            this.chkImprimir.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(202)))), ((int)(((byte)(94)))));
+            this.chkImprimir.Size = new System.Drawing.Size(35, 20);
+            this.chkImprimir.TabIndex = 719;
+            this.chkImprimir.Value = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(141, 322);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(197, 22);
+            this.label1.TabIndex = 720;
+            this.label1.Text = "Imprimir comprobante";
+            // 
             // frmGastos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(635, 539);
-            this.Controls.Add(this.panel4);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(527, 445);
             this.Controls.Add(this.pnlConcepto);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.gdvConcepto);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.chkImprimir);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.pnlComprobante);
-            this.Controls.Add(this.chkComprobante);
-            this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.txtDetalle);
             this.Controls.Add(this.txtMonto);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmGastos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gastos varios";
             this.Load += new System.EventHandler(this.frmGastos_Load);
-            this.pnlComprobante.ResumeLayout(false);
-            this.pnlComprobante.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAgregar)).EndInit();
@@ -492,16 +437,8 @@
         private System.Windows.Forms.Label lbltitulo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.TextBox txtDetalle;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
-        private System.Windows.Forms.CheckBox chkComprobante;
-        private System.Windows.Forms.Panel pnlComprobante;
-        private System.Windows.Forms.TextBox txtNComprobante;
-        private System.Windows.Forms.ComboBox cboTipoComprobante;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -516,11 +453,12 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnCancelarConcepto;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.DataGridViewImageColumn Editar;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.RadioButton rtbnIngresos;
         private System.Windows.Forms.RadioButton rbtnGastos;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private Bunifu.Framework.UI.BunifuiOSSwitch chkImprimir;
+        private System.Windows.Forms.Label label1;
     }
 }

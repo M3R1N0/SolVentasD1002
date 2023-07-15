@@ -115,7 +115,7 @@ namespace VentasD1002
 
                 if (gdDetalle.Rows.Count != 0)
                 {
-                   Exportar_Importar_ArchivoExcel.ExportarExcel_Actualizacion();
+                   //Exportar_Importar_ArchivoExcel.ExportarExcel_Actualizacion(d);
                    //Exportar_Importar_ArchivoExcel.Exportar(ref gdDetalle);
                     this.Hide();
                     DatProducto.EliminarRegistros_ActualizacionProducto();

@@ -101,7 +101,7 @@
             this.pnlAltaComprobante.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAltaComprobante.Location = new System.Drawing.Point(0, 0);
             this.pnlAltaComprobante.Name = "pnlAltaComprobante";
-            this.pnlAltaComprobante.Size = new System.Drawing.Size(544, 341);
+            this.pnlAltaComprobante.Size = new System.Drawing.Size(764, 364);
             this.pnlAltaComprobante.TabIndex = 4;
             // 
             // lblDocumento
@@ -138,7 +138,7 @@
             this.txtnumerofin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtnumerofin.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.txtnumerofin.ForeColor = System.Drawing.Color.Black;
-            this.txtnumerofin.Location = new System.Drawing.Point(297, 187);
+            this.txtnumerofin.Location = new System.Drawing.Point(409, 200);
             this.txtnumerofin.Name = "txtnumerofin";
             this.txtnumerofin.Size = new System.Drawing.Size(172, 35);
             this.txtnumerofin.TabIndex = 622;
@@ -152,7 +152,7 @@
             this.txtSerie.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.txtSerie.ForeColor = System.Drawing.Color.Black;
-            this.txtSerie.Location = new System.Drawing.Point(297, 248);
+            this.txtSerie.Location = new System.Drawing.Point(409, 261);
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.Size = new System.Drawing.Size(170, 35);
             this.txtSerie.TabIndex = 623;
@@ -165,7 +165,7 @@
             this.TXTCANTIDADDECEROS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TXTCANTIDADDECEROS.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.TXTCANTIDADDECEROS.ForeColor = System.Drawing.Color.Black;
-            this.TXTCANTIDADDECEROS.Location = new System.Drawing.Point(297, 124);
+            this.TXTCANTIDADDECEROS.Location = new System.Drawing.Point(409, 137);
             this.TXTCANTIDADDECEROS.Name = "TXTCANTIDADDECEROS";
             this.TXTCANTIDADDECEROS.Size = new System.Drawing.Size(170, 35);
             this.TXTCANTIDADDECEROS.TabIndex = 624;
@@ -176,9 +176,9 @@
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.HotTrack;
             this.panel4.Controls.Add(this.txtNombreComprobante);
-            this.panel4.Location = new System.Drawing.Point(14, 153);
+            this.panel4.Location = new System.Drawing.Point(127, 165);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(209, 36);
+            this.panel4.Size = new System.Drawing.Size(207, 36);
             this.panel4.TabIndex = 621;
             // 
             // txtNombreComprobante
@@ -199,18 +199,18 @@
             this.pnlABComprobante.Controls.Add(this.panel6);
             this.pnlABComprobante.Controls.Add(this.panel3);
             this.pnlABComprobante.Controls.Add(this.pnlAltaComprobante);
-            this.pnlABComprobante.Location = new System.Drawing.Point(135, 74);
+            this.pnlABComprobante.Location = new System.Drawing.Point(6, 74);
             this.pnlABComprobante.Name = "pnlABComprobante";
-            this.pnlABComprobante.Size = new System.Drawing.Size(544, 341);
+            this.pnlABComprobante.Size = new System.Drawing.Size(764, 364);
             this.pnlABComprobante.TabIndex = 5;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.MenuStrip5);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 293);
+            this.panel6.Location = new System.Drawing.Point(0, 316);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(544, 48);
+            this.panel6.Size = new System.Drawing.Size(764, 48);
             this.panel6.TabIndex = 6;
             // 
             // MenuStrip5
@@ -268,7 +268,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(544, 42);
+            this.panel3.Size = new System.Drawing.Size(764, 42);
             this.panel3.TabIndex = 5;
             // 
             // panel5
@@ -278,7 +278,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(544, 42);
+            this.panel5.Size = new System.Drawing.Size(764, 42);
             this.panel5.TabIndex = 6;
             // 
             // label2
@@ -287,7 +287,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(544, 42);
+            this.label2.Size = new System.Drawing.Size(764, 42);
             this.label2.TabIndex = 0;
             this.label2.Text = "Alta / Edición de comprobantes";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -369,6 +369,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;

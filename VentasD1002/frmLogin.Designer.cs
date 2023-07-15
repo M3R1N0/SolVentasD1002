@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pbLogoEmpresa = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpFechaActivacion = new System.Windows.Forms.DateTimePicker();
@@ -44,6 +44,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.flowLayoutPanelUsuarios = new System.Windows.Forms.FlowLayoutPanel();
             this.panelIniciarSesion = new System.Windows.Forms.Panel();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.lblLicencia = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -57,7 +58,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoEmpresa)).BeginInit();
             this.panel2.SuspendLayout();
             this.panelUsuarios.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -70,7 +71,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.pbLogoEmpresa);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.dtpFechaActivacion);
@@ -81,15 +82,15 @@
             this.panel1.Size = new System.Drawing.Size(116, 383);
             this.panel1.TabIndex = 0;
             // 
-            // pictureBox2
+            // pbLogoEmpresa
             // 
-            this.pictureBox2.Image = global::VentasD1002.Properties.Resources.JIEL;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(116, 97);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.pbLogoEmpresa.Image = global::VentasD1002.Properties.Resources.JIEL;
+            this.pbLogoEmpresa.Location = new System.Drawing.Point(0, 3);
+            this.pbLogoEmpresa.Name = "pbLogoEmpresa";
+            this.pbLogoEmpresa.Size = new System.Drawing.Size(116, 97);
+            this.pbLogoEmpresa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogoEmpresa.TabIndex = 1;
+            this.pbLogoEmpresa.TabStop = false;
             // 
             // label3
             // 
@@ -204,6 +205,7 @@
             // 
             this.panelIniciarSesion.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panelIniciarSesion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelIniciarSesion.Controls.Add(this.lblUsuario);
             this.panelIniciarSesion.Controls.Add(this.button1);
             this.panelIniciarSesion.Controls.Add(this.lblLicencia);
             this.panelIniciarSesion.Controls.Add(this.pictureBox1);
@@ -215,8 +217,19 @@
             this.panelIniciarSesion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(172)))), ((int)(((byte)(224)))));
             this.panelIniciarSesion.Location = new System.Drawing.Point(3, 3);
             this.panelIniciarSesion.Name = "panelIniciarSesion";
-            this.panelIniciarSesion.Size = new System.Drawing.Size(565, 269);
+            this.panelIniciarSesion.Size = new System.Drawing.Size(565, 266);
             this.panelIniciarSesion.TabIndex = 0;
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.ForeColor = System.Drawing.Color.Black;
+            this.lblUsuario.Location = new System.Drawing.Point(216, 19);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(57, 20);
+            this.lblUsuario.TabIndex = 615;
+            this.lblUsuario.Text = "label5";
             // 
             // button1
             // 
@@ -358,10 +371,6 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // timer2
-            // 
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -371,14 +380,17 @@
             this.Controls.Add(this.panelUsuarios);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de sesión";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoEmpresa)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panelUsuarios.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -415,12 +427,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblLicencia;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pbLogoEmpresa;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lblIP;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblUsuario;
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using BusVenta;
+using BusVenta.Helpers;
 using DatVentas;
 using EntVenta;
 using System;
@@ -21,63 +22,39 @@ namespace VentasD1002
             InitializeComponent();
         }
 
-        private string serialPC;
         private int idUsuario;
-        private int idCaja;
-
 
         private void frmCierreCaja_Load(object sender, EventArgs e)
         {
             try
             {
-                lblFecha.Text = DateTime.Now.ToString("dddd dd 'de' MMMM 'de' yyyy");
+                lblFechaCierre.Text = DateTime.Now.ToString("dddd dd 'de' MMMM 'de' yyyy");
+               
+                idUsuario = BusUser.ObtenerUsuario_Loggeado().Id;
+                //idCaja = new DatBox().Obtener_CajaSerial(serialPC);
+                lblNombreUsuario.Text += BusUser.ObtenerUsuario_Loggeado().Nombre;
+                var serial = Sistema.ObenterSerialPC();
+                CajaDAL.CorteCaja(serial, idUsuario, ref dataGridView1);
 
-                ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
-                serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
-                //idUsuario = new DatCatGenerico().Obtener_InicioSesion( EncriptarTexto.Encriptar(serialPC) );
-                idUsuario = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC)).Id;
-                idCaja = new DatBox().Obtener_CajaSerial(serialPC);
+                decimal total = 0, egreso=0;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    total = (decimal) row.Cells[0].Value    
+                          + (decimal) row.Cells[1].Value    
+                          + (decimal) row.Cells[3].Value    
+                          + (decimal) row.Cells[4].Value;   
 
-                lblUsuario.Text = new BusUser().ObtenerUsuario(EncriptarTexto.Encriptar(serialPC)).Nombre;
-                Obtener_Totales();
+                    egreso = (decimal)row.Cells[5].Value;
+                }
+
+                total = total - egreso;
+                llblCajaTotal.Text = string.Format("{0:N2}", total);
+                TXTTOTALREAL.Text = string.Format("{0:N2}", total);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener los datos", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Error al obtener los datos: "+ex.Message, "Error", MessageBoxButtons.OK);
             }
-        }
-
-        private void Obtener_Totales()
-        {
-            var _cierre = DateTime.Now.ToString("yyyy-MM-dd h:mm tt");
-
-            DateTime cierre = Convert.ToDateTime(_cierre);
-            List<Venta> _lstVenta = new BusVentas().Listar_VentasTotales(cierre, idUsuario, idCaja);
-
-            decimal _saldoEnCaja = new DatOpenCloseBox().ObtenerSaldo_Encaja(idUsuario);
-
-            lblFondoCaja.Text = _saldoEnCaja.ToString();
-            lblVentaEfectivo.Text = _lstVenta.Where(x => x.FormaPago.Equals("Contado")).Select(x => x.MontoTotal).Sum().ToString();
-            lblVentaCredito.Text = _lstVenta.Where(x => x.FormaPago.Equals("Credito")).Select(x => x.MontoTotal).Sum().ToString();
-            lblTotal.Text = _lstVenta.Select(x => x.MontoTotal).Sum().ToString();
-            lblVentasTotales.Text = _lstVenta.Count.ToString();
-            lblTotalPagado.Text = _lstVenta.Where(x => x.FormaPago.Equals("Contado")).Count().ToString();
-            lblTotalDeuda.Text = _lstVenta.Where(x => x.FormaPago.Equals("Credito")).Count().ToString();
-
-            decimal saldo = _lstVenta.Where(x => x.FormaPago.Equals("Credito")).Select(x => x.Saldo).Sum();
-            decimal totalCredito =_lstVenta.Where(x => x.FormaPago.Equals("Credito")).Select(x => x.MontoTotal).Sum();
-            decimal creditoAbonado = obtenerPagoCredito();
-            decimal totalAbonado = (totalCredito + creditoAbonado) - saldo;
-            lblTotalAbonado.Text = totalAbonado.ToString();
-
-            var obj = DatVenta.ObtenerBonificacion_PorUsuario(idUsuario, idCaja);
-            lblBonificacion.Text = obj.Bonificacion.ToString();
-            lblTotalBonififaciones.Text = obj.TotalProducto.ToString();
-
-            decimal totalDinero = Convert.ToDecimal(lblVentaEfectivo.Text) + Convert.ToDecimal(lblTotalAbonado.Text) + Convert.ToDecimal(lblFondoCaja.Text)- Convert.ToDecimal(lblBonificacion.Text);
-            lblTotalCaja.Text = totalDinero.ToString();
-
-     
         }
 
         private decimal obtenerPagoCredito()
@@ -96,15 +73,19 @@ namespace VentasD1002
             }
         }
 
-        private void btnCerrarTurno_Click(object sender, EventArgs e)
+        private void Cerrar_Click(object sender, EventArgs e)
         {
             try
             {
-                DateTime cierre = DateTime.Now;
-                DateTime fin = DateTime.Now;
-                decimal diferencia = Convert.ToDecimal(lblTotal.Text) - Convert.ToDecimal(lblTotalCaja.Text);
-                new BusOpenCloseBox().CerrarCaja(idCaja, cierre, fin, Convert.ToDecimal(lblTotal.Text), Convert.ToDecimal(lblTotalCaja.Text), diferencia);
-                new DatCatGenerico().Editar_InicioSesion( EncriptarTexto.Encriptar( serialPC), 0);
+                var serial = Sistema.ObenterSerialPC();
+                int idCaja = BusBox.showBoxBySerial().Id;
+                int idUsuario = BusUser.ObtenerUsuario_Loggeado().Id;
+                decimal totalCalculado = (string.IsNullOrEmpty(llblCajaTotal.Text)) ? 0 : Convert.ToDecimal(llblCajaTotal.Text);
+                decimal totalReal = (string.IsNullOrEmpty(TXTTOTALREAL.Text)) ? 0 : Convert.ToDecimal(TXTTOTALREAL.Text);
+
+                decimal diferencia = totalReal - totalCalculado ;
+                new BusOpenCloseBox().CerrarCaja(idCaja, totalCalculado, totalReal, diferencia, idUsuario);
+                new DatCatGenerico().Editar_InicioSesion(EncriptarTexto.Encriptar(serial), 0);
                 this.Dispose();
 
                 frmCopiaAutomatica copiaAutomatica = new frmCopiaAutomatica();
@@ -116,19 +97,15 @@ namespace VentasD1002
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void Regresar_Click(object sender, EventArgs e)
         {
-            this.Dispose();
-            frmMenuPrincipal menuPrincipal = new frmMenuPrincipal();
-            menuPrincipal.ShowDialog();
+            this.Close();
+           
         }
 
-        private void frmCierreCaja_FormClosing(object sender, FormClosingEventArgs e)
+        private void TXTTOTALREAL_KeyPress(object sender, KeyPressEventArgs e)
         {
-            this.Dispose();
-
-            frmCopiaAutomatica copiaAutomatica = new frmCopiaAutomatica();
-            copiaAutomatica.ShowDialog();
+            Comun.TextBoxNumerico(sender, e);
         }
     }
 }
