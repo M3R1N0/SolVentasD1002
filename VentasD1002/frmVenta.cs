@@ -29,7 +29,9 @@ namespace VentasD1002
             {
                 //SerialPC = Sistema.ObenterSerialPC();
                 //idCaja = BusBox.ObtenerCajaPorSerial(SerialPC).Id;
-
+                var ser = "DGc4WsydMGelIz+a9PorWg==";
+                var sssss = "50026B778488E74D";
+                var sss = EncriptarTexto.Desencriptar(sssss);
                 Listar_FormaPago();
                 Mostrar_TipoComprobante();
                 ObtenerFolioDocumento();

@@ -43,6 +43,7 @@ namespace VentasD1002
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             timer1.Start();
             DibujarLogin();
             panelIniciarSesion.Visible = false;
@@ -307,6 +308,8 @@ namespace VentasD1002
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
+            var ser = "DGc4WsydMGelIz+a9PorWg==";
+            var sss = EncriptarTexto.Desencriptar(ser);
             List<User> lstUsuarios = new BusUser().ListarUsuarios();
             int contadorUsuario = lstUsuarios.Count;
             string INDICADOR = DatUser.AUX_CONEXION;
