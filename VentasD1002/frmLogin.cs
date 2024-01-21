@@ -21,6 +21,7 @@ namespace VentasD1002
         public frmLogin()
         {
             InitializeComponent();
+            var ss = EncriptarTexto.Desencriptar("4kUyBuwG6Sfo9/myb77b2w==");
         }
 
         private string Usuario;
