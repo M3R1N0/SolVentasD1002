@@ -280,10 +280,10 @@ namespace VentasD1002
             reporte.LetraNumero = textoNumero;
 
             //rptTicket rptTicket = new rptTicket();
-            ReportTicket rptTicket = new ReportTicket();
-            rptTicket.pnlCancelar.Visible = false;
-            rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
-            rptTicket.DataSource = reporte;
+            var rptTicket = new ReportTicket(reporte);
+            //rptTicket.pnlCancelar.Visible = false;
+            //rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
+            //rptTicket.DataSource = reporte;
             reportViewer1.Report = rptTicket;
             reportViewer1.RefreshReport();
             #endregion

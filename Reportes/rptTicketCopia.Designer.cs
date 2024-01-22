@@ -56,9 +56,9 @@ namespace Reportes
             this.textBox4 = new Telerik.Reporting.TextBox();
             this.textBox20 = new Telerik.Reporting.TextBox();
             this.textBox33 = new Telerik.Reporting.TextBox();
-            this.dsData = new Telerik.Reporting.ObjectDataSource();
-            this.textBox34 = new Telerik.Reporting.TextBox();
             this.textBox35 = new Telerik.Reporting.TextBox();
+            this.textBox34 = new Telerik.Reporting.TextBox();
+            this.dsData = new Telerik.Reporting.ObjectDataSource();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // textBox13
@@ -600,10 +600,17 @@ namespace Reportes
             this.textBox33.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(7.774D), Telerik.Reporting.Drawing.Unit.Cm(0.3D));
             this.textBox33.Value = "=Iif( Fields.Comentarios = \"N/A\",\"\", \'NOTA : \'+Fields.Comentarios)";
             // 
-            // dsData
+            // textBox35
             // 
-            this.dsData.DataSource = typeof(EntVenta.ParametrosReporte);
-            this.dsData.Name = "dsData";
+            this.textBox35.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.1D), Telerik.Reporting.Drawing.Unit.Cm(1.3D));
+            this.textBox35.Name = "textBox35";
+            this.textBox35.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.21D), Telerik.Reporting.Drawing.Unit.Cm(0.3D));
+            this.textBox35.Style.Font.Bold = true;
+            this.textBox35.Style.Font.Name = "Segoe UI";
+            this.textBox35.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
+            this.textBox35.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
+            this.textBox35.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
+            this.textBox35.Value = "Localidad";
             // 
             // textBox34
             // 
@@ -617,17 +624,10 @@ namespace Reportes
             this.textBox34.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
             this.textBox34.Value = "=Fields.DireccionCliente";
             // 
-            // textBox35
+            // dsData
             // 
-            this.textBox35.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.1D), Telerik.Reporting.Drawing.Unit.Cm(1.3D));
-            this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.21D), Telerik.Reporting.Drawing.Unit.Cm(0.3D));
-            this.textBox35.Style.Font.Bold = true;
-            this.textBox35.Style.Font.Name = "Segoe UI";
-            this.textBox35.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
-            this.textBox35.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
-            this.textBox35.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
-            this.textBox35.Value = "Localidad";
+            this.dsData.DataSource = typeof(EntVenta.ParametrosReporte);
+            this.dsData.Name = "dsData";
             // 
             // rptTicketCopia
             // 

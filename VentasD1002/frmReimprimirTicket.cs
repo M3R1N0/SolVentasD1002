@@ -94,16 +94,16 @@ namespace VentasD1002
 
                     if (RbtnMod2.Checked == true)
                     {
-                        ReportTicket rptTicket = new ReportTicket();
-                        rptTicket.pnlCancelar.Visible = (reporte.EstadoVenta == "VENTA CANCELADA") ? true : false;
-                        rptTicket.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : "Saldo por liquidar :";
-                       // rptTicket.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
-                        rptTicket.lblBonificacion.Visible = (reporte.Bonificacion != 0) ? true : false;
-                        rptTicket.textBox24.Visible = (reporte.Bonificacion != 0) ? true : false;
+                        ReportTicket rptTicket = new ReportTicket(reporte);
 
-                        rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
-                        rptTicket.DataSource = reporte;
+                        //rptTicket.pnlCancelar.Visible = (reporte.EstadoVenta == "VENTA CANCELADA") ? true : false;
+                        //rptTicket.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : rptTicket.lblCambio.Value = "Saldo por liquidar :";
+                        //// recibo.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
+                        //rptTicket.lblBonificacion.Visible = (reporte.Bonificacion != 0) ? true : false;
+                        //rptTicket.txtBonificación.Visible = (reporte.Bonificacion != 0) ? true : false;
 
+                        //rptTicket.tbTicket.DataSource = reporte.lstDetalleVenta;
+                        //rptTicket.DataSource = reporte;
                         reportViewer1.Report = rptTicket;
                     }
 

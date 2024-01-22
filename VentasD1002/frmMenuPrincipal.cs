@@ -1134,19 +1134,19 @@ namespace VentasD1002
                     {
                         frmVistaPreviaTickek vistaPreviaTickek = new frmVistaPreviaTickek();
                      
-                        ReportTicket rpt = new ReportTicket();
+                        var rpt = new ReportTicket(reporte);
                         //rpt.lblCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
                         //rpt.txtCambio.Visible = (cboFormaPago.Text == "Credito") ? true : false;
                         
-                        rpt.pnlCancelar.Visible = (reporte.EstadoVenta == "VENTA CANCELADA") ? true : false;
-                        rpt.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : "Saldo a liquidar :";
-                        //rpt.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
-                        rpt.lblBonificacion.Visible =  false;
-                        rpt.textBox24.Visible =  false;
-                        rpt.pnlCancelar.Visible = false;
-                        rpt.DataSource = reporte;
+                        //rpt.pnlCancelar.Visible = (reporte.EstadoVenta == "VENTA CANCELADA") ? true : false;
+                        //rpt.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : "Saldo a liquidar :";
+                        ////rpt.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
+                        //rpt.lblBonificacion.Visible =  false;
+                        //rpt.txtBonificación.Visible =  false;
+                        ////rpt.pnlCancelar.Visible = false;
+                        //rpt.DataSource = reporte;
 
-                        rpt.tbTicket.DataSource = reporte.lstDetalleVenta;
+                        //rpt.tbTicket.DataSource = reporte.lstDetalleVenta;
                         vistaPreviaTickek.reportViewer2.Report = rpt;
                         vistaPreviaTickek.reportViewer2.RefreshReport();
                         vistaPreviaTickek.ShowDialog();
@@ -1217,15 +1217,15 @@ namespace VentasD1002
                         //    reportViewerImprimir.RefreshReport(); 
                         //}
                       
-                        ReportTicket rpt = new ReportTicket();
-                        rpt.pnlCancelar.Visible = false;
-                        rpt.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : "Saldo a liquidar :";
-                        //rpt.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
-                        rpt.lblBonificacion.Visible = false;
-                        rpt.textBox24.Visible = false;
+                        ReportTicket rpt = new ReportTicket(reporte);
+                        //rpt.pnlCancelar.Visible = false;
+                        //rpt.lblCambio.Value = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? "Cambio :" : "Saldo a liquidar :";
+                        ////rpt.txtCambio.Visible = (reporte.FormaPago.Equals("CONTADO", StringComparison.InvariantCultureIgnoreCase)) ? true : false;
+                        //rpt.lblBonificacion.Visible = false;
+                        //rpt.txtBonificación.Visible = false;
 
-                        rpt.DataSource = reporte;
-                        rpt.tbTicket.DataSource = reporte.lstDetalleVenta;
+                        //rpt.DataSource = reporte;
+                        //rpt.tbTicket.DataSource = reporte.lstDetalleVenta;
                         reportViewerImprimir.Report = rpt;
                         reportViewerImprimir.RefreshReport();
 
