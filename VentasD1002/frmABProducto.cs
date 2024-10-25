@@ -358,7 +358,7 @@ namespace VentasD1002
                 txtApartideMayoreo.Text = producto.A_Partir_De.ToString();
                 txtPesoMayoreo.Text = producto.Peso.ToString();
                 txtTotalUnidades.Text = producto.UnidadesPorPresentacion.ToString();
-
+                lblFechaActualizacion.Text = producto.UltimaActualizacion.ToString();
                 txtCompraMay.Text = producto.PrecioCompra.ToString();
 
                 gbMenudeo.Enabled = false;

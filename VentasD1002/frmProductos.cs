@@ -129,6 +129,7 @@ namespace VentasD1002
                     int id = Convert.ToInt32(gdvProductos.SelectedCells[2].Value);
                     frmABProducto frmAB = new frmABProducto(id);
                     frmAB.ShowDialog();
+                    ListarProductos("");
                 }
             }
             catch (Exception ex)

@@ -1,4 +1,6 @@
-﻿namespace VentasD1002
+﻿using VentasD1002.Properties;
+
+namespace VentasD1002
 {
     partial class frmCambioFormaPago
     {
@@ -121,7 +123,7 @@
             // 
             this.menuStrip6.AutoSize = false;
             this.menuStrip6.BackColor = System.Drawing.Color.Transparent;
-            this.menuStrip6.BackgroundImage = global::VentasD1002.Resources.resources.Rojo;
+            this.menuStrip6.BackgroundImage = Resources.Rojo;
             this.menuStrip6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.menuStrip6.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip6.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -149,7 +151,7 @@
             // 
             this.menuStrip2.AutoSize = false;
             this.menuStrip2.BackColor = System.Drawing.Color.Transparent;
-            this.menuStrip2.BackgroundImage = global::VentasD1002.Resources.resources.verde;
+            this.menuStrip2.BackgroundImage =Resources.verde;
             this.menuStrip2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {

@@ -71,7 +71,7 @@ namespace VentasD1002
         private void ConectarServidor_Manual()
         {
             string Ip = txtIP.Text.Trim();
-            strConexion = "Data Source=" + Ip + ";Initial Catalog=DBVENTAS;Integrated Security=False; User Id=SoftVentas; Password=Admin123";
+            strConexion = "Data Source=" + Ip + ";Initial Catalog=DBVENTAS_JIEL;Integrated Security=False; User Id=SoftVentas; Password=Admin123";
 
             ComprobarConexion();
             if (indicador.Equals("CONECTADO"))

@@ -1,16 +1,14 @@
 ﻿using BusVenta;
+using BusVenta.Helpers;
 using DatVentas;
 using EntVenta;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.ReportViewer.WinForms;
+using VentasD1002.Helpers;
 
 namespace VentasD1002
 {
@@ -38,7 +36,7 @@ namespace VentasD1002
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error al mostrar los datos: "+ex.Message, "Error de listado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrió un error al mostrar los datos: " + ex.Message, "Error de listado", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -47,18 +45,7 @@ namespace VentasD1002
             try
             {
                 txttipo = datalistado_tickets.SelectedCells[13].Value.ToString();
-                if (txttipo == "Ticket No Fiscal")
-                {
-                    btnTicket.BackColor = Color.FromArgb(255, 204, 1);
-                    btnFacturaBoleta.BackColor = Color.White;
-                    txtAutorizacion_fiscal.Visible = false;
-                }
-                else
-                {
-                    btnFacturaBoleta.BackColor = Color.FromArgb(255, 204, 1);
-                    btnTicket.BackColor = Color.White;
-                    txtAutorizacion_fiscal.Visible = true;
-                }
+
                 ICONO.BackgroundImage = null;
                 byte[] b = (Byte[])datalistado_tickets.SelectedCells[1].Value;
                 MemoryStream ms = new MemoryStream(b);
@@ -68,11 +55,11 @@ namespace VentasD1002
                 txtEmpresa_RUC.Text = datalistado_tickets.SelectedCells[5].Value.ToString();
                 txtDireccion.Text = datalistado_tickets.SelectedCells[6].Value.ToString();
                 txtProvincia_departamento.Text = datalistado_tickets.SelectedCells[7].Value.ToString();
-                txtMoneda_String.Text = datalistado_tickets.SelectedCells[8].Value.ToString();
+                //txtMoneda_String.Text = datalistado_tickets.SelectedCells[8].Value.ToString();
                 txtAgradecimiento.Text = datalistado_tickets.SelectedCells[9].Value.ToString();
                 txtpagina_o_facebook.Text = datalistado_tickets.SelectedCells[10].Value.ToString();
                 TXTANUNCIO.Text = datalistado_tickets.SelectedCells[11].Value.ToString();
-                txtAutorizacion_fiscal.Text = datalistado_tickets.SelectedCells[12].Value.ToString();
+                //txtAutorizacion_fiscal.Text = datalistado_tickets.SelectedCells[12].Value.ToString();
 
 
             }
@@ -96,23 +83,28 @@ namespace VentasD1002
 
         }
 
-        private void btnTicket_Click(object sender, EventArgs e)
-        {
-            txttipo = "Ticket No Fiscal";
-            btnTicket.BackColor = Color.FromArgb(255, 204, 1);
-            btnFacturaBoleta.BackColor = Color.White;
-            txtAutorizacion_fiscal.Visible = false;
-        }
-
-        private void btnFacturaBoleta_Click(object sender, EventArgs e)
-        {
-            txttipo = "Factura-Boleta";
-            btnTicket.BackColor = Color.White;
-            btnFacturaBoleta.BackColor = Color.FromArgb(255, 204, 1);
-            txtAutorizacion_fiscal.Visible = true;
-        }
-
         private void Button4_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void imprimirPruebaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportViewer reportViewer1 = new ReportViewer();
+            ImprimirDocumento.Imprimir(ref reportViewer1, DESTINO_DOCUMENTO.VENTAS, TIPO_DOCUMENTO.TICKET, 1004);
+        }
+
+        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -120,11 +112,11 @@ namespace VentasD1002
                 t.Identificador_Fiscal = txtEmpresa_RUC.Text;
                 t.Direccion = txtDireccion.Text;
                 t.Provincia = txtProvincia_departamento.Text;
-                t.Moneda = txtMoneda_String.Text;
+                t.Moneda = "PESO MEXICANO";
                 t.Agradecimiento = txtAgradecimiento.Text;
                 t.Pagina_Web = txtpagina_o_facebook.Text;
                 t.Anuncio = TXTANUNCIO.Text;
-                t.Datos_Fiscales = txttipo.Equals("Ticket No Fiscal") ? "-" : txtAutorizacion_fiscal.Text;
+                t.Datos_Fiscales = "";
                 t.Default = txttipo;
 
                 Empresa empresa = new Empresa();
@@ -135,25 +127,18 @@ namespace VentasD1002
 
                 new BusTicket().Editar_FormatoTicket(t, empresa);
                 timer1.Start();
-              //  frmExito exito = new frmExito();
+                //  frmExito exito = new frmExito();
                 //exito.Show();
                 MessageBox.Show("Operación realizada", "¡ÉXITO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
-                frmConfiguracion frmConfiguracion = new frmConfiguracion();
-                frmConfiguracion.ShowDialog();
+                //frmConfiguracion frmConfiguracion = new frmConfiguracion();
+                //frmConfiguracion.ShowDialog();
                 this.Dispose();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error : "+ex.Message, "Guardar datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error : " + ex.Message, "Guardar datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            timer1.Stop();
-        }
-
-       
     }
 }

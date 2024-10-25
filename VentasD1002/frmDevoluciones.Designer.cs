@@ -40,7 +40,6 @@
             this.gdvDatos = new System.Windows.Forms.DataGridView();
             this.Cancelar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.reportViewer1 = new Telerik.ReportViewer.WinForms.ReportViewer();
             this.pnlProcesar = new System.Windows.Forms.Panel();
             this.txtCantidadDevuelto = new System.Windows.Forms.TextBox();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -53,6 +52,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.panel24 = new System.Windows.Forms.Panel();
             this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.reportViewer1 = new Telerik.ReportViewer.WinForms.ReportViewer();
             this.label9 = new System.Windows.Forms.Label();
             this.gdvResultado = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -150,15 +150,6 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 385;
             this.pictureBox4.TabStop = false;
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.AccessibilityKeyMap = null;
-            this.reportViewer1.Location = new System.Drawing.Point(34, 153);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(326, 519);
-            this.reportViewer1.TabIndex = 0;
-            this.reportViewer1.Visible = false;
             // 
             // pnlProcesar
             // 
@@ -275,7 +266,7 @@
             this.lblTotalDevuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalDevuelto.Location = new System.Drawing.Point(138, 202);
             this.lblTotalDevuelto.Name = "lblTotalDevuelto";
-            this.lblTotalDevuelto.Size = new System.Drawing.Size(167, 76);
+            this.lblTotalDevuelto.Size = new System.Drawing.Size(166, 76);
             this.lblTotalDevuelto.TabIndex = 1;
             this.lblTotalDevuelto.Text = "0.00";
             this.lblTotalDevuelto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -308,6 +299,15 @@
             this.txtBuscar.TabIndex = 5;
             this.txtBuscar.Click += new System.EventHandler(this.txtBuscar_Click);
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.AccessibilityKeyMap = null;
+            this.reportViewer1.Location = new System.Drawing.Point(16, 305);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(10, 224);
+            this.reportViewer1.TabIndex = 0;
+            this.reportViewer1.Visible = false;
             // 
             // label9
             // 

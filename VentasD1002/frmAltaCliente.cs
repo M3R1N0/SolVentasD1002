@@ -3,20 +3,13 @@ using BusVenta.Helpers;
 using DatVentas;
 using EntVenta;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VentasD1002
 {
     public partial class frmAltaCliente : Form
     {
-       private CLIENTE_PROVEEDOR _TIPO;
+        private CLIENTE_PROVEEDOR _TIPO;
 
         public frmAltaCliente(CLIENTE_PROVEEDOR TIPO)
         {
@@ -71,7 +64,16 @@ namespace VentasD1002
 
         private void btnCodigoCliente_Click(object sender, EventArgs e)
         {
-            txtClave.Text = "C"+DateTime.Now.ToString("yymmddss");
+            var arrNombre = txtNombre.Text.Split(' ');
+            txtClave.Text = "C" + DateTime.Now.ToString("yymmddss");
+            //var rfc = RfcBuilder.ForNaturalPerson()
+            //                    .WithName(arrNombre[0])
+            //                    .WithFirstLastName(arrNombre[1])
+            //                    .WithSecondLastName(arrNombre[2])
+            //                    .WithDate(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)
+            //                    .Build();
+
+            //txtClave.Text = rfc.ToString();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

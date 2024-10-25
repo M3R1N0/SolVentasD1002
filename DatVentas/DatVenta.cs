@@ -544,6 +544,8 @@ namespace DatVentas
                         obj.Ruc = reader.GetString(19);
                         obj.Comentarios = reader.GetString(20);
                         obj.EstadoVenta = reader.GetString(21);
+                        obj.SubEncabezado = reader.GetString(22);
+                        obj.NotaPieTicket = reader.GetString(23);
                     }
                     conn.Close();
 

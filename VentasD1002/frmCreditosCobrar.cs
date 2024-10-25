@@ -2,19 +2,10 @@
 using BusVenta.Helpers;
 using DatVentas;
 using EntVenta;
-using Reportes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Management;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Telerik.Reporting.Processing;
 
 namespace VentasD1002
 {
@@ -40,7 +31,7 @@ namespace VentasD1002
             {
                 Listar_TotalCredito_PorCliente();
             }
-            else if(tabControl1.SelectedIndex == 1)
+            else if (tabControl1.SelectedIndex == 1)
             {
                 ObtenerBusqueda();
             }
@@ -179,8 +170,8 @@ namespace VentasD1002
             {
                 string serialPC = Sistema.ObenterSerialPC();
 
-                int idCaja      = BusBox.showBoxBySerial().Id;
-                int idusuario   = BusUser.ObtenerUsuario_Loggeado().Id;
+                int idCaja = BusBox.showBoxBySerial().Id;
+                int idusuario = BusUser.ObtenerUsuario_Loggeado().Id;
 
                 Bitacora b = new Bitacora();
                 b.Fecha = DateTime.Now;

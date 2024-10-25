@@ -124,7 +124,7 @@ namespace DatVentas
                     sc.Parameters.AddWithValue("@id", c.Id);
                     sc.Parameters.AddWithValue("@nombre", c.NombreCompleto);
                     sc.Parameters.AddWithValue("@direccion", c.Direccion);
-                    //sc.Parameters.AddWithValue("@ruc", c.Ruc);
+                    sc.Parameters.AddWithValue("@clave", c.Clave);
                     sc.Parameters.AddWithValue("@telefono", c.Telefono);
                     sc.Parameters.AddWithValue("@saldo", c.Saldo);
                     con.Open();

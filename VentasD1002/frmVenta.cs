@@ -14,6 +14,7 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.Reporting.Charting;
 using VentasD1002.Helpers;
 
 namespace VentasD1002
@@ -131,7 +132,7 @@ namespace VentasD1002
             try
             {
                 var serialPC = Sistema.ObenterSerialPC();
-                User u =  BusUser.ObtenerUsuario_Loggeado();
+                User u = BusUser.ObtenerUsuario_Loggeado();
                 byte[] b = u.Foto;
                 MemoryStream ms = new MemoryStream(b);
                 pbPerfil.Image = Image.FromStream(ms);
@@ -244,11 +245,11 @@ namespace VentasD1002
         {
             if (txtCliente.Text.ToUpper().Contains("GENERAL") && cboFormaPago.Text.ToUpper() == "CREDITO")
             {
-                MessageBox.Show("Favor de agregar un cliente valido para las ventas a crédito","ATENCIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Favor de agregar un cliente valido para las ventas a crédito", "ATENCIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                ListarProductos(); 
+                ListarProductos();
             }
         }
 
@@ -313,18 +314,32 @@ namespace VentasD1002
                 var tipoCodigo = gridBuscar.SelectedCells[17].Value.ToString();
 
                 var p = ProductoDAL.ObtenerProducto_x_Codigo(codigo, tipoCodigo);
-                p.Cantidad = Convert.ToDecimal(txtCantidad.Text);
-
-                txtBuscar.Clear();
-                txtBuscar.Focus();
-
-                if (ValidarStock(p))
+                if (p.Precio != 0)
                 {
-                    if (gridVentas.Rows.Count == 0)
+                    p.Cantidad = Convert.ToDecimal(txtCantidad.Text);
+
+                    txtBuscar.Clear();
+                    txtBuscar.Focus();
+
+                    if (ValidarStock(p))
                     {
-                        Insertar_Venta();
+                        if (gridVentas.Rows.Count == 0)
+                        {
+                            Insertar_Venta();
+                        }
+                        Insertar_DetalleVenta(p);
                     }
-                    Insertar_DetalleVenta(p);
+                }
+                else
+                {
+                    CustomUI.MessageBoxUI.Show("El producto no puede ser ingresado porque el precio debe ser distinto de 0 \nFavor de revisar.",
+                        "Aviso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    txtCantidad.Text = "1";
+                    txtBuscar.Clear();
+                    txtBuscar.Focus();
                 }
             }
             catch (Exception)
@@ -346,27 +361,41 @@ namespace VentasD1002
         {
             try
             {
-                if (e.KeyChar == (Char) Keys.Enter)
+                if (e.KeyChar == (Char)Keys.Enter)
                 {
                     if (!string.IsNullOrEmpty(txtBuscar.Text) || !string.IsNullOrWhiteSpace(txtBuscar.Text.Trim()))
                     {
                         var codigo = gridBuscar.SelectedCells[3].Value.ToString();
                         var tipoCodigo = gridBuscar.SelectedCells[17].Value.ToString();
 
-                        var producto = ProductoDAL.ObtenerProducto_x_Codigo(codigo,tipoCodigo);
-                       
-                        producto.Cantidad = Convert.ToDecimal(txtCantidad.Text);
+                        var producto = ProductoDAL.ObtenerProducto_x_Codigo(codigo, tipoCodigo);
 
-                        txtBuscar.Clear();
-                        txtBuscar.Focus();
-
-                        if (ValidarStock(producto))
+                        if (producto.Precio != 0)
                         {
-                            if (gridVentas.Rows.Count == 0)
+                            producto.Cantidad = Convert.ToDecimal(txtCantidad.Text);
+
+                            txtBuscar.Clear();
+                            txtBuscar.Focus();
+
+                            if (ValidarStock(producto))
                             {
-                                Insertar_Venta();
+                                if (gridVentas.Rows.Count == 0)
+                                {
+                                    Insertar_Venta();
+                                }
+                                Insertar_DetalleVenta(producto);
                             }
-                            Insertar_DetalleVenta(producto);
+                        }
+                        else
+                        {
+                            CustomUI.MessageBoxUI.Show("El producto no puede ser ingresado porque el precio debe ser distinto de 0 \nFavor de revisar.",
+                                "Aviso",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+
+                            txtCantidad.Text = "1";
+                            txtBuscar.Clear();
+                            txtBuscar.Focus();
                         }
 
                     }
@@ -431,7 +460,7 @@ namespace VentasD1002
             catch (Exception ex)
             {
                 IDVENTA = 0;
-                MessageBox.Show( ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -446,8 +475,8 @@ namespace VentasD1002
                 venta.IdCliente = txtCliente.Text.Equals("GENERAL") ? 1 : IDCLIENTE;
                 venta.IdUsuario = BusUser.ObtenerUsuario_Loggeado().Id;
                 venta.FechaVenta = DateTime.Now;
-                venta.Folio ="0-000000";
-                venta.MontoTotal =0;
+                venta.Folio = "0-000000";
+                venta.MontoTotal = 0;
                 venta.FormaPago = cboFormaPago.Text;
                 venta.EstadoPago = ESTADO_PAGO.PENDIENTE.ToString();
                 venta.Comprobante = "";
@@ -465,7 +494,7 @@ namespace VentasD1002
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Ocurrió un detalle al validar la venta,Favor de revisar sus datos \n Detalle: "+ex.Message);
+                throw new ApplicationException("Ocurrió un detalle al validar la venta,Favor de revisar sus datos \n Detalle: " + ex.Message);
             }
         }
 
@@ -473,8 +502,7 @@ namespace VentasD1002
 
         private void gridVentas_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            this.gridVentas.Rows[e.RowIndex].Selected = true;
-            txtBuscar.Focus();
+            //gridVentas.Rows[e.RowIndex].Selected = true;
         }
 
         private void gridVentas_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
@@ -482,10 +510,6 @@ namespace VentasD1002
             if (e.Button == MouseButtons.Right)
             {
                 this.gridVentas.Rows[e.RowIndex].Selected = true;
-                //this.rowIndex = e.RowIndex;
-                //this.gdvVentas.CurrentCell = this.gridVentas.Rows[e.RowIndex].Cells[4];
-                //this.contextMenuStrip1.Show(this.gridVentas, e.Location);
-                //contextMenuStrip1.Show(Cursor.Position);
             }
         }
 
@@ -510,16 +534,16 @@ namespace VentasD1002
                 d.Costo = 0;
                 d.Venta = p.Venta;
 
-                var total= Convert.ToDecimal(lblTotal.Text);
+                var total = Convert.ToDecimal(lblTotal.Text);
                 var saldoDisponible = Convert.ToDecimal(lblSaldoDisponible.Text);
 
                 total += d.TotalPago;
 
                 if (cboFormaPago.Text.ToUpper() == "CREDITO" && total > saldoDisponible)
                 {
-                    MessageBox.Show("El total de la venta supera al saldo autorizado o disponible\n favor de liquidar las notas anteriores o actualizar el monto autorizado","ATENCIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("El total de la venta supera al saldo autorizado o disponible\n favor de liquidar las notas anteriores o actualizar el monto autorizado", "ATENCIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
-                }    
+                }
 
                 if (BusDetalleVenta.Agregar_DetalleVenta(d))
                 {
@@ -539,7 +563,7 @@ namespace VentasD1002
             finally
             {
                 txtCantidad.Text = "1";
-                txtCantidad.Focus();
+                txtBuscar.Focus();
 
             }
         }
@@ -550,7 +574,7 @@ namespace VentasD1002
             {
                 TIPO_VENTA tipoVenta;
                 DetalleVentaII dv = gridVentas.CurrentRow.DataBoundItem as DetalleVentaII;
-                
+
                 var cantidadAnterior = DatDetalleVenta.ObtenerCantidadDV(dv.Id);
 
                 switch (dv.TipoVenta)
@@ -569,7 +593,7 @@ namespace VentasD1002
                 switch (e.ColumnIndex)
                 {
                     case 3:
-                        var _producto =  ProductoDAL.ObtenerProducto_x_Codigo(dv.Codigo, tipoVenta.ToString());
+                        var _producto = ProductoDAL.ObtenerProducto_x_Codigo(dv.Codigo, tipoVenta.ToString());
 
                         if (_producto.UsaInventario && !cboFormaPago.Text.ToUpper().Equals(TIPO_PAGO.COTIZACION.ToString()))
                         {
@@ -680,6 +704,16 @@ namespace VentasD1002
                 lblTotalArticulos.Text = gridVentas.Rows.Cast<DataGridViewRow>()
                                            .Sum(g => Convert.ToDecimal(g.Cells[3].Value))
                                            .ToString();
+
+
+                if (gridVentas.Rows.Count > 0)
+                {
+                    DataGridViewRow row = gridVentas.Rows.Cast<DataGridViewRow>().Where(r => r.Visible).Last();
+                    // scroll to last row if necessary
+                    gridVentas.FirstDisplayedScrollingRowIndex = gridVentas.Rows.Count - 1; //.IndexOf(row);
+                                                                                            // select row
+                    row.Selected = true;
+                }
             }
         }
 
@@ -694,7 +728,7 @@ namespace VentasD1002
                 {
                     ProductoDAL.Aumentar_DisminuirStock(producto, "AUMENTAR");
                 }
-                
+
                 switch (dv.TipoVenta)
                 {
                     case 1:
@@ -705,7 +739,7 @@ namespace VentasD1002
                                 dv.Precio = (dv.Cantidad >= producto.A_Partir_De) ? producto.PrecioMayoreo : producto.Precio;
                                 dv.UnidadMedida = producto.Presentacion;
                                 dv.Importe = dv.Precio * dv.Cantidad;
-                            
+
                                 DatDetalleVenta.ActualizarPrecio_DetalleVenta(dv, TIPO_VENTA.M);
                             }
                         }
@@ -761,7 +795,7 @@ namespace VentasD1002
 
         private void cboFormaPago_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (cboFormaPago.Text.ToUpper()=="CREDITO")
+            if (cboFormaPago.Text.ToUpper() == "CREDITO")
             {
                 ObtenerSaldoDisponible();
             }
@@ -774,7 +808,7 @@ namespace VentasD1002
                 if (cboFormaPago.Text.ToUpper() == TIPO_PAGO.CREDITO.ToString())
                 {
                     decimal saldo = DatCliente.ObtenerSaldoDisponible(IDCLIENTE);
-                    lblSaldoDisponible.Text = String.Format("{0:N2}", saldo); 
+                    lblSaldoDisponible.Text = String.Format("{0:N2}", saldo);
                 }
             }
             catch (Exception)
@@ -870,7 +904,7 @@ namespace VentasD1002
                     DatVenta.Actualizar_EstadoVenta(IDVENTA, "EN ESPERA");
                     var resultImprimir = MessageBox.Show("¿Desea imprimir el tickect?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    if (resultImprimir == DialogResult.Yes )
+                    if (resultImprimir == DialogResult.Yes)
                     {
                         var reportViewer = new Telerik.ReportViewer.WinForms.ReportViewer();
                         var respuesta = ImprimirDocumento.Imprimir(ref reportViewer, DESTINO_DOCUMENTO.VENTAS, TIPO_DOCUMENTO.TICKET, IDVENTA);
@@ -896,7 +930,7 @@ namespace VentasD1002
                             MessageBox.Show(respuesta.Message, "ATENCIÓN", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         ReestablecerDatos_Predeterminados();
-                    } 
+                    }
                 }
             }
             catch (Exception)
@@ -936,8 +970,8 @@ namespace VentasD1002
 
                     cboFormaPago.SelectedText = FORMA_PAGO;
                     gdvClientes.Visible = false;
-                   
-                   // VentaDAL.Notificacion_Ventas_EnEspera(ref lblNotVentaEspera, 1);
+
+                    // VentaDAL.Notificacion_Ventas_EnEspera(ref lblNotVentaEspera, 1);
                 }
                 if (ELIMINARNOTIFICACION_VE)
                 {
@@ -968,6 +1002,6 @@ namespace VentasD1002
             Obtener_PerfilUsuario();
         }
 
-       
+
     }
 }

@@ -73,6 +73,7 @@
             this.btnCodigoCliente.Size = new System.Drawing.Size(57, 38);
             this.btnCodigoCliente.TabIndex = 340;
             this.btnCodigoCliente.UseVisualStyleBackColor = false;
+            this.btnCodigoCliente.Visible = false;
             this.btnCodigoCliente.Click += new System.EventHandler(this.btnCodigoCliente_Click);
             // 
             // panel3
@@ -91,6 +92,7 @@
             this.txtClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClave.Location = new System.Drawing.Point(355, 167);
             this.txtClave.Name = "txtClave";
+            this.txtClave.ReadOnly = true;
             this.txtClave.Size = new System.Drawing.Size(170, 19);
             this.txtClave.TabIndex = 338;
             // 

@@ -675,7 +675,7 @@ namespace Reportes
             this.detail,
             this.reportHeaderSection1});
             this.Name = "rptTicket";
-            this.PageSettings.ContinuousPaper = false;
+            this.PageSettings.ContinuousPaper = true;
             this.PageSettings.Landscape = false;
             this.PageSettings.Margins = new Telerik.Reporting.Drawing.MarginsU(Telerik.Reporting.Drawing.Unit.Mm(1D), Telerik.Reporting.Drawing.Unit.Mm(1D), Telerik.Reporting.Drawing.Unit.Mm(2D), Telerik.Reporting.Drawing.Unit.Mm(0D));
             this.PageSettings.PaperKind = System.Drawing.Printing.PaperKind.Custom;

@@ -385,12 +385,12 @@ namespace VentasD1002
                     }
                     else
                     {
-                        this.Hide();
-                        new DatCatGenerico().Editar_InicioSesion(EncriptarTexto.Encriptar(serialPC), idusuario);
-                        frmMenuPrincipal principal = new frmMenuPrincipal();
-                        principal.ShowDialog();
-                        UserLoginNow = null;
-                        nameUserNow = null;
+                        //this.Hide();
+                        //new DatCatGenerico().Editar_InicioSesion(EncriptarTexto.Encriptar(serialPC), idusuario);
+                        //frmMenuPrincipal principal = new frmMenuPrincipal();
+                        //principal.ShowDialog();
+                        //UserLoginNow = null;
+                        //nameUserNow = null;
                     }
                 }
             }

@@ -33,6 +33,8 @@ namespace Reportes
                 txtProvincia.Value = datos.Provincia;
                 txtFolio.Value = datos.Folio;
                 txtFormaPago.Value = datos.FormaPago.ToUpper();
+                txtSubEncabezado.Value = datos.SubEncabezado;
+                txtNotaPieTicket.Value = datos.NotaPieTicket;
 
                 txtCliente.Value = datos.Cliente;
                 txtRuc.Value = datos.Ruc;
@@ -65,7 +67,7 @@ namespace Reportes
                 txtAtendio.Value = $"¡ Lo atendió {datos.Cajero} !";
                 txtAgradecimiento.Value = datos.Agradecimiento;
                 txtAnuncio.Value = datos.Anuncio;
-                txtArticulosVendidos.Value = $"Total artículos vendidos: {string.Format("{0:N}",datos.TotalProducto)}";
+                txtArticulosVendidos.Value = $"Total artículos vendidos: {string.Format("{0:N}",datos.lstDetalleVenta.Count)}";
 
                 if (datos.FormaPago.ToUpper() == TIPO_PAGO.COTIZACION.ToString() || datos.MontoTotal == 0)
                 {

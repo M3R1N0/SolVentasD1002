@@ -2,164 +2,165 @@
 <?xml-stylesheet type="text/xsl" href="_UpgradeWizard_Files\UpgradeWizardLog.xslt"?>
 <log>
   <event>Get project references.</event>
-  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\BusVenta.csproj" />
-  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\app.config" />
-  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\app.config" />
-  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\app.config" />
-  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\app.config" />
-  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\app.config" />
-  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\app.config" />
-  <event action="Analyze" type="Success" name="app.config" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\app.config" />
-  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\packages.config" />
-  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\packages.config" />
-  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\packages.config" />
-  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\packages.config" />
-  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\packages.config" />
-  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\packages.config" />
-  <event action="Analyze" type="Success" name="packages.config" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\packages.config" />
-  <event action="Analyze" type="Success" name="Resources.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\Properties\Resources.resx" />
-  <event action="Analyze" type="Success" name="BusVenta" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\BusVenta.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\BusVenta.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\app.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\app.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\app.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\app.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\app.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\app.config" />
+  <event action="Analyze" type="Success" name="app.config" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\app.config" />
+  <event action="Analyze" type="Success" name="Assembly References" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\packages.config" />
+  <event action="Analyze" type="Success" name="Resources.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\Properties\Resources.resx" />
+  <event action="Analyze" type="Success" name="BusVenta" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\BusVenta.csproj" />
   <event>Get project references.</event>
-  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\VentasD1002.csproj" />
-  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\App.config" />
-  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\App.config" />
-  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\App.config" />
-  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\App.config" />
-  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\App.config" />
-  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\App.config" />
-  <event action="Analyze" type="Success" name="App.config" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\App.config" />
-  <event action="Analyze" type="Success" name="frmAbonarCredito.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmAbonarCredito.resx" />
-  <event action="Analyze" type="Success" name="frmABProducto.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmABProducto.resx" />
-  <event action="Analyze" type="Success" name="frmABUsuario.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmABUsuario.resx" />
-  <event action="Analyze" type="Success" name="frmAltaCliente.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmAltaCliente.resx" />
-  <event action="Analyze" type="Success" name="frmAperturaCaja.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmAperturaCaja.resx" />
-  <event action="Analyze" type="Success" name="frmBitacoraCliente.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmBitacoraCliente.resx" />
-  <event action="Analyze" type="Success" name="frmBonificacion.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmBonificacion.resx" />
-  <event action="Analyze" type="Success" name="frmCajaRemota.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCajaRemota.resx" />
-  <event action="Analyze" type="Success" name="frmCambioFormaPago.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCambioFormaPago.resx" />
-  <event action="Analyze" type="Success" name="frmCargarDatosExcel.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCargarDatosExcel.resx" />
-  <event action="Analyze" type="Success" name="frmCatalogo.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCatalogo.resx" />
-  <event action="Analyze" type="Success" name="frmCatSucursal.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCatSucursal.resx" />
-  <event action="Analyze" type="Success" name="frmCierreCaja.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCierreCaja.resx" />
-  <event action="Analyze" type="Success" name="frmCliente.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCliente.resx" />
-  <event action="Analyze" type="Success" name="frmCobrar.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCobrar.resx" />
-  <event action="Analyze" type="Success" name="frmComprobante.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmComprobante.resx" />
-  <event action="Analyze" type="Success" name="frmConexionRemota.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmConexionRemota.resx" />
-  <event action="Analyze" type="Success" name="frmConfiguracion.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmConfiguracion.resx" />
-  <event action="Analyze" type="Success" name="frmConfiguracionCaja.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmConfiguracionCaja.resx" />
-  <event action="Analyze" type="Success" name="frmConfiguracionEmpresa.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmConfiguracionEmpresa.resx" />
-  <event action="Analyze" type="Success" name="frmConfiguracionImpresoras.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmConfiguracionImpresoras.resx" />
-  <event action="Analyze" type="Success" name="frmCopiaAutomatica.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCopiaAutomatica.resx" />
-  <event action="Analyze" type="Success" name="frmCopiaSeguridad.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCopiaSeguridad.resx" />
-  <event action="Analyze" type="Success" name="frmCreditosCobrar.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCreditosCobrar.resx" />
-  <event action="Analyze" type="Success" name="frmDashboard.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmDashboard.resx" />
-  <event action="Analyze" type="Success" name="frmDescargarActualizacion.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmDescargarActualizacion.resx" />
-  <event action="Analyze" type="Success" name="frmDevoluciones.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmDevoluciones.resx" />
-  <event action="Analyze" type="Success" name="frmEditarPrecioVenta.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmEditarPrecioVenta.resx" />
-  <event action="Analyze" type="Success" name="frmEntradaProducto.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmEntradaProducto.resx" />
-  <event action="Analyze" type="Success" name="frmExito.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmExito.resx" />
-  <event action="Analyze" type="Success" name="frmFormatoComprobante.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmFormatoComprobante.resx" />
-  <event action="Analyze" type="Success" name="frmGananciasxPeriodo.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmGananciasxPeriodo.resx" />
-  <event action="Analyze" type="Success" name="frmGastos.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmGastos.resx" />
-  <event action="Analyze" type="Success" name="frmHistorialCliente.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmHistorialCliente.resx" />
-  <event action="Analyze" type="Success" name="frmHistorialVentas.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmHistorialVentas.resx" />
-  <event action="Analyze" type="Success" name="frmInicioSesion.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmInicioSesion.resx" />
-  <event action="Analyze" type="Success" name="frmInstalacionServidor.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmInstalacionServidor.resx" />
-  <event action="Analyze" type="Success" name="frmInventarioKardex.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmInventarioKardex.resx" />
-  <event action="Analyze" type="Success" name="frmLicencia.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmLicencia.resx" />
-  <event action="Analyze" type="Success" name="frmListadoClientesCredito.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmListadoClientesCredito.resx" />
-  <event action="Analyze" type="Success" name="frmListaIngresosEgresos.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmListaIngresosEgresos.resx" />
-  <event action="Analyze" type="Success" name="frmLogin.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmLogin.resx" />
-  <event action="Analyze" type="Success" name="frmMenuPrincipal.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmMenuPrincipal.resx" />
-  <event action="Analyze" type="Success" name="frmMovimientoRpt.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmMovimientoRpt.resx" />
-  <event action="Analyze" type="Success" name="frmNotificaciones.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmNotificaciones.resx" />
-  <event action="Analyze" type="Success" name="frmNuevoMenu.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmNuevoMenu.resx" />
-  <event action="Analyze" type="Success" name="frmPermisos.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmPermisos.resx" />
-  <event action="Analyze" type="Success" name="frmPrincipal.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmPrincipal.resx" />
-  <event action="Analyze" type="Success" name="frmProductos.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmProductos.resx" />
-  <event action="Analyze" type="Success" name="frmProductosInactivos.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmProductosInactivos.resx" />
-  <event action="Analyze" type="Success" name="frmRegistroEmpresa.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmRegistroEmpresa.resx" />
-  <event action="Analyze" type="Success" name="frmReimprimirTicket.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmReimprimirTicket.resx" />
-  <event action="Analyze" type="Success" name="frmRestaurarBD.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmRestaurarBD.resx" />
-  <event action="Analyze" type="Success" name="frmServidorRemoto.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmServidorRemoto.resx" />
-  <event action="Analyze" type="Success" name="frmSplashScreen.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmSplashScreen.resx" />
-  <event action="Analyze" type="Success" name="frmSubMenus.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmSubMenus.resx" />
-  <event action="Analyze" type="Success" name="frmTraspasoMercancia.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmTraspasoMercancia.resx" />
-  <event action="Analyze" type="Success" name="frmUsuario.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmUsuario.resx" />
-  <event action="Analyze" type="Success" name="frmUsuarioAutorizado.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmUsuarioAutorizado.resx" />
-  <event action="Analyze" type="Success" name="frmVenta.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmVenta.resx" />
-  <event action="Analyze" type="Success" name="frmVentasEnEspera.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmVentasEnEspera.resx" />
-  <event action="Analyze" type="Success" name="frmVistaBonificaciones.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmVistaBonificaciones.resx" />
-  <event action="Analyze" type="Success" name="frmVistaNotaRemision.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmVistaNotaRemision.resx" />
-  <event action="Analyze" type="Success" name="frmVistaPreviaTickek.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmVistaPreviaTickek.resx" />
-  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\packages.config" />
-  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\packages.config" />
-  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\packages.config" />
-  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\packages.config" />
-  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\packages.config" />
-  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\packages.config" />
-  <event action="Analyze" type="Success" name="packages.config" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\packages.config" />
-  <event action="Analyze" type="Success" name="Resources.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\Properties\Resources.resx" />
-  <event action="Analyze" type="Success" name="resources.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\Resources\resources.resx" />
-  <event action="Analyze" type="Success" name="VentasD1002" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\VentasD1002.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\VentasD1002.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\App.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\App.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\App.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\App.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\App.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\App.config" />
+  <event action="Analyze" type="Success" name="App.config" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\App.config" />
+  <event action="Analyze" type="Success" name="FormMessageBox.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\CustomUI\FormMessageBox.resx" />
+  <event action="Analyze" type="Success" name="frmAbonarCredito.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmAbonarCredito.resx" />
+  <event action="Analyze" type="Success" name="frmABProducto.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmABProducto.resx" />
+  <event action="Analyze" type="Success" name="frmABUsuario.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmABUsuario.resx" />
+  <event action="Analyze" type="Success" name="frmAltaCliente.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmAltaCliente.resx" />
+  <event action="Analyze" type="Success" name="frmAperturaCaja.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmAperturaCaja.resx" />
+  <event action="Analyze" type="Success" name="frmBitacoraCliente.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmBitacoraCliente.resx" />
+  <event action="Analyze" type="Success" name="frmBonificacion.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmBonificacion.resx" />
+  <event action="Analyze" type="Success" name="frmCajaRemota.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCajaRemota.resx" />
+  <event action="Analyze" type="Success" name="frmCambioFormaPago.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCambioFormaPago.resx" />
+  <event action="Analyze" type="Success" name="frmCargarDatosExcel.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCargarDatosExcel.resx" />
+  <event action="Analyze" type="Success" name="frmCatalogo.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCatalogo.resx" />
+  <event action="Analyze" type="Success" name="frmCatSucursal.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCatSucursal.resx" />
+  <event action="Analyze" type="Success" name="frmCierreCaja.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCierreCaja.resx" />
+  <event action="Analyze" type="Success" name="frmCliente.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCliente.resx" />
+  <event action="Analyze" type="Success" name="frmCobrar.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCobrar.resx" />
+  <event action="Analyze" type="Success" name="frmComprobante.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmComprobante.resx" />
+  <event action="Analyze" type="Success" name="frmConexionRemota.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmConexionRemota.resx" />
+  <event action="Analyze" type="Success" name="frmConfiguracion.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmConfiguracion.resx" />
+  <event action="Analyze" type="Success" name="frmConfiguracionCaja.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmConfiguracionCaja.resx" />
+  <event action="Analyze" type="Success" name="frmConfiguracionEmpresa.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmConfiguracionEmpresa.resx" />
+  <event action="Analyze" type="Success" name="frmConfiguracionImpresoras.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmConfiguracionImpresoras.resx" />
+  <event action="Analyze" type="Success" name="frmCopiaAutomatica.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCopiaAutomatica.resx" />
+  <event action="Analyze" type="Success" name="frmCopiaSeguridad.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCopiaSeguridad.resx" />
+  <event action="Analyze" type="Success" name="frmCreditosCobrar.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmCreditosCobrar.resx" />
+  <event action="Analyze" type="Success" name="frmDashboard.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmDashboard.resx" />
+  <event action="Analyze" type="Success" name="frmDescargarActualizacion.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmDescargarActualizacion.resx" />
+  <event action="Analyze" type="Success" name="frmDevoluciones.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmDevoluciones.resx" />
+  <event action="Analyze" type="Success" name="frmEditarPrecioVenta.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmEditarPrecioVenta.resx" />
+  <event action="Analyze" type="Success" name="frmEntradaProducto.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmEntradaProducto.resx" />
+  <event action="Analyze" type="Success" name="frmExito.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmExito.resx" />
+  <event action="Analyze" type="Success" name="frmFormatoComprobante.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmFormatoComprobante.resx" />
+  <event action="Analyze" type="Success" name="frmGananciasxPeriodo.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmGananciasxPeriodo.resx" />
+  <event action="Analyze" type="Success" name="frmGastos.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmGastos.resx" />
+  <event action="Analyze" type="Success" name="frmHistorialCliente.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmHistorialCliente.resx" />
+  <event action="Analyze" type="Success" name="frmHistorialVentas.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmHistorialVentas.resx" />
+  <event action="Analyze" type="Success" name="frmInicioSesion.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmInicioSesion.resx" />
+  <event action="Analyze" type="Success" name="frmInstalacionServidor.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmInstalacionServidor.resx" />
+  <event action="Analyze" type="Success" name="frmInventarioKardex.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmInventarioKardex.resx" />
+  <event action="Analyze" type="Success" name="frmLicencia.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmLicencia.resx" />
+  <event action="Analyze" type="Success" name="frmListadoClientesCredito.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmListadoClientesCredito.resx" />
+  <event action="Analyze" type="Success" name="frmListaEntradas.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmListaEntradas.resx" />
+  <event action="Analyze" type="Success" name="frmListaIngresosEgresos.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmListaIngresosEgresos.resx" />
+  <event action="Analyze" type="Success" name="frmLogin.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmLogin.resx" />
+  <event action="Analyze" type="Success" name="frmMenuPrincipal.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmMenuPrincipal.resx" />
+  <event action="Analyze" type="Success" name="frmMovimientoRpt.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmMovimientoRpt.resx" />
+  <event action="Analyze" type="Success" name="frmNotificaciones.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmNotificaciones.resx" />
+  <event action="Analyze" type="Success" name="frmNuevoMenu.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmNuevoMenu.resx" />
+  <event action="Analyze" type="Success" name="frmPermisos.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmPermisos.resx" />
+  <event action="Analyze" type="Success" name="frmPrincipal.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmPrincipal.resx" />
+  <event action="Analyze" type="Success" name="frmProductos.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmProductos.resx" />
+  <event action="Analyze" type="Success" name="frmProductosInactivos.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmProductosInactivos.resx" />
+  <event action="Analyze" type="Success" name="frmRegistroEmpresa.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmRegistroEmpresa.resx" />
+  <event action="Analyze" type="Success" name="frmReimprimirTicket.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmReimprimirTicket.resx" />
+  <event action="Analyze" type="Success" name="frmRestaurarBD.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmRestaurarBD.resx" />
+  <event action="Analyze" type="Success" name="frmServidorRemoto.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmServidorRemoto.resx" />
+  <event action="Analyze" type="Success" name="frmSplashScreen.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmSplashScreen.resx" />
+  <event action="Analyze" type="Success" name="frmSubMenus.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmSubMenus.resx" />
+  <event action="Analyze" type="Success" name="frmTraspasoMercancia.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmTraspasoMercancia.resx" />
+  <event action="Analyze" type="Success" name="frmUsuario.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmUsuario.resx" />
+  <event action="Analyze" type="Success" name="frmUsuarioAutorizado.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmUsuarioAutorizado.resx" />
+  <event action="Analyze" type="Success" name="frmVenta.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmVenta.resx" />
+  <event action="Analyze" type="Success" name="frmVentasEnEspera.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmVentasEnEspera.resx" />
+  <event action="Analyze" type="Success" name="frmVistaBonificaciones.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmVistaBonificaciones.resx" />
+  <event action="Analyze" type="Success" name="frmVistaNotaRemision.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmVistaNotaRemision.resx" />
+  <event action="Analyze" type="Success" name="frmVistaPreviaTickek.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\frmVistaPreviaTickek.resx" />
+  <event action="Analyze" type="Success" name="Assembly References" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\packages.config" />
+  <event action="Analyze" type="Success" name="Resources.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\Properties\Resources.resx" />
+  <event action="Analyze" type="Success" name="VentasD1002" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\VentasD1002.csproj" />
   <event>Get project references.</event>
-  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\DatVentas.csproj" />
-  <event action="Analyze" type="Success" name="frmEncriptar.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\frmEncriptar.resx" />
-  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\packages.config" />
-  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\packages.config" />
-  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\packages.config" />
-  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\packages.config" />
-  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\packages.config" />
-  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\packages.config" />
-  <event action="Analyze" type="Success" name="packages.config" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\packages.config" />
-  <event action="Analyze" type="Success" name="DatVentas" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\DatVentas.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\DatVentas.csproj" />
+  <event action="Analyze" type="Success" name="frmEncriptar.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\frmEncriptar.resx" />
+  <event action="Analyze" type="Success" name="Assembly References" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\packages.config" />
+  <event action="Analyze" type="Success" name="DatVentas" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\DatVentas\DatVentas.csproj" />
   <event>Get project references.</event>
-  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\EntVenta.csproj" />
-  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\packages.config" />
-  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\packages.config" />
-  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\packages.config" />
-  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\packages.config" />
-  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\packages.config" />
-  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\packages.config" />
-  <event action="Analyze" type="Success" name="packages.config" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\packages.config" />
-  <event action="Analyze" type="Success" name="EntVenta" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\EntVenta.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\EntVenta.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\packages.config" />
+  <event action="Analyze" type="Success" name="EntVenta" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\EntVenta\EntVenta.csproj" />
   <event>Get project references.</event>
-  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\Reportes.csproj" />
-  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
-  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
-  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
-  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
-  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
-  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
-  <event action="Analyze" type="Success" name="app.config" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
-  <event action="Analyze" type="Success" name="frmInventario.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\frmInventario.resx" />
-  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\packages.config" />
-  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\packages.config" />
-  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\packages.config" />
-  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\packages.config" />
-  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\packages.config" />
-  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\packages.config" />
-  <event action="Analyze" type="Success" name="packages.config" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\packages.config" />
-  <event action="Analyze" type="Success" name="Resources.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\Properties\Resources.resx" />
-  <event action="Analyze" type="Success" name="ReportTicket.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\ReportTicket.resx" />
-  <event action="Analyze" type="Success" name="rptComprobanteAbono.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rptComprobanteAbono.resx" />
-  <event action="Analyze" type="Success" name="rptComprobanteBonificacion.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rptComprobanteBonificacion.resx" />
-  <event action="Analyze" type="Success" name="rptComprobanteIngresoEgreso.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rptComprobanteIngresoEgreso.resx" />
-  <event action="Analyze" type="Success" name="rptInventarios.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rptInventarios.resx" />
-  <event action="Analyze" type="Success" name="rptKardex.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rptKardex.resx" />
-  <event action="Analyze" type="Success" name="rptMovimientoKardex.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rptMovimientoKardex.resx" />
-  <event action="Analyze" type="Success" name="rptTicket.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rptTicket.resx" />
-  <event action="Analyze" type="Success" name="rptTicketCopia.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rptTicketCopia.resx" />
-  <event action="Analyze" type="Success" name="rtpRecibo.resx" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rtpRecibo.resx" />
-  <event action="Analyze" type="Success" name="Reportes" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\Reportes.csproj" />
-  <event action="Analyze" type="Success" name="SolVentasD1002" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\SolVentasD1002.sln" />
-  <event action="Upgrade" type="Success" name="Assembly References" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\BusVenta.csproj" />
-  <event action="Upgrade" type="Success" name="BusVenta" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\BusVenta.csproj" />
-  <event action="Upgrade" type="Success" name="Assembly References" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\VentasD1002.csproj" />
-  <event action="Upgrade" type="Success" name="VentasD1002" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\VentasD1002.csproj" />
-  <event action="Upgrade" type="Success" name="Assembly References" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\Reportes.csproj" />
-  <event action="Upgrade" type="Success" name="Config Sections" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
-  <event action="Upgrade" type="Success" name="app.config" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
-  <event action="Upgrade" type="Success" name="Reportes" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\Reportes\Reportes.csproj" />
-  <event action="Upgrade" type="Success" name="SolVentasD1002" path="C:\Users\Orthega\Documents\PROYECTOS\Proyectos\SolVentasD1002\SolVentasD1002.sln" />
+  <event action="Analyze" type="Success" name="Assembly References" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\Reportes.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
+  <event action="Analyze" type="Success" name="app.config" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
+  <event action="Analyze" type="Success" name="frmInventario.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\frmInventario.resx" />
+  <event action="Analyze" type="Success" name="Assembly References" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\packages.config" />
+  <event action="Analyze" type="Success" name="Resources.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\Properties\Resources.resx" />
+  <event action="Analyze" type="Success" name="ReportTicket.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\ReportTicket.resx" />
+  <event action="Analyze" type="Success" name="rptComprobanteAbono.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rptComprobanteAbono.resx" />
+  <event action="Analyze" type="Success" name="rptComprobanteBonificacion.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rptComprobanteBonificacion.resx" />
+  <event action="Analyze" type="Success" name="rptComprobanteIngresoEgreso.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rptComprobanteIngresoEgreso.resx" />
+  <event action="Analyze" type="Success" name="rptInventarios.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rptInventarios.resx" />
+  <event action="Analyze" type="Success" name="rptKardex.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rptKardex.resx" />
+  <event action="Analyze" type="Success" name="rptMovimientoKardex.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rptMovimientoKardex.resx" />
+  <event action="Analyze" type="Success" name="rptTicket.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rptTicket.resx" />
+  <event action="Analyze" type="Success" name="rptTicketCopia.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rptTicketCopia.resx" />
+  <event action="Analyze" type="Success" name="rtpRecibo.resx" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\rtpRecibo.resx" />
+  <event action="Analyze" type="Success" name="Reportes" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\Reportes.csproj" />
+  <event action="Analyze" type="Success" name="SolVentasD1002" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\SolVentasD1002.sln" />
+  <event action="Upgrade" type="Success" name="Assembly References" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\BusVenta.csproj" />
+  <event action="Upgrade" type="Success" name="BusVenta" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\BusVenta\BusVenta.csproj" />
+  <event action="Upgrade" type="Success" name="Assembly References" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\VentasD1002.csproj" />
+  <event action="Upgrade" type="Success" name="VentasD1002" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\VentasD1002\VentasD1002.csproj" />
+  <event action="Upgrade" type="Success" name="Assembly References" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\Reportes.csproj" />
+  <event action="Upgrade" type="Success" name="Config Sections" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
+  <event action="Upgrade" type="Success" name="app.config" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\app.config" />
+  <event action="Upgrade" type="Success" name="Reportes" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\Reportes\Reportes.csproj" />
+  <event action="Upgrade" type="Success" name="SolVentasD1002" path="Z:\PROYECTOS\Proyectos\SolVentasD1002\SolVentasD1002.sln" />
 </log>

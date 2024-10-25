@@ -2,17 +2,8 @@
 using BusVenta.Helpers;
 using DatVentas;
 using EntVenta;
-using Reportes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Telerik.ReportViewer.WinForms;
 using VentasD1002.Helpers;
 
 namespace VentasD1002
@@ -46,7 +37,7 @@ namespace VentasD1002
 
         private void txtRecibo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Comun.TextBoxNumerico(sender,e);
+            Comun.TextBoxNumerico(sender, e);
         }
 
         private void ObtenerCambio()
@@ -98,7 +89,7 @@ namespace VentasD1002
                 _venta.FechaVenta = DateTime.Now;
 
                 if (_venta.MontoTotal > _venta.Recibo)
-                { 
+                {
                     _venta.Saldo = _venta.Vuelto;
                     _venta.FechaLiquidacion = dpLiquidacion.Value.AddDays(15).ToString();
                     _venta.EstadoPago = ESTADO_PAGO.PENDIENTE.ToString();
@@ -142,7 +133,7 @@ namespace VentasD1002
                 }
                 else
                 {
-                    
+
                 }
 
                 ReestablecerDatos(true);
@@ -171,6 +162,6 @@ namespace VentasD1002
             ConfirmarVenta(IMPRIMIR_REPORTE.NO);
         }
 
-       
+
     }
 }

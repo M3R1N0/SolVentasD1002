@@ -1,22 +1,13 @@
 ﻿using BusVenta;
+using BusVenta.Helpers;
 using DatVentas;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Reportes;
 using System.Drawing.Printing;
-using Telerik.Reporting.Processing;
-using System.Management;
-using EntVenta;
-using BusVenta.Helpers;
-using System.Reflection;
 using System.IO;
+using System.Reflection;
+using System.Windows.Forms;
 using VentasD1002.Helpers;
 
 namespace VentasD1002
@@ -64,7 +55,7 @@ namespace VentasD1002
                     }
 
                     this.MainMenuStrip = miMenu;
-                    Controls.Add(miMenu); 
+                    Controls.Add(miMenu);
                 }
             }
             catch (Exception ex)
@@ -111,7 +102,7 @@ namespace VentasD1002
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error de lectura : "+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error de lectura : " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -138,7 +129,7 @@ namespace VentasD1002
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error de al intentar obtener el ticket "+ ex.Message, "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error de al intentar obtener el ticket " + ex.Message, "Error de lectura", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -154,7 +145,7 @@ namespace VentasD1002
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un detalle al asignar los datos al reporte\nDetalles: "+ex.Message,"Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrió un detalle al asignar los datos al reporte\nDetalles: " + ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -184,12 +175,12 @@ namespace VentasD1002
                 {
                     MessageBox.Show(respuesta.Message, "Error de impresión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else if(respuesta.IsSuccess == EnumOperationResult.Warning)
+                else if (respuesta.IsSuccess == EnumOperationResult.Warning)
                 {
                     MessageBox.Show(respuesta.Message, "Error de impresión", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else { }
-               
+
             }
             catch (Exception ex)
             {
@@ -218,8 +209,8 @@ namespace VentasD1002
 
         private void RealizarBonificacion()
         {
-            
-            if (string.IsNullOrEmpty(lblIdVenta.Text) || lblIdVenta.Text  == "0")
+
+            if (string.IsNullOrEmpty(lblIdVenta.Text) || lblIdVenta.Text == "0")
             {
                 MessageBox.Show("Seleccione el ticket a bonificar", "Importante", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -245,11 +236,11 @@ namespace VentasD1002
                     frmCambioFormaPago frmCambio = new frmCambioFormaPago(idventa);
                     frmCambio.ShowDialog();
                 }
-               
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al realizar el cambio (Contado - Crédito) : "+ex.Message, "Error de actualización", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al realizar el cambio (Contado - Crédito) : " + ex.Message, "Error de actualización", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 lblIdVenta.Text = "";
             }
         }

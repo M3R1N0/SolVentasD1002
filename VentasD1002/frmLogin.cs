@@ -1,18 +1,13 @@
 ﻿using BusVenta;
+using BusVenta.Helpers;
+using DatVentas;
 using EntVenta;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Management;
-using DatVentas;
-using System.Data;
-using BusVenta.Helpers;
+using System.Windows.Forms;
 
 namespace VentasD1002
 {
@@ -21,7 +16,6 @@ namespace VentasD1002
         public frmLogin()
         {
             InitializeComponent();
-            var ss = EncriptarTexto.Desencriptar("4kUyBuwG6Sfo9/myb77b2w==");
         }
 
         private string Usuario;
@@ -32,7 +26,7 @@ namespace VentasD1002
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
             timer1.Start();
             DibujarLogin();
             panelIniciarSesion.Visible = false;
@@ -57,7 +51,7 @@ namespace VentasD1002
 
                     label.Text = item.Usuario;
                     label.Name = item.Id.ToString();
-                    label.Size = new Size(90,23);
+                    label.Size = new Size(90, 23);
                     label.Font = new Font("Microsoft Sans Serif", 13);
                     label.FlatStyle = FlatStyle.Flat;
                     label.BackColor = Color.FromArgb(176, 196, 222);
@@ -94,7 +88,7 @@ namespace VentasD1002
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -136,7 +130,7 @@ namespace VentasD1002
         {
             if (ValidatePWD())
             {
-                AccederSistema(); 
+                AccederSistema();
             }
         }
 
@@ -164,7 +158,7 @@ namespace VentasD1002
         {
             try
             {
-                string serialPC = EncriptarTexto.Encriptar( Sistema.ObenterSerialPC());
+                string serialPC = EncriptarTexto.Encriptar(Sistema.ObenterSerialPC());
 
                 var session = CajaDAL.ValidarSesion(serialPC);
 
@@ -204,9 +198,9 @@ namespace VentasD1002
                         }
                     }
                 }
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -218,11 +212,11 @@ namespace VentasD1002
             List<User> lstUsuarios = new BusUser().ListarUsuarios();
             int contadorUsuario = lstUsuarios.Count;
             string INDICADOR = DatUser.AUX_CONEXION;
-         //   MessageBox.Show(INDICADOR);
+            //   MessageBox.Show(INDICADOR);
 
-            if (DatUser.AUX_CONEXION == "CORRECTO" )
+            if (DatUser.AUX_CONEXION == "CORRECTO")
             {
-                if ( contadorUsuario == 0 || lstUsuarios == null)
+                if (contadorUsuario == 0 || lstUsuarios == null)
                 {
                     Hide();
                     frmRegistroEmpresa registroEmpresa = new frmRegistroEmpresa();
@@ -244,9 +238,9 @@ namespace VentasD1002
                 ManagementObject mos = new ManagementObject(@"Win32_PhysicalMedia='\\.\PHYSICALDRIVE0'");
                 //foreach (ManagementObject getSerial in mos.Get())
                 //{
-                    serialPC =  mos.Properties["SerialNumber"].Value.ToString().Trim();
-                    IdCaja = BusBox.showBoxBySerial().Id;
-               // }
+                serialPC = mos.Properties["SerialNumber"].Value.ToString().Trim();
+                IdCaja = BusBox.showBoxBySerial().Id;
+                // }
             }
             catch (Exception ex)
             {
@@ -257,10 +251,10 @@ namespace VentasD1002
             {
                 Licencia licencia = new BusLicencia().Obtener_LicenciaTemporal();
 
-                 dtpVencimiento.Value = Convert.ToDateTime( EncriptarTexto.Desencriptar( licencia.FechaVencimiento ) );
-                string serial = EncriptarTexto.Desencriptar( licencia.Serial );
-                string estado = EncriptarTexto.Desencriptar( licencia.Estado );
-                 dtpFechaActivacion.Value = Convert.ToDateTime( EncriptarTexto.Desencriptar( licencia.FechaActivacion ));
+                dtpVencimiento.Value = Convert.ToDateTime(EncriptarTexto.Desencriptar(licencia.FechaVencimiento));
+                string serial = EncriptarTexto.Desencriptar(licencia.Serial);
+                string estado = EncriptarTexto.Desencriptar(licencia.Estado);
+                dtpFechaActivacion.Value = Convert.ToDateTime(EncriptarTexto.Desencriptar(licencia.FechaActivacion));
 
                 label3.Text = estado;
                 label2.Text = serial;
@@ -271,22 +265,22 @@ namespace VentasD1002
 
                 if (estado != "VENCIDO")
                 {
-                    string fechaActual =Convert.ToString( DateTime.Now );
-                    DateTime  hoy = Convert.ToDateTime(fechaActual.Split(' ')[0]);
+                    string fechaActual = Convert.ToString(DateTime.Now);
+                    DateTime hoy = Convert.ToDateTime(fechaActual.Split(' ')[0]);
 
-                    if ( dtpVencimiento.Value >= hoy)
+                    if (dtpVencimiento.Value >= hoy)
                     {
                         int mes = dtpFechaActivacion.Value.Month;
                         int mesActual = hoy.Month;
-                        if ( mes <= mesActual)
+                        if (mes <= mesActual)
                         {
                             if (estado.Equals("?ACTIVO?"))
                             {
                                 lblLicencia.Text = "Licencia activada hasta el : " + dtpVencimiento.Value.ToString("dd/MM/yyyy");
                             }
-                            else if ( estado.Equals("?ACTIVADO PREMIUM?"))
+                            else if (estado.Equals("?ACTIVADO PREMIUM?"))
                             {
-                                lblLicencia.Text = "Licencia profesional Activada hasta el : "+ dtpVencimiento.Value.ToString("dd/MM/yyyy");
+                                lblLicencia.Text = "Licencia profesional Activada hasta el : " + dtpVencimiento.Value.ToString("dd/MM/yyyy");
                             }
                         }
                     }
@@ -295,7 +289,7 @@ namespace VentasD1002
             }
             catch (Exception ex)
             {
-               // MessageBox.Show(ex.Message);
+                // MessageBox.Show(ex.Message);
             }
         }
 

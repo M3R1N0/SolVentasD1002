@@ -47,6 +47,10 @@ namespace VentasD1002
 
                     gdvResultado.Visible = true;
                 }
+                else
+                {
+                    gdvResultado.Visible = false;
+                }
             }
             catch (Exception)
             {

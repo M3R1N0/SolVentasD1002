@@ -40,7 +40,8 @@ namespace EntVenta
         public string Ruc { get; set; }
         public decimal Bonificacion { get; set; }
         public string EstadoVenta { get; set; }
-
+        public string SubEncabezado { get; set; }
+        public string NotaPieTicket { get; set; }
         public List<DetalleVenta> lstDetalleVenta { get; set; }
     }
 

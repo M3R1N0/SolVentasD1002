@@ -666,7 +666,7 @@
             this.gdvResultado.ReadOnly = true;
             this.gdvResultado.RowHeadersVisible = false;
             this.gdvResultado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvResultado.Size = new System.Drawing.Size(504, 434);
+            this.gdvResultado.Size = new System.Drawing.Size(504, 361);
             this.gdvResultado.TabIndex = 389;
             this.gdvResultado.Visible = false;
             this.gdvResultado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvResultado_CellClick);
